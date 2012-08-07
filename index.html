@@ -25,7 +25,8 @@
     a { color: #1e36ce; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
     .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
+    <!-- pre { background: #000; color: #fff; padding: 15px;} -->
+    pre { background: #fff; color: #000; padding: 15px;}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
   </style>
@@ -35,6 +36,7 @@
 
   <div id="container">
 
+<!--
     <div class="download">
       <a href="https://github.com/hplgit/scipro-primer/zipball/master">
         <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
@@ -42,7 +44,6 @@
         <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
     </div>
 
-<!--
     <h1><a href="https://github.com/hplgit/scipro-primer">scipro-primer</a>
       <span class="small">by <a href="https://github.com/hplgit">hplgit</a></span></h1>
 -->
@@ -53,9 +54,20 @@
       <h2>Resources for the book "A Primer on Scientific Programming with Python"</h2>
 
 <UL>
-<P><LI> All programs from the book:
-<a href="book-examples.tar.gz">tarfile for the 3rd edition</a> (pack out: <tt>tar xvzf book-examples.tar.gz</tt>), <em>or</em>
-<a href="book-examples.zip">zipfile for the 3rd edition</a> (pack out: <tt>unzip book-examples.zip</tt>),
+<P><LI> All programs from the book. On Unix/Linux or Mac, download
+<a href="book-examples.tar.gz">tarfile for the 3rd edition</a> and
+pack it out by
+<pre>
+tar xvzf book-examples.tar.gz
+</pre>
+On Windows, download
+<a href="book-examples.zip">zipfile for the 3rd edition</a> and pack it
+out by
+<pre>
+unzip book-examples.zip
+</pre>
+The result is a directory tree <tt>src</tt> with subdirectories containing
+the program examples for different chapters in the book.
 <P><LI> How to <a href="install.html">install the software needed</a> for working with the book.
 <P><LI> On Debian systems, including Ubuntu, SciTools can be installed by
 <pre>
