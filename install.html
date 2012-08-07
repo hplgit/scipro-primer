@@ -1,0 +1,108 @@
+<H4>Required software</H4>
+<OL>
+<LI> Python (version 2.7 recommended)
+<LI> NumPy
+<LI> Matplotlib
+<LI> SciTools
+</OL>
+<H4>Recommended software</H4>
+<OL>
+<LI> IPython
+<LI> ScientificPython
+<LI> Gnuplot plotting program
+<LI> <tt>Gnuplot.py</tt> Python module for Gnuplot
+<LI> SciPy
+</OL>
+
+For plotting, you can use Matplotlib only, or the subpackage Easyviz of
+SciTools in combination with
+Matplotlib. SciTools can also utilize Gnuplot (or other packages) for
+plotting so that is why Gnuplot is listed.
+<p>
+You can find these packages by googling. Most of them are easy
+to install (just go to the top folder of the package and run
+<tt>python setup.py install</tt>), but Gnuplot may require
+compilation, depending on the platform (on Windows there is a binary
+installer, on Mac you can use Fink for MacPorts to install Gnuplot).
+<p>
+Our experience with getting about 800 students to install this software on
+all kinds of laptop computers, have led us to recommend one single
+procedure (unless one has sufficient competence to follow the install
+instructions of each package on a particular platform). This procedure
+consists of using Ubuntu Linux to do all programming work with Python.
+<p>
+On Ubuntu, one simply performs the install
+by
+<pre>
+sudo apt-get install python-scitools python-scipy
+</pre>
+<p>
+On a Windows or Mac computer, there are two ways to use Ubuntu: 1)
+have a dual boot such that the machine can be started as a Ubuntu Linux
+computer; or 2) run a virtual machine such that Ubuntu is available
+in a separate window.
+<p>
+Ubuntu has become a leading platform for scientific programming work.
+Compared to Mac and Windows, Ubuntu makes life much easier when it
+comes to installing mathematical software.
+<!-- Strongly recommending Ubuntu on the students' laptops has been a
+success (freedom is not always a good thing...). -->
+
+<H4>Windows</H4>
+Strategy 1: Use a ready-made distribution of Python for scientific
+purposes. We recommend <a href="http://code.google.com/p/pythonxy/">python(x,y)</a> (containing <a href="http://code.google.com/p/pythonxy/wiki/StandardPlugins">a lot of Python packages)</a>,
+or the <a href="http://www.enthought.com/products/epd.php">Enthought Python Distribution</a> (with over <a href="http://www.enthought.com/products/epd.php">100 libraries</a>).
+<p>
+Strategy 2: Get Ubuntu on your machine
+using <a href="http://wubi-installer.org">Wubi</a>.
+Just give a username and password for the Ubuntu installation,
+and Wubi performs the rest. You can also use VirtualBox on Windows
+(see description below).
+<p>
+Strategy 3: Run Ubuntu in a virtual machine. Use
+<a href="http://www.virtualbox.org/">VirtualBox</a>,
+<a href="http://www.vmware.com/products/player">VMWare Player</a>, or
+the commercial
+<a href="http://www.vmware.com/products/fusion/overview.html/">VMWare Fusion</a>
+(see the Mac section below for details).
+<p>
+You can, of course, install all the software needed for the book
+on Windows directly. Just follow the list above. Native Windows
+install requires familiarity with installing software on Windows
+(PATH settings, etc.).
+
+
+<H4>Mac</H4>
+You can install a ready-made distribution:
+<a href="http://code.google.com/p/pythonxy/">python(x,y)</a> (containing <a href="http://code.google.com/p/pythonxy/wiki/StandardPlugins">a lot of Python packages)</a>,
+or the <a href="http://www.enthought.com/products/epd.php">Enthought Python Distribution</a> (with over <a href="http://www.enthought.com/products/epd.php">100 libraries</a>).
+<p>
+Alternatively, run Ubuntu Linux in a separate window, using
+<a href="http://www.virtualbox.org/">VirtualBox</a>,
+<a href="http://www.vmware.com/products/player">VMWare Player</a>, or
+the commercial
+<a href="http://www.vmware.com/products/fusion/overview.html/">VMWare Fusion</a>.
+This is the simplest way to get Ubuntu on your Mac. First, download
+an Ubuntu image from <a href="http://ubuntu.org">ubuntu.org</a>.
+Second,
+install the virtual machine (VirtualBox, VMWare Player, or VMWare Fusion).
+Third, start the virtual machine and install the Ubuntu image file
+(the details depend on the type of virtual machine you have installed).
+For example, here are the steps for Virtual Box:  open File and choose
+Virtual Media Manager, choose Add, select the Ubuntu image file,
+quit Virtual Media Manager, choose New,
+then Next, give the new virtual machine a name, choose the type of
+operating system you make a virtual machine for, choose the amount of
+memory needed for the virtual Ubuntu machine (never choose more than one
+half of your total memory), choose "Use existing hard disk" and then
+the harddisk/machine we made eariler, choose Next and Finish.
+We also have a preliminary description of <a href="http://simula.no/~hpl/INF5620/vmware-ubuntu-on-Mac/install.html">how to set up VMWare Fusion with Ubuntu</a>.
+<p>
+Provided that you have experience with installing software on Mac and/or
+Unix systems, it is quite easy to install the various components from the list
+above. This requires quite some compilation so you need Xcode.
+We also recommend to have the X11 windows system installed.
+
+<H4>RedHat</H4>
+Python is already installed, and NumPy, Matplotlib and
+SciTools are in Fedora (probably other packages too).
