@@ -42,8 +42,10 @@
         <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
     </div>
 
+<!--
     <h1><a href="https://github.com/hplgit/scipro-primer">scipro-primer</a>
       <span class="small">by <a href="https://github.com/hplgit">hplgit</a></span></h1>
+-->
 
     <div class="description">
     </div>
@@ -51,13 +53,40 @@
       <h2>Resources for the book "A Primer on Scientific Programming with Python"</h2>
 
 <UL>
-<P><LI> <a href="erratalist3rd.pdf">Errata list</a> for the 3rd edition of the book
 <P><LI> All programs from the book:
-<a href="book-examples.tar.gz">tarfile for the 3rd edition</a> (pack out: <tt>tar xvzf book-examples.tar.gz</tt>),
+<a href="book-examples.tar.gz">tarfile for the 3rd edition</a> (pack out: <tt>tar xvzf book-examples.tar.gz</tt>), <em>or</em>
 <a href="book-examples.zip">zipfile for the 3rd edition</a> (pack out: <tt>unzip book-examples.zip</tt>),
-<P><LI> Get the latest version of SciTools from <a href="http://code.google.com/p/scitools/">googlecode.com/p/scitools</a> (install by just running <tt>sudo python setup.py install</tt>).
-<P><LI> <a href="http://www.ifi.uio.no/~inf1100/foiler/">Slides</a> from lectures based on the book.
 <P><LI> How to <a href="install.html">install the software needed</a> for working with the book.
+<P><LI> On Debian systems, including Ubuntu, SciTools can be installed by
+<pre>
+sudo apt-get install python-scitools
+</pre>
+However, it is often advantageous to install the latest version of SciTools from <a href="http://code.google.com/p/scitools/">googlecode.com/p/scitools</a>:
+<UL>
+<P><LI> Method 1: download tarfile of the latest release from
+<a href="http://code.google.com/p/scitools/downloads/list">http://code.google.com/p/scitools/downloads/list</a>.
+<pre>
+tar xzf scitools-0.9.0.tar.gz
+cd scitools-0.9.0
+sudo python setup.py install
+</pre>
+(the version number, here 0.9.0, might be different)
+<P><LI> Method 2: install the most recent version
+<pre>
+hg clone https://langtangen@code.google.com/p/scitools/
+cd scitools
+sudo python setup.py install
+</pre>
+The advantage of method 2 is that you can get SciTools updates (bugfixes,
+enhancements) whenever you want by going to the <tt>scitools</tt>
+folder and running
+<pre>
+hg pull
+hg update
+sudo python setup.py install
+</pre>
+<P><LI> <a href="erratalist3rd.pdf">Errata list</a> for the 3rd edition of the book
+<P><LI> <a href="http://www.ifi.uio.no/~inf1100/foiler/">Slides</a> from lectures based on the book.
 </UL>
 
       <h2>Contact</h2>
