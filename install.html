@@ -1,17 +1,48 @@
-<H4>Required software</H4>
+<html>
+<head>
+  <style type="text/css">
+    body {
+      margin-top: 1.0em;
+      <!-- background-color: #e1c931; -->
+      background-color: #000000;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #000000;
+    }
+    #container {
+      margin: 0 auto;
+      width: 700px;
+    }
+    h1 { font-size: 3.8em; color: #1e36ce; margin-bottom: 3px; }
+    h1 .small { font-size: 0.4em; }
+    h1 a { text-decoration: none }
+    h2 { font-size: 1.5em; color: #1e36ce; }
+    h3 { text-align: center; color: #1e36ce; }
+    a { color: #1e36ce; }
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .download { float: right; }
+    <!-- pre { background: #000; color: #fff; padding: 15px;} -->
+    <!-- pre { background: #fff; color: #000; padding: 15px;} -->
+    pre { background: #EDEDED; color: #000; padding: 15px;}
+    <!-- http://www.december.com/html/spec/color0.html -->
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .footer { text-align:center; padding-top:30px; font-style: italic; }
+  </style>
+</head>
+
+<H2>Required software</H2>
 <OL>
-<LI> Python (version 2.7 recommended)
-<LI> NumPy
-<LI> Matplotlib
-<LI> SciTools
+<LI> <a href="http://python.org">Python</a> (version 2.7)
+<LI> <a href="http://numpy.scipy.org/">NumPy</a>
+<LI> <a href="http://matplotlib.sourceforge.net/">Matplotlib</a>
+<LI> <a href="http://code.google.com/p/scitools">SciTools</a>
 </OL>
-<H4>Recommended software</H4>
+<H2>Recommended software</H2>
 <OL>
-<LI> IPython
-<LI> ScientificPython
-<LI> Gnuplot plotting program
-<LI> <tt>Gnuplot.py</tt> Python module for Gnuplot
-<LI> SciPy
+<LI> <a href="http://ipython.org">IPython</a>
+<LI> <a href="http://dirac.cnrs-orleans.fr/plone/software/scientificpython/">ScientificPython</a>
+<LI> <a href="http://www.gnuplot.info/">Gnuplot plotting program</a>
+<LI> <a href="http://gnuplot-py.sourceforge.net/"><tt>Gnuplot.py</tt></a> Python module for Gnuplot
+<LI> <a href="http://scipy.org">SciPy</a>
 </OL>
 
 For plotting, you can use Matplotlib only, or the subpackage Easyviz of
@@ -19,17 +50,19 @@ SciTools in combination with
 Matplotlib. SciTools can also utilize Gnuplot (or other packages) for
 plotting so that is why Gnuplot is listed.
 <p>
-You can find these packages by googling. Most of them are easy
+Most of the mentioned packages are easy
 to install (just go to the top folder of the package and run
 <tt>python setup.py install</tt>), but Gnuplot may require
 compilation, depending on the platform (on Windows there is a binary
 installer, on Mac you can use Fink for MacPorts to install Gnuplot).
 <p>
-Our experience with getting about 800 students to install this software on
-all kinds of laptop computers, have led us to recommend one single
-procedure (unless one has sufficient competence to follow the install
-instructions of each package on a particular platform). This procedure
-consists of using Ubuntu Linux to do all programming work with Python.
+
+Our experience with getting more than a thousand students to install
+this software on all kinds of laptop computers, have led us to
+recommend one single procedure (unless one has sufficient competence
+to follow the install instructions of each package on a particular
+platform). This procedure consists of using Ubuntu Linux to do all
+programming work with Python.
 <p>
 On Ubuntu, one simply performs the install
 by
@@ -48,7 +81,7 @@ comes to installing mathematical software.
 <!-- Strongly recommending Ubuntu on the students' laptops has been a
 success (freedom is not always a good thing...). -->
 
-<H4>Windows</H4>
+<H2>Windows</H2>
 Strategy 1: Use a ready-made distribution of Python for scientific
 purposes. We recommend <a href="http://code.google.com/p/pythonxy/">python(x,y)</a> (containing <a href="http://code.google.com/p/pythonxy/wiki/StandardPlugins">a lot of Python packages)</a>,
 or the <a href="http://www.enthought.com/products/epd.php">Enthought Python Distribution</a> (with over <a href="http://www.enthought.com/products/epd.php">100 libraries</a>).
@@ -72,7 +105,7 @@ install requires familiarity with installing software on Windows
 (PATH settings, etc.).
 
 
-<H4>Mac</H4>
+<H2>Mac</H2>
 You can install a ready-made distribution:
 <a href="http://code.google.com/p/pythonxy/">python(x,y)</a> (containing <a href="http://code.google.com/p/pythonxy/wiki/StandardPlugins">a lot of Python packages)</a>,
 or the <a href="http://www.enthought.com/products/epd.php">Enthought Python Distribution</a> (with over <a href="http://www.enthought.com/products/epd.php">100 libraries</a>).
@@ -103,6 +136,7 @@ Unix systems, it is quite easy to install the various components from the list
 above. This requires quite some compilation so you need Xcode.
 We also recommend to have the X11 windows system installed.
 
-<H4>RedHat</H4>
+<H2>RedHat</H2>
 Python is already installed, and NumPy, Matplotlib and
 SciTools are in Fedora (probably other packages too).
+</html>
