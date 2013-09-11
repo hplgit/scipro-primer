@@ -83,23 +83,16 @@ subfolder in the <tt>src</tt> tree.
 <pre>
 sudo apt-get install python-scitools
 </pre>
-However, it is often advantageous to install the latest version of SciTools from <a href="http://code.google.com/p/scitools/">googlecode.com/p/scitools</a>:
-<UL>
-<P><LI> Method 1: download tarfile of the latest release from
-<a href="http://code.google.com/p/scitools/downloads/list">http://code.google.com/p/scitools/downloads/list</a>.
-<pre>
-tar xzf scitools-0.9.0.tar.gz
-cd scitools-0.9.0
-sudo python setup.py install
-</pre>
-(the version number, here 0.9.0, might be different)
-<P><LI> Method 2: install the most recent version
+However, it is often advantageous to install the latest version of SciTools from <a href="http://code.google.com/p/scitools/">googlecode.com/p/scitools</a>.
+Make sure you have the Mercurial (<tt>hg</tt>) version control system
+on your computer (if not, do <tt>sudo apt-get install mercurial</tt>).
+Get the SciTools source code and install it by
 <pre>
 hg clone https://langtangen@code.google.com/p/scitools/
 cd scitools
 sudo python setup.py install
 </pre>
-The advantage of method 2 is that you can get SciTools updates (bugfixes,
+The advantage of this method is that you can get SciTools updates (bugfixes,
 enhancements) whenever you want by going to the <tt>scitools</tt>
 folder and running
 <pre>
