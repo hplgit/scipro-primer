@@ -50,7 +50,7 @@ def dice6_cy3(int N, int ndice, int nsix):
         six = 0               # how many dice with six eyes?
         for j in range(ndice):
             # Roll die no. j
-            r = 1 + int(rand()/(RAND_MAX*6.0))
+            r = 1 + int(6.0*rand()/RAND_MAX*6.0)
             if r == 6:
                six += 1
         if six >= nsix:       # successful event?
