@@ -1,0 +1,9 @@
+def F(C):
+    F = 9./5*C + 32
+    return F
+
+C_degrees = range(-30, 50, 10)
+for C in C_degrees:
+    print '%.1f %.1f' % (C, F(C))
+
+
