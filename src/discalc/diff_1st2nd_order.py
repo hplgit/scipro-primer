@@ -24,7 +24,7 @@ def example(n):
     x, dS = derivative_on_mesh(second_order, sin, a, b, n)
     # Accurate plot of the exact derivative at internal points
     h = (b-a)/float(n)
-    xfine = linspace(a+h, b-h, 1001) 
+    xfine = linspace(a+h, b-h, 1001)
     exact = cos(xfine)
     plot(x, dF, 'r-', x, dS, 'b-', xfine, exact, 'y-',
          legend=('First-order derivative',
@@ -35,10 +35,5 @@ def example(n):
 
 # Main program
 from scitools.std import *
-try:
-    n = int(sys.argv[1])
-except:
-    print "usage: %s n" %sys.argv[0]
-    sys.exit(1)
-
+n = int(sys.argv[1])
 example(n)

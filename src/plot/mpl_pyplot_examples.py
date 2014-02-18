@@ -11,7 +11,7 @@ y = np.zeros(len(t))         # allocate y with float elements
 y = f(t)                     # compute all f values at once
 plt.plot(t, y)
 
-plt.savefig('tmp1.eps') # produce PostScript
+plt.savefig('tmp1.pdf') # produce PDF
 plt.savefig('tmp1.png') # produce PNG
 
 plt.show()
@@ -25,7 +25,7 @@ plt.ylabel('y')
 plt.axis([0, 3, -0.05, 0.6])   # [tmin, tmax, ymin, ymax]
 plt.title('My First Matplotlib Demo')
 plt.show()
-plt.savefig('tmp2.eps') # produce PostScript
+plt.savefig('tmp2.pdf') # produce PDF
 raw_input('Press the Return key to quit: ')
 
 
@@ -47,7 +47,7 @@ plt.xlabel('t')
 plt.ylabel('y')
 plt.legend(['t^2*exp(-t^2)', 't^4*exp(-t^2)'])
 plt.title('Plotting two curves in the same plot')
-plt.savefig('tmp3.eps')
+plt.savefig('tmp3.pdf')
 plt.show()
 
 # multiple plots
@@ -73,8 +73,8 @@ plt.xlabel('t')
 plt.ylabel('y')
 plt.axis([0, 4, -0.2, 0.6])
 plt.legend(['t^2*exp(-t^2)', 't^4*exp(-t^2)'])
-plt.title('Bottom figure')
-plt.savefig('tmp4.eps')
+#plt.title('Bottom figure')
+plt.savefig('tmp4.pdf')
 plt.show()
 
 raw_input('Press the Return key to quit: ')

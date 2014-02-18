@@ -1,8 +1,8 @@
 """Function implementing the Forward Euler method for scalar ODEs."""
+import numpy as np
 
 def ForwardEuler(f, U0, T, n):
     """Solve u'=f(u,t), u(0)=U0, with n steps until t=T."""
-    import numpy as np
     t = np.zeros(n+1)
     u = np.zeros(n+1)  # u[k] is the solution at time t[k]
     u[0] = U0
@@ -17,35 +17,38 @@ def ForwardEuler(f, U0, T, n):
 def f(u, t):
     return u
 
-u, t = ForwardEuler(f, U0=1, T=3, n=30)
+u, t = ForwardEuler(f, U0=1, T=4, n=20)
 
 # Compare numerical solution and exact solution in a plot
 from scitools.std import plot, exp
 u_exact = exp(t)
 plot(t, u, 'r-', t, u_exact, 'b-',
      xlabel='t', ylabel='u', legend=('numerical', 'exact'),
-     title="Solution of the ODE u'=u, u(0)=1")
+     title="Solution of the ODE u'=u, u(0)=1", savefig='tmp.pdf')
 
-# Verify by hand calculations
-u, t = ForwardEuler(f, U0=1, T=0.2, n=2)
-print u, [1, 1,1, 1.21]
+# More exact verification
 
-# Verify by exact numerical solution
-def f1(u, t):
-    return 0.2 + (u - u_solution_f1(t))**4
+def test_ForwardEuler_against_hand_calculations():
+    """Verify ForwardEuler against hand calc. for 3 time steps."""
+    u, t = ForwardEuler(f, U0=1, T=0.2, n=2)
+    exact = np.array([1, 1.1, 1.21])  # hand calculations
+    error = np.abs(exact - u).max()
+    success = error < 1E-14
+    assert success, '|exact - u| = %g != 0' % error
 
-def u_solution_f1(t):
-    return 0.2*t + 3
+def test_ForwardEuler_against_linear_solution():
+    """Use knowledge of an exact numerical solution for testing."""
+    def f1(u, t):
+        return 0.2 + (u - u_exact(t))**4
 
-u, t = ForwardEuler(f1, U0=3, T=3, n=5)
-print 'Numerical:', u
-print 'Exact:    ', u_solution_f1(t)
+    def u_exact(t):
+        return 0.2*t + 3
 
-# Accuracy check for decreasing time step (u'=u, u(0)=1)
-T = 3; U0 = 1
-for dt in 0.5, 0.05, 0.005:
-    n = int(round(T/dt))
-    u, t = ForwardEuler(f, U0, T, n)
-    print 'dt=%.5f, u(%g)=%.6f, error=%g' % \
-          (dt, t[-1], u[-1], exp(t[-1]-u[-1]))
-    
+    u, t = ForwardEuler(f1, U0=u_exact(0), T=3, n=5)
+    u_e = u_exact(t)
+    error = np.abs(u_e - u).max()
+    success = error < 1E-14
+    assert success, '|exact - u| = %g != 0' % error
+
+test_ForwardEuler_against_hand_calculations()
+test_ForwardEuler_against_linear_solution()

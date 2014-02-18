@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 from Tkinter import *
 root = Tk()
 C_entry = Entry(root, width=4)

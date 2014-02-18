@@ -15,7 +15,7 @@ import numpy as np
 def MCint_area_vec(f, a, b, n, m):
     x = np.random.uniform(a, b, n)
     y = np.random.uniform(0, m, n)
-    below = y[y < f(x)].size
+    below = y[y < f(x)].size  # better: np.sum(y<f(x))!
     area = below/float(n)*m*(b-a)
     return area
 
@@ -36,7 +36,7 @@ def MCint3_area(f, a, b, n, m, N=1000):
             I_values.append(I)
             k_values.append(2*k)
     return k_values, I_values
-        
+
 
 def f1(x):
     return 2 + 3*x
@@ -56,5 +56,5 @@ from scitools.std import plot
 error = 6.5 - np.array(I)
 plot(k, error, title='Monte Carlo integration',
      xlabel='number of samples',
-     ylabel='error', hardcopy='tmp.eps')
+     ylabel='error', hardcopy='tmp.pdf')
 

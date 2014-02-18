@@ -19,7 +19,7 @@ y = f(t)                  # compute all f values at once
 y = t**2*exp(-t**2)
 plot(t, y)
 
-savefig('tmp1.eps') # produce PostScript
+savefig('tmp1.pdf') # produce PDF
 savefig('tmp1.png') # produce PNG
 raw_input('Press the Return key to quit: ')
 show()
@@ -30,7 +30,7 @@ xlabel('t')
 ylabel('y')
 axis([0, 3, -0.05, 0.6])   # [tmin, tmax, ymin, ymax]
 title('My First Matplotlib Demo')
-savefig('tmp2.eps') # produce PostScript
+savefig('tmp2.pdf') # produce PDF
 show()
 raw_input('Press the Return key to quit: ')
 
@@ -55,7 +55,7 @@ xlabel('t')
 ylabel('y')
 legend(['t^2*exp(-t^2)', 't^4*exp(-t^2)'])
 title('Plotting two curves in the same plot')
-savefig('tmp3.eps')
+savefig('tmp3.pdf')
 show()
 
 # multiple plots
@@ -82,7 +82,7 @@ xlabel('t')
 ylabel('y')
 axis([0, 4, -0.2, 0.6])
 title('Bottom figure')
-savefig('tmp4.eps')
+savefig('tmp4.pdf')
 show()
 
 raw_input('Press the Return key to quit: ')

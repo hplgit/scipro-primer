@@ -6,7 +6,7 @@ def animate(tmax, dt, x, function, ymin, ymax, t0=0,
     counter = 0
     while t <= tmax:
         y = function(x, t)
-        plot(x, y, 
+        plot(x, y, '-',
              axis=[x[0], x[-1], ymin, ymax],
              title='time=%2d h' % (t/3600.0),
              xlabel=xlabel, ylabel=ylabel,
@@ -22,7 +22,7 @@ def T(z, t):
 import glob, os
 # Remove old plot files
 for filename in glob.glob('tmp_*.png'): os.remove(filename)
-    
+
 k = 1E-6     # thermal diffusivity (in m**2/s)
 P = 24*60*60.# oscillation period of 24 h (in seconds)
 omega = 2*pi/P

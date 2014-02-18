@@ -80,6 +80,7 @@ x = np.linspace(-4, 4, 4)
 try:
     y = H(x)
 except Exception, e:
+    print 'Cannot call H(x) with array x. This gives an exception:'
     print e
 
 # We must either use an explicit loop over x[i] points
@@ -95,14 +96,14 @@ for n in points:
     plt.plot([0,0], [0,1], 'r--')
     plt.title('Heaviside function with %d points' % n)
     plt.axis([x[0], x[-1], -0.1, 1.1])
-    plt.savefig('tmp_H%d.eps' % n)
+    plt.savefig('tmp_H%d.pdf' % n)
     plt.show()
 
 x = [-4, 0, 0, 4]
 y = [0, 0, 1, 1]
 plt.plot(x, y)
 plt.axis([x[0], x[-1], -0.1, 1.1])
-plt.savefig('tmp_Hsmart.eps')
+plt.savefig('tmp_Hsmart.pdf')
 #import pprint
 #pprint.pprint(lines[0].get())
 

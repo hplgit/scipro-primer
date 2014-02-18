@@ -5,7 +5,7 @@ def download(urlbase, filename):
         url = urlbase + filename
         try:
             urllib.urlretrieve(url, filename=filename)
-        except IOError, e:
+        except IOError as e:
             raise IOError('No Internet connection')
         # Check if downloaded file is an HTML file, which
         # is what github.com returns if the URL is not existing

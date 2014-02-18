@@ -22,7 +22,7 @@ def random_walk_2D(np, ns, plot_step):
                  axis=[xymin, xymax, xymin, xymax],
                  title='%d particles after %d steps' % 
                        (np, step+1),
-                 savefig='tmp_%03d.eps' % (step+1))
+                 savefig='tmp_%03d.pdf' % (step+1))
     return xpositions, ypositions
 
 # Main program

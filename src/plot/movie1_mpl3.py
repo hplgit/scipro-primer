@@ -10,7 +10,7 @@ import matplotlib.pyplot as mpl
 import time, glob, os
 
 # Clean up old frames
-for name in glob.glob('tmp_*.eps'):
+for name in glob.glob('tmp_*.pdf'):
     os.remove(name)
 
 def f(x, m, s):
@@ -24,14 +24,14 @@ s_values = np.linspace(s_max, s_min, 30)
 # f is max for x=m; smaller s gives larger max value
 max_f = f(m, m, s_min)
 
-# Make a first plot
 mpl.ion()
 fig = mpl.figure()
 
 # Show the movie, and make hardcopies of frames simulatenously
 counter = 0
 for s in s_values:
-    mpl.delaxes()  # delete plot, replot everything for this s
+    # delete plot, replot everything for this s
+    fig.clf() # or mpl.delaxes()
     ax = fig.gca()
     ax.axis([x[0], x[-1], -0.1, max_f])
     y = f(x, m, s)

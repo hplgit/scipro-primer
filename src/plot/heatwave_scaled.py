@@ -10,7 +10,7 @@ def animate(tmax, dt, x, function, ymin, ymax, t0=0,
     counter = 0
     while t <= tmax:
         y = function(x, t)
-        plot(x, y, 
+        plot(x, y, '-',
              axis=[x[0], x[-1], ymin, ymax],
              title='time=%g' % t,
              xlabel=xlabel, ylabel=ylabel,
@@ -29,5 +29,5 @@ movie('tmp_*.png', encoder='convert', fps=2,
       output_file='tmp_heatwave.gif')
 
 
-            
-    
+
+

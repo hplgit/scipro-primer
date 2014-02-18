@@ -15,5 +15,6 @@ for line in infile:
         data[-1] = data[-1].split('<br>')[0]
         data = [float(x) for x in data[1:]]
 
+infile.close()
 print data
 

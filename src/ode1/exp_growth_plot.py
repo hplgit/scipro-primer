@@ -13,11 +13,8 @@ def compute_u(u0, T, n):
     return u, t
 
 from scitools.std import *
-try:
-    n  = int(sys.argv[1])
-except:
-    print "usage: %s n" % sys.argv[0]; sys.exit(1)
 
+n  = int(sys.argv[1])
 # Special test case: u'(t)=u, u(0)=1, t in [0,1]
 T = 1; u0 = 1
 u, t = compute_u(u0, T, n)

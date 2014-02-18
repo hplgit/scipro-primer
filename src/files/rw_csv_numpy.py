@@ -23,7 +23,7 @@ table = a.tolist()   # transform array to nested list
 table.append(data['column sum'])
 table.insert(0, data['column headings'])
 # Extend table with row headings (a new column)
-[table[r+1].insert(0, data['row headings'][r]) \
+[table[r+1].insert(0, data['row headings'][r])
  for r in range(len(table)-1)]
 for row in table:
     writer.writerow(row)

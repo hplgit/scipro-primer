@@ -9,7 +9,7 @@ class ForwardEuler_v1:
       du/dt = f(u, t)
 
     by the ForwardEuler solver.
-    
+
     Class attributes:
     t: array of time values
     u: array of solution values (at time points t)
@@ -21,12 +21,12 @@ class ForwardEuler_v1:
     def __init__(self, f, U0, T, n):
         if not callable(f):
             raise TypeError('f is %s, not a function' % type(f))
-        
+
         self.f, self.U0, self.T, self.n = f, dt, U0, T, n
         self.dt = T/float(n)
-        self.u = np.zeros(self.n+1)  
+        self.u = np.zeros(self.n+1)
         self.t = np.zeros(self.n+1)
-        
+
     def solve(self):
         """Compute solution for 0 <= t <= T."""
         self.u[0] = float(self.U0)
@@ -56,7 +56,7 @@ class ForwardEuler:
       du/dt = f(u, t)
 
     by the ForwardEuler solver.
-    
+
     Class attributes:
     t: array of time values
     u: array of solution values (at time points t)
@@ -78,7 +78,7 @@ class ForwardEuler:
         self.u = np.zeros(len(time_points))
         # Assume self.t[0] corresponds to self.U0
         self.u[0] = self.U0
-        
+
         for k in range(len(self.t)-1):
             self.k = k
             self.u[k+1] = self.advance()
@@ -95,92 +95,42 @@ class ForwardEuler:
         u_new = u[k] + dt*f(u[k], t[k])
         return u_new
 
+def test_ForwardEuler_against_hand_calculations():
+    """Verify ForwardEuler against hand calc. for 2 time steps."""
+    solver = ForwardEuler(lambda u, t: u)
+    solver.set_initial_condition(1)
+    u, t = solver.solve([0, 0.1, 0.2])
+    exact = np.array([1, 1,1, 1.21])  # hand calculations
+    error = np.abs(exact - u).max()
+    assert error < 1E-14, '|exact - u| = %g != 0' % error
 
-def _f1(u, t):
-    return 0.2 + (u - _u_solution_f1(t))**4
+def test_ForwardEuler_against_linear_solution():
+    """Use knowledge of an exact numerical solution for testing."""
+    u_exact = lambda t: 0.2*t + 3
+    solver = ForwardEuler(lambda u, t: 0.2 + (u - u_exact(t))**4)
 
-def _u_solution_f1(t):
-    return 0.2*t + 3
-
-def _verify_f1_ForwardEuler_v1():
-    U0 = 3;  dt = 0.4;  T = 3
-    solver = ForwardEuler_v1(_f1, dt, U0, T)
-    u, t = solver.solve()
-    u_exact = _u_solution_f1(t)
-    print 'Numerical:', u
-    print 'Exact:    ', u_exact
-
-def _verify_f1_ForwardEuler():
-    U0 = 3
-    solver = ForwardEuler(_f1)
-    solver.set_initial_condition(U0)
-    t = [0, 0.4, 1, 1.2]
-    u1, t1 = solver.solve(t)
-    # Continue with a new time interval
+    # Solve for first time interval [0, 1.2]
+    solver.set_initial_condition(u_exact(0))
+    u1, t1 = solver.solve([0, 0.4, 1, 1.2])
+    # Continue with a new time interval [1.2, 1.5]
     solver.set_initial_condition(u1[-1])
-    t = [1.2, 1.4, 1.5]
-    u2, t2 = solver.solve(t)
+    u2, t2 = solver.solve([1.2, 1.4, 1.5])
+    # Append u2 to u1 and t2 to t1
     u = np.concatenate((u1, u2))
     t = np.concatenate((t1, t2))
-    u_exact = _u_solution_f1(t)
-    print 'time values:', t
-    print 'Numerical:  ', u
-    print 'Exact:      ', u_exact
+    u_e = u_exact(t)
+    error = np.abs(u_e - u).max()
+    assert error < 1E-14, '|exact - u| = %g != 0' % error
 
-def u_exp():
-    def f(u, t):
-        return u
-
-    solver = ForwardEuler_v1(f, dt=0.1, U0=1, T=3)
+def test_ForwardEuler_v1_against_hand_calculations():
+    solver = ForwardEuler_v1(lambda u, t: u, U0=1, T=0.2, n=2)
     u, t = solver.solve()
-    
-class Logistic:
-    """Problem class for a logistic ODE."""
-    def __init__(self, alpha, R, U0):
-        self.alpha, self.R, self.U0 = alpha, float(R), U0
+    error = np.abs(np.array([1, 1.1, 1.21]) - u).max()
+    assert error < 1E-14, '|exact - u| = %g != 0' % error
 
-    def __call__(self, u, t):
-        """Return f(u,t) for the logistic ODE."""
-        return self.alpha*u*(1 - u/self.R)
-
-    def __str__(self):
-        """Return ODE and initial condition."""
-        return "u'(t) = %g*u*(1 - u/%g)\nu(0)=%g" % \
-               (self.alpha, self.R, self.U0)
-    
-def logistic():
-    problem = Logistic(alpha=0.2, R=1, U0=0.1)
-    T = 40
-    solver = ForwardEuler(problem)
-    solver.set_initial_condition(problem.U0)
-    t = np.linspace(0, T, 401)  # 400 intervals in [0,T]
-    u, t = solver.solve(t)
-    # Note that import * is not legal inside functions so we
-    # have to import each specific function.
-    from scitools.std import plot, hardcopy, xlabel, ylabel, title
-    plot(t, u)
-    xlabel('t'); ylabel('u')
-    title('Logistic growth: alpha=%s, R=%g, dt=%g' \
-          % (problem.alpha, problem.R, t[1]-t[0]))
-    # Compare with exponential growth
-    #from scitools.std import hold, linspace, exp
-    #te = linspace(0, dt*N, N+1)
-    #ue = 0.1*exp(0.2*te)
-    #hold('on')
-    #plot(te, ue)
-    hardcopy('tmp.eps')
-    
 if __name__ == '__main__':
     import sys
-    try:
-        command = sys.argv[1]
-    except IndexError:
-        print 'provide a command (verify, logistic, ...)'
-        sys.exit(1)
-        
-    if command == 'verify_v1':
-        _verify_f1_ForwardEuler_v1()
-    elif command == 'verify':
-        _verify_f1_ForwardEuler()
-    elif command == 'logistic':
-        logistic()
+    if len(sys.argv) >= 2 and sys.argv[1] == 'test':
+        test_ForwardEuler_v1_against_hand_calculations()
+        test_ForwardEuler_against_hand_calculations()
+        test_ForwardEuler_against_linear_solution()

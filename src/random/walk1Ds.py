@@ -71,4 +71,4 @@ for step in range(ns):
          title='random walk of %d particles after %d steps' % \
                (np, step+1))
     time.sleep(0.2)             # pause before next move
-savefig('tmp.eps')
+savefig('tmp.pdf')

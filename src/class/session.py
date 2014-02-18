@@ -19,14 +19,6 @@ def diff(f, x, h=1.0E-10):
 y1 = Y(1)
 print diff(y1.value, 0, 1)
 
-from classes import VelocityProfile
-
-v1 = VelocityProfile(R=1, beta=0.06, mu0=0.02, n=0.1)
-from scitools.std import *
-r = linspace(0, 1, 50)
-v = v1.value(r)
-plot(r, v, label=('r', 'v'), title='Velocity profile')
-
 
 from classes import Account
 a1 = Account('John Olsson', '19371554951', 20000)
@@ -66,7 +58,7 @@ for person in phone_book:
 phone_book = {'Langtangen': p1, 'Tveito': p2}     # dict is better
 for person in sorted(phone_book):
     phone_book[person].dump()
-    
+
 from classes import Circle
 c = Circle(2, -1, 5)
 print 'A circle with radius %g at (%g, %g) has area %g' % \

@@ -12,13 +12,10 @@ def integrate(T, n, u0):
     return I
 
 from scitools.std import *
-try:
-    f_formula = sys.argv[1]
-    T  = eval(sys.argv[2])
-    u0 = eval(sys.argv[3])
-    n  = int(sys.argv[4])
-except:
-    print "usage: %s 'f(t)' t u0 n" % sys.argv[0]; sys.exit(1)
-    
+
+f_formula = sys.argv[1]
+T  = eval(sys.argv[2])
+u0 = eval(sys.argv[3])
+n  = int(sys.argv[4])
 f = StringFunction(f_formula, independent_variables='t')
 print "Numerical solution of u'(t)=t**3: ", integrate(T, n, u0)

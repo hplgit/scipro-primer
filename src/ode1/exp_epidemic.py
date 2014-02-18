@@ -13,16 +13,13 @@ def epidemic(T, n, S0, I0, r, a):
     return S, I, t
 
 from scitools.std import *
-try:
-    n = int(sys.argv[1])
-    T = eval(sys.argv[2])
-    S0 = eval(sys.argv[3])
-    I0 = eval(sys.argv[4])
-    r = eval(sys.argv[5])
-    a = eval(sys.argv[6])
-except:
-    print "usage:", sys.argv[0], "n T S0 I0 r a"
-    sys.exit(1)
+
+n = int(sys.argv[1])
+T = eval(sys.argv[2])
+S0 = eval(sys.argv[3])
+I0 = eval(sys.argv[4])
+r = eval(sys.argv[5])
+a = eval(sys.argv[6])
 
 S, I, t = epidemic(T, n, S0, I0, r, a)
 plot(t, S, xlabel='t', ylabel='Susceptibles')

@@ -34,18 +34,18 @@ print 'Handvectorized H:', h
 print 'Loop-based H:', h_control2
 print 'numpy.vectorized H:', h_control1
 
-plot(x, h, axis=[x[0], x[-1], -0.1, 1.1], hardcopy='tmp1.eps')
+plot(x, h, axis=[x[0], x[-1], -0.1, 1.1], hardcopy='tmp1.pdf')
 
 x2 = linspace(-10, 10, 50)
 print x2
 h2 = Hv(x2)
 plot(x, h, 'r', x2, h2, 'b', label=('step: 5', 'step: 0.5'),
-     axis=[x[0], x[-1], -0.1, 1.1], hardcopy='tmp2.eps')
+     axis=[x[0], x[-1], -0.1, 1.1], hardcopy='tmp2.pdf')
 
 # Specialized plot
 plot([-10, 0, 0, 10], [0, 0, 1, 1],
      axis=[x[0], x[-1], -0.1, 1.1],
-     hardcopy='tmp3.eps')
+     hardcopy='tmp3.pdf')
 
 # Hat function
 def N(x):
@@ -69,14 +69,13 @@ def Nv0(x):
     r = where(x >= 2, 0.0, r)
     return r
 
-# Remedy: use operator.add_
-import operator
+# Remedy: use logical_and
 
 def Nv(x):
     r = where(x < 0, 0.0, x)
-    condition = operator.and_(0 <= x, x < 1)
+    condition = logical_and(0 <= x, x < 1)
     r = where(condition, x, r)
-    condition = operator.and_(1 <= x, x < 2)
+    condition = logical_and(1 <= x, x < 2)
     r = where(condition, 2-x, r)
     r = where(x >= 2, 0.0, r)
     return r
@@ -84,9 +83,9 @@ def Nv(x):
 def Nv2(x):
     r = x.copy()  # avoid modifying x in-place
     r[x < 0.0] = 0.0
-    condition = operator.and_(0 <= x, x < 1)
+    condition = logical_and(0 <= x, x < 1)
     r[condition] = x[condition]
-    condition = operator.and_(1 <= x, x < 2)
+    condition = logical_and(1 <= x, x < 2)
     r[condition] = 2-x[condition]
     r[x >= 2] = 0.0
     return r
@@ -100,13 +99,13 @@ print n_vec
 print nv
 print nv2
 plot(x, nv, 'r', axis=[x[0], x[-1], -0.1, 1.1],
-     hardcopy='tmp4.eps')
+     hardcopy='tmp4.pdf')
 x2 = linspace(-2, 4, 7)
 # or x2 = [-2, 0, 1, 2, 4]
 
 plot(x, nv, 'b', x2, Nv(x2), 'r',
      axis=[x[0], x[-1], -0.1, 1.1],
-     hardcopy='tmp5.eps')
+     hardcopy='tmp5.pdf')
 
 #x = [-2, 0, 1, 2, 4]
 #plot(x, N_vec(x))
@@ -125,4 +124,4 @@ for x in x1, x2, x3:
 
 
 
-    
+

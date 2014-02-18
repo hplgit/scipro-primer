@@ -51,7 +51,7 @@ def _test():
 
     df = Central2(lambda x: exp(x), h=1.0E-9)
     bigx = 20
-    print exp(bigx), exp(bigx) - df(bigx) 
+    print exp(bigx), exp(bigx) - df(bigx)
 
 if __name__ == '__main__':
     from math import *

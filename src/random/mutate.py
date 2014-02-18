@@ -118,7 +118,7 @@ mc = create_markov_chain()
 print mc
 print mc['A']['T'] # probability of transition from A to T
 
-def test_transition_probabilities(markov_chain):
+def check_transition_probabilities(markov_chain):
     for from_base in 'ATGC':
         s = sum(markov_chain[from_base][to_base]
                 for to_base in 'ATGC')
@@ -126,7 +126,7 @@ def test_transition_probabilities(markov_chain):
             raise ValueError('Wrong sum: %s for "%s"' % \
                              (s, from_base))
 
-test_transition_probabilities(mc)
+check_transition_probabilities(mc)
 
 def draw(discrete_probdist):
     """
@@ -160,7 +160,7 @@ def draw_vec(discrete_probdist, N):
     np.random.shuffle(values)
     return values
 
-def test_draw_approx(discrete_probdist, N=1000000):
+def check_draw_approx(discrete_probdist, N=1000000):
     """
     See if draw results in frequencies approx equal to
     the probability distribution.
@@ -175,7 +175,7 @@ def test_draw_approx(discrete_probdist, N=1000000):
                      (v, frequencies[v], discrete_probdist[v])
                      for v in frequencies])
 
-def test_draw_vec_approx(discrete_probdist, N=1000000):
+def check_draw_vec_approx(discrete_probdist, N=1000000):
     """
     See if draw_vec results in frequencies approx equal to
     the probability distribution.
@@ -191,8 +191,8 @@ def test_draw_vec_approx(discrete_probdist, N=1000000):
                      (v, frequencies[v], discrete_probdist[v])
                      for v in frequencies])
 
-test_draw_approx(mc['A'])
-test_draw_vec_approx(mc['A'])
+check_draw_approx(mc['A'])
+check_draw_vec_approx(mc['A'])
 for i in range(4):
     print 'A to', draw(mc['A'])
 

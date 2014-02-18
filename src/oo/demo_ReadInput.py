@@ -9,9 +9,8 @@ print inp
 
 from scitools.StringFunction import StringFunction
 f = StringFunction(formula)
-outfile = open(filename, 'w')
 import numpy as np
-for x in np.linspace(a, b, n):
-    outfile.write('%12g  %12g\n' % (x, f(x)))
-outfile.close()
+with open(filename, 'w') as outfile
+    for x in np.linspace(a, b, n):
+        outfile.write('%12g  %12g\n' % (x, f(x)))
 

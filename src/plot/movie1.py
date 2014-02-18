@@ -2,7 +2,7 @@ from scitools.std import sqrt, pi, exp, linspace, plot, movie
 import time, glob, os, sys
 
 # Clean up old frames
-for name in glob.glob('tmp_*.eps'):
+for name in glob.glob('tmp_*.pdf'):
     os.remove(name)
 
 def f(x, m, s):
@@ -20,7 +20,7 @@ max_f = f(m, m, s_min)
 counter = 0
 for s in s_values:
     y = f(x, m, s)
-    plot(x, y, axis=[x[0], x[-1], -0.1, max_f],
+    plot(x, y, '-', axis=[x[0], x[-1], -0.1, max_f],
          xlabel='x', ylabel='f', legend='s=%4.2f' % s,
          savefig='tmp_%04d.png' % counter)
     counter += 1
@@ -52,6 +52,10 @@ movie('tmp_*.png', encoder='html', fps=3,
 # MPEG
 movie('tmp_*.png', encoder='ppmtompeg', fps=24,
       output_file='tmpmovie1.mpeg') # requires netpbm package
+
+# AVI
+movie('tmp_*.png', encoder='mencoder', fps=4,
+      output_file='tmpmovie1b.avi') # requires mencoder package
 
 # MPEG
 movie('tmp_*.png', encoder='ffmpeg', fps=4,

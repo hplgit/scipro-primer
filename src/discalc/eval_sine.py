@@ -1,14 +1,8 @@
-#!/usr/bin/env python
-
 from numpy import *
 import sys
 
-try:
-    xp = eval(sys.argv[1])
-    n = int(sys.argv[2])
-except:
-    print "usage: %s x-value n" %sys.argv[0]
-    sys.exit(1)
+xp = eval(sys.argv[1])
+n = int(sys.argv[2])
 
 def S_k(k):
     return s[k] + \

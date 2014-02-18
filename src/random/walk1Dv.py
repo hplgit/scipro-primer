@@ -36,5 +36,5 @@ pos, freq = compute_histogram(positions, nbins,
 plot(positions, numpy.zeros(np), 'ko3',
      pos, freq, 'r', 
      axis=[min(positions), max(positions), -0.01, 1.1*max(freq)],
-     hardcopy='tmp.eps')
+     hardcopy='tmp.pdf')
 

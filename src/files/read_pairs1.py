@@ -1,5 +1,8 @@
-lines = open('read_pairs1.dat', 'r').readlines()
+# Load the file into list of lines
+with open('read_pairs1.dat', 'r') as infile:
+    lines = infile.readlines()
 
+# Analyze the contents of each line
 pairs = []   # list of (n1, n2) pairs of numbers
 for line in lines:
     words = line.split()

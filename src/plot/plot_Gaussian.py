@@ -11,5 +11,5 @@ x = linspace(m -3*s_max, m + 3*s_max, 1000)
 y1 = f(x, 0, 0.2)
 y2 = f(x, 0, 1)
 y3 = f(x, 0, 2)
-plot(x, y1, x, y2, x, y3, legend=('s=0.2', 's=1', 's=2'),
-     savefig='tmp.eps')
+plot(x, y1, '-', x, y2, '-', x, y3, '-',
+     legend=('s=0.2', 's=1', 's=2'), savefig='tmp.png')

@@ -14,15 +14,12 @@ def pendulum(T, n, theta0, v0, alpha):
     return theta, v, t
 
 from scitools.std import *
-try:
-    n = int(sys.argv[1])
-    T = eval(sys.argv[2])
-    v0 = eval(sys.argv[3])
-    theta0 = eval(sys.argv[4])
-    alpha = eval(sys.argv[5])
-except:
-    print "usage:", sys.argv[0], "n T v0 theta0 alpha"
-    sys.exit(1)
+
+n = int(sys.argv[1])
+T = eval(sys.argv[2])
+v0 = eval(sys.argv[3])
+theta0 = eval(sys.argv[4])
+alpha = eval(sys.argv[5])
 
 theta, v, t = pendulum(T, n, theta0, v0)
 plot(t, v, xlabel='t', ylabel='velocity')

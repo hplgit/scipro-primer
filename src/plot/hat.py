@@ -21,12 +21,10 @@ def N_loop(x):
 N_vec = np.vectorize(N)
 N_vec.func_name = 'N_vec'  # must be set manually
 
-import operator
-
 def Nv1(x):
     condition1 = x < 0
-    condition2 = operator.and_(0 <= x, x < 1)
-    condition3 = operator.and_(1 <= x, x < 2)
+    condition2 = np.logical_and(0 <= x, x < 1)
+    condition3 = np.logical_and(1 <= x, x < 2)
     condition4 = x >= 2
 
     r = np.where(condition1, 0.0, 0.0)
@@ -37,8 +35,8 @@ def Nv1(x):
 
 def Nv2(x):
     condition1 = x < 0
-    condition2 = operator.and_(0 <= x, x < 1)
-    condition3 = operator.and_(1 <= x, x < 2)
+    condition2 = np.logical_and(0 <= x, x < 1)
+    condition3 = np.logical_and(1 <= x, x < 2)
     condition4 = x >= 2
 
     r = np.zeros(len(x))

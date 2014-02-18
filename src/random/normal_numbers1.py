@@ -10,7 +10,7 @@ print np.mean(samples), np.std(samples)
 
 import scitools.std as st
 x, y = st.compute_histogram(samples, 20, piecewise_constant=True)
-st.plot(x, y, hardcopy='tmp.eps',
+st.plot(x, y, hardcopy='tmp.pdf',
         title ='%d samples of Gaussian/normal numbers on (0,1)' % N)
 
 

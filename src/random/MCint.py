@@ -51,6 +51,6 @@ k, I = MCint3(f1, a, b, n, N)
 from scitools.std import plot
 error = 6.5 - np.array(I)
 plot(k, error, title='Monte Carlo integration',
-     xlabel='n', ylabel='error', hardcopy='tmp.eps')
+     xlabel='n', ylabel='error', hardcopy='tmp.pdf')
 
 

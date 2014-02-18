@@ -48,7 +48,7 @@ class Y2:
         return value
 
 
-class VelocityProfile:
+class V:
     def __init__(self, beta, mu0, n, R):
         self.beta, self.mu0, self.n, self.R = beta, mu0, n, R
 

@@ -86,8 +86,8 @@ def simulate_n_paths(n, N, x0, p0, M, m):
             figure(2)
             plot(p, title='sample paths of interest rate')
             hold('on')
-    figure(1); savefig('tmp_sample_paths_investment.eps')
-    figure(2); savefig('tmp_sample_paths_interestrate.eps')
+    figure(1); savefig('tmp_sample_paths_investment.pdf')
+    figure(2); savefig('tmp_sample_paths_interestrate.pdf')
 
     # Compute average
     xm /= float(n)
@@ -128,11 +128,11 @@ plot(months, xm, 'r',
      months, xm-xs, 'y',
      months, xm+xs, 'y',
      title='Mean +/- 1 st.dev. of investment',
-     savefig='tmp_mean_investment.eps')
+     savefig='tmp_mean_investment.pdf')
 figure(4)
 plot(months, pm, 'r',
      months, pm-ps, 'y',
      months, pm+ps, 'y',
      title='Mean +/- 1 st.dev. of annual interest rate',
-     savefig='tmp_mean_interestrate.eps')
+     savefig='tmp_mean_interestrate.pdf')
 

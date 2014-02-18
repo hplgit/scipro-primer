@@ -98,11 +98,6 @@ class RungeKutta4(ODESolver):
         return u_new
 
 import sys, os
-# BackwardEuler needs to import function Newton from Newton.py:
-try:
-    from Newton import Newton
-except ImportError:
-    pass
 
 class BackwardEuler(ODESolver):
     """Backward Euler solver for scalar ODEs."""
@@ -114,6 +109,15 @@ class BackwardEuler(ODESolver):
             value = f(u, t)
         except IndexError:  # index out of bounds for u
             raise ValueError('f(u,t) must return float/int')
+
+        # BackwardEuler needs to import function Newton from Newton.py:
+        try:
+            from Newton import Newton
+        except ImportError:
+            raise ImportError('''
+Could not import module "Newton". Place Newton.py in this directory
+(%s)
+''' % (os.path.dirname(os.path.abspath(__file__)))))
 
     # Alternative implementation of F:
     #def F(self, w):
