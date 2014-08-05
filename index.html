@@ -78,21 +78,28 @@ tree <tt>src</tt> with subfolders containing
 the program examples for different chapters in the book.
 The introduction to each chapter tells the name of the corresponding
 subfolder in the <tt>src</tt> tree.
-<P><LI> <b>Software installation</b>. We have made a description of <a href="install.html">how to install the software needed</a> for working with the book.
+<P><LI> <b>Software installation</b>. There is a brief description of <a href="install.html">how to install the software needed</a> for working with the book.
+More <a href="http://hplgit.github.io/edu/accesspy/accesspy_primer4.html">updated, comprehensive instructions</a> have been written for the upcoming
+4th edition of the book. You may find this latter description more useful.
 <P><LI> On Debian systems, including Ubuntu, SciTools can be installed by
 <pre>
 sudo apt-get install python-scitools
 </pre>
-However, it is often advantageous to install the latest version of SciTools from <a href="http://code.google.com/p/scitools/">googlecode.com/p/scitools</a>.
+However, it is often advantageous to install the latest version of SciTools from <a href="http://code.google.com/p/scitools/">googlecode.com/p/scitools</a>. This is anyway the recommended approach on non-Debian Linux systems, Mac, and Windows.
 Make sure you have the Mercurial (<tt>hg</tt>) version control system
-on your computer (if not, do <tt>sudo apt-get install mercurial</tt>).
-Get the SciTools source code and install it by
+on your computer (if not, do <tt>sudo apt-get install mercurial</tt> on
+Debian/Ubuntu or google for "Mercurial" and follow the installation
+instructions on Mac and Windows machine).
+You can download the SciTools source code and install it by running
+the following commands in a terminal window (Linux/Mac) or in a DOS Window
+or PowerShell window on Windows:
 <pre>
 hg clone https://langtangen@code.google.com/p/scitools/
 cd scitools
 sudo python setup.py install
 </pre>
-The advantage of this method is that you can get SciTools updates (bugfixes,
+The advantage of this installation
+method is that you can get SciTools updates (bugfixes,
 enhancements) whenever you want by going to the <tt>scitools</tt>
 folder and running
 <pre>
@@ -100,13 +107,14 @@ hg pull
 hg update
 sudo python setup.py install
 </pre>
-<P><LI> You may need additional software. It is recommended to do
+<P><LI> You may need additional software. On Debian/Ubuntu
+it is recommended to do
 <pre>
 sudo apt-get install python-matplotlib python-scipy python-gnuplot gnuplot gnuplot-x11
 </pre>
 A comprehensive installation with lots of useful packages can be
-performed by a<a href="https://raw.github.com/hplgit/vagrantbox/master/doc/src/vagrant/src-vagrant/install_rich.sh">script install_rich.sh</a> that is run
-by <tt>bash install_rich.sh</tt>.
+performed by a <a href="https://raw.github.com/hplgit/vagrantbox/master/doc/src/vagrant/src-vagrant/install_rich.sh">script install_rich.sh</a> that is run
+by <tt>bash install_rich.sh</tt> on a Debian/Ubuntu machine.
 </UL>
 <P><LI> <a href="erratalist3rd.pdf">Errata list</a> for the 3rd edition of the book
 <P><LI> <a href="http://www.ifi.uio.no/~inf1100/slides/">Slides</a> from lectures based on the book.
