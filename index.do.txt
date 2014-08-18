@@ -6,6 +6,93 @@ AUTHOR: Hans Petter Langtangen Email:hpl@simula.no
 <a href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642549586/ref=sr_1_2?s=books&ie=UTF8&qid=1407225588&sr=1-2&keywords=langtangen"><img border="0" width="130" src="figs/Primer4th_pic.jpg"></a>
 
 
+==== All programs from the book ===
+
+On Unix/Linux or Mac, download
+the tarfile "`book-examples-4th.tar.gz`": "book-examples-4th.tar.gz"
+for the 4th edition and pack it out by
+
+!bc sys
+tar xvzf book-examples-3rd.tar.gz
+!ec
+On Windows, download "`book-examples-4th.zip`": "book-examples-4th.zip"
+for the 4th edition and pack it out by
+
+!bc sys
+unzip book-examples-4th.zip
+!ec
+or double click on the file icon.
+
+The result is a folder (directory)
+tree `src` with subfolders containing
+the program examples for different chapters in the book
+(`formulas`, `looplist`, etc., as explained in the introduction to
+each chapter).
+
+You can also directly access the latest version of the example
+files at "GitHub": "https://github.com/hplgit/scipro-primer", see
+the "src": "https://github.com/hplgit/scipro-primer/tree/master/src"
+directory (to download a file, click the *Raw* button on the right first
+to get the pure text file in the browser and then right-click to download).
+To copy the whole repository to your computer, run
+
+!bc sys
+git clone https://github.com/hplgit/scipro-primer.git
+!ec
+
+=== Erratalist ===
+
+There is a "PDF file": "erratalist4th.pdf" with an errata list for the
+4th edition of the book. If you find any typo or error, please
+report it to "the author": "mailto:hpl@simula.no".
+
+=== Software installation ===
+
+There are several ways to access Python, either on your computer or
+in the cloud. "Appendix H.1": "http://hplgit.github.io/edu/accesspy/accesspy_primer4.html" in the book gives an overview of
+recommended technologies and how to use them to get the software you need
+for working with the book.
+
+__SciTools.__
+The package SciTools is freqently referred to and used in the book.
+You may want to install SciTools directly from its Mercurial version control
+repository. This makes it easy to upgrade the package at any time.
+SciTools is hosted at "Googlecode": "http://code.google.com/p/scitools/".
+Make sure you have the Mercurial (<tt>hg</tt>) version control system
+on your computer (if not, do `sudo pip install mercurial` on Linux or Mac,
+and `pip install mercurial` in a Windows Command Prompt or Power Shell window).
+Get the SciTools source code and install it by
+
+!bc sys
+hg clone https://langtangen@code.google.com/p/scitools/
+cd scitools
+sudo python setup.py install
+!ec
+Whenever you want to upgrade the package, just go to the `scitools`
+folder and run the commands
+
+!bc sys
+hg pull
+hg update
+sudo python setup.py install
+!ec
+
+=== Software installation on Ubuntu ===
+
+If you have an Ubuntu installation, Python is already there. The minimum
+extra packages are installed by this command:
+
+!bc sys
+sudo apt-get install python-matplotlib python-scipy python-gnuplot gnuplot gnuplot-x11 python-scitools
+!ec
+A comprehensive installation with lots of useful packages can be
+performed by a "Bash script": "https://raw.github.com/hplgit/vagrantbox/master/doc/src/vagrant/src-vagrant/install_rich.sh". Download this file (`install_rich.sh`) and run it by `bash install_rich.sh`.
+
+=== Slides ===
+
+There is a "slide collection": "slides/index.html"
+from lectures based on the book.
+
 ======= The 3rd edition =======
 
 <a href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642302920/ref=sr_1_4?ie=UTF8&qid=1344338912&sr=8-4&keywords=langtangen+primer"><img border="0" width="130" src="figs/Primer_pic.jpg"></a>
@@ -91,7 +178,7 @@ There is a "PDF file": "erratalist3rd.pdf" with an errata list for the
 === Slides ===
 
 There is a "slide collection": "http://www.ifi.uio.no/~inf1100/slides"
-from lectures based on the book.
+from lectures based on the 3rd edition of the book.
 
 ======= The 1st and 2nd edition =======
 
