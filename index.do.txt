@@ -1,4 +1,4 @@
-TITLE: Resources for the book ``A Primer on Scientific Programming with Python''
+TITLE: Resources for A Primer on Scientific Programming with Python
 AUTHOR: Hans Petter Langtangen Email:hpl@simula.no
 
 ======= The 4th edition =======
@@ -6,14 +6,14 @@ AUTHOR: Hans Petter Langtangen Email:hpl@simula.no
 <a href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642549586/ref=sr_1_2?s=books&ie=UTF8&qid=1407225588&sr=1-2&keywords=langtangen"><img border="0" width="130" src="figs/Primer4th_pic.jpg"></a>
 
 
-==== All programs from the book ===
+===== All programs from the book =====
 
 On Unix/Linux or Mac, download
 the tarfile "`book-examples-4th.tar.gz`": "book-examples-4th.tar.gz"
 for the 4th edition and pack it out by
 
 !bc sys
-tar xvzf book-examples-3rd.tar.gz
+tar xvzf book-examples-4th.tar.gz
 !ec
 On Windows, download "`book-examples-4th.zip`": "book-examples-4th.zip"
 for the 4th edition and pack it out by
@@ -40,13 +40,14 @@ To copy the whole repository to your computer, run
 git clone https://github.com/hplgit/scipro-primer.git
 !ec
 
-=== Erratalist ===
+===== Erratalist =====
 
-There is a "PDF file": "erratalist4th.pdf" with an errata list for the
+Here is a "PDF file": "erratalist4th.pdf" or an "HTML file":
+"erratalist4th.html" with an errata list for the
 4th edition of the book. If you find any typo or error, please
 report it to "the author": "mailto:hpl@simula.no".
 
-=== Software installation ===
+===== Software installation =====
 
 There are several ways to access Python, either on your computer or
 in the cloud. "Appendix H.1": "http://hplgit.github.io/edu/accesspy/accesspy_primer4.html" in the book gives an overview of
@@ -77,7 +78,7 @@ hg update
 sudo python setup.py install
 !ec
 
-=== Software installation on Ubuntu ===
+===== Software installation on Ubuntu =====
 
 If you have an Ubuntu installation, Python is already there. The minimum
 extra packages are installed by this command:
@@ -88,16 +89,18 @@ sudo apt-get install python-matplotlib python-scipy python-gnuplot gnuplot gnupl
 A comprehensive installation with lots of useful packages can be
 performed by a "Bash script": "https://raw.github.com/hplgit/vagrantbox/master/doc/src/vagrant/src-vagrant/install_rich.sh". Download this file (`install_rich.sh`) and run it by `bash install_rich.sh`.
 
-=== Slides ===
+===== Slides =====
 
 There is a "slide collection": "slides/index.html"
 from lectures based on the book.
+
+------------
 
 ======= The 3rd edition =======
 
 <a href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642302920/ref=sr_1_4?ie=UTF8&qid=1344338912&sr=8-4&keywords=langtangen+primer"><img border="0" width="130" src="figs/Primer_pic.jpg"></a>
 
-==== All programs from the book ===
+===== All programs from the book =====
 
 On Unix/Linux or Mac, download
 the tarfile "`book-examples-3rd.tar.gz`": "book-examples-3rd.tar.gz"
@@ -132,7 +135,7 @@ git clone https://github.com/hplgit/scipro-primer.git
 !ec
 
 
-=== Software installation ===
+===== Software installation =====
 
 The "old software description": "install.html" is not a bit outdated, so we
 refer to the "new one": "http://hplgit.github.io/edu/accesspy/accesspy_primer4.html" that appears in the 4th edition.
@@ -159,7 +162,7 @@ hg update
 sudo python setup.py install
 !ec
 
-=== Software installation on Ubuntu ===
+===== Software installation on Ubuntu =====
 
 If you have an Ubuntu installation, Python is already there. The minimum
 extra packages are installed by this command:
@@ -170,12 +173,12 @@ sudo apt-get install python-matplotlib python-scipy python-gnuplot gnuplot gnupl
 A comprehensive installation with lots of useful packages can be
 performed by a "Bash script": "https://raw.github.com/hplgit/vagrantbox/master/doc/src/vagrant/src-vagrant/install_rich.sh". Download this file (`install_rich.sh`) and run it by `bash install_rich.sh`.
 
-=== Erratalist ===
+===== Erratalist =====
 
 There is a "PDF file": "erratalist3rd.pdf" with an errata list for the
 3rd edition of the book.
 
-=== Slides ===
+===== Slides =====
 
 There is a "slide collection": "http://www.ifi.uio.no/~inf1100/slides"
 from lectures based on the 3rd edition of the book.
