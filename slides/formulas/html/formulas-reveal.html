@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Ch.1: Computing with formulas">
+
+
+
+
+
+
+
+
+<!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<!--
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+-->
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .reveal .alert-text-small   { font-size: 80%;  }
+    .reveal .alert-text-large   { font-size: 130%; }
+    .reveal .alert-text-normal  { font-size: 90%;  }
+    .reveal .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+             -webkit-border-radius: 14px; -moz-border-radius: 14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .reveal .alert-block {padding-top:14px; padding-bottom:14px}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     /*.reveal .alert li {margin-top: 1em}*/
+     .reveal .alert-block p+p {margin-top:5px}
+     /*.reveal .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="reveal">
+
+<!-- Any section element inside the <div class="slides"> container
+     is displayed as a slide -->
+
+<div class="slides">
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+
+
+
+<section>
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Ch.1: Computing with formulas</title>
+
+<center><h1>Ch.1: Computing with formulas</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>&nbsp;<br>
+<!-- institution(s) -->
+
+<center>[1] <b>Simula Research Laboratory</b></center>
+<center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
+<p>&nbsp;<br>
+<center><h4>Aug 22, 2014</h4></center> <!-- date -->
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Why program?  <a name="___sec0"></a></h2>
+
+<blockquote>
+    <em>Everybody in this country should learn how to program a computer... because it teaches you how to think</em>. Steve Jobs, 1955-2011.
+</blockquote>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The teaching strategy is example-based  <a name="___sec1"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<ul>
+  <p><li> Present a case (example)</li>
+  <p><li> Present the complete program</li>
+  <p><li> Dissect and discuss every line</li>
+  <p><li> Simulate programs by hand (be the computer!)</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Evaluating a mathematical formula  <a name="___sec2"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Height of a ball in vertical motion.</b>
+
+<p>&nbsp;<br>
+$$ y(t) = v_0t- \frac{1}{2}gt^2 $$
+<p>&nbsp;<br>
+
+where
+
+<ul>
+  <p><li> \( y \) is the height (position) as function of time \( t \)</li>
+  <p><li> \( v_0 \) is the initial velocity at \( t=0 \)</li>
+  <p><li> \( g \) is the acceleration of gravity</li>
+</ul>
+<p>
+
+Task: given \( v_0 \), \( g \) and \( t \), compute \( y \).
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Use a calculator? A program is much more powerful!  <a name="___sec3"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>What is a program?</b>
+A sequence of instructions to the computer, written in a programming language, somewhat like English, but very much simpler - and very much stricter.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+This course teaches the Python language.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b>Our first example program:</b>
+Evaluate \( y(t) = v_0t- \frac{1}{2}gt^2 \) for \( v_0=5 \), \( g=9.81 \) and \( t=0.6 \):
+
+<p>&nbsp;<br>
+$$ y = 5\cdot 0.6 - \frac{1}{2}\cdot 9.81 \cdot 0.6^2$$
+<p>&nbsp;<br>
+
+
+<p>
+The complete Python program:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #3677a9">5</span><span style="color: #d0d0d0">*</span><span style="color: #3677a9">0.6</span> <span style="color: #d0d0d0">-</span> <span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*</span><span style="color: #3677a9">9.81</span><span style="color: #d0d0d0">*</span><span style="color: #3677a9">0.6</span><span style="color: #d0d0d0">**</span><span style="color: #3677a9">2</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>How to write and run the program  <a name="___sec4"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<ul>
+  <p><li> A program is plain text, written in a <em>plain text editor</em></li>
+  <p><li> Use Gedit, Emacs, Vim, Spyder, or IDLE (<em>not</em> MS Word!)</li>
+</ul>
+<p>
+
+<b>Step 1.</b>
+Write the program in a text editor, here the line
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #3677a9">5</span><span style="color: #d0d0d0">*</span><span style="color: #3677a9">0.6</span> <span style="color: #d0d0d0">-</span> <span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*</span><span style="color: #3677a9">9.81</span><span style="color: #d0d0d0">*</span><span style="color: #3677a9">0.6</span><span style="color: #d0d0d0">**</span><span style="color: #3677a9">2</span>
+</pre></div>
+<p>
+<b>Step 2.</b>
+Save the program to a file (say) <code>ball1.py</code>.
+(<code>.py</code> denotes Python.)
+
+<p>
+<b>Step 3.</b>
+Move to a terminal window and go to the folder containing the program file.
+
+<p>
+<b>Step 4.</b>
+Run the program:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">Terminal&gt; python ball1.py
+</pre></div>
+<p>
+The program prints out <code>1.2342</code> in the terminal window.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>In this course we probably use computers differently from what you are used to  <a name="___sec5"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<ul>
+  <p><li> When you use a computer, you always run some programs</li>
+  <p><li> The computer cannot do anything without being precisely told what to do, and humans write and use programs to tell the computer what to do</li>
+  <p><li> Most people are used to double-click on a symbol to run a program - in this course we give commands in a terminal window because that is more efficient if you work intensively with programming</li>
+  <p><li> Hard math problems suddenly become straightforward by writing programs</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A short program can calculate any integral  <a name="___sec6"></a></h2>
+
+You cannot calculate this integral by hand:
+
+<p>&nbsp;<br>
+$$ \int_{-\infty}^1 e^{-x^2}dx\tp$$
+<p>&nbsp;<br>
+
+
+<p>
+A little program can compute this and &quot;all&quot; other integrals:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
+
+<span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">integrate</span><span style="color: #d0d0d0">(f,</span> <span style="color: #d0d0d0">a,</span> <span style="color: #d0d0d0">b,</span> <span style="color: #d0d0d0">n=</span><span style="color: #3677a9">100</span><span style="color: #d0d0d0">):</span>
+    <span style="color: #ed9d13">&quot;&quot;&quot;</span>
+<span style="color: #ed9d13">    Integrate f from a to b,</span>
+<span style="color: #ed9d13">    using the Trapezoidal rule with n intervals.</span>
+<span style="color: #ed9d13">    &quot;&quot;&quot;</span>
+    <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(a,</span> <span style="color: #d0d0d0">b,</span> <span style="color: #d0d0d0">n+</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">)</span>    <span style="color: #999999; font-style: italic"># Coordinates of the intervals</span>
+    <span style="color: #d0d0d0">h</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x[</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">]</span> <span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">x[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">]</span>            <span style="color: #999999; font-style: italic"># Interval spacing</span>
+    <span style="color: #d0d0d0">I</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">h*(</span><span style="color: #24909d">sum</span><span style="color: #d0d0d0">(f(x))</span> <span style="color: #d0d0d0">-</span> <span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*(f(a)</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">f(b)))</span>
+    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">I</span>
+
+<span style="color: #999999; font-style: italic"># Define my special integrand</span>
+<span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">my_function</span><span style="color: #d0d0d0">(x):</span>
+    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">exp(-x**</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">)</span>
+
+<span style="color: #d0d0d0">minus_infinity</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">-</span><span style="color: #3677a9">20</span>  <span style="color: #999999; font-style: italic"># Approximation of minus infinity</span>
+<span style="color: #d0d0d0">I</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">integrate(my_function,</span> <span style="color: #d0d0d0">minus_infinity,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">n=</span><span style="color: #3677a9">1000</span><span style="color: #d0d0d0">)</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;Value of integral:&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">I</span>
+</pre></div>
+<p>
+<b>The program computes an approximation with error \( 10^{-12} \) within 0.1 s</b> (\( n=10^6 \))!
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Computers are very picky about grammar rules and typos  <a name="___sec7"></a></h2>
+
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Look at
+
+<p>
+
+<!-- code=text typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">print 5*0.6 - 0.5*9.81*0.6**2
+write 5*0,6 - 0,5*9,81*0,6^2
+</pre></div>
+<p>
+Would you consider these two lines to be equal?
+
+<ul>
+  <p><li class="fragment"> Humans will say <em>yes</em>, computers <em>no</em></li>
+  <p><li class="fragment"> The second line has no meaning as a Python program</li>
+  <p><li class="fragment"> <code>write</code> is not a legal Python word in this context, comma has another
+    meaning than in math, and the hat is not exponentiation</li>
+  <p><li class="fragment"> We have to be extremely accurate with how we write computer programs!</li>
+  <p><li class="fragment"> It takes time and experience to learn this</li>
+</ul>
+<p>
+</div>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Programming opens up a new life  <a name="___sec8"></a></h2>
+
+<blockquote>
+    <em>People only become computer programmers if they're
+    obsessive about details, crave power over machines, and can bear
+    to be told day after day exactly how
+    stupid they are.</em> G. J. E. Rawlins
+</blockquote>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Store numbers in variables to make a program more readable  <a name="___sec9"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+From mathematics you are used to variables, e.g.,
+
+<p>&nbsp;<br>
+$$ v_0=5,\quad g=9.81,\quad t=0.6,\quad y = v_0t -\frac{1}{2}gt^2$$
+<p>&nbsp;<br>
+
+
+<p>
+We can use variables in a program too, and this makes the last program
+easier to read and understand:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">v0</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">5</span>
+<span style="color: #d0d0d0">g</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">9.81</span>
+<span style="color: #d0d0d0">t</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0.6</span>
+<span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">v0*t</span> <span style="color: #d0d0d0">-</span> <span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*g*t**</span><span style="color: #3677a9">2</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">y</span>
+</pre></div>
+<p>
+This program spans several lines of text and use variables, otherwise the program performs the same calculations and gives the same output as the previous program
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>There is great flexibility in choosing variable names  <a name="___sec10"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<ul>
+  <p><li> In mathematics we usually use one letter for a variable</li>
+  <p><li> The name of a variable in a program can contain the letters a-z, A-Z, underscore <code>_</code> and the digits 0-9, but cannot start with a digit</li>
+  <p><li> Variable names are case-sensitive (e.g., <code>a</code> is different from <code>A</code>)</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">initial_velocity</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">5</span>
+<span style="color: #d0d0d0">accel_of_gravity</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">9.81</span>
+<span style="color: #d0d0d0">TIME</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0.6</span>
+<span style="color: #d0d0d0">VerticalPositionOfBall</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">initial_velocity*TIME</span> <span style="color: #d0d0d0">-</span> \ 
+                         <span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*accel_of_gravity*TIME**</span><span style="color: #3677a9">2</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">VerticalPositionOfBall</span>
+</pre></div>
+<p>
+(Note: the backslash allows an instruction to be continued on the next line)
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Good variable names make a program easier to understand!
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Some words are reserved in Python  <a name="___sec11"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Certain words have a special meaning in Python and cannot be used as variable names. These are: <code>and</code>,
+<code>as</code>,
+<code>assert</code>,
+<code>break</code>,
+<code>class</code>,
+<code>continue</code>,
+<code>def</code>,
+<code>del</code>,
+<code>elif</code>,
+<code>else</code>,
+<code>except</code>,
+<code>exec</code>,
+<code>finally</code>,
+<code>for</code>,
+<code>from</code>,
+<code>global</code>,
+<code>if</code>,
+<code>import</code>,
+<code>in</code>,
+<code>is</code>,
+<code>lambda</code>,
+<code>not</code>,
+<code>or</code>,
+<code>pass</code>,
+<code>print</code>,
+<code>raise</code>,
+<code>return</code>,
+<code>try</code>,
+<code>with</code>,
+<code>while</code>, and
+<code>yield</code>.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Comments are useful to explain how you think in programs  <a name="___sec12"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Program with comments:</b>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #999999; font-style: italic"># program for computing the height of a ball</span>
+<span style="color: #999999; font-style: italic"># in vertical motion</span>
+<span style="color: #d0d0d0">v0</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">5</span>    <span style="color: #999999; font-style: italic"># initial velocity</span>
+<span style="color: #d0d0d0">g</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">9.81</span>  <span style="color: #999999; font-style: italic"># acceleration of gravity</span>
+<span style="color: #d0d0d0">t</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0.6</span>   <span style="color: #999999; font-style: italic"># time</span>
+<span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">v0*t</span> <span style="color: #d0d0d0">-</span> <span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*g*t**</span><span style="color: #3677a9">2</span>  <span style="color: #999999; font-style: italic"># vertical position</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">y</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b>Note:</b>
+
+<ul>
+  <p><li> Everything after <code>#</code> on a line is a comment and ignored by Python</li>
+  <p><li> Comments are used to explain what the computer instructions mean, what variables mean, how the programmer reasoned when she wrote the program, etc.</li>
+  <p><li> Bad comments say no more than the code: <code>a = 5  # set a to 5</code></li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Comments are not always ignored....  <a name="___sec13"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Normal rule: Python programs, including comments, can only contain characters from the English alphabet.
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">hilsen</span> <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&#39;Kjære Åsmund!&#39;</span>  <span style="color: #999999; font-style: italic"># er æ og Å lov i en streng?</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">hilsen</span>
+</pre></div>
+<p>
+leads to an error:
+
+<p>
+
+<!-- code=text typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">SyntaxError: Non-ASCII character ...
+</pre></div>
+<p>
+Remedy: put this special comment line as the first line in your program
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #999999; font-style: italic"># -*- coding: utf-8 -*-</span>
+</pre></div>
+<p>
+Or stick to English everywhere in a program
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The printf syntax gives great flexibility in formatting text with numbers  <a name="___sec14"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Output from calculations often contain text and numbers, e.g.,
+
+<p>
+
+<!-- code=text typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">At t=0.6 s, y is 1.23 m.
+</pre></div>
+<p>
+ We want to control the formatting of numbers: no of decimals, style: <code>0.6</code> vs <code>6E-01</code> or <code>6.0e-01</code>. So-called <em>printf formatting</em> is useful for this purpose:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;At t=%g s, y is %.2f m.&#39;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">(t,</span> <span style="color: #d0d0d0">y)</span>
+</pre></div>
+<p>
+The printf format has &quot;slots&quot; where the variables listed at the end are put: <code>%g</code> \( \leftarrow \) <code>t</code>, <code>%.2f</code> \( \leftarrow \) <code>y</code>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Examples on different printf formats  <a name="___sec15"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<p>
+
+<!-- code=text typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">%g         most compact formatting of a real number
+%f         decimal notation (-34.674)
+%10.3f     decimal notation, 3 decimals, field width 10
+%.3f       decimal notation, 3 decimals, minimum width
+%e or %E   scientific notation (1.42e-02 or 1.42E-02)
+%9.2e      scientific notation, 2 decimals, field width 9
+%d         integer
+%5d        integer in a field of width 5 characters
+%s         string (text)
+%-20s      string, field width 20, left-adjusted
+%%         the percentage sign % itself
+</pre></div>
+<p>
+(See the the book for more explanation and overview)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Using printf formatting in our program  <a name="___sec16"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Triple-quoted strings (<code>"""</code>) can be used for multi-line output, and here we combine such a string with printf formatting:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">v0</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">5</span>
+<span style="color: #d0d0d0">g</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">9.81</span>
+<span style="color: #d0d0d0">t</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0.6</span>
+<span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">v0*t</span> <span style="color: #d0d0d0">-</span> <span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*g*t**</span><span style="color: #3677a9">2</span>
+
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&quot;&quot;&quot;</span>
+<span style="color: #ed9d13">At t=%f s, a ball with</span>
+<span style="color: #ed9d13">initial velocity v0=%.3E m/s</span>
+<span style="color: #ed9d13">is located at the height %.2f m.</span>
+<span style="color: #ed9d13">&quot;&quot;&quot;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">(t,</span> <span style="color: #d0d0d0">v0,</span> <span style="color: #d0d0d0">y)</span>
+</pre></div>
+<p>
+Running the program:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">Terminal&gt; python ball_print2.py
+
+At t=0.600000 s, a ball with
+initial velocity v0=5.000E+00 m/s
+is located at the height 1.23 m.
+</pre></div>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Some frequently used computer science terms  <a name="___sec17"></a></h2>
+
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<ul>
+  <p><li class="fragment"> Program or code or application</li>
+  <p><li class="fragment"> Source code (program text)</li>
+  <p><li class="fragment"> Code/program snippet</li>
+  <p><li class="fragment"> Execute or run a program</li>
+  <p><li class="fragment"> Algorithm (recipe for a program)</li>
+  <p><li class="fragment"> Implementation (writing the program)</li>
+  <p><li class="fragment"> Verification (does the program work correctly?)</li>
+  <p><li class="fragment"> Bugs (errors) and debugging</li>
+</ul>
+<p>
+</div>
+
+
+
+<p>
+
+<p class="fragment">
+
+<div class="fragment alert alert-block alert-block alert-text-normal"><b></b>
+Computer science meaning of terms is often different from the human language meaning
+</div>
+
+
+</p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A program consists of statements  <a name="___sec18"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1</span>      <span style="color: #999999; font-style: italic"># 1st statement (assignment statement)</span>
+<span style="color: #d0d0d0">b</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">2</span>      <span style="color: #999999; font-style: italic"># 2nd statement (assignment statement)</span>
+<span style="color: #d0d0d0">c</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">b</span>  <span style="color: #999999; font-style: italic"># 3rd statement (assignment statement)</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">c</span>    <span style="color: #999999; font-style: italic"># 4th statement (print statement)</span>
+</pre></div>
+<p>
+Normal rule: one statement per line, but
+multiple statements per line is possible with a semicolon
+in between the statements:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">;</span>  <span style="color: #d0d0d0">b</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">;</span>  <span style="color: #d0d0d0">c</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">b;</span>  <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">c</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Assignment statements evaluate right-hand side and assign the result to the variable on the left-hand side  <a name="___sec19"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">myvar</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">10</span>
+<span style="color: #d0d0d0">myvar</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">3</span><span style="color: #d0d0d0">*myvar</span>   <span style="color: #999999; font-style: italic"># = 30</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Syntax is the exact specification of instructions to the computer  <a name="___sec20"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Programs must have correct syntax, i.e., correct use of the computer language grammar rules, and no misprints!
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b>This is a program with two syntax errors:</b>
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">myvar</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">5.2</span>
+<span style="color: #d0d0d0">prinnt</span> <span style="color: #d0d0d0">Myvar</span>
+</pre></div>
+<p>
+
+<!-- code=text typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">    prinnt Myvar
+               ^
+SyntaxError: invalid syntax
+</pre></div>
+<p>
+Only the first encountered error is reported and the program is stopped (correct the error and continue with next error)
+</div>
+
+
+<p>
+
+<p class="fragment">
+
+<blockquote>
+    <em>Programming demands significantly higher standard of accuracy. Things don't simply have to make sense to another human being, they must make sense to a computer.</em> Donald Knuth, computer scientist, 1938-
+</blockquote>
+
+
+</p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Blanks (whitespace) can be used to nicely format the program text  <a name="___sec21"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Blanks may or may not be important in Python programs.
+These statements are equivalent (blanks do not matter):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">v0=</span><span style="color: #3677a9">3</span>
+<span style="color: #d0d0d0">v0</span>  <span style="color: #d0d0d0">=</span>  <span style="color: #3677a9">3</span>
+<span style="color: #d0d0d0">v0=</span>   <span style="color: #3677a9">3</span>
+<span style="color: #d0d0d0">v0</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">3</span>
+</pre></div>
+<p>
+Here blanks do matter:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">while</span> <span style="color: #d0d0d0">counter</span> <span style="color: #d0d0d0">&lt;=</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">:</span>
+    <span style="color: #d0d0d0">counter</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">counter</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">1</span>   <span style="color: #999999; font-style: italic"># correct (4 leading blanks)</span>
+
+<span style="color: #6ab825; font-weight: bold">while</span> <span style="color: #d0d0d0">counter</span> <span style="color: #d0d0d0">&lt;=</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">:</span>
+<span style="color: #d0d0d0">counter</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">counter</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">1</span>       <span style="color: #999999; font-style: italic"># invalid syntax</span>
+</pre></div>
+<p>
+(more about this in Ch. 2)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A program takes some known <em>input</em> data and computes some <em>output</em> data  <a name="___sec22"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">v0</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">3</span><span style="color: #d0d0d0">;</span>  <span style="color: #d0d0d0">g</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">9.81</span><span style="color: #d0d0d0">;</span>  <span style="color: #d0d0d0">t</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0.6</span>
+<span style="color: #d0d0d0">position</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">v0*t</span> <span style="color: #d0d0d0">-</span> <span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*g*t*t</span>
+<span style="color: #d0d0d0">velocity</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">v0</span> <span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">g*t</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;position:&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">position,</span> <span style="color: #ed9d13">&#39;velocity:&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">velocity</span>
+</pre></div>
+<ul>
+  <p><li> Input: <code>v0</code>, <code>g</code>, and <code>t</code></li>
+  <p><li> Output: <code>position</code> and <code>velocity</code></li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>An operating system (OS) is a set of programs managing hardware and software resources on a computer  <a name="___sec23"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<ul>
+  <p><li> Linux, Unix (Ubuntu, RedHat, Suse, Solaris)</li>
+  <p><li> Windows (95, 98, NT, ME, 2000, XP, Vista, 7, 8)</li>
+  <p><li> Macintosh (old Mac OS, Mac OS X)</li>
+  <p><li> Mac OS X \( \approx \) Unix \( \approx \) Linux \( \neq \) Windows</li>
+  <p><li> Typical OS commands are quite similar:</li>
+
+<ul>
+    <p><li> Linux/Unix: <code>mkdir folder; cd folder; ls</code></li>
+    <p><li> Windows: <code>mkdir folder; cd folder; dir</code></li>
+</ul>
+<p>
+
+  <p><li> Python supports cross-platform programming, i.e., a program is independent of which OS we run the program on</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Evaluating a formula for temperature conversion  <a name="___sec24"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Given \( C \) as a temperature in Celsius degrees,
+compute the corresponding Fahrenheit degrees \( F \):
+
+<p>&nbsp;<br>
+$$ F = \frac{9}{5}C + 32 $$
+<p>&nbsp;<br>
+
+
+<p>
+Program:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">C</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">21</span>
+<span style="color: #d0d0d0">F</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">(</span><span style="color: #3677a9">9</span><span style="color: #d0d0d0">/</span><span style="color: #3677a9">5</span><span style="color: #d0d0d0">)*C</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">32</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">F</span>
+</pre></div>
+<p>
+Execution:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">Terminal&gt; python c2f_v1.py
+53
+</pre></div>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We must always check that a new program calculates the right answer  <a name="___sec25"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Using a calculator:</b>
+9/5 times 21 plus 32 is 69.8, not 53.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The error is caused by (unintended) integer division  <a name="___sec26"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<ul>
+  <p><li> 9/5 is not 1.8 but 1 in most computer languages (!)</li>
+  <p><li> If \( a \) and \( b \) are integers, \( a/b \) implies integer division: the largest integer \( c \) such that \( cb\leq a \)</li>
+  <p><li> Examples: \( 1/5=0 \), \( 2/5=0 \), \( 7/5=1 \), \( 12/5=2 \)</li>
+  <p><li> In mathematics, 9/5 is a real number (1.8) - this is called float division in Python and is the division we want</li>
+  <p><li> One of the operands (\( a \) or \( b \)) in \( a/b \) must be a real number ("float") to get float division</li>
+  <p><li> A float in Python has a dot (or decimals): <code>9.0</code> or <code>9.</code> is float</li>
+  <p><li> No dot implies integer: <code>9</code> is an integer</li>
+  <p><li> <code>9.0/5</code> yields <code>1.8</code>, <code>9/5.</code> yields <code>1.8</code>, <code>9/5</code> yields <code>1</code></li>
+</ul>
+<p>
+
+Corrected program (with correct output 69.8):
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">C</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">21</span>
+<span style="color: #d0d0d0">F</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">(</span><span style="color: #3677a9">9.0</span><span style="color: #d0d0d0">/</span><span style="color: #3677a9">5</span><span style="color: #d0d0d0">)*C</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">32</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">F</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Everything in Python is an object  <a name="___sec27"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Variables refer to objects:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">5</span>       <span style="color: #999999; font-style: italic"># a refers to an integer (int) object</span>
+<span style="color: #d0d0d0">b</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">9</span>       <span style="color: #999999; font-style: italic"># b refers to an integer (int) object</span>
+<span style="color: #d0d0d0">c</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">9.0</span>     <span style="color: #999999; font-style: italic"># c refers to a real number (float) object</span>
+<span style="color: #d0d0d0">d</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">b/a</span>     <span style="color: #999999; font-style: italic"># d refers to an int/int =&gt; int object</span>
+<span style="color: #d0d0d0">e</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">c/a</span>     <span style="color: #999999; font-style: italic"># e refers to float/int =&gt; float object</span>
+<span style="color: #d0d0d0">s</span> <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&#39;b/a=%g&#39;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">(b/a)</span>  <span style="color: #999999; font-style: italic"># s is a string/text (str) object</span>
+</pre></div>
+<p>
+We can convert between object types:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">3</span>              <span style="color: #999999; font-style: italic"># a is int</span>
+<span style="color: #d0d0d0">b</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">float</span><span style="color: #d0d0d0">(a)</span>       <span style="color: #999999; font-style: italic"># b is float 3.0</span>
+<span style="color: #d0d0d0">c</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">3.9</span>            <span style="color: #999999; font-style: italic"># c is float</span>
+<span style="color: #d0d0d0">d</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">int</span><span style="color: #d0d0d0">(c)</span>         <span style="color: #999999; font-style: italic"># d is int 3</span>
+<span style="color: #d0d0d0">d</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">round</span><span style="color: #d0d0d0">(c)</span>       <span style="color: #999999; font-style: italic"># d is float 4.0</span>
+<span style="color: #d0d0d0">d</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">int</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">round</span><span style="color: #d0d0d0">(c))</span>  <span style="color: #999999; font-style: italic"># d is int 4</span>
+<span style="color: #d0d0d0">d</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">str</span><span style="color: #d0d0d0">(c)</span>         <span style="color: #999999; font-style: italic"># d is str &#39;3.9&#39;</span>
+<span style="color: #d0d0d0">e</span> <span style="color: #d0d0d0">=</span> <span style="color: #ed9d13">&#39;-4.2&#39;</span>         <span style="color: #999999; font-style: italic"># e is str</span>
+<span style="color: #d0d0d0">f</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">float</span><span style="color: #d0d0d0">(e)</span>       <span style="color: #999999; font-style: italic"># f is float -4.2</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Arithmetic expressions are evaluated as you have learned in mathematics  <a name="___sec28"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<ul>
+  <p><li> Example: \( \frac{5}{9} + 2a^4/2 \), in Python written as <code>5/9 + 2*a**4/2</code></li>
+  <p><li> Same rules as in mathematics: proceed term by term (additions/subtractions) from the left, compute powers first, then multiplication and division, in each term</li>
+  <p><li> <code>r1 = 5/9</code> (=0)</li>
+  <p><li> <code>r2 = a**4</code></li>
+  <p><li> <code>r3 = 2*r2</code></li>
+  <p><li> <code>r4 = r3/2</code></li>
+  <p><li> <code>r5 = r1 + r4</code></li>
+  <p><li> Use parenthesis to override these default rules - or use parenthesis to explicitly tell how the rules work: <br />
+    <code>(5/9) + (2*(a**4))/2</code></li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Standard mathematical functions are found in the <code>math</code> module  <a name="___sec29"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<ul>
+  <p><li> What if we need to compute \( \sin x \), \( \cos x \), \( \ln x \), etc. in a program?</li>
+  <p><li> Such functions are available in Python's <code>math</code> module</li>
+  <p><li> In general: lots of useful functionality in Python is available in modules - but modules must be <em>imported</em> in our programs</li>
+</ul>
+<p>
+
+Compute \( \sqrt{2} \) using the <code>sqrt</code> function in the <code>math</code> module:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">math</span>
+<span style="color: #d0d0d0">r</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">math.sqrt(</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">)</span>
+<span style="color: #999999; font-style: italic"># or</span>
+<span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">math</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">sqrt</span>
+<span style="color: #d0d0d0">r</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">sqrt(</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">)</span>
+<span style="color: #999999; font-style: italic"># or</span>
+<span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">math</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>   <span style="color: #999999; font-style: italic"># import everything in math</span>
+<span style="color: #d0d0d0">r</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">sqrt(</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">)</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Another example on computing with functions from <code>math</code>  <a name="___sec30"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Evaluate
+
+<p>&nbsp;<br>
+$$ Q = \sin x\cos x + 4\ln x $$
+<p>&nbsp;<br>
+
+for \( x=1.2 \).
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">math</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">sin,</span> <span style="color: #d0d0d0">cos,</span> <span style="color: #d0d0d0">log</span>
+<span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1.2</span>
+<span style="color: #d0d0d0">Q</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">sin(x)*cos(x)</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">*log(x)</span>   <span style="color: #999999; font-style: italic"># log is ln (base e)</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">Q</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Computers have inexact arithmetics because of round-off errors  <a name="___sec31"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Let us compute \( 1/49\cdot 49 \) and \( 1/51\cdot 51 \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">v1</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">/</span><span style="color: #3677a9">49.0</span><span style="color: #d0d0d0">*</span><span style="color: #3677a9">49</span>
+<span style="color: #d0d0d0">v2</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">/</span><span style="color: #3677a9">51.0</span><span style="color: #d0d0d0">*</span><span style="color: #3677a9">51</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;%.16f %.16f&#39;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">(v1,</span> <span style="color: #d0d0d0">v2)</span>
+</pre></div>
+<p>
+Output with 16 decimals becomes
+
+<p>
+
+<!-- code=text typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"> 0.9999999999999999 1.0000000000000000
+</pre></div>
+<ul>
+  <p><li> Most real numbers are represented inexactly on a computer (16 digits)</li>
+  <p><li> Neither 1/49 nor 1/51 is represented exactly, the error is typically \( 10^{-16} \)</li>
+  <p><li> Sometimes such small errors propagate to the final answer, sometimes not, and somtimes the small errors accumulate through many mathematical operations</li>
+  <p><li> Lesson learned: real numbers on a computer and the results of mathematical computations are only approximate</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Another example involving math functions  <a name="___sec32"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+The \( \sinh x \) function is defined as
+
+<p>&nbsp;<br>
+$$\sinh (x) = \frac{1}{2}\left(e^{x} - e^{-x}\right) $$
+<p>&nbsp;<br>
+
+
+<p>
+We can evaluate this function in three ways:
+
+<ol>
+ <p><li> <code>math.sinh</code></li>
+ <p><li> combination of two <code>math.exp</code></li>
+ <p><li> combination of two powers of <code>math.e</code></li>
+</ol>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">math</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">sinh,</span> <span style="color: #d0d0d0">exp,</span> <span style="color: #d0d0d0">e,</span> <span style="color: #d0d0d0">pi</span>
+<span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">*pi</span>
+<span style="color: #d0d0d0">r1</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">sinh(x)</span>
+<span style="color: #d0d0d0">r2</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*(exp(x)</span> <span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">exp(-x))</span>
+<span style="color: #d0d0d0">r3</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*(e**x</span> <span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">e**(-x))</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;%.16f %.16f %.16f&#39;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">(r1,r2,r3)</span>
+</pre></div>
+<p>
+Output: <code>r1</code> is \( 267.744894041016\underline{4369} \), <code>r2</code> is
+\( 267.744894041016\underline{4369} \), <code>r3</code> is
+\( 267.744894041016\underline{3232} \) (!)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Python can be used interactively as a calculator and to test statements  <a name="___sec33"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<ul>
+  <p><li> So far we have performed calculations in Python <em>programs</em></li>
+  <p><li> Python can also be used interactively in what is known as a <em>shell</em></li>
+  <p><li> Type <code>python</code>, <code>ipython</code>, or <code>idle</code> in the terminal window</li>
+  <p><li> A Python shell is entered where you can write statements after <code>>>></code>
+    (IPython has a different prompt)</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">Terminal&gt;</span> <span style="color: #d0d0d0">python</span>
+<span style="color: #d0d0d0">Python</span> <span style="color: #3677a9">2.7</span><span style="color: #d0d0d0">.</span><span style="color: #3677a9">6</span> <span style="color: #d0d0d0">(r25:</span><span style="color: #3677a9">409</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">Feb</span> <span style="color: #3677a9">27</span> <span style="color: #3677a9">2014</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">19</span><span style="color: #d0d0d0">:</span><span style="color: #3677a9">35</span><span style="color: #d0d0d0">:</span><span style="color: #3677a9">40</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">...</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">C</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">41</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">F</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">(</span><span style="color: #3677a9">9.0</span><span style="color: #d0d0d0">/</span><span style="color: #3677a9">5</span><span style="color: #d0d0d0">)*C</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">32</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">F</span>
+<span style="color: #3677a9">105.8</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">F</span>
+<span style="color: #3677a9">105.8</span>
+</pre></div>
+<p>
+Previous commands can be recalled and edited
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Python has full support for complex numbers  <a name="___sec34"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<ul>
+  <p><li> \( 2+3i \) in mathematics is written as <code>2 + 3j</code> in Python</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">-</span><span style="color: #3677a9">2</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">b</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0.5</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">s</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">complex</span><span style="color: #d0d0d0">(a,</span> <span style="color: #d0d0d0">b)</span>  <span style="color: #999999; font-style: italic"># make complex from variables</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">s</span>
+<span style="color: #d0d0d0">(-</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">+</span><span style="color: #3677a9">0.5j</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">s*w</span>                <span style="color: #999999; font-style: italic"># complex*complex</span>
+<span style="color: #d0d0d0">(-</span><span style="color: #3677a9">10.5</span><span style="color: #d0d0d0">-</span><span style="color: #3677a9">3.75j</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">s/w</span>                <span style="color: #999999; font-style: italic"># complex/complex</span>
+<span style="color: #d0d0d0">(-</span><span style="color: #3677a9">0.25641025641025639</span><span style="color: #d0d0d0">+</span><span style="color: #3677a9">0.28205128205128205j</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">s.real</span>
+<span style="color: #d0d0d0">-</span><span style="color: #3677a9">2.0</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">s.imag</span>
+<span style="color: #3677a9">0.5</span>
+</pre></div>
+<p>
+See the book for additional info
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Python can also do symbolic computing  <a name="___sec35"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<ul>
+ <p><li> Numerical computing: computation with numbers</li>
+ <p><li> Symbolic computing: work with formulas (as in trad. math)</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">sympy</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">t,</span> <span style="color: #d0d0d0">v0,</span> <span style="color: #d0d0d0">g</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">symbols(</span><span style="color: #ed9d13">&#39;t v0 g&#39;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">v0*t</span> <span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">Rational(</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">)*g*t**</span><span style="color: #3677a9">2</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">dydt</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">diff(y,</span> <span style="color: #d0d0d0">t)</span>                     <span style="color: #999999; font-style: italic"># 1st derivative</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">dydt</span>
+<span style="color: #d0d0d0">-g*t</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">v0</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;acceleration:&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">diff(y,</span> <span style="color: #d0d0d0">t,</span> <span style="color: #d0d0d0">t)</span>  <span style="color: #999999; font-style: italic"># 2nd derivative</span>
+<span style="color: #d0d0d0">acceleration:</span> <span style="color: #d0d0d0">-g</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">y2</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">integrate(dydt,</span> <span style="color: #d0d0d0">t)</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">y2</span>
+<span style="color: #d0d0d0">-g*t**</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">/</span><span style="color: #3677a9">2</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">t*v0</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>SymPy can do a lot of traditional mathematics  <a name="___sec36"></a></h2>
+
+
+<!-- code=python (!bc pyshell) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">v0*t</span> <span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">Rational(</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">)*g*t**</span><span style="color: #3677a9">2</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">roots</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">solve(y,</span> <span style="color: #d0d0d0">t)</span>    <span style="color: #999999; font-style: italic"># solve y=0 wrt t</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">roots</span>
+<span style="color: #d0d0d0">[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">*v0/g]</span>
+
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">x,</span> <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">symbols(</span><span style="color: #ed9d13">&#39;x y&#39;</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">f</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">-sin(x)*sin(y)</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">cos(x)*cos(y)</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">simplify(f)</span>
+<span style="color: #d0d0d0">cos(x</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">y)</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">expand(sin(x+y),</span> <span style="color: #d0d0d0">trig=</span><span style="color: #24909d">True</span><span style="color: #d0d0d0">)</span>  <span style="color: #999999; font-style: italic"># requires a trigonometric hint</span>
+<span style="color: #d0d0d0">sin(x)*cos(y)</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">sin(y)*cos(x)</span>
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Summary of Chapter 1 (part 1)  <a name="___sec37"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<ul>
+  <p><li> Programs must be accurate!</li>
+  <p><li> Variables are names for objects</li>
+  <p><li> We have met different object types: <code>int</code>, <code>float</code>, <code>str</code></li>
+  <p><li> Choose variable names close to the mathematical symbols in
+    the problem being solved</li>
+  <p><li> Arithmetic operations in Python: term by term (+/-) from left to right, power before * and / - as in mathematics; use parenthesis when there is any doubt</li>
+  <p><li> Watch out for unintended integer division!</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Summary of Chapter 1 (part 2)  <a name="___sec38"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Mathematical functions like \( \sin x \) and \( \ln x \) must be imported from the <code>math</code> module:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">math</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">sin,</span> <span style="color: #d0d0d0">log</span>
+<span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">5</span>
+<span style="color: #d0d0d0">r</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">sin(</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">*log(</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">*x))</span>
+</pre></div>
+<p>
+Use printf syntax for full control of output of text and numbers!
+
+<p>
+Important terms: object, variable, algorithm, statement, assignment, implementation, verification, debugging
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Programming is challenging  <a name="___sec39"></a></h2>
+
+<blockquote>
+    
+    <ul>
+      <p><li> <em>You think you know when you can learn,<br />
+        are more sure when you can write,<br />
+        even more when you can teach,<br />
+        but certain when you can program</em></li>
+      <p><li> <em>Within a computer, natural language is unnatural</em></li>
+      <p><li> <em>To understand a program you must become both the machine and the program</em></li>
+    </ul>
+<p>
+    
+    Alan Perlis, computer scientist, 1922-1990.
+</blockquote>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Summarizing example: throwing a ball (problem)  <a name="___sec40"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+We throw a ball with velocity \( v_0 \), at an angle \( \theta \) with the horizontal, from the point \( (x=0,y=y_0) \). The trajectory of the ball is a parabola (we neglect air resistance):
+
+<p>&nbsp;<br>
+$$ y = x\tan\theta - \frac{1}{2v_0}\frac{gx^2}{\cos^2\theta} + y_0 $$
+<p>&nbsp;<br>
+
+
+<ul>
+  <p><li> Program tasks:</li>
+
+<ul>
+   <p><li> initialize input data (\( v_0 \), \( g \), \( \theta \), \( y_0 \))</li>
+   <p><li> import from <code>math</code></li>
+   <p><li> compute \( y \)</li>
+</ul>
+<p>
+
+  <p><li> We give \( x \), \( y \) and \( y_0 \) in m, \( g = 9.81\hbox {m/s}^2 \), \( v_0 \) in km/h and \( \theta \) in degrees - this requires conversion of \( v_0 \) to m/s and \( \theta \) to radians</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Summarizing example: throwing a ball (solution)  <a name="___sec41"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+Program:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">g</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">9.81</span>    <span style="color: #999999; font-style: italic"># m/s**2</span>
+<span style="color: #d0d0d0">v0</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">15</span>     <span style="color: #999999; font-style: italic"># km/h</span>
+<span style="color: #d0d0d0">theta</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">60</span>  <span style="color: #999999; font-style: italic"># degrees</span>
+<span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0.5</span>     <span style="color: #999999; font-style: italic"># m</span>
+<span style="color: #d0d0d0">y0</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1</span>      <span style="color: #999999; font-style: italic"># m</span>
+
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&quot;&quot;&quot;v0    = %.1f km/h</span>
+<span style="color: #ed9d13">theta = %d degrees</span>
+<span style="color: #ed9d13">y0    = %.1f m</span>
+<span style="color: #ed9d13">x     = %.1f m&quot;&quot;&quot;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">(v0,</span> <span style="color: #d0d0d0">theta,</span> <span style="color: #d0d0d0">y0,</span> <span style="color: #d0d0d0">x)</span>
+
+<span style="color: #999999; font-style: italic"># convert v0 to m/s and theta to radians:</span>
+<span style="color: #d0d0d0">v0</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">v0/</span><span style="color: #3677a9">3.6</span>
+<span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">math</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">pi,</span> <span style="color: #d0d0d0">tan,</span> <span style="color: #d0d0d0">cos</span>
+<span style="color: #d0d0d0">theta</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">theta*pi/</span><span style="color: #3677a9">180</span>
+
+<span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x*tan(theta)</span> <span style="color: #d0d0d0">-</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">/(</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">*v0)*g*x**</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">/((cos(theta))**</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">)</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">y0</span>
+
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;y     = %.1f m&#39;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">y</span>
+</pre></div>
+<p>
+</div>
+
+
+
+</section>
+
+
+
+</div> <!-- class="slides" -->
+</div> <!-- class="reveal" -->
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width:  960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
+});
+</script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
+
+
+</body>
+</html>
