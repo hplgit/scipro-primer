@@ -1,0 +1,327 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Ch.4: User input and error handling">
+
+
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(u' Programs until now hardcode input data ',
+               2,
+               None,
+               '___sec0'),
+              (u' How do professional programs get their input? ',
+               2,
+               None,
+               '___sec1'),
+              (u' How can we specify input data in programs? ',
+               2,
+               None,
+               '___sec2'),
+              (u' Getting input from questions and anwsers ',
+               2,
+               None,
+               '___sec3'),
+              (u' Another example: print the n first even numbers ',
+               2,
+               None,
+               '___sec4'),
+              (u' Reading from the command line ', 2, None, '___sec5'),
+              (u' Command-line arguments separated? ', 2, None, '___sec6'),
+              (u' Example on reading 3 parameters from the command line ',
+               2,
+               None,
+               '___sec7'),
+              (u' The magic eval function ', 2, None, '___sec8'),
+              (u' Be careful with eval and string values ',
+               2,
+               None,
+               '___sec9'),
+              (u' With eval, a little program can do much... ',
+               2,
+               None,
+               '___sec10'),
+              (u' This great flexibility also quickly breaks programs... ',
+               2,
+               None,
+               '___sec11'),
+              (u' A similar magic function: exec ', 2, None, '___sec12'),
+              (u' What can exec be used for? ', 2, None, '___sec13'),
+              (u' StringFunction: string formulas $\\rightarrow$ functions ',
+               2,
+               None,
+               '___sec14'),
+              (u' Command-line arguments with options ', 2, None, '___sec15'),
+              (u' Programming option-value pairs with the argparse module ',
+               2,
+               None,
+               '___sec16'),
+              (u' The program has long and short command-line arguments ',
+               2,
+               None,
+               '___sec17'),
+              (u' Graphical user interfaces ', 2, None, '___sec18'),
+              (u' A graphical Celsius-Fahrenheit conversion program ',
+               2,
+               None,
+               '___sec19'),
+              (u' The GUI code ', 2, None, '___sec20'),
+              (u' Handling errors in input ', 2, None, '___sec21'),
+              (u' Exceptions instead of if tests ', 2, None, '___sec22'),
+              (u' Temperature conversion example with try-except ',
+               2,
+               None,
+               '___sec23'),
+              (u' It is best to test for specific exceptions ',
+               2,
+               None,
+               '___sec24'),
+              (u' Branching into different except blocks ',
+               2,
+               None,
+               '___sec25'),
+              (u' The programmer can raise exceptions ', 2, None, '___sec26'),
+              (u' Examples on raising exceptions ', 2, None, '___sec27'),
+              (u' Calling the previous function and running the program ',
+               2,
+               None,
+               '___sec28'),
+              (u' Reading data from files ', 2, None, '___sec29'),
+              (u' Reading a file line by line ', 2, None, '___sec30'),
+              (u' Alternative ways to read a file ', 2, None, '___sec31'),
+              (u' Most data files contain text mixed with numbers ',
+               2,
+               None,
+               '___sec32'),
+              (u' Reading a mixture of text and numbers ',
+               2,
+               None,
+               '___sec33'),
+              (u' Complete program for reading rainfall data ',
+               2,
+               None,
+               '___sec34'),
+              (u' Writing data to file ', 2, None, '___sec35'),
+              (u' Example: Writing a table to file ', 2, None, '___sec36'),
+              (u' Making your own modules ', 2, None, '___sec37'),
+              (u' Case on making our own module ', 2, None, '___sec38'),
+              (u' First we make Python functions for the formuluas ',
+               2,
+               None,
+               '___sec39'),
+              (u' Then we can make the module file ', 2, None, '___sec40'),
+              (u' Adding a test block in a module file ',
+               2,
+               None,
+               '___sec41'),
+              (u' Test blocks are often collected in functions ',
+               2,
+               None,
+               '___sec42'),
+              (u' How can Python find our new module? ', 2, None, '___sec43'),
+              (u' Summary of reading from the keyboard and command line ',
+               2,
+               None,
+               '___sec44'),
+              (u' Summary of reading options-value pairs ',
+               2,
+               None,
+               '___sec45'),
+              (u' Summary of eval and exec ', 2, None, '___sec46'),
+              (u' Summary of exceptions ', 2, None, '___sec47'),
+              (u' Summary of file reading and writing ', 2, None, '___sec48'),
+              (u' A Summarizing example: solving $f(x)=0$ ',
+               2,
+               None,
+               '___sec49'),
+              (u' We shall learn about a method for solving $f(x)=0$ ',
+               2,
+               None,
+               '___sec50'),
+              (u' The Bisection method ', 2, None, '___sec51'),
+              (u' Solving $\\cos \\pi x =0$: iteration no.~1 ',
+               2,
+               None,
+               '___sec52'),
+              (u' Solving $\\cos \\pi x =0$: iteration no.~2 ',
+               2,
+               None,
+               '___sec53'),
+              (u' Solving $\\cos \\pi x =0$: iteration no.~3 ',
+               2,
+               None,
+               '___sec54'),
+              (u' Solving $\\cos \\pi x =0$: iteration no.~4 ',
+               2,
+               None,
+               '___sec55'),
+              (u' From method description to a precise algorithm ',
+               2,
+               None,
+               '___sec56'),
+              (u' The algorithm can be made more efficient ',
+               2,
+               None,
+               '___sec57'),
+              (u' New, more efficient version of the algorithm ',
+               2,
+               None,
+               '___sec58'),
+              (u' How to choose $n$? That is, when to stop the iteration ',
+               2,
+               None,
+               '___sec59'),
+              (u' Final version of the Bisection algorithm ',
+               2,
+               None,
+               '___sec60'),
+              (u' Python implementation of the Bisection algorithm ',
+               2,
+               None,
+               '___sec61'),
+              (u' Implementation as a function (more reusable!) ',
+               2,
+               None,
+               '___sec62'),
+              (u' Make a module of this function ', 2, None, '___sec63'),
+              (u' To the point of this lecture: get input! ',
+               2,
+               None,
+               '___sec64'),
+              (u' Improvements: error handling ', 2, None, '___sec65'),
+              (u' Applications of the Bisection method ',
+               2,
+               None,
+               '___sec66')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<a name="part0061"></a>
+<!-- !split -->
+
+<h2>Final version of the Bisection algorithm  <a name="___sec60"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">f_a=f(a)
+<span style="color: #8B008B; font-weight: bold">if</span> f_a*f(b) &gt; <span style="color: #B452CD">0</span>:
+    <span style="color: #228B22"># error: f does not change sign in [a,b]</span>
+
+i = <span style="color: #B452CD">0</span>
+<span style="color: #8B008B; font-weight: bold">while</span> b-a &gt; epsilon:
+    i = i + <span style="color: #B452CD">1</span>
+    m = (a + b)/<span style="color: #B452CD">2</span>
+    f_m = f(m)
+    <span style="color: #8B008B; font-weight: bold">if</span> f_a*f_m &lt;= <span style="color: #B452CD">0</span>:
+        b = m  <span style="color: #228B22"># root is in left half</span>
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        a = m  <span style="color: #228B22"># root is in right half</span>
+        f_a = f_m
+
+<span style="color: #228B22"># if x is the real root, |x-m| &lt; epsilon</span>
+</pre></div>
+<p>
+</div>
+
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._input-solarized.html060.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._input-solarized.html062.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
