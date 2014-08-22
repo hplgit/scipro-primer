@@ -1,0 +1,230 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Ch.3: Functions and branching">
+
+
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(u' We have used many Python functions ', 2, None, '___sec0'),
+              (u' Python functions ', 2, None, '___sec1'),
+              (u' Functions must be called ', 2, None, '___sec2'),
+              (u' Local variables in Functions ', 2, None, '___sec3'),
+              (u' Turn a formula into a Python function ',
+               2,
+               None,
+               '___sec4'),
+              (u' Function arguments become local variables ',
+               2,
+               None,
+               '___sec5'),
+              (u' Functions may access global variables ',
+               2,
+               None,
+               '___sec6'),
+              (u' Functions can return multiple values ', 2, None, '___sec7'),
+              (u' Example: Compute a function defined as a sum ',
+               2,
+               None,
+               '___sec8'),
+              (u' Returning errors as well from the L(x, n) function ',
+               2,
+               None,
+               '___sec9'),
+              (u' Functions do not need to return objects ',
+               2,
+               None,
+               '___sec10'),
+              (u' Example on a function without return value ',
+               2,
+               None,
+               '___sec11'),
+              (u' Keyword arguments are useful to simplify function calls and help document the arguments ',
+               2,
+               None,
+               '___sec12'),
+              (u' Example: Mathematical function of one variable, but with additional parameteres ',
+               2,
+               None,
+               '___sec13'),
+              (u' Doc strings ', 2, None, '___sec14'),
+              (u' Convention for input and output data in functions ',
+               2,
+               None,
+               '___sec15'),
+              (u' The main program ', 2, None, '___sec16'),
+              (u' Python functions as arguments to Python functions ',
+               2,
+               None,
+               '___sec17'),
+              (u' Application of the `diff2` function ', 2, None, '___sec18'),
+              (u' Round-off errors caused nonsense values in the table ',
+               2,
+               None,
+               '___sec19'),
+              (u' Lambda functions for compact inline function definitions ',
+               2,
+               None,
+               '___sec20'),
+              (u' Example on using a lambda function to save typing ',
+               2,
+               None,
+               '___sec21'),
+              (u' If tests for branching the flow of statements ',
+               2,
+               None,
+               '___sec22'),
+              (u' If tests with multiple branches ', 2, None, '___sec23'),
+              (u' Example on multiple branching ', 2, None, '___sec24'),
+              (u' Inline if tests for shorter code ', 2, None, '___sec25'),
+              (u' Test functions ', 2, None, '___sec26'),
+              (u' Why write test functions according to these rules? ',
+               2,
+               None,
+               '___sec27'),
+              (u' Summary of if tests and functions ', 2, None, '___sec28'),
+              (u' A summarizing example for Chapter 3; problem ',
+               2,
+               None,
+               '___sec29'),
+              (u' The program: function for computing the formula ',
+               2,
+               None,
+               '___sec30'),
+              (u' The program: function, now with test for possible errors ',
+               2,
+               None,
+               '___sec31'),
+              (u' The program: application (and main program) ',
+               2,
+               None,
+               '___sec32'),
+              (u' The program: verification (with test function) ',
+               2,
+               None,
+               '___sec33')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+\renewcommand{\Re}{\bbbr}
+
+\newcommand{\rhodim}{\mbox{kgm}^{-3}}
+\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
+\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
+
+
+\newcommand{\Oof}[1]{\mathcal{O}(#1)}
+\newcommand{\Prob}[1]{\hbox{P}(#1)}
+\newcommand{\Var}[1]{\hbox{Var}(#1)}
+\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
+\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
+$$
+
+
+
+
+    
+<a name="part0022"></a>
+<!-- !split -->
+
+<h2>Example on using a lambda function to save typing  <a name="___sec21"></a></h2>
+
+Old code:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(t):
+    <span style="color: #8B008B; font-weight: bold">return</span> t**(-<span style="color: #B452CD">6</span>)
+
+<span style="color: #8B008B; font-weight: bold">print</span> diff2(g)
+</pre></div>
+<p>
+New, more compact code with lambda:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> diff2(<span style="color: #8B008B; font-weight: bold">lambda</span> t: t**(-<span style="color: #B452CD">6</span>))
+</pre></div>
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._funcif-solarized.html021.html">&laquo; Previous</a></div>
+</td><td>
+<div style="text-align: right;"><a href="._funcif-solarized.html023.html">Next &raquo;</a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
