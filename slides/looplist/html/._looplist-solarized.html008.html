@@ -178,24 +178,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands.tex -->
-$$
-\newcommand{\tp}{\thinspace .}
-\renewcommand{\Re}{\bbbr}
-
-\newcommand{\rhodim}{\mbox{kgm}^{-3}}
-\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
-\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
-
-
-\newcommand{\Oof}[1]{\mathcal{O}(#1)}
-\newcommand{\Prob}[1]{\hbox{P}(#1)}
-\newcommand{\Var}[1]{\hbox{Var}(#1)}
-\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
-\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
-$$
-
-
 
 
     
@@ -205,12 +187,10 @@ $$
 <h2>Lists are objects for storing a sequence of things (objects)  <a name="___sec7"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal"><b></b>
+So far, one variable has referred to one number (or string),
+but sometimes we naturally have a collection of numbers, say degrees \( -20, -15, -10, -5, 0, \ldots, 40 \)
 
-<ul>
-  <li> So far, one variable has referred to one number (or string)</li>
-  <li> Sometimes we naturally have a collection of numbers, say degrees \( -20, -15, -10, -5, 0, \ldots, 40 \)</li>
-</ul>
-
+<p>
 Simple solution: one variable for each value
 
 <p>

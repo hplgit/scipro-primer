@@ -111,24 +111,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands.tex -->
-$$
-\newcommand{\tp}{\thinspace .}
-\renewcommand{\Re}{\bbbr}
-
-\newcommand{\rhodim}{\mbox{kgm}^{-3}}
-\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
-\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
-
-
-\newcommand{\Oof}[1]{\mathcal{O}(#1)}
-\newcommand{\Prob}[1]{\hbox{P}(#1)}
-\newcommand{\Var}[1]{\hbox{Var}(#1)}
-\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
-\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
-$$
-
-
 
 
     
@@ -299,14 +281,9 @@ a boolean condition is true
 
 <p>
 
-<!-- code=python (!bc pyopt) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">C</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">-</span><span style="color: #3677a9">20</span>
-<span style="color: #d0d0d0">dC</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">5</span>
-<span style="color: #6ab825; font-weight: bold">while</span> <span style="color: #d0d0d0">C</span> <span style="color: #d0d0d0">&lt;=</span> <span style="color: #3677a9">40</span><span style="color: #d0d0d0">:</span>
-    <span style="color: #d0d0d0">F</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">(</span><span style="color: #3677a9">9.0</span><span style="color: #d0d0d0">/</span><span style="color: #3677a9">5</span><span style="color: #d0d0d0">)*C</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">32</span>
-    <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">C,</span> <span style="color: #d0d0d0">F</span>
-    <span style="color: #d0d0d0">C</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">C</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">dC</span>
-</pre></div>
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=C+%3D+-20%0AdC+%3D+5%0Awhile+C+%3C%3D+40%3A%0A++++F+%3D+%289.0%2F5%29%2AC+%2B+32%0A++++print+C%2C+F%0A++++C+%3D+C+%2B+dC&curInstr=0&py=2&cumulative=false">
+</iframe>
 <p>
 Let us simulate the while loop by hand:
 
@@ -419,13 +396,10 @@ Rule 2: <code>C1 or C2</code> is <code>True</code> if one of <code>C1</code> or 
 <h2>Lists are objects for storing a sequence of things (objects)  <a name="___sec7"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal"><b></b>
+So far, one variable has referred to one number (or string),
+but sometimes we naturally have a collection of numbers, say degrees \( -20, -15, -10, -5, 0, \ldots, 40 \)
 
-<ul>
-  <p><li> So far, one variable has referred to one number (or string)</li>
-  <p><li> Sometimes we naturally have a collection of numbers, say degrees \( -20, -15, -10, -5, 0, \ldots, 40 \)</li>
-</ul>
 <p>
-
 Simple solution: one variable for each value
 
 <p>
@@ -463,7 +437,7 @@ Now there is one variable, <code>C</code>, holding all the values
 <h2>List operations: initialization and indexing  <a name="___sec8"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal"><b></b>
-Initialize in square brackets and comma between the Python objects:
+Initialize with square brackets and comma between the Python objects:
 
 <p>
 
@@ -472,6 +446,8 @@ Initialize in square brackets and comma between the Python objects:
 </pre></div>
 <p>
 Elements are accessed via an index: <code>L1[3]</code> (index=3).
+
+<p>
 List indices start at <code>0</code>: <code>0</code>, <code>1</code>, <code>2</code>, ... <code>len(L1)-1</code>.
 
 <p>
@@ -600,12 +576,9 @@ As with <em>while</em> loops, the statements in the loop must be intended!
 <div class="alert alert-block alert-block alert-text-normal"><b></b>
 <p>
 
-<!-- code=python (!bc pyopt) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">degrees</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">20</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">40</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">100</span><span style="color: #d0d0d0">]</span>
-<span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">C</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #d0d0d0">degrees:</span>
-    <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">C</span>
-<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;The degrees list has&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">len</span><span style="color: #d0d0d0">(degrees),</span> <span style="color: #ed9d13">&#39;elements&#39;</span>
-</pre></div>
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=degrees+%3D+%5B0%2C+10%2C+20%2C+40%2C+100%5D%0Afor+C+in+degrees%3A%0A++++print+C%0Aprint+%27The+degrees+list+has%27%2C+len%28degrees%29%2C+%27elements%27&curInstr=0&py=2&cumulative=false">
+</iframe>
 <p>
 Simulation by hand:
 
@@ -1226,12 +1199,9 @@ List with many indices: <code>somelist[i1][i2][i3]...</code>
 <h2>Iteration over a specific nested list  <a name="___sec29"></a></h2>
 
 
-<!-- code=python (!bc pyopt) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">L</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[[</span><span style="color: #3677a9">9</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">7</span><span style="color: #d0d0d0">],</span> <span style="color: #d0d0d0">[-</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">5</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">6</span><span style="color: #d0d0d0">]]</span>
-<span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">row</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #d0d0d0">L:</span>
-    <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">column</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #d0d0d0">row:</span>
-        <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">column</span>
-</pre></div>
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=L+%3D+%5B%5B9%2C+7%5D%2C+%5B-1%2C+5%2C+6%5D%5D%0Afor+row+in+L%3A%0A++++for+column+in+row%3A%0A++++++++print+column&curInstr=0&py=2&cumulative=false">
+</iframe>
 <p>
 Simulate this program by hand!
 
