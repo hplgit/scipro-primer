@@ -178,24 +178,6 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<!-- newcommands.tex -->
-$$
-\newcommand{\tp}{\thinspace .}
-\renewcommand{\Re}{\bbbr}
-
-\newcommand{\rhodim}{\mbox{kgm}^{-3}}
-\newcommand{\mudim}{\mbox{kg}\,\mbox{s}^{-1}\mbox{m}^{-1}}
-\newcommand{\Cdim}{\mbox{kg}\,\mbox{s}^{-1}}
-
-
-\newcommand{\Oof}[1]{\mathcal{O}(#1)}
-\newcommand{\Prob}[1]{\hbox{P}(#1)}
-\newcommand{\Var}[1]{\hbox{Var}(#1)}
-\newcommand{\Cov}[2]{\hbox{Cov}(#1,#2)}
-\newcommand{\StDev}[1]{\hbox{StDev}(#1)}
-$$
-
-
 
 
     
@@ -205,12 +187,9 @@ $$
 <h2>Iteration over a specific nested list  <a name="___sec29"></a></h2>
 
 
-<!-- code=python (!bc pyopt) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">L = [[<span style="color: #B452CD">9</span>, <span style="color: #B452CD">7</span>], [-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">5</span>, <span style="color: #B452CD">6</span>]]
-<span style="color: #8B008B; font-weight: bold">for</span> row <span style="color: #8B008B">in</span> L:
-    <span style="color: #8B008B; font-weight: bold">for</span> column <span style="color: #8B008B">in</span> row:
-        <span style="color: #8B008B; font-weight: bold">print</span> column
-</pre></div>
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=L+%3D+%5B%5B9%2C+7%5D%2C+%5B-1%2C+5%2C+6%5D%5D%0Afor+row+in+L%3A%0A++++for+column+in+row%3A%0A++++++++print+column&curInstr=0&py=2&cumulative=false">
+</iframe>
 <p>
 Simulate this program by hand!
 
