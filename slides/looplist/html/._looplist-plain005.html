@@ -105,7 +105,7 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec11'),
               (u' Simulate a for loop by hand ', 2, None, '___sec12'),
               (u' Making a table with a for loop ', 2, None, '___sec13'),
-              (u' Translation of a for loop to a while loop ',
+              (u' A for loop can always be translated to a while loop ',
                2,
                None,
                '___sec14'),
@@ -142,10 +142,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec29'),
-              (u' Tuples are lists that cannot be changed ',
-               2,
-               None,
-               '___sec30'),
+              (u' Tuples are constant lists ', 2, None, '___sec30'),
               (u' Why tuples when lists have more functionality? ',
                2,
                None,
@@ -172,7 +169,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec38'),
-              (u' How to find more Python information ', 2, None, '___sec39')]}
+              (u' How to find Python info ', 2, None, '___sec39')]}
 end of tocinfo -->
 
 <body>
@@ -208,9 +205,14 @@ MathJax.Hub.Config({
 
 <p>
 
-<iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=C+%3D+-20%0AdC+%3D+5%0Awhile+C+%3C%3D+40%3A%0A++++F+%3D+%289.0%2F5%29%2AC+%2B+32%0A++++print+C%2C+F%0A++++C+%3D+C+%2B+dC&curInstr=0&py=2&cumulative=false">
-</iframe>
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">C <span style="color: #666666">=</span> <span style="color: #666666">-20</span>
+dC <span style="color: #666666">=</span> <span style="color: #666666">5</span>
+<span style="color: #008000; font-weight: bold">while</span> C <span style="color: #666666">&lt;=</span> <span style="color: #666666">40</span>:
+    F <span style="color: #666666">=</span> (<span style="color: #666666">9.0/5</span>)<span style="color: #666666">*</span>C <span style="color: #666666">+</span> <span style="color: #666666">32</span>
+    <span style="color: #008000; font-weight: bold">print</span> C, F
+    C <span style="color: #666666">=</span> C <span style="color: #666666">+</span> dC
+</pre></div>
 <p>
 Let us simulate the while loop by hand:
 

@@ -105,7 +105,7 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec11'),
               (u' Simulate a for loop by hand ', 2, None, '___sec12'),
               (u' Making a table with a for loop ', 2, None, '___sec13'),
-              (u' Translation of a for loop to a while loop ',
+              (u' A for loop can always be translated to a while loop ',
                2,
                None,
                '___sec14'),
@@ -142,10 +142,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec29'),
-              (u' Tuples are lists that cannot be changed ',
-               2,
-               None,
-               '___sec30'),
+              (u' Tuples are constant lists ', 2, None, '___sec30'),
               (u' Why tuples when lists have more functionality? ',
                2,
                None,
@@ -172,7 +169,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec38'),
-              (u' How to find more Python information ', 2, None, '___sec39')]}
+              (u' How to find Python info ', 2, None, '___sec39')]}
 end of tocinfo -->
 
 <body>
@@ -205,7 +202,7 @@ MathJax.Hub.Config({
 <h2>Storing the table columns as lists  <a name="___sec17"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal"><b></b>
-Let us put all the Fahrenheit values also in a list:
+Let us put all the Fahrenheit values in a list as well:
 
 <p>
 
@@ -216,9 +213,10 @@ Fdegrees <span style="color: #666666">=</span> []            <span style="color:
 <span style="color: #008000; font-weight: bold">for</span> C <span style="color: #AA22FF; font-weight: bold">in</span> Cdegrees:
     F <span style="color: #666666">=</span> (<span style="color: #666666">9.0/5</span>)<span style="color: #666666">*</span>C <span style="color: #666666">+</span> <span style="color: #666666">32</span>
     Fdegrees<span style="color: #666666">.</span>append(F)   <span style="color: #408080; font-style: italic"># add new element to Fdegrees</span>
+<span style="color: #008000; font-weight: bold">print</span> F
 </pre></div>
 <p>
-<code>print F</code> now prints the list
+<code>print F</code> results in
 
 <p>
 

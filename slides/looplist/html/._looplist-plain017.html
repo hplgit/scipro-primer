@@ -105,7 +105,7 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec11'),
               (u' Simulate a for loop by hand ', 2, None, '___sec12'),
               (u' Making a table with a for loop ', 2, None, '___sec13'),
-              (u' Translation of a for loop to a while loop ',
+              (u' A for loop can always be translated to a while loop ',
                2,
                None,
                '___sec14'),
@@ -142,10 +142,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec29'),
-              (u' Tuples are lists that cannot be changed ',
-               2,
-               None,
-               '___sec30'),
+              (u' Tuples are constant lists ', 2, None, '___sec30'),
               (u' Why tuples when lists have more functionality? ',
                2,
                None,
@@ -172,7 +169,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec38'),
-              (u' How to find more Python information ', 2, None, '___sec39')]}
+              (u' How to find Python info ', 2, None, '___sec39')]}
 end of tocinfo -->
 
 <body>
@@ -216,17 +213,21 @@ $$ S = \sum_{i=1}^N i^2 $$
 S <span style="color: #666666">=</span> <span style="color: #666666">0</span>
 <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, N<span style="color: #666666">+1</span>):
     S <span style="color: #666666">+=</span> i<span style="color: #666666">**2</span>
+</pre></div>
+<p>
+Or (less common):
 
-<span style="color: #408080; font-style: italic"># or</span>
-S <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">S <span style="color: #666666">=</span> <span style="color: #666666">0</span>
 i <span style="color: #666666">=</span> <span style="color: #666666">1</span>
 <span style="color: #008000; font-weight: bold">while</span> i <span style="color: #666666">&lt;=</span> N:
     S <span style="color: #666666">+=</span> i<span style="color: #666666">**2</span>
     i <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
 </pre></div>
 <p>
-Mathematical sums appear often so remember the implementation (usually
-via <code>for</code> loop)
+Mathematical sums appear often so remember the implementation!
 </div>
 
 

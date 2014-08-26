@@ -105,7 +105,7 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec11'),
               (u' Simulate a for loop by hand ', 2, None, '___sec12'),
               (u' Making a table with a for loop ', 2, None, '___sec13'),
-              (u' Translation of a for loop to a while loop ',
+              (u' A for loop can always be translated to a while loop ',
                2,
                None,
                '___sec14'),
@@ -142,10 +142,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec29'),
-              (u' Tuples are lists that cannot be changed ',
-               2,
-               None,
-               '___sec30'),
+              (u' Tuples are constant lists ', 2, None, '___sec30'),
               (u' Why tuples when lists have more functionality? ',
                2,
                None,
@@ -172,7 +169,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec38'),
-              (u' How to find more Python information ', 2, None, '___sec39')]}
+              (u' How to find Python info ', 2, None, '___sec39')]}
 end of tocinfo -->
 
 <body>
@@ -207,9 +204,12 @@ MathJax.Hub.Config({
 <div class="alert alert-block alert-block alert-text-normal"><b></b>
 <p>
 
-<iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=degrees+%3D+%5B0%2C+10%2C+20%2C+40%2C+100%5D%0Afor+C+in+degrees%3A%0A++++print+C%0Aprint+%27The+degrees+list+has%27%2C+len%28degrees%29%2C+%27elements%27&curInstr=0&py=2&cumulative=false">
-</iframe>
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">degrees <span style="color: #666666">=</span> [<span style="color: #666666">0</span>, <span style="color: #666666">10</span>, <span style="color: #666666">20</span>, <span style="color: #666666">40</span>, <span style="color: #666666">100</span>]
+<span style="color: #008000; font-weight: bold">for</span> C <span style="color: #AA22FF; font-weight: bold">in</span> degrees:
+    <span style="color: #008000; font-weight: bold">print</span> C
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;The degrees list has&#39;</span>, <span style="color: #008000">len</span>(degrees), <span style="color: #BA2121">&#39;elements&#39;</span>
+</pre></div>
 <p>
 Simulation by hand:
 

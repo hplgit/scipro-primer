@@ -17,6 +17,9 @@ Automatically generated HTML file from Doconce source
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
 <style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -92,7 +95,7 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec11'),
               (u' Simulate a for loop by hand ', 2, None, '___sec12'),
               (u' Making a table with a for loop ', 2, None, '___sec13'),
-              (u' Translation of a for loop to a while loop ',
+              (u' A for loop can always be translated to a while loop ',
                2,
                None,
                '___sec14'),
@@ -129,10 +132,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec29'),
-              (u' Tuples are lists that cannot be changed ',
-               2,
-               None,
-               '___sec30'),
+              (u' Tuples are constant lists ', 2, None, '___sec30'),
               (u' Why tuples when lists have more functionality? ',
                2,
                None,
@@ -159,7 +159,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec38'),
-              (u' How to find more Python information ', 2, None, '___sec39')]}
+              (u' How to find Python info ', 2, None, '___sec39')]}
 end of tocinfo -->
 
 <body>
@@ -189,16 +189,9 @@ MathJax.Hub.Config({
 <div class="alert alert-block alert-block alert-text-normal"><b></b>
 <p>
 
-<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;------------------&#39;</span> <span style="color: #228B22"># table heading</span>
-C = -<span style="color: #B452CD">20</span>                    <span style="color: #228B22"># start value for C</span>
-dC = <span style="color: #B452CD">5</span>                     <span style="color: #228B22"># increment of C in loop</span>
-<span style="color: #8B008B; font-weight: bold">while</span> C &lt;= <span style="color: #B452CD">40</span>:             <span style="color: #228B22"># loop heading with condition</span>
-    F = (<span style="color: #B452CD">9.0</span>/<span style="color: #B452CD">5</span>)*C + <span style="color: #B452CD">32</span>     <span style="color: #228B22"># 1st statement inside loop</span>
-    <span style="color: #8B008B; font-weight: bold">print</span> C, F             <span style="color: #228B22"># 2nd statement inside loop</span>
-    C = C + dC             <span style="color: #228B22"># last statement inside loop</span>
-<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;------------------&#39;</span> <span style="color: #228B22"># end of table line</span>
-</pre></div>
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=print+%27------------------%27+%23+table+heading%0AC+%3D+-20++++++++++++++++++++%23+start+value+for+C%0AdC+%3D+5+++++++++++++++++++++%23+increment+of+C+in+loop%0Awhile+C+%3C%3D+40%3A+++++++++++++%23+loop+heading+with+condition%0A++++F+%3D+%289.0%2F5%29%2AC+%2B+32+++++%23+1st+statement+inside+loop%0A++++print+C%2C+F+++++++++++++%23+2nd+statement+inside+loop%0A++++C+%3D+C+%2B+dC+++++++++++++%23+last+statement+inside+loop%0Aprint+%27------------------%27+%23+end+of+table+line&curInstr=0&py=2&cumulative=false">
+</iframe>
 <p>
 </div>
 
