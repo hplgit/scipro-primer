@@ -6,7 +6,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Ch.2: Lists and loops">
+<meta name="description" content="Ch.2: Loops and lists">
 
 
 
@@ -119,57 +119,66 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec16'),
               (u' Storing the table columns as lists ', 2, None, '___sec17'),
               (u' For loop with list indices ', 2, None, '___sec18'),
-              (u' Changing a list element requires assignment to an indexed element ',
+              (u' How can we change the elements in a list? ',
                2,
                None,
                '___sec19'),
-              (u' List comprehensions: compact creation of lists ',
+              (u' Changing a list element requires assignment to an indexed element ',
                2,
                None,
                '___sec20'),
-              (u' Traversing multiple lists simultaneously with zip ',
+              (u' List comprehensions: compact creation of lists ',
                2,
                None,
                '___sec21'),
-              (u' Nested lists: list of lists ', 2, None, '___sec22'),
-              (u' Table of columns vs table of rows ', 2, None, '___sec23'),
-              (u' Illustration of table of columns ', 2, None, '___sec24'),
-              (u' Illustration of table of rows ', 2, None, '___sec25'),
-              (u' Extracting sublists (or slices) ', 2, None, '___sec26'),
-              (u' What does this code snippet do? ', 2, None, '___sec27'),
-              (u' Iteration over general nested lists ', 2, None, '___sec28'),
+              (u' Interactive demonstration of list comprehensions ',
+               2,
+               None,
+               '___sec22'),
+              (u' Traversing multiple lists simultaneously with zip ',
+               2,
+               None,
+               '___sec23'),
+              (u' Nested lists: list of lists ', 2, None, '___sec24'),
+              (u' Table of columns vs table of rows ', 2, None, '___sec25'),
+              (u' Illustration of table of columns ', 2, None, '___sec26'),
+              (u' Illustration of table of rows ', 2, None, '___sec27'),
+              (u' Extracting sublists (or slices) ', 2, None, '___sec28'),
+              (u' What does this code snippet do? ', 2, None, '___sec29'),
+              (u' Iteration over general nested lists ', 2, None, '___sec30'),
               (u' Iteration over a specific nested list ',
                2,
                None,
-               '___sec29'),
-              (u' Tuples are constant lists ', 2, None, '___sec30'),
+               '___sec31'),
+              (u' Tuples are constant lists ', 2, None, '___sec32'),
               (u' Why tuples when lists have more functionality? ',
                2,
                None,
-               '___sec31'),
-              (u' Summary of loops, lists and tuples ', 2, None, '___sec32'),
-              (u' List functionality ', 2, None, '___sec33'),
-              (u' A summarizing example for Chapter 2; problem ',
-               2,
-               None,
-               '___sec34'),
-              (u' A summarizing example for Chapter 2; the program (task 1) ',
-               2,
-               None,
-               '___sec35'),
-              (u' A summarizing example for Chapter 2; the program (task 2) ',
-               2,
-               None,
-               '___sec36'),
-              (u' A summarizing example for Chapter 2; the program (task 3) ',
+               '___sec33'),
+              (u' Summary of loops, lists and tuples ', 2, None, '___sec34'),
+              (u' List functionality ', 2, None, '___sec35'),
+              (u' A summarizing example; problem ', 2, None, '___sec36'),
+              (u' A summarizing example; program (task 1) ',
                2,
                None,
                '___sec37'),
-              (u' Using a debugger to trace the execution ',
+              (u' A summarizing example; program (task 2) ',
                2,
                None,
                '___sec38'),
-              (u' How to find Python info ', 2, None, '___sec39')]}
+              (u' A summarizing example; program (task 3) ',
+               2,
+               None,
+               '___sec39'),
+              (u' Using a debugger to trace the execution ',
+               2,
+               None,
+               '___sec40'),
+              (u' How to find Python info ', 2, None, '___sec41'),
+              (u' Warning about reading programming documentation ',
+               2,
+               None,
+               '___sec42')]}
 end of tocinfo -->
 
 <body>
@@ -199,9 +208,53 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Illustration of table of rows  <a name="___sec25"></a></h2>
+<h2>Table of columns vs table of rows  <a name="___sec25"></a></h2>
 
-<center><p><img src="fig-looplist/table2.png" align="bottom" width=400></p></center>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <li> The previous <code>table = [Cdegrees,Fdegrees]</code> is a table of (two) columns</li>
+  <li> Let us make a table of rows instead, each row is a <code>[C,F]</code> pair:</li>
+</ul>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">table2 <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> C, F <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(Cdegrees, Fdegrees):
+    row <span style="color: #666666">=</span> [C, F]
+    table2<span style="color: #666666">.</span>append(row)
+
+<span style="color: #408080; font-style: italic"># more compact with list comprehension:</span>
+table2 <span style="color: #666666">=</span> [[C, F] <span style="color: #008000; font-weight: bold">for</span> C, F <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(Cdegrees, Fdegrees)]
+</pre></div>
+<p>
+<code>print table2</code>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[[<span style="color: #666666">-20</span>, <span style="color: #666666">-4.0</span>], [<span style="color: #666666">-15</span>, <span style="color: #666666">5.0</span>], <span style="color: #666666">.......</span>, [<span style="color: #666666">40</span>, <span style="color: #666666">104.0</span>]]
+</pre></div>
+<p>
+Iteration over a nested list:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> C, F <span style="color: #AA22FF; font-weight: bold">in</span> table2:
+    <span style="color: #408080; font-style: italic"># work with C and F from a row in table2</span>
+
+<span style="color: #408080; font-style: italic"># or</span>
+<span style="color: #008000; font-weight: bold">for</span> row <span style="color: #AA22FF; font-weight: bold">in</span> table2:
+    C, F <span style="color: #666666">=</span> row
+    <span style="color: #666666">...</span>
+</pre></div>
+
+</div>
+
 
 <p>
 <p>
