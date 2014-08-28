@@ -6,7 +6,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Ch.2: Lists and loops">
+<meta name="description" content="Ch.2: Loops and lists">
 
 
 
@@ -109,57 +109,66 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec16'),
               (u' Storing the table columns as lists ', 2, None, '___sec17'),
               (u' For loop with list indices ', 2, None, '___sec18'),
-              (u' Changing a list element requires assignment to an indexed element ',
+              (u' How can we change the elements in a list? ',
                2,
                None,
                '___sec19'),
-              (u' List comprehensions: compact creation of lists ',
+              (u' Changing a list element requires assignment to an indexed element ',
                2,
                None,
                '___sec20'),
-              (u' Traversing multiple lists simultaneously with zip ',
+              (u' List comprehensions: compact creation of lists ',
                2,
                None,
                '___sec21'),
-              (u' Nested lists: list of lists ', 2, None, '___sec22'),
-              (u' Table of columns vs table of rows ', 2, None, '___sec23'),
-              (u' Illustration of table of columns ', 2, None, '___sec24'),
-              (u' Illustration of table of rows ', 2, None, '___sec25'),
-              (u' Extracting sublists (or slices) ', 2, None, '___sec26'),
-              (u' What does this code snippet do? ', 2, None, '___sec27'),
-              (u' Iteration over general nested lists ', 2, None, '___sec28'),
+              (u' Interactive demonstration of list comprehensions ',
+               2,
+               None,
+               '___sec22'),
+              (u' Traversing multiple lists simultaneously with zip ',
+               2,
+               None,
+               '___sec23'),
+              (u' Nested lists: list of lists ', 2, None, '___sec24'),
+              (u' Table of columns vs table of rows ', 2, None, '___sec25'),
+              (u' Illustration of table of columns ', 2, None, '___sec26'),
+              (u' Illustration of table of rows ', 2, None, '___sec27'),
+              (u' Extracting sublists (or slices) ', 2, None, '___sec28'),
+              (u' What does this code snippet do? ', 2, None, '___sec29'),
+              (u' Iteration over general nested lists ', 2, None, '___sec30'),
               (u' Iteration over a specific nested list ',
                2,
                None,
-               '___sec29'),
-              (u' Tuples are constant lists ', 2, None, '___sec30'),
+               '___sec31'),
+              (u' Tuples are constant lists ', 2, None, '___sec32'),
               (u' Why tuples when lists have more functionality? ',
                2,
                None,
-               '___sec31'),
-              (u' Summary of loops, lists and tuples ', 2, None, '___sec32'),
-              (u' List functionality ', 2, None, '___sec33'),
-              (u' A summarizing example for Chapter 2; problem ',
-               2,
-               None,
-               '___sec34'),
-              (u' A summarizing example for Chapter 2; the program (task 1) ',
-               2,
-               None,
-               '___sec35'),
-              (u' A summarizing example for Chapter 2; the program (task 2) ',
-               2,
-               None,
-               '___sec36'),
-              (u' A summarizing example for Chapter 2; the program (task 3) ',
+               '___sec33'),
+              (u' Summary of loops, lists and tuples ', 2, None, '___sec34'),
+              (u' List functionality ', 2, None, '___sec35'),
+              (u' A summarizing example; problem ', 2, None, '___sec36'),
+              (u' A summarizing example; program (task 1) ',
                2,
                None,
                '___sec37'),
-              (u' Using a debugger to trace the execution ',
+              (u' A summarizing example; program (task 2) ',
                2,
                None,
                '___sec38'),
-              (u' How to find Python info ', 2, None, '___sec39')]}
+              (u' A summarizing example; program (task 3) ',
+               2,
+               None,
+               '___sec39'),
+              (u' Using a debugger to trace the execution ',
+               2,
+               None,
+               '___sec40'),
+              (u' How to find Python info ', 2, None, '___sec41'),
+              (u' Warning about reading programming documentation ',
+               2,
+               None,
+               '___sec42')]}
 end of tocinfo -->
 
 <body>
@@ -184,34 +193,29 @@ MathJax.Hub.Config({
 <a name="part0039"></a>
 <!-- !split -->
 
-<h2>Using a debugger to trace the execution  <a name="___sec38"></a></h2>
+<h2>A summarizing example; program (task 2)  <a name="___sec38"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
-A <em>debugger</em> is a program that can be used to inspect and understand programs.
-Example:
-
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 <p>
 
-<!-- code=ipy (!bc ipy) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #555555">In [1]: </span>run -d some_program.py
-<span style="color: #888888">ipdb&gt; continue  # or just c (go to first statement)</span>
-<span style="color: #888888">1---&gt; 1 g = 9.81;  v0 = 5</span>
-<span style="color: #888888">      2 dt = 0.05</span>
-<span style="color: #888888">      3</span>
-<span style="color: #888888">ipdb&gt; step  # or just s (execute next statement)</span>
-<span style="color: #888888">ipdb&gt; print g</span>
-<span style="color: #000080; font-weight: bold">Out[1]: </span><span style="color: #888888">9.8100000000000005</span>
-<span style="color: #888888">ipdb&gt; list  # or just l (list parts of the program)</span>
-<span style="color: #888888">1     1 g = 9.81;  v0 = 5</span>
-<span style="color: #888888">----&gt; 2 dt = 0.05</span>
-<span style="color: #888888">      3</span>
-<span style="color: #888888">      4 def y(t):</span>
-<span style="color: #888888">      5     return v0*t - 0.5*g*t**2</span>
-<span style="color: #888888">      6</span>
-<span style="color: #888888">ipdb&gt; break 15   # stop program at line 15</span>
-<span style="color: #888888">ipdb&gt; c          # continue to next break point</span>
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">max_value = <span style="color: #658b00">max</span>(monthly_mean)
+month = month_names[monthly_mean.index(max_value)]
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%s has best weather with %.1f sun hours on average&#39;</span> % \
+      (month, max_value)
+
+max_value = -<span style="color: #B452CD">1E+20</span>
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(monthly_mean)):
+    value = monthly_mean[i]
+    <span style="color: #8B008B; font-weight: bold">if</span> value &gt; max_value:
+        max_value = value
+        max_i = i  <span style="color: #228B22"># store index too</span>
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%s has best weather with %.1f sun hours on average&#39;</span> % \
+      (month_names[max_i], max_value)
 </pre></div>
-<p>
+
 </div>
 
 

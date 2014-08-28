@@ -6,7 +6,7 @@ Automatically generated HTML file from Doconce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Ch.2: Lists and loops">
+<meta name="description" content="Ch.2: Loops and lists">
 
 
 
@@ -109,57 +109,66 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec16'),
               (u' Storing the table columns as lists ', 2, None, '___sec17'),
               (u' For loop with list indices ', 2, None, '___sec18'),
-              (u' Changing a list element requires assignment to an indexed element ',
+              (u' How can we change the elements in a list? ',
                2,
                None,
                '___sec19'),
-              (u' List comprehensions: compact creation of lists ',
+              (u' Changing a list element requires assignment to an indexed element ',
                2,
                None,
                '___sec20'),
-              (u' Traversing multiple lists simultaneously with zip ',
+              (u' List comprehensions: compact creation of lists ',
                2,
                None,
                '___sec21'),
-              (u' Nested lists: list of lists ', 2, None, '___sec22'),
-              (u' Table of columns vs table of rows ', 2, None, '___sec23'),
-              (u' Illustration of table of columns ', 2, None, '___sec24'),
-              (u' Illustration of table of rows ', 2, None, '___sec25'),
-              (u' Extracting sublists (or slices) ', 2, None, '___sec26'),
-              (u' What does this code snippet do? ', 2, None, '___sec27'),
-              (u' Iteration over general nested lists ', 2, None, '___sec28'),
+              (u' Interactive demonstration of list comprehensions ',
+               2,
+               None,
+               '___sec22'),
+              (u' Traversing multiple lists simultaneously with zip ',
+               2,
+               None,
+               '___sec23'),
+              (u' Nested lists: list of lists ', 2, None, '___sec24'),
+              (u' Table of columns vs table of rows ', 2, None, '___sec25'),
+              (u' Illustration of table of columns ', 2, None, '___sec26'),
+              (u' Illustration of table of rows ', 2, None, '___sec27'),
+              (u' Extracting sublists (or slices) ', 2, None, '___sec28'),
+              (u' What does this code snippet do? ', 2, None, '___sec29'),
+              (u' Iteration over general nested lists ', 2, None, '___sec30'),
               (u' Iteration over a specific nested list ',
                2,
                None,
-               '___sec29'),
-              (u' Tuples are constant lists ', 2, None, '___sec30'),
+               '___sec31'),
+              (u' Tuples are constant lists ', 2, None, '___sec32'),
               (u' Why tuples when lists have more functionality? ',
                2,
                None,
-               '___sec31'),
-              (u' Summary of loops, lists and tuples ', 2, None, '___sec32'),
-              (u' List functionality ', 2, None, '___sec33'),
-              (u' A summarizing example for Chapter 2; problem ',
-               2,
-               None,
-               '___sec34'),
-              (u' A summarizing example for Chapter 2; the program (task 1) ',
-               2,
-               None,
-               '___sec35'),
-              (u' A summarizing example for Chapter 2; the program (task 2) ',
-               2,
-               None,
-               '___sec36'),
-              (u' A summarizing example for Chapter 2; the program (task 3) ',
+               '___sec33'),
+              (u' Summary of loops, lists and tuples ', 2, None, '___sec34'),
+              (u' List functionality ', 2, None, '___sec35'),
+              (u' A summarizing example; problem ', 2, None, '___sec36'),
+              (u' A summarizing example; program (task 1) ',
                2,
                None,
                '___sec37'),
-              (u' Using a debugger to trace the execution ',
+              (u' A summarizing example; program (task 2) ',
                2,
                None,
                '___sec38'),
-              (u' How to find Python info ', 2, None, '___sec39')]}
+              (u' A summarizing example; program (task 3) ',
+               2,
+               None,
+               '___sec39'),
+              (u' Using a debugger to trace the execution ',
+               2,
+               None,
+               '___sec40'),
+              (u' How to find Python info ', 2, None, '___sec41'),
+              (u' Warning about reading programming documentation ',
+               2,
+               None,
+               '___sec42')]}
 end of tocinfo -->
 
 <body>
@@ -186,20 +195,16 @@ MathJax.Hub.Config({
 
 <h2>Storing the table columns as lists  <a name="___sec17"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Let us put all the Fahrenheit values in a list as well:
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">Cdegrees = [-<span style="color: #B452CD">20</span>, -<span style="color: #B452CD">15</span>, -<span style="color: #B452CD">10</span>, -<span style="color: #B452CD">5</span>, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">5</span>, <span style="color: #B452CD">10</span>,
-            <span style="color: #B452CD">15</span>, <span style="color: #B452CD">20</span>, <span style="color: #B452CD">25</span>, <span style="color: #B452CD">30</span>, <span style="color: #B452CD">35</span>, <span style="color: #B452CD">40</span>]
-Fdegrees = []            <span style="color: #228B22"># start with empty list</span>
-<span style="color: #8B008B; font-weight: bold">for</span> C <span style="color: #8B008B">in</span> Cdegrees:
-    F = (<span style="color: #B452CD">9.0</span>/<span style="color: #B452CD">5</span>)*C + <span style="color: #B452CD">32</span>
-    Fdegrees.append(F)   <span style="color: #228B22"># add new element to Fdegrees</span>
-<span style="color: #8B008B; font-weight: bold">print</span> F
-</pre></div>
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=Cdegrees+%3D+%5B-20%2C+-15%2C+-10%2C+-5%2C+0%2C+5%2C+10%2C%0A++++++++++++15%2C+20%2C+25%2C+30%2C+35%2C+40%5D%0AFdegrees+%3D+%5B%5D++++++++++++%23+start+with+empty+list%0Afor+C+in+Cdegrees%3A%0A++++F+%3D+%289.0%2F5%29%2AC+%2B+32%0A++++Fdegrees.append%28F%29+++%23+add+new+element+to+Fdegrees%0Aprint+F&curInstr=0&py=2&cumulative=false">
+</iframe>
 <p>
 <code>print F</code> results in
 
@@ -209,7 +214,7 @@ Fdegrees = []            <span style="color: #228B22"># start with empty list</s
 <div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">[-<span style="color: #B452CD">4.0</span>, <span style="color: #B452CD">5.0</span>, <span style="color: #B452CD">14.0</span>, <span style="color: #B452CD">23.0</span>, <span style="color: #B452CD">32.0</span>, <span style="color: #B452CD">41.0</span>, <span style="color: #B452CD">50.0</span>, <span style="color: #B452CD">59.0</span>,
  <span style="color: #B452CD">68.0</span>, <span style="color: #B452CD">77.0</span>, <span style="color: #B452CD">86.0</span>, <span style="color: #B452CD">95.0</span>, <span style="color: #B452CD">104.0</span>]
 </pre></div>
-<p>
+
 </div>
 
 
