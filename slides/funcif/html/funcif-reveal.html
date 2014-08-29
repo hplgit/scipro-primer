@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Ch.3: Functions and branching">
 
-
+<title>Ch.3: Functions and branching</title>
 
 
 
@@ -121,7 +121,6 @@ MathJax.Hub.Config({
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Ch.3: Functions and branching</title>
 
 <center><h1>Ch.3: Functions and branching</h1></center>  <!-- document title -->
 
@@ -139,7 +138,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>&nbsp;<br>
-<center><h4>Aug 23, 2014</h4></center> <!-- date -->
+<center><h4>Aug 29, 2014</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -149,7 +148,9 @@ MathJax.Hub.Config({
 
 <h2>We have used many Python functions  <a name="___sec0"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Mathematical functions:
 
 <p>
@@ -178,12 +179,14 @@ Functions used with the dot syntax (called <em>methods</em>):
 <span style="color: #d0d0d0">C.append(</span><span style="color: #3677a9">50</span><span style="color: #d0d0d0">)</span>
 <span style="color: #d0d0d0">C.insert(</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">20</span><span style="color: #d0d0d0">)</span>
 </pre></div>
-<p>
+
 </div>
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 What is a function? So far we have seen that we put some objects
 in and sometimes get an object (result) out of functions.
 Now it is time to write our own functions!
@@ -199,7 +202,9 @@ Now it is time to write our own functions!
 
 <h2>Python functions  <a name="___sec1"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <p><li> Function = a collection of statements we can execute wherever and whenever we want</li>
@@ -224,7 +229,6 @@ Note:
   <p><li> Inside the function: statements - the <em>function body</em></li>
   <p><li> Wherever we want, inside the function, we can "stop the function" and return as many values/variables we want</li>
 </ul>
-<p>
 </div>
 
 
@@ -237,7 +241,9 @@ Note:
 
 <h2>Functions must be called  <a name="___sec2"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <p><li> A function does not do anything before it is called</li>
@@ -268,7 +274,9 @@ Note: Since <code>F(C)</code> produces (returns) a <code>float</code> object, we
 
 <h2>Local variables in Functions  <a name="___sec3"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Example: sum the integers from <code>start</code> to <code>stop</code>
 
 <p>
@@ -293,7 +301,6 @@ Note:
   <p><li> There is one global variable: <code>sum_10_100</code>, visible everywhere</li>
   <p><li> Read Chapter 3.1.3 in the book about local and global variables!</li>
 </ul>
-<p>
 </div>
 
 
@@ -306,7 +313,9 @@ Note:
 
 <h2>Turn a formula into a Python function  <a name="___sec4"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Formula: \( y(t) = v_0t- \frac{1}{2}gt^2 \). Make a Python function of it:
 
 <p>
@@ -336,7 +345,9 @@ Functions can have as many arguments as you like.
 
 <h2>Function arguments become local variables  <a name="___sec5"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -356,7 +367,7 @@ When calling <code>yfunc(0.1, 6)</code>, all these statements are in fact execut
 <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">v0*t</span> <span style="color: #d0d0d0">-</span> <span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*g*t**</span><span style="color: #3677a9">2</span>
 <span style="color: #999999; font-style: italic"># local variables t, v0, g are destroyed</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -369,7 +380,9 @@ When calling <code>yfunc(0.1, 6)</code>, all these statements are in fact execut
 
 <h2>Functions may access global variables  <a name="___sec6"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 The <code>y(t,v0)</code> function took two arguments.
 Could implement \( y(t) \) as a function of \( t \) only:
 
@@ -404,7 +417,6 @@ Note:
   <p><li> Global variables are visible everywhere in a program</li>
   <p><li> <code>g</code> is a local variable, not visible outside of <code>yfunc</code></li>
 </ul>
-<p>
 </div>
 
 
@@ -417,7 +429,9 @@ Note:
 
 <h2>Functions can return multiple values  <a name="___sec7"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Say we want to compute \( y(t) \) and \( y'(t)=v_0-gt \):
 
 <p>
@@ -449,7 +463,7 @@ separated by comma. Actually, a tuple is returned:
 <span style="color: #d0d0d0">&lt;</span><span style="color: #24909d">type</span> <span style="color: #ed9d13">&#39;tuple&#39;</span><span style="color: #d0d0d0">&gt;</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">x,</span> <span style="color: #d0d0d0">x2,</span> <span style="color: #d0d0d0">x4</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">f(</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">)</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -462,7 +476,9 @@ separated by comma. Actually, a tuple is returned:
 
 <h2>Example: Compute a function defined as a sum  <a name="___sec8"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 The function
 
 <p>&nbsp;<br>
@@ -488,7 +504,7 @@ Make a Python function for \( L(x;n) \):
 <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">math</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">log</span> <span style="color: #6ab825; font-weight: bold">as</span> <span style="color: #d0d0d0">ln</span>
 <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">L(x,</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">),</span> <span style="color: #d0d0d0">L(x,</span> <span style="color: #3677a9">100</span><span style="color: #d0d0d0">),</span> <span style="color: #d0d0d0">ln(</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">+x)</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -501,7 +517,9 @@ Make a Python function for \( L(x;n) \):
 
 <h2>Returning errors as well from the L(x, n) function  <a name="___sec9"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 We can return more: also the first neglected term in the sum and the error (\( \ln (1+x) - L(x;n) \)):
 
 <p>
@@ -522,7 +540,7 @@ We can return more: also the first neglected term in the sum and the error (\( \
 <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1.2</span><span style="color: #d0d0d0">;</span> <span style="color: #d0d0d0">n</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">100</span>
 <span style="color: #d0d0d0">value,</span> <span style="color: #d0d0d0">approximate_error,</span> <span style="color: #d0d0d0">exact_error</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">L2(x,</span> <span style="color: #d0d0d0">n)</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -535,7 +553,9 @@ We can return more: also the first neglected term in the sum and the error (\( \
 
 <h2>Functions do not need to return objects  <a name="___sec10"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -558,7 +578,9 @@ Here, <code>return_value</code> becomes <code>None</code> because if we do not e
 
 <h2>Example on a function without return value  <a name="___sec11"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Let us make a table of \( L(x;n) \) versus the exact \( \ln (1+x) \):
 
 <p>
@@ -584,7 +606,7 @@ No need to return anything here - the purpose is to print.
 <span style="color: #d0d0d0">n=</span><span style="color: #3677a9">100</span>  <span style="color: #3677a9">2.39789</span>     <span style="color: #d0d0d0">(</span><span style="color: #24909d">next</span> <span style="color: #d0d0d0">term:</span> <span style="color: #3677a9">6.53e-07</span>  <span style="color: #d0d0d0">error:</span> <span style="color: #3677a9">6.59e-06</span><span style="color: #d0d0d0">)</span>
 <span style="color: #d0d0d0">n=</span><span style="color: #3677a9">500</span>  <span style="color: #3677a9">2.3979</span>      <span style="color: #d0d0d0">(</span><span style="color: #24909d">next</span> <span style="color: #d0d0d0">term:</span> <span style="color: #3677a9">3.65e-24</span>  <span style="color: #d0d0d0">error:</span> <span style="color: #3677a9">6.22e-15</span><span style="color: #d0d0d0">)</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -597,7 +619,9 @@ No need to return anything here - the purpose is to print.
 
 <h2>Keyword arguments are useful to simplify function calls and help document the arguments  <a name="___sec12"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Functions can have arguments of the form <code>name=value</code>,
 called <em>keyword arguments</em>:
 
@@ -629,7 +653,7 @@ their sequence can in fact be arbitrary:
 <div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">somefunc(kwarg2=</span><span style="color: #ed9d13">&#39;Hello&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">arg1=</span><span style="color: #ed9d13">&#39;Hi&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">kwarg1=</span><span style="color: #3677a9">6</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">arg2=[</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">])</span>
 <span style="color: #d0d0d0">Hi</span> <span style="color: #d0d0d0">[</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">]</span> <span style="color: #3677a9">6</span> <span style="color: #d0d0d0">Hello</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -642,7 +666,9 @@ their sequence can in fact be arbitrary:
 
 <h2>Example: Mathematical function of one variable, but with additional parameteres  <a name="___sec13"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Consider a function of \( t \), with parameters \( A \), \( a \), and \( \omega \):
 
 <p>&nbsp;<br>
@@ -667,7 +693,7 @@ We can implement \( f \) in a Python function with \( t \) as positional argumen
 <span style="color: #d0d0d0">v5</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">f(t=</span><span style="color: #3677a9">0.2</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">A=</span><span style="color: #3677a9">9</span><span style="color: #d0d0d0">)</span>
 <span style="color: #d0d0d0">v6</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">f(t=</span><span style="color: #3677a9">0.2</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">9</span><span style="color: #d0d0d0">)</span>   <span style="color: #999999; font-style: italic"># illegal: keyword arg before positional</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -680,7 +706,9 @@ We can implement \( f \) in a Python function with \( t \) as positional argumen
 
 <h2>Doc strings  <a name="___sec14"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Python convention: document the purpose of a function, its arguments, and its return values in a <em>doc string</em> - a (triple-quoted) string written right after the function header.
 
 <p>
@@ -704,7 +732,7 @@ Python convention: document the purpose of a function, its arguments, and its re
     <span style="color: #d0d0d0">b</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">y0</span> <span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">a*x0</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">a,</span> <span style="color: #d0d0d0">b</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -717,7 +745,9 @@ Python convention: document the purpose of a function, its arguments, and its re
 
 <h2>Convention for input and output data in functions  <a name="___sec15"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <p><li> A function can have three types of input and output data:</li>
@@ -747,7 +777,6 @@ The function arguments are
   <p><li> pure input: <code>i1</code>, <code>i2</code>, <code>i3</code>, <code>i6</code></li>
   <p><li> input and output: <code>io4</code>, <code>io5</code>, <code>io7</code></li>
 </ul>
-<p>
 </div>
 
 
@@ -760,7 +789,9 @@ The function arguments are
 
 <h2>The main program  <a name="___sec16"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 The <em>main program</em> is the set of statements outside functions.
 
 <p>
@@ -794,7 +825,9 @@ The execution starts with the first statement in the main program and proceeds l
 
 <h2>Python functions as arguments to Python functions  <a name="___sec17"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <p><li> Programs doing calculus frequently need to have functions as arguments
@@ -841,7 +874,9 @@ No difficulty with <code>f</code> being a function
 
 <h2>Application of the <code>diff2</code> function  <a name="___sec18"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>Code:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Code:</b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -853,12 +888,14 @@ No difficulty with <code>f</code> being a function
     <span style="color: #d0d0d0">h</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">**(-k)</span>
     <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;h=%.0e: %.5f&#39;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">(h,</span> <span style="color: #d0d0d0">diff2(g,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">h))</span>
 </pre></div>
-<p>
+
 </div>
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b>Output (\( g''(1)=42 \)):</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Output (\( g''(1)=42 \)):</b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -877,7 +914,7 @@ No difficulty with <code>f</code> being a function
 <span style="color: #d0d0d0">h=</span><span style="color: #3677a9">1e-13</span><span style="color: #d0d0d0">:</span> <span style="color: #3677a9">66613381477.50939</span>
 <span style="color: #d0d0d0">h=</span><span style="color: #3677a9">1e-14</span><span style="color: #d0d0d0">:</span> <span style="color: #3677a9">0.00000</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -890,7 +927,9 @@ No difficulty with <code>f</code> being a function
 
 <h2>Round-off errors caused nonsense values in the table  <a name="___sec19"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <p><li> For \( h<10^{-8} \) the results are totally wrong!</li>
@@ -902,7 +941,6 @@ No difficulty with <code>f</code> being a function
   <p><li> Using 25 digits gives accurate results for \( h \leq 10^{-13} \)</li>
   <p><li> Is this really a problem? Quite seldom - other uncertainies in input data to a mathematical computation makes it usual to have (e.g.) \( 10^{-2}\leq h \leq 10^{-6} \)</li>
 </ul>
-<p>
 </div>
 
 
@@ -915,7 +953,9 @@ No difficulty with <code>f</code> being a function
 
 <h2>Lambda functions for compact inline function definitions  <a name="___sec20"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -955,7 +995,7 @@ Lambda functions can be used directly as arguments in function calls:
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
 <div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">value</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">someotherfunc(</span><span style="color: #6ab825; font-weight: bold">lambda</span> <span style="color: #d0d0d0">x,</span> <span style="color: #d0d0d0">y,</span> <span style="color: #d0d0d0">z:</span> <span style="color: #d0d0d0">x+y+</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">*z,</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">)</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -995,7 +1035,9 @@ New, more compact code with lambda:
 
 <h2>If tests for branching the flow of statements  <a name="___sec22"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Sometimes we want to peform different actions depending on a condition.
 Example:
 
@@ -1033,7 +1075,7 @@ In general (the <code>else</code> block can be skipped):
 <span style="color: #6ab825; font-weight: bold">else</span><span style="color: #d0d0d0">:</span>
     <span style="color: #d0d0d0">&lt;block</span> <span style="color: #d0d0d0">of</span> <span style="color: #d0d0d0">statements,</span> <span style="color: #d0d0d0">executed</span> <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">condition</span> <span style="color: #6ab825; font-weight: bold">is</span> <span style="color: #24909d">False</span><span style="color: #d0d0d0">&gt;</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -1046,7 +1088,9 @@ In general (the <code>else</code> block can be skipped):
 
 <h2>If tests with multiple branches  <a name="___sec23"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 We can test for multiple (here 3) conditions:
 
 <p>
@@ -1062,7 +1106,7 @@ We can test for multiple (here 3) conditions:
     <span style="color: #d0d0d0">&lt;block</span> <span style="color: #d0d0d0">of</span> <span style="color: #d0d0d0">statements&gt;</span>
 <span style="color: #d0d0d0">&lt;</span><span style="color: #24909d">next</span> <span style="color: #d0d0d0">statement&gt;</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -1075,7 +1119,9 @@ We can test for multiple (here 3) conditions:
 
 <h2>Example on multiple branching  <a name="___sec24"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Here is a piecewisely defined function:
 
 <p>&nbsp;<br>
@@ -1103,7 +1149,7 @@ $$
     <span style="color: #6ab825; font-weight: bold">elif</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">&gt;=</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">:</span>
         <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #3677a9">0</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -1116,7 +1162,9 @@ $$
 
 <h2>Inline if tests for shorter code  <a name="___sec25"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 A common construction is
 
 <p>
@@ -1144,7 +1192,7 @@ Example:
 <div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">(sin(x)</span> <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #3677a9">0</span> <span style="color: #d0d0d0">&lt;=</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">&lt;=</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">*pi</span> <span style="color: #6ab825; font-weight: bold">else</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">)</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -1157,7 +1205,9 @@ Example:
 
 <h2>Test functions  <a name="___sec26"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>Good habit:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Good habit:</b>
+<p>
 To verify the implementation of a function, write a separate function
 according to some rules.
 
@@ -1187,7 +1237,6 @@ Rules for test functions:
    if the test passed and <code>False</code> otherwise (can have optional
    message, which is printed if test failed)</li>
 </ul>
-<p>
 </div>
 
 
@@ -1200,7 +1249,9 @@ Rules for test functions:
 
 <h2>Why write test functions according to these rules?  <a name="___sec27"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
  <p><li> Easy to recognize where functions are verified</li>
@@ -1232,7 +1283,9 @@ tests work, the whole program is supposed to work.
 
 <h2>Summary of if tests and functions  <a name="___sec28"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 If tests:
 
 <p>
@@ -1270,7 +1323,7 @@ Positional arguments must appear before keyword arguments:
 <div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x,</span> <span style="color: #d0d0d0">A=</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">a=</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">w=pi):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">A*exp(-a*x)*sin(w*x)</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -1283,7 +1336,9 @@ Positional arguments must appear before keyword arguments:
 
 <h2>A summarizing example for Chapter 3; problem  <a name="___sec29"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 An integral
 
 <p>&nbsp;<br>
@@ -1322,7 +1377,9 @@ value: 2) for \( n=2,6,12,100,500 \).
 
 <h2>The program: function for computing the formula  <a name="___sec30"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1345,7 +1402,7 @@ value: 2) for \( n=2,6,12,100,500 \).
     <span style="color: #d0d0d0">integral</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">(b-a)/(</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">*n)*(f(a)</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">f(b)</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">*sum1</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">*sum2)</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">integral</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -1358,7 +1415,9 @@ value: 2) for \( n=2,6,12,100,500 \).
 
 <h2>The program: function, now with test for possible errors  <a name="___sec31"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1377,7 +1436,7 @@ value: 2) for \( n=2,6,12,100,500 \).
     <span style="color: #d0d0d0">...</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">integral</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -1390,7 +1449,9 @@ value: 2) for \( n=2,6,12,100,500 \).
 
 <h2>The program: application (and main program)  <a name="___sec32"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1408,7 +1469,7 @@ value: 2) for \( n=2,6,12,100,500 \).
 
 <span style="color: #d0d0d0">application()</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -1421,7 +1482,9 @@ value: 2) for \( n=2,6,12,100,500 \).
 
 <h2>The program: verification (with test function)  <a name="___sec33"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Property of Simpson's rule: 2nd degree polynomials are integrated exactly!
 
 <p>
@@ -1453,7 +1516,7 @@ Ran 1 test in 0.005s
 
 OK
 </pre></div>
-<p>
+
 </div>
 
 
