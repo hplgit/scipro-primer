@@ -1,14 +1,14 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Ch.4: User input and error handling">
 
-
+<title>Ch.4: User input and error handling</title>
 
 
 <style type="text/css">
@@ -269,6 +269,12 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
+<!-- newcommands.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+$$
+
+
 
 
     
@@ -282,7 +288,9 @@ MathJax.Hub.Config({
 
 <h2>Example: Writing a table to file  <a name="___sec36"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>Problem:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Problem:</b>
+<p>
 We have a nested list (rows and columns):
 
 <p>
@@ -301,7 +309,9 @@ Write these data to file in tabular form
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b>Solution:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Solution:</b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -312,12 +322,14 @@ Write these data to file in tabular form
     outfile<span style="color: #666666">.</span>write(<span style="color: #BA2121">&#39;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>)
 outfile<span style="color: #666666">.</span>close()
 </pre></div>
-<p>
+
 </div>
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b>Resulting file:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Resulting file:</b>
+<p>
 <p>
 
 <!-- code=text (!bc dat) typeset with pygments style "default" -->
@@ -326,7 +338,7 @@ outfile<span style="color: #666666">.</span>close()
    -0.29619813   -0.11697778    0.11697778    0.29619813
    -0.75000000   -0.29619813    0.29619813    0.75000000
 </pre></div>
-<p>
+
 </div>
 
 

@@ -8,7 +8,7 @@ Automatically generated HTML file from Doconce source
 <meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Ch.1: Computing with formulas">
 
-
+<title>Ch.1: Computing with formulas</title>
 
 
 <style type="text/css">
@@ -217,13 +217,18 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
+<!-- newcommands.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+$$
+
+
 
 
     
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Ch.1: Computing with formulas</title>
 
 <center><h1>Ch.1: Computing with formulas</h1></center>  <!-- document title -->
 
@@ -241,7 +246,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>
-<center><h4>Aug 23, 2014</h4></center> <!-- date -->
+<center><h4>Aug 29, 2014</h4></center> <!-- date -->
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
@@ -257,7 +262,9 @@ MathJax.Hub.Config({
 
 <h2>The teaching strategy is example-based  <a name="___sec1"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <li> Present a case (example)</li>
@@ -273,7 +280,9 @@ MathJax.Hub.Config({
 
 <h2>Evaluating a mathematical formula  <a name="___sec2"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>Height of a ball in vertical motion.</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Height of a ball in vertical motion.</b>
+<p>
 
 $$ y(t) = v_0t- \frac{1}{2}gt^2 $$
 
@@ -294,19 +303,25 @@ Task: given \( v_0 \), \( g \) and \( t \), compute \( y \).
 
 <h2>Use a calculator? A program is much more powerful!  <a name="___sec3"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>What is a program?</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>What is a program?</b>
+<p>
 A sequence of instructions to the computer, written in a programming language, somewhat like English, but very much simpler - and very much stricter.
 </div>
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 This course teaches the Python language.
 </div>
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b>Our first example program:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Our first example program:</b>
+<p>
 Evaluate \( y(t) = v_0t- \frac{1}{2}gt^2 \) for \( v_0=5 \), \( g=9.81 \) and \( t=0.6 \):
 
 $$ y = 5\cdot 0.6 - \frac{1}{2}\cdot 9.81 \cdot 0.6^2$$
@@ -320,7 +335,7 @@ The complete Python program:
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #666666">5*0.6</span> <span style="color: #666666">-</span> <span style="color: #666666">0.5*9.81*0.6**2</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -329,7 +344,9 @@ The complete Python program:
 
 <h2>How to write and run the program  <a name="___sec4"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <li> A program is plain text, written in a <em>plain text editor</em></li>
@@ -372,7 +389,9 @@ The program prints out <code>1.2342</code> in the terminal window.
 
 <h2>In this course we probably use computers differently from what you are used to  <a name="___sec5"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <li> When you use a computer, you always run some programs</li>
@@ -428,7 +447,9 @@ I <span style="color: #666666">=</span> integrate(my_function, minus_infinity, <
 <h2>Computers are very picky about grammar rules and typos  <a name="___sec7"></a></h2>
 
 <!-- !bpop -->
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Look at
 
 <p>
@@ -470,7 +491,9 @@ Would you consider these two lines to be equal?
 
 <h2>Store numbers in variables to make a program more readable  <a name="___sec9"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 From mathematics you are used to variables, e.g.,
 
 $$ v_0=5,\quad g=9.81,\quad t=0.6,\quad y = v_0t -\frac{1}{2}gt^2$$
@@ -499,7 +522,9 @@ This program spans several lines of text and use variables, otherwise the progra
 
 <h2>There is great flexibility in choosing variable names  <a name="___sec10"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <li> In mathematics we usually use one letter for a variable</li>
@@ -523,7 +548,9 @@ VerticalPositionOfBall <span style="color: #666666">=</span> initial_velocity<sp
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Good variable names make a program easier to understand!
 </div>
 
@@ -533,7 +560,9 @@ Good variable names make a program easier to understand!
 
 <h2>Some words are reserved in Python  <a name="___sec11"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Certain words have a special meaning in Python and cannot be used as variable names. These are: <code>and</code>,
 <code>as</code>,
 <code>assert</code>,
@@ -573,7 +602,9 @@ Certain words have a special meaning in Python and cannot be used as variable na
 
 <h2>Comments are useful to explain how you think in programs  <a name="___sec12"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>Program with comments:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Program with comments:</b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -585,12 +616,14 @@ t <span style="color: #666666">=</span> <span style="color: #666666">0.6</span> 
 y <span style="color: #666666">=</span> v0<span style="color: #666666">*</span>t <span style="color: #666666">-</span> <span style="color: #666666">0.5*</span>g<span style="color: #666666">*</span>t<span style="color: #666666">**2</span>  <span style="color: #408080; font-style: italic"># vertical position</span>
 <span style="color: #008000; font-weight: bold">print</span> y
 </pre></div>
-<p>
+
 </div>
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b>Note:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Note:</b>
+<p>
 
 <ul>
   <li> Everything after <code>#</code> on a line is a comment and ignored by Python</li>
@@ -605,7 +638,9 @@ y <span style="color: #666666">=</span> v0<span style="color: #666666">*</span>t
 
 <h2>Comments are not always ignored....  <a name="___sec13"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Normal rule: Python programs, including comments, can only contain characters from the English alphabet.
 
 <p>
@@ -640,7 +675,9 @@ Or stick to English everywhere in a program
 
 <h2>The printf syntax gives great flexibility in formatting text with numbers  <a name="___sec14"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Output from calculations often contain text and numbers, e.g.,
 
 <p>
@@ -666,7 +703,9 @@ The printf format has &quot;slots&quot; where the variables listed at the end ar
 
 <h2>Examples on different printf formats  <a name="___sec15"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
@@ -692,7 +731,9 @@ The printf format has &quot;slots&quot; where the variables listed at the end ar
 
 <h2>Using printf formatting in our program  <a name="___sec16"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Triple-quoted strings (<code>"""</code>) can be used for multi-line output, and here we combine such a string with printf formatting:
 
 <p>
@@ -721,7 +762,7 @@ At t=0.600000 s, a ball with
 initial velocity v0=5.000E+00 m/s
 is located at the height 1.23 m.
 </pre></div>
-<p>
+
 </div>
 
 
@@ -731,7 +772,9 @@ is located at the height 1.23 m.
 <h2>Some frequently used computer science terms  <a name="___sec17"></a></h2>
 
 <!-- !bpop -->
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <li> Program or code or application</li>
@@ -749,7 +792,9 @@ is located at the height 1.23 m.
 
 <p>
 <!-- !bpop -->
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Computer science meaning of terms is often different from the human language meaning
 </div>
 
@@ -760,7 +805,9 @@ Computer science meaning of terms is often different from the human language mea
 
 <h2>A program consists of statements  <a name="___sec18"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
@@ -779,7 +826,7 @@ in between the statements:
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">1</span>;  b <span style="color: #666666">=</span> <span style="color: #666666">2</span>;  c <span style="color: #666666">=</span> a <span style="color: #666666">+</span> b;  <span style="color: #008000; font-weight: bold">print</span> c
 </pre></div>
-<p>
+
 </div>
 
 
@@ -788,14 +835,16 @@ in between the statements:
 
 <h2>Assignment statements evaluate right-hand side and assign the result to the variable on the left-hand side  <a name="___sec19"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">myvar <span style="color: #666666">=</span> <span style="color: #666666">10</span>
 myvar <span style="color: #666666">=</span> <span style="color: #666666">3*</span>myvar   <span style="color: #408080; font-style: italic"># = 30</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -804,13 +853,17 @@ myvar <span style="color: #666666">=</span> <span style="color: #666666">3*</spa
 
 <h2>Syntax is the exact specification of instructions to the computer  <a name="___sec20"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Programs must have correct syntax, i.e., correct use of the computer language grammar rules, and no misprints!
 </div>
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b>This is a program with two syntax errors:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>This is a program with two syntax errors:</b>
+<p>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
@@ -842,7 +895,9 @@ Only the first encountered error is reported and the program is stopped (correct
 
 <h2>Blanks (whitespace) can be used to nicely format the program text  <a name="___sec21"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Blanks may or may not be important in Python programs.
 These statements are equivalent (blanks do not matter):
 
@@ -876,7 +931,9 @@ counter <span style="color: #666666">=</span> counter <span style="color: #66666
 
 <h2>A program takes some known <em>input</em> data and computes some <em>output</em> data  <a name="___sec22"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
@@ -897,7 +954,9 @@ velocity <span style="color: #666666">=</span> v0 <span style="color: #666666">-
 
 <h2>An operating system (OS) is a set of programs managing hardware and software resources on a computer  <a name="___sec23"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <li> Linux, Unix (Ubuntu, RedHat, Suse, Solaris)</li>
@@ -921,7 +980,9 @@ velocity <span style="color: #666666">=</span> v0 <span style="color: #666666">-
 
 <h2>Evaluating a formula for temperature conversion  <a name="___sec24"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Given \( C \) as a temperature in Celsius degrees,
 compute the corresponding Fahrenheit degrees \( F \):
 
@@ -947,7 +1008,7 @@ Execution:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python c2f_v1.py
 53
 </pre></div>
-<p>
+
 </div>
 
 
@@ -956,7 +1017,9 @@ Execution:
 
 <h2>We must always check that a new program calculates the right answer  <a name="___sec25"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>Using a calculator:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Using a calculator:</b>
+<p>
 9/5 times 21 plus 32 is 69.8, not 53.
 </div>
 
@@ -966,7 +1029,9 @@ Execution:
 
 <h2>The error is caused by (unintended) integer division  <a name="___sec26"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <li> 9/5 is not 1.8 but 1 in most computer languages (!)</li>
@@ -988,7 +1053,7 @@ Corrected program (with correct output 69.8):
 F <span style="color: #666666">=</span> (<span style="color: #666666">9.0/5</span>)<span style="color: #666666">*</span>C <span style="color: #666666">+</span> <span style="color: #666666">32</span>
 <span style="color: #008000; font-weight: bold">print</span> F
 </pre></div>
-<p>
+
 </div>
 
 
@@ -997,7 +1062,9 @@ F <span style="color: #666666">=</span> (<span style="color: #666666">9.0/5</spa
 
 <h2>Everything in Python is an object  <a name="___sec27"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Variables refer to objects:
 
 <p>
@@ -1026,7 +1093,7 @@ d <span style="color: #666666">=</span> <span style="color: #008000">str</span>(
 e <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;-4.2&#39;</span>         <span style="color: #408080; font-style: italic"># e is str</span>
 f <span style="color: #666666">=</span> <span style="color: #008000">float</span>(e)       <span style="color: #408080; font-style: italic"># f is float -4.2</span>
 </pre></div>
-<p>
+
 </div>
 
 
@@ -1035,7 +1102,9 @@ f <span style="color: #666666">=</span> <span style="color: #008000">float</span
 
 <h2>Arithmetic expressions are evaluated as you have learned in mathematics  <a name="___sec28"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <li> Example: \( \frac{5}{9} + 2a^4/2 \), in Python written as <code>5/9 + 2*a**4/2</code></li>
@@ -1056,7 +1125,9 @@ f <span style="color: #666666">=</span> <span style="color: #008000">float</span
 
 <h2>Standard mathematical functions are found in the <code>math</code> module  <a name="___sec29"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <li> What if we need to compute \( \sin x \), \( \cos x \), \( \ln x \), etc. in a program?</li>
@@ -1078,7 +1149,7 @@ r <span style="color: #666666">=</span> sqrt(<span style="color: #666666">2</spa
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>   <span style="color: #408080; font-style: italic"># import everything in math</span>
 r <span style="color: #666666">=</span> sqrt(<span style="color: #666666">2</span>)
 </pre></div>
-<p>
+
 </div>
 
 
@@ -1087,7 +1158,9 @@ r <span style="color: #666666">=</span> sqrt(<span style="color: #666666">2</spa
 
 <h2>Another example on computing with functions from <code>math</code>  <a name="___sec30"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Evaluate
 
 $$ Q = \sin x\cos x + 4\ln x $$
@@ -1102,7 +1175,7 @@ x <span style="color: #666666">=</span> <span style="color: #666666">1.2</span>
 Q <span style="color: #666666">=</span> sin(x)<span style="color: #666666">*</span>cos(x) <span style="color: #666666">+</span> <span style="color: #666666">4*</span>log(x)   <span style="color: #408080; font-style: italic"># log is ln (base e)</span>
 <span style="color: #008000; font-weight: bold">print</span> Q
 </pre></div>
-<p>
+
 </div>
 
 
@@ -1111,7 +1184,9 @@ Q <span style="color: #666666">=</span> sin(x)<span style="color: #666666">*</sp
 
 <h2>Computers have inexact arithmetics because of round-off errors  <a name="___sec31"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Let us compute \( 1/49\cdot 49 \) and \( 1/51\cdot 51 \):
 
 <p>
@@ -1143,7 +1218,9 @@ Output with 16 decimals becomes
 
 <h2>Another example involving math functions  <a name="___sec32"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 The \( \sinh x \) function is defined as
 
 $$\sinh (x) = \frac{1}{2}\left(e^{x} - e^{-x}\right) $$
@@ -1180,7 +1257,9 @@ Output: <code>r1</code> is \( 267.744894041016\underline{4369} \), <code>r2</cod
 
 <h2>Python can be used interactively as a calculator and to test statements  <a name="___sec33"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <li> So far we have performed calculations in Python <em>programs</em></li>
@@ -1213,7 +1292,9 @@ Previous commands can be recalled and edited
 
 <h2>Python has full support for complex numbers  <a name="___sec34"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <li> \( 2+3i \) in mathematics is written as <code>2 + 3j</code> in Python</li>
@@ -1246,7 +1327,9 @@ See the book for additional info
 
 <h2>Python can also do symbolic computing  <a name="___sec35"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
  <li> Numerical computing: computation with numbers</li>
@@ -1294,7 +1377,9 @@ sin(x)<span style="color: #666666">*</span>cos(y) <span style="color: #666666">+
 
 <h2>Summary of Chapter 1 (part 1)  <a name="___sec37"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
   <li> Programs must be accurate!</li>
@@ -1313,7 +1398,9 @@ sin(x)<span style="color: #666666">*</span>cos(y) <span style="color: #666666">+
 
 <h2>Summary of Chapter 1 (part 2)  <a name="___sec38"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Mathematical functions like \( \sin x \) and \( \ln x \) must be imported from the <code>math</code> module:
 
 <p>
@@ -1356,7 +1443,9 @@ Important terms: object, variable, algorithm, statement, assignment, implementat
 
 <h2>Summarizing example: throwing a ball (problem)  <a name="___sec40"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 We throw a ball with velocity \( v_0 \), at an angle \( \theta \) with the horizontal, from the point \( (x=0,y=y_0) \). The trajectory of the ball is a parabola (we neglect air resistance):
 
 $$ y = x\tan\theta - \frac{1}{2v_0}\frac{gx^2}{\cos^2\theta} + y_0 $$
@@ -1381,7 +1470,9 @@ $$ y = x\tan\theta - \frac{1}{2v_0}\frac{gx^2}{\cos^2\theta} + y_0 $$
 
 <h2>Summarizing example: throwing a ball (solution)  <a name="___sec41"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 Program:
 
 <p>
@@ -1407,7 +1498,7 @@ y <span style="color: #666666">=</span> x<span style="color: #666666">*</span>ta
 
 <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;y     = </span><span style="color: #BB6688; font-weight: bold">%.1f</span><span style="color: #BA2121"> m&#39;</span> <span style="color: #666666">%</span> y
 </pre></div>
-<p>
+
 </div>
 
 

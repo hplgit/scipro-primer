@@ -1,14 +1,14 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Ch.4: User input and error handling">
 
-
+<title>Ch.4: User input and error handling</title>
 
 
 <style type="text/css">
@@ -269,6 +269,12 @@ MathJax.Hub.Config({
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
+<!-- newcommands.tex -->
+$$
+\newcommand{\tp}{\thinspace .}
+$$
+
+
 
 
     
@@ -282,7 +288,9 @@ MathJax.Hub.Config({
 
 <h2>Be careful with eval and string values  <a name="___sec9"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 We want <code>r = 'math programming'</code>. Writing just
 
 <p>
@@ -309,7 +317,7 @@ Remedy: must put the string inside quotes:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">s <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;&#39;math programming&#39;&quot;</span>
 r <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(s)                <span style="color: #408080; font-style: italic"># r becomes &#39;math programming&#39;</span>
 </pre></div>
-<p>
+
 </div>
 
 
