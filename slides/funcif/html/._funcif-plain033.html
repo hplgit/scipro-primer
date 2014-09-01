@@ -66,101 +66,122 @@ div { text-align: justify; text-justify: inter-word; }
 {'highest level': 2,
  'sections': [(u' We have used many Python functions ', 2, None, '___sec0'),
               (u' Python functions ', 2, None, '___sec1'),
-              (u' Functions must be called ', 2, None, '___sec2'),
-              (u' Local variables in Functions ', 2, None, '___sec3'),
-              (u' Turn a formula into a Python function ',
+              (u' Python function for implementing a mathematical function ',
                2,
                None,
-               '___sec4'),
+               '___sec2'),
+              (u' Functions must be called ',
+               2,
+               u'slides:funcif:call',
+               u'slides:funcif:call'),
+              (u' Functions can have as many arguments as you like ',
+               2,
+               u'slides:funcif:multiple:args',
+               u'slides:funcif:multiple:args'),
               (u' Function arguments become local variables ',
                2,
-               None,
-               '___sec5'),
+               u'slides:funcif:local:vars',
+               u'slides:funcif:local:vars'),
               (u' Functions may access global variables ',
                2,
                None,
                '___sec6'),
-              (u' Functions can return multiple values ', 2, None, '___sec7'),
+              (u' Local variables hide global variables of the same name ',
+               2,
+               u'slides:funcif:hide:globals',
+               u'slides:funcif:hide:globals'),
+              (u' Global variables can be changed inside functions if declared as global ',
+               2,
+               u'slides:funcif:change:globals',
+               u'slides:funcif:change:globals'),
+              (u' Functions can return multiple values ', 2, None, '___sec9'),
               (u' Example: Compute a function defined as a sum ',
                2,
                None,
-               '___sec8'),
+               '___sec10'),
               (u' Returning errors as well from the L(x, n) function ',
                2,
                None,
-               '___sec9'),
+               '___sec11'),
               (u' Functions do not need to return objects ',
                2,
                None,
-               '___sec10'),
+               '___sec12'),
               (u' Example on a function without return value ',
                2,
                None,
-               '___sec11'),
+               '___sec13'),
               (u' Keyword arguments are useful to simplify function calls and help document the arguments ',
                2,
                None,
-               '___sec12'),
-              (u' Example: Mathematical function of one variable, but with additional parameteres ',
-               2,
-               None,
-               '___sec13'),
-              (u' Doc strings ', 2, None, '___sec14'),
-              (u' Convention for input and output data in functions ',
+               '___sec14'),
+              (u' Examples on calling functions with keyword arguments ',
                2,
                None,
                '___sec15'),
-              (u' The main program ', 2, None, '___sec16'),
+              (u' How to implement a mathematical function of one variable, but with additional parameteres? ',
+               2,
+               None,
+               '___sec16'),
+              (u' Doc strings ', 2, None, '___sec17'),
+              (u' Convention for input and output data in functions ',
+               2,
+               None,
+               '___sec18'),
+              (u' The main program ', 2, None, '___sec19'),
               (u' Python functions as arguments to Python functions ',
                2,
                None,
-               '___sec17'),
-              (u' Application of the `diff2` function ', 2, None, '___sec18'),
+               '___sec20'),
+              (u' Application of the `diff2` function ', 2, None, '___sec21'),
               (u' Round-off errors caused nonsense values in the table ',
                2,
                None,
-               '___sec19'),
+               '___sec22'),
               (u' Lambda functions for compact inline function definitions ',
                2,
                None,
-               '___sec20'),
+               '___sec23'),
               (u' Example on using a lambda function to save typing ',
                2,
                None,
-               '___sec21'),
+               '___sec24'),
               (u' If tests for branching the flow of statements ',
                2,
                None,
-               '___sec22'),
-              (u' If tests with multiple branches ', 2, None, '___sec23'),
-              (u' Example on multiple branching ', 2, None, '___sec24'),
-              (u' Inline if tests for shorter code ', 2, None, '___sec25'),
-              (u' Test functions ', 2, None, '___sec26'),
-              (u' Why write test functions according to these rules? ',
-               2,
-               None,
-               '___sec27'),
-              (u' Summary of if tests and functions ', 2, None, '___sec28'),
-              (u' A summarizing example for Chapter 3; problem ',
+               '___sec25'),
+              (u' The general form if if tests ', 2, None, '___sec26'),
+              (u' Example on multiple branching ', 2, None, '___sec27'),
+              (u' Inline if tests for shorter code ', 2, None, '___sec28'),
+              (u' We shall write special test functions to verify functions ',
                2,
                None,
                '___sec29'),
-              (u' The program: function for computing the formula ',
+              (u' Why write test functions according to these rules? ',
                2,
                None,
                '___sec30'),
-              (u' The program: function, now with test for possible errors ',
-               2,
-               None,
-               '___sec31'),
-              (u' The program: application (and main program) ',
+              (u' Summary of if tests and functions ', 2, None, '___sec31'),
+              (u' A summarizing example for Chapter 3; problem ',
                2,
                None,
                '___sec32'),
+              (u' The program: function for computing the formula ',
+               2,
+               None,
+               '___sec33'),
+              (u' The program: function, now with test for possible errors ',
+               2,
+               None,
+               '___sec34'),
+              (u' The program: application (and main program) ',
+               2,
+               None,
+               '___sec35'),
               (u' The program: verification (with test function) ',
                2,
                None,
-               '___sec33')]}
+               '___sec36')]}
 end of tocinfo -->
 
 <body>
@@ -190,29 +211,33 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>The program: application (and main program)  <a name="___sec32"></a></h2>
+<h2>A summarizing example for Chapter 3; problem  <a name="___sec32"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
+An integral
+
+$$
+\int_a^b f(x)dx
+$$
+
+can be approximated by <em>Simpson's rule</em>:
+
+$$
+\begin{align*}
+\int_a^b f(x)dx \approx & {b-a\over 3n}\biggl(
+f(a) + f(b) + 4\sum_{i=1}^{n/2} f(a + (2i-1)h)\\
+& + 2\sum_{i=1}^{n/2-1} f(a+2ih)\biggr)
+\end{align*}
+$$
+
+
 <p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(x):
-    <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">3./2</span>)<span style="color: #666666">*</span>sin(x)<span style="color: #666666">**3</span>
-
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, pi
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">application</span>():
-    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Integral of 1.5*sin^3 from 0 to pi:&#39;</span>
-    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">2</span>, <span style="color: #666666">6</span>, <span style="color: #666666">12</span>, <span style="color: #666666">100</span>, <span style="color: #666666">500</span>:
-        approx <span style="color: #666666">=</span> Simpson(h, <span style="color: #666666">0</span>, pi, n)
-        <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;n=</span><span style="color: #BB6688; font-weight: bold">%3d</span><span style="color: #BA2121">, approx=</span><span style="color: #BB6688; font-weight: bold">%18.15f</span><span style="color: #BA2121">, error=</span><span style="color: #BB6688; font-weight: bold">%9.2E</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> \
-              (n, approx, <span style="color: #666666">2-</span>approx)
-
-application()
-</pre></div>
-
+Problem: make a function <code>Simpson(f, a, b, n=500)</code> for
+computing an integral of <code>f(x)</code> by Simpson's rule.
+Call <code>Simpson(...)</code> for \( {3\over2}\int_0^\pi\sin^3x dx \) (exact
+value: 2) for \( n=2,6,12,100,500 \).
 </div>
 
 

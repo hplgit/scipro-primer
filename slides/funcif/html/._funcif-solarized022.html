@@ -56,101 +56,122 @@ div { text-align: justify; text-justify: inter-word; }
 {'highest level': 2,
  'sections': [(u' We have used many Python functions ', 2, None, '___sec0'),
               (u' Python functions ', 2, None, '___sec1'),
-              (u' Functions must be called ', 2, None, '___sec2'),
-              (u' Local variables in Functions ', 2, None, '___sec3'),
-              (u' Turn a formula into a Python function ',
+              (u' Python function for implementing a mathematical function ',
                2,
                None,
-               '___sec4'),
+               '___sec2'),
+              (u' Functions must be called ',
+               2,
+               u'slides:funcif:call',
+               u'slides:funcif:call'),
+              (u' Functions can have as many arguments as you like ',
+               2,
+               u'slides:funcif:multiple:args',
+               u'slides:funcif:multiple:args'),
               (u' Function arguments become local variables ',
                2,
-               None,
-               '___sec5'),
+               u'slides:funcif:local:vars',
+               u'slides:funcif:local:vars'),
               (u' Functions may access global variables ',
                2,
                None,
                '___sec6'),
-              (u' Functions can return multiple values ', 2, None, '___sec7'),
+              (u' Local variables hide global variables of the same name ',
+               2,
+               u'slides:funcif:hide:globals',
+               u'slides:funcif:hide:globals'),
+              (u' Global variables can be changed inside functions if declared as global ',
+               2,
+               u'slides:funcif:change:globals',
+               u'slides:funcif:change:globals'),
+              (u' Functions can return multiple values ', 2, None, '___sec9'),
               (u' Example: Compute a function defined as a sum ',
                2,
                None,
-               '___sec8'),
+               '___sec10'),
               (u' Returning errors as well from the L(x, n) function ',
                2,
                None,
-               '___sec9'),
+               '___sec11'),
               (u' Functions do not need to return objects ',
                2,
                None,
-               '___sec10'),
+               '___sec12'),
               (u' Example on a function without return value ',
                2,
                None,
-               '___sec11'),
+               '___sec13'),
               (u' Keyword arguments are useful to simplify function calls and help document the arguments ',
                2,
                None,
-               '___sec12'),
-              (u' Example: Mathematical function of one variable, but with additional parameteres ',
-               2,
-               None,
-               '___sec13'),
-              (u' Doc strings ', 2, None, '___sec14'),
-              (u' Convention for input and output data in functions ',
+               '___sec14'),
+              (u' Examples on calling functions with keyword arguments ',
                2,
                None,
                '___sec15'),
-              (u' The main program ', 2, None, '___sec16'),
+              (u' How to implement a mathematical function of one variable, but with additional parameteres? ',
+               2,
+               None,
+               '___sec16'),
+              (u' Doc strings ', 2, None, '___sec17'),
+              (u' Convention for input and output data in functions ',
+               2,
+               None,
+               '___sec18'),
+              (u' The main program ', 2, None, '___sec19'),
               (u' Python functions as arguments to Python functions ',
                2,
                None,
-               '___sec17'),
-              (u' Application of the `diff2` function ', 2, None, '___sec18'),
+               '___sec20'),
+              (u' Application of the `diff2` function ', 2, None, '___sec21'),
               (u' Round-off errors caused nonsense values in the table ',
                2,
                None,
-               '___sec19'),
+               '___sec22'),
               (u' Lambda functions for compact inline function definitions ',
                2,
                None,
-               '___sec20'),
+               '___sec23'),
               (u' Example on using a lambda function to save typing ',
                2,
                None,
-               '___sec21'),
+               '___sec24'),
               (u' If tests for branching the flow of statements ',
                2,
                None,
-               '___sec22'),
-              (u' If tests with multiple branches ', 2, None, '___sec23'),
-              (u' Example on multiple branching ', 2, None, '___sec24'),
-              (u' Inline if tests for shorter code ', 2, None, '___sec25'),
-              (u' Test functions ', 2, None, '___sec26'),
-              (u' Why write test functions according to these rules? ',
-               2,
-               None,
-               '___sec27'),
-              (u' Summary of if tests and functions ', 2, None, '___sec28'),
-              (u' A summarizing example for Chapter 3; problem ',
+               '___sec25'),
+              (u' The general form if if tests ', 2, None, '___sec26'),
+              (u' Example on multiple branching ', 2, None, '___sec27'),
+              (u' Inline if tests for shorter code ', 2, None, '___sec28'),
+              (u' We shall write special test functions to verify functions ',
                2,
                None,
                '___sec29'),
-              (u' The program: function for computing the formula ',
+              (u' Why write test functions according to these rules? ',
                2,
                None,
                '___sec30'),
-              (u' The program: function, now with test for possible errors ',
-               2,
-               None,
-               '___sec31'),
-              (u' The program: application (and main program) ',
+              (u' Summary of if tests and functions ', 2, None, '___sec31'),
+              (u' A summarizing example for Chapter 3; problem ',
                2,
                None,
                '___sec32'),
+              (u' The program: function for computing the formula ',
+               2,
+               None,
+               '___sec33'),
+              (u' The program: function, now with test for possible errors ',
+               2,
+               None,
+               '___sec34'),
+              (u' The program: application (and main program) ',
+               2,
+               None,
+               '___sec35'),
               (u' The program: verification (with test function) ',
                2,
                None,
-               '___sec33')]}
+               '___sec36')]}
 end of tocinfo -->
 
 <body>
@@ -175,26 +196,51 @@ MathJax.Hub.Config({
 <a name="part0022"></a>
 <!-- !split -->
 
-<h2>Example on using a lambda function to save typing  <a name="___sec21"></a></h2>
+<h2>Application of the <code>diff2</code> function  <a name="___sec21"></a></h2>
 
-Old code:
-
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Code:</b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(t):
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(t):
     <span style="color: #8B008B; font-weight: bold">return</span> t**(-<span style="color: #B452CD">6</span>)
 
-<span style="color: #8B008B; font-weight: bold">print</span> diff2(g)
+<span style="color: #228B22"># make table of g&#39;&#39;(t) for 13 h values:</span>
+<span style="color: #8B008B; font-weight: bold">for</span> k <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1</span>,<span style="color: #B452CD">14</span>):
+    h = <span style="color: #B452CD">10</span>**(-k)
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;h=%.0e: %.5f&#39;</span> % (h, diff2(g, <span style="color: #B452CD">1</span>, h))
 </pre></div>
-<p>
-New, more compact code with lambda:
 
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Output (\( g''(1)=42 \)):</b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> diff2(<span style="color: #8B008B; font-weight: bold">lambda</span> t: t**(-<span style="color: #B452CD">6</span>))
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">h=<span style="color: #B452CD">1e-01</span>: <span style="color: #B452CD">44.61504</span>
+h=<span style="color: #B452CD">1e-02</span>: <span style="color: #B452CD">42.02521</span>
+h=<span style="color: #B452CD">1e-03</span>: <span style="color: #B452CD">42.00025</span>
+h=<span style="color: #B452CD">1e-04</span>: <span style="color: #B452CD">42.00000</span>
+h=<span style="color: #B452CD">1e-05</span>: <span style="color: #B452CD">41.99999</span>
+h=<span style="color: #B452CD">1e-06</span>: <span style="color: #B452CD">42.00074</span>
+h=<span style="color: #B452CD">1e-07</span>: <span style="color: #B452CD">41.94423</span>
+h=<span style="color: #B452CD">1e-08</span>: <span style="color: #B452CD">47.73959</span>
+h=<span style="color: #B452CD">1e-09</span>: -<span style="color: #B452CD">666.13381</span>
+h=<span style="color: #B452CD">1e-10</span>: <span style="color: #B452CD">0.00000</span>
+h=<span style="color: #B452CD">1e-11</span>: <span style="color: #B452CD">0.00000</span>
+h=<span style="color: #B452CD">1e-12</span>: -<span style="color: #B452CD">666133814.77509</span>
+h=<span style="color: #B452CD">1e-13</span>: <span style="color: #B452CD">66613381477.50939</span>
 </pre></div>
+
+</div>
+
+
 <p>
 <p>
 <!-- begin bottom navigation -->

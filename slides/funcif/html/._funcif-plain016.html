@@ -66,101 +66,122 @@ div { text-align: justify; text-justify: inter-word; }
 {'highest level': 2,
  'sections': [(u' We have used many Python functions ', 2, None, '___sec0'),
               (u' Python functions ', 2, None, '___sec1'),
-              (u' Functions must be called ', 2, None, '___sec2'),
-              (u' Local variables in Functions ', 2, None, '___sec3'),
-              (u' Turn a formula into a Python function ',
+              (u' Python function for implementing a mathematical function ',
                2,
                None,
-               '___sec4'),
+               '___sec2'),
+              (u' Functions must be called ',
+               2,
+               u'slides:funcif:call',
+               u'slides:funcif:call'),
+              (u' Functions can have as many arguments as you like ',
+               2,
+               u'slides:funcif:multiple:args',
+               u'slides:funcif:multiple:args'),
               (u' Function arguments become local variables ',
                2,
-               None,
-               '___sec5'),
+               u'slides:funcif:local:vars',
+               u'slides:funcif:local:vars'),
               (u' Functions may access global variables ',
                2,
                None,
                '___sec6'),
-              (u' Functions can return multiple values ', 2, None, '___sec7'),
+              (u' Local variables hide global variables of the same name ',
+               2,
+               u'slides:funcif:hide:globals',
+               u'slides:funcif:hide:globals'),
+              (u' Global variables can be changed inside functions if declared as global ',
+               2,
+               u'slides:funcif:change:globals',
+               u'slides:funcif:change:globals'),
+              (u' Functions can return multiple values ', 2, None, '___sec9'),
               (u' Example: Compute a function defined as a sum ',
                2,
                None,
-               '___sec8'),
+               '___sec10'),
               (u' Returning errors as well from the L(x, n) function ',
                2,
                None,
-               '___sec9'),
+               '___sec11'),
               (u' Functions do not need to return objects ',
                2,
                None,
-               '___sec10'),
+               '___sec12'),
               (u' Example on a function without return value ',
                2,
                None,
-               '___sec11'),
+               '___sec13'),
               (u' Keyword arguments are useful to simplify function calls and help document the arguments ',
                2,
                None,
-               '___sec12'),
-              (u' Example: Mathematical function of one variable, but with additional parameteres ',
-               2,
-               None,
-               '___sec13'),
-              (u' Doc strings ', 2, None, '___sec14'),
-              (u' Convention for input and output data in functions ',
+               '___sec14'),
+              (u' Examples on calling functions with keyword arguments ',
                2,
                None,
                '___sec15'),
-              (u' The main program ', 2, None, '___sec16'),
+              (u' How to implement a mathematical function of one variable, but with additional parameteres? ',
+               2,
+               None,
+               '___sec16'),
+              (u' Doc strings ', 2, None, '___sec17'),
+              (u' Convention for input and output data in functions ',
+               2,
+               None,
+               '___sec18'),
+              (u' The main program ', 2, None, '___sec19'),
               (u' Python functions as arguments to Python functions ',
                2,
                None,
-               '___sec17'),
-              (u' Application of the `diff2` function ', 2, None, '___sec18'),
+               '___sec20'),
+              (u' Application of the `diff2` function ', 2, None, '___sec21'),
               (u' Round-off errors caused nonsense values in the table ',
                2,
                None,
-               '___sec19'),
+               '___sec22'),
               (u' Lambda functions for compact inline function definitions ',
                2,
                None,
-               '___sec20'),
+               '___sec23'),
               (u' Example on using a lambda function to save typing ',
                2,
                None,
-               '___sec21'),
+               '___sec24'),
               (u' If tests for branching the flow of statements ',
                2,
                None,
-               '___sec22'),
-              (u' If tests with multiple branches ', 2, None, '___sec23'),
-              (u' Example on multiple branching ', 2, None, '___sec24'),
-              (u' Inline if tests for shorter code ', 2, None, '___sec25'),
-              (u' Test functions ', 2, None, '___sec26'),
-              (u' Why write test functions according to these rules? ',
-               2,
-               None,
-               '___sec27'),
-              (u' Summary of if tests and functions ', 2, None, '___sec28'),
-              (u' A summarizing example for Chapter 3; problem ',
+               '___sec25'),
+              (u' The general form if if tests ', 2, None, '___sec26'),
+              (u' Example on multiple branching ', 2, None, '___sec27'),
+              (u' Inline if tests for shorter code ', 2, None, '___sec28'),
+              (u' We shall write special test functions to verify functions ',
                2,
                None,
                '___sec29'),
-              (u' The program: function for computing the formula ',
+              (u' Why write test functions according to these rules? ',
                2,
                None,
                '___sec30'),
-              (u' The program: function, now with test for possible errors ',
-               2,
-               None,
-               '___sec31'),
-              (u' The program: application (and main program) ',
+              (u' Summary of if tests and functions ', 2, None, '___sec31'),
+              (u' A summarizing example for Chapter 3; problem ',
                2,
                None,
                '___sec32'),
+              (u' The program: function for computing the formula ',
+               2,
+               None,
+               '___sec33'),
+              (u' The program: function, now with test for possible errors ',
+               2,
+               None,
+               '___sec34'),
+              (u' The program: application (and main program) ',
+               2,
+               None,
+               '___sec35'),
               (u' The program: verification (with test function) ',
                2,
                None,
-               '___sec33')]}
+               '___sec36')]}
 end of tocinfo -->
 
 <body>
@@ -190,38 +211,40 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Convention for input and output data in functions  <a name="___sec15"></a></h2>
+<h2>Examples on calling functions with keyword arguments  <a name="___sec15"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-
-<ul>
-  <li> A function can have three types of input and output data:</li>
-
-<ul>
-    <li> input data specified through positional/keyword arguments</li>
-    <li> input/output data given as positional/keyword arguments that will be modified and returned</li>
-    <li> output data created inside the function</li>
-</ul>
-
-  <li> <em>All output data are returned, all input data are arguments</em></li>
-</ul>
-
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">somefunc</span>(i1, i2, i3, io4, io5, i6<span style="color: #666666">=</span>value1, io7<span style="color: #666666">=</span>value2):
-    <span style="color: #408080; font-style: italic"># modify io4, io5, io7; compute o1, o2, o3</span>
-    <span style="color: #008000; font-weight: bold">return</span> o1, o2, o3, io4, io5, io7
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">somefunc</span>(arg1, arg2, kwarg1<span style="color: #666666">=</span><span style="color: #008000">True</span>, kwarg2<span style="color: #666666">=0</span>):
+<span style="color: #666666">&gt;&gt;&gt;</span>     <span style="color: #008000; font-weight: bold">print</span> arg1, arg2, kwarg1, kwarg2
+
+<span style="color: #666666">&gt;&gt;&gt;</span> somefunc(<span style="color: #BA2121">&#39;Hello&#39;</span>, [<span style="color: #666666">1</span>,<span style="color: #666666">2</span>])   <span style="color: #408080; font-style: italic"># drop kwarg1 and kwarg2</span>
+Hello [<span style="color: #666666">1</span>, <span style="color: #666666">2</span>] <span style="color: #008000">True</span> <span style="color: #666666">0</span>            <span style="color: #408080; font-style: italic"># default values are used</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> somefunc(<span style="color: #BA2121">&#39;Hello&#39;</span>, [<span style="color: #666666">1</span>,<span style="color: #666666">2</span>], kwarg1<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Hi&#39;</span>)
+Hello [<span style="color: #666666">1</span>, <span style="color: #666666">2</span>] Hi <span style="color: #666666">0</span>              <span style="color: #408080; font-style: italic"># kwarg2 has default value</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> somefunc(<span style="color: #BA2121">&#39;Hello&#39;</span>, [<span style="color: #666666">1</span>,<span style="color: #666666">2</span>], kwarg2<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Hi&#39;</span>)
+Hello [<span style="color: #666666">1</span>, <span style="color: #666666">2</span>] <span style="color: #008000">True</span> Hi           <span style="color: #408080; font-style: italic"># kwarg1 has default value</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> somefunc(<span style="color: #BA2121">&#39;Hello&#39;</span>, [<span style="color: #666666">1</span>,<span style="color: #666666">2</span>], kwarg2<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Hi&#39;</span>, kwarg1<span style="color: #666666">=6</span>)
+Hello [<span style="color: #666666">1</span>, <span style="color: #666666">2</span>] <span style="color: #666666">6</span> Hi              <span style="color: #408080; font-style: italic"># specify all args</span>
 </pre></div>
 <p>
-The function arguments are
+If we use <code>name=value</code> for <em>all</em> arguments <em>in the call</em>,
+their sequence can in fact be arbitrary:
 
-<ul>
-  <li> pure input: <code>i1</code>, <code>i2</code>, <code>i3</code>, <code>i6</code></li>
-  <li> input and output: <code>io4</code>, <code>io5</code>, <code>io7</code></li>
-</ul>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> somefunc(kwarg2<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Hello&#39;</span>, arg1<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Hi&#39;</span>, kwarg1<span style="color: #666666">=6</span>, arg2<span style="color: #666666">=</span>[<span style="color: #666666">2</span>])
+Hi [<span style="color: #666666">2</span>] <span style="color: #666666">6</span> Hello
+</pre></div>
+
 </div>
 
 

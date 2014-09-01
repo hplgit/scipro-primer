@@ -66,101 +66,122 @@ div { text-align: justify; text-justify: inter-word; }
 {'highest level': 2,
  'sections': [(u' We have used many Python functions ', 2, None, '___sec0'),
               (u' Python functions ', 2, None, '___sec1'),
-              (u' Functions must be called ', 2, None, '___sec2'),
-              (u' Local variables in Functions ', 2, None, '___sec3'),
-              (u' Turn a formula into a Python function ',
+              (u' Python function for implementing a mathematical function ',
                2,
                None,
-               '___sec4'),
+               '___sec2'),
+              (u' Functions must be called ',
+               2,
+               u'slides:funcif:call',
+               u'slides:funcif:call'),
+              (u' Functions can have as many arguments as you like ',
+               2,
+               u'slides:funcif:multiple:args',
+               u'slides:funcif:multiple:args'),
               (u' Function arguments become local variables ',
                2,
-               None,
-               '___sec5'),
+               u'slides:funcif:local:vars',
+               u'slides:funcif:local:vars'),
               (u' Functions may access global variables ',
                2,
                None,
                '___sec6'),
-              (u' Functions can return multiple values ', 2, None, '___sec7'),
+              (u' Local variables hide global variables of the same name ',
+               2,
+               u'slides:funcif:hide:globals',
+               u'slides:funcif:hide:globals'),
+              (u' Global variables can be changed inside functions if declared as global ',
+               2,
+               u'slides:funcif:change:globals',
+               u'slides:funcif:change:globals'),
+              (u' Functions can return multiple values ', 2, None, '___sec9'),
               (u' Example: Compute a function defined as a sum ',
                2,
                None,
-               '___sec8'),
+               '___sec10'),
               (u' Returning errors as well from the L(x, n) function ',
                2,
                None,
-               '___sec9'),
+               '___sec11'),
               (u' Functions do not need to return objects ',
                2,
                None,
-               '___sec10'),
+               '___sec12'),
               (u' Example on a function without return value ',
                2,
                None,
-               '___sec11'),
+               '___sec13'),
               (u' Keyword arguments are useful to simplify function calls and help document the arguments ',
                2,
                None,
-               '___sec12'),
-              (u' Example: Mathematical function of one variable, but with additional parameteres ',
-               2,
-               None,
-               '___sec13'),
-              (u' Doc strings ', 2, None, '___sec14'),
-              (u' Convention for input and output data in functions ',
+               '___sec14'),
+              (u' Examples on calling functions with keyword arguments ',
                2,
                None,
                '___sec15'),
-              (u' The main program ', 2, None, '___sec16'),
+              (u' How to implement a mathematical function of one variable, but with additional parameteres? ',
+               2,
+               None,
+               '___sec16'),
+              (u' Doc strings ', 2, None, '___sec17'),
+              (u' Convention for input and output data in functions ',
+               2,
+               None,
+               '___sec18'),
+              (u' The main program ', 2, None, '___sec19'),
               (u' Python functions as arguments to Python functions ',
                2,
                None,
-               '___sec17'),
-              (u' Application of the `diff2` function ', 2, None, '___sec18'),
+               '___sec20'),
+              (u' Application of the `diff2` function ', 2, None, '___sec21'),
               (u' Round-off errors caused nonsense values in the table ',
                2,
                None,
-               '___sec19'),
+               '___sec22'),
               (u' Lambda functions for compact inline function definitions ',
                2,
                None,
-               '___sec20'),
+               '___sec23'),
               (u' Example on using a lambda function to save typing ',
                2,
                None,
-               '___sec21'),
+               '___sec24'),
               (u' If tests for branching the flow of statements ',
                2,
                None,
-               '___sec22'),
-              (u' If tests with multiple branches ', 2, None, '___sec23'),
-              (u' Example on multiple branching ', 2, None, '___sec24'),
-              (u' Inline if tests for shorter code ', 2, None, '___sec25'),
-              (u' Test functions ', 2, None, '___sec26'),
-              (u' Why write test functions according to these rules? ',
-               2,
-               None,
-               '___sec27'),
-              (u' Summary of if tests and functions ', 2, None, '___sec28'),
-              (u' A summarizing example for Chapter 3; problem ',
+               '___sec25'),
+              (u' The general form if if tests ', 2, None, '___sec26'),
+              (u' Example on multiple branching ', 2, None, '___sec27'),
+              (u' Inline if tests for shorter code ', 2, None, '___sec28'),
+              (u' We shall write special test functions to verify functions ',
                2,
                None,
                '___sec29'),
-              (u' The program: function for computing the formula ',
+              (u' Why write test functions according to these rules? ',
                2,
                None,
                '___sec30'),
-              (u' The program: function, now with test for possible errors ',
-               2,
-               None,
-               '___sec31'),
-              (u' The program: application (and main program) ',
+              (u' Summary of if tests and functions ', 2, None, '___sec31'),
+              (u' A summarizing example for Chapter 3; problem ',
                2,
                None,
                '___sec32'),
+              (u' The program: function for computing the formula ',
+               2,
+               None,
+               '___sec33'),
+              (u' The program: function, now with test for possible errors ',
+               2,
+               None,
+               '___sec34'),
+              (u' The program: application (and main program) ',
+               2,
+               None,
+               '___sec35'),
               (u' The program: verification (with test function) ',
                2,
                None,
-               '___sec33')]}
+               '___sec36')]}
 end of tocinfo -->
 
 <body>
@@ -190,51 +211,44 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>The program: verification (with test function)  <a name="___sec33"></a></h2>
+<h2>The program: function for computing the formula  <a name="___sec33"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-Property of Simpson's rule: 2nd degree polynomials are integrated exactly!
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_Simpson</span>():      <span style="color: #408080; font-style: italic"># rule: no arguments</span>
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Check that 2nd-degree polynomials are integrated exactly.&quot;&quot;&quot;</span>
-    a <span style="color: #666666">=</span> <span style="color: #666666">1.5</span>
-    b <span style="color: #666666">=</span> <span style="color: #666666">2.0</span>
-    n <span style="color: #666666">=</span> <span style="color: #666666">8</span>
-    g <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #666666">3*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">-</span> <span style="color: #666666">7*</span>x <span style="color: #666666">+</span> <span style="color: #666666">2.5</span>       <span style="color: #408080; font-style: italic"># test integrand</span>
-    G <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> x: x<span style="color: #666666">**3</span> <span style="color: #666666">-</span> <span style="color: #666666">3.5*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">2.5*</span>x  <span style="color: #408080; font-style: italic"># integral of g</span>
-    exact <span style="color: #666666">=</span> G(b) <span style="color: #666666">-</span> G(a)
-    approx <span style="color: #666666">=</span> Simpson(g, a, b, n)
-    success <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(exact <span style="color: #666666">-</span> approx) <span style="color: #666666">&lt;</span> <span style="color: #666666">1E-14</span>  <span style="color: #408080; font-style: italic"># tolerance for floats</span>
-    msg <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;exact=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">, approx=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (exact, approx)
-    <span style="color: #008000; font-weight: bold">assert</span> success, msg   <span style="color: #408080; font-style: italic"># assert boolean success condition</span>
-</pre></div>
-<p>
-Can either call <code>test_Simpson()</code> or run nose or pytest:
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Simpson</span>(f, a, b, n<span style="color: #666666">=500</span>):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    Return the approximation of the integral of f</span>
+<span style="color: #BA2121; font-style: italic">    from a to b using Simpson&#39;s rule with n intervals.</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
 
-<p>
+    h <span style="color: #666666">=</span> (b <span style="color: #666666">-</span> a)<span style="color: #666666">/</span><span style="color: #008000">float</span>(n)
 
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; nosetests -s Simpson.py
-Terminal&gt; pytest -s Simpson.py
-...
-Ran 1 test in 0.005s
+    sum1 <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, n<span style="color: #666666">/2</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span>):
+        sum1 <span style="color: #666666">+=</span> f(a <span style="color: #666666">+</span> (<span style="color: #666666">2*</span>i<span style="color: #666666">-1</span>)<span style="color: #666666">*</span>h)
 
-OK
+    sum2 <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, n<span style="color: #666666">/2</span>):
+        sum2 <span style="color: #666666">+=</span> f(a <span style="color: #666666">+</span> <span style="color: #666666">2*</span>i<span style="color: #666666">*</span>h)
+
+    integral <span style="color: #666666">=</span> (b<span style="color: #666666">-</span>a)<span style="color: #666666">/</span>(<span style="color: #666666">3*</span>n)<span style="color: #666666">*</span>(f(a) <span style="color: #666666">+</span> f(b) <span style="color: #666666">+</span> <span style="color: #666666">4*</span>sum1 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>sum2)
+    <span style="color: #008000; font-weight: bold">return</span> integral
 </pre></div>
 
 </div>
 
 
 <p>
+<p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._funcif-plain033.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
 </td><td>
+<div style="text-align: right;"><a href="._funcif-plain035.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>

@@ -56,101 +56,122 @@ div { text-align: justify; text-justify: inter-word; }
 {'highest level': 2,
  'sections': [(u' We have used many Python functions ', 2, None, '___sec0'),
               (u' Python functions ', 2, None, '___sec1'),
-              (u' Functions must be called ', 2, None, '___sec2'),
-              (u' Local variables in Functions ', 2, None, '___sec3'),
-              (u' Turn a formula into a Python function ',
+              (u' Python function for implementing a mathematical function ',
                2,
                None,
-               '___sec4'),
+               '___sec2'),
+              (u' Functions must be called ',
+               2,
+               u'slides:funcif:call',
+               u'slides:funcif:call'),
+              (u' Functions can have as many arguments as you like ',
+               2,
+               u'slides:funcif:multiple:args',
+               u'slides:funcif:multiple:args'),
               (u' Function arguments become local variables ',
                2,
-               None,
-               '___sec5'),
+               u'slides:funcif:local:vars',
+               u'slides:funcif:local:vars'),
               (u' Functions may access global variables ',
                2,
                None,
                '___sec6'),
-              (u' Functions can return multiple values ', 2, None, '___sec7'),
+              (u' Local variables hide global variables of the same name ',
+               2,
+               u'slides:funcif:hide:globals',
+               u'slides:funcif:hide:globals'),
+              (u' Global variables can be changed inside functions if declared as global ',
+               2,
+               u'slides:funcif:change:globals',
+               u'slides:funcif:change:globals'),
+              (u' Functions can return multiple values ', 2, None, '___sec9'),
               (u' Example: Compute a function defined as a sum ',
                2,
                None,
-               '___sec8'),
+               '___sec10'),
               (u' Returning errors as well from the L(x, n) function ',
                2,
                None,
-               '___sec9'),
+               '___sec11'),
               (u' Functions do not need to return objects ',
                2,
                None,
-               '___sec10'),
+               '___sec12'),
               (u' Example on a function without return value ',
                2,
                None,
-               '___sec11'),
+               '___sec13'),
               (u' Keyword arguments are useful to simplify function calls and help document the arguments ',
                2,
                None,
-               '___sec12'),
-              (u' Example: Mathematical function of one variable, but with additional parameteres ',
-               2,
-               None,
-               '___sec13'),
-              (u' Doc strings ', 2, None, '___sec14'),
-              (u' Convention for input and output data in functions ',
+               '___sec14'),
+              (u' Examples on calling functions with keyword arguments ',
                2,
                None,
                '___sec15'),
-              (u' The main program ', 2, None, '___sec16'),
+              (u' How to implement a mathematical function of one variable, but with additional parameteres? ',
+               2,
+               None,
+               '___sec16'),
+              (u' Doc strings ', 2, None, '___sec17'),
+              (u' Convention for input and output data in functions ',
+               2,
+               None,
+               '___sec18'),
+              (u' The main program ', 2, None, '___sec19'),
               (u' Python functions as arguments to Python functions ',
                2,
                None,
-               '___sec17'),
-              (u' Application of the `diff2` function ', 2, None, '___sec18'),
+               '___sec20'),
+              (u' Application of the `diff2` function ', 2, None, '___sec21'),
               (u' Round-off errors caused nonsense values in the table ',
                2,
                None,
-               '___sec19'),
+               '___sec22'),
               (u' Lambda functions for compact inline function definitions ',
                2,
                None,
-               '___sec20'),
+               '___sec23'),
               (u' Example on using a lambda function to save typing ',
                2,
                None,
-               '___sec21'),
+               '___sec24'),
               (u' If tests for branching the flow of statements ',
                2,
                None,
-               '___sec22'),
-              (u' If tests with multiple branches ', 2, None, '___sec23'),
-              (u' Example on multiple branching ', 2, None, '___sec24'),
-              (u' Inline if tests for shorter code ', 2, None, '___sec25'),
-              (u' Test functions ', 2, None, '___sec26'),
-              (u' Why write test functions according to these rules? ',
-               2,
-               None,
-               '___sec27'),
-              (u' Summary of if tests and functions ', 2, None, '___sec28'),
-              (u' A summarizing example for Chapter 3; problem ',
+               '___sec25'),
+              (u' The general form if if tests ', 2, None, '___sec26'),
+              (u' Example on multiple branching ', 2, None, '___sec27'),
+              (u' Inline if tests for shorter code ', 2, None, '___sec28'),
+              (u' We shall write special test functions to verify functions ',
                2,
                None,
                '___sec29'),
-              (u' The program: function for computing the formula ',
+              (u' Why write test functions according to these rules? ',
                2,
                None,
                '___sec30'),
-              (u' The program: function, now with test for possible errors ',
-               2,
-               None,
-               '___sec31'),
-              (u' The program: application (and main program) ',
+              (u' Summary of if tests and functions ', 2, None, '___sec31'),
+              (u' A summarizing example for Chapter 3; problem ',
                2,
                None,
                '___sec32'),
+              (u' The program: function for computing the formula ',
+               2,
+               None,
+               '___sec33'),
+              (u' The program: function, now with test for possible errors ',
+               2,
+               None,
+               '___sec34'),
+              (u' The program: application (and main program) ',
+               2,
+               None,
+               '___sec35'),
               (u' The program: verification (with test function) ',
                2,
                None,
-               '___sec33')]}
+               '___sec36')]}
 end of tocinfo -->
 
 <body>
@@ -175,32 +196,34 @@ MathJax.Hub.Config({
 <a name="part0014"></a>
 <!-- !split -->
 
-<h2>Example: Mathematical function of one variable, but with additional parameteres  <a name="___sec13"></a></h2>
+<h2>Example on a function without return value  <a name="___sec13"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
-<b></b>
+<b>Make a table of \( L(x;n) \) vs. \( \ln (1+x) \):</b>
 <p>
-Consider a function of \( t \), with parameters \( A \), \( a \), and \( \omega \):
-
-$$ f(t; A,a, \omega) = Ae^{-at}\sin (\omega t)     $$
-
-We can implement \( f \) in a Python function with \( t \) as positional argument and \( A \), \( a \), and \( \omega \) as keyword arguments:
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> pi, exp, sin
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">table</span>(x):
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;\nx=%g, ln(1+x)=%g&#39;</span> % (x, log(<span style="color: #B452CD">1</span>+x))
+    <span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> [<span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">10</span>, <span style="color: #B452CD">100</span>, <span style="color: #B452CD">500</span>]:
+        value, <span style="color: #658b00">next</span>, error = L2(x, n)
+        <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;n=%-4d %-10g  (next term: %8.2e  &#39;</span>\
+              <span style="color: #CD5555">&#39;error: %8.2e)&#39;</span> % (n, value, <span style="color: #658b00">next</span>, error)
+</pre></div>
+<p>
+No need to return anything here - the purpose is to print.
 
-<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(t, A=<span style="color: #B452CD">1</span>, a=<span style="color: #B452CD">1</span>, omega=<span style="color: #B452CD">2</span>*pi):
-    <span style="color: #8B008B; font-weight: bold">return</span> A*exp(-a*t)*sin(omega*t)
+<p>
 
-v1 = f(<span style="color: #B452CD">0.2</span>)
-v2 = f(<span style="color: #B452CD">0.2</span>, omega=<span style="color: #B452CD">1</span>)
-v2 = f(<span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">3</span>)  <span style="color: #228B22"># same as f(0.2, A=1, a=3)</span>
-v3 = f(<span style="color: #B452CD">0.2</span>, omega=<span style="color: #B452CD">1</span>, A=<span style="color: #B452CD">2.5</span>)
-v4 = f(A=<span style="color: #B452CD">5</span>, a=<span style="color: #B452CD">0.1</span>, omega=<span style="color: #B452CD">1</span>, t=<span style="color: #B452CD">1.3</span>)
-v5 = f(t=<span style="color: #B452CD">0.2</span>, A=<span style="color: #B452CD">9</span>)
-v6 = f(t=<span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">9</span>)   <span style="color: #228B22"># illegal: keyword arg before positional</span>
+<!-- code=text (!bc dat) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">x=10, ln(1+x)=2.3979
+n=1    0.909091    (next term: 4.13e-01  error: 1.49e+00)
+n=2    1.32231     (next term: 2.50e-01  error: 1.08e+00)
+n=10   2.17907     (next term: 3.19e-02  error: 2.19e-01)
+n=100  2.39789     (next term: 6.53e-07  error: 6.59e-06)
+n=500  2.3979      (next term: 3.65e-24  error: 6.22e-15)
 </pre></div>
 
 </div>
