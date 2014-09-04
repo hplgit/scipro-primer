@@ -65,7 +65,10 @@ div { text-align: justify; text-justify: inter-word; }
 <!-- tocinfo
 {'highest level': 2,
  'sections': [(u' We have used many Python functions ', 2, None, '___sec0'),
-              (u' Python functions ', 2, None, '___sec1'),
+              (u' Functions are one of the most import tools in programming ',
+               2,
+               None,
+               '___sec1'),
               (u' Python function for implementing a mathematical function ',
                2,
                None,
@@ -90,7 +93,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                u'slides:funcif:hide:globals',
                u'slides:funcif:hide:globals'),
-              (u' Global variables can be changed inside functions if declared as global ',
+              (u' Global variables can be changed if declared global ',
                2,
                u'slides:funcif:change:globals',
                u'slides:funcif:change:globals'),
@@ -123,12 +126,18 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec16'),
-              (u' Doc strings ', 2, None, '___sec17'),
+              (u' Doc strings are used to document the usage of a function ',
+               2,
+               None,
+               '___sec17'),
               (u' Convention for input and output data in functions ',
                2,
                None,
                '___sec18'),
-              (u' The main program ', 2, None, '___sec19'),
+              (u' The main program is the set of statements outside functions ',
+               2,
+               None,
+               '___sec19'),
               (u' Python functions as arguments to Python functions ',
                2,
                None,
@@ -153,7 +162,7 @@ div { text-align: justify; text-justify: inter-word; }
               (u' The general form if if tests ', 2, None, '___sec26'),
               (u' Example on multiple branching ', 2, None, '___sec27'),
               (u' Inline if tests for shorter code ', 2, None, '___sec28'),
-              (u' We shall write special test functions to verify functions ',
+              (u' We shall write special *test functions* to verify functions ',
                2,
                None,
                '___sec29'),
@@ -223,7 +232,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>
-<center><h4>Sep 1, 2014</h4></center> <!-- date -->
+<center><h4>Sep 4, 2014</h4></center> <!-- date -->
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
@@ -279,7 +288,7 @@ Now it is time to write our own functions!
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Python functions  <a name="___sec1"></a></h2>
+<h2>Functions are one of the most import tools in programming  <a name="___sec1"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -470,7 +479,7 @@ What gets printed?
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Global variables can be changed inside functions if declared as global <a name="slides:funcif:change:globals"></a></h2>
+<h2>Global variables can be changed if declared global <a name="slides:funcif:change:globals"></a></h2>
 
 
 <iframe width="950" height="500" frameborder="0"
@@ -563,7 +572,7 @@ is an approximation to \( \ln (1+x) \) for a finite \( n \) and \( x\geq 1 \).
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b>Make a Python function for \( L(x;n) \):</b>
+<b>Corresponding Python function for \( L(x;n) \):</b>
 <p>
 
 <p>
@@ -592,7 +601,7 @@ x <span style="color: #666666">=</span> <span style="color: #666666">5</span>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-We can return more: also the first neglected term in the sum and the error (\( \ln (1+x) - L(x;n) \)):
+We can return more: 1) the first neglected term in the sum and 2) the error (\( \ln (1+x) - L(x;n) \)):
 
 <p>
 
@@ -774,12 +783,12 @@ v6 <span style="color: #666666">=</span> f(t<span style="color: #666666">=0.2</s
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Doc strings  <a name="___sec17"></a></h2>
+<h2>Doc strings are used to document the usage of a function  <a name="___sec17"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
-<b></b>
+<b>Important Python convention:</b>
 <p>
-Python convention: document the purpose of a function, its arguments, and its return values in a <em>doc string</em> - a (triple-quoted) string written right after the function header.
+Document the purpose of a function, its arguments, and its return values in a <em>doc string</em> - a (triple-quoted) string written right after the function header.
 
 <p>
 
@@ -829,8 +838,10 @@ Python convention: document the purpose of a function, its arguments, and its re
 </ul>
 </div>
 
+<!-- !epop -->
 
 <p>
+<!-- !bpop -->
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -855,13 +866,11 @@ The function arguments are
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The main program  <a name="___sec19"></a></h2>
+<h2>The main program is the set of statements outside functions  <a name="___sec19"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-The <em>main program</em> is the set of statements outside functions.
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -903,7 +912,7 @@ The execution starts with the first statement in the main program and proceeds l
     <li> numerical root finding: \( f(x)=0 \)</li>
 </ul>
 
-  <li> All three cases need \( f \) as a Python function</li>
+  <li> All three cases need \( f \) as a Python function <code>f(x)</code></li>
 </ul>
 </div>
 
@@ -1175,8 +1184,13 @@ x, & 0\leq x < 1\\
 0, & x \geq 2
 \end{array}\right.
 $$
+</div>
 
 
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Python implementation with if-branching.</b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1236,7 +1250,7 @@ Example:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>We shall write special test functions to verify functions  <a name="___sec29"></a></h2>
+<h2>We shall write special <em>test functions</em> to verify functions  <a name="___sec29"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1244,16 +1258,16 @@ Example:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">double</span>(x):          <span style="color: #408080; font-style: italic"># some function</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">double</span>(x):            <span style="color: #408080; font-style: italic"># some function</span>
     <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">2*</span>x
 
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_double</span>():      <span style="color: #408080; font-style: italic"># associated test function</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_double</span>():        <span style="color: #408080; font-style: italic"># associated test function</span>
     x <span style="color: #666666">=</span> <span style="color: #666666">4</span>
-    exact_result <span style="color: #666666">=</span> <span style="color: #666666">8</span>
-    computed_result <span style="color: #666666">=</span> double(x)
-    success <span style="color: #666666">=</span> computed_result <span style="color: #666666">==</span> exact_result  <span style="color: #408080; font-style: italic"># boolean value</span>
-    msg_if_failure <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;got </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">, should have </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (r, exact_result)
-    <span style="color: #008000; font-weight: bold">assert</span> success, msg_if_failure
+    exact <span style="color: #666666">=</span> <span style="color: #666666">8</span>             <span style="color: #408080; font-style: italic"># expected result from function double</span>
+    computed <span style="color: #666666">=</span> double(x)
+    success <span style="color: #666666">=</span> computed <span style="color: #666666">==</span> exact  <span style="color: #408080; font-style: italic"># boolean value: test passed</span>
+    msg <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;computed </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">, expected </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (computed, exact)
+    <span style="color: #008000; font-weight: bold">assert</span> success, msg
 </pre></div>
 
 </div>
@@ -1267,9 +1281,9 @@ Example:
 <ul>
  <li> name begins with <code>test_</code></li>
  <li> no arguments</li>
- <li> must have an <code>assert success</code> statement, where <code>condition</code> is <code>True</code>
+ <li> must have an <code>assert success</code> statement, where <code>success</code> is <code>True</code>
    if the test passed and <code>False</code> otherwise (<code>assert success, msg</code>
-   prints <code>msg</code> if failure)</li>
+   prints <code>msg</code> on failure)</li>
 </ul>
 </div>
 
@@ -1285,7 +1299,7 @@ Example:
 
 <ul>
  <li> Easy to recognize where functions are verified</li>
- <li> Test frameworks, like nose and pytest, can automatically
+ <li> Test frameworks, like <code>nose</code> and <code>pytest</code>, can automatically
    run <em>all</em> your test functions
    (in a folder tree) and report if any bugs have sneaked in</li>
 </ul>
@@ -1377,8 +1391,8 @@ can be approximated by <em>Simpson's rule</em>:
 
 $$
 \begin{align*}
-\int_a^b f(x)dx \approx & {b-a\over 3n}\biggl(
-f(a) + f(b) + 4\sum_{i=1}^{n/2} f(a + (2i-1)h)\\
+\int_a^b f(x)dx \approx {b-a\over 3n}\biggl(
+& f(a) + f(b) + 4\sum_{i=1}^{n/2} f(a + (2i-1)h)\\
 & + 2\sum_{i=1}^{n/2-1} f(a+2ih)\biggr)
 \end{align*}
 $$
@@ -1499,7 +1513,7 @@ Property of Simpson's rule: 2nd degree polynomials are integrated exactly!
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_Simpson</span>():      <span style="color: #408080; font-style: italic"># rule: no arguments</span>
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Check that 2nd-degree polynomials are integrated exactly.&quot;&quot;&quot;</span>
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Check that quadratic functions are integrated exactly.&quot;&quot;&quot;</span>
     a <span style="color: #666666">=</span> <span style="color: #666666">1.5</span>
     b <span style="color: #666666">=</span> <span style="color: #666666">2.0</span>
     n <span style="color: #666666">=</span> <span style="color: #666666">8</span>
@@ -1509,7 +1523,7 @@ Property of Simpson's rule: 2nd degree polynomials are integrated exactly!
     approx <span style="color: #666666">=</span> Simpson(g, a, b, n)
     success <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(exact <span style="color: #666666">-</span> approx) <span style="color: #666666">&lt;</span> <span style="color: #666666">1E-14</span>  <span style="color: #408080; font-style: italic"># tolerance for floats</span>
     msg <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;exact=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">, approx=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (exact, approx)
-    <span style="color: #008000; font-weight: bold">assert</span> success, msg   <span style="color: #408080; font-style: italic"># assert boolean success condition</span>
+    <span style="color: #008000; font-weight: bold">assert</span> success, msg
 </pre></div>
 <p>
 Can either call <code>test_Simpson()</code> or run nose or pytest:

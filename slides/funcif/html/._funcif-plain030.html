@@ -65,7 +65,10 @@ div { text-align: justify; text-justify: inter-word; }
 <!-- tocinfo
 {'highest level': 2,
  'sections': [(u' We have used many Python functions ', 2, None, '___sec0'),
-              (u' Python functions ', 2, None, '___sec1'),
+              (u' Functions are one of the most import tools in programming ',
+               2,
+               None,
+               '___sec1'),
               (u' Python function for implementing a mathematical function ',
                2,
                None,
@@ -90,7 +93,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                u'slides:funcif:hide:globals',
                u'slides:funcif:hide:globals'),
-              (u' Global variables can be changed inside functions if declared as global ',
+              (u' Global variables can be changed if declared global ',
                2,
                u'slides:funcif:change:globals',
                u'slides:funcif:change:globals'),
@@ -123,12 +126,18 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec16'),
-              (u' Doc strings ', 2, None, '___sec17'),
+              (u' Doc strings are used to document the usage of a function ',
+               2,
+               None,
+               '___sec17'),
               (u' Convention for input and output data in functions ',
                2,
                None,
                '___sec18'),
-              (u' The main program ', 2, None, '___sec19'),
+              (u' The main program is the set of statements outside functions ',
+               2,
+               None,
+               '___sec19'),
               (u' Python functions as arguments to Python functions ',
                2,
                None,
@@ -153,7 +162,7 @@ div { text-align: justify; text-justify: inter-word; }
               (u' The general form if if tests ', 2, None, '___sec26'),
               (u' Example on multiple branching ', 2, None, '___sec27'),
               (u' Inline if tests for shorter code ', 2, None, '___sec28'),
-              (u' We shall write special test functions to verify functions ',
+              (u' We shall write special *test functions* to verify functions ',
                2,
                None,
                '___sec29'),
@@ -211,7 +220,7 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>We shall write special test functions to verify functions  <a name="___sec29"></a></h2>
+<h2>We shall write special <em>test functions</em> to verify functions  <a name="___sec29"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -219,16 +228,16 @@ MathJax.Hub.Config({
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">double</span>(x):          <span style="color: #408080; font-style: italic"># some function</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">double</span>(x):            <span style="color: #408080; font-style: italic"># some function</span>
     <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">2*</span>x
 
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_double</span>():      <span style="color: #408080; font-style: italic"># associated test function</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_double</span>():        <span style="color: #408080; font-style: italic"># associated test function</span>
     x <span style="color: #666666">=</span> <span style="color: #666666">4</span>
-    exact_result <span style="color: #666666">=</span> <span style="color: #666666">8</span>
-    computed_result <span style="color: #666666">=</span> double(x)
-    success <span style="color: #666666">=</span> computed_result <span style="color: #666666">==</span> exact_result  <span style="color: #408080; font-style: italic"># boolean value</span>
-    msg_if_failure <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;got </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">, should have </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (r, exact_result)
-    <span style="color: #008000; font-weight: bold">assert</span> success, msg_if_failure
+    exact <span style="color: #666666">=</span> <span style="color: #666666">8</span>             <span style="color: #408080; font-style: italic"># expected result from function double</span>
+    computed <span style="color: #666666">=</span> double(x)
+    success <span style="color: #666666">=</span> computed <span style="color: #666666">==</span> exact  <span style="color: #408080; font-style: italic"># boolean value: test passed</span>
+    msg <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;computed </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">, expected </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (computed, exact)
+    <span style="color: #008000; font-weight: bold">assert</span> success, msg
 </pre></div>
 
 </div>
@@ -242,9 +251,9 @@ MathJax.Hub.Config({
 <ul>
  <li> name begins with <code>test_</code></li>
  <li> no arguments</li>
- <li> must have an <code>assert success</code> statement, where <code>condition</code> is <code>True</code>
+ <li> must have an <code>assert success</code> statement, where <code>success</code> is <code>True</code>
    if the test passed and <code>False</code> otherwise (<code>assert success, msg</code>
-   prints <code>msg</code> if failure)</li>
+   prints <code>msg</code> on failure)</li>
 </ul>
 </div>
 
