@@ -138,7 +138,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>&nbsp;<br>
-<center><h4>Sep 1, 2014</h4></center> <!-- date -->
+<center><h4>Sep 4, 2014</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -206,7 +206,7 @@ Now it is time to write our own functions!
 
 <section>
 
-<h2>Python functions  <a name="___sec1"></a></h2>
+<h2>Functions are one of the most import tools in programming  <a name="___sec1"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -429,7 +429,7 @@ What gets printed?
 
 <section>
 
-<h2>Global variables can be changed inside functions if declared as global <a name="slides:funcif:change:globals"></a></h2>
+<h2>Global variables can be changed if declared global <a name="slides:funcif:change:globals"></a></h2>
 
 
 <iframe width="950" height="500" frameborder="0"
@@ -532,7 +532,7 @@ is an approximation to \( \ln (1+x) \) for a finite \( n \) and \( x\geq 1 \).
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b>Make a Python function for \( L(x;n) \):</b>
+<b>Corresponding Python function for \( L(x;n) \):</b>
 <p>
 
 <p>
@@ -565,7 +565,7 @@ x = <span style="color: #B452CD">5</span>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-We can return more: also the first neglected term in the sum and the error (\( \ln (1+x) - L(x;n) \)):
+We can return more: 1) the first neglected term in the sum and 2) the error (\( \ln (1+x) - L(x;n) \)):
 
 <p>
 
@@ -773,12 +773,12 @@ v6 = f(t=<span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">9
 
 <section>
 
-<h2>Doc strings  <a name="___sec17"></a></h2>
+<h2>Doc strings are used to document the usage of a function  <a name="___sec17"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
-<b></b>
+<b>Important Python convention:</b>
 <p>
-Python convention: document the purpose of a function, its arguments, and its return values in a <em>doc string</em> - a (triple-quoted) string written right after the function header.
+Document the purpose of a function, its arguments, and its return values in a <em>doc string</em> - a (triple-quoted) string written right after the function header.
 
 <p>
 
@@ -834,7 +834,9 @@ Python convention: document the purpose of a function, its arguments, and its re
 </div>
 
 
+
 <p>
+
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -863,13 +865,11 @@ The function arguments are
 
 <section>
 
-<h2>The main program  <a name="___sec19"></a></h2>
+<h2>The main program is the set of statements outside functions  <a name="___sec19"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-The <em>main program</em> is the set of statements outside functions.
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -916,7 +916,7 @@ The execution starts with the first statement in the main program and proceeds l
 </ul>
 <p>
 
-  <p><li> All three cases need \( f \) as a Python function</li>
+  <p><li> All three cases need \( f \) as a Python function <code>f(x)</code></li>
 </ul>
 </div>
 
@@ -1222,8 +1222,13 @@ x, & 0\leq x < 1\\
 \end{array}\right.
 $$
 <p>&nbsp;<br>
+</div>
 
 
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Python implementation with if-branching.</b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1291,7 +1296,7 @@ Example:
 
 <section>
 
-<h2>We shall write special test functions to verify functions  <a name="___sec29"></a></h2>
+<h2>We shall write special <em>test functions</em> to verify functions  <a name="___sec29"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1299,16 +1304,16 @@ Example:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">double</span>(x):          <span style="color: #228B22"># some function</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">double</span>(x):            <span style="color: #228B22"># some function</span>
     <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">2</span>*x
 
-<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_double</span>():      <span style="color: #228B22"># associated test function</span>
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_double</span>():        <span style="color: #228B22"># associated test function</span>
     x = <span style="color: #B452CD">4</span>
-    exact_result = <span style="color: #B452CD">8</span>
-    computed_result = double(x)
-    success = computed_result == exact_result  <span style="color: #228B22"># boolean value</span>
-    msg_if_failure = <span style="color: #CD5555">&#39;got %s, should have %s&#39;</span> % (r, exact_result)
-    <span style="color: #8B008B; font-weight: bold">assert</span> success, msg_if_failure
+    exact = <span style="color: #B452CD">8</span>             <span style="color: #228B22"># expected result from function double</span>
+    computed = double(x)
+    success = computed == exact  <span style="color: #228B22"># boolean value: test passed</span>
+    msg = <span style="color: #CD5555">&#39;computed %s, expected %s&#39;</span> % (computed, exact)
+    <span style="color: #8B008B; font-weight: bold">assert</span> success, msg
 </pre></div>
 
 </div>
@@ -1322,9 +1327,9 @@ Example:
 <ul>
  <p><li> name begins with <code>test_</code></li>
  <p><li> no arguments</li>
- <p><li> must have an <code>assert success</code> statement, where <code>condition</code> is <code>True</code>
+ <p><li> must have an <code>assert success</code> statement, where <code>success</code> is <code>True</code>
    if the test passed and <code>False</code> otherwise (<code>assert success, msg</code>
-   prints <code>msg</code> if failure)</li>
+   prints <code>msg</code> on failure)</li>
 </ul>
 </div>
 
@@ -1344,7 +1349,7 @@ Example:
 
 <ul>
  <p><li> Easy to recognize where functions are verified</li>
- <p><li> Test frameworks, like nose and pytest, can automatically
+ <p><li> Test frameworks, like <code>nose</code> and <code>pytest</code>, can automatically
    run <em>all</em> your test functions
    (in a folder tree) and report if any bugs have sneaked in</li>
 </ul>
@@ -1448,8 +1453,8 @@ can be approximated by <em>Simpson's rule</em>:
 <p>&nbsp;<br>
 $$
 \begin{align*}
-\int_a^b f(x)dx \approx & {b-a\over 3n}\biggl(
-f(a) + f(b) + 4\sum_{i=1}^{n/2} f(a + (2i-1)h)\\
+\int_a^b f(x)dx \approx {b-a\over 3n}\biggl(
+& f(a) + f(b) + 4\sum_{i=1}^{n/2} f(a + (2i-1)h)\\
 & + 2\sum_{i=1}^{n/2-1} f(a+2ih)\biggr)
 \end{align*}
 $$
@@ -1587,7 +1592,7 @@ Property of Simpson's rule: 2nd degree polynomials are integrated exactly!
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_Simpson</span>():      <span style="color: #228B22"># rule: no arguments</span>
-    <span style="color: #CD5555">&quot;&quot;&quot;Check that 2nd-degree polynomials are integrated exactly.&quot;&quot;&quot;</span>
+    <span style="color: #CD5555">&quot;&quot;&quot;Check that quadratic functions are integrated exactly.&quot;&quot;&quot;</span>
     a = <span style="color: #B452CD">1.5</span>
     b = <span style="color: #B452CD">2.0</span>
     n = <span style="color: #B452CD">8</span>
@@ -1597,7 +1602,7 @@ Property of Simpson's rule: 2nd degree polynomials are integrated exactly!
     approx = Simpson(g, a, b, n)
     success = <span style="color: #658b00">abs</span>(exact - approx) &lt; <span style="color: #B452CD">1E-14</span>  <span style="color: #228B22"># tolerance for floats</span>
     msg = <span style="color: #CD5555">&#39;exact=%g, approx=%g&#39;</span> % (exact, approx)
-    <span style="color: #8B008B; font-weight: bold">assert</span> success, msg   <span style="color: #228B22"># assert boolean success condition</span>
+    <span style="color: #8B008B; font-weight: bold">assert</span> success, msg
 </pre></div>
 <p>
 Can either call <code>test_Simpson()</code> or run nose or pytest:
