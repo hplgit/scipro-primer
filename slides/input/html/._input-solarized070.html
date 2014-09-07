@@ -298,53 +298,33 @@ $$
 
 
     
-<a name="part0020"></a>
+<a name="part0070"></a>
 <!-- !split -->
 
-<h2>Programming option-value pairs with the argparse module  <a name="___sec19"></a></h2>
+<h2>Applications of the Bisection method  <a name="___sec69"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
+Two examples: \( \tanh x = x \) and \( \tanh x^5 = x^5 \):
+
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">argparse</span>
-parser = argparse.ArgumentParser()
-
-<span style="color: #228B22"># Define command-line arguments</span>
-parser.add_argument(<span style="color: #CD5555">&#39;--v0&#39;</span>, <span style="color: #CD5555">&#39;--initial_velocity&#39;</span>, <span style="color: #658b00">type</span>=<span style="color: #658b00">float</span>,
-                    default=<span style="color: #B452CD">0.0</span>, help=<span style="color: #CD5555">&#39;initial velocity&#39;</span>)
-
-parser.add_argument(<span style="color: #CD5555">&#39;--s0&#39;</span>, <span style="color: #CD5555">&#39;--initial_position&#39;</span>, <span style="color: #658b00">type</span>=<span style="color: #658b00">float</span>,
-                    default=<span style="color: #B452CD">0.0</span>, help=<span style="color: #CD5555">&#39;initial position&#39;</span>)
-
-parser.add_argument(<span style="color: #CD5555">&#39;--a&#39;</span>, <span style="color: #CD5555">&#39;--acceleration&#39;</span>, <span style="color: #658b00">type</span>=<span style="color: #658b00">float</span>,
-                    default=<span style="color: #B452CD">1.0</span>, help=<span style="color: #CD5555">&#39;acceleration&#39;</span>)
-
-parser.add_argument(<span style="color: #CD5555">&#39;--t&#39;</span>, <span style="color: #CD5555">&#39;--time&#39;</span>, <span style="color: #658b00">type</span>=<span style="color: #658b00">float</span>,
-                    default=<span style="color: #B452CD">1.0</span>, help=<span style="color: #CD5555">&#39;time&#39;</span>)
-
-<span style="color: #228B22"># Read the command line and interpret the arguments</span>
-args = parser.parse_args()
-
-<span style="color: #228B22"># Extract values</span>
-s = args.s0 + args.v0*t + <span style="color: #B452CD">0.5</span>*args.a*args.t**<span style="color: #B452CD">2</span>
-<span style="color: #228B22"># or</span>
-s0 = args.s0; v0 = args.v0; a = args.a; t = args.t
-s = s0 + v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color: #B452CD">2</span>
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">Terminal&gt; python bisection_plot.py &quot;x-tanh(x)&quot; -1 1
+Terminal&gt; python bisection_plot.py &quot;x**5-tanh(x**5)&quot; -1 1
 </pre></div>
-
+<p>
+The first equation is easy to treat, but the second leads to much
+less accurate results. Why??
 </div>
 
 
 <p>
-<p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._input-solarized019.html">&laquo; Previous</a></div>
+<div style="text-align: left;"><a href="._input-solarized069.html">&laquo; Previous</a></div>
 </td><td>
-<div style="text-align: right;"><a href="._input-solarized021.html">Next &raquo;</a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>
