@@ -144,7 +144,7 @@ $$
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>&nbsp;<br>
-<center><h4>Sep 2, 2014</h4></center> <!-- date -->
+<center><h4>Sep 7, 2014</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -154,14 +154,15 @@ $$
 
 <h2>Programs until now hardcode input data  <a name="___sec0"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
 <p>&nbsp;<br>
 $$ y = v_0t - 0.5gt^2 $$
 <p>&nbsp;<br>
 
 
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -175,10 +176,11 @@ y = v0*t - <span style="color: #B452CD">0.5</span>*g*t**<span style="color: #B45
 Note:
 
 <ul>
-  <p><li> Input data are explicitly set (&quot;hardcoded&quot;)</li>
-  <p><li> To change input data, we need to <em>edit</em> the program</li>
-  <p><li> This is considered bad programming <linebreak> (because editing programs may easily introduce errors!)</li>
-  <p><li> Rule: read input from user - do not edit a correct program</li>
+  <p><li> Input data (\( v_0 \), \( t \)) are hardcoded (explicitly set)</li>
+  <p><li> Changing input data requires <em>editing</em></li>
+  <p><li> This is considered bad programming <br />
+    (because editing programs may easily introduce errors!)</li>
+  <p><li> Rule: read input from user - avoid editing a correct program</li>
 </ul>
 </div>
 
@@ -217,20 +219,11 @@ Note:
 <p>
 
 <ul>
-  <p><li> Until now: hardcoded initialization of variables</li>
-  <p><li> From now on: ask the user questions and read answers</li>
-  <p><li> More convenient: read command-line arguments</li>
+  <p><li> Hardcode values</li>
+  <p><li> Ask the user questions and read answers</li>
+  <p><li> Read command-line arguments</li>
+  <p><li> Read data from a file</li>
 </ul>
-<p>
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python myprog.py arg1 arg2 arg3 ...
-Terminal&gt; rm -i -r temp projects univ
-</pre></div>
-<p>
-Unix programs (<code>rm</code>, <code>ls</code>, <code>cp</code>, ...) make heavy use of command-line arguments, (see e.g. <code>man ls</code>). We shall do the same.
 </div>
 
 
@@ -246,14 +239,12 @@ Unix programs (<code>rm</code>, <code>ls</code>, <code>cp</code>, ...) make heav
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-Consider
+Sample program:
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">C = <span style="color: #B452CD">21</span>
-F = (<span style="color: #B452CD">9.0</span>/<span style="color: #B452CD">5</span>)*C + <span style="color: #B452CD">32</span>
-<span style="color: #8B008B; font-weight: bold">print</span> F
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">C = <span style="color: #B452CD">21</span>; F = (<span style="color: #B452CD">9.0</span>/<span style="color: #B452CD">5</span>)*C + <span style="color: #B452CD">32</span>; <span style="color: #8B008B; font-weight: bold">print</span> F
 </pre></div>
 <p>
 Idea: let the program ask the user a question "C=?", read the user's answer, assign that answer to the variable <code>C</code>.
@@ -318,14 +309,38 @@ C=? 21
 
 <section>
 
-<h2>Reading from the command line  <a name="___sec5"></a></h2>
+<h2>Command-line arguments are words written after the program name  <a name="___sec5"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Examples on command-line arguments:</b>
+<p>
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python myprog.py arg1 arg2 arg3 ...
+Terminal&gt; cp -r yourdir ../mydir
+Terminal&gt; ls -l
+</pre></div>
+<p>
+Unix programs (<code>rm</code>, <code>ls</code>, <code>cp</code>, ...) make heavy use of command-line arguments, (see e.g. <code>man ls</code>). We shall do the same.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>How to use a command-line argument in our sample program  <a name="___sec6"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">C = <span style="color: #B452CD">21</span>; F = (<span style="color: #B452CD">9.0</span>/<span style="color: #B452CD">5</span>)*C + <span style="color: #B452CD">32</span>; <span style="color: #8B008B; font-weight: bold">print</span> F
 </pre></div>
 <p>
@@ -344,22 +359,8 @@ and they are stored in the list <code>sys.argv</code>:
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
-<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;program name:&#39;</span>, sys.argv[<span style="color: #B452CD">0</span>]
-<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;1st command-line argument:&#39;</span>, sys.argv[<span style="color: #B452CD">1</span>] <span style="color: #228B22"># string</span>
-<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;2nd command-line argument:&#39;</span>, sys.argv[<span style="color: #B452CD">2</span>] <span style="color: #228B22"># string</span>
-<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;3rd command-line argument:&#39;</span>, sys.argv[<span style="color: #B452CD">3</span>] <span style="color: #228B22"># string</span>
-etc.
-</pre></div>
-<p>
-This is how we use `sys.argv':
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
-C = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])   <span style="color: #228B22"># read 1st command-line argument</span>
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">C = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])   <span style="color: #228B22"># read 1st command-line argument</span>
 F = <span style="color: #B452CD">9.0</span>*C/<span style="color: #B452CD">5</span> + <span style="color: #B452CD">32</span>
 <span style="color: #8B008B; font-weight: bold">print</span> F
 </pre></div>
@@ -374,19 +375,16 @@ F = <span style="color: #B452CD">9.0</span>*C/<span style="color: #B452CD">5</sp
 
 <section>
 
-<h2>Command-line arguments separated?  <a name="___sec6"></a></h2>
+<h2>Command-line arguments are separated by blanks  <a name="___sec7"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-Command-line arguments are separated by blanks - use quotes to override this rule!
-
-<p>
-Test program:
+Here is another program <code>print_cml.py</code>:
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>; <span style="color: #8B008B; font-weight: bold">print</span> sys.argv[<span style="color: #B452CD">1</span>:]
 </pre></div>
 <p>
@@ -402,7 +400,11 @@ Terminal&gt; python print_cml.py 21 &quot;string with blanks&quot; 1.3
 [&#39;21&#39;, &#39;string with blanks&#39;, &#39;1.3&#39;]
 </pre></div>
 <p>
-Note that all list elements are surrounded by quotes, demonstrating that command-line arguments are strings.
+Note 1: use quotes, as in <code>"string with blanks"</code>, to override the rule
+that command-line arguments are separate by blanks.
+
+<p>
+Note 2: all list elements are surrounded by quotes, demonstrating that command-line arguments are strings.
 </div>
 
 
@@ -413,55 +415,7 @@ Note that all list elements are surrounded by quotes, demonstrating that command
 
 <section>
 
-<h2>Example on reading 3 parameters from the command line  <a name="___sec7"></a></h2>
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-Compute the current location of an object,
-
-<p>&nbsp;<br>
-$$ s(t)=s_0 + v_0t + {1\over2}at^2$$
-<p>&nbsp;<br>
-
-when \( s_0 \) (initial location), \( v_0 \) (initial velocity), \( a \) (constant acceleration) and \( t \) (time) are given on the command line.
-
-<p>
-Test with \( t=3 \) s, \( s_0=1 \) m and \( v_0=1 \) m/s at \( t=0 \), and
-\( a=0.5 \) $\hbox{m/s}^2$:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python location_cml.py 1 1 0.5 3
-6.25
-</pre></div>
-<p>
-Program:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
-s0 = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
-v0 = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">2</span>])
-a  = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">3</span>])
-t  = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">4</span>])
-s  = s0 + v0*t + <span style="color: #B452CD">0.5</span>*a*t*t
-<span style="color: #8B008B; font-weight: bold">print</span> s
-</pre></div>
-
-</div>
-
-
-<p>
-
-</section>
-
-
-<section>
-
-<h2>The magic eval function  <a name="___sec8"></a></h2>
+<h2>The magic eval function turns a string into live code  <a name="___sec8"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -496,7 +450,7 @@ written directly into the program
 
 <section>
 
-<h2>Be careful with eval and string values  <a name="___sec9"></a></h2>
+<h2>Note: be careful with eval and string values  <a name="___sec9"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -505,7 +459,7 @@ We want <code>r = 'math programming'</code>. Writing just
 
 <p>
 
-<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">r = <span style="color: #658b00">eval</span>(<span style="color: #CD5555">&#39;math programming&#39;</span>)
 </pre></div>
 <p>
@@ -513,7 +467,7 @@ is the same as writing
 
 <p>
 
-<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">r = math programming
 </pre></div>
 <p>
@@ -521,6 +475,7 @@ which is an invalid expression and illegal syntax.
 
 <p>
 Remedy: must put the string inside quotes:
+
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -541,7 +496,7 @@ r = <span style="color: #658b00">eval</span>(s)                <span style="colo
 <h2>With eval, a little program can do much...  <a name="___sec10"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
-<b></b>
+<b>Program <code>add_input.py</code>:</b>
 <p>
 <p>
 
@@ -552,6 +507,13 @@ r = i1 + i2
 <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%s + %s becomes %s\nwith value %s&#39;</span> % \
       (<span style="color: #658b00">type</span>(i1), <span style="color: #658b00">type</span>(i2), <span style="color: #658b00">type</span>(r), r)
 </pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
 <p>
 We can add integer and float:
 
@@ -638,8 +600,8 @@ TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;
 
 <ul>
   <p><li> <code>eval(s)</code> evaluates an <em>expression</em> <code>s</code></li>
-  <p><li> <code>eval('r = 1+1')</code> is illegal because this is a statement, not only an expression (assignment statement: variable = expression)</li>
-  <p><li> ...but we can use <code>exec</code> for complete statements:</li>
+  <p><li> <code>eval('r = 1+1')</code> is illegal because this is a statement, not only an expression</li>
+  <p><li> ...but we can use <code>exec</code> to turn one or more complete statements into live code:</li>
 </ul>
 <p>
 
@@ -648,15 +610,10 @@ TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">statement = <span style="color: #CD5555">&#39;r = 1+1&#39;</span>   <span style="color: #228B22"># store statement in a string</span>
 <span style="color: #8B008B; font-weight: bold">exec</span>(statement)
-<span style="color: #8B008B; font-weight: bold">print</span> r
+<span style="color: #8B008B; font-weight: bold">print</span> r                 <span style="color: #228B22"># prints 2</span>
 </pre></div>
 <p>
- will print 2
-
-<ul>
-  <p><li> For longer code we can use multi-line strings:</li>
-</ul>
-<p>
+For longer code we can use multi-line strings:
 
 <p>
 
@@ -680,16 +637,12 @@ TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;
 
 <section>
 
-<h2>What can exec be used for?  <a name="___sec13"></a></h2>
+<h2>exec can be used for building a function at run-time  <a name="___sec13"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-
-<ul>
-  <p><li> Build code at run-time, e.g., a function:</li>
-</ul>
-<p>
+Embed user's formula in a Python function:
 
 <p>
 
@@ -699,7 +652,7 @@ code = <span style="color: #CD5555">&quot;&quot;&quot;</span>
 <span style="color: #CD5555">def f(x):</span>
 <span style="color: #CD5555">    return %s</span>
 <span style="color: #CD5555">&quot;&quot;&quot;</span> % formula
-<span style="color: #8B008B; font-weight: bold">exec</span>(code)
+<span style="color: #8B008B; font-weight: bold">exec</span>(code)     <span style="color: #228B22"># turn string formula into live function</span>
 
 x = <span style="color: #B452CD">0</span>
 <span style="color: #8B008B; font-weight: bold">while</span> x <span style="color: #8B008B">is</span> <span style="color: #8B008B">not</span> <span style="color: #658b00">None</span>:
@@ -708,10 +661,8 @@ x = <span style="color: #B452CD">0</span>
         y = f(x)
         <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;f(%g)=%g&#39;</span> % (x, y)
 </pre></div>
-<ul>
-  <p><li> While the program is running, the user types a formula, which becomes a function, the user gives <code>x</code> values until the answer is <code>None</code>, and the program evaluates the function <code>f(x)</code></li>
-  <p><li> Note: the programmer knows nothing about <code>f(x)</code>!</li>
-</ul>
+<p>
+While the program is running, the user types a formula, which becomes a function, the user gives <code>x</code> values until the answer is <code>None</code>, and the program evaluates the function <code>f(x)</code>. Note: the programmer knows nothing about the user's choice of <code>f(x)</code> when she writes the program (!).
 </div>
 
 
@@ -722,32 +673,28 @@ x = <span style="color: #B452CD">0</span>
 
 <section>
 
-<h2>StringFunction: string formulas \( \rightarrow \) functions  <a name="___sec14"></a></h2>
+<h2>StringFunction: turn string formulas into Python functions  <a name="___sec14"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-
-<ul>
-  <p><li> It is common for programs to read formulas and turn them into functions so we have made a special tool for this purpose:</li>
-</ul>
-<p>
+It is common for programs to read formulas and turn them into functions so we have made a special tool for this purpose:
 
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.StringFunction</span> <span style="color: #8B008B; font-weight: bold">import</span> StringFunction
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.std</span> <span style="color: #8B008B; font-weight: bold">import</span> StringFunction
 &gt;&gt;&gt; formula = <span style="color: #CD5555">&#39;exp(x)*sin(x)&#39;</span>
 &gt;&gt;&gt; f = StringFunction(formula)
 &gt;&gt;&gt; f(<span style="color: #B452CD">0</span>)
 <span style="color: #B452CD">0.0</span>
 &gt;&gt;&gt; f(pi)
 <span style="color: #B452CD">2.8338239229952166e-15</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #658b00">str</span>(f)
+exp(x)*sin(x)
 </pre></div>
-<ul>
-  <p><li> The function can have parameters: \( g(t) = Ae^{-at}\sin (\omega x) \)</li>
-</ul>
 <p>
+The function can also have parameters: \( g(t) = Ae^{-at}\sin (\omega x) \)
 
 <p>
 
@@ -769,7 +716,166 @@ g.set_parameters(A=<span style="color: #B452CD">2</span>, x=<span style="color: 
 
 <section>
 
-<h2>Command-line arguments with options  <a name="___sec15"></a></h2>
+<h2>Example: program for numerical differentiation  <a name="___sec15"></a></h2>
+
+
+<p class="fragment">
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Usage:</b>
+
+
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="fragment highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python diff.py &#39;exp(x)*sin(x)&#39; 3.4
+Numerical derivative: -36.6262969164
+</pre></div>
+
+Differentiate \( e^x\sin x \) at \( x=3.4 \) numerically.
+</div>
+
+
+</p>
+
+
+<p>
+
+<p class="fragment">
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Implementation:</b>
+
+&nbsp;<br>&nbsp;<br>
+$$ f'(x)\approx \frac{f(x+h)-f(x-h)}{2h}\quad (h\mbox{ small}) $$
+&nbsp;<br>&nbsp;<br>
+
+
+
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="fragment highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.std</span> <span style="color: #8B008B; font-weight: bold">import</span> StringFunction
+f = StringFunction(sys.argv[<span style="color: #B452CD">1</span>], independent_variable=<span style="color: #CD5555">&#39;x&#39;</span>)
+x = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">2</span>])
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">numerical_derivative</span>(f, x, h=<span style="color: #B452CD">1E-5</span>):
+    <span style="color: #8B008B; font-weight: bold">return</span> (f(x+h) - f(x-h))/(<span style="color: #B452CD">2</span>*h)
+
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Numerical derivative:&#39;</span>, numerical_derivative(f, x)
+</pre></div>
+
+</div>
+
+
+</p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Can we extend the program to also include symbolic differentiation? (Yes, but the code is advanced...)  <a name="___sec16"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python diff.py &#39;exp(x)*sin(x)&#39; 3.4
+Numerical derivative: -36.6262969164
+Exact derivative: -36.6262969154476 (error=9.390E-10)
+Formula for the derivative: exp(x)*sin(x) + exp(x)*cos(x)
+</pre></div>
+<p>
+Program extension:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #228B22"># Import all sin, cos, exp, ... functions from sympy such that</span>
+<span style="color: #228B22"># we can build a sympy expression out of str(f)</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sympy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+x_value = x   <span style="color: #228B22"># store the value of x, x will be used as symbol</span>
+x = sympy.symbols(<span style="color: #CD5555">&#39;x&#39;</span>)  <span style="color: #228B22"># need x as symbol for the next statement</span>
+<span style="color: #228B22"># Turn the string formula in f into a sympy expression</span>
+formula = <span style="color: #658b00">eval</span>(<span style="color: #658b00">str</span>(f))  <span style="color: #228B22"># ex: eval(&#39;exp(x)*sin(x)&#39;)</span>
+
+<span style="color: #228B22"># Differentiate formula wrt symbol x</span>
+dfdx = diff(formula, x)
+<span style="color: #228B22"># Substitute symbol x by x_value</span>
+dfdx_value = dfdx.subs(x, x_value)
+
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Exact derivative:&#39;</span>, dfdx_value, <span style="color: #CD5555">&#39;(error=%.3E)&#39;</span> % \
+      (dfdx_value - numerical_derivative(f, x_value))
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Formula for the derivative:&#39;</span>, dfdx
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Example on reading 4 parameters from the command line  <a name="___sec17"></a></h2>
+
+<p>&nbsp;<br>
+$$ s(t)=s_0 + v_0t + {1\over2}at^2$$
+<p>&nbsp;<br>
+
+
+<p>
+Input data: \( s_0 \) (initial location), \( v_0 \) (initial velocity), \( a \) (constant acceleration) and \( t \) (time)
+
+<p>
+Output data: \( s \) (current location)
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Specify \( s_0=1 \) m, \( v_0=1 \) m/s, \( a=0.5 \) $\hbox{m/s}^2$, and
+\( t=3 \) s on the command line:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python location_cml.py 1 1 0.5 3
+6.25
+</pre></div>
+<p>
+Program:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+s0 = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
+v0 = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">2</span>])
+a  = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">3</span>])
+t  = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">4</span>])
+s  = s0 + v0*t + <span style="color: #B452CD">0.5</span>*a*t*t
+<span style="color: #8B008B; font-weight: bold">print</span> s
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Command-line arguments with options  <a name="___sec18"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -799,7 +905,7 @@ is (cf. keyword arguments).
 
 <section>
 
-<h2>Programming option-value pairs with the argparse module  <a name="___sec16"></a></h2>
+<h2>Programming option-value pairs with the argparse module  <a name="___sec19"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -843,7 +949,7 @@ s = s0 + v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color:
 
 <section>
 
-<h2>The program has long and short command-line arguments  <a name="___sec17"></a></h2>
+<h2>The program has long and short command-line arguments  <a name="___sec20"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -867,7 +973,7 @@ Terminal&gt; python location.py --initial_velocity 1.2 --time 0.2
 
 <section>
 
-<h2>Graphical user interfaces  <a name="___sec18"></a></h2>
+<h2>Graphical user interfaces  <a name="___sec21"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -879,9 +985,7 @@ Terminal&gt; python location.py --initial_velocity 1.2 --time 0.2
 
 <ul>
     <p><li> GUI demands much extra complicated programming</li>
-    <p><li> GUI is an advantage for novice users</li>
-    <p><li> Experienced users often prefer command-line input <linebreak> (it's much quicker and can be automated)</li>
-    <p><li> The authors of a program are very experienced users...</li>
+    <p><li> Experienced users often prefer command-line input</li>
     <p><li> Programs with command-line or file input can easily be combined with each other, this is difficult with GUI-based programs</li>
 </ul>
 <p>
@@ -899,7 +1003,7 @@ Terminal&gt; python location.py --initial_velocity 1.2 --time 0.2
 
 <section>
 
-<h2>A graphical Celsius-Fahrenheit conversion program  <a name="___sec19"></a></h2>
+<h2>A graphical Celsius-Fahrenheit conversion program  <a name="___sec22"></a></h2>
 
 <center><p><img src="fig-input/c2f_gui.png" align="bottom" width=360></p></center>
 
@@ -922,7 +1026,7 @@ Terminal&gt; python location.py --initial_velocity 1.2 --time 0.2
 
 <section>
 
-<h2>The GUI code  <a name="___sec20"></a></h2>
+<h2>The GUI code  <a name="___sec23"></a></h2>
 
 <center><p><img src="fig-input/c2f_gui.png" align="bottom" width=360></p></center>
 
@@ -966,339 +1070,7 @@ root.mainloop()
 
 <section>
 
-<h2>Handling errors in input  <a name="___sec21"></a></h2>
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-A user can easily use our program in a wrong way, e.g.,
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_cml_v1.py
-Traceback (most recent call last):
-  File &quot;c2f_cml_v1.py&quot;, line 2, in ?
-    C = float(sys.argv[1])
-IndexError: list index out of range
-</pre></div>
-<p>
-(the user forgot to provide a command-line argument...)
-
-<p>
-How can <em>we</em> take control, explain what was wrong with the input,
-and stop the program without strange Python error messages?
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">len</span>(sys.argv) &lt; <span style="color: #B452CD">2</span>:
-    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;You failed to provide a command-line arg.!&#39;</span>
-    sys.exit(<span style="color: #B452CD">1</span>)  <span style="color: #228B22"># abort</span>
-F = <span style="color: #B452CD">9.0</span>*C/<span style="color: #B452CD">5</span> + <span style="color: #B452CD">32</span>
-<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%gC is %.1fF&#39;</span> % (C, F)
-</pre></div>
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_cml_v2.py
-You failed to provide a command-line arg.!
-</pre></div>
-
-</div>
-
-
-<p>
-
-</section>
-
-
-<section>
-
-<h2>Exceptions instead of if tests  <a name="___sec22"></a></h2>
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-
-<ul>
-  <p><li> Rather than test &quot;f something is wrong, recover from error, else do what we indended to do&quot;, it is common in Python (and many other languages) to <em>try</em> to do what we indend to, and if it fails, we recover from the error</li>
-  <p><li> This principle makes use of a <code>try-except</code> block</li>
-</ul>
-<p>
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">try</span>:
-    &lt;statements we indend to do&gt;
-<span style="color: #8B008B; font-weight: bold">except</span>:
-    &lt;statements <span style="color: #8B008B; font-weight: bold">for</span> handling errors&gt;
-</pre></div>
-<p>
-If something goes wrong in the <code>try</code> block, Python raises an <em>exception</em> and the execution jumps immediately to the <code>except</code> block.
-</div>
-
-
-<p>
-
-</section>
-
-
-<section>
-
-<h2>Temperature conversion example with try-except  <a name="___sec23"></a></h2>
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-Try to read <code>C</code> from the command-line, if it fails, tell the user,
-and abort execution:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
-<span style="color: #8B008B; font-weight: bold">try</span>:
-    C = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
-<span style="color: #8B008B; font-weight: bold">except</span>:
-    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;You failed to provide a command-line arg.!&#39;</span>
-    sys.exit(<span style="color: #B452CD">1</span>)  <span style="color: #228B22"># abort</span>
-F = <span style="color: #B452CD">9.0</span>*C/<span style="color: #B452CD">5</span> + <span style="color: #B452CD">32</span>
-<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%gC is %.1fF&#39;</span> % (C, F)
-</pre></div>
-<p>
-Execution:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_cml_v3.py
-You failed to provide a command-line arg.!
-
-Terminal&gt; python c2f_cml_v4.py 21C
-You failed to provide a command-line arg.!
-</pre></div>
-
-</div>
-
-
-<p>
-
-</section>
-
-
-<section>
-
-<h2>It is best to test for specific exceptions  <a name="___sec24"></a></h2>
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-Here we jump to the <code>except</code> block for <em>any</em> exception raised
-when executing the <code>try</code> block:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">try</span>:
-    &lt;statements&gt;
-<span style="color: #8B008B; font-weight: bold">except</span>:
-    &lt;statements&gt;
-</pre></div>
-<p>
-It is good programming style to test for specific exceptions:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">try</span>:
-    C = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
-<span style="color: #8B008B; font-weight: bold">except</span> <span style="color: #008b45; font-weight: bold">IndexError</span>:
-    ...
-</pre></div>
-<p>
-If we have an index out of bounds in <code>sys.argv</code>,
-an <code>IndexError</code> exception is raised, and we jump to the <code>except</code> block.
-
-<p>
-If any other exception arises, Python aborts the execution:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt;&gt; python c2f_cml_tmp.py 21C
-Traceback (most recent call last):
-  File &quot;tmp.py&quot;, line 3, in &lt;module&gt;
-    C = float(sys.argv[1])
-ValueError: invalid literal for float(): 21C
-</pre></div>
-
-</div>
-
-
-<p>
-
-</section>
-
-
-<section>
-
-<h2>Branching into different except blocks  <a name="___sec25"></a></h2>
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-We can test for different exceptions:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
-<span style="color: #8B008B; font-weight: bold">try</span>:
-    C = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
-<span style="color: #8B008B; font-weight: bold">except</span> <span style="color: #008b45; font-weight: bold">IndexError</span>:
-    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;No command-line argument for C!&#39;</span>
-    sys.exit(<span style="color: #B452CD">1</span>)  <span style="color: #228B22"># abort execution</span>
-<span style="color: #8B008B; font-weight: bold">except</span> <span style="color: #008b45; font-weight: bold">ValueError</span>:
-    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;C must be a pure number, not &quot;%s&quot;&#39;</span> % sys.argv[<span style="color: #B452CD">1</span>]
-    sys.exit(<span style="color: #B452CD">1</span>)
-
-F = <span style="color: #B452CD">9.0</span>*C/<span style="color: #B452CD">5</span> + <span style="color: #B452CD">32</span>
-<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%gC is %.1fF&#39;</span> % (C, F)
-</pre></div>
-<p>
-Executions:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_cml_v3.py
-No command-line argument for C!
-
-Terminal&gt; python c2f_cml_v3.py 21C
-Celsius degrees must be a pure number, not &quot;21C&quot;
-</pre></div>
-
-</div>
-
-
-<p>
-
-</section>
-
-
-<section>
-
-<h2>The programmer can raise exceptions  <a name="___sec26"></a></h2>
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-
-<ul>
-  <p><li> Instead of just letting Python raise exceptions, we can raise our own and tailor the message to the problem at hand</li>
-  <p><li> We provide two examples on this:</li>
-
-<ul>
-    <p><li> catching an exception, but raising a new one with an improved (tailored) error message</li>
-    <p><li> raising an exception because of wrong input data</li>
-</ul>
-<p>
-
-  <p><li> Syntax: <code>raise ExceptionType(message)</code></li>
-</ul>
-</div>
-
-
-<p>
-
-</section>
-
-
-<section>
-
-<h2>Examples on raising exceptions  <a name="___sec27"></a></h2>
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">read_C</span>():
-    <span style="color: #8B008B; font-weight: bold">try</span>:
-        C = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
-    <span style="color: #8B008B; font-weight: bold">except</span> <span style="color: #008b45; font-weight: bold">IndexError</span>:
-        <span style="color: #228B22"># re-raise, but with specific explanation:</span>
-        <span style="color: #8B008B; font-weight: bold">raise</span> <span style="color: #008b45; font-weight: bold">IndexError</span>(
-          <span style="color: #CD5555">&#39;Celsius degrees must be supplied on the command line&#39;</span>)
-    <span style="color: #8B008B; font-weight: bold">except</span> <span style="color: #008b45; font-weight: bold">ValueError</span>:
-        <span style="color: #228B22"># re-raise, but with specific explanation:</span>
-        <span style="color: #8B008B; font-weight: bold">raise</span> <span style="color: #008b45; font-weight: bold">ValueError</span>(
-         <span style="color: #CD5555">&#39;Degrees must be number, not &quot;%s&quot;&#39;</span> % sys.argv[<span style="color: #B452CD">1</span>])
-
-    <span style="color: #228B22"># C is read correctly as a number, but can have wrong value:</span>
-    <span style="color: #8B008B; font-weight: bold">if</span> C &lt; -<span style="color: #B452CD">273.15</span>:
-        <span style="color: #8B008B; font-weight: bold">raise</span> <span style="color: #008b45; font-weight: bold">ValueError</span>(<span style="color: #CD5555">&#39;C=%g is a non-physical value!&#39;</span> % C)
-    <span style="color: #8B008B; font-weight: bold">return</span> C
-</pre></div>
-
-</div>
-
-
-<p>
-
-</section>
-
-
-<section>
-
-<h2>Calling the previous function and running the program  <a name="___sec28"></a></h2>
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">try</span>:
-    C = read_C()
-<span style="color: #8B008B; font-weight: bold">except</span> (<span style="color: #008b45; font-weight: bold">IndexError</span>, <span style="color: #008b45; font-weight: bold">ValueError</span>), e:
-    <span style="color: #228B22"># print exception message and stop the program</span>
-    <span style="color: #8B008B; font-weight: bold">print</span> e
-    sys.exit(<span style="color: #B452CD">1</span>)
-</pre></div>
-<p>
-Executions:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; c2f_cml.py
-Celsius degrees must be supplied on the command line
-
-Terminal&gt; c2f_cml.py 21C
-Celsius degrees must be a pure number, not &quot;21C&quot;
-
-Terminal&gt; c2f_cml.py -500
-C=-500 is a non-physical value!
-
-Terminal&gt; c2f_cml.py 21
-21C is 69.8F
-</pre></div>
-
-</div>
-
-
-<p>
-
-</section>
-
-
-<section>
-
-<h2>Reading data from files  <a name="___sec29"></a></h2>
+<h2>Reading data from files  <a name="___sec24"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1323,7 +1095,7 @@ into objects in a program to compute with the data.
 17.8
 </pre></div>
 <p>
-One number on each line. How can we read these numbers
+One number on each line. How can we read these numbers?
 </div>
 
 
@@ -1334,7 +1106,7 @@ One number on each line. How can we read these numbers
 
 <section>
 
-<h2>Reading a file line by line  <a name="___sec30"></a></h2>
+<h2>Reading a file line by line  <a name="___sec25"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1357,8 +1129,9 @@ Compute the mean values of the numbers in the file:
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">infile = <span style="color: #658b00">open</span>(<span style="color: #CD5555">&#39;data.txt&#39;</span>, <span style="color: #CD5555">&#39;r&#39;</span>)    <span style="color: #228B22"># open file</span>
 mean = <span style="color: #B452CD">0</span>
-<span style="color: #8B008B; font-weight: bold">for</span> number <span style="color: #8B008B">in</span> infile:
-    mean = mean + <span style="color: #658b00">float</span>(number)   <span style="color: #228B22"># number is string!</span>
+<span style="color: #8B008B; font-weight: bold">for</span> line <span style="color: #8B008B">in</span> infile:
+    number = <span style="color: #658b00">float</span>(line)          <span style="color: #228B22"># line is string</span>
+    mean = mean + number
 mean = mean/<span style="color: #658b00">len</span>(lines)
 </pre></div>
 
@@ -1372,7 +1145,7 @@ mean = mean/<span style="color: #658b00">len</span>(lines)
 
 <section>
 
-<h2>Alternative ways to read a file  <a name="___sec31"></a></h2>
+<h2>Alternative ways to read a file  <a name="___sec26"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1428,7 +1201,7 @@ Reading the whole file into a string:
 
 <section>
 
-<h2>Most data files contain text mixed with numbers  <a name="___sec32"></a></h2>
+<h2>Most data files contain text mixed with numbers  <a name="___sec27"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1465,7 +1238,7 @@ How do we read such a file?
 
 <section>
 
-<h2>Reading a mixture of text and numbers  <a name="___sec33"></a></h2>
+<h2>Reading a mixture of text and numbers  <a name="___sec28"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1493,9 +1266,9 @@ Can split with respect to any string <code>s</code>: <code>line.split(s)</code>
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; line = <span style="color: #CD5555">&#39;Values: 1.2, 1.4, 2.7&#39;</span>
 &gt;&gt;&gt; line.split()
 [<span style="color: #CD5555">&#39;Values:&#39;</span>, <span style="color: #CD5555">&#39;1.2,&#39;</span>, <span style="color: #CD5555">&#39;1.4,&#39;</span>, <span style="color: #CD5555">&#39;2.7&#39;</span>]
-&gt;&gt;&gt; line.split()[<span style="color: #CD5555">&#39;:&#39;</span>]
+&gt;&gt;&gt; line.split(<span style="color: #CD5555">&#39;:&#39;</span>)
 [<span style="color: #CD5555">&#39;Values&#39;</span>, <span style="color: #CD5555">&#39; 1.2, 1.4, 2.7&#39;</span>]
-&gt;&gt;&gt; text, values = line.split()[<span style="color: #CD5555">&#39;:&#39;</span>]
+&gt;&gt;&gt; text, values = line.split(<span style="color: #CD5555">&#39;:&#39;</span>)
 &gt;&gt;&gt; values.split(<span style="color: #CD5555">&#39;,&#39;</span>)
 [<span style="color: #CD5555">&#39; 1.2&#39;</span>, <span style="color: #CD5555">&#39; 1.4&#39;</span>, <span style="color: #CD5555">&#39; 2.7&#39;</span>]
 &gt;&gt;&gt; values = [<span style="color: #658b00">float</span>(v) <span style="color: #8B008B; font-weight: bold">for</span> v <span style="color: #8B008B">in</span> values.split(<span style="color: #CD5555">&#39;,&#39;</span>)]
@@ -1513,7 +1286,7 @@ Can split with respect to any string <code>s</code>: <code>line.split(s)</code>
 
 <section>
 
-<h2>Complete program for reading rainfall data  <a name="___sec34"></a></h2>
+<h2>Complete program for reading rainfall data  <a name="___sec29"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1554,7 +1327,7 @@ months, values, avg = extract_data(<span style="color: #CD5555">&#39;rainfall.da
 
 <section>
 
-<h2>Writing data to file  <a name="___sec35"></a></h2>
+<h2>Writing data to file  <a name="___sec30"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1583,7 +1356,7 @@ Can append text to a file with <code>open(filename, 'a')</code>.
 
 <section>
 
-<h2>Example: Writing a table to file  <a name="___sec36"></a></h2>
+<h2>Example: Writing a table to file  <a name="___sec31"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Problem:</b>
@@ -1646,7 +1419,325 @@ outfile.close()
 
 <section>
 
-<h2>Making your own modules  <a name="___sec37"></a></h2>
+<h2>Handling errors in input  <a name="___sec32"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+A user can easily use our program in a wrong way, e.g.,
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_cml_v1.py
+Traceback (most recent call last):
+  File &quot;c2f_cml_v1.py&quot;, line 2, in ?
+    C = float(sys.argv[1])
+IndexError: list index out of range
+</pre></div>
+<p>
+(the user forgot to provide a command-line argument...)
+
+<p>
+How can <em>we</em> take control, explain what was wrong with the input,
+and stop the program without strange Python error messages?
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">len</span>(sys.argv) &lt; <span style="color: #B452CD">2</span>:
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;You failed to provide a command-line arg.!&#39;</span>
+    sys.exit(<span style="color: #B452CD">1</span>)  <span style="color: #228B22"># abort</span>
+F = <span style="color: #B452CD">9.0</span>*C/<span style="color: #B452CD">5</span> + <span style="color: #B452CD">32</span>
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%gC is %.1fF&#39;</span> % (C, F)
+</pre></div>
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_cml_v2.py
+You failed to provide a command-line arg.!
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Exceptions as an alternative to if tests  <a name="___sec33"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> Rather than test <em>if something is wrong, recover from error, else do what we indended to do</em>, it is common in Python (and many other languages) to <em>try</em> to do what we indend to, and if it fails, we recover from the error</li>
+  <p><li> This principle makes use of a <code>try-except</code> block</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">try</span>:
+    &lt;statements we intend to do&gt;
+<span style="color: #8B008B; font-weight: bold">except</span>:
+    &lt;statements <span style="color: #8B008B; font-weight: bold">for</span> handling errors&gt;
+</pre></div>
+<p>
+If something goes wrong in the <code>try</code> block, Python raises an <em>exception</em> and the execution jumps immediately to the <code>except</code> block.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The temperature conversion program with try-except  <a name="___sec34"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Try to read <code>C</code> from the command-line, if it fails, tell the user,
+and abort execution:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+<span style="color: #8B008B; font-weight: bold">try</span>:
+    C = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
+<span style="color: #8B008B; font-weight: bold">except</span>:
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;You failed to provide a command-line arg.!&#39;</span>
+    sys.exit(<span style="color: #B452CD">1</span>)  <span style="color: #228B22"># abort</span>
+F = <span style="color: #B452CD">9.0</span>*C/<span style="color: #B452CD">5</span> + <span style="color: #B452CD">32</span>
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%gC is %.1fF&#39;</span> % (C, F)
+</pre></div>
+<p>
+Execution:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_cml_except1.py
+You failed to provide a command-line arg.!
+
+Terminal&gt; python c2f_cml_except1.py 21C
+You failed to provide a command-line arg.!
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>It is good programming style to test for specific exceptions  <a name="___sec35"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+It is good programming style to test for specific exceptions:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">try</span>:
+    C = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
+<span style="color: #8B008B; font-weight: bold">except</span> <span style="color: #008b45; font-weight: bold">IndexError</span>:
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;You failed to provide a command-line arg.!&#39;</span>
+</pre></div>
+<p>
+If we have an index out of bounds in <code>sys.argv</code>,
+an <code>IndexError</code> exception is raised, and we jump to the <code>except</code> block.
+
+<p>
+If any other exception arises, Python aborts the execution:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt;&gt; python c2f_cml_tmp.py 21C
+Traceback (most recent call last):
+  File &quot;tmp.py&quot;, line 3, in &lt;module&gt;
+    C = float(sys.argv[1])
+ValueError: invalid literal for float(): 21C
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Improvement: test for <code>IndexError</code> and <code>ValueError</code> exceptions  <a name="___sec36"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+<span style="color: #8B008B; font-weight: bold">try</span>:
+    C = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
+<span style="color: #8B008B; font-weight: bold">except</span> <span style="color: #008b45; font-weight: bold">IndexError</span>:
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;No command-line argument for C!&#39;</span>
+    sys.exit(<span style="color: #B452CD">1</span>)  <span style="color: #228B22"># abort execution</span>
+<span style="color: #8B008B; font-weight: bold">except</span> <span style="color: #008b45; font-weight: bold">ValueError</span>:
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;C must be a pure number, not &quot;%s&quot;&#39;</span> % sys.argv[<span style="color: #B452CD">1</span>]
+    sys.exit(<span style="color: #B452CD">1</span>)
+
+F = <span style="color: #B452CD">9.0</span>*C/<span style="color: #B452CD">5</span> + <span style="color: #B452CD">32</span>
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%gC is %.1fF&#39;</span> % (C, F)
+</pre></div>
+<p>
+Executions:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_cml_v3.py
+No command-line argument for C!
+
+Terminal&gt; python c2f_cml_v3.py 21C
+Celsius degrees must be a pure number, not &quot;21C&quot;
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The programmer can raise exceptions  <a name="___sec37"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> Instead of just letting Python raise exceptions, we can raise our own and tailor the message to the problem at hand</li>
+  <p><li> We provide two examples on this:</li>
+
+<ul>
+    <p><li> catching an exception, but raising a new one with an improved (tailored) error message</li>
+    <p><li> raising an exception because of wrong input data</li>
+</ul>
+<p>
+
+  <p><li> Baisc syntax: <code>raise ExceptionType(message)</code></li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Examples on re-raising exceptions with better messages  <a name="___sec38"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">read_C</span>():
+    <span style="color: #8B008B; font-weight: bold">try</span>:
+        C = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
+    <span style="color: #8B008B; font-weight: bold">except</span> <span style="color: #008b45; font-weight: bold">IndexError</span>:
+        <span style="color: #228B22"># re-raise, but with specific explanation:</span>
+        <span style="color: #8B008B; font-weight: bold">raise</span> <span style="color: #008b45; font-weight: bold">IndexError</span>(
+          <span style="color: #CD5555">&#39;Celsius degrees must be supplied on the command line&#39;</span>)
+    <span style="color: #8B008B; font-weight: bold">except</span> <span style="color: #008b45; font-weight: bold">ValueError</span>:
+        <span style="color: #228B22"># re-raise, but with specific explanation:</span>
+        <span style="color: #8B008B; font-weight: bold">raise</span> <span style="color: #008b45; font-weight: bold">ValueError</span>(
+         <span style="color: #CD5555">&#39;Degrees must be number, not &quot;%s&quot;&#39;</span> % sys.argv[<span style="color: #B452CD">1</span>])
+
+    <span style="color: #228B22"># C is read correctly as a number, but can have wrong value:</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> C &lt; -<span style="color: #B452CD">273.15</span>:
+        <span style="color: #8B008B; font-weight: bold">raise</span> <span style="color: #008b45; font-weight: bold">ValueError</span>(<span style="color: #CD5555">&#39;C=%g is a non-physical value!&#39;</span> % C)
+    <span style="color: #8B008B; font-weight: bold">return</span> C
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Calling the previous function and running the program  <a name="___sec39"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">try</span>:
+    C = read_C()
+<span style="color: #8B008B; font-weight: bold">except</span> (<span style="color: #008b45; font-weight: bold">IndexError</span>, <span style="color: #008b45; font-weight: bold">ValueError</span>) <span style="color: #8B008B; font-weight: bold">as</span> e:
+    <span style="color: #228B22"># print exception message and stop the program</span>
+    <span style="color: #8B008B; font-weight: bold">print</span> e
+    sys.exit(<span style="color: #B452CD">1</span>)
+</pre></div>
+<p>
+Executions:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; c2f_cml.py
+Celsius degrees must be supplied on the command line
+
+Terminal&gt; c2f_cml.py 21C
+Celsius degrees must be a pure number, not &quot;21C&quot;
+
+Terminal&gt; c2f_cml.py -500
+C=-500 is a non-physical value!
+
+Terminal&gt; c2f_cml.py 21
+21C is 69.8F
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Making your own modules  <a name="___sec40"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1666,7 +1757,8 @@ x = <span style="color: #658b00">eval</span>(sys.argv[<span style="color: #B452C
 Characteristics of modules:
 
 <ul>
-  <p><li> Collection of useful data and functions <linebreak> (later also classes)</li>
+  <p><li> Collection of useful data and functions <br />
+    (later also classes)</li>
   <p><li> Functions in a module can be reused in many different programs</li>
   <p><li> If you have some general functions that can be handy in more than one program, make a module with these functions</li>
   <p><li> It's easy: just collect the functions you want in a file, and that's a module!</li>
@@ -1681,7 +1773,7 @@ Characteristics of modules:
 
 <section>
 
-<h2>Case on making our own module  <a name="___sec38"></a></h2>
+<h2>Case on making our own module  <a name="___sec41"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1691,11 +1783,13 @@ Here are formulas for computing with interest rates:
 <p>&nbsp;<br>
 $$
 \begin{align}
-A_0 &= A\left( 1 + {p\over 360\cdot 100}\right)^{-n},
+A &= A_0\left( 1 + {p\over 360\cdot 100}\right)^{n},
 \tag{1}\\
+A_0 &= A\left( 1 + {p\over 360\cdot 100}\right)^{-n},
+\tag{2}\\
 n &= \frac{\ln {A\over A_0}}{\ln \left( 1 + {p\over 360\cdot 100}\right)} ,\\
 p &= 360\cdot 100 \left(\left({A\over A_0}\right)^{1/n} - 1\right)\tp
-\tag{2}
+\tag{3}
 \end{align}
 $$
 <p>&nbsp;<br>
@@ -1719,7 +1813,7 @@ We want to make a module with these four functions.
 
 <section>
 
-<h2>First we make Python functions for the formuluas  <a name="___sec39"></a></h2>
+<h2>First we make Python functions for the formuluas  <a name="___sec42"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1752,7 +1846,7 @@ We want to make a module with these four functions.
 
 <section>
 
-<h2>Then we can make the module file  <a name="___sec40"></a></h2>
+<h2>Then we can make the module file  <a name="___sec43"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1769,7 +1863,7 @@ Example on use:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #228B22"># How long does it take to double an amount of money?</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #228B22"># How long time does it take to double an amount of money?</span>
 
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">interest</span> <span style="color: #8B008B; font-weight: bold">import</span> days
 A0 = <span style="color: #B452CD">1</span>; A = <span style="color: #B452CD">2</span>; p = <span style="color: #B452CD">5</span>
@@ -1788,7 +1882,7 @@ years = n/<span style="color: #B452CD">365.0</span>
 
 <section>
 
-<h2>Adding a test block in a module file  <a name="___sec41"></a></h2>
+<h2>Adding a test block in a module file  <a name="___sec44"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1835,7 +1929,7 @@ In our case:
 
 <section>
 
-<h2>Test blocks are often collected in functions  <a name="___sec42"></a></h2>
+<h2>Test blocks are often collected in functions  <a name="___sec45"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1878,7 +1972,7 @@ Let's make a real <em>test function</em>:
 
 <section>
 
-<h2>How can Python find our new module?  <a name="___sec43"></a></h2>
+<h2>How can Python find our new module?  <a name="___sec46"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1919,7 +2013,7 @@ searches for libraries.
 
 <section>
 
-<h2>Summary of reading from the keyboard and command line  <a name="___sec44"></a></h2>
+<h2>Summary of reading from the keyboard and command line  <a name="___sec47"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1959,7 +2053,7 @@ Recall: <code>sys.argv[0]</code> is the program name
 
 <section>
 
-<h2>Summary of reading options-value pairs  <a name="___sec45"></a></h2>
+<h2>Summary of reading options-value pairs  <a name="___sec48"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1999,7 +2093,7 @@ On the command line we can provide any or all of these options:
 
 <section>
 
-<h2>Summary of eval and exec  <a name="___sec46"></a></h2>
+<h2>Summary of eval and exec  <a name="___sec49"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2038,7 +2132,7 @@ Executing strings with Python code, using <code>exec</code>:
 
 <section>
 
-<h2>Summary of exceptions  <a name="___sec47"></a></h2>
+<h2>Summary of exceptions  <a name="___sec50"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2079,7 +2173,7 @@ Raising exceptions:
 
 <section>
 
-<h2>Summary of file reading and writing  <a name="___sec48"></a></h2>
+<h2>Summary of file reading and writing  <a name="___sec51"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2115,7 +2209,7 @@ outfile.close()
 
 <section>
 
-<h2>A Summarizing example: solving \( f(x)=0 \)  <a name="___sec49"></a></h2>
+<h2>A summarizing example: solving \( f(x)=0 \)  <a name="___sec52"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2133,7 +2227,7 @@ $$
 <p>&nbsp;<br>
 
 are usually impossible to solve by pen and paper, but can be
-solved by numerical methods. To this end, rewrite any equation
+solved by numerical methods. To this end, rewrite any equation as
 
 <p>&nbsp;<br>
 $$ f(x) = 0 $$
@@ -2160,7 +2254,7 @@ $$
 
 <section>
 
-<h2>We shall learn about a method for solving \( f(x)=0 \)  <a name="___sec50"></a></h2>
+<h2>We shall learn about a method for solving \( f(x)=0 \)  <a name="___sec53"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2171,7 +2265,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b>Outline of the the next slides:</b>
+<b>Outline of the next slides:</b>
 <p>
 
 <ul>
@@ -2190,7 +2284,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>The Bisection method  <a name="___sec51"></a></h2>
+<h2>The Bisection method  <a name="___sec54"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2233,7 +2327,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;1  <a name="___sec52"></a></h2>
+<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;1  <a name="___sec55"></a></h2>
 
 <center><p><img src="fig-input/bisection_iter1.png" align="bottom" width=540></p></center>
 
@@ -2244,7 +2338,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;2  <a name="___sec53"></a></h2>
+<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;2  <a name="___sec56"></a></h2>
 
 <center><p><img src="fig-input/bisection_iter2.png" align="bottom" width=540></p></center>
 
@@ -2255,7 +2349,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;3  <a name="___sec54"></a></h2>
+<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;3  <a name="___sec57"></a></h2>
 
 <center><p><img src="fig-input/bisection_iter3.png" align="bottom" width=540></p></center>
 
@@ -2266,7 +2360,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;4  <a name="___sec55"></a></h2>
+<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;4  <a name="___sec58"></a></h2>
 
 <center><p><img src="fig-input/bisection_iter4.png" align="bottom" width=540></p></center>
 
@@ -2277,7 +2371,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>From method description to a precise algorithm  <a name="___sec56"></a></h2>
+<h2>From method description to a precise algorithm  <a name="___sec59"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2318,7 +2412,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>The algorithm can be made more efficient  <a name="___sec57"></a></h2>
+<h2>The algorithm can be made more efficient  <a name="___sec60"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2329,7 +2423,8 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
   <p><li> This is not necessary if \( a \) has not changed since last pass in the loop</li>
   <p><li> On modern computers and simple formulas for \( f(x) \) these extra computations do not matter</li>
   <p><li> However, in science and engineering one meets \( f \) functions that take hours or days to evaluate at a point, and saving some \( f(a) \) evaluations matters!</li>
-  <p><li> Rule of thumb: remove redundant computations <linebreak> (unless the code becomes much more complicated, and harder to verify)</li>
+  <p><li> Rule of thumb: remove redundant computations <br />
+    (unless the code becomes much more complicated, and harder to verify)</li>
 </ul>
 </div>
 
@@ -2341,7 +2436,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>New, more efficient version of the algorithm  <a name="___sec58"></a></h2>
+<h2>New, more efficient version of the algorithm  <a name="___sec61"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2380,7 +2475,7 @@ Idea: save \( f(x) \) evaluations in  variables
 
 <section>
 
-<h2>How to choose \( n \)? That is, when to stop the iteration  <a name="___sec59"></a></h2>
+<h2>How to choose \( n \)? That is, when to stop the iteration  <a name="___sec62"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2390,7 +2485,8 @@ Idea: save \( f(x) \) evaluations in  variables
   <p><li> We want the error in the root to be \( \epsilon \) or smaller</li>
   <p><li> After \( n \) iterations, the initial interval \( [a,b] \) is halved \( n \) times and the current interval has length \( 2^{-n}(b-a) \). This is sufficiently small if \( 2^{-n}(b-a) = \epsilon \quad\Rightarrow\quad n = - {\ln\epsilon -\ln (b-a)\over\ln 2} \)</li>
   <p><li> A simpler alternative: just repeat halving until the length of the current interval is \( \leq\epsilon \)</li>
-  <p><li> This is easiest done with a while loop: <linebreak> <code>while b-a <= epsilon</code>:</li>
+  <p><li> This is easiest done with a while loop: <br />
+    <code>while b-a <= epsilon</code>:</li>
   <p><li> We also add a test to check if \( f \) really changes sign in the initial inverval \( [a,b] \)</li>
 </ul>
 </div>
@@ -2403,7 +2499,7 @@ Idea: save \( f(x) \) evaluations in  variables
 
 <section>
 
-<h2>Final version of the Bisection algorithm  <a name="___sec60"></a></h2>
+<h2>Final version of the Bisection algorithm  <a name="___sec63"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2439,7 +2535,7 @@ i = <span style="color: #B452CD">0</span>
 
 <section>
 
-<h2>Python implementation of the Bisection algorithm  <a name="___sec61"></a></h2>
+<h2>Python implementation of the Bisection algorithm  <a name="___sec64"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2481,7 +2577,7 @@ x = m          <span style="color: #228B22"># this is the approximate root</span
 
 <section>
 
-<h2>Implementation as a function (more reusable!)  <a name="___sec62"></a></h2>
+<h2>Implementation as a function (more reusable!)  <a name="___sec65"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2493,6 +2589,8 @@ x = m          <span style="color: #228B22"># this is the approximate root</span
     fa = f(a)
     <span style="color: #8B008B; font-weight: bold">if</span> fa*f(b) &gt; <span style="color: #B452CD">0</span>:
         <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">None</span>, <span style="color: #B452CD">0</span>
+        <span style="color: #228B22"># Alternative: raise ValueError(</span>
+        <span style="color: #228B22"># &#39;No change of sign in [%g,%g]&#39; % (a, b))</span>
 
     i = <span style="color: #B452CD">0</span>   <span style="color: #228B22"># iteration counter</span>
     <span style="color: #8B008B; font-weight: bold">while</span> b-a &lt; eps:
@@ -2517,7 +2615,7 @@ x = m          <span style="color: #228B22"># this is the approximate root</span
 
 <section>
 
-<h2>Make a module of this function  <a name="___sec63"></a></h2>
+<h2>Make a module of this function  <a name="___sec66"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2536,8 +2634,9 @@ x = m          <span style="color: #228B22"># this is the approximate root</span
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
         <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">2</span>*x - <span style="color: #B452CD">3</span>   <span style="color: #228B22"># only one root x=1.5</span>
 
-    x, <span style="color: #658b00">iter</span> = bisection(f, a=<span style="color: #B452CD">0</span>, b=<span style="color: #B452CD">10</span>, eps=<span style="color: #B452CD">1E-5</span>)
-    success = <span style="color: #658b00">abs</span>(x - <span style="color: #B452CD">1.5</span>) &lt; <span style="color: #B452CD">1E-5</span>  <span style="color: #228B22"># test within eps tolerance</span>
+    eps = <span style="color: #B452CD">1E-5</span>
+    x, <span style="color: #658b00">iter</span> = bisection(f, a=<span style="color: #B452CD">0</span>, b=<span style="color: #B452CD">10</span>, eps=eps)
+    success = <span style="color: #658b00">abs</span>(x - <span style="color: #B452CD">1.5</span>) &lt; eps  <span style="color: #228B22"># test within eps tolerance</span>
     <span style="color: #8B008B; font-weight: bold">assert</span> success, <span style="color: #CD5555">&#39;found x=%g != 1.5&#39;</span> % x
 
 <span style="color: #8B008B; font-weight: bold">if</span> __name__ == <span style="color: #CD5555">&#39;__main__&#39;</span>:
@@ -2554,7 +2653,7 @@ x = m          <span style="color: #228B22"># this is the approximate root</span
 
 <section>
 
-<h2>To the point of this lecture: get input!  <a name="___sec64"></a></h2>
+<h2>To the point of this lecture: get input!  <a name="___sec67"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2605,7 +2704,7 @@ x, <span style="color: #658b00">iter</span> = bisection(f, a, b, eps)
 
 <section>
 
-<h2>Improvements: error handling  <a name="___sec65"></a></h2>
+<h2>Improvements: error handling  <a name="___sec68"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2637,7 +2736,7 @@ x, <span style="color: #658b00">iter</span> = bisection(f, a, b, eps)
 
 <section>
 
-<h2>Applications of the Bisection method  <a name="___sec66"></a></h2>
+<h2>Applications of the Bisection method  <a name="___sec69"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>

@@ -298,10 +298,10 @@ $$
 
 
     
-<a name="part0020"></a>
+<a name="part0069"></a>
 <!-- !split -->
 
-<h2>Programming option-value pairs with the argparse module  <a name="___sec19"></a></h2>
+<h2>Improvements: error handling  <a name="___sec68"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -309,30 +309,18 @@ $$
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">argparse</span>
-parser = argparse.ArgumentParser()
-
-<span style="color: #228B22"># Define command-line arguments</span>
-parser.add_argument(<span style="color: #CD5555">&#39;--v0&#39;</span>, <span style="color: #CD5555">&#39;--initial_velocity&#39;</span>, <span style="color: #658b00">type</span>=<span style="color: #658b00">float</span>,
-                    default=<span style="color: #B452CD">0.0</span>, help=<span style="color: #CD5555">&#39;initial velocity&#39;</span>)
-
-parser.add_argument(<span style="color: #CD5555">&#39;--s0&#39;</span>, <span style="color: #CD5555">&#39;--initial_position&#39;</span>, <span style="color: #658b00">type</span>=<span style="color: #658b00">float</span>,
-                    default=<span style="color: #B452CD">0.0</span>, help=<span style="color: #CD5555">&#39;initial position&#39;</span>)
-
-parser.add_argument(<span style="color: #CD5555">&#39;--a&#39;</span>, <span style="color: #CD5555">&#39;--acceleration&#39;</span>, <span style="color: #658b00">type</span>=<span style="color: #658b00">float</span>,
-                    default=<span style="color: #B452CD">1.0</span>, help=<span style="color: #CD5555">&#39;acceleration&#39;</span>)
-
-parser.add_argument(<span style="color: #CD5555">&#39;--t&#39;</span>, <span style="color: #CD5555">&#39;--time&#39;</span>, <span style="color: #658b00">type</span>=<span style="color: #658b00">float</span>,
-                    default=<span style="color: #B452CD">1.0</span>, help=<span style="color: #CD5555">&#39;time&#39;</span>)
-
-<span style="color: #228B22"># Read the command line and interpret the arguments</span>
-args = parser.parse_args()
-
-<span style="color: #228B22"># Extract values</span>
-s = args.s0 + args.v0*t + <span style="color: #B452CD">0.5</span>*args.a*args.t**<span style="color: #B452CD">2</span>
-<span style="color: #228B22"># or</span>
-s0 = args.s0; v0 = args.v0; a = args.a; t = args.t
-s = s0 + v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color: #B452CD">2</span>
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">get_input</span>():
+    <span style="color: #CD5555">&quot;&quot;&quot;Get f, a, b, eps from the command line.&quot;&quot;&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.std</span> <span style="color: #8B008B; font-weight: bold">import</span> StringFunction
+    <span style="color: #8B008B; font-weight: bold">try</span>:
+        f = StringFunction(sys.argv[<span style="color: #B452CD">1</span>])
+        a = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">2</span>])
+        b = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">3</span>])
+        eps = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">4</span>])
+    <span style="color: #8B008B; font-weight: bold">except</span> <span style="color: #008b45; font-weight: bold">IndexError</span>:
+        <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Usage %s: f a b eps&#39;</span> % sys.argv[<span style="color: #B452CD">0</span>]
+        sys.exit(<span style="color: #B452CD">1</span>)
+    <span style="color: #8B008B; font-weight: bold">return</span> f, a, b, eps
 </pre></div>
 
 </div>
@@ -342,9 +330,9 @@ s = s0 + v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color:
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._input-solarized019.html">&laquo; Previous</a></div>
+<div style="text-align: left;"><a href="._input-solarized068.html">&laquo; Previous</a></div>
 </td><td>
-<div style="text-align: right;"><a href="._input-solarized021.html">Next &raquo;</a></div>
+<div style="text-align: right;"><a href="._input-solarized070.html">Next &raquo;</a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>
