@@ -1,14 +1,14 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Erratalist for 4th Edition of A Primer on Scientific Programming with Python">
 
-
+<title>Erratalist for 4th Edition of A Primer on Scientific Programming with Python</title>
 
 
 <style type="text/css">
@@ -39,17 +39,36 @@ div { text-align: justify; text-justify: inter-word; }
 <!-- tocinfo
 {'highest level': 3,
  'sections': [(' Page 4 ', 3, None, '___sec0'),
-              (' Page 99 ', 3, None, '___sec1'),
-              (' Page 447 ', 3, None, '___sec2')]}
+              (' Page 95 ', 3, None, '___sec1'),
+              (' Page 99 ', 3, None, '___sec2'),
+              (' Page 130 ', 3, None, '___sec3'),
+              (' Page 447 ', 3, None, '___sec4'),
+              (' Page 845-846 ', 3, None, '___sec5'),
+              (' Page 846 ', 3, None, '___sec6')]}
 end of tocinfo -->
 
 <body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 
     
 <!-- ------------------- main content ---------------------- -->
 
 
-<title>Erratalist for 4th Edition of A Primer on Scientific Programming with Python</title>
 
 <center><h1>Erratalist for 4th Edition of A Primer on Scientific Programming with Python</h1></center>  <!-- document title -->
 
@@ -64,21 +83,42 @@ end of tocinfo -->
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Aug 18, 2014</h4></center> <!-- date -->
+<center><h4>Sep 7, 2014</h4></center> <!-- date -->
 
 <h3>Page 4  <a name="___sec0"></a></h3>
 
 The one-line program to be written in a text editor must have
 <code>t**2</code> and not <code>t^2</code>.
 
-<h3>Page 99  <a name="___sec1"></a></h3>
+<h3>Page 95  <a name="___sec1"></a></h3>
+
+In the program <code>c2f.py</code>, the <code>print</code> statement has a wrong formatting
+of the <code>F(C)</code> value: <code>%.51f</code> must read <code>%5.1f</code>, i.e., the same formatting
+as used for the <code>C</code> value.
+
+<h3>Page 99  <a name="___sec2"></a></h3>
 
 Heading in Section 3.1.5 should be <em>Function argument or global variable?</em>
 (<em>or</em> instead of <em>of</em>).
 
-<h3>Page 447  <a name="___sec2"></a></h3>
+<h3>Page 130  <a name="___sec3"></a></h3>
+
+In Exercise 3.6, Equation (3.10), the sum must be \( \sum_{i=0}^{n-1} \).
+
+<h3>Page 447  <a name="___sec4"></a></h3>
 
 The title of the chapter should be <em>Random numbers and simple games</em>.
+
+<h3>Page 845-846  <a name="___sec5"></a></h3>
+
+To succesfully execute the <code>c2f.py</code> program, <code>cmd</code> must be <code>python c2f.y 21</code>
+or <code>./c2f.py 21</code> (if <code>c2f.py</code> is an executable file) unless <code>.</code> is in
+the user's <code>PATH</code> variable.
+
+<h3>Page 846  <a name="___sec6"></a></h3>
+
+2. Under <em>Split file or folder name</em>, the name <code>user</code> in the text
+should be replaced by <code>/home/hpl</code> according to the interactive session.
 
 <!-- ------------------- end of main content --------------- -->
 
