@@ -60,6 +60,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 div { text-align: justify; text-justify: inter-word; }
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -212,31 +213,31 @@ MathJax.Hub.Config({
 
 <table border="1">
 <thead>
-<tr><th align="center">                       Construction                       </th> <th align="center">                         Meaning                          </th> </tr>
+<tr><th align="center">            Construction            </th> <th align="center">                         Meaning                          </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   <code>a = [] </code>                                          </td> <td align="left">   initialize an empty list                                      </td> </tr>
-<tr><td align="left">   <code>a = [1, 4.4, 'run.py'] </code>                          </td> <td align="left">   initialize a list                                             </td> </tr>
-<tr><td align="left">   <code>a.append(elem)</code>                                   </td> <td align="left">   add <code>elem</code> object to the end                       </td> </tr>
-<tr><td align="left">   <code>a + [1,3]</code>                                        </td> <td align="left">   add two lists                                                 </td> </tr>
-<tr><td align="left">   <code>a.insert(i, e)</code>                                   </td> <td align="left">   insert element <code>e</code> before index <code>i</code>     </td> </tr>
-<tr><td align="left">   <code>a[3]</code>                                             </td> <td align="left">   index a list element                                          </td> </tr>
-<tr><td align="left">   <code>a[-1]</code>                                            </td> <td align="left">   get last list element                                         </td> </tr>
-<tr><td align="left">   <code>a[1:3]</code>                                           </td> <td align="left">   slice: copy data to sublist (here: index 1, 2)                </td> </tr>
-<tr><td align="left">   <code>del a[3]</code>                                         </td> <td align="left">   delete an element (index <code>3</code>)                      </td> </tr>
-<tr><td align="left">   <code>a.remove(e)</code>                                      </td> <td align="left">   remove an element with value <code>e</code>                   </td> </tr>
-<tr><td align="left">   <code>a.index('run.py')</code>                                </td> <td align="left">   find index corresponding to an element's value                </td> </tr>
-<tr><td align="left">   <code>'run.py' in a</code>                                    </td> <td align="left">   test if a value is contained in the list                      </td> </tr>
-<tr><td align="left">   <code>a.count(v)</code>                                       </td> <td align="left">   count how many elements that have the value <code>v</code>    </td> </tr>
-<tr><td align="left">   <code>len(a)</code>                                           </td> <td align="left">   number of elements in list <code>a</code>                     </td> </tr>
-<tr><td align="left">   <code>min(a)</code>                                           </td> <td align="left">   the smallest element in <code>a</code>                        </td> </tr>
-<tr><td align="left">   <code>max(a)</code>                                           </td> <td align="left">   the largest element in <code>a</code>                         </td> </tr>
-<tr><td align="left">   <code>sum(a)</code>                                           </td> <td align="left">   add all elements in <code>a</code>                            </td> </tr>
-<tr><td align="left">   <code>sorted(a)</code>                                        </td> <td align="left">   return sorted version of list <code>a</code>                  </td> </tr>
-<tr><td align="left">   <code>reversed(a)</code>                                      </td> <td align="left">   return reversed sorted version of list <code>a</code>         </td> </tr>
-<tr><td align="left">   <code>b[3][0][2]</code>                                       </td> <td align="left">   nested list indexing                                          </td> </tr>
-<tr><td align="left">   <code>isinstance(a, list)</code>                              </td> <td align="left">   is <code>True</code> if <code>a</code> is a list              </td> </tr>
-<tr><td align="left">   <code>type(a) is list</code>                                  </td> <td align="left">   is <code>True</code> if <code>a</code> is a list              </td> </tr>
+<tr><td align="left">   <code>a = [] </code>                    </td> <td align="left">   initialize an empty list                                      </td> </tr>
+<tr><td align="left">   <code>a = [1, 4.4, 'run.py'] </code>    </td> <td align="left">   initialize a list                                             </td> </tr>
+<tr><td align="left">   <code>a.append(elem)</code>             </td> <td align="left">   add <code>elem</code> object to the end                       </td> </tr>
+<tr><td align="left">   <code>a + [1,3]</code>                  </td> <td align="left">   add two lists                                                 </td> </tr>
+<tr><td align="left">   <code>a.insert(i, e)</code>             </td> <td align="left">   insert element <code>e</code> before index <code>i</code>     </td> </tr>
+<tr><td align="left">   <code>a[3]</code>                       </td> <td align="left">   index a list element                                          </td> </tr>
+<tr><td align="left">   <code>a[-1]</code>                      </td> <td align="left">   get last list element                                         </td> </tr>
+<tr><td align="left">   <code>a[1:3]</code>                     </td> <td align="left">   slice: copy data to sublist (here: index 1, 2)                </td> </tr>
+<tr><td align="left">   <code>del a[3]</code>                   </td> <td align="left">   delete an element (index <code>3</code>)                      </td> </tr>
+<tr><td align="left">   <code>a.remove(e)</code>                </td> <td align="left">   remove an element with value <code>e</code>                   </td> </tr>
+<tr><td align="left">   <code>a.index('run.py')</code>          </td> <td align="left">   find index corresponding to an element's value                </td> </tr>
+<tr><td align="left">   <code>'run.py' in a</code>              </td> <td align="left">   test if a value is contained in the list                      </td> </tr>
+<tr><td align="left">   <code>a.count(v)</code>                 </td> <td align="left">   count how many elements that have the value <code>v</code>    </td> </tr>
+<tr><td align="left">   <code>len(a)</code>                     </td> <td align="left">   number of elements in list <code>a</code>                     </td> </tr>
+<tr><td align="left">   <code>min(a)</code>                     </td> <td align="left">   the smallest element in <code>a</code>                        </td> </tr>
+<tr><td align="left">   <code>max(a)</code>                     </td> <td align="left">   the largest element in <code>a</code>                         </td> </tr>
+<tr><td align="left">   <code>sum(a)</code>                     </td> <td align="left">   add all elements in <code>a</code>                            </td> </tr>
+<tr><td align="left">   <code>sorted(a)</code>                  </td> <td align="left">   return sorted version of list <code>a</code>                  </td> </tr>
+<tr><td align="left">   <code>reversed(a)</code>                </td> <td align="left">   return reversed sorted version of list <code>a</code>         </td> </tr>
+<tr><td align="left">   <code>b[3][0][2]</code>                 </td> <td align="left">   nested list indexing                                          </td> </tr>
+<tr><td align="left">   <code>isinstance(a, list)</code>        </td> <td align="left">   is <code>True</code> if <code>a</code> is a list              </td> </tr>
+<tr><td align="left">   <code>type(a) is list</code>            </td> <td align="left">   is <code>True</code> if <code>a</code> is a list              </td> </tr>
 </tbody>
 </table>
 <p>

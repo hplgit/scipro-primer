@@ -11,6 +11,7 @@
 
 
 
+
 <!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -350,7 +351,7 @@ after the name of the program when we run the program:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_cml_v1.py 21
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_cml.py 21
 69.8
 </pre></div>
 <p>
@@ -360,7 +361,8 @@ and they are stored in the list <code>sys.argv</code>:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">C = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])   <span style="color: #228B22"># read 1st command-line argument</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+C = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])   <span style="color: #228B22"># read 1st command-line argument</span>
 F = <span style="color: #B452CD">9.0</span>*C/<span style="color: #B452CD">5</span> + <span style="color: #B452CD">32</span>
 <span style="color: #8B008B; font-weight: bold">print</span> F
 </pre></div>
@@ -654,6 +656,7 @@ code = <span style="color: #CD5555">&quot;&quot;&quot;</span>
 <span style="color: #CD5555">&quot;&quot;&quot;</span> % formula
 <span style="color: #8B008B; font-weight: bold">exec</span>(code)     <span style="color: #228B22"># turn string formula into live function</span>
 
+<span style="color: #228B22"># Ask the user for x values and evaluate f(x)</span>
 x = <span style="color: #B452CD">0</span>
 <span style="color: #8B008B; font-weight: bold">while</span> x <span style="color: #8B008B">is</span> <span style="color: #8B008B">not</span> <span style="color: #658b00">None</span>:
     x = <span style="color: #658b00">eval</span>(<span style="color: #658b00">raw_input</span>(<span style="color: #CD5555">&#39;Give x (None to quit): &#39;</span>))
@@ -673,7 +676,20 @@ While the program is running, the user types a formula, which becomes a function
 
 <section>
 
-<h2>StringFunction: turn string formulas into Python functions  <a name="___sec14"></a></h2>
+<h2>We can run the program in the Python Online Tutor  <a name="___sec14"></a></h2>
+
+
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=formula+%3D+raw_input%28%27Write+a+formula+involving+x%3A+%27%29%0Acode+%3D+%22%22%22%0Adef+f%28x%29%3A%0A++++return+%25s%0A%22%22%22+%25+formula%0Aexec%28code%29+++++%23+turn+string+formula+into+live+function%0A%0A%23+Ask+the+user+for+x+values+and+evaluate+f%28x%29%0Ax+%3D+0%0Awhile+x+is+not+None%3A%0A++++x+%3D+eval%28raw_input%28%27Give+x+%28None+to+quit%29%3A+%27%29%29%0A++++if+x+is+not+None%3A%0A++++++++y+%3D+f%28x%29%0A++++++++print+%27f%28%25g%29%3D%25g%27+%25+%28x%2C+y%29&curInstr=0&py=2&cumulative=false">
+</iframe>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>StringFunction: turn string formulas into Python functions  <a name="___sec15"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -716,7 +732,7 @@ g.set_parameters(A=<span style="color: #B452CD">2</span>, x=<span style="color: 
 
 <section>
 
-<h2>Example: program for numerical differentiation  <a name="___sec15"></a></h2>
+<h2>Example: program for numerical differentiation  <a name="___sec16"></a></h2>
 
 
 <p class="fragment">
@@ -727,7 +743,7 @@ g.set_parameters(A=<span style="color: #B452CD">2</span>, x=<span style="color: 
 
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="fragment highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python diff.py &#39;exp(x)*sin(x)&#39; 3.4
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python diff.py &#39;exp(x)*sin(x)&#39; 3.4
 Numerical derivative: -36.6262969164
 </pre></div>
 
@@ -753,7 +769,7 @@ $$ f'(x)\approx \frac{f(x+h)-f(x-h)}{2h}\quad (h\mbox{ small}) $$
 
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="fragment highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.std</span> <span style="color: #8B008B; font-weight: bold">import</span> StringFunction
 f = StringFunction(sys.argv[<span style="color: #B452CD">1</span>], independent_variable=<span style="color: #CD5555">&#39;x&#39;</span>)
 x = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">2</span>])
@@ -777,7 +793,7 @@ x = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452
 
 <section>
 
-<h2>Can we extend the program to also include symbolic differentiation? (Yes, but the code is advanced...)  <a name="___sec16"></a></h2>
+<h2>Can we extend the program to also include symbolic differentiation? (Yes, but the code is advanced...)  <a name="___sec17"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -824,7 +840,7 @@ dfdx_value = dfdx.subs(x, x_value)
 
 <section>
 
-<h2>Example on reading 4 parameters from the command line  <a name="___sec17"></a></h2>
+<h2>Example on reading 4 parameters from the command line  <a name="___sec18"></a></h2>
 
 <p>&nbsp;<br>
 $$ s(t)=s_0 + v_0t + {1\over2}at^2$$
@@ -875,7 +891,7 @@ s  = s0 + v0*t + <span style="color: #B452CD">0.5</span>*a*t*t
 
 <section>
 
-<h2>Command-line arguments with options  <a name="___sec18"></a></h2>
+<h2>Command-line arguments with options  <a name="___sec19"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -905,7 +921,7 @@ is (cf. keyword arguments).
 
 <section>
 
-<h2>Programming option-value pairs with the argparse module  <a name="___sec19"></a></h2>
+<h2>Programming option-value pairs with the argparse module  <a name="___sec20"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -949,7 +965,7 @@ s = s0 + v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color:
 
 <section>
 
-<h2>The program has long and short command-line arguments  <a name="___sec20"></a></h2>
+<h2>The program has long and short command-line arguments  <a name="___sec21"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -973,7 +989,7 @@ Terminal&gt; python location.py --initial_velocity 1.2 --time 0.2
 
 <section>
 
-<h2>Graphical user interfaces  <a name="___sec21"></a></h2>
+<h2>Graphical user interfaces  <a name="___sec22"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1003,7 +1019,7 @@ Terminal&gt; python location.py --initial_velocity 1.2 --time 0.2
 
 <section>
 
-<h2>A graphical Celsius-Fahrenheit conversion program  <a name="___sec22"></a></h2>
+<h2>A graphical Celsius-Fahrenheit conversion program  <a name="___sec23"></a></h2>
 
 <center><p><img src="fig-input/c2f_gui.png" align="bottom" width=360></p></center>
 
@@ -1026,7 +1042,7 @@ Terminal&gt; python location.py --initial_velocity 1.2 --time 0.2
 
 <section>
 
-<h2>The GUI code  <a name="___sec23"></a></h2>
+<h2>The GUI code  <a name="___sec24"></a></h2>
 
 <center><p><img src="fig-input/c2f_gui.png" align="bottom" width=360></p></center>
 
@@ -1070,7 +1086,7 @@ root.mainloop()
 
 <section>
 
-<h2>Reading data from files  <a name="___sec24"></a></h2>
+<h2>Reading data from files  <a name="___sec25"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1106,7 +1122,7 @@ One number on each line. How can we read these numbers?
 
 <section>
 
-<h2>Reading a file line by line  <a name="___sec25"></a></h2>
+<h2>Reading a file line by line  <a name="___sec26"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1145,7 +1161,7 @@ mean = mean/<span style="color: #658b00">len</span>(lines)
 
 <section>
 
-<h2>Alternative ways to read a file  <a name="___sec26"></a></h2>
+<h2>Alternative ways to read a file  <a name="___sec27"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1201,7 +1217,7 @@ Reading the whole file into a string:
 
 <section>
 
-<h2>Most data files contain text mixed with numbers  <a name="___sec27"></a></h2>
+<h2>Most data files contain text mixed with numbers  <a name="___sec28"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1238,7 +1254,7 @@ How do we read such a file?
 
 <section>
 
-<h2>Reading a mixture of text and numbers  <a name="___sec28"></a></h2>
+<h2>Reading a mixture of text and numbers  <a name="___sec29"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1286,7 +1302,7 @@ Can split with respect to any string <code>s</code>: <code>line.split(s)</code>
 
 <section>
 
-<h2>Complete program for reading rainfall data  <a name="___sec29"></a></h2>
+<h2>Complete program for reading rainfall data  <a name="___sec30"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1327,7 +1343,7 @@ months, values, avg = extract_data(<span style="color: #CD5555">&#39;rainfall.da
 
 <section>
 
-<h2>Writing data to file  <a name="___sec30"></a></h2>
+<h2>Writing data to file  <a name="___sec31"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1356,7 +1372,7 @@ Can append text to a file with <code>open(filename, 'a')</code>.
 
 <section>
 
-<h2>Example: Writing a table to file  <a name="___sec31"></a></h2>
+<h2>Example: Writing a table to file  <a name="___sec32"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Problem:</b>
@@ -1419,7 +1435,7 @@ outfile.close()
 
 <section>
 
-<h2>Handling errors in input  <a name="___sec32"></a></h2>
+<h2>Our program stops with a strange error message if the command-line argument is missing  <a name="___sec33"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1429,15 +1445,44 @@ A user can easily use our program in a wrong way, e.g.,
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_cml_v1.py
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_cml.py
 Traceback (most recent call last):
-  File &quot;c2f_cml_v1.py&quot;, line 2, in ?
+  File &quot;c2f_cml.py&quot;, line 2, in ?
     C = float(sys.argv[1])
 IndexError: list index out of range
 </pre></div>
-<p>
-(the user forgot to provide a command-line argument...)
 
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Why?</b>
+<p>
+
+<ol>
+<p><li> The user forgot to provide a command-line argument</li>
+<p><li> <code>sys.argv</code> has then only one element, <code>sys.argv[0]</code>,
+   which is the program name (<code>c2f_cml.py</code>)</li>
+<p><li> Index 1, in <code>sys.argv[1]</code>, points to a non-existing element
+   in the <code>sys.argv</code> list</li>
+<p><li> Any index corresponding to a non-existing element in a list
+   leads to <code>IndexError</code></li>
+</ol>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We should handle errors in input!  <a name="___sec34"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
 <p>
 How can <em>we</em> take control, explain what was wrong with the input,
 and stop the program without strange Python error messages?
@@ -1445,7 +1490,10 @@ and stop the program without strange Python error messages?
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">len</span>(sys.argv) &lt; <span style="color: #B452CD">2</span>:
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #228B22"># Program c2f_cml_if.py</span>
+
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+<span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">len</span>(sys.argv) &lt; <span style="color: #B452CD">2</span>:
     <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;You failed to provide a command-line arg.!&#39;</span>
     sys.exit(<span style="color: #B452CD">1</span>)  <span style="color: #228B22"># abort</span>
 F = <span style="color: #B452CD">9.0</span>*C/<span style="color: #B452CD">5</span> + <span style="color: #B452CD">32</span>
@@ -1454,7 +1502,7 @@ F = <span style="color: #B452CD">9.0</span>*C/<span style="color: #B452CD">5</sp
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_cml_v2.py
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_cml_if.py
 You failed to provide a command-line arg.!
 </pre></div>
 
@@ -1468,7 +1516,7 @@ You failed to provide a command-line arg.!
 
 <section>
 
-<h2>Exceptions as an alternative to if tests  <a name="___sec33"></a></h2>
+<h2>Exceptions as an alternative to if tests  <a name="___sec35"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1500,7 +1548,7 @@ If something goes wrong in the <code>try</code> block, Python raises an <em>exce
 
 <section>
 
-<h2>The temperature conversion program with try-except  <a name="___sec34"></a></h2>
+<h2>The temperature conversion program with try-except  <a name="___sec36"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1543,7 +1591,7 @@ You failed to provide a command-line arg.!
 
 <section>
 
-<h2>It is good programming style to test for specific exceptions  <a name="___sec35"></a></h2>
+<h2>It is good programming style to test for specific exceptions  <a name="___sec37"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1585,7 +1633,7 @@ ValueError: invalid literal for float(): 21C
 
 <section>
 
-<h2>Improvement: test for <code>IndexError</code> and <code>ValueError</code> exceptions  <a name="___sec36"></a></h2>
+<h2>Improvement: test for <code>IndexError</code> and <code>ValueError</code> exceptions  <a name="___sec38"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1629,7 +1677,7 @@ Celsius degrees must be a pure number, not &quot;21C&quot;
 
 <section>
 
-<h2>The programmer can raise exceptions  <a name="___sec37"></a></h2>
+<h2>The programmer can raise exceptions  <a name="___sec39"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1657,7 +1705,7 @@ Celsius degrees must be a pure number, not &quot;21C&quot;
 
 <section>
 
-<h2>Examples on re-raising exceptions with better messages  <a name="___sec38"></a></h2>
+<h2>Examples on re-raising exceptions with better messages  <a name="___sec40"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1693,7 +1741,7 @@ Celsius degrees must be a pure number, not &quot;21C&quot;
 
 <section>
 
-<h2>Calling the previous function and running the program  <a name="___sec39"></a></h2>
+<h2>Calling the previous function and running the program  <a name="___sec41"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1737,7 +1785,7 @@ Terminal&gt; c2f_cml.py 21
 
 <section>
 
-<h2>Making your own modules  <a name="___sec40"></a></h2>
+<h2>Making your own modules  <a name="___sec42"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1773,7 +1821,7 @@ Characteristics of modules:
 
 <section>
 
-<h2>Case on making our own module  <a name="___sec41"></a></h2>
+<h2>Case on making our own module  <a name="___sec43"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1813,7 +1861,7 @@ We want to make a module with these four functions.
 
 <section>
 
-<h2>First we make Python functions for the formuluas  <a name="___sec42"></a></h2>
+<h2>First we make Python functions for the formuluas  <a name="___sec44"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1846,7 +1894,7 @@ We want to make a module with these four functions.
 
 <section>
 
-<h2>Then we can make the module file  <a name="___sec43"></a></h2>
+<h2>Then we can make the module file  <a name="___sec45"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1882,7 +1930,7 @@ years = n/<span style="color: #B452CD">365.0</span>
 
 <section>
 
-<h2>Adding a test block in a module file  <a name="___sec44"></a></h2>
+<h2>Adding a test block in a module file  <a name="___sec46"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1929,7 +1977,7 @@ In our case:
 
 <section>
 
-<h2>Test blocks are often collected in functions  <a name="___sec45"></a></h2>
+<h2>Test blocks are often collected in functions  <a name="___sec47"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -1972,7 +2020,7 @@ Let's make a real <em>test function</em>:
 
 <section>
 
-<h2>How can Python find our new module?  <a name="___sec46"></a></h2>
+<h2>How can Python find our new module?  <a name="___sec48"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2013,7 +2061,7 @@ searches for libraries.
 
 <section>
 
-<h2>Summary of reading from the keyboard and command line  <a name="___sec47"></a></h2>
+<h2>Summary of reading from the keyboard and command line  <a name="___sec49"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2053,7 +2101,7 @@ Recall: <code>sys.argv[0]</code> is the program name
 
 <section>
 
-<h2>Summary of reading options-value pairs  <a name="___sec48"></a></h2>
+<h2>Summary of reading options-value pairs  <a name="___sec50"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2093,7 +2141,7 @@ On the command line we can provide any or all of these options:
 
 <section>
 
-<h2>Summary of eval and exec  <a name="___sec49"></a></h2>
+<h2>Summary of eval and exec  <a name="___sec51"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2132,7 +2180,7 @@ Executing strings with Python code, using <code>exec</code>:
 
 <section>
 
-<h2>Summary of exceptions  <a name="___sec50"></a></h2>
+<h2>Summary of exceptions  <a name="___sec52"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2173,7 +2221,7 @@ Raising exceptions:
 
 <section>
 
-<h2>Summary of file reading and writing  <a name="___sec51"></a></h2>
+<h2>Summary of file reading and writing  <a name="___sec53"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2209,7 +2257,7 @@ outfile.close()
 
 <section>
 
-<h2>A summarizing example: solving \( f(x)=0 \)  <a name="___sec52"></a></h2>
+<h2>A summarizing example: solving \( f(x)=0 \)  <a name="___sec54"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2254,7 +2302,7 @@ $$
 
 <section>
 
-<h2>We shall learn about a method for solving \( f(x)=0 \)  <a name="___sec53"></a></h2>
+<h2>We shall learn about a method for solving \( f(x)=0 \)  <a name="___sec55"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2284,7 +2332,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>The Bisection method  <a name="___sec54"></a></h2>
+<h2>The Bisection method  <a name="___sec56"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2327,7 +2375,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;1  <a name="___sec55"></a></h2>
+<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;1  <a name="___sec57"></a></h2>
 
 <center><p><img src="fig-input/bisection_iter1.png" align="bottom" width=540></p></center>
 
@@ -2338,7 +2386,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;2  <a name="___sec56"></a></h2>
+<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;2  <a name="___sec58"></a></h2>
 
 <center><p><img src="fig-input/bisection_iter2.png" align="bottom" width=540></p></center>
 
@@ -2349,7 +2397,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;3  <a name="___sec57"></a></h2>
+<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;3  <a name="___sec59"></a></h2>
 
 <center><p><img src="fig-input/bisection_iter3.png" align="bottom" width=540></p></center>
 
@@ -2360,7 +2408,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;4  <a name="___sec58"></a></h2>
+<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;4  <a name="___sec60"></a></h2>
 
 <center><p><img src="fig-input/bisection_iter4.png" align="bottom" width=540></p></center>
 
@@ -2371,7 +2419,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>From method description to a precise algorithm  <a name="___sec59"></a></h2>
+<h2>From method description to a precise algorithm  <a name="___sec61"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2412,7 +2460,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>The algorithm can be made more efficient  <a name="___sec60"></a></h2>
+<h2>The algorithm can be made more efficient  <a name="___sec62"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2436,7 +2484,7 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 
 <section>
 
-<h2>New, more efficient version of the algorithm  <a name="___sec61"></a></h2>
+<h2>New, more efficient version of the algorithm  <a name="___sec63"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2475,7 +2523,7 @@ Idea: save \( f(x) \) evaluations in  variables
 
 <section>
 
-<h2>How to choose \( n \)? That is, when to stop the iteration  <a name="___sec62"></a></h2>
+<h2>How to choose \( n \)? That is, when to stop the iteration  <a name="___sec64"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2499,7 +2547,7 @@ Idea: save \( f(x) \) evaluations in  variables
 
 <section>
 
-<h2>Final version of the Bisection algorithm  <a name="___sec63"></a></h2>
+<h2>Final version of the Bisection algorithm  <a name="___sec65"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2535,7 +2583,7 @@ i = <span style="color: #B452CD">0</span>
 
 <section>
 
-<h2>Python implementation of the Bisection algorithm  <a name="___sec64"></a></h2>
+<h2>Python implementation of the Bisection algorithm  <a name="___sec66"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2577,7 +2625,7 @@ x = m          <span style="color: #228B22"># this is the approximate root</span
 
 <section>
 
-<h2>Implementation as a function (more reusable!)  <a name="___sec65"></a></h2>
+<h2>Implementation as a function (more reusable!)  <a name="___sec67"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2615,7 +2663,7 @@ x = m          <span style="color: #228B22"># this is the approximate root</span
 
 <section>
 
-<h2>Make a module of this function  <a name="___sec66"></a></h2>
+<h2>Make a module of this function  <a name="___sec68"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2653,7 +2701,7 @@ x = m          <span style="color: #228B22"># this is the approximate root</span
 
 <section>
 
-<h2>To the point of this lecture: get input!  <a name="___sec67"></a></h2>
+<h2>To the point of this lecture: get input!  <a name="___sec69"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2704,7 +2752,7 @@ x, <span style="color: #658b00">iter</span> = bisection(f, a, b, eps)
 
 <section>
 
-<h2>Improvements: error handling  <a name="___sec68"></a></h2>
+<h2>Improvements: error handling  <a name="___sec70"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -2736,7 +2784,7 @@ x, <span style="color: #658b00">iter</span> = bisection(f, a, b, eps)
 
 <section>
 
-<h2>Applications of the Bisection method  <a name="___sec69"></a></h2>
+<h2>Applications of the Bisection method  <a name="___sec71"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
