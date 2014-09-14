@@ -11,6 +11,7 @@
 
 
 
+
 <!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -138,7 +139,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>&nbsp;<br>
-<center><h4>Sep 9, 2014</h4></center> <!-- date -->
+<center><h4>Sep 14, 2014</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -407,7 +408,7 @@ The loop is now inside <code>np.sin</code> and implemented in very efficient C c
 <h2>Operating on entire arrays at once is called <em>vectorization</em>  <a name="___sec8"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
-<b>Vectorization gives.</b>
+<b>Vectorization gives:</b>
 <p>
 
 <ul>
@@ -1152,13 +1153,13 @@ video filenamet extensions:
 <p>
 <table border="1">
 <thead>
-<tr><th align="center">                 Format                 </th> <th align="center">           Codec and filename           </th> </tr>
+<tr><th align="center">Format</th> <th align="center">           Codec and filename           </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   Flash                                       </td> <td align="left">   <code>-vcodec flv movie.flv</code>          </td> </tr>
-<tr><td align="left">   MP4                                         </td> <td align="left">   <code>-vcodec libx264 movie.mp4</code>      </td> </tr>
-<tr><td align="left">   Webm                                        </td> <td align="left">   <code>-vcodec libvpx movie.webm</code>      </td> </tr>
-<tr><td align="left">   Ogg                                         </td> <td align="left">   <code>-vcodec libtheora movie.ogg</code>    </td> </tr>
+<tr><td align="left">   Flash     </td> <td align="left">   <code>-vcodec flv movie.flv</code>          </td> </tr>
+<tr><td align="left">   MP4       </td> <td align="left">   <code>-vcodec libx264 movie.mp4</code>      </td> </tr>
+<tr><td align="left">   Webm      </td> <td align="left">   <code>-vcodec libvpx movie.webm</code>      </td> </tr>
+<tr><td align="left">   Ogg       </td> <td align="left">   <code>-vcodec libtheora movie.ogg</code>    </td> </tr>
 </tbody>
 </table>
 
@@ -1305,7 +1306,7 @@ Python implementation:
 <span style="color: #d0d0d0">plot(x,</span> <span style="color: #d0d0d0">y)</span>
 </pre></div>
 <p>
-First problem: <code>ValueError</code> error in <code>H(x)</code> from <code>if x < 0</code>
+First problem: <code>ValueError</code> error in <code>H(x)</code> from <code>if x &lt; 0</code>
 
 <p>
 Let us debug in an interactive shell:
@@ -1335,7 +1336,7 @@ Let us debug in an interactive shell:
 
 <section>
 
-<h2><code>if x < 0</code> does not work if <code>x</code> is array  <a name="___sec36"></a></h2>
+<h2><code>if x &lt; 0</code> does not work if <code>x</code> is array  <a name="___sec36"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Remedy 1: use a loop over <code>x</code> values.</b>
@@ -1366,7 +1367,7 @@ Downside: much to write, slow code if <code>n</code> is large
 
 <section>
 
-<h2><code>if x < 0</code> does not work if <code>x</code> is array  <a name="___sec37"></a></h2>
+<h2><code>if x &lt; 0</code> does not work if <code>x</code> is array  <a name="___sec37"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Remedy 2: use <code>vectorize</code>.</b>
@@ -1393,7 +1394,7 @@ Downside: The resulting function is as slow as Remedy 1
 
 <section>
 
-<h2><code>if x < 0</code> does not work if <code>x</code> is array  <a name="___sec38"></a></h2>
+<h2><code>if x &lt; 0</code> does not work if <code>x</code> is array  <a name="___sec38"></a></h2>
 
 
 <p class="fragment">
@@ -1404,7 +1405,7 @@ Downside: The resulting function is as slow as Remedy 1
 
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="fragment highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">Hv</span><span style="color: #d0d0d0">(x):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">Hv</span><span style="color: #d0d0d0">(x):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">where(x</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">0.0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1.0</span><span style="color: #d0d0d0">)</span>
 </pre></div>
 
@@ -1424,7 +1425,7 @@ Downside: The resulting function is as slow as Remedy 1
 
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="fragment highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
     <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">condition:</span>
         <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">&lt;expression1&gt;</span>
     <span style="color: #6ab825; font-weight: bold">else</span><span style="color: #d0d0d0">:</span>
@@ -2147,7 +2148,7 @@ Given
 
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="fragment highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">t</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">t</span>
 <span style="color: #d0d0d0">array([[</span>  <span style="color: #3677a9">1.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">2.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">3.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">4.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">5.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">6.</span><span style="color: #d0d0d0">],</span>
        <span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">7.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">8.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">],</span>
        <span style="color: #d0d0d0">[</span> <span style="color: #3677a9">13.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">14.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">15.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">16.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">17.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">18.</span><span style="color: #d0d0d0">],</span>
@@ -2174,7 +2175,7 @@ Slice <code>1:-1:2</code> for first index results in
 
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="fragment highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">7.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">8.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">]</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">7.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">8.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">]</span>
 <span style="color: #d0d0d0">[</span> <span style="color: #3677a9">19.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">20.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">21.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">22.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">23.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">24.</span><span style="color: #d0d0d0">]</span>
 </pre></div>
 
@@ -2183,7 +2184,7 @@ Slice <code>2:</code> for the second index then gives
 
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="fragment highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">]</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">]</span>
 <span style="color: #d0d0d0">[</span> <span style="color: #3677a9">21.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">22.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">23.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">24.</span><span style="color: #d0d0d0">]</span>
 </pre></div>
 
@@ -2331,30 +2332,30 @@ Single SciTools <code>plot</code> command with keyword arguments:
 
 <table border="1">
 <thead>
-<tr><th align="center">                                   Construction                                  </th> <th align="center">                                     Meaning                                     </th> </tr>
+<tr><th align="center">            Construction            </th> <th align="center">                                     Meaning                                     </th> </tr>
 </thead>
 <tbody>
-<tr><td align="left">   <code>array(ld)</code>                                                               </td> <td align="left">   copy list data <code>ld</code> to a <code>numpy</code> array                         </td> </tr>
-<tr><td align="left">   <code>asarray(d)</code>                                                              </td> <td align="left">   make array of data <code>d</code> (no data copy if already array)                    </td> </tr>
-<tr><td align="left">   <code>zeros(n)</code>                                                                </td> <td align="left">   make a <code>float</code> vector/array of length <code>n</code>, with zeros          </td> </tr>
-<tr><td align="left">   <code>zeros(n, int)</code>                                                           </td> <td align="left">   make an <code>int</code> vector/array of length <code>n</code> with zeros            </td> </tr>
-<tr><td align="left">   <code>zeros((m,n))</code>                                                            </td> <td align="left">   make a two-dimensional <code>float</code> array with shape (<code>m</code>,`n`)      </td> </tr>
-<tr><td align="left">   <code>zeros_like(x)</code>                                                           </td> <td align="left">   make array of same shape and element type as <code>x</code>                          </td> </tr>
-<tr><td align="left">   <code>linspace(a,b,m)</code>                                                         </td> <td align="left">   uniform sequence of <code>m</code> numbers in \( [a,b] \)                            </td> </tr>
-<tr><td align="left">   <code>a.shape</code>                                                                 </td> <td align="left">   tuple containing <code>a</code>'s shape                                              </td> </tr>
-<tr><td align="left">   <code>a.size</code>                                                                  </td> <td align="left">   total no of elements in <code>a</code>                                               </td> </tr>
-<tr><td align="left">   <code>len(a)</code>                                                                  </td> <td align="left">   length of a one-dim. array <code>a</code> (same as <code>a.shape[0]</code>)          </td> </tr>
-<tr><td align="left">   <code>a.dtype</code>                                                                 </td> <td align="left">   the type of elements in <code>a</code>                                               </td> </tr>
-<tr><td align="left">   <code>a.reshape(3,2)</code>                                                          </td> <td align="left">   return <code>a</code> reshaped as \( 3\times 2 \) array                              </td> </tr>
-<tr><td align="left">   <code>a[i]</code>                                                                    </td> <td align="left">   vector indexing                                                                      </td> </tr>
-<tr><td align="left">   <code>a[i,j]</code>                                                                  </td> <td align="left">   two-dim. array indexing                                                              </td> </tr>
-<tr><td align="left">   <code>a[1:k]</code>                                                                  </td> <td align="left">   slice: reference data with indices <code>1</code>,\ldots,`k-1`                       </td> </tr>
-<tr><td align="left">   <code>a[1:8:3]</code>                                                                </td> <td align="left">   slice: reference data with indices <code>1</code>, <code>4</code>,\ldots,`7`         </td> </tr>
-<tr><td align="left">   <code>b = a.copy()</code>                                                            </td> <td align="left">   copy an array                                                                        </td> </tr>
-<tr><td align="left">   <code>sin(a), exp(a), ...</code>                                                     </td> <td align="left">   <code>numpy</code> functions applicable to arrays                                    </td> </tr>
-<tr><td align="left">   <code>c = concatenate((a, b))</code>                                                 </td> <td align="left">   <code>c</code> contains <code>a</code> with <code>b</code> appended                  </td> </tr>
-<tr><td align="left">   <code>c = where(cond, a1, a2)</code>                                                 </td> <td align="left">   <code>c[i] = a1[i]</code> if <code>cond[i]</code>, else <code>c[i] = a2[i]</code>    </td> </tr>
-<tr><td align="left">   <code>isinstance(a, ndarray)</code>                                                  </td> <td align="left">   is <code>True</code> if <code>a</code> is an array                                   </td> </tr>
+<tr><td align="left">   <code>array(ld)</code>                  </td> <td align="left">   copy list data <code>ld</code> to a <code>numpy</code> array                         </td> </tr>
+<tr><td align="left">   <code>asarray(d)</code>                 </td> <td align="left">   make array of data <code>d</code> (no data copy if already array)                    </td> </tr>
+<tr><td align="left">   <code>zeros(n)</code>                   </td> <td align="left">   make a <code>float</code> vector/array of length <code>n</code>, with zeros          </td> </tr>
+<tr><td align="left">   <code>zeros(n, int)</code>              </td> <td align="left">   make an <code>int</code> vector/array of length <code>n</code> with zeros            </td> </tr>
+<tr><td align="left">   <code>zeros((m,n))</code>               </td> <td align="left">   make a two-dimensional <code>float</code> array with shape (<code>m</code>,`n`)      </td> </tr>
+<tr><td align="left">   <code>zeros_like(x)</code>              </td> <td align="left">   make array of same shape and element type as <code>x</code>                          </td> </tr>
+<tr><td align="left">   <code>linspace(a,b,m)</code>            </td> <td align="left">   uniform sequence of <code>m</code> numbers in \( [a,b] \)                            </td> </tr>
+<tr><td align="left">   <code>a.shape</code>                    </td> <td align="left">   tuple containing <code>a</code>'s shape                                              </td> </tr>
+<tr><td align="left">   <code>a.size</code>                     </td> <td align="left">   total no of elements in <code>a</code>                                               </td> </tr>
+<tr><td align="left">   <code>len(a)</code>                     </td> <td align="left">   length of a one-dim. array <code>a</code> (same as <code>a.shape[0]</code>)          </td> </tr>
+<tr><td align="left">   <code>a.dtype</code>                    </td> <td align="left">   the type of elements in <code>a</code>                                               </td> </tr>
+<tr><td align="left">   <code>a.reshape(3,2)</code>             </td> <td align="left">   return <code>a</code> reshaped as \( 3\times 2 \) array                              </td> </tr>
+<tr><td align="left">   <code>a[i]</code>                       </td> <td align="left">   vector indexing                                                                      </td> </tr>
+<tr><td align="left">   <code>a[i,j]</code>                     </td> <td align="left">   two-dim. array indexing                                                              </td> </tr>
+<tr><td align="left">   <code>a[1:k]</code>                     </td> <td align="left">   slice: reference data with indices <code>1</code>,\ldots,`k-1`                       </td> </tr>
+<tr><td align="left">   <code>a[1:8:3]</code>                   </td> <td align="left">   slice: reference data with indices <code>1</code>, <code>4</code>,\ldots,`7`         </td> </tr>
+<tr><td align="left">   <code>b = a.copy()</code>               </td> <td align="left">   copy an array                                                                        </td> </tr>
+<tr><td align="left">   <code>sin(a), exp(a), ...</code>        </td> <td align="left">   <code>numpy</code> functions applicable to arrays                                    </td> </tr>
+<tr><td align="left">   <code>c = concatenate((a, b))</code>    </td> <td align="left">   <code>c</code> contains <code>a</code> with <code>b</code> appended                  </td> </tr>
+<tr><td align="left">   <code>c = where(cond, a1, a2)</code>    </td> <td align="left">   <code>c[i] = a1[i]</code> if <code>cond[i]</code>, else <code>c[i] = a2[i]</code>    </td> </tr>
+<tr><td align="left">   <code>isinstance(a, ndarray)</code>     </td> <td align="left">   is <code>True</code> if <code>a</code> is an array                                   </td> </tr>
 </tbody>
 </table>
 <p>

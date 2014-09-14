@@ -34,6 +34,7 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 div { text-align: justify; text-justify: inter-word; }
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -42,9 +43,14 @@ div { text-align: justify; text-justify: inter-word; }
               (' Page 95 ', 3, None, '___sec1'),
               (' Page 99 ', 3, None, '___sec2'),
               (' Page 130 ', 3, None, '___sec3'),
-              (' Page 447 ', 3, None, '___sec4'),
-              (' Page 845-846 ', 3, None, '___sec5'),
-              (' Page 846 ', 3, None, '___sec6')]}
+              (' Page 158 ', 3, None, '___sec4'),
+              (' Page 189 ', 3, None, '___sec5'),
+              (' Page 189 ', 3, None, '___sec6'),
+              (' Page 273 ', 3, None, '___sec7'),
+              (' Page 426 ', 3, None, '___sec8'),
+              (' Page 447 ', 3, None, '___sec9'),
+              (' Page 845-846 ', 3, None, '___sec10'),
+              (' Page 846 ', 3, None, '___sec11')]}
 end of tocinfo -->
 
 <body>
@@ -83,7 +89,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Sep 7, 2014</h4></center> <!-- date -->
+<center><h4>Sep 14, 2014</h4></center> <!-- date -->
 
 <h3>Page 4  <a name="___sec0"></a></h3>
 
@@ -105,17 +111,53 @@ Heading in Section 3.1.5 should be <em>Function argument or global variable?</em
 
 In Exercise 3.6, Equation (3.10), the sum must be \( \sum_{i=0}^{n-1} \).
 
-<h3>Page 447  <a name="___sec4"></a></h3>
+<h3>Page 158  <a name="___sec4"></a></h3>
+
+The terminal output for the integral \( \int_0^{\pi/2}\sin x\,dx \) should read
+<code>1</code>, not <code>0.583009</code>.
+
+<h3>Page 189  <a name="___sec5"></a></h3>
+
+In the <code>mymod.py</code> module, an <code>import sys</code> is needed in the test block before
+<code>print add1(float(sys.argv[1]))</code>.
+
+<h3>Page 189  <a name="___sec6"></a></h3>
+
+The last code showing the test block of the <code>interest</code> module needs two
+corrections: division by 365 if the expression for <code>years</code> and an <code>f</code>
+in the <code>print</code> statement:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">if</span> __name__ <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;__main__&#39;</span>:
+    <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
+    p <span style="color: #666666">=</span> <span style="color: #008000">float</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
+    years <span style="color: #666666">=</span> days(<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, p)<span style="color: #666666">/365.0</span>
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;With p=</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121"> it takes %.1 years to double&#39;</span> <span style="color: #666666">%</span> (p, years)
+</pre></div>
+
+<h3>Page 273  <a name="___sec7"></a></h3>
+
+In the first code block, <code>x3 = mat(x).transpose()</code> should be
+<code>x3 = mat(x1).transpose()</code>.
+
+<h3>Page 426  <a name="___sec8"></a></h3>
+
+The argument in the <code>rase ValueError</code> call, after <code>if c*d &lt;= 0</code>, needs
+a final <code>% other</code>.
+
+<h3>Page 447  <a name="___sec9"></a></h3>
 
 The title of the chapter should be <em>Random numbers and simple games</em>.
 
-<h3>Page 845-846  <a name="___sec5"></a></h3>
+<h3>Page 845-846  <a name="___sec10"></a></h3>
 
 To succesfully execute the <code>c2f.py</code> program, <code>cmd</code> must be <code>python c2f.y 21</code>
 or <code>./c2f.py 21</code> (if <code>c2f.py</code> is an executable file) unless <code>.</code> is in
 the user's <code>PATH</code> variable.
 
-<h3>Page 846  <a name="___sec6"></a></h3>
+<h3>Page 846  <a name="___sec11"></a></h3>
 
 2. Under <em>Split file or folder name</em>, the name <code>user</code> in the text
 should be replaced by <code>/home/hpl</code> according to the interactive session.
