@@ -3,7 +3,7 @@ As movie1_mpl1.py, but avoiding line.set_ydata in favor of
 just using plain, repeated plot commands.
 """
 import numpy as np
-import matplotlib.pyplot as mpl
+import matplotlib.pyplot as plt
 import time, glob, os
 
 # Clean up old frames
@@ -21,21 +21,21 @@ s_values = np.linspace(s_max, s_min, 30)
 # f is max for x=m; smaller s gives larger max value
 max_f = f(m, m, s_min)
 
-mpl.ion()
+plt.ion()
 
 # Show the movie, and make hardcopies of frames simulatenously
 counter = 0
 for s in s_values:
     # delete plot, replot everything for this s
-    mpl.clf() # or mpl.delaxes()
-    mpl.axis([x[0], x[-1], -0.1, max_f])
+    plt.clf() # or plt.delaxes()
+    plt.axis([x[0], x[-1], -0.1, max_f])
     y = f(x, m, s)
-    mpl.plot(x, y)
-    mpl.xlabel('x')
-    mpl.ylabel('f')
-    mpl.legend(['s=%4.2f' % s])
-    mpl.draw()
-    mpl.savefig('tmp_%04d.png' % counter)
+    plt.plot(x, y)
+    plt.xlabel('x')
+    plt.ylabel('f')
+    plt.legend(['s=%4.2f' % s])
+    plt.draw()
+    plt.savefig('tmp_%04d.png' % counter)
     counter += 1
 raw_input('Type Return key: ')
 

@@ -17,7 +17,7 @@ x = linspace(-10, 10, 5)
 
 try:
     r = H(x)
-except Exception, e:
+except Exception as e:
     print 'H(vector) did not work:', e
 
 H_vec = vectorize(H)

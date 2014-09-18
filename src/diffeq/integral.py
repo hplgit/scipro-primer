@@ -13,11 +13,7 @@ def integral(g, a, x, N=20):
         f[n] = f[n-1] + 0.5*(x[n] - x[n-1])*(g_[n-1] + g_[n])
     return x, f
 
-def _verify():
-    """
-    Check that the trapezoidal method implemented
-    via difference equations works perfectly with linear g.
-    """
+def test_integral():
     def g_test(t):
         """Linear integrand."""
         return 2*t + 1
@@ -26,17 +22,15 @@ def _verify():
         """Exact integral of g_test."""
         return x**2 + x - (a**2 + a)
 
-
     a = 2
     x, f = integral(g_test, a, x=10)
     f_exact = f_test(x, a)
-    if not np.allclose(f_exact, f):
-        print 'ERROR in _verify'
+    assert np.allclose(f_exact, f)
 
-def application1():
+def demo():
     """Integrate the Gaussian function."""
-
     from numpy import sqrt, pi, exp
+
     def g(t):
         return 1./sqrt(2*pi)*exp(-t**2)
 
@@ -47,8 +41,13 @@ def application1():
          x, integrand, 'y-',
          legend=('f', 'g'),
          legend_loc='upper left',
-         savefig='tmp.eps')
+         savefig='tmp.pdf')
 
-_verify()
-application1()
+if __name__ == '__main__':
+    import sys
+    if len(sys.argv) >= 2 and sys.argv[1] == 'verify':
+        test_integral()
+    elif len(sys.argv) >= 2 and sys.argv[1] == 'demo':
+        demo()
+
 

@@ -2,6 +2,7 @@
 
 import ODESolver
 from scitools.std import *
+#from matplotlib.pyplot import *
 
 def f(u, t):
     x, vx, y, vy = u
@@ -27,8 +28,8 @@ def exact(x):
     y0 = U0[2]  # get y0 from the initial values
     return x*tan(theta) - g*x**2/(2*v0**2)*1/(cos(theta))**2 + y0
 
-plot(x, y, 'r',
-     x, exact(x), 'b',
-     legend=('numerical', 'exact'),
-     title='dt=%g' % dt,
-     savefig='tmp_ball.eps')
+plot(x, y, 'r', x, exact(x), 'b')
+legend(('numerical', 'exact'))
+title('dt=%g' % dt)
+savefig('tmp_ball.pdf')
+show()

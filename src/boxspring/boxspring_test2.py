@@ -21,14 +21,14 @@ exact = exact_S_solution(tcoor)
 plot(tcoor, S, 'r', tcoor, exact, 'b',
      xlabel='time', ylabel='S',
      legend=('computed S(t)', 'exact S(t)'),
-     savefig='tmp_S.eps')
+     savefig='tmp_S.pdf')
 
 # Plot the error
 figure()      # new plot window
 S = array(S)  # turn list into NumPy array for computations
 error = exact - S
 plot(tcoor, error, xlabel='time', ylabel='error',
-     savefig='tmp_error.eps')
+     savefig='tmp_error.pdf')
 
 print 'max absolute error:', max(abs(error))
 
@@ -51,7 +51,7 @@ for i in range(6):
     plot(tcoor[1:], logerror, 'r', xlabel='time',
          ylabel='log10(abs(error))')
     hold('on')
-savefig('tmp_errors.eps')
+savefig('tmp_errors.pdf')
 
 # Look at differences between two log10(abs(error)) curves
 figure()
@@ -75,7 +75,7 @@ for i in range(6):
         meandiff = mean(logerror_diff)
         print 'average log10(abs(error)) difference:', meandiff
     logerror_prev = logerror
-savefig('tmp_errors_diff.eps')
+savefig('tmp_errors_diff.pdf')
 
 
-    
+

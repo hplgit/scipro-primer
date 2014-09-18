@@ -46,12 +46,12 @@ for i in range(len(x)):
     gamma, n, F_value = Newton(F, gamma0, dFdx)
     g[i] = gamma
 
-plot(x, f(x), 'r-', x, g, 'b-', 
+plot(x, f(x), 'r-', x, g, 'b-',
      title='f1', legend=('original', 'inverse'),
-     hardcopy='tmp.eps')
+     hardcopy='tmp.pdf')
 
 
 
-        
-            
-    
+
+
+

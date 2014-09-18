@@ -1,53 +1,64 @@
+from datetime import datetime
+
 def read_file(filename):
     infile = open(filename, 'r')
     infile.readline()  # read column headings
     dates = [];  prices = []
     for line in infile:
-        columns = line.split(',')
-        date = columns[0]
-        date = date[:-3]  # skip day of month
-        price = columns[-1]
-        dates.append(date)
-        prices.append(float(price))
+        words = line.split(',')
+        dates.append(words[0])
+        prices.append(float(words[-1]))
     infile.close()
     dates.reverse()
     prices.reverse()
-    return dates, prices
+    # Convert dates on the form 'YYYY-MM-DD' to date objects
+    datefmt = '%Y-%m-%d'
+    dates = [datetime.strptime(_date, datefmt).date()
+             for _date in dates]
+    prices = np.array(prices)
+    return dates[1:], prices[1:]
 
 dates = {};  prices = {}
-d, p = read_file('stockprices_Sun.csv')
-dates['Sun'] = d;  prices['Sun'] = p
-d, p = read_file('stockprices_Microsoft.csv')
-dates['MS'] = d;  prices['MS'] = p
-d, p = read_file('stockprices_Google.csv')
-dates['Google'] = d;  prices['Google'] = p
+import glob, numpy as np
+filenames = glob.glob('stockprices_*.csv')
+companies = []
+for filename in filenames:
+    company = filename[12:-4]
+    d, p = read_file(filename)
+    dates[company] = d
+    prices[company] = p
 
-data = {'prices': prices, 'dates': dates}
+# Normalize prices by the price when the most recent
+# stock was introduced (normalize_date).
+first_months = [dates[company][0] for company in dates]
+normalize_date = max(first_months)
+for company in dates:
+    index = dates[company].index(normalize_date)
+    prices[company] /= prices[company][index]
 
-# Normalize prices
-norm_price = prices['Sun'][0]
-prices['Sun'] = [p/norm_price for p in prices['Sun']]
-norm_price = prices['MS'][0]
-prices['MS'] = [p/norm_price for p in prices['MS']]
+# Plot log of price versus years
 
-jan05_MS = prices['MS'][dates['MS'].index('2005-01')]
-jan05_Sun = prices['Sun'][dates['Sun'].index('2005-01')]
-norm_price = prices['Google'][0]/max(jan05_MS, jan05_Sun)
-prices['Google'] = [p/norm_price for p in prices['Google']]
+import matplotlib.pyplot as plt
+from matplotlib.dates import YearLocator, MonthLocator, DateFormatter
 
-# Let the "x" values in the plot just be the indices
-x = {}
-x['Sun'] = range(len(prices['Sun']))
-x['MS']  = range(len(prices['MS']))
+fig, ax = plt.subplots()
+legends = []
+for company in prices:
+    ax.plot_date(dates[company], np.log(prices[company]),
+                 '-', label=company)
+    legends.append(company)
+ax.legend(legends, loc='upper left')
+ax.set_ylabel('logarithm of normalized value')
 
-# For google we must start on the corresponding Sun/MS index
-# for January 2005
-jan05 = dates['Sun'].index('2005-01')
-x['Google'] = range(jan05, jan05 + len(prices['Google']), 1)
+# Format the ticks
+years    = YearLocator(5)   # major ticks every 5 years
+months   = MonthLocator(6)  # minor ticks every 6 months
+yearsfmt = DateFormatter('%Y')
+ax.xaxis.set_major_locator(years)
+ax.xaxis.set_major_formatter(yearsfmt)
+ax.xaxis.set_minor_locator(months)
+ax.autoscale_view()
+fig.autofmt_xdate()
 
-from scitools.std import plot
-plot(x['MS'], prices['MS'], 'r-',
-     x['Sun'], prices['Sun'], 'b-',
-     x['Google'], prices['Google'], 'y-',
-     legend=('Microsoft', 'Sun', 'Google'),
-     savefig='tmp.eps')
+plt.savefig('tmp.pdf'); plt.savefig('tmp.png')
+plt.show()

@@ -70,21 +70,38 @@ class Polynomial:
         return s
 
 
-def _test():
+def test_Polynomial():
     p1 = Polynomial([1, -1])
     p2 = Polynomial([0, 1, 0, 0, -6, -1])
     p3 = p1 + p2
-    print p1, '  +  ', p2, '  =  ', p3
+    p3_exact = Polynomial([1, 0, 0, 0, -6, -1])
+    msg = 'p1 = %s, p2 = %s\np3=p1+p2 = %s\nbut wrong p3 = %s'%\
+          (p1, p2, p3_exact, p3)
+    assert p3.coeff == p3_exact.coeff, msg
+    # Note __add__ applies lists only, here with integers, so
+    # == for comparing lists is not subject to round-off errors
+
     p4 = p1*p2
-    print p1, '  *  ', p2, '  =  ', p4
-    print 'p2(3) =', p2(3)
+    # p4.coeff becomes a numpy array, see __mul__
+    p4_exact = Polynomial(numpy.array([0,  1, -1,  0, -6,  5,  1]))
+    msg = 'p1 = %s, p2 = %s\np4=p1*p2 = %s\ngot wrong p4 = %s'%\
+          (p1, p2, p4_exact, p4)
+    assert numpy.allclose(p4.coeff, p4_exact.coeff, rtol=1E-14), msg
+
     p5 = p2.derivative()
-    print 'd/dx', p2, '  =  ', p5
-    print 'd/dx', p2,
-    p2.differentiate()
-    print '  =  ', p5
-    p4 = p2.derivative()
-    print 'd/dx', p2, '  =  ', p4
+    p5_exact = Polynomial([1, 0, 0, -24, -5])
+    msg = 'p2 = %s\np5 = p2.derivative() = %s\ngot wrong p5 = %s'%\
+          (p2, p5_exact, p5)
+    assert p5.coeff == p5_exact.coeff, msg
+
+    p6 = Polynomial([0, 1, 0, 0, -6, -1])  # p2
+    p6.differentiate()
+    p6_exact = p5_exact
+    msg = 'p6 = %s\p6.differentiate() = %s\ngot wrong p6 = %s'%\
+          (p2, p6_exact, p6)
+    assert p6.coeff == p6_exact.coeff, msg
 
 if __name__ == '__main__':
-    _test()
+    import sys
+    if len(sys.argv) >= 2 and sys.argv[1] == 'verify':
+        test_Polynomial()

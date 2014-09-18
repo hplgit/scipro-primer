@@ -9,5 +9,5 @@ except:
 
 x = linspace(0, pi, n+1)
 s = sin(x)
-plot(x, s, legend='sin(x), n=%d' % n, hardcopy='tmp.eps')
+plot(x, s, legend='sin(x), n=%d' % n, hardcopy='tmp.pdf')
 

@@ -16,8 +16,8 @@ class Hand:
 
     def __str__(self):   return str(self.hand)
     def __repr__(self):  return str(self)
-    
-        
+
+
 class Deck:
     """Representation of a deck as a list of Card objects."""
 
@@ -52,14 +52,14 @@ class Deck:
     def __len__(self):
         return len(self.deck)
 
-def _test():
+def demo():
     deck = Deck()
     print deck
     players = deck.deal(5, 4)
     import pprint; pprint.pprint(players)
-    
-if  __name__ == '__main__':
-    _test()
 
-    
-        
+if  __name__ == '__main__':
+    demo()
+
+
+

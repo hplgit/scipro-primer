@@ -1,5 +1,6 @@
 import ODESolver
-from scitools.std import plot, figure
+from scitools.std import plot, figure, savefig, title, show
+#from matplotlib.pyplot import plot, figure, savefig, title, show
 import numpy as np
 
 class Problem:
@@ -46,19 +47,21 @@ class Solver:
         self.u, self.t = solver.solve(t_points,
                                       self.problem.terminate)
 
-        if solver.k+1 == n: # integration to t=T?
+        # The solution terminated if the limiting value was reached
+        if solver.k+1 == n:  # no termination - we reached final T
             self.plot()
             raise ValueError(
                 'termination criterion not reached, '\
                 'give T > %g' % self.problem.T)
 
     def plot(self):
-        filename = 'logistic_' + str(self.problem) + '.eps'
-        plot(self.t, self.u,
-             title=str(self.problem) + ', dt=%g' % self.dt,
-             savefig=filename)
+        filename = 'logistic_' + str(self.problem) + '.pdf'
+        plot(self.t, self.u)
+        title(str(self.problem) + ', dt=%g' % self.dt)
+        savefig(filename)
+        show()
 
-def _test1():
+def demo1():
     problem = Problem(alpha=0.1, R=500, U0=2, T=130)
     solver = Solver(problem, dt=1.)
     solver.solve()
@@ -106,7 +109,7 @@ def find_dt(problem, method=ODESolver.ForwardEuler,
             solver = solver2
     return solver2
 
-def _test2():
+def demo2():
     problem = Problem(alpha=0.1, R=500, U0=2, T=130)
     solver = find_dt(problem, method=ODESolver.RungeKutta4, tol=1)
     print 'dt:', solver.dt
@@ -130,7 +133,7 @@ class AutoSolver(Solver):
         else:
             Solver.solve(self)
 
-def _test3():
+def demo3():
     problem = Problem(alpha=0.1, R=500, U0=2, T=130)
     solver = AutoSolver(problem, tol=1)
     solver.solve(method=ODESolver.RungeKutta4)
@@ -168,7 +171,7 @@ class Problem2(Problem):
     def __str__(self):
         return 'alpha=%g, U0=%g' % (self.alpha, self.U0)
 
-def _test4():
+def demo4():
     problem = Problem2(alpha=0.1, U0=2, T=130,
                        R=lambda t: 500 if t < 60 else 100)
     solver = AutoSolver(problem, tol=1)
@@ -242,7 +245,7 @@ class Problem3(Problem):
             s += ', R=%s' % str(self.R)
         return s
 
-def _test5():
+def demo5():
     problem = Problem3()
     import argparse
     parser = argparse.ArgumentParser(
@@ -270,6 +273,6 @@ def _test5():
 
 
 if __name__ == '__main__':
-    _test5()
+    demo5()
 
 

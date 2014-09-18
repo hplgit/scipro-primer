@@ -15,6 +15,7 @@ def animate(tmax, dt, x, function, ymin, ymax, t0=0,
              title='time=%g' % t,
              xlabel=xlabel, ylabel=ylabel,
              savefig=filename + '%04d.png' % counter)
+        savefig('tmp_%04d.pdf' % counter)
         t += dt
         counter += 1
 
@@ -27,7 +28,6 @@ z = linspace(0, 1, n)
 animate(3*2*pi, 0.05*2*pi, z, T, -1.2, 1.2, 0, 'z', 'T')
 movie('tmp_*.png', encoder='convert', fps=2,
       output_file='tmp_heatwave.gif')
-
-
-
-
+os.system('convert -delay 50 tmp_*.png movie.gif')
+os.system('avconv -r 5 -i tmp_%04d.png -c:v flv movie.flv')
+# Can use ffmpeg instead of avconv
