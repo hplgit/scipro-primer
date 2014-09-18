@@ -79,7 +79,7 @@ def H(x):
 x = np.linspace(-4, 4, 4)
 try:
     y = H(x)
-except Exception, e:
+except Exception as e:
     print 'Cannot call H(x) with array x. This gives an exception:'
     print e
 

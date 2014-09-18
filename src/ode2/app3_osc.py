@@ -25,6 +25,8 @@ class OscSystem:
 # Test case: u = cos(t)
 import ODESolver
 from scitools.std import *
+#from matplotlib.pyplot import *
+legends = []
 f = OscSystem(1.0, 0.0, 1.0, 0.0, lambda t: 0)
 u_init = [1, 0]    # initial condition
 nperiods = 3.5     # no of oscillation periods
@@ -49,13 +51,14 @@ for solver_class in ODESolver.ForwardEuler, ODESolver.RungeKutta4:
     figure()
     alg = solver_class.__name__  # (class) name of algorithm
     plot(t, u0_values, 'r-',
-         t, u0_exact, 'b-',
-         legend=('numerical', 'exact'),
-         title='Oscillating system; position - %s' % alg,
-         savefig='tmp_oscsystem_pos_%s.eps' % alg)
+         t, u0_exact, 'b-')
+    legend(['numerical', 'exact']),
+    title('Oscillating system; position - %s' % alg)
+    savefig('tmp_oscsystem_pos_%s.pdf' % alg)
     figure()
     plot(t, u1_values, 'r-',
-         t, u1_exact, 'b-',
-         legend=('numerical', 'exact'),
-         title='Oscillating system; velocity - %s' % alg,
-         savefig='tmp_oscsystem_vel_%s.eps' % alg)
+         t, u1_exact, 'b-')
+    legend(['numerical', 'exact'])
+    title('Oscillating system; velocity - %s' % alg)
+    savefig('tmp_oscsystem_vel_%s.pdf' % alg)
+show()

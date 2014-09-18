@@ -200,7 +200,7 @@ class ProteinCodingGene(Gene):
         return create_protein_fixed(self.create_mRNA(),
                                     self.genetic_code)
 
-def _test():
+def test_lactase_gene():
     urlbase = 'http://hplgit.github.com/bioinf-py/data/'
     lactase_gene_file = 'lactase_gene.txt'
     lactase_exon_file = 'lactase_exon.tsv'
@@ -224,4 +224,4 @@ def _test():
     assert lactase_gene == lactase_gene2
 
 if __name__ == '__main__':
-    _test()
+    test_lactase_gene()

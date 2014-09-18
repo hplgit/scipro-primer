@@ -1,37 +1,9 @@
+"""
+Class implementing the Forward Euler method for scalar ODEs
+and systems of ODEs.
+"""
+
 import numpy as np
-
-def ForwardEuler(f_user, dt, U0, T):
-    """Integrate u'=f(u,t), u(0)=u0, in steps of dt until t=T."""
-    n = int(round(T/dt))
-    t = np.zeros(n+1)
-    f = lambda u, t: np.asarray(f_user(u, t))
-    if isinstance(U0, (float,int)):  # scalar ODE
-        u = np.zeros(n+1)  
-    else:                            # system of ODEs
-        U0 = np.asarray(U0)
-        neq = U0.size
-        u = np.zeros((n+1,neq))  
-    u[0] = U0
-    t[0] = 0
-    for k in range(n):
-        t[k+1] = t[k] + dt
-        u[k+1] = u[k] + dt*f(u[k], t[k])
-    return u, t
-
-def f(u, t):
-    return [u[1], -u[0]]
-
-U0 = [0, 1]
-
-from scitools.std import *
-dt = pi/20
-T = 4*pi
-u, t = ForwardEuler(f, dt, U0, T)
-u1 = u[:,0]
-plot(t, u1)
-legend('ForwardEuler function')
-
-import collections
 
 class ForwardEuler:
     """
@@ -40,7 +12,7 @@ class ForwardEuler:
       du/dt = f(u, t)
 
     by the ForwardEuler solver.
-    
+
     Class attributes:
     t: array of time values
     u: array of solution values (at time points t)
@@ -57,7 +29,7 @@ class ForwardEuler:
             self.neq = 1
         else:                            # system of ODEs
             U0 = np.asarray(U0)
-            self.neq= U0.size
+            self.neq = U0.size
         self.U0 = U0
 
     def solve(self, time_points):
@@ -85,12 +57,19 @@ class ForwardEuler:
         u_new = u[k] + dt*f(u[k], t[k])
         return u_new
 
-solver = ForwardEuler(f)
-solver.set_initial_condition(U0)
-t = np.linspace(0, T, t.size)
-u, t = solver.solve(t)
-u1 = u[:,0]
-figure()
-hold('on')
-plot(t, u1)
-legend('Class ForwardEuler')
+
+def demo(T=8*np.pi, n=200):
+    f = lambda u, t: [u[1], -u[0]]
+    U0 = [0, 1]
+    solver = ForwardEuler(f)
+    solver.set_initial_condition(U0)
+    time_points = np.linspace(0, T, n+1)
+    u, t = solver.solve(time_points)
+    u0 = u[:,0]
+
+    # Plot u0 and compare with exact solution sin(t)
+    from matplotlib.pyplot import plot, show, savefig, legend
+    plot(t, u0, 'r-', t, np.sin(t), 'b--')
+    legend(['ForwardEuler, n=%d' % n, 'exact'], loc='upper left')
+    savefig('tmp.pdf')
+    show()

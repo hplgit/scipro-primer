@@ -113,11 +113,12 @@ class BackwardEuler(ODESolver):
         # BackwardEuler needs to import function Newton from Newton.py:
         try:
             from Newton import Newton
+            self.Newton = Newton
         except ImportError:
             raise ImportError('''
 Could not import module "Newton". Place Newton.py in this directory
 (%s)
-''' % (os.path.dirname(os.path.abspath(__file__)))))
+''' % (os.path.dirname(os.path.abspath(__file__))))
 
     # Alternative implementation of F:
     #def F(self, w):
@@ -132,7 +133,7 @@ Could not import module "Newton". Place Newton.py in this directory
 
         dFdw = Derivative(F)
         w_start = u[k] + dt*f(u[k], t[k])  # Forward Euler step
-        u_new, n, F_value = Newton(F, w_start, dFdw, N=30)
+        u_new, n, F_value = self.Newton(F, w_start, dFdw, N=30)
         if k == 0:
             self.Newton_iter = []
         self.Newton_iter.append(n)
@@ -152,34 +153,33 @@ class Derivative:
         return (f(x+h) - f(x-h))/(2*h)
 
 
-# Tests and verifications
+registered_solver_classes = [
+    ForwardEuler, RungeKutta4, BackwardEuler]
 
-def _f1(u, t):
-    return 0.2 + (u - _u_solution_f1(t))**5
+def test_exact_numerical_solution():
+    a = 0.2; b = 3
 
-def _u_solution_f1(t):
-    """Exact u(t) corresponding to _f1 above."""
-    return 0.2*t + 3
+    def f(u, t):
+        return a + (u - u_exact(t))**5
 
-def _verify(f, exact, U0, T, n):
+    def u_exact(t):
+        """Exact u(t) corresponding to f above."""
+        return a*t + b
+
+    U0 = u_exact(0)
+    T = 8
+    n = 10
+    tol = 1E-15
     t_points = np.linspace(0, T, n)
-    for solver_class in ForwardEuler, RungeKutta4, BackwardEuler:
-        try:
-            solver = solver_class(f)
-        except:
-            continue
+    for solver_class in registered_solver_classes:
+        solver = solver_class(f)
         solver.set_initial_condition(U0)
         u, t = solver.solve(t_points)
-        print solver_class.__name__,
-        u_exact = np.asarray(exact(t)).transpose()
-        print 'max error:', (u_exact - u).max()
-        if solver_class is BackwardEuler:
-            print 'Backward Euler iterations:', solver.Newton_iter
+        u_e = u_exact(t)
+        max_error = (u_e - u).max()
+        msg = '%s failed with max_error=%g' % \
+              (solver.__class__.__name__, max_error)
+        assert max_error < tol, msg
 
 if __name__ == '__main__':
-    print 'Exact numerical solution:'
-    _verify(_f1, _u_solution_f1, U0=3, T=8, n=4)
-    print '\nOscillating system:'
-    _verify(f=lambda u, t: [u[1], -u[0]],
-            exact=lambda t: [np.sin(t), np.cos(t)],
-            U0=[0,1], T=4*np.pi, n=20*4)
+    test_exact_numerical_solution()

@@ -19,12 +19,6 @@ class Logistic:
 
 def get_input():
     """Read alpha, R, U0, T, and n from the command line."""
-    # Set default values
-    alpha = 0.2
-    R = 1
-    U0 = 0.1
-    T = 40
-    n = 400
     try:
         alpha = float(sys.argv[1])
         R = float(sys.argv[2])
@@ -33,8 +27,7 @@ def get_input():
         n = float(sys.argv[5])
     except IndexError:
         print 'Usage: %s alpha R U0 T n' % sys.argv[0]
-        print 'Missing numbers on the command line!'
-        print 'Using default values...'
+        sys.exit(1)
     return alpha, R, U0, T, n
 
 def logistic():

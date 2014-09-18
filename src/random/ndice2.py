@@ -54,7 +54,7 @@ def play(nrounds, ndice=2):
     for i in range(nrounds):
         player.play_one_round()
         computer.play_one_round()
-        print 'Status: user have %d euro, machine has %d euro\n' % \
+        print 'Status: user has %d euro, machine has %d euro\n' % \
               (player.capital, computer.capital)
         if player.capital == 0 or computer.capital == 0:
             break  # terminate game

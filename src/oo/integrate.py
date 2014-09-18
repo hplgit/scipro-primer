@@ -82,25 +82,36 @@ class GaussLegendre2_vec(Integrator):
         return x, w
 
 
-def _verify():
+# A linear function will be exactly integrated by all
+# the methods, so such an f is the candidate for testing
+# the implementations
+
+def test_Integrate():
     def f(x):
         return x + 2
 
     def F(x):
+        """Integral of f."""
         return 0.5*x**2 + 2*x
 
-    a = 2; b = 3; n = 4
-    exact = F(b) - F(a)
+    a = 2; b = 3; n = 4     # test data
+    I_exact = F(b) - F(a)
+    tol = 1E-15
 
+    methods = [Midpoint, Trapezoidal, Simpson, GaussLegendre2,
+               GaussLegendre2_vec]
+    for method in methods:
+        integrator = method(a, b, n)
 
-    for Method in Midpoint, Trapezoidal, Simpson, GaussLegendre2:
-        m = Method(a, b, n)
-        print m.__class__.__name__, m.integrate(f), m.vectorized_integrate(f)
-        print exact, '\n   ', m.points, '\n   ', m.weights
+        I = integrator.integrate(f)
+        assert abs(I_exact - I) < tol
+
+        I_vec = integrator.vectorized_integrate(f)
+        assert abs(I_exact - I_vec) < tol
 
 
 from scitools.std import *
-def _test():
+def error_investagation():
 
     def error_vs_n(f, exact, n_values, Method, a, b):
         """
@@ -138,9 +149,9 @@ def _test():
             n, e = error_vs_n(f, exact, n_values, Method, a, b)
             plot(n, e); legend(Method.__name__); hold('on')
         title('m=%g' % m); xlabel('ln(n)'); ylabel('ln(error)')
-        hardcopy('tmp_%s.eps' % m)
+        savefig('tmp_%s.pdf' % m)
 
 
 if __name__ == '__main__':
-    _verify()
-    _test()
+    test_Integrate()
+    error_investagation()

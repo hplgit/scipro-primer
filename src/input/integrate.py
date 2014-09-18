@@ -2,7 +2,7 @@ def midpoint_integration(f, a, b, n=100):
     h = (b - a)/float(n)
     I = 0
     for i in range(n):
-        I += f(a + 0.5*i*h)
+        I += f(a + i*h + 0.5*h)
     return h*I
 
 from math import *

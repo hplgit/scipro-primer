@@ -25,7 +25,7 @@ except IndexError:
 
 # Clean up all plot files
 import glob, os
-for filename in glob.glob('tmp_*.eps'): os.remove(filename)
+for filename in glob.glob('tmp_*.pdf'): os.remove(filename)
 
 from scitools.StringFunction import StringFunction
 from scitools.std import *  # might be needed for f_formula
@@ -50,11 +50,11 @@ for interval, m in results:
          [m, m], [ymin, ymax], 'b-',
          [x[0], x[-1]], [0, 0], 'y-',
          legend=('f(x)', 'a', 'b', 'm', 'y=0'),
-         title='The Bisection method, iteration %d: [%.2g, %.2g]' % 
-         (itcount, a, b), hardcopy='tmp_%02d.eps' % itcount)
+         title='The Bisection method, iteration %d: [%.2g, %.2g]' %
+         (itcount, a, b), savefig='tmp_%02d.pdf' % itcount)
     itcount += 1
     time.sleep(2)
     #raw_input('Type CR: ')
 
-movie('tmp_*.eps', encoder='convert', fps=2,
+movie('tmp_*.pdf', encoder='convert', fps=2,
       output_file='tmpmovie.gif')

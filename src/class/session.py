@@ -147,7 +147,7 @@ def f(x):
 x = linspace(0.87, 1.15, 100)
 y = f(x)
 y0 = zeros(len(x))
-plot(x, y, x, y0, axis=[x[0],x[-1],-1.15,y[-1]], hardcopy='tmp.eps')
+plot(x, y, x, y0, axis=[x[0],x[-1],-1.15,y[-1]], savefig='tmp.pdf')
 df = Derivative(f)
 Newton(f, 1.01, df, epsilon=1E-5)
 Newton(f, 1.01, df, epsilon=1E-10)

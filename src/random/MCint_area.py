@@ -15,7 +15,7 @@ import numpy as np
 def MCint_area_vec(f, a, b, n, m):
     x = np.random.uniform(a, b, n)
     y = np.random.uniform(0, m, n)
-    below = y[y < f(x)].size  # better: np.sum(y<f(x))!
+    below = np.sum(y < f(x))
     area = below/float(n)*m*(b-a)
     return area
 

@@ -11,6 +11,7 @@ def animate(tmax, dt, x, function, ymin, ymax, t0=0,
              title='time=%2d h' % (t/3600.0),
              xlabel=xlabel, ylabel=ylabel,
              savefig=filename + '%04d.png' % counter)
+        savefig('tmp_%04d.pdf' % counter)
         t += dt
         counter += 1
 
@@ -36,6 +37,7 @@ n = 501      # no of points in the z direction
 
 z = linspace(0, D, n)
 animate(tmax, dt, z, T, T0-A, T0+A, 0, 'z', 'T')
-# Make movie file
-movie('tmp_*.png', encoder='convert', fps=2,
-      output_file='tmp_heatwave.gif')
+# Make movie files
+os.system('convert -delay 50 tmp_*.png movie.gif')
+os.system('avconv -r 5 -i tmp_%04d.png -c:v flv movie.flv')
+# Can use ffmpeg instead of avconv

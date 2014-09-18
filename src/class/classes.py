@@ -143,6 +143,16 @@ class Circle:
     def circumference(self):
         return 2*pi*self.R
 
+def test_Circle():
+    R = 2.5
+    c = Circle(7.4, -8.1, R)
+    from math import pi
+    area = pi*R**2; circumference = 2*pi*R
+    diff = abs(c.area() - area)
+    tol = 1E-14
+    assert diff < tol, 'bug in Circle.area, diff=%s' % diff
+    diff = abs(c.circumference() - circumference)
+    assert diff < tol, 'bug in Circle.circumference, diff=%s' % diff
 
 class Derivative:
     def __init__(self, f, h=1E-5):
@@ -153,3 +163,48 @@ class Derivative:
         f, h = self.f, self.h      # make short forms
         return (f(x+h) - f(x))/h
 
+def test_Derivative():
+    # The formula is exact for linear functions, regardless of h
+    f = lambda x: a*x + b
+    a = 3.5; b = 8
+    dfdx = Derivative(f, h=0.5)
+    diff = abs(dfdx(4.5) - a)
+    assert diff < 1E-14, 'bug in class Derivative, diff=%s' % diff
+
+def trapezoidal(f, a, x, n):
+    h = (x-a)/float(n)
+    I = 0.5*f(a)
+    for i in range(1, n):
+        I += f(a + i*h)
+    I += 0.5*f(x)
+    I *= h
+    return I
+
+class Integral:
+    def __init__(self, f, a, n=100):
+        self.f, self.a, self.n = f, a, n
+
+    def __call__(self, x):
+        return trapezoidal(self.f, self.a, x, self.n)
+
+def test_Integral():
+    # The Trapezoidal rule is exact for linear functions
+    import sympy
+    x = sympy.Symbol('x')
+    f_expr = 2*x + 5
+    # Turn sympy expression into plain Python function f(x)
+    f = sympy.lambdify([x], f_expr)
+    # Find integral of f_expr and turn into plain Python function F
+    F_expr = sympy.integrate(f_expr, x)
+    F = sympy.lambdify([x], F_expr)
+
+    a = 2
+    I = Integral(f, a, n=4)
+    x = 6
+    diff = abs(I(x) - (F(x) - F(a)))
+    assert diff < 1E-15, 'bug in class Integral, diff=%s' % diff
+
+if __name__ == '__main__':
+    test_Circle()
+    test_Derivative()
+    test_Integral()

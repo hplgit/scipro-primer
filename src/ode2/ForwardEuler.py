@@ -112,12 +112,15 @@ def test_ForwardEuler_against_linear_solution():
     # Solve for first time interval [0, 1.2]
     solver.set_initial_condition(u_exact(0))
     u1, t1 = solver.solve([0, 0.4, 1, 1.2])
+
     # Continue with a new time interval [1.2, 1.5]
     solver.set_initial_condition(u1[-1])
     u2, t2 = solver.solve([1.2, 1.4, 1.5])
+
     # Append u2 to u1 and t2 to t1
     u = np.concatenate((u1, u2))
     t = np.concatenate((t1, t2))
+
     u_e = u_exact(t)
     error = np.abs(u_e - u).max()
     assert error < 1E-14, '|exact - u| = %g != 0' % error

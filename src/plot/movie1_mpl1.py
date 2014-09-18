@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as mpl
+import matplotlib.pyplot as plt
 import time, glob, os
 
 # Clean up old frames
@@ -18,22 +18,22 @@ s_values = np.linspace(s_max, s_min, 30)
 max_f = f(m, m, s_min)
 
 # Make a first plot (here empty)
-mpl.ion()
+plt.ion()
 y = f(x, m, s_max)
-lines = mpl.plot(x, y)
-mpl.axis([x[0], x[-1], -0.1, max_f])
-mpl.xlabel('x')
-mpl.ylabel('f')
-mpl.legend(['s=%4.2f' % s_max])
+lines = plt.plot(x, y)
+plt.axis([x[0], x[-1], -0.1, max_f])
+plt.xlabel('x')
+plt.ylabel('f')
+plt.legend(['s=%4.2f' % s_max])
 
 # Show the movie, and make hardcopies of frames simulatenously
 counter = 0
 for s in s_values:
     y = f(x, m, s)
     lines[0].set_ydata(y)
-    mpl.legend(['s=%4.2f' % s])
-    mpl.draw()
-    mpl.savefig('tmp_%04d.png' % counter)
+    plt.legend(['s=%4.2f' % s])
+    plt.draw()
+    plt.savefig('tmp_%04d.png' % counter)
     counter += 1
 raw_input('Type Return key: ')
 

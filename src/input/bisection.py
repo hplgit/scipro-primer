@@ -37,8 +37,9 @@ def test_bisection():
     def f(x):
         return 2*x - 3   # one root x=1.5
 
-    x, iter = bisection(f, a=0, b=10, eps=1E-5)
-    success = abs(x - 1.5) < 1E-14  # test equality with tolerance
+    eps = 1E-5
+    x, iter = bisection(f, a=0, b=10, eps=eps)
+    success = abs(x - 1.5) < eps  # test within eps tolerance
     assert success, 'found x=%g != 1.5' % x
 
 def get_input():

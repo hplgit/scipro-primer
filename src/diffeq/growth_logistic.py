@@ -12,4 +12,4 @@ for n in index_set[1:]:
     x[n] = x[n-1] + (rho/100.0)*x[n-1]*(1 - x[n-1]/float(M))
 print x
 plot(index_set, x, 'r', xlabel='time units',
-     ylabel='no of individuals', hardcopy='tmp.eps')
+     ylabel='no of individuals', hardcopy='tmp.pdf')

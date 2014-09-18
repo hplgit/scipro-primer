@@ -23,7 +23,7 @@ def example(n):
                  'Correct function'),
          title='Approximate and correct second order '\
                'derivatives, n=%d' % n,
-         hardcopy='tmp.eps')
+         savefig='tmp.pdf')
 
 try:
     n = int(sys.argv[1])

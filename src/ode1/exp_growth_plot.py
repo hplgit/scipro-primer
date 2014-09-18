@@ -25,6 +25,6 @@ hold('on')
 plot(tfine, v)
 legend(['Approximate solution', 'Correct function'])
 title('Approximate and correct discrete functions, n=%d' % n)
-savefig('tmp.eps')
+savefig('tmp.pdf')
 
 

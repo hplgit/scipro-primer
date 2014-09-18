@@ -1,29 +1,8 @@
 """Demo of unicode and encodings like utf-8 and latin1."""
 # -*- coding: utf-8 -*-
-"""
-There are two types of strings in Python: plain strings (known as
-byte strings) with type `str`
-and unicode strings with type `unicode`. Plain strings suffice as long
-as you are writing English text only. A string is then just a
-series of bytes representing integers between 0 and 255.
-The first characters corresponding to the numbers 0 to 127 constitute
-the ASCII set. These can be printed out:
 
-\bpy
-for i in range(0, 128):
-    print i, chr(i)
-\epy
-The keys on an English keyboard can be recognized from `i=33` to `i=127`.
-The next numbers are used to represent non-English characters.
-
-Texts with non-English
-characters are recommended to be represented by unicode strings.
-This is the default string type in Python 3.x, while in Python
-2.x we need to explicitly annotate a string as unicode by
-a `u` prefix as in `s = u'my text'.
-"""
 def check(s):
-    """Print content, bytecode and length of a string s."""
+    """Print content, string type, bytecode and length of a string s."""
     print '%s, %s: %s (%d)' % \
           (s, s.__class__.__name__, repr(s), len(s))
 
@@ -33,6 +12,7 @@ check(Gauss)
 # See what the characters correspond to as integer
 for char in Gauss:
     print ord(char),
+
 print
 # Observe that there are 10 characters in the string, but
 # len(Gauss) is 11, because the last character is represented
@@ -42,6 +22,7 @@ print
 # Define unicode string (Python 2.x)
 Gauss = u'C. F. Gauß'
 check(Gauss)
+
 # Python 3.x has unicode strings by default (no initial u)
 
 # The German ß has unicode DF and we can use this code directly:
@@ -49,17 +30,15 @@ Gauss = u'C. F. Gau\xdf'
 check(Gauss)
 # The UTF-8 bytecode of ß is C39F and we can use this too
 Gauss = 'C. F. Gau\xc3\x9f'
+check(Gauss)
 print '%s, UTF-8 bytecode: %s' % (Gauss, repr(Gauss)), type(Gauss)
 
-# But mixing UTF-8 bytecode in unicode string does not work
-Gauss = u'C. F. Gau\xc3x9f'
-try:
-    check(Gauss)
-except TypeError as e:
-    print 'TypeError:', e
+# Mixing UTF-8 bytecode in unicode string gives strange output
+Gauss = u'C. F. Gau\xc3\x9f'
+check(Gauss)
+
 # But plain print works
-print 'Be prepared for strange output:', \
-      Gauss, repr(Gauss), type(Gauss)
+print 'Be prepared for strange output:', Gauss, repr(Gauss), type(Gauss)
 
 # Convert unicode to UTF-8 and latin-1 encoding
 Gauss = u'C. F. Gau\xdf'
@@ -73,14 +52,38 @@ Gauss2 = unicode(Gauss_utf8, 'utf-8')
 print 'unicode:', repr(Gauss2)
 print 'unicode(s.encode(encoding), encoding) == s:', Gauss2 == Gauss
 
+# Writing to file with unicode
+try:
+    with open('tmp.txt', 'w') as f:
+        f.write(Gauss)
+except UnicodeEncodeError as e:
+    print e
+
+# Remedy: use codecs and convert explicitly to UTF-8
+import codecs
+with codecs.open('tmp.txt', 'w', 'utf-8') as f:
+    f.write(Gauss)
+
+# Writing to file with UTF-8 bytecode
+Gauss = u'C. F. Gau\xdf'.encode('utf-8')
+try:
+    with open('tmp2.txt', 'w') as f:
+        f.write(Gauss)
+except UnicodeEncodeError as e:
+    print e
+
 # Type with a Norwegian keyboard
-Odegaard = 'Åsmund Ødegård'
-check(Odegaard)
-Odegaard = u'Åsmund Ødegård'
-check(Odegaard)
+name = 'Åsmund Ødegård'
+check(name)
+name = u'Åsmund Ødegård'
+check(name)
+# Type with UTF-8 bytecode directly:
+# Å is C3 85, Ø is C3 98, å is C3 A5
+name = '\xc3\x85smund \xc3\x98deg\xc3\xa5rd'
+check(name)
 # Type with unicode directly:
 # Å is C5, Ø is D8, å is E5
-Odegaard = u'\xc5smund \xd8deg\xe5rd'
-check(Odegaard)
+name = u'\xc5smund \xd8deg\xe5rd'
+check(name)
 
 

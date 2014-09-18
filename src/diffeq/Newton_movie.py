@@ -23,7 +23,7 @@ def line(x0, y0, dydx):
     """
     return dydx, y0 - dydx*x0
 
-    
+
 def illustrate_Newton(info, f, df, xmin, xmax):
     # First make a plot f for the x values that are in info
     xvalues = linspace(xmin, xmax, 401)
@@ -38,7 +38,7 @@ def illustrate_Newton(info, f, df, xmin, xmax):
     # and the green line,
     # repeat this for all iterations and store hardcopies for making
     # a movie.
-    
+
     for root, value in info:
         a, b = line(root, value, df(root))
         y = a*xvalues + b
@@ -49,10 +49,10 @@ def illustrate_Newton(info, f, df, xmin, xmax):
              xvalues, y, 'b-',
              legend=('f(x)', 'approx. root', 'y=0', 'approx. line'),
              axis=[xmin, xmax, ymin, ymax],
-             hardcopy='tmp_%04d.eps' % frame_counter,
+             hardcopy='tmp_%04d.pdf' % frame_counter,
              title='approximate root = %g; f(%g) = %g' % (root, root, value))
         frame_counter += 1
-    movie('tmp_*.eps', encoder='convert', fps=2,
+    movie('tmp_*.pdf', encoder='convert', fps=2,
           output_file='tmpmovie.gif')
 
 try:
@@ -67,7 +67,7 @@ except IndexError:
 
 # Clean up all plot files
 import glob, os
-for filename in glob.glob('tmp_*.eps'): os.remove(filename)
+for filename in glob.glob('tmp_*.pdf'): os.remove(filename)
 
 f = StringFunction(f_formula)
 f.vectorize(globals())
@@ -81,4 +81,4 @@ else:
     df.vectorize(globals())
 x, info = Newton(f, x0, df, store=True)
 illustrate_Newton(info, f, df, xmin, xmax)
-    
+

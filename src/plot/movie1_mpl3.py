@@ -6,7 +6,7 @@ instead of the matplotlib.pyplot functions.
 """
 
 import numpy as np
-import matplotlib.pyplot as mpl
+import matplotlib.pyplot as plt
 import time, glob, os
 
 # Clean up old frames
@@ -24,14 +24,14 @@ s_values = np.linspace(s_max, s_min, 30)
 # f is max for x=m; smaller s gives larger max value
 max_f = f(m, m, s_min)
 
-mpl.ion()
-fig = mpl.figure()
+plt.ion()
+fig = plt.figure()
 
 # Show the movie, and make hardcopies of frames simulatenously
 counter = 0
 for s in s_values:
     # delete plot, replot everything for this s
-    fig.clf() # or mpl.delaxes()
+    fig.clf() # or plt.delaxes()
     ax = fig.gca()
     ax.axis([x[0], x[-1], -0.1, max_f])
     y = f(x, m, s)
@@ -39,7 +39,7 @@ for s in s_values:
     ax.set_xlabel('x')
     ax.set_ylabel('f')
     ax.legend(['s=%4.2f' % s])
-    mpl.draw()
+    plt.draw()
     fig.savefig('tmp_%04d.png' % counter)
     counter += 1
 raw_input('Type Return key: ')

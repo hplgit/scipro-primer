@@ -1,0 +1,15 @@
+digraph G {
+"Vehicle0" -> "ground";
+"ground" -> "wall";
+"Vehicle0" -> "vehicle";
+"vehicle" -> "body";
+"body" -> "over";
+"over" -> "rectangle (1)";
+"body" -> "under";
+"under" -> "rectangle (2)";
+"vehicle" -> "wheels";
+"wheels" -> "wheel1";
+"wheel1" -> "arc (1)";
+"wheels" -> "wheel2";
+"wheel2" -> "arc (2)";
+}

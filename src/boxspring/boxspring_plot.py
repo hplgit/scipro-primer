@@ -32,10 +32,10 @@ else:
 S = solve(m, k, beta, S0, dt, g, w, N, user_action=plot_S)
 
 # First make a hardcopy of the the last plot of Y
-hardcopy('tmp_Y.eps')
+savefig('tmp_Y.pdf')
 
 # Make plots of several additional interesting quantities
-tcoor = linspace(0, tstop, N+1)
+tcoor = linspace(0, N*dt, N+1)
 S = array(S)
 
 plots = 2         # number of rows of plots
@@ -71,4 +71,4 @@ if w_formula != '0':
     w_array = w(tcoor)
     plot(tcoor, w_array, xlabel='time', ylabel='w(t)')
 
-savefig('tmp.eps')  # save this multi-axis plot in a file
+savefig('tmp.pdf')  # save this multi-axis plot in a file

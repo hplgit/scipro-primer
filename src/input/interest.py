@@ -50,19 +50,18 @@ def test_all_functions():
               float_eq(A0_computed, A0) and \
               float_eq(p_computed,  p)  and \
               float_eq(n_computed,  n)
-    if not success:
-        message = """Computations failed:
+    msg = """Computations failed (correct answers in parenthesis):
 A=%g (%g)
 A0=%g (%.1f)
 n=%d (%d)
 p=%g (%.1f)""" % (A_computed, A, A0_computed, A0,
                   n_computed, n, p_computed, p)
-        raise AssertionError(message)
+    assert success, msg
 
 def compute_missing_parameter(init_code):
     try:
         exec(init_code)
-    except SyntaxError, e:
+    except SyntaxError as e:
         print e
         print init_code
         sys.exit(1)
@@ -76,7 +75,7 @@ def compute_missing_parameter(init_code):
             print 'n =', days(A0, A , p)
         elif 'p=' not in init_code:
             print 'p =', annual_rate(A0, A, n)
-    except NameError, e:
+    except NameError as e:
         print e
         sys.exit(1)
     except ValueError:
