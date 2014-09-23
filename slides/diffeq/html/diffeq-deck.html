@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="App. A: Sequences and difference equations">
+
+<title>App. A: Sequences and difference equations</title>
+
+
+
+
+
+
+
+<!-- deck.js: https://github.com/imakewebthings/deck.js -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=1024, user-scalable=no">
+
+<!-- Required stylesheet -->
+<link rel="stylesheet" href="deck.js/core/deck.core.css">
+
+<!-- Extension CSS files go here. Remove or add as needed.
+deck.goto: Adds a shortcut key to jump to any slide number.
+Hit g, type in the slide number, and hit enter.
+
+deck.hash: Enables internal linking within slides, deep
+linking to individual slides, and updates the address bar and
+a permalink anchor with each slide change.
+
+deck.menu: Adds a menu view, letting you see all slides in a grid.
+Hit m to toggle to menu view, continue navigating your deck,
+and hit m to return to normal view. Touch devices can double-tap
+the deck to switch between views.
+
+deck.navigation: Adds clickable left and right buttons for the
+less keyboard inclined.
+
+deck.status: Adds a page number indicator. (current/total).
+
+deck.scale: Scales each slide to fit within the deck container
+using CSS Transforms for those browsers that support them.
+
+deck.pointer: Turn mouse into laser pointer (toggle with p).
+(Requires https://github.com/mikeharris100/deck.pointer.js)
+-->
+
+<link rel="stylesheet" href="deck.js/extensions/menu/deck.menu.css">
+<link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css">
+<link rel="stylesheet" href="deck.js/extensions/scale/deck.scale.css">
+<link rel="stylesheet" href="deck.js/extensions/pointer/deck.pointer.css">
+<link rel="stylesheet" href="deck.js/extensions/notes/deck.notes.css">
+<!--
+<link rel="stylesheet" href="deck.js/extensions/goto/deck.goto.css">
+<link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css">
+<link rel="stylesheet" href="deck.js/extensions/status/deck.status.css">
+-->
+
+<!-- Style theme. More available in themes/style/ or create your own. -->
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+
+<!--
+<link rel="stylesheet" href="deck.js/themes/style/neon.css">
+<link rel="stylesheet" href="deck.js/themes/style/swiss.css">
+<link rel="stylesheet" href="deck.js/themes/style/web-2.0.css">
+
+git clone git://github.com/duijf/mnml.git
+<link rel="stylesheet" href="deck.js/themes/style/mnml.css">
+
+git://github.com/groovecoder/deckjs-theme-mozilla.git
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.aurora.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.dark.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.firefox.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.light.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.mdn.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.nightly.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.cbc.css">
+
+git://github.com/barraq/deck.ext.js.git
+<link rel="stylesheet" href="deck.js/themes/style/beamer.css">
+-->
+
+<!--
+Transition theme. More available in /themes/transition/ or create your own. -->
+<!--
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+<link rel="stylesheet" href="deck.js/themes/transition/fade.css">
+<link rel="stylesheet" href="deck.js/themes/transition/vertical-slide.css">
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+-->
+
+<!-- Required Modernizr file -->
+<script src="deck.js/modernizr.custom.js"></script>
+
+<style type="text/css">
+/* Override h1, h2, ... styles */
+h1 { font-size: 2.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.3em; }
+h1, h2, h3, h4 { font-weight: bold; line-height: 1.2; }
+body { overflow: auto; } /* vertical scrolling */
+
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.slide .alert-text-small   { font-size: 80%;  }
+.slide .alert-text-large   { font-size: 130%; }
+.slide .alert-text-normal  { font-size: 90%;  }
+.slide .alert {
+     padding:8px 35px 8px 14px; margin-bottom:18px;
+     text-shadow:0 1px 0 rgba(255,255,255,0.5);
+     border:5px solid #bababa;
+       -webkit-border-radius:14px; -moz-border-radius:14px;
+     border-radius:14px
+     background-position: 10px 10px;
+     background-repeat: no-repeat;
+     background-size: 38px;
+     padding-left: 30px; /* 55px; if icon */
+ }
+ .slide .alert-block {padding-top:14px; padding-bottom:14px}
+ .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+ /*.slide .alert li {margin-top: 1em}*/
+ .deck .alert-block p+p {margin-top:5px}
+ /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+ .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+ .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+ .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body class="deck-container">
+
+<header>
+<!-- Here goes a potential header -->
+</header>
+
+<!-- do not use the article tag - it gives strange sizings -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+
+
+
+<section class="slide">
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<h2 style="text-align: center;">App. A: Sequences and difference equations</h2>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b style="font-weight: bold">Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b style="font-weight: bold">Simula Research Laboratory</b></center>
+<center>[2] <b style="font-weight: bold">University of Oslo, Dept. of Informatics</b></center>
+<p>
+<center><b style="font-weight: bold">Sep 23, 2014</b></center> <!-- date -->
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Sequences  <a name="___sec0"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<em>Sequences</em> is a central topic in mathematics:
+
+<p>&nbsp;<br>
+$$ x_0,\ x_1,\ x_2,\ \ldots,\ x_n,\ldots, $$
+<p>&nbsp;<br>
+
+
+<p>
+Example: all odd numbers
+
+<p>&nbsp;<br>
+$$ 1, 3, 5, 7, \ldots, 2n+1,\ldots $$
+<p>&nbsp;<br>
+
+
+<p>
+For this sequence we have a formula for the \( n \)-th term:
+
+<p>&nbsp;<br>
+$$ x_n = 2n+1 $$
+<p>&nbsp;<br>
+
+and we can write the sequence more compactly as
+
+<p>&nbsp;<br>
+$$ (x_n)_{n=0}^\infty,\quad x_n = 2n+1$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Other examples of sequences  <a name="___sec1"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>&nbsp;<br>
+$$ 1,\ 4,\ 9,\ 16,\ 25,\ \ldots\quad (x_n)_{n=0}^\infty,\ x_n=n^2$$
+<p>&nbsp;<br>
+
+
+<p>&nbsp;<br>
+$$ 1,\ {1\over 2},\ {1\over3},\ {1\over4},\ \ldots\quad (x_n)_{n=0}^\infty,\ x_n={1\over {n+1}}$$
+<p>&nbsp;<br>
+
+
+<p>&nbsp;<br>
+$$ 1,\ 1,\ 2,\ 6,\ 24,\ \ldots\quad (x_n)_{n=0}^\infty,\ x_n=n!$$
+<p>&nbsp;<br>
+
+
+<p>&nbsp;<br>
+$$ 1,\ 1+x,\ 1+x+{1\over2}x^2,\ 1+x+{1\over2}x^2+{1\over6}x^3,\ \ldots\quad (x_n)_{n=0}^\infty,\ x_n=\sum_{j=0}^n {x^j\over j!}$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Finite and infinite sequences  <a name="___sec2"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Infinite sequences have an infinite number of terms (\( n\rightarrow\infty \))</li>
+  <p><li> In mathematics, infinite sequences are widely used</li>
+  <p><li> In real-life applications, sequences are usually finite: \( (x_n)_{n=0}^N \)</li>
+  <p><li> Example: number of approved exercises every week in INF1100<br />
+    \( x_0, x_1, x_2, \ldots, x_{15} \)</li>
+  <p><li> Example: the annual value of a loan<br />
+    \( x_0, x_1, \ldots, x_{20} \)</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Difference equations  <a name="___sec3"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> For sequences occuring in modeling of real-world phenomena, there is seldom a formula for the \( n \)-th term</li>
+  <p><li> However, we can often set up one or more equations governing the sequence</li>
+  <p><li> Such equations are called difference equations</li>
+  <p><li> With a computer it is then very easy to generate the sequence by solving the difference equations</li>
+  <p><li> Difference equations have lots of applications and are very easy to solve on a computer, but often complicated or impossible to solve for \( x_n \) (as a formula) by pen and paper!</li>
+  <p><li> The programs require only loops and arrays</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Modeling interest rates  <a name="___sec4"></a></h2>
+
+<p>
+
+<div class="slide alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Problem:</b>
+<p>
+Put \( x_0 \) money in a bank at year 0. What is the value after \( N \) years if the interest rate is \( p \) percent per year?
+</div>
+
+
+
+<p>
+
+<div class="slide alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Solution:</b>
+<p>
+The fundamental information relates the value at year \( n \), \( x_n \), to the value of the previous year, \( x_{n-1} \):
+
+<p>&nbsp;<br>
+$$ x_{n} = x_{n-1} + {p\over 100}x_{n-1} $$
+<p>&nbsp;<br>
+
+
+<p>
+How to solve for \( x_n \)? Start with \( x_0 \), compute \( x_1 \), \( x_2 \), ...
+</div>
+
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Simulating the difference equation for interest rates  <a name="___sec5"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">What does it mean to simulate?</b>
+<p>
+Solve math equations by repeating a simple procedure (relation) many times (boring, but well suited for a computer!)
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Program for \( x_{n} = x_{n-1} + (p/100)x_{n-1} \):</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.std</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+x0 = <span style="color: #B452CD">100</span>                      <span style="color: #228B22"># initial amount</span>
+p = <span style="color: #B452CD">5</span>                         <span style="color: #228B22"># interest rate</span>
+N = <span style="color: #B452CD">4</span>                         <span style="color: #228B22"># number of years</span>
+index_set = <span style="color: #658b00">range</span>(N+<span style="color: #B452CD">1</span>)
+x = zeros(<span style="color: #658b00">len</span>(index_set))
+
+<span style="color: #228B22"># Solution:</span>
+x[<span style="color: #B452CD">0</span>] = x0
+<span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> index_set[<span style="color: #B452CD">1</span>:]:
+    x[n] = x[n-<span style="color: #B452CD">1</span>] + (p/<span style="color: #B452CD">100.0</span>)*x[n-<span style="color: #B452CD">1</span>]
+<span style="color: #8B008B; font-weight: bold">print</span> x
+plot(index_set, x, <span style="color: #CD5555">&#39;ro&#39;</span>, xlabel=<span style="color: #CD5555">&#39;years&#39;</span>, ylabel=<span style="color: #CD5555">&#39;amount&#39;</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>We do not need to store the entire sequence, but it is convenient for programming and later plotting  <a name="___sec6"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Previous program stores all the \( x_n \) values in a NumPy array</li>
+  <p><li> To compute \( x_n \), we only need one previous value, \( x_{n-1} \)</li>
+</ul>
+<p>
+
+Thus, we could only store the two last values in memory:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">x_old = x0
+<span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> index_set[<span style="color: #B452CD">1</span>:]:
+    x_new = x_old + (p/<span style="color: #B452CD">100.</span>)*x_old
+    x_old = x_new  <span style="color: #228B22"># x_new becomes x_old at next step</span>
+</pre></div>
+<p>
+However, programming with an array <code>x[n]</code> is simpler, safer, and enables plotting the sequence, so we will continue to use arrays in the examples
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Daily interest rate  <a name="___sec7"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> A more relevant model is to add the interest every day</li>
+  <p><li> The interest rate per day is \( r=p/D \) if \( p \) is the annual interest rate and \( D \) is the number of days in a year</li>
+  <p><li> A common model in business applies \( D=360 \), but \( n \) counts exact (all) days</li>
+</ul>
+<p>
+
+Just a minor change in the model:
+
+<p>&nbsp;<br>
+$$x_{n} = x_{n-1} + {r\over 100}x_{n-1}$$
+<p>&nbsp;<br>
+
+
+<p>
+How can we find the number of days between two dates?
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">datetime</span>
+&gt;&gt;&gt; date1 = datetime.date(<span style="color: #B452CD">2007</span>, <span style="color: #B452CD">8</span>, <span style="color: #B452CD">3</span>)  <span style="color: #228B22"># Aug 3, 2007</span>
+&gt;&gt;&gt; date2 = datetime.date(<span style="color: #B452CD">2008</span>, <span style="color: #B452CD">8</span>, <span style="color: #B452CD">4</span>)  <span style="color: #228B22"># Aug 4, 2008</span>
+&gt;&gt;&gt; diff = date2 - date1
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> diff.days
+<span style="color: #B452CD">367</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Program for daily interest rate  <a name="___sec8"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.std</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+x0 = <span style="color: #B452CD">100</span>                           <span style="color: #228B22"># initial amount</span>
+p = <span style="color: #B452CD">5</span>                              <span style="color: #228B22"># annual interest rate</span>
+r = p/<span style="color: #B452CD">360.0</span>                        <span style="color: #228B22"># daily interest rate</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">datetime</span>
+date1 = datetime.date(<span style="color: #B452CD">2007</span>, <span style="color: #B452CD">8</span>, <span style="color: #B452CD">3</span>)
+date2 = datetime.date(<span style="color: #B452CD">2011</span>, <span style="color: #B452CD">8</span>, <span style="color: #B452CD">3</span>)
+diff = date2 - date1
+N = diff.days
+index_set = <span style="color: #658b00">range</span>(N+<span style="color: #B452CD">1</span>)
+x = zeros(<span style="color: #658b00">len</span>(index_set))
+
+<span style="color: #228B22"># Solution:</span>
+x[<span style="color: #B452CD">0</span>] = x0
+<span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> index_set[<span style="color: #B452CD">1</span>:]:
+    x[n] = x[n-<span style="color: #B452CD">1</span>] + (r/<span style="color: #B452CD">100.0</span>)*x[n-<span style="color: #B452CD">1</span>]
+<span style="color: #8B008B; font-weight: bold">print</span> x
+plot(index_set, x, <span style="color: #CD5555">&#39;ro&#39;</span>, xlabel=<span style="color: #CD5555">&#39;days&#39;</span>, ylabel=<span style="color: #CD5555">&#39;amount&#39;</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>But the annual interest rate may change quite often...  <a name="___sec9"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Varying \( p \) means \( p_n \):</b>
+<p>
+
+<ul>
+  <p><li> Could not be handled in school (cannot apply \( x_n =x_0(1+\frac{p}{100})^n \))</li>
+  <p><li> A varying \( p \) causes no problems in the program:
+    just fill an array <code>p</code> with correct interest rate for day <code>n</code></li>
+</ul>
+<p>
+
+Modified program:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">p = zeros(<span style="color: #658b00">len</span>(index_set))
+<span style="color: #228B22"># fill p[n] for n in index_set (might be non-trivial...)</span>
+
+r = p/<span style="color: #B452CD">360.0</span>                      <span style="color: #228B22"># daily interest rate</span>
+x = zeros(<span style="color: #658b00">len</span>(index_set))
+
+x[<span style="color: #B452CD">0</span>] = x0
+<span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> index_set[<span style="color: #B452CD">1</span>:]:
+    x[n] = x[n-<span style="color: #B452CD">1</span>] + (r[n-<span style="color: #B452CD">1</span>]/<span style="color: #B452CD">100.0</span>)*x[n-<span style="color: #B452CD">1</span>]
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Payback of a loan  <a name="___sec10"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> A loan \( L \) is paid back with a fixed amount \( L/N \) every month over \( N \) months + the interest rate of the loan</li>
+  <p><li> \( p \): annual interest rate, \( p/12: \) monthly rate</li>
+  <p><li> Let \( x_n \) be the value of the loan at the end of month \( n \)</li>
+</ul>
+<p>
+
+The fundamental relation from one month to the text:
+
+<p>&nbsp;<br>
+$$ x_n = x_{n-1} + {p\over 12\cdot 100}x_{n-1} -
+({p\over 12\cdot 100}x_{n-1} + {L\over N})$$
+<p>&nbsp;<br>
+
+which simplifies to
+
+<p>&nbsp;<br>
+$$ x_n = x_{n-1}  - {L\over N}$$
+<p>&nbsp;<br>
+
+
+<p>
+(\( L/N \) makes the equation <em>nonhomogeneous</em>)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>How to make a living from a fortune with constant consumption  <a name="___sec11"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> We have a fortune \( F \) invested with an annual interest rate of \( p \) percent</li>
+  <p><li> Every year we plan to consume an amount \( c_n \) (\( n \) counts years)</li>
+  <p><li> Let \( x_n \) be our fortune at year \( n \)</li>
+</ul>
+<p>
+
+A fundamental relation from one year to the other is
+
+<p>&nbsp;<br>
+$$ x_n = x_{n-1} + {p\over 100}x_{n-1} - c_n $$
+<p>&nbsp;<br>
+
+
+<p>
+Simplest possibility: keep \( c_n \) constant, but inflation
+demands \( c_n \) to increase...
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>How to make a living from a fortune with inflation-adjusted consumption  <a name="___sec12"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Assume \( I \) percent inflation per year</li>
+  <p><li> Start with \( c_0 \) as \( q \) percent of the interest the first year</li>
+  <p><li> \( c_n \) then develops as money with interest rate \( I \)</li>
+</ul>
+<p>
+
+\( x_n \) develops with rate \( p \) but with a loss \( c_n \) every year:
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+x_n &= x_{n-1} + {p\over 100}x_{n-1} - c_{n-1}, \quad x_0=F,\ c_0 = {pq\over 10^4}F\\
+c_n &= c_{n-1} + {I\over100}c_{n-1}
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+This is a coupled system of <em>two</em> difference equations, but the programming
+is still simple: we update two arrays, first <code>x[n]</code>, then <code>c[n]</code>, inside the loop
+(good exercise!)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>The mathematics of Fibonacci numbers  <a name="___sec13"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+No programming or math course is complete without an example on Fibonacci numbers:
+
+<p>&nbsp;<br>
+$$ x_n = x_{n-1} + x_{n-2},\quad x_0=1,\ x_1=1$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Mathematical classification.</b>
+<p>
+This is a <em>homogeneous difference equation of second order</em> (second order means three levels: \( n \), \( n-1 \), \( n-2 \)). This classification is important for mathematical solution technique, but not for simulation in a program.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-small">
+<b style="font-weight: bold"></b>
+<p>
+Fibonacci derived the sequence by modeling rat populations, but the sequence of numbers has a range of peculiar mathematical properties and has therefore attracted much attention from mathematicians.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Program for generating Fibonacci numbers  <a name="___sec14"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">N = <span style="color: #658b00">int</span>(sys.argv[<span style="color: #B452CD">1</span>])
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> zeros
+x = zeros(N+<span style="color: #B452CD">1</span>, <span style="color: #658b00">int</span>)
+x[<span style="color: #B452CD">0</span>] = <span style="color: #B452CD">1</span>
+x[<span style="color: #B452CD">1</span>] = <span style="color: #B452CD">1</span>
+<span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">2</span>, N+<span style="color: #B452CD">1</span>):
+    x[n] = x[n-<span style="color: #B452CD">1</span>] + x[n-<span style="color: #B452CD">2</span>]
+    <span style="color: #8B008B; font-weight: bold">print</span> n, x[n]
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Fibonacci numbers can cause overflow in NumPy arrays  <a name="___sec15"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Run the program with \( N=50 \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #B452CD">2</span> <span style="color: #B452CD">2</span>
+<span style="color: #B452CD">3</span> <span style="color: #B452CD">3</span>
+<span style="color: #B452CD">4</span> <span style="color: #B452CD">5</span>
+<span style="color: #B452CD">5</span> <span style="color: #B452CD">8</span>
+<span style="color: #B452CD">6</span> <span style="color: #B452CD">13</span>
+...
+<span style="color: #B452CD">45</span> <span style="color: #B452CD">1836311903</span>
+<span style="color: #008b45; font-weight: bold">Warning</span>: overflow encountered <span style="color: #8B008B">in</span> long_scalars
+<span style="color: #B452CD">46</span> -<span style="color: #B452CD">1323752223</span>
+</pre></div>
+<p>
+Note:
+
+<ul>
+ <p><li> Changing <code>int</code> to <code>long</code> or <code>int64</code> for array elements allows \( N\leq 91 \)</li>
+ <p><li> Can use <code>float96</code> (though \( x_n \) is integer): \( N \leq 23600 \)</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>No overflow when using Python int types  <a name="___sec16"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Best: use Python scalars of type <code>int</code> - these automatically changes to <code>long</code> when overflow in <code>int</code></li>
+  <p><li> The <code>long</code> type in Python has arbitrarily many digits (as many as required in a computation!)</li>
+  <p><li> Note: <code>long</code> for arrays is 64-bit integer (<code>int64</code>), while scalar <code>long</code> in Python is an integer with as &quot;infinitely&quot; many digits</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Program with Python's int type for integers  <a name="___sec17"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+The program now avoids arrays and makes use of three <code>int</code> objects (which automatically changes to <code>long</code> when needed):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+N = <span style="color: #658b00">int</span>(sys.argv[<span style="color: #B452CD">1</span>])
+xnm1 = <span style="color: #B452CD">1</span>                           <span style="color: #228B22"># &quot;x_n minus 1&quot;</span>
+xnm2 = <span style="color: #B452CD">1</span>                           <span style="color: #228B22"># &quot;x_n minus 2&quot;</span>
+n = <span style="color: #B452CD">2</span>
+<span style="color: #8B008B; font-weight: bold">while</span> n &lt;= N:
+    xn = xnm1 + xnm2
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;x_%d = %d&#39;</span> % (n, xn)
+    xnm2 = xnm1
+    xnm1 = xn
+    n += <span style="color: #B452CD">1</span>
+</pre></div>
+<p>
+Run with \( N=200 \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">x_2 = <span style="color: #B452CD">2</span>
+x_3 = <span style="color: #B452CD">3</span>
+...
+x_198 = <span style="color: #B452CD">173402521172797813159685037284371942044301</span>
+x_199 = <span style="color: #B452CD">280571172992510140037611932413038677189525</span>
+x_200 = <span style="color: #B452CD">453973694165307953197296969697410619233826</span>
+</pre></div>
+<p>
+Limition: your computer's memory
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>New problem setting: exponential growth with limited environmental resources  <a name="___sec18"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+The model for growth of money in a bank has a solution of the type
+
+<p>&nbsp;<br>
+$$ x_n = x_0C^n \quad (= x_0e^{n\ln C})$$
+<p>&nbsp;<br>
+
+
+<p>
+Note:
+
+<ul>
+ <p><li> This is exponential growth in time (\( n \))</li>
+ <p><li> Populations of humans, animals, and cells also exhibit the same type of growth as long as there are unlimited resources (space and food)</li>
+ <p><li> Most environments can only support a maximum number \( M \) of individuals</li>
+ <p><li> How can we model this limitation?</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Modeling growth in an environment with limited resources  <a name="___sec19"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Initially, when there are enough resources, the growth is exponential:
+
+<p>&nbsp;<br>
+$$ x_n = x_{n-1} + {r\over 100}x_{n-1}$$
+<p>&nbsp;<br>
+
+
+<p>
+The growth rate \( r \) must decay to zero as \( x_n \) approaches \( M \). The simplest
+variation of \( r(n) \) is a linear:
+
+<p>&nbsp;<br>
+$$   r(n) = \varrho \left(1 - {x_n\over M}\right) $$
+<p>&nbsp;<br>
+
+
+<p>
+Observe: \( r(n)\approx \varrho \) for small \( n \) when \( x_n\ll M \), and
+\( r(n) \rightarrow 0 \) as \( x_n\rightarrow M \) and \( n \) is big
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Logistic growth model:</b>
+<p>
+<p>&nbsp;<br>
+$$ x_n = x_{n-1} + {\varrho\over 100} x_{n-1}\left(1 - {x_{n-1}\over M}\right)$$
+<p>&nbsp;<br>
+
+(This is a <em>nonlinear</em> difference equation)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>The evolution of logistic growth  <a name="___sec20"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+In a program it is easy to introduce logistic instead of exponential growth, just replace
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">x[n] = x[n-<span style="color: #B452CD">1</span>] + p/<span style="color: #B452CD">100.0</span>)*x[n-<span style="color: #B452CD">1</span>]
+</pre></div>
+<p>
+by
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">x[n] = x[n-<span style="color: #B452CD">1</span>] + (rho/<span style="color: #B452CD">100.0</span>)*x[n-<span style="color: #B452CD">1</span>]*(<span style="color: #B452CD">1</span> - x[n-<span style="color: #B452CD">1</span>]/<span style="color: #658b00">float</span>(M))
+</pre></div>
+
+</div>
+
+
+<p>
+<center><p><img src="fig-diffeq/logistic_growth1.png" align="bottom" width=400></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>The factorial as a difference equation  <a name="___sec21"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+The factorial \( n! \) is defined as
+
+<p>&nbsp;<br>
+$$ n(n-1)(n-2)\cdots 1,\quad 0!=1$$
+<p>&nbsp;<br>
+
+
+<p>
+The following difference equation has \( x_n=n! \) as solution and can be used to compute the factorial:
+
+<p>&nbsp;<br>
+$$ x_n = nx_{n-1},\quad x_0 = 1 $$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Difference equations must have an initial condition  <a name="___sec22"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+ <p><li> In mathematics, it is much stressed that a difference equation for
+   \( x_n \) must have an initial condition \( x_0 \)</li>
+ <p><li> The initial condition is obvious when programming: otherwise we cannot
+   start the program (\( x_0 \) is needed to compute \( x_n \))</li>
+ <p><li> However: if you forget <code>x[0] = x0</code> in the program, you get \( x_0=0 \)
+   (because <code>x = zeroes(N+1)</code>),
+   which (usually) gives unintended results!</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>How you ever though about how \( \sin x \) is really calculated?  <a name="___sec23"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+ <p><li> How can you <em>calculate</em> \( \sin x \), \( \ln x \), \( e^x \) without a calculator
+   or program?</li>
+ <p><li> These functions were originally defined to have some desired mathematical
+   properties, but without an algorithm for how to evaluate function values</li>
+ <p><li> Idea: approximate \( \sin x \), etc. by polynomials, since they are easy
+   to calculate (sum, multiplication), but how??</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Would you expect these fantastic mathematical results?  <a name="___sec24"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Amazing result by Gregory, 1667:</b>
+<p>
+<p>&nbsp;<br>
+$$ \sin x = \sum_{k=0}^\infty (-1)^k\frac{x^{2k+1}}{(2k+1)!}$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Even more amazing result by Taylor, 1715:</b>
+<p>
+<p>&nbsp;<br>
+$$ f(x) = \sum_{k=0}^\infty (\frac{d^k}{dx^k} f(0))x^k $$
+<p>&nbsp;<br>
+
+For &quot;any&quot; \( f(x) \), if we can differentiate, add, and multiply \( x^k \),
+we can evaluate \( f \) at any \( x \) (!!!)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Taylor polynomials  <a name="___sec25"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Practical applications works with a truncated sum:</b>
+<p>
+<p>&nbsp;<br>
+$$ f(x) \approx \sum_{k=0}^{{\color{red} N}} (\frac{d^k}{dx^k} f(0))x^k $$
+<p>&nbsp;<br>
+
+
+<p>
+\( N=1 \) is <em>very</em> popular and has been essential in developing
+physics and technology
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Example:</b>
+<p>
+<p>&nbsp;<br>
+$$
+\begin{align*}
+e^x &= \sum_{k=0}^\infty \frac{x^k}{k!}\\
+&\approx 1 + x + x^2 + x^3\\
+&\approx 1 + x
+\end{align*}
+$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Taylor polynomials around an arbitrary point  <a name="___sec26"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+The previous Taylor polynomials are most accurate around \( x=0 \). Can
+make the polynomials accurate around any point \( x=a \):
+
+<p>&nbsp;<br>
+$$ f(x) \approx \sum_{k=0}^N (\frac{d^k}{dx^k} f(a))(x-a)^k $$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Taylor polynomials as one difference equation <a name="diffeq:Taylor:exp:1"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+The Taylor series for \( e^x \) around \( x=0 \) reads
+
+<p>&nbsp;<br>
+$$  e^x= \sum_{n=0}^\infty {x^n\over n!} $$
+<p>&nbsp;<br>
+
+
+<p>
+Define
+
+<p>&nbsp;<br>
+$$ e_{n}=\sum_{k=0}^{n-1} \frac{x^k}{k!} =
+\sum_{k=0}^{n-2} \frac{x^k}{k!} + \frac{x^{n-1}}{(n-1)!}$$
+<p>&nbsp;<br>
+
+
+<p>
+We can formulate the sum in \( e_n \) as the following difference equation:
+
+<p>&nbsp;<br>
+$$ e_n = e_{n-1} + \frac{x^{n-1}}{(n-1)!},\quad e_0=0 $$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>More efficient computation: the Taylor polynomial as two difference equations  <a name="___sec28"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Observe:
+
+<p>&nbsp;<br>
+$$ \frac{x^n}{n!} = \frac{x^{n-1}}{(n-1)!}\cdot \frac{x}{n} $$
+<p>&nbsp;<br>
+
+
+<p>
+Let \( a_n = x^n/n! \). Then we can efficiently compute \( a_n \) via
+
+<p>&nbsp;<br>
+$$ a_n = a_{n-1}\frac{x}{n},\quad a_0 = 1$$
+<p>&nbsp;<br>
+
+
+<p>
+Now we can update each term via the \( a_n \) equation and sum the terms via
+the \( e_n \) equation:
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+e_n &= e_{n-1} + a_{n-1},\quad e_0 = 0,\ a_0 = 1\\
+a_n &= {x\over n} a_{n-1}
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+See the book for more details
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Nonlinear algebraic equations  <a name="___sec29"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Generic form of any (algebraic) equation in \( x \):</b>
+<p>
+\[ f(x)=0 \]
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Examples that can be solved by hand:</b>
+<p>
+          \[ ax + b = 0 \]
+          \[ ax^2 + bx + c = 0 \]
+          \[ \sin x + \cos x = 1 \]
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Simple numerical algorithms can solve &quot;any&quot; equation \( f(x)=0 \)</li>
+  <p><li> Safest: Bisection</li>
+  <p><li> Fastest: Newton's method</li>
+  <p><li> Don't like \( f'(x) \) in Newton's method? Use the Secant method</li>
+  <p><li> Secant and Newton are difference equations!</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Newton's method for finding zeros  <a name="___sec30"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Newton's method.</b>
+<p>
+Simpson (1740) came up with the following general
+method for solving \( f(x)=0 \) (based on ideas by Newton):
+
+<p>&nbsp;<br>
+$$
+x_n = x_{n-1} - {f(x_{n-1})\over f'(x_{n-1})},\quad x_0 \hbox{ given}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Note:
+
+<ul>
+  <p><li> This is a (nonlinear!) difference equation</li>
+  <p><li> As \( n\rightarrow\infty \), we hope that \( x_n\rightarrow x_s \), where \( x_s \) solves \( f(x_s)=0 \)</li>
+  <p><li> How to choose \( N \) when what we want is \( x_N \) close to \( x_s \)?</li>
+  <p><li> Need a slightly different program: simulate until \( f(x)\leq \epsilon \), where \( \epsilon \) is a small tolerance</li>
+  <p><li> Caution: Newton's method may (easily) diverge, so \( f(x)\leq\epsilon \) may
+    never occur!</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>A program for Newton's method  <a name="___sec31"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Quick implementation:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">Newton</span>(f, x, dfdx, epsilon=<span style="color: #B452CD">1.0E-7</span>, max_n=<span style="color: #B452CD">100</span>):
+    n = <span style="color: #B452CD">0</span>
+    <span style="color: #8B008B; font-weight: bold">while</span> <span style="color: #658b00">abs</span>(f(x)) &gt; epsilon <span style="color: #8B008B">and</span> n &lt;= max_n:
+        x = x - f(x)/dfdx(x)
+        n += <span style="color: #B452CD">1</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> x, n, f(x)
+</pre></div>
+<p>
+Note:
+
+<ul>
+  <p><li> \( f(x) \) is evaluated twice in each pass of the loop - only one evaluation is strictly necessary (can store the value in a variable and reuse it)</li>
+  <p><li> <code>f(x)/dfdx(x)</code> can give integer division</li>
+  <p><li> It could be handy to store the <code>x</code> and <code>f(x)</code> values in each iteration (for plotting or printing a convergence table)</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>An improved function for Newton's method  <a name="___sec32"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Only one \( f(x) \) call in each iteration, optional storage of \( (x,f(x)) \) values during the iterations, and ensured float division:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">Newton</span>(f, x, dfdx, epsilon=<span style="color: #B452CD">1.0E-7</span>, max_n=<span style="color: #B452CD">100</span>,
+           store=<span style="color: #658b00">False</span>):
+    f_value = f(x)
+    n = <span style="color: #B452CD">0</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> store: info = [(x, f_value)]
+    <span style="color: #8B008B; font-weight: bold">while</span> <span style="color: #658b00">abs</span>(f_value) &gt; epsilon <span style="color: #8B008B">and</span> n &lt;= max_n:
+        x = x - <span style="color: #658b00">float</span>(f_value)/dfdx(x)
+        n += <span style="color: #B452CD">1</span>
+        f_value = f(x)
+        <span style="color: #8B008B; font-weight: bold">if</span> store: info.append((x, f_value))
+    <span style="color: #8B008B; font-weight: bold">if</span> store:
+        <span style="color: #8B008B; font-weight: bold">return</span> x, info
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        <span style="color: #8B008B; font-weight: bold">return</span> x, n, f_value
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Application of Newton's method  <a name="___sec33"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+$$ e^{-0.1x^2}\sin ({\pi\over 2}x) =0\]
+
+Solutions: $x=0, \pm 2, \pm 4, \pm 6, \ldots$
+$$
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Main program:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> sin, cos, exp, pi
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> exp(-<span style="color: #B452CD">0.1</span>*x**<span style="color: #B452CD">2</span>)*sin(pi/<span style="color: #B452CD">2</span>*x)
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">dg</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> -<span style="color: #B452CD">2</span>*<span style="color: #B452CD">0.1</span>*x*exp(-<span style="color: #B452CD">0.1</span>*x**<span style="color: #B452CD">2</span>)*sin(pi/<span style="color: #B452CD">2</span>*x) + \
+           pi/<span style="color: #B452CD">2</span>*exp(-<span style="color: #B452CD">0.1</span>*x**<span style="color: #B452CD">2</span>)*cos(pi/<span style="color: #B452CD">2</span>*x)
+
+x0 = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
+x, info = Newton(g, x0, dg, store=<span style="color: #658b00">True</span>)
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Computed zero:&#39;</span>, x
+
+<span style="color: #228B22"># Print the evolution of the difference equation</span>
+<span style="color: #228B22"># (i.e., the search for the root)</span>
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(info)):
+    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Iteration %3d: f(%g)=%g&#39;</span> % (i, info[i][<span style="color: #B452CD">0</span>], info[i][<span style="color: #B452CD">1</span>])
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Results from this test problem  <a name="___sec34"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+\( x_0=1.7 \) gives quick convergence towards the closest root \( x=0 \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">zero: <span style="color: #B452CD">1.999999999768449</span>
+Iteration  <span style="color: #B452CD">0</span>: f(<span style="color: #B452CD">1.7</span>)=<span style="color: #B452CD">0.340044</span>
+Iteration  <span style="color: #B452CD">1</span>: f(<span style="color: #B452CD">1.99215</span>)=<span style="color: #B452CD">0.00828786</span>
+Iteration  <span style="color: #B452CD">2</span>: f(<span style="color: #B452CD">1.99998</span>)=<span style="color: #B452CD">2.53347e-05</span>
+Iteration  <span style="color: #B452CD">3</span>: f(<span style="color: #B452CD">2</span>)=<span style="color: #B452CD">2.43808e-10</span>
+</pre></div>
+<p>
+Start value \( x_0=3 \) (closest root \( x=2 \) or \( x=4 \)):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">zero: <span style="color: #B452CD">42.49723316011362</span>
+Iteration  <span style="color: #B452CD">0</span>: f(<span style="color: #B452CD">3</span>)=-<span style="color: #B452CD">0.40657</span>
+Iteration  <span style="color: #B452CD">1</span>: f(<span style="color: #B452CD">4.66667</span>)=<span style="color: #B452CD">0.0981146</span>
+Iteration  <span style="color: #B452CD">2</span>: f(<span style="color: #B452CD">42.4972</span>)=-<span style="color: #B452CD">2.59037e-79</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>What happened here??  <a name="___sec35"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Try the demo program <code>src/diffeq/Newton_movie.py</code> with \( x_0=3 \),
+\( x\in [-2,50] \) for plotting and numerical approximation of \( f'(x) \):
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; python Newton_movie.py &quot;exp(-0.1*x**2)*sin(pi/2*x)&quot; \
+          numeric 3 -2 50
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Lesson learned:</b>
+<p>
+Newton's method may work fine or give wrong results! You need to understand the method to interpret the results!
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>First step: we're moving to the right (\( x=4 \)?)  <a name="___sec36"></a></h2>
+
+<p>
+<center><p><img src="fig-diffeq/Newton_demo_divergence_0000.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Second step: oops, too much to the right...  <a name="___sec37"></a></h2>
+
+<p>
+<center><p><img src="fig-diffeq/Newton_demo_divergence_0001.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Third step: disaster since we're &quot;done&quot; (\( f(x)\approx 0 \))  <a name="___sec38"></a></h2>
+
+<p>
+<center><p><img src="fig-diffeq/Newton_demo_divergence_0002.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Programming with sound  <a name="___sec39"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Tones are sine waves:</b>
+<p>
+A tone <b style="font-weight: bold">A</b> (440 Hz) is a sine wave with frequency 440 Hz:
+
+<p>&nbsp;<br>
+$$ s(t) = A\sin\left( 2\pi f t\right),\quad f = 440 $$
+<p>&nbsp;<br>
+
+
+<p>
+On a computer we represent \( s(t) \) by a discrete set of points on the function curve (exactly as we do when we plot \( s(t) \)).
+CD quality needs 44100 samples per second.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Making a sound file with single tone (part 1)  <a name="___sec40"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> \( r \): sampling rate (samples per second, default 44100)</li>
+  <p><li> \( f \): frequency of the tone</li>
+  <p><li> \( m \): duration of the tone (seconds)</li>
+</ul>
+<p>
+
+Sampled sine function for this tone:
+
+<p>&nbsp;<br>
+$$ s_n =
+A\sin\left( 2\pi f {n\over r}\right),
+\quad n=0,1,\ldots, m\cdot r
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Code (we use descriptive names: <code>frequency</code> \( f \), <code>length</code> \( m \), <code>amplitude</code> \( A \), <code>sample_rate</code> \( r \)):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span>
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">note</span>(frequency, length, amplitude=<span style="color: #B452CD">1</span>,
+         sample_rate=<span style="color: #B452CD">44100</span>):
+    time_points = numpy.linspace(<span style="color: #B452CD">0</span>, length,
+                                 length*sample_rate)
+    data = numpy.sin(<span style="color: #B452CD">2</span>*numpy.pi*frequency*time_points)
+    data = amplitude*data
+    <span style="color: #8B008B; font-weight: bold">return</span> data
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Making a sound file with single tone (part 2)  <a name="___sec41"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> We have <code>data</code> as an array with <code>float</code> and unit amplitude</li>
+  <p><li> Sound data in a file should have 2-byte integers (<code>int16</code>) as data elements and amplitudes up to \( 2^{15}-1 \) (max value for <code>int16</code> data)</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">data = note(<span style="color: #B452CD">440</span>, <span style="color: #B452CD">2</span>)
+data = data.astype(numpy.int16)
+max_amplitude = <span style="color: #B452CD">2</span>**<span style="color: #B452CD">15</span> - <span style="color: #B452CD">1</span>
+data = max_amplitude*data
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">scitools.sound</span>
+scitools.sound.write(data, <span style="color: #CD5555">&#39;Atone.wav&#39;</span>)
+scitools.sound.play(<span style="color: #CD5555">&#39;Atone.wav&#39;</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Reading sound from file  <a name="___sec42"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Let us read a sound file and add echo</li>
+  <p><li> Sound = array <code>s[n]</code></li>
+  <p><li> Echo means to add a delay of the sound</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #228B22"># echo: e[n] = beta*s[n] + (1-beta)*s[n-b]</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">add_echo</span>(data, beta=<span style="color: #B452CD">0.8</span>, delay=<span style="color: #B452CD">0.002</span>,
+             sample_rate=<span style="color: #B452CD">44100</span>):
+    newdata = data.copy()
+    shift = <span style="color: #658b00">int</span>(delay*sample_rate)  <span style="color: #228B22"># b (math symbol)</span>
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">xrange</span>(shift, <span style="color: #658b00">len</span>(data)):
+        newdata[i] = beta*data[i] + (<span style="color: #B452CD">1</span>-beta)*data[i-shift]
+    <span style="color: #8B008B; font-weight: bold">return</span> newdata
+</pre></div>
+<p>
+Load data, add echo and play:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">data = scitools.sound.read(filename)
+data = data.astype(<span style="color: #658b00">float</span>)
+data = add_echo(data, beta=<span style="color: #B452CD">0.6</span>)
+data = data.astype(int16)
+scitools.sound.play(data)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Playing many notes  <a name="___sec43"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Each note is an array of samples from a sine with a frequency corresponding to the note</li>
+  <p><li> Assume we have several note arrays <code>data1</code>, <code>data2</code>, ...:</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #228B22"># put data1, data2, ... after each other in a new array:</span>
+data = numpy.concatenate((data1, data2, data3, ...))
+</pre></div>
+<p>
+The start of "Nothing Else Matters" (Metallica):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">E1 = note(<span style="color: #B452CD">164.81</span>, .<span style="color: #B452CD">5</span>)
+G = note(<span style="color: #B452CD">392</span>, .<span style="color: #B452CD">5</span>)
+B = note(<span style="color: #B452CD">493.88</span>, .<span style="color: #B452CD">5</span>)
+E2 = note(<span style="color: #B452CD">659.26</span>, .<span style="color: #B452CD">5</span>)
+intro = numpy.concatenate((E1, G, B, E2, B, G))
+...
+song = numpy.concatenate((intro, intro, ...))
+scitools.sound.play(song)
+scitools.sound.write(song, <span style="color: #CD5555">&#39;tmp.wav&#39;</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Summary of difference equations  <a name="___sec44"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Sequence: \( x_0 \), \( x_1 \), \( x_2 \), \( \ldots \), \( x_n \), \( \ldots \), \( x_N \)</li>
+  <p><li> Difference equation: relation between \( x_n \), \( x_{n-1} \) and maybe \( x_{n-2} \) (or more terms in the "past")  + known start value \( x_0 \) (and more values \( x_1 \), ... if more levels enter the equation)</li>
+</ul>
+<p>
+
+Solution of difference equations by simulation:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">index_set = &lt;array of n-values: <span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, ..., N&gt;
+x = zeros(N+<span style="color: #B452CD">1</span>)
+x[<span style="color: #B452CD">0</span>] = x0
+<span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> index_set[<span style="color: #B452CD">1</span>:]:
+    x[n] = &lt;formula involving x[n-<span style="color: #B452CD">1</span>]&gt;
+</pre></div>
+<p>
+Can have (simple) systems of difference equations:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> index_set[<span style="color: #B452CD">1</span>:]:
+    x[n] = &lt;formula involving x[n-<span style="color: #B452CD">1</span>]&gt;
+    y[n] = &lt;formula involving y[n-<span style="color: #B452CD">1</span>] <span style="color: #8B008B">and</span> x[n]&gt;
+</pre></div>
+<p>
+Taylor series and numerical methods such as Newton's method can be formulated as difference equations, often resulting in a good way of programming the formulas
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Summarizing example: music of sequences  <a name="___sec45"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Given a \( x_0 \), \( x_1 \), \( x_2 \), \( \ldots \), \( x_n \), \( \ldots \), \( x_N \)</li>
+  <p><li> Can we listen to this sequence as "music"?</li>
+  <p><li> Yes, we just transform the \( x_n \) values to suitable frequencies and use the functions in <code>scitools.sound</code> to generate tones</li>
+</ul>
+<p>
+
+We will study two sequences:
+
+<p>&nbsp;<br>
+$$ x_n = e^{-4n/N}\sin(8\pi n/N)$$
+<p>&nbsp;<br>
+
+and
+
+<p>&nbsp;<br>
+$$ x_n = x_{n-1} + q x_{n-1}\left(1 - x_{n-1}\right),\quad x = x_0 $$
+<p>&nbsp;<br>
+
+
+<p>
+The first has values in \( [-1,1] \), the other from \( x_0=0.01 \) up to around 1
+
+<p>
+Transformation from "unit" \( x_n \) to frequencies:
+
+<p>&nbsp;<br>
+$$ y_n = 440 + 200 x_n $$
+<p>&nbsp;<br>
+
+(first sequence then gives tones between 240 Hz and 640 Hz)
+
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Module file: soundeq.py  <a name="___sec46"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+ <p><li> Three functions: two for generating sequences, one for the sound</li>
+ <p><li> Look at <code>files/soundeq.py</code> for complete code</li>
+</ul>
+<p>
+
+Try it out in these examples:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; python soundseq.py oscillations 40
+Terminal&gt; python soundseq.py logistic 100
+</pre></div>
+<p>
+Try to change the frequency range from 200 to 400.
+</div>
+
+
+
+</section>
+
+
+
+
+<footer>
+<!-- Here goes a footer -->
+</footer>
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+-->
+
+<!-- deck.goto snippet
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+-->
+
+<!-- deck.hash snippet
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+-->
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="deck.js/jquery.min.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/hash/deck.hash.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
+<script src="deck.js/extensions/goto/deck.goto.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+<script src="deck.js/extensions/notes/deck.notes.js"></script>
+
+<!-- From https://github.com/mikeharris100/deck.pointer.js -->
+<script src="deck.js/extensions/pointer/deck.pointer.js"></script>
+
+<!-- From https://github.com/stvnwrgs/presenterview
+<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script> -->
+
+<!-- From https://github.com/nemec/deck.annotate.js
+<script type="text/javascript" src="deck.js/extensions/deck.annotate.js/deck.annotate.js"></script>
+-->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+
+
+</body>
+</html>
