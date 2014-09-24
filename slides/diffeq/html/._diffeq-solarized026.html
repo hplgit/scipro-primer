@@ -120,7 +120,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec22'),
-              (u' How you ever though about how $\\sin x$ is really calculated? ',
+              (u' Have you ever though about how $\\sin x$ is really calculated? ',
                2,
                None,
                '___sec23'),
@@ -133,7 +133,7 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec26'),
-              (u' Taylor polynomials as one difference equation ',
+              (u' Taylor polynomial as one difference equation ',
                2,
                u'diffeq:Taylor:exp:1',
                u'diffeq:Taylor:exp:1'),
@@ -210,7 +210,8 @@ MathJax.Hub.Config({
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Practical applications works with a truncated sum:</b>
 <p>
-$$ f(x) \approx \sum_{k=0}^{{\color{red} N}} (\frac{d^k}{dx^k} f(0))x^k $$
+$$ f(x) \approx \sum_{k=0}^{{\color{red} N}}
+\frac{1}{k!}(\frac{d^k}{dx^k} f(0))x^k $$
 
 
 <p>
@@ -226,7 +227,7 @@ physics and technology
 $$
 \begin{align*}
 e^x &= \sum_{k=0}^\infty \frac{x^k}{k!}\\
-&\approx 1 + x + x^2 + x^3\\
+&\approx 1 + x + \frac{1}{2}x^2 + \frac{1}{6}x^3\\
 &\approx 1 + x
 \end{align*}
 $$
