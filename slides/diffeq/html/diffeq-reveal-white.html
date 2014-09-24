@@ -139,7 +139,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>&nbsp;<br>
-<center><h4>Sep 23, 2014</h4></center> <!-- date -->
+<center><h4>Sep 24, 2014</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -970,7 +970,7 @@ $$ x_n = nx_{n-1},\quad x_0 = 1 $$
 
 <section>
 
-<h2>How you ever though about how \( \sin x \) is really calculated?  <a name="___sec23"></a></h2>
+<h2>Have you ever though about how \( \sin x \) is really calculated?  <a name="___sec23"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1012,7 +1012,7 @@ $$ \sin x = \sum_{k=0}^\infty (-1)^k\frac{x^{2k+1}}{(2k+1)!}$$
 <b>Even more amazing result by Taylor, 1715:</b>
 <p>
 <p>&nbsp;<br>
-$$ f(x) = \sum_{k=0}^\infty (\frac{d^k}{dx^k} f(0))x^k $$
+$$ f(x) = \sum_{k=0}^\infty \frac{1}{k!}(\frac{d^k}{dx^k} f(0))x^k $$
 <p>&nbsp;<br>
 
 For &quot;any&quot; \( f(x) \), if we can differentiate, add, and multiply \( x^k \),
@@ -1034,7 +1034,8 @@ we can evaluate \( f \) at any \( x \) (!!!)
 <b>Practical applications works with a truncated sum:</b>
 <p>
 <p>&nbsp;<br>
-$$ f(x) \approx \sum_{k=0}^{{\color{red} N}} (\frac{d^k}{dx^k} f(0))x^k $$
+$$ f(x) \approx \sum_{k=0}^{{\color{red} N}}
+\frac{1}{k!}(\frac{d^k}{dx^k} f(0))x^k $$
 <p>&nbsp;<br>
 
 
@@ -1052,7 +1053,7 @@ physics and technology
 $$
 \begin{align*}
 e^x &= \sum_{k=0}^\infty \frac{x^k}{k!}\\
-&\approx 1 + x + x^2 + x^3\\
+&\approx 1 + x + \frac{1}{2}x^2 + \frac{1}{6}x^3\\
 &\approx 1 + x
 \end{align*}
 $$
@@ -1077,7 +1078,7 @@ The previous Taylor polynomials are most accurate around \( x=0 \). Can
 make the polynomials accurate around any point \( x=a \):
 
 <p>&nbsp;<br>
-$$ f(x) \approx \sum_{k=0}^N (\frac{d^k}{dx^k} f(a))(x-a)^k $$
+$$ f(x) \approx \sum_{k=0}^N \frac{1}{k!}(\frac{d^k}{dx^k} f(a))(x-a)^k $$
 <p>&nbsp;<br>
 </div>
 
@@ -1089,7 +1090,7 @@ $$ f(x) \approx \sum_{k=0}^N (\frac{d^k}{dx^k} f(a))(x-a)^k $$
 
 <section>
 
-<h2>Taylor polynomials as one difference equation <a name="diffeq:Taylor:exp:1"></a></h2>
+<h2>Taylor polynomial as one difference equation <a name="diffeq:Taylor:exp:1"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
