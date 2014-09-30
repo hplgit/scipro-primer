@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Ch.6: Dictionaries and Strings">
+
+<title>Ch.6: Dictionaries and Strings</title>
+
+
+
+
+
+
+
+<!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<!--
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+-->
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .reveal .alert-text-small   { font-size: 80%;  }
+    .reveal .alert-text-large   { font-size: 130%; }
+    .reveal .alert-text-normal  { font-size: 90%;  }
+    .reveal .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+             -webkit-border-radius: 14px; -moz-border-radius: 14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .reveal .alert-block {padding-top:14px; padding-bottom:14px}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     /*.reveal .alert li {margin-top: 1em}*/
+     .reveal .alert-block p+p {margin-top:5px}
+     /*.reveal .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="reveal">
+
+<!-- Any section element inside the <div class="slides"> container
+     is displayed as a slide -->
+
+<div class="slides">
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+
+
+
+<section>
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<center><h1 style="text-align: center;">Ch.6: Dictionaries and Strings</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>&nbsp;<br>
+<!-- institution(s) -->
+
+<center>[1] <b>Simula Research Laboratory</b></center>
+<center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
+<p>&nbsp;<br>
+<center><h4>Sep 30, 2014</h4></center> <!-- date -->
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Goals  <a name="___sec0"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <p><li> Learn more about file reading</li>
+ <p><li> Store file data in a new object type: <em>dictionary</em></li>
+ <p><li> Interpret content in files via string manipulation</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-small">
+<b></b>
+<p>
+The main focus in the course is on working with files, dictionaries and strings.
+The book has additional material on how to utilize data from the Internet.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1 style="text-align: center;">Dictionaries  <a name="___sec1"></a></h1>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">figfiles <span style="color: #666666">=</span> {<span style="color: #BA2121">&#39;fig1.pdf&#39;</span>: <span style="color: #666666">81761</span>, <span style="color: #BA2121">&#39;fig2.png&#39;</span>: <span style="color: #666666">8754</span>}
+
+figfiles[<span style="color: #BA2121">&#39;fig3.png&#39;</span>] <span style="color: #666666">=</span> os<span style="color: #666666">.</span>path<span style="color: #666666">.</span>getsize(filename)
+
+<span style="color: #008000; font-weight: bold">for</span> name <span style="color: #AA22FF; font-weight: bold">in</span> figfiles:
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;File size of </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121"> is </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">:&#39;</span> <span style="color: #666666">%</span> (name, figfiles[name])
+</pre></div>
+<p>
+<center><p><img src="fig-files/dictionary2.png" align="bottom" width=300></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A dictionary is a generalization of a list  <a name="___sec2"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> Features of lists:</li>
+
+<ul>
+   <p><li> store a <em>sequence</em> of elements in a single object (<code>[1,3,-1]</code>)</li>
+   <p><li> each element is a Python object</li>
+   <p><li> the elements are indexed by integers 0, 1, ...</li>
+</ul>
+<p>
+
+  <p><li> Dictionaries can index objects in a collection via text<br />
+    (= &quot;lists with text index&quot;)</li>
+  <p><li> Dictionary in Python is called hash, HashMap and associative array in other languages</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The list index is sometimes unnatural for locating an element of a collection of objects  <a name="___sec3"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Suppose we need to store the temperatures in Oslo, London and Paris.
+
+<p>
+List solution:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">temps <span style="color: #666666">=</span> [<span style="color: #666666">13</span>, <span style="color: #666666">15.4</span>, <span style="color: #666666">17.5</span>]
+<span style="color: #408080; font-style: italic"># temps[0]: Oslo</span>
+<span style="color: #408080; font-style: italic"># temps[1]: London</span>
+<span style="color: #408080; font-style: italic"># temps[2]: Paris</span>
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;The temperature in Oslo is&#39;</span>, temps[<span style="color: #666666">0</span>]
+</pre></div>
+<p>
+Can look up a temperature by mapping city to index to float
+
+<p>
+But it would be more natural to write <code>temps[Oslo]</code>!
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Dictionaries map strings to objects  <a name="___sec4"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #408080; font-style: italic"># Initialize dictionary</span>
+temps <span style="color: #666666">=</span> {<span style="color: #BA2121">&#39;Oslo&#39;</span>: <span style="color: #666666">13</span>, <span style="color: #BA2121">&#39;London&#39;</span>: <span style="color: #666666">15.4</span>, <span style="color: #BA2121">&#39;Paris&#39;</span>: <span style="color: #666666">17.5</span>}
+
+<span style="color: #408080; font-style: italic"># Applications</span>
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;The temperature in London is&#39;</span>, temps[<span style="color: #BA2121">&#39;London&#39;</span>]
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;The temperature in Oslo is&#39;</span>,   temps[<span style="color: #BA2121">&#39;Oslo&#39;</span>]
+</pre></div>
+<p>
+Important:
+
+<ul>
+ <p><li> The string index, like `Oslo', is called <em>key</em>, while <code>temps['Oslo']</code>
+   is the associated <em>value</em></li>
+ <p><li> A dictionary is an <em>unordered</em> collection of key-value pairs</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Initializing dictionaries  <a name="___sec5"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Two ways of initializing a collection of key-value pairs:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">mydict <span style="color: #666666">=</span> {<span style="color: #BA2121">&#39;key1&#39;</span>: value1, <span style="color: #BA2121">&#39;key2&#39;</span>: value2, <span style="color: #666666">...</span>}
+
+temps <span style="color: #666666">=</span> {<span style="color: #BA2121">&#39;Oslo&#39;</span>: <span style="color: #666666">13</span>, <span style="color: #BA2121">&#39;London&#39;</span>: <span style="color: #666666">15.4</span>, <span style="color: #BA2121">&#39;Paris&#39;</span>: <span style="color: #666666">17.5</span>}
+
+<span style="color: #408080; font-style: italic"># or</span>
+mydict <span style="color: #666666">=</span> <span style="color: #008000">dict</span>(key1<span style="color: #666666">=</span>value1, key2<span style="color: #666666">=</span>value2, <span style="color: #666666">...</span>)
+
+temps <span style="color: #666666">=</span> <span style="color: #008000">dict</span>(Oslo<span style="color: #666666">=13</span>, London<span style="color: #666666">=15.4</span>, Paris<span style="color: #666666">=17.5</span>)
+</pre></div>
+<p>
+Add a new element to a dict (dict = dictionary):
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> temps[<span style="color: #BA2121">&#39;Madrid&#39;</span>] <span style="color: #666666">=</span> <span style="color: #666666">26.0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> temps
+{<span style="color: #BA2121">&#39;Oslo&#39;</span>: <span style="color: #666666">13</span>, <span style="color: #BA2121">&#39;London&#39;</span>: <span style="color: #666666">15.4</span>, <span style="color: #BA2121">&#39;Paris&#39;</span>: <span style="color: #666666">17.5</span>,
+ <span style="color: #BA2121">&#39;Madrid&#39;</span>: <span style="color: #666666">26.0</span>}
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Looping (iterating) over a dict means looping over the keys  <a name="___sec6"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> key <span style="color: #AA22FF; font-weight: bold">in</span> dictionary:
+    value <span style="color: #666666">=</span> dictionary[key]
+    <span style="color: #008000; font-weight: bold">print</span> value
+</pre></div>
+<p>
+Example:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">for</span> city <span style="color: #AA22FF; font-weight: bold">in</span> temps:
+<span style="color: #666666">...</span>   <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;The </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"> temperature is </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (city, temps[city])
+<span style="color: #666666">...</span>
+The Paris temperature <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #666666">17.5</span>
+The Oslo temperature <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #666666">13</span>
+The London temperature <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #666666">15.4</span>
+The Madrid temperature <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #666666">26</span>
+</pre></div>
+<p>
+Note: the sequence of keys is arbitrary! Use sort if you need a
+particular sequence:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> city <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">sorted</span>(temps):   <span style="color: #408080; font-style: italic"># alphabetic sort of keys</span>
+    value <span style="color: #666666">=</span> temps[city]
+    <span style="color: #008000; font-weight: bold">print</span> value
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Can test for particular keys, delete elements, etc  <a name="___sec7"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Does the dict have a particular key?
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">if</span> <span style="color: #BA2121">&#39;Berlin&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> temps:
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Berlin:&#39;</span>, temps[<span style="color: #BA2121">&#39;Berlin&#39;</span>]
+<span style="color: #666666">...</span> <span style="color: #008000; font-weight: bold">else</span>:
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;No temperature data for Berlin&#39;</span>
+<span style="color: #666666">...</span>
+No temperature data <span style="color: #008000; font-weight: bold">for</span> Berlin
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #BA2121">&#39;Oslo&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> temps     <span style="color: #408080; font-style: italic"># standard boolean expression</span>
+<span style="color: #008000">True</span>
+</pre></div>
+<p>
+Delete an element of a dict:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">del</span> temps[<span style="color: #BA2121">&#39;Oslo&#39;</span>]   <span style="color: #408080; font-style: italic"># remove Oslo key w/value</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> temps
+{<span style="color: #BA2121">&#39;Paris&#39;</span>: <span style="color: #666666">17.5</span>, <span style="color: #BA2121">&#39;London&#39;</span>: <span style="color: #666666">15.4</span>, <span style="color: #BA2121">&#39;Madrid&#39;</span>: <span style="color: #666666">26.0</span>}
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000">len</span>(temps)          <span style="color: #408080; font-style: italic"># no of key-value pairs in dict.</span>
+<span style="color: #666666">3</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The keys and values can be reached as lists  <a name="___sec8"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Python version 2:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> temps<span style="color: #666666">.</span>keys()
+[<span style="color: #BA2121">&#39;Paris&#39;</span>, <span style="color: #BA2121">&#39;London&#39;</span>, <span style="color: #BA2121">&#39;Madrid&#39;</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> temps<span style="color: #666666">.</span>values()
+[<span style="color: #666666">17.5</span>, <span style="color: #666666">15.4</span>, <span style="color: #666666">26.0</span>]
+</pre></div>
+<p>
+Python version 3: <code>temps.keys()</code> and <code>temps.values()</code> are <em>iterators</em>,
+not lists!
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">for</span> city <span style="color: #AA22FF; font-weight: bold">in</span> temps<span style="color: #666666">.</span>keys():  <span style="color: #408080; font-style: italic"># works in Py 2 and 3</span>
+<span style="color: #666666">&gt;&gt;&gt;</span>    <span style="color: #008000; font-weight: bold">print</span> city
+<span style="color: #666666">...</span>
+Paris
+Madrid
+London
+<span style="color: #666666">&gt;&gt;&gt;</span> keys_list <span style="color: #666666">=</span> <span style="color: #008000">list</span>(temps<span style="color: #666666">.</span>keys())  <span style="color: #408080; font-style: italic"># Py 3: iterator -&gt; list</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Caution: two variables can alter the same dictionary  <a name="___sec9"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> t1 <span style="color: #666666">=</span> temps
+<span style="color: #666666">&gt;&gt;&gt;</span> t1[<span style="color: #BA2121">&#39;Stockholm&#39;</span>] <span style="color: #666666">=</span> <span style="color: #666666">10.0</span>    <span style="color: #408080; font-style: italic"># change t1</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> temps                     <span style="color: #408080; font-style: italic"># temps is also changed!</span>
+{<span style="color: #BA2121">&#39;Stockholm&#39;</span>: <span style="color: #666666">10.0</span>, <span style="color: #BA2121">&#39;Paris&#39;</span>: <span style="color: #666666">17.5</span>, <span style="color: #BA2121">&#39;London&#39;</span>: <span style="color: #666666">15.4</span>,
+  <span style="color: #BA2121">&#39;Madrid&#39;</span>: <span style="color: #666666">26.0</span>}
+<span style="color: #666666">&gt;&gt;&gt;</span> t2 <span style="color: #666666">=</span> temps<span style="color: #666666">.</span>copy()         <span style="color: #408080; font-style: italic"># take a copy</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> t2[<span style="color: #BA2121">&#39;Paris&#39;</span>] <span style="color: #666666">=</span> <span style="color: #666666">16</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> t1[<span style="color: #BA2121">&#39;Paris&#39;</span>]               <span style="color: #408080; font-style: italic"># t1 was not changed</span>
+<span style="color: #666666">17.5</span>
+</pre></div>
+<p>
+Recall the same for lists:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> L <span style="color: #666666">=</span> [<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> M <span style="color: #666666">=</span> L
+<span style="color: #666666">&gt;&gt;&gt;</span> M[<span style="color: #666666">1</span>] <span style="color: #666666">=</span> <span style="color: #666666">8</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> L[<span style="color: #666666">1</span>]
+<span style="color: #666666">8</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> M <span style="color: #666666">=</span> L[:]  <span style="color: #408080; font-style: italic"># take copy of L</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> M[<span style="color: #666666">2</span>] <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> L[<span style="color: #666666">2</span>]
+<span style="color: #666666">3</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Any constant object can be used as key  <a name="___sec10"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <p><li> So far: key is text (string object)</li>
+ <p><li> Keys can be any <em>immutable</em> (constant) object (!)</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> d <span style="color: #666666">=</span> {<span style="color: #666666">1</span>: <span style="color: #666666">34</span>, <span style="color: #666666">2</span>: <span style="color: #666666">67</span>, <span style="color: #666666">3</span>: <span style="color: #666666">0</span>}   <span style="color: #408080; font-style: italic"># key is int</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> d <span style="color: #666666">=</span> {<span style="color: #666666">13</span>: <span style="color: #BA2121">&#39;Oslo&#39;</span>, <span style="color: #666666">15.4</span>: <span style="color: #BA2121">&#39;London&#39;</span>} <span style="color: #408080; font-style: italic"># possible</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> d <span style="color: #666666">=</span> {(<span style="color: #666666">0</span>,<span style="color: #666666">0</span>): <span style="color: #666666">4</span>, (<span style="color: #666666">1</span>,<span style="color: #666666">-1</span>): <span style="color: #666666">5</span>}  <span style="color: #408080; font-style: italic"># key is tuple</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> d <span style="color: #666666">=</span> {[<span style="color: #666666">0</span>,<span style="color: #666666">0</span>]: <span style="color: #666666">4</span>, [<span style="color: #666666">-1</span>,<span style="color: #666666">1</span>]: <span style="color: #666666">5</span>}  <span style="color: #408080; font-style: italic"># list is mutable/changeable</span>
+<span style="color: #666666">...</span>
+<span style="color: #D2413A; font-weight: bold">TypeError</span>: unhashable <span style="color: #008000">type</span>: <span style="color: #BA2121">&#39;list&#39;</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Example: Polynomials represented by dictionaries  <a name="___sec11"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+The information in the polynomial
+
+<p>&nbsp;<br>
+$$ p(x)=-1 + x^2 + 3x^7 $$
+<p>&nbsp;<br>
+
+can be represented by a dict with power as key (<code>int</code>) and
+coefficient as value (<code>float</code>):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">p <span style="color: #666666">=</span> {<span style="color: #666666">0</span>: <span style="color: #666666">-1</span>, <span style="color: #666666">2</span>: <span style="color: #666666">1</span>, <span style="color: #666666">7</span>: <span style="color: #666666">3.5</span>}
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Evaluate such a polynomial \( \sum_{i\in I} c_ix^i \) for some \( x \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">eval_poly_dict</span>(poly, x):
+    <span style="color: #008000">sum</span> <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+    <span style="color: #008000; font-weight: bold">for</span> power <span style="color: #AA22FF; font-weight: bold">in</span> poly:
+        <span style="color: #008000">sum</span> <span style="color: #666666">+=</span> poly[power]<span style="color: #666666">*</span>x<span style="color: #666666">**</span>power
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">sum</span>
+</pre></div>
+<p>
+Short pro version:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">eval_poly_dict2</span>(poly, x):
+    <span style="color: #408080; font-style: italic"># Python&#39;s sum can add elements of an iterator</span>
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">sum</span>(poly[power]<span style="color: #666666">*</span>x<span style="color: #666666">**</span>power <span style="color: #008000; font-weight: bold">for</span> power <span style="color: #AA22FF; font-weight: bold">in</span> poly)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Polynomials can also be represented by lists  <a name="___sec12"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+The list index corresponds to the power, e.g.,
+the data in \( -1 + x^2 + 3x^7 \) is represented as
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">p <span style="color: #666666">=</span> [<span style="color: #666666">-1</span>, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">3</span>]
+</pre></div>
+<p>
+The general polynomial \( \sum_{i=0}^N c_ix^i \) is stored as
+<code>[c0, c1, c2, ..., cN]</code>.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Evaluate such a polynomial \( \sum_{i=0}^N c_ix^i \) for some \( x \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">eval_poly_list</span>(poly, x):
+    <span style="color: #008000">sum</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">for</span> power <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(poly)):
+        <span style="color: #008000">sum</span> <span style="color: #666666">+=</span> poly[power]<span style="color: #666666">*</span>x<span style="color: #666666">**</span>power
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">sum</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>What is best for polynomials: lists or dictionaries?  <a name="___sec13"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Dictionaries need only store the nonzero terms. Compare
+dict vs list for the polynomial \( 1 - x^{200} \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">p <span style="color: #666666">=</span> {<span style="color: #666666">0</span>: <span style="color: #666666">1</span>, <span style="color: #666666">200</span>: <span style="color: #666666">-1</span>}         <span style="color: #408080; font-style: italic"># len(p) is 2</span>
+p <span style="color: #666666">=</span> [<span style="color: #666666">1</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">...</span>, <span style="color: #666666">200</span>]  <span style="color: #408080; font-style: italic"># len(p) is 201</span>
+</pre></div>
+<p>
+Dictionaries can easily handle negative powers, e.g., \( {1\over2}x^{-3} + 2x^4 \)
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">p <span style="color: #666666">=</span> {<span style="color: #666666">-3</span>: <span style="color: #666666">0.5</span>, <span style="color: #666666">4</span>: <span style="color: #666666">2</span>}
+<span style="color: #008000; font-weight: bold">print</span> eval_poly_dict(p, x<span style="color: #666666">=4</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Quick recap of file reading  <a name="___sec14"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">infile  <span style="color: #666666">=</span> <span style="color: #008000">open</span>(filename, <span style="color: #BA2121">&#39;r&#39;</span>) <span style="color: #408080; font-style: italic"># open file for reading</span>
+
+line    <span style="color: #666666">=</span> infile<span style="color: #666666">.</span>readline()   <span style="color: #408080; font-style: italic"># read the next line</span>
+filestr <span style="color: #666666">=</span> infile<span style="color: #666666">.</span>read()       <span style="color: #408080; font-style: italic"># read rest of file into string</span>
+lines   <span style="color: #666666">=</span> infile<span style="color: #666666">.</span>readlines()  <span style="color: #408080; font-style: italic"># read rest of file into list</span>
+<span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> infile:           <span style="color: #408080; font-style: italic"># read rest of file line by line</span>
+
+infile<span style="color: #666666">.</span>close()                <span style="color: #408080; font-style: italic"># recall to close!</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Example: Read file data into a dictionary  <a name="___sec15"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Data file:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">Oslo:          <span style="color: #666666">21.8</span>
+London:        <span style="color: #666666">18.1</span>
+Berlin:        <span style="color: #666666">19</span>
+Paris:         <span style="color: #666666">23</span>
+Rome:          <span style="color: #666666">26</span>
+Helsinki:      <span style="color: #666666">17.8</span>
+</pre></div>
+<p>
+Store in dict, with city names as keys and temperatures as values
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Program:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">infile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;deg2.dat&#39;</span>, <span style="color: #BA2121">&#39;r&#39;</span>)
+temps <span style="color: #666666">=</span> {}                  <span style="color: #408080; font-style: italic"># start with empty dict</span>
+<span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> infile<span style="color: #666666">.</span>readlines():
+    city, temp <span style="color: #666666">=</span> line<span style="color: #666666">.</span>split()
+    city <span style="color: #666666">=</span> city[:<span style="color: #666666">-1</span>]        <span style="color: #408080; font-style: italic"># remove last char (:)</span>
+    temps[city]  <span style="color: #666666">=</span> <span style="color: #008000">float</span>(temp)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A tabular file can be read into a nested dictionary  <a name="___sec16"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Data file <code>table.dat</code>:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">       A        B       C      D
+<span style="color: #666666">1</span>     <span style="color: #666666">11.7</span>    <span style="color: #666666">0.035</span>    <span style="color: #666666">2017</span>    <span style="color: #666666">99.1</span>
+<span style="color: #666666">2</span>      <span style="color: #666666">9.2</span>    <span style="color: #666666">0.037</span>    <span style="color: #666666">2019</span>   <span style="color: #666666">101.2</span>
+<span style="color: #666666">3</span>     <span style="color: #666666">12.2</span>     no       no    <span style="color: #666666">105.2</span>
+<span style="color: #666666">4</span>     <span style="color: #666666">10.1</span>    <span style="color: #666666">0.031</span>     no    <span style="color: #666666">102.1</span>
+<span style="color: #666666">5</span>      <span style="color: #666666">9.1</span>    <span style="color: #666666">0.033</span>    <span style="color: #666666">2009</span>   <span style="color: #666666">103.3</span>
+<span style="color: #666666">6</span>      <span style="color: #666666">8.7</span>    <span style="color: #666666">0.036</span>    <span style="color: #666666">2015</span>   <span style="color: #666666">101.9</span>
+</pre></div>
+<p>
+Create a dict <code>data[p][i]</code> (dict of dict) to hold measurement no. <code>i</code>
+(<code>1</code>, <code>2</code>, etc.) of property <code>p</code> (<code>'A'</code>, <code>'B'</code>, etc.)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We must first develop the plan (algorithm) for doing this  <a name="___sec17"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ol>
+ <p><li> Examine the first line:</li>
+
+<ol>
+  <p><li> split it into words</li>
+  <p><li> initialize a dictionary with the property names as keys
+     and empty dictionaries <code>{}</code> as values</li>
+</ol>
+<p>
+
+ <p><li> For each of the remaining lines:</li>
+
+<ol>
+  <p><li> split line into words</li>
+  <p><li> for each word after the first: if word is not <code>no</code>,
+     convert to float and store</li>
+</ol>
+<p>
+
+</ol>
+<p>
+
+Good exercise: do this now!<br />
+(See the book for a complete implementation.)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Example: Download data from the web and visualize  <a name="___sec18"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Problem:</b>
+<p>
+
+<ul>
+  <p><li> Compare the stock prices of Microsoft, Apple, and Google over decades</li>
+  <p><li> <a href="http://finance.yahoo.com/" target="_blank"><tt>http://finance.yahoo.com/</tt></a> offers such data in files with tabular form</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">Date,Open,High,Low,Close,Volume,Adj Close
+2014-02-03,502.61,551.19,499.30,545.99,12244400,545.99
+2014-01-02,555.68,560.20,493.55,500.60,15698500,497.62
+2013-12-02,558.00,575.14,538.80,561.02,12382100,557.68
+2013-11-01,524.02,558.33,512.38,556.07,9898700,552.76
+2013-10-01,478.45,539.25,478.28,522.70,12598400,516.57
+...
+1984-10-01,25.00,27.37,22.50,24.87,5654600,2.73
+1984-09-07,26.50,29.00,24.62,25.12,5328800,2.76
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We need to analyze the file format to find the algorithm for interpreting the content  <a name="___sec19"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=text (!bc dat) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">Date,Open,High,Low,Close,Volume,Adj Close
+2014-02-03,502.61,551.19,499.30,545.99,12244400,545.99
+2014-01-02,555.68,560.20,493.55,500.60,15698500,497.62
+2013-12-02,558.00,575.14,538.80,561.02,12382100,557.68
+2013-11-01,524.02,558.33,512.38,556.07,9898700,552.76
+2013-10-01,478.45,539.25,478.28,522.70,12598400,516.57
+...
+1984-10-01,25.00,27.37,22.50,24.87,5654600,2.73
+1984-09-07,26.50,29.00,24.62,25.12,5328800,2.76
+</pre></div>
+<p>
+File format:
+
+<ul>
+  <p><li> Columns are separated by comma</li>
+  <p><li> First column is the date, the final is the price of interest</li>
+  <p><li> The prizes start at different dates</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We need algorithms before we can write code  <a name="___sec20"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Algorithm for reading data:</b>
+<p>
+
+<ol>
+ <p><li> skip first line</li>
+ <p><li> read line by line</li>
+ <p><li> split each line wrt. comma</li>
+ <p><li> store first word (date) in a list of dates</li>
+ <p><li> store final word (prize) in a list of prices</li>
+ <p><li> collect date and price list in a dictionary (key is company)</li>
+ <p><li> make a function for reading one company's file</li>
+</ol>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Plotting:</b>
+<p>
+
+<ol>
+ <p><li> Convert year-month-day time specifications in strings
+    into year coordinates along the x axis</li>
+ <p><li> Note that the companies' price history starts at different years</li>
+</ol>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>No code is presented here...  <a name="___sec21"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+See the book for all details. If you understand this quite comprehensive
+example, you know and understand a lot!
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Plot of normalized stock prices in logarithmic scale  <a name="___sec22"></a></h2>
+
+<p>
+Much computer history in this plot:
+
+<p>
+<center><p><img src="fig-files/stockprices1.png" align="bottom" width=700></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1 style="text-align: center;">String manipulation  <a name="___sec23"></a></h1>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;This is a string&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>split()
+[<span style="color: #BA2121">&#39;This&#39;</span>, <span style="color: #BA2121">&#39;is&#39;</span>, <span style="color: #BA2121">&#39;a&#39;</span>, <span style="color: #BA2121">&#39;string&#39;</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #BA2121">&#39;This&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> s
+<span style="color: #008000">True</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>find(<span style="color: #BA2121">&#39;is&#39;</span>)
+<span style="color: #666666">4</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #BA2121">&#39;, &#39;</span><span style="color: #666666">.</span>join(s<span style="color: #666666">.</span>split())
+<span style="color: #BA2121">&#39;This, is, a, string&#39;</span>
+</pre></div>
+<p>
+</td>
+<td class="padding">
+<center><p><img src="fig-files/string_manipulation.jpg" align="bottom" width=400></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>String manipulation is key to interpret the content of files  <a name="___sec24"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> Text in Python is represented as strings</li>
+  <p><li> Inspecting and manipulating strings is the way we can understand the contents of files</li>
+  <p><li> Plan: first show basic operations, then address real examples</li>
+</ul>
+<p>
+
+Sample string used for illustrations:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Berlin: 18.4 C at 4 pm&#39;</span>
+</pre></div>
+<p>
+Strings behave much like lists/tuples - they are a sequence of characters:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s[<span style="color: #666666">0</span>]
+<span style="color: #BA2121">&#39;B&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s[<span style="color: #666666">1</span>]
+<span style="color: #BA2121">&#39;e&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s[<span style="color: #666666">-1</span>]
+<span style="color: #BA2121">&#39;m&#39;</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Extracting substrings  <a name="___sec25"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Substrings are just as slices of lists and arrays:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s
+<span style="color: #BA2121">&#39;Berlin: 18.4 C at 4 pm&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s[<span style="color: #666666">8</span>:]     <span style="color: #408080; font-style: italic"># from index 8 to the end of the string</span>
+<span style="color: #BA2121">&#39;18.4 C at 4 pm&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s[<span style="color: #666666">8</span>:<span style="color: #666666">12</span>]   <span style="color: #408080; font-style: italic"># index 8, 9, 10 and 11 (not 12!)</span>
+<span style="color: #BA2121">&#39;18.4&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s[<span style="color: #666666">8</span>:<span style="color: #666666">-1</span>]
+<span style="color: #BA2121">&#39;18.4 C at 4 p&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s[<span style="color: #666666">8</span>:<span style="color: #666666">-8</span>]
+<span style="color: #BA2121">&#39;18.4 C&#39;</span>
+</pre></div>
+<p>
+Find start of substring:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>find(<span style="color: #BA2121">&#39;Berlin&#39;</span>)  <span style="color: #408080; font-style: italic"># where does &#39;Berlin&#39; start?</span>
+<span style="color: #666666">0</span>                     <span style="color: #408080; font-style: italic"># at index 0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>find(<span style="color: #BA2121">&#39;pm&#39;</span>)
+<span style="color: #666666">20</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>find(<span style="color: #BA2121">&#39;Oslo&#39;</span>)    <span style="color: #408080; font-style: italic"># not found</span>
+<span style="color: #666666">-1</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Checking if a substring is contained in a string  <a name="___sec26"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #BA2121">&#39;Berlin&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> s:
+<span style="color: #008000">True</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #BA2121">&#39;Oslo&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> s:
+<span style="color: #008000">False</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">if</span> <span style="color: #BA2121">&#39;C&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> s:
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;C found&#39;</span>
+<span style="color: #666666">...</span> <span style="color: #008000; font-weight: bold">else</span>:
+<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;no C&#39;</span>
+<span style="color: #666666">...</span>
+C found
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Substituting a substring by another string  <a name="___sec27"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<code>s.replace(s1, s2)</code>: replace <code>s1</code> by <code>s2</code>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>replace(<span style="color: #BA2121">&#39; &#39;</span>, <span style="color: #BA2121">&#39;__&#39;</span>)
+<span style="color: #BA2121">&#39;Berlin:__18.4__C__at__4__pm&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>replace(<span style="color: #BA2121">&#39;Berlin&#39;</span>, <span style="color: #BA2121">&#39;Bonn&#39;</span>)
+<span style="color: #BA2121">&#39;Bonn: 18.4 C at 4 pm&#39;</span>
+</pre></div>
+<p>
+Example: replace the text before the first colon by <code>'Bonn'</code>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s
+<span style="color: #BA2121">&#39;Berlin: 18.4 C at 4 pm&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>replace(s[:s<span style="color: #666666">.</span>find(<span style="color: #BA2121">&#39;:&#39;</span>)], <span style="color: #BA2121">&#39;Bonn&#39;</span>)
+<span style="color: #BA2121">&#39;Bonn: 18.4 C at 4 pm&#39;</span>
+</pre></div>
+<p>
+1) <code>s.find(':')</code> returns 6, 2) <code>s[:6]</code> is <code>'Berlin'</code>, 3) <code>Berlin</code>
+is replaced by <code>'Bonn'</code>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Splitting a string into a list of substrings  <a name="___sec28"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<code>s.split(sep)</code>: split <code>s</code> into a list of substrings separated by <code>sep</code>
+(no separator implies split wrt whitespace):
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s
+<span style="color: #BA2121">&#39;Berlin: 18.4 C at 4 pm&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;:&#39;</span>)
+[<span style="color: #BA2121">&#39;Berlin&#39;</span>, <span style="color: #BA2121">&#39; 18.4 C at 4 pm&#39;</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>split()
+[<span style="color: #BA2121">&#39;Berlin:&#39;</span>, <span style="color: #BA2121">&#39;18.4&#39;</span>, <span style="color: #BA2121">&#39;C&#39;</span>, <span style="color: #BA2121">&#39;at&#39;</span>, <span style="color: #BA2121">&#39;4&#39;</span>, <span style="color: #BA2121">&#39;pm&#39;</span>]
+</pre></div>
+<p>
+Try to understand this one:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;:&#39;</span>)[<span style="color: #666666">1</span>]<span style="color: #666666">.</span>split()[<span style="color: #666666">0</span>]
+<span style="color: #BA2121">&#39;18.4&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> deg <span style="color: #666666">=</span> <span style="color: #008000">float</span>(_)  <span style="color: #408080; font-style: italic"># _ represents the last result</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> deg
+<span style="color: #666666">18.4</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Splitting a string into lines  <a name="___sec29"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> Very often, a string contains lots of text and we want to split the text into separate lines</li>
+  <p><li> Lines may be separated by different control characters on different platforms: <code>\n</code> on Unix/Linux/Mac, <code>\r\n</code> on Windows</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> t <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;1st line</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">2nd line</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">3rd line&#39;</span>     <span style="color: #408080; font-style: italic"># Unix-line</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> t
+<span style="color: #666666">1</span>st line
+<span style="color: #666666">2</span>nd line
+<span style="color: #666666">3</span>rd line
+<span style="color: #666666">&gt;&gt;&gt;</span> t<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>)
+[<span style="color: #BA2121">&#39;1st line&#39;</span>, <span style="color: #BA2121">&#39;2nd line&#39;</span>, <span style="color: #BA2121">&#39;3rd line&#39;</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> t<span style="color: #666666">.</span>splitlines()
+[<span style="color: #BA2121">&#39;1st line&#39;</span>, <span style="color: #BA2121">&#39;2nd line&#39;</span>, <span style="color: #BA2121">&#39;3rd line&#39;</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> t <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;1st line</span><span style="color: #BB6622; font-weight: bold">\r\n</span><span style="color: #BA2121">2nd line</span><span style="color: #BB6622; font-weight: bold">\r\n</span><span style="color: #BA2121">3rd line&#39;</span> <span style="color: #408080; font-style: italic"># Windows</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> t<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>)
+[<span style="color: #BA2121">&#39;1st line</span><span style="color: #BB6622; font-weight: bold">\r</span><span style="color: #BA2121">&#39;</span>, <span style="color: #BA2121">&#39;2nd line</span><span style="color: #BB6622; font-weight: bold">\r</span><span style="color: #BA2121">&#39;</span>, <span style="color: #BA2121">&#39;3rd line&#39;</span>]   <span style="color: #408080; font-style: italic"># not what we want</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> t<span style="color: #666666">.</span>splitlines()                         <span style="color: #408080; font-style: italic"># cross platform!</span>
+[<span style="color: #BA2121">&#39;1st line&#39;</span>, <span style="color: #BA2121">&#39;2nd line&#39;</span>, <span style="color: #BA2121">&#39;3rd line&#39;</span>]
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Strings are constant - immutable - objects  <a name="___sec30"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+You cannot change a string in-place (as you can with lists and arrays) - all changes of a strings results in a new string
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s[<span style="color: #666666">18</span>] <span style="color: #666666">=</span> <span style="color: #666666">5</span>
+<span style="color: #666666">...</span>
+<span style="color: #D2413A; font-weight: bold">TypeError</span>: <span style="color: #BA2121">&#39;str&#39;</span> <span style="color: #008000">object</span> does <span style="color: #AA22FF; font-weight: bold">not</span> support item assignment
+
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># build a new string by adding pieces of s:</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s2 <span style="color: #666666">=</span> s[:<span style="color: #666666">18</span>] <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;5&#39;</span> <span style="color: #666666">+</span> s[<span style="color: #666666">19</span>:]
+<span style="color: #666666">&gt;&gt;&gt;</span> s2
+<span style="color: #BA2121">&#39;Berlin: 18.4 C at 5 pm&#39;</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Stripping off leading/trailing whitespace  <a name="___sec31"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> s <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;   text with leading/trailing space   </span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>strip()
+<span style="color: #BA2121">&#39;text with leading/trailing space&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>lstrip()   <span style="color: #408080; font-style: italic"># left strip</span>
+<span style="color: #BA2121">&#39;text with leading/trailing space   </span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>rstrip()   <span style="color: #408080; font-style: italic"># right strip</span>
+<span style="color: #BA2121">&#39;   text with leading/trailing space&#39;</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Some convenient string functions  <a name="___sec32"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #BA2121">&#39;214&#39;</span><span style="color: #666666">.</span>isdigit()
+<span style="color: #008000">True</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #BA2121">&#39;  214 &#39;</span><span style="color: #666666">.</span>isdigit()
+<span style="color: #008000">False</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #BA2121">&#39;2.14&#39;</span><span style="color: #666666">.</span>isdigit()
+<span style="color: #008000">False</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>lower()
+<span style="color: #BA2121">&#39;berlin: 18.4 c at 4 pm&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>upper()
+<span style="color: #BA2121">&#39;BERLIN: 18.4 C AT 4 PM&#39;</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>startswith(<span style="color: #BA2121">&#39;Berlin&#39;</span>)
+<span style="color: #008000">True</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> s<span style="color: #666666">.</span>endswith(<span style="color: #BA2121">&#39;am&#39;</span>)
+<span style="color: #008000">False</span>
+
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #BA2121">&#39;    &#39;</span><span style="color: #666666">.</span>isspace()   <span style="color: #408080; font-style: italic"># blanks</span>
+<span style="color: #008000">True</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #BA2121">&#39;  </span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span><span style="color: #666666">.</span>isspace()   <span style="color: #408080; font-style: italic"># newline</span>
+<span style="color: #008000">True</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #BA2121">&#39;  </span><span style="color: #BB6622; font-weight: bold">\t</span><span style="color: #BA2121"> &#39;</span><span style="color: #666666">.</span>isspace()  <span style="color: #408080; font-style: italic"># TAB</span>
+<span style="color: #008000">True</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #BA2121">&#39;&#39;</span><span style="color: #666666">.</span>isspace()       <span style="color: #408080; font-style: italic"># empty string</span>
+<span style="color: #008000">False</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Joining a list of substrings to a new string  <a name="___sec33"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+We can put strings together with a delimiter in between:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> strings <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Newton&#39;</span>, <span style="color: #BA2121">&#39;Secant&#39;</span>, <span style="color: #BA2121">&#39;Bisection&#39;</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #BA2121">&#39;, &#39;</span><span style="color: #666666">.</span>join(strings)
+<span style="color: #BA2121">&#39;Newton, Secant, Bisection&#39;</span>
+</pre></div>
+<p>
+These are inverse operations:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">t <span style="color: #666666">=</span> delimiter<span style="color: #666666">.</span>join(stringlist)
+stringlist <span style="color: #666666">=</span> t<span style="color: #666666">.</span>split(delimiter)
+</pre></div>
+<p>
+Split off the first two words on a line:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> line <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;This is a line of words separated by space&#39;</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> words <span style="color: #666666">=</span> line<span style="color: #666666">.</span>split()
+<span style="color: #666666">&gt;&gt;&gt;</span> line2 <span style="color: #666666">=</span> <span style="color: #BA2121">&#39; &#39;</span><span style="color: #666666">.</span>join(words[<span style="color: #666666">2</span>:])
+<span style="color: #666666">&gt;&gt;&gt;</span> line2
+<span style="color: #BA2121">&#39;a line of words separated by space&#39;</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Example: Read pairs of numbers (x,y) from a file  <a name="___sec34"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Sample file:</b>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">(<span style="color: #666666">1.3</span>,<span style="color: #666666">0</span>)    (<span style="color: #666666">-1</span>,<span style="color: #666666">2</span>)    (<span style="color: #666666">3</span>,<span style="color: #666666">-1.5</span>)
+(<span style="color: #666666">0</span>,<span style="color: #666666">1</span>)      (<span style="color: #666666">1</span>,<span style="color: #666666">0</span>)     (<span style="color: #666666">1</span>,<span style="color: #666666">1</span>)
+(<span style="color: #666666">0</span>,<span style="color: #666666">-0.01</span>)  (<span style="color: #666666">10.5</span>,<span style="color: #666666">-1</span>) (<span style="color: #666666">2.5</span>,<span style="color: #666666">-2.5</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Algorithm:</b>
+<p>
+
+<ol>
+<p><li> Read line by line</li>
+<p><li> For each line, split line into words</li>
+<p><li> For each word, strip off the parethesis
+   and split the rest wrt comma</li>
+</ol>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The code for reading pairs  <a name="___sec35"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">lines <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;read_pairs.dat&#39;</span>, <span style="color: #BA2121">&#39;r&#39;</span>)<span style="color: #666666">.</span>readlines()
+
+pairs <span style="color: #666666">=</span> []   <span style="color: #408080; font-style: italic"># list of (n1, n2) pairs of numbers</span>
+<span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> lines:
+    words <span style="color: #666666">=</span> line<span style="color: #666666">.</span>split()
+    <span style="color: #008000; font-weight: bold">for</span> word <span style="color: #AA22FF; font-weight: bold">in</span> words:
+        word <span style="color: #666666">=</span> word[<span style="color: #666666">1</span>:<span style="color: #666666">-1</span>]  <span style="color: #408080; font-style: italic"># strip off parenthesis</span>
+        n1, n2 <span style="color: #666666">=</span> word<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;,&#39;</span>)
+        n1 <span style="color: #666666">=</span> <span style="color: #008000">float</span>(n1);  n2 <span style="color: #666666">=</span> <span style="color: #008000">float</span>(n2)
+        pair <span style="color: #666666">=</span> (n1, n2)
+        pairs<span style="color: #666666">.</span>append(pair)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Output of a pretty print of the pairs list  <a name="___sec36"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">[(<span style="color: #666666">1.3</span>, <span style="color: #666666">0.0</span>),
+ (<span style="color: #666666">-1.0</span>, <span style="color: #666666">2.0</span>),
+ (<span style="color: #666666">3.0</span>, <span style="color: #666666">-1.5</span>),
+ (<span style="color: #666666">0.0</span>, <span style="color: #666666">1.0</span>),
+ (<span style="color: #666666">1.0</span>, <span style="color: #666666">0.0</span>),
+ (<span style="color: #666666">1.0</span>, <span style="color: #666666">1.0</span>),
+ (<span style="color: #666666">0.0</span>, <span style="color: #666666">-0.01</span>),
+ (<span style="color: #666666">10.5</span>, <span style="color: #666666">-1.0</span>),
+ (<span style="color: #666666">2.5</span>, <span style="color: #666666">-2.5</span>)]
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Alternative solution: Python syntax in file format  <a name="___sec37"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Suppose the file format
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">(<span style="color: #666666">1.3</span>, <span style="color: #666666">0</span>)    (<span style="color: #666666">-1</span>, <span style="color: #666666">2</span>)    (<span style="color: #666666">3</span>, <span style="color: #666666">-1.5</span>)
+<span style="color: #666666">...</span>
+</pre></div>
+<p>
+was slightly different:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">[(<span style="color: #666666">1.3</span>, <span style="color: #666666">0</span>),    (<span style="color: #666666">-1</span>, <span style="color: #666666">2</span>),    (<span style="color: #666666">3</span>, <span style="color: #666666">-1.5</span>),
+<span style="color: #666666">...</span>
+]
+</pre></div>
+<p>
+Running <code>eval</code> on the perturbed format produces the desired list!
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">text <span style="color: #666666">=</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;read_pairs2.dat&#39;</span>, <span style="color: #BA2121">&#39;r&#39;</span>)<span style="color: #666666">.</span>read()
+text <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;[&#39;</span> <span style="color: #666666">+</span> text<span style="color: #666666">.</span>replace(<span style="color: #BA2121">&#39;)&#39;</span>, <span style="color: #BA2121">&#39;),&#39;</span>) <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;]&#39;</span>
+pairs <span style="color: #666666">=</span> <span style="color: #008000">eval</span>(text)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Web pages are nothing but text files  <a name="___sec38"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+The text is a mix of HTML commands and the text displayed in
+the browser:
+
+<p>
+
+<!-- code=html (!bc htmlpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;html&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;body</span> <span style="color: #7D9029">bgcolor=</span><span style="color: #BA2121">&quot;orange&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;h1&gt;</span>A Very Simple Web Page<span style="color: #008000; font-weight: bold">&lt;/h1&gt;</span> <span style="color: #408080; font-style: italic">&lt;!-- headline --&gt;</span>
+Ordinary text is written as ordinary text, but when we
+need headlines, lists,
+<span style="color: #008000; font-weight: bold">&lt;ul&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;li&gt;&lt;em&gt;</span>emphasized words<span style="color: #008000; font-weight: bold">&lt;/em&gt;</span>, or
+<span style="color: #008000; font-weight: bold">&lt;li&gt;</span> <span style="color: #008000; font-weight: bold">&lt;b&gt;</span>boldfaced words<span style="color: #008000; font-weight: bold">&lt;/b&gt;</span>,
+<span style="color: #008000; font-weight: bold">&lt;/ul&gt;</span>
+we need to embed the text inside HTML tags. We can also
+insert GIF or PNG images, taken from other Internet sites,
+if desired.
+<span style="color: #008000; font-weight: bold">&lt;hr&gt;</span> <span style="color: #408080; font-style: italic">&lt;!-- horizontal line --&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;img</span> <span style="color: #7D9029">src=</span><span style="color: #BA2121">&quot;http://www.simula.no/simula_logo.gif&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/body&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/html&gt;</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The web page generated by HTML code from the previous slide  <a name="___sec39"></a></h2>
+
+<p>
+<center><p><img src="fig-files/simple_webpage.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Programs can extract data from web pages  <a name="___sec40"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <p><li> A program can download a web page, as an HTML file, and extract data by interpreting the text in the file (using string operations).</li>
+ <p><li> Example: <a href="http://www.metoffice.gov.uk/climate/uk/stationdata/" target="_blank">climate data from the UK</a></li>
+</ul>
+<p>
+
+Download <code>oxforddata.txt</code> to a local file <code>Oxford.txt</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">urllib</span>
+baseurl <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;http://www.metoffice.gov.uk/climate/uk/stationdata&#39;</span>
+filename <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;oxforddata.txt&#39;</span>
+url <span style="color: #666666">=</span> baseurl <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;/&#39;</span> <span style="color: #666666">+</span> filename
+urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Oxford.txt&#39;</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The structure of the Oxfort.txt weather data file  <a name="___sec41"></a></h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">Oxford
+Location: <span style="color: #666666">4509</span>E <span style="color: #666666">2072</span>N, <span style="color: #666666">63</span> metres amsl
+Estimated data <span style="color: #AA22FF; font-weight: bold">is</span> marked <span style="color: #008000; font-weight: bold">with</span> a <span style="color: #666666">*</span> after the value<span style="color: #666666">.</span>
+Missing data (more than <span style="color: #666666">2</span> days missing <span style="color: #AA22FF; font-weight: bold">in</span> month) <span style="color: #AA22FF; font-weight: bold">is</span> marked by  <span style="color: #666666">---.</span>
+Sunshine data taken <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">an</span> <span style="color: #0000FF; font-weight: bold">automatic</span> <span style="color: #0000FF; font-weight: bold">...</span>
+   yyyy  mm   tmax    tmin      af    rain     sun
+              degC    degC    days      mm   hours
+   <span style="color: #666666">1853</span>   <span style="color: #666666">1</span>    <span style="color: #666666">8.4</span>     <span style="color: #666666">2.7</span>       <span style="color: #666666">4</span>    <span style="color: #666666">62.8</span>     <span style="color: #666666">---</span>
+   <span style="color: #666666">1853</span>   <span style="color: #666666">2</span>    <span style="color: #666666">3.2</span>    <span style="color: #666666">-1.8</span>      <span style="color: #666666">19</span>    <span style="color: #666666">29.3</span>     <span style="color: #666666">---</span>
+   <span style="color: #666666">1853</span>   <span style="color: #666666">3</span>    <span style="color: #666666">7.7</span>    <span style="color: #666666">-0.6</span>      <span style="color: #666666">20</span>    <span style="color: #666666">25.9</span>     <span style="color: #666666">---</span>
+   <span style="color: #666666">1853</span>   <span style="color: #666666">4</span>   <span style="color: #666666">12.6</span>     <span style="color: #666666">4.5</span>       <span style="color: #666666">0</span>    <span style="color: #666666">60.1</span>     <span style="color: #666666">---</span>
+   <span style="color: #666666">1853</span>   <span style="color: #666666">5</span>   <span style="color: #666666">16.8</span>     <span style="color: #666666">6.1</span>       <span style="color: #666666">0</span>    <span style="color: #666666">59.5</span>     <span style="color: #666666">---</span>
+
+<span style="color: #666666">...</span>
+
+   <span style="color: #666666">2010</span>   <span style="color: #666666">5</span>   <span style="color: #666666">17.6</span>     <span style="color: #666666">7.3</span>       <span style="color: #666666">0</span>    <span style="color: #666666">28.6</span>   <span style="color: #666666">207.4</span>
+   <span style="color: #666666">2010</span>   <span style="color: #666666">6</span>   <span style="color: #666666">23.0</span>    <span style="color: #666666">11.1</span>       <span style="color: #666666">0</span>    <span style="color: #666666">34.5</span>   <span style="color: #666666">230.5</span>
+   <span style="color: #666666">2010</span>   <span style="color: #666666">7</span>   <span style="color: #666666">23.3*</span>   <span style="color: #666666">14.1*</span>      <span style="color: #666666">0*</span>   <span style="color: #666666">24.4*</span>  <span style="color: #666666">184.4*</span>  Provisional
+   <span style="color: #666666">2010</span>  <span style="color: #666666">10</span>   <span style="color: #666666">14.6</span>     <span style="color: #666666">7.4</span>       <span style="color: #666666">2</span>    <span style="color: #666666">43.5</span>   <span style="color: #666666">128.8</span>   Provisional
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Reading the climate data  <a name="___sec42"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Algorithm:</b>
+<p>
+
+<ol>
+ <p><li> Read the place and location in the file header</li>
+ <p><li> Skip the next 5 (for us uninteresting) lines</li>
+ <p><li> Read the column data and store in dictionary</li>
+ <p><li> Test for numbers with special annotation, "provisional" column, etc.</li>
+</ol>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Program, part 1:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">local_file <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Oxford.txt&#39;</span>
+infile <span style="color: #666666">=</span> <span style="color: #008000">open</span>(local_file, <span style="color: #BA2121">&#39;r&#39;</span>)
+data <span style="color: #666666">=</span> {}
+data[<span style="color: #BA2121">&#39;place&#39;</span>] <span style="color: #666666">=</span> infile<span style="color: #666666">.</span>readline()<span style="color: #666666">.</span>strip()
+data[<span style="color: #BA2121">&#39;location&#39;</span>] <span style="color: #666666">=</span> infile<span style="color: #666666">.</span>readline()<span style="color: #666666">.</span>strip()
+<span style="color: #408080; font-style: italic"># Skip the next 5 lines</span>
+<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">5</span>):
+    infile<span style="color: #666666">.</span>readline()
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Reading the climate data - program, part 2  <a name="___sec43"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Program, part 2:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">data[<span style="color: #BA2121">&#39;data&#39;</span>] <span style="color: #666666">=</span>{}
+<span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> infile:
+    columns <span style="color: #666666">=</span> line<span style="color: #666666">.</span>split()
+
+    year <span style="color: #666666">=</span> <span style="color: #008000">int</span>(columns[<span style="color: #666666">0</span>])
+    month <span style="color: #666666">=</span> <span style="color: #008000">int</span>(columns[<span style="color: #666666">1</span>])
+
+    <span style="color: #008000; font-weight: bold">if</span> columns[<span style="color: #666666">-1</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;Provisional&#39;</span>:
+        <span style="color: #008000; font-weight: bold">del</span> columns[<span style="color: #666666">-1</span>]
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">2</span>, <span style="color: #008000">len</span>(columns)):
+        <span style="color: #008000; font-weight: bold">if</span> columns[i] <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;---&#39;</span>:
+            columns[i] <span style="color: #666666">=</span> <span style="color: #008000">None</span>
+        <span style="color: #008000; font-weight: bold">elif</span> columns[i][<span style="color: #666666">-1</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;*&#39;</span> <span style="color: #AA22FF; font-weight: bold">or</span> columns[i][<span style="color: #666666">-1</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;#&#39;</span>:
+            <span style="color: #408080; font-style: italic"># Strip off trailing character</span>
+            columns[i] <span style="color: #666666">=</span> <span style="color: #008000">float</span>(columns[i][:<span style="color: #666666">-1</span>])
+        <span style="color: #008000; font-weight: bold">else</span>:
+            columns[i] <span style="color: #666666">=</span> <span style="color: #008000">float</span>(columns[i])
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Reading the climate data - program, part 3  <a name="___sec44"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Program, part 3.</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> infile:
+    <span style="color: #666666">...</span>
+    tmax, tmin, air_frost, rain, sun <span style="color: #666666">=</span> columns[<span style="color: #666666">2</span>:]
+
+    <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> year <span style="color: #AA22FF; font-weight: bold">in</span> data[<span style="color: #BA2121">&#39;data&#39;</span>]:
+        data[<span style="color: #BA2121">&#39;data&#39;</span>][year] <span style="color: #666666">=</span> {}
+    data[<span style="color: #BA2121">&#39;data&#39;</span>][year][month] <span style="color: #666666">=</span> {<span style="color: #BA2121">&#39;tmax&#39;</span>: tmax,
+                                 <span style="color: #BA2121">&#39;tmin&#39;</span>: tmin,
+                                 <span style="color: #BA2121">&#39;air frost&#39;</span>: air_frost,
+                                 <span style="color: #BA2121">&#39;sun&#39;</span>: sun}
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Summary of dictionary functionality  <a name="___sec45"></a></h2>
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">                  Construction                 </th> <th align="center">                                 Meaning                                 </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   <code>a = {}</code>                                </td> <td align="left">   initialize an empty dictionary                                               </td> </tr>
+<tr><td align="left">   <code>a = {'point': [0,0.1], 'value': 7}</code>    </td> <td align="left">   initialize a dictionary                                                      </td> </tr>
+<tr><td align="left">   <code>a = dict(point=[2,7], value=3)</code>        </td> <td align="left">   initialize a dictionary w/string keys                                        </td> </tr>
+<tr><td align="left">   <code>a.update(b)</code>                           </td> <td align="left">   add/update key-value pairs from <code>b</code> in <code>a</code>             </td> </tr>
+<tr><td align="left">   <code>a.update(key1=value1, key2=value2)</code>    </td> <td align="left">   add/update key-value pairs in <code>a</code>                                 </td> </tr>
+<tr><td align="left">   <code>a['hide'] = True</code>                      </td> <td align="left">   add new key-value pair to <code>a</code>                                     </td> </tr>
+<tr><td align="left">   <code>a['point']</code>                            </td> <td align="left">   get value corresponding to key <code>point</code>                            </td> </tr>
+<tr><td align="left">   <code>for key in a:</code>                         </td> <td align="left">   loop over keys in unknown order                                              </td> </tr>
+<tr><td align="left">   <code>for key in sorted(a):</code>                 </td> <td align="left">   loop over keys in alphabetic order                                           </td> </tr>
+<tr><td align="left">   <code>'value' in a</code>                          </td> <td align="left">   <code>True</code> if string <code>value</code> is a key in <code>a</code>    </td> </tr>
+<tr><td align="left">   <code>del a['point']</code>                        </td> <td align="left">   delete a key-value pair from <code>a</code>                                  </td> </tr>
+<tr><td align="left">   <code>list(a.keys())</code>                        </td> <td align="left">   list of keys                                                                 </td> </tr>
+<tr><td align="left">   <code>list(a.values())</code>                      </td> <td align="left">   list of values                                                               </td> </tr>
+<tr><td align="left">   <code>len(a)</code>                                </td> <td align="left">   number of key-value pairs in <code>a</code>                                  </td> </tr>
+<tr><td align="left">   <code>isinstance(a, dict)</code>                   </td> <td align="left">   is <code>True</code> if <code>a</code> is a dictionary                       </td> </tr>
+</tbody>
+</table>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Summary of some string operations  <a name="___sec46"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">s <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Berlin: 18.4 C at 4 pm&#39;</span>
+s[<span style="color: #666666">8</span>:<span style="color: #666666">17</span>]          <span style="color: #408080; font-style: italic"># extract substring</span>
+s<span style="color: #666666">.</span>find(<span style="color: #BA2121">&#39;:&#39;</span>)      <span style="color: #408080; font-style: italic"># index where first &#39;:&#39; is found</span>
+s<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;:&#39;</span>)     <span style="color: #408080; font-style: italic"># split into substrings</span>
+s<span style="color: #666666">.</span>split()        <span style="color: #408080; font-style: italic"># split wrt whitespace</span>
+<span style="color: #BA2121">&#39;Berlin&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> s    <span style="color: #408080; font-style: italic"># test if substring is in s</span>
+s<span style="color: #666666">.</span>replace(<span style="color: #BA2121">&#39;18.4&#39;</span>, <span style="color: #BA2121">&#39;20&#39;</span>)
+s<span style="color: #666666">.</span>lower()        <span style="color: #408080; font-style: italic"># lower case letters only</span>
+s<span style="color: #666666">.</span>upper()        <span style="color: #408080; font-style: italic"># upper case letters only</span>
+s<span style="color: #666666">.</span>split()[<span style="color: #666666">4</span>]<span style="color: #666666">.</span>isdigit()
+s<span style="color: #666666">.</span>strip()        <span style="color: #408080; font-style: italic"># remove leading/trailing blanks</span>
+<span style="color: #BA2121">&#39;, &#39;</span><span style="color: #666666">.</span>join(list_of_words)
+</pre></div>
+
+</div>
+
+
+
+</section>
+
+
+
+</div> <!-- class="slides" -->
+</div> <!-- class="reveal" -->
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width: 1170,  // original: 960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
+});
+</script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
+
+
+</body>
+</html>
