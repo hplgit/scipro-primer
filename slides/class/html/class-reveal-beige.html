@@ -1,0 +1,3212 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Ch.7: Introduction to classes">
+
+<title>Ch.7: Introduction to classes</title>
+
+
+
+
+
+
+
+<!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<!--
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+-->
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .reveal .alert-text-small   { font-size: 80%;  }
+    .reveal .alert-text-large   { font-size: 130%; }
+    .reveal .alert-text-normal  { font-size: 90%;  }
+    .reveal .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+             -webkit-border-radius: 14px; -moz-border-radius: 14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .reveal .alert-block {padding-top:14px; padding-bottom:14px}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     /*.reveal .alert li {margin-top: 1em}*/
+     .reveal .alert-block p+p {margin-top:5px}
+     /*.reveal .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="reveal">
+
+<!-- Any section element inside the <div class="slides"> container
+     is displayed as a slide -->
+
+<div class="slides">
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+
+
+
+<section>
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<center><h1 style="text-align: center;">Ch.7: Introduction to classes</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>&nbsp;<br>
+<!-- institution(s) -->
+
+<center>[1] <b>Simula Research Laboratory</b></center>
+<center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
+<p>&nbsp;<br>
+<center><h4>Oct 13, 2014</h4></center> <!-- date -->
+<p>
+
+</section>
+
+
+<section>
+
+<h1 style="text-align: center;">Basics of classes  <a name="___sec0"></a></h1>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<center><p><img src="fig-class/associations/classes1.jpg" align="bottom" width=500></p></center>
+</td>
+<td class="padding">
+<center><p><img src="fig-class/associations/classes2.png" align="bottom" width=500></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class = functions + data (variables) in one unit  <a name="___sec1"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> A class packs together data (a collection of variables) and functions as <em>one single unit</em></li>
+  <p><li> As a programmer you can create a new class and thereby a new object type (like <code>float</code>, <code>list</code>, <code>file</code>, ...)</li>
+  <p><li> A class is much like a module: a collection of &quot;global&quot; variables and functions that belong together</li>
+  <p><li> There is only one instance of a module while a class can have many instances (copies)</li>
+  <p><li> Modern programming applies classes to a large extent</li>
+  <p><li> It will take some time to master the class concept</li>
+  <p><li> Let's learn by doing!</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Representing a function by a class; background  <a name="___sec2"></a></h2>
+
+<p>
+Consider a function of \( t \) with a parameter \( v_0 \):
+
+<p>&nbsp;<br>
+$$ y(t; v_0)=v_0t - {1\over2}gt^2$$
+<p>&nbsp;<br>
+
+
+<p>
+We need both \( v_0 \) and \( t \) to evaluate \( y \) (and \( g=9.81 \)), but
+how should we implement this?
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Having \( t \) and \( v_0 \) as arguments:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">y</span>(t, v0):
+    g = <span style="color: #B452CD">9.81</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> v0*t - <span style="color: #B452CD">0.5</span>*g*t**<span style="color: #B452CD">2</span>
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Having \( t \) as argument and \( v_0 \) as global variable:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">y</span>(t):
+    g = <span style="color: #B452CD">9.81</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> v0*t - <span style="color: #B452CD">0.5</span>*g*t**<span style="color: #B452CD">2</span>
+</pre></div>
+<p>
+Motivation: \( y(t) \) is a function of \( t \) only
+</div>
+
+
+<p>
+<!-- Because \( y(t) \) is a function of \( t \) only. With a class, with -->
+<!-- have a function \( y(t) \) of \( t \) only, but it also contains the value of \( v_0 \). -->
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Representing a function by a class; idea  <a name="___sec3"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <p><li> With a class, <code>y(t)</code> can be a function of <code>t</code> only, but still have</li>
+</ul>
+<p>
+
+  <code>v0</code> and <code>g</code> as parameters with given values.
+
+<ul>
+ <p><li> The class packs together a function <code>y(t)</code> and data (<code>v0</code>, <code>g</code>)</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Representing a function by a class; technical overview  <a name="___sec4"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> We make a class <code>Y</code> for \( y(t;v_0) \) with variables <code>v0</code> and <code>g</code>
+    and a function <code>value(t)</code> for computing \( y(t;v_0) \)</li>
+  <p><li> Any class should also have a function <code>__init__</code> for initialization of the variables</li>
+</ul>
+</div>
+
+
+<p>
+<center><p><img src="fig-class/UML_class_Y.png" align="bottom" width=120></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Representing a function by a class; the code  <a name="___sec5"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Y</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, v0):
+        <span style="color: #658b00">self</span>.v0 = v0
+        <span style="color: #658b00">self</span>.g = <span style="color: #B452CD">9.81</span>
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">value</span>(<span style="color: #658b00">self</span>, t):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.v0*t - <span style="color: #B452CD">0.5</span>*<span style="color: #658b00">self</span>.g*t**<span style="color: #B452CD">2</span>
+</pre></div>
+<p>
+Usage:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">y = Y(v0=<span style="color: #B452CD">3</span>)            <span style="color: #228B22"># create instance (object)</span>
+v = y.value(<span style="color: #B452CD">0.1</span>)       <span style="color: #228B22"># compute function value</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Representing a function by a class; the constructor  <a name="___sec6"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+When we write
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">y = Y(v0=<span style="color: #B452CD">3</span>)
+</pre></div>
+<p>
+we create a new variable (instance) <code>y</code> of type <code>Y</code>.
+<code>Y(3)</code> is a call to the <em>constructor</em>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, v0):
+        <span style="color: #658b00">self</span>.v0 = v0
+        <span style="color: #658b00">self</span>.g = <span style="color: #B452CD">9.81</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>What is this <code>self</code> variable? Stay cool - it will be understood later as you get used to it  <a name="___sec7"></a></h2>
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <p><li class="fragment"> Think of <code>self</code> as <code>y</code>, i.e., the new variable to be created. <code>self.v0 = ...</code> means that we attach a variable <code>v0</code> to <code>self</code> (<code>y</code>).</li>
+ <p><li class="fragment"> <code>Y(3)</code> means <code>Y.__init__(y, 3)</code>, i.e., set <code>self=y</code>, <code>v0=3</code></li>
+ <p><li class="fragment"> Remember: <code>self</code> is always first parameter in a function, but never inserted in the call!</li>
+ <p><li class="fragment"> After <code>y = Y(3)</code>, <code>y</code> has two variables <code>v0</code> and <code>g</code></li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> y.v0
+<span style="color: #8B008B; font-weight: bold">print</span> y.g
+</pre></div>
+
+</div>
+
+
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<blockquote>
+    <em>In mathematics you
+    don't understand things. You just get used to them.</em>
+    John von Neumann, mathematician, 1903-1957.
+</blockquote>
+</div>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Representing a function by a class; the value method  <a name="___sec8"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> Functions in classes are called <em>methods</em></li>
+  <p><li> Variables in classes are called <em>attributes</em></li>
+</ul>
+<p>
+
+Here is the <code>value</code> method:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">value</span>(<span style="color: #658b00">self</span>, t):
+    <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.v0*t - <span style="color: #B452CD">0.5</span>*<span style="color: #658b00">self</span>.g*t**<span style="color: #B452CD">2</span>
+</pre></div>
+<p>
+Example on a call:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">v = y.value(t=<span style="color: #B452CD">0.1</span>)
+</pre></div>
+<p>
+<code>self</code> is left out in the call, but Python automatically inserts <code>y</code> as the <code>self</code> argument inside the <code>value</code> method. Think of the call as
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Y.value(y, t=<span style="color: #B452CD">0.1</span>)
+</pre></div>
+<p>
+Inside <code>value</code> things &quot;appear&quot; as
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">return</span> y.v0*t - <span style="color: #B452CD">0.5</span>*y.g*t**<span style="color: #B452CD">2</span>
+</pre></div>
+<p>
+<code>self</code> gives access to &quot;global variables&quot; in the class object.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Representing a function by a class; summary  <a name="___sec9"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> Class <code>Y</code> collects the attributes <code>v0</code> and <code>g</code> and the method <code>value</code> as one unit</li>
+  <p><li> <code>value(t)</code> is function of <code>t</code> only, but has automatically access to the parameters <code>v0</code> and <code>g</code> as <code>self.v0</code> and <code>self.g</code></li>
+  <p><li> The great advantage: we can send <code>y.value</code> as an ordinary function of <code>t</code> to any other function that expects a function <code>f(t)</code> of one variable</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">make_table</span>(f, tstop, n):
+    <span style="color: #8B008B; font-weight: bold">for</span> t <span style="color: #8B008B">in</span> linspace(<span style="color: #B452CD">0</span>, tstop, n):
+        <span style="color: #8B008B; font-weight: bold">print</span> t, f(t)
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(t):
+    <span style="color: #8B008B; font-weight: bold">return</span> sin(t)*exp(-t)
+
+table(g, <span style="color: #B452CD">2</span>*pi, <span style="color: #B452CD">101</span>)         <span style="color: #228B22"># send ordinary function</span>
+
+y = Y(<span style="color: #B452CD">6.5</span>)
+table(y.value, <span style="color: #B452CD">2</span>*pi, <span style="color: #B452CD">101</span>)   <span style="color: #228B22"># send class method</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Representing a function by a class; the general case  <a name="___sec10"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Given a function with \( n+1 \) parameters and one independent variable,
+
+<p>&nbsp;<br>
+$$ f(x; p_0,\ldots,p_n)$$
+<p>&nbsp;<br>
+
+it is wise to represent <code>f</code> by a class where
+\( p_0,\ldots,p_n \) are attributes and where there is a method, say <code>value(self, x)</code>, for computing \( f(x) \)
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">MyFunc</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, p0, p1, p2, ..., pn):
+        <span style="color: #658b00">self</span>.p0 = p0
+        <span style="color: #658b00">self</span>.p1 = p1
+        ...
+        <span style="color: #658b00">self</span>.pn = pn
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">value</span>(<span style="color: #658b00">self</span>, x):
+        <span style="color: #8B008B; font-weight: bold">return</span> ...
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class for a function with four parameters  <a name="___sec11"></a></h2>
+
+<p>&nbsp;<br>
+$$
+v(r; \beta, \mu_0, n, R) = \left({\beta\over 2\mu_0}\right)^{{1\over n}}
+{n \over n+1}\left( R^{1 + {1\over n}} - r^{1 + {1\over n}}\right)
+$$
+<p>&nbsp;<br>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">VelocityProfile</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, beta, mu0, n, R):
+        <span style="color: #658b00">self</span>.beta, <span style="color: #658b00">self</span>.mu0, <span style="color: #658b00">self</span>.n, <span style="color: #658b00">self</span>.R = \
+        beta, mu0, n, R
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">value</span>(<span style="color: #658b00">self</span>, r):
+        beta, mu0, n, R = \
+        <span style="color: #658b00">self</span>.beta, <span style="color: #658b00">self</span>.mu0, <span style="color: #658b00">self</span>.n, <span style="color: #658b00">self</span>.R
+        n = <span style="color: #658b00">float</span>(n)  <span style="color: #228B22"># ensure float divisions</span>
+        v = (beta/(<span style="color: #B452CD">2.0</span>*mu0))**(<span style="color: #B452CD">1</span>/n)*(n/(n+<span style="color: #B452CD">1</span>))*\
+            (R**(<span style="color: #B452CD">1</span>+<span style="color: #B452CD">1</span>/n) - r**(<span style="color: #B452CD">1</span>+<span style="color: #B452CD">1</span>/n))
+        <span style="color: #8B008B; font-weight: bold">return</span> v
+
+v = VelocityProfile(R=<span style="color: #B452CD">1</span>, beta=<span style="color: #B452CD">0.06</span>, mu0=<span style="color: #B452CD">0.02</span>, n=<span style="color: #B452CD">0.1</span>)
+<span style="color: #8B008B; font-weight: bold">print</span> v.value(r=<span style="color: #B452CD">0.1</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Rough sketch of a Python class  <a name="___sec12"></a></h2>
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">MyClass</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, p1, p2):
+        <span style="color: #658b00">self</span>.attr1 = p1
+        <span style="color: #658b00">self</span>.attr2 = p2
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">method1</span>(<span style="color: #658b00">self</span>, arg):
+        <span style="color: #228B22"># can init new attribute outside constructor:</span>
+        <span style="color: #658b00">self</span>.attr3 = arg
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.attr1 + <span style="color: #658b00">self</span>.attr2 + <span style="color: #658b00">self</span>.attr3
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">method2</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Hello!&#39;</span>
+
+m = MyClass(<span style="color: #B452CD">4</span>, <span style="color: #B452CD">10</span>)
+<span style="color: #8B008B; font-weight: bold">print</span> m.method1(-<span style="color: #B452CD">2</span>)
+m.method2()
+</pre></div>
+
+</div>
+
+
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+It is common to have a constructor where attributes are initialized, but this is not a requirement - attributes can be defined whenever desired
+</div>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>You can learn about other versions and views of class Y in the course book  <a name="___sec13"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> The book features a section on a different version of class <code>Y</code> where there is no constructor (which is possible)</li>
+  <p><li> The book also features a section on how to implement classes without using classes</li>
+  <p><li> These sections may be clarifying - or confusing</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Another class example: a bank account  <a name="___sec14"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> Attributes: name of owner, account number, balance</li>
+  <p><li> Methods: deposit, withdraw, pretty print</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Account</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, name, account_number, initial_amount):
+        <span style="color: #658b00">self</span>.name = name
+        <span style="color: #658b00">self</span>.no = account_number
+        <span style="color: #658b00">self</span>.balance = initial_amount
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">deposit</span>(<span style="color: #658b00">self</span>, amount):
+        <span style="color: #658b00">self</span>.balance += amount
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">withdraw</span>(<span style="color: #658b00">self</span>, amount):
+        <span style="color: #658b00">self</span>.balance -= amount
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">dump</span>(<span style="color: #658b00">self</span>):
+        s = <span style="color: #CD5555">&#39;%s, %s, balance: %s&#39;</span> % \
+            (<span style="color: #658b00">self</span>.name, <span style="color: #658b00">self</span>.no, <span style="color: #658b00">self</span>.balance)
+        <span style="color: #8B008B; font-weight: bold">print</span> s
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>UML diagram of class Account  <a name="___sec15"></a></h2>
+
+<p>
+<center><p><img src="fig-class/UML_class_Account.png" align="bottom" width=120></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Example on using class Account  <a name="___sec16"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; a1 = Account(<span style="color: #CD5555">&#39;John Olsson&#39;</span>, <span style="color: #CD5555">&#39;19371554951&#39;</span>, <span style="color: #B452CD">20000</span>)
+&gt;&gt;&gt; a2 = Account(<span style="color: #CD5555">&#39;Liz Olsson&#39;</span>,  <span style="color: #CD5555">&#39;19371564761&#39;</span>, <span style="color: #B452CD">20000</span>)
+&gt;&gt;&gt; a1.deposit(<span style="color: #B452CD">1000</span>)
+&gt;&gt;&gt; a1.withdraw(<span style="color: #B452CD">4000</span>)
+&gt;&gt;&gt; a2.withdraw(<span style="color: #B452CD">10500</span>)
+&gt;&gt;&gt; a1.withdraw(<span style="color: #B452CD">3500</span>)
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&quot;a1&#39;s balance:&quot;</span>, a1.balance
+a1<span style="color: #CD5555">&#39;s balance: 13500</span>
+&gt;&gt;&gt; a1.dump()
+John Olsson, <span style="color: #B452CD">19371554951</span>, balance: <span style="color: #B452CD">13500</span>
+&gt;&gt;&gt; a2.dump()
+Liz Olsson, <span style="color: #B452CD">19371564761</span>, balance: <span style="color: #B452CD">9500</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Use underscore in attribute names to avoid misuse  <a name="___sec17"></a></h2>
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Possible, but not intended use:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; a1.name = <span style="color: #CD5555">&#39;Some other name&#39;</span>
+&gt;&gt;&gt; a1.balance = <span style="color: #B452CD">100000</span>
+&gt;&gt;&gt; a1.no = <span style="color: #CD5555">&#39;19371564768&#39;</span>
+</pre></div>
+
+</div>
+
+
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>The assumptions on correct usage:</b>
+<p>
+
+<ul>
+  <p><li class="fragment"> The attributes should <em>not</em> be changed!</li>
+  <p><li class="fragment"> The <code>balance</code> attribute can be viewed</li>
+  <p><li class="fragment"> Changing <code>balance</code> is done through <code>withdraw</code> or <code>deposit</code></li>
+</ul>
+</div>
+
+
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Remedy:</b>
+<p>
+Attributes and methods not intended for use outside the class can be marked as <em>protected</em> by prefixing the name with an underscore (e.g., <code>_name</code>). This is just a convention - and no technical way of avoiding attributes and methods to be accessed.
+</div>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Improved class with attribute protection (underscore)  <a name="___sec18"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">AccountP</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, name, account_number, initial_amount):
+        <span style="color: #658b00">self</span>._name = name
+        <span style="color: #658b00">self</span>._no = account_number
+        <span style="color: #658b00">self</span>._balance = initial_amount
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">deposit</span>(<span style="color: #658b00">self</span>, amount):
+        <span style="color: #658b00">self</span>._balance += amount
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">withdraw</span>(<span style="color: #658b00">self</span>, amount):
+        <span style="color: #658b00">self</span>._balance -= amount
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">get_balance</span>(<span style="color: #658b00">self</span>):    <span style="color: #228B22"># NEW - read balance value</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>._balance
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">dump</span>(<span style="color: #658b00">self</span>):
+        s = <span style="color: #CD5555">&#39;%s, %s, balance: %s&#39;</span> % \
+            (<span style="color: #658b00">self</span>._name, <span style="color: #658b00">self</span>._no, <span style="color: #658b00">self</span>._balance)
+        <span style="color: #8B008B; font-weight: bold">print</span> s
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Usage of improved class AccountP  <a name="___sec19"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">a1 = AccountP(<span style="color: #CD5555">&#39;John Olsson&#39;</span>, <span style="color: #CD5555">&#39;19371554951&#39;</span>, <span style="color: #B452CD">20000</span>)
+a1.withdraw(<span style="color: #B452CD">4000</span>)
+
+<span style="color: #8B008B; font-weight: bold">print</span> a1._balance      <span style="color: #228B22"># it works, but a convention is broken</span>
+
+<span style="color: #8B008B; font-weight: bold">print</span> a1.get_balance() <span style="color: #228B22"># correct way of viewing the balance</span>
+
+a1._no = <span style="color: #CD5555">&#39;19371554955&#39;</span> <span style="color: #228B22"># this is a &quot;serious crime&quot;!</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Another example: a phone book  <a name="___sec20"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> A phone book is a list of data about persons</li>
+  <p><li> Data about a person: name, mobile phone, office phone, private phone, email</li>
+  <p><li> Let us create a class for data about a person!</li>
+  <p><li> Methods:</li>
+
+<ul>
+    <p><li> Constructor for initializing name, plus one or more other data</li>
+    <p><li> Add new mobile number</li>
+    <p><li> Add new office number</li>
+    <p><li> Add new private number</li>
+    <p><li> Add new email</li>
+    <p><li> Write out person data</li>
+</ul>
+<p>
+
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>UML diagram of class Person  <a name="___sec21"></a></h2>
+
+<p>
+<center><p><img src="fig-class/UML_class_Person.png" align="bottom" width=240></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Basic code of class Person  <a name="___sec22"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"> <span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Person</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, name,
+                 mobile_phone=<span style="color: #658b00">None</span>, office_phone=<span style="color: #658b00">None</span>,
+                 private_phone=<span style="color: #658b00">None</span>, email=<span style="color: #658b00">None</span>):
+        <span style="color: #658b00">self</span>.name = name
+        <span style="color: #658b00">self</span>.mobile = mobile_phone
+        <span style="color: #658b00">self</span>.office = office_phone
+        <span style="color: #658b00">self</span>.private = private_phone
+        <span style="color: #658b00">self</span>.email = email
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">add_mobile_phone</span>(<span style="color: #658b00">self</span>, number):
+        <span style="color: #658b00">self</span>.mobile = number
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">add_office_phone</span>(<span style="color: #658b00">self</span>, number):
+        <span style="color: #658b00">self</span>.office = number
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">add_private_phone</span>(<span style="color: #658b00">self</span>, number):
+        <span style="color: #658b00">self</span>.private = number
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">add_email</span>(<span style="color: #658b00">self</span>, address):
+        <span style="color: #658b00">self</span>.email = address
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Code of a dump method for printing all class contents  <a name="___sec23"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"> <span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Person</span>:
+    ...
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">dump</span>(<span style="color: #658b00">self</span>):
+        s = <span style="color: #658b00">self</span>.name + <span style="color: #CD5555">&#39;\n&#39;</span>
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">self</span>.mobile <span style="color: #8B008B">is</span> <span style="color: #8B008B">not</span> <span style="color: #658b00">None</span>:
+            s += <span style="color: #CD5555">&#39;mobile phone:   %s\n&#39;</span> % <span style="color: #658b00">self</span>.mobile
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">self</span>.office <span style="color: #8B008B">is</span> <span style="color: #8B008B">not</span> <span style="color: #658b00">None</span>:
+            s += <span style="color: #CD5555">&#39;office phone:   %s\n&#39;</span> % <span style="color: #658b00">self</span>.office
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">self</span>.private <span style="color: #8B008B">is</span> <span style="color: #8B008B">not</span> <span style="color: #658b00">None</span>:
+            s += <span style="color: #CD5555">&#39;private phone:  %s\n&#39;</span> % <span style="color: #658b00">self</span>.private
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">self</span>.email <span style="color: #8B008B">is</span> <span style="color: #8B008B">not</span> <span style="color: #658b00">None</span>:
+            s += <span style="color: #CD5555">&#39;email address:  %s\n&#39;</span> % <span style="color: #658b00">self</span>.email
+        <span style="color: #8B008B; font-weight: bold">print</span> s
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Usage:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">p1 = Person(<span style="color: #CD5555">&#39;Hans Petter Langtangen&#39;</span>, email=<span style="color: #CD5555">&#39;hpl@simula.no&#39;</span>)
+p1.add_office_phone(<span style="color: #CD5555">&#39;67828283&#39;</span>),
+p2 = Person(<span style="color: #CD5555">&#39;Aslak Tveito&#39;</span>, office_phone=<span style="color: #CD5555">&#39;67828282&#39;</span>)
+p2.add_email(<span style="color: #CD5555">&#39;aslak@simula.no&#39;</span>)
+phone_book = [p1, p2]                           <span style="color: #228B22"># list</span>
+phone_book = {<span style="color: #CD5555">&#39;Langtangen&#39;</span>: p1, <span style="color: #CD5555">&#39;Tveito&#39;</span>: p2}   <span style="color: #228B22"># better</span>
+<span style="color: #8B008B; font-weight: bold">for</span> p <span style="color: #8B008B">in</span> phone_book:
+    p.dump()
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Another example: a class for a circle  <a name="___sec24"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> A circle is defined by its center point \( x_0 \), \( y_0 \) and its radius \( R \)</li>
+  <p><li> These data can be attributes in a class</li>
+  <p><li> Possible methods in the class: <code>area</code>, <code>circumference</code></li>
+  <p><li> The constructor initializes \( x_0 \), \( y_0 \) and \( R \)</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Circle</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, x0, y0, R):
+        <span style="color: #658b00">self</span>.x0, <span style="color: #658b00">self</span>.y0, <span style="color: #658b00">self</span>.R = x0, y0, R
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">area</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">return</span> pi*<span style="color: #658b00">self</span>.R**<span style="color: #B452CD">2</span>
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">circumference</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">2</span>*pi*<span style="color: #658b00">self</span>.R
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; c = Circle(<span style="color: #B452CD">2</span>, -<span style="color: #B452CD">1</span>, <span style="color: #B452CD">5</span>)
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;A circle with radius %g at (%g, %g) has area %g&#39;</span> % \
+...       (c.R, c.x0, c.y0, c.area())
+A circle <span style="color: #8B008B; font-weight: bold">with</span> radius <span style="color: #B452CD">5</span> at (<span style="color: #B452CD">2</span>, -<span style="color: #B452CD">1</span>) has area <span style="color: #B452CD">78.5398</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1 style="text-align: center;">Special methods  <a name="___sec25"></a></h1>
+
+<p>
+
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<center><p><img src="fig-class/associations/special_methods1.jpg" align="bottom" width=500></p></center>
+</td>
+<td class="padding">
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">MyClass</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, a, b):
+    ...
+
+p1 = MyClass(<span style="color: #B452CD">2</span>, <span style="color: #B452CD">5</span>)
+p2 = MyClass(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">10</span>)
+
+p3 = p1 + p2
+p4 = p1 - p2
+p5 = p1*p2
+p6 = p1**<span style="color: #B452CD">7</span> + <span style="color: #B452CD">4</span>*p3
+</pre></div>
+<p>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2><em>Special methods</em> allow nice syntax and are recognized by double leading and trailing underscores  <a name="___sec26"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, ...)
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, ...)
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__add__</span>(<span style="color: #658b00">self</span>, other)
+
+<span style="color: #228B22"># Python syntax</span>
+y = Y(<span style="color: #B452CD">4</span>)
+<span style="color: #8B008B; font-weight: bold">print</span> y(<span style="color: #B452CD">2</span>)
+z = Y(<span style="color: #B452CD">6</span>)
+<span style="color: #8B008B; font-weight: bold">print</span> y + z
+
+<span style="color: #228B22"># What&#39;s actually going on</span>
+Y.__init__(y, <span style="color: #B452CD">4</span>)
+<span style="color: #8B008B; font-weight: bold">print</span> Y.__call__(y, <span style="color: #B452CD">2</span>)
+Y.__init__(z, <span style="color: #B452CD">6</span>)
+<span style="color: #8B008B; font-weight: bold">print</span> Y.__add__(y, z)
+</pre></div>
+<p>
+We shall learn about many more such <em>special methods</em>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Example on a call special method  <a name="___sec27"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Replace the <code>value</code> method by a <em>call</em> special method:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Y</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, v0):
+        <span style="color: #658b00">self</span>.v0 = v0
+        <span style="color: #658b00">self</span>.g = <span style="color: #B452CD">9.81</span>
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, t):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.v0*t - <span style="color: #B452CD">0.5</span>*<span style="color: #658b00">self</span>.g*t**<span style="color: #B452CD">2</span>
+</pre></div>
+<p>
+Now we can write
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">y = Y(<span style="color: #B452CD">3</span>)
+v = y(<span style="color: #B452CD">0.1</span>) <span style="color: #228B22"># same as v = y.__call__(0.1) or Y.__call__(y, 0.1)</span>
+</pre></div>
+<p>
+Note:
+
+<ul>
+ <p><li> The instance <code>y</code> behaves and looks as a function!</li>
+ <p><li> The <code>value(t)</code> method does the same, but <code>__call__</code> allows nicer syntax for computing function values</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Representing a function by a class revisited  <a name="___sec28"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Given a function with \( n+1 \) parameters and one independent variable,
+
+<p>&nbsp;<br>
+$$ f(x; p_0,\ldots,p_n)$$
+<p>&nbsp;<br>
+
+it is wise to represent <code>f</code> by a class where \( p_0,\ldots,p_n \)
+are attributes and <code>__call__(x)</code> computes \( f(x) \)
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">MyFunc</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, p0, p1, p2, ..., pn):
+        <span style="color: #658b00">self</span>.p0 = p0
+        <span style="color: #658b00">self</span>.p1 = p1
+        ...
+        <span style="color: #658b00">self</span>.pn = pn
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        <span style="color: #8B008B; font-weight: bold">return</span> ...
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Can we automatically differentiate a function?  <a name="___sec29"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Given some mathematical function in Python, say
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> x**<span style="color: #B452CD">3</span>
+</pre></div>
+<p>
+can we make a class <code>Derivative</code> and write
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">dfdx = Derivative(f)
+</pre></div>
+<p>
+so that <code>dfdx</code> behaves as a function that computes the derivative of <code>f(x)</code>?
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> dfdx(<span style="color: #B452CD">2</span>)   <span style="color: #228B22"># computes 3*x**2 for x=2</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Automagic differentiation; solution  <a name="___sec30"></a></h2>
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Method.</b>
+<p>
+We use numerical differentiation &quot;behind the curtain&quot;:
+
+<p>&nbsp;<br>
+$$ f'(x) \approx {f(x+h)-f(x)\over h} $$
+<p>&nbsp;<br>
+
+for a small (yet moderate) \( h \), say \( h=10^{-5} \)
+</div>
+
+
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Implementation.</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Derivative</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f, h=<span style="color: #B452CD">1E-5</span>):
+        <span style="color: #658b00">self</span>.f = f
+        <span style="color: #658b00">self</span>.h = <span style="color: #658b00">float</span>(h)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h      <span style="color: #228B22"># make short forms</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> (f(x+h) - f(x))/h
+</pre></div>
+
+</div>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Automagic differentiation; demo  <a name="___sec31"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+&gt;&gt;&gt; df = Derivative(sin)
+&gt;&gt;&gt; x = pi
+&gt;&gt;&gt; df(x)
+-<span style="color: #B452CD">1.000000082740371</span>
+&gt;&gt;&gt; cos(x)  <span style="color: #228B22"># exact</span>
+-<span style="color: #B452CD">1.0</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(t):
+...     <span style="color: #8B008B; font-weight: bold">return</span> t**<span style="color: #B452CD">3</span>
+...
+&gt;&gt;&gt; dg = Derivative(g)
+&gt;&gt;&gt; t = <span style="color: #B452CD">1</span>
+&gt;&gt;&gt; dg(t)  <span style="color: #228B22"># compare with 3 (exact)</span>
+<span style="color: #B452CD">3.000000248221113</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Automagic differentiation; useful in Newton's method  <a name="___sec32"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Newton's method solves nonlinear equations \( f(x)=0 \), but the method requires \( f'(x) \)
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">Newton</span>(f, xstart, dfdx, epsilon=<span style="color: #B452CD">1E-6</span>):
+    ...
+    <span style="color: #8B008B; font-weight: bold">return</span> x, no_of_iterations, f(x)
+</pre></div>
+<p>
+Suppose \( f'(x) \) requires boring/lengthy derivation, then class <code>Derivative</code> is handy:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+...     <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">100000</span>*(x - <span style="color: #B452CD">0.9</span>)**<span style="color: #B452CD">2</span> * (x - <span style="color: #B452CD">1.1</span>)**<span style="color: #B452CD">3</span>
+...
+&gt;&gt;&gt; df = Derivative(f)
+&gt;&gt;&gt; xstart = <span style="color: #B452CD">1.01</span>
+&gt;&gt;&gt; Newton(f, xstart, df, epsilon=<span style="color: #B452CD">1E-5</span>)
+(<span style="color: #B452CD">1.0987610068093443</span>, <span style="color: #B452CD">8</span>, -<span style="color: #B452CD">7.5139644257961411e-06</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Automagic differentiation detour; sympy solution (exact differentiation via symbolic expressions)  <a name="___sec33"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+SymPy can perform exact, symbolic differentiation:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sympy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(t):
+...     <span style="color: #8B008B; font-weight: bold">return</span> t**<span style="color: #B452CD">3</span>
+...
+&gt;&gt;&gt; t = Symbol(<span style="color: #CD5555">&#39;t&#39;</span>)
+&gt;&gt;&gt; dgdt = diff(g(t), t)           <span style="color: #228B22"># compute g&#39;(t)</span>
+&gt;&gt;&gt; dgdt
+<span style="color: #B452CD">3</span>*t**<span style="color: #B452CD">2</span>
+
+&gt;&gt;&gt; <span style="color: #228B22"># Turn sympy expression dgdt into Python function dg(t)</span>
+&gt;&gt;&gt; dg = lambdify([t], dgdt)
+&gt;&gt;&gt; dg(<span style="color: #B452CD">1</span>)
+<span style="color: #B452CD">3</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Automagic differentiation detour; class based on sympy  <a name="___sec34"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sympy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">sp</span>
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Derivative_sympy</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f):
+        <span style="color: #228B22"># f: Python f(x)</span>
+        x = sp.Symbol(<span style="color: #CD5555">&#39;x&#39;</span>)
+        sympy_f = f(x)
+        sympy_dfdx = sp.diff(sympy_f, x)
+        <span style="color: #658b00">self</span>.__call__ = sp.lambdify([x], sympy_dfdx)
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(t):
+...    <span style="color: #8B008B; font-weight: bold">return</span> t**<span style="color: #B452CD">3</span>
+
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">h</span>(y):
+...    <span style="color: #8B008B; font-weight: bold">return</span> sp.sin(y)
+
+&gt;&gt;&gt; dg = Derivative_sympy(g)
+&gt;&gt;&gt; dh = Derivative_sympy(h)
+&gt;&gt;&gt; dg(<span style="color: #B452CD">1</span>)   <span style="color: #228B22"># 3*1**2 = 3</span>
+<span style="color: #B452CD">3</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> pi
+&gt;&gt;&gt; dh(pi)  <span style="color: #228B22"># cos(pi) = -1</span>
+-<span style="color: #B452CD">1.0</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Automagic integration; problem setting  <a name="___sec35"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Given a function \( f(x) \), we want to compute
+
+<p>&nbsp;<br>
+$$ F(x; a) = \int_a^x f(t)dt $$
+<p>&nbsp;<br>
+
+
+<p>
+Technique: Trapezoidal rule
+
+<p>&nbsp;<br>
+$$
+\int_a^x f(t)dt = h\left({1\over2}f(a) + \sum_{i=1}^{n-1} f(a+ih) + {1\over2}f(x)\right)
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Desired application code:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> exp(-x**<span style="color: #B452CD">2</span>)*sin(<span style="color: #B452CD">10</span>*x)
+
+a = <span style="color: #B452CD">0</span>; n = <span style="color: #B452CD">200</span>
+F = Integral(f, a, n)
+x = <span style="color: #B452CD">1.2</span>
+<span style="color: #8B008B; font-weight: bold">print</span> F(x)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Automagic integration; implementation  <a name="___sec36"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">trapezoidal</span>(f, a, x, n):
+    h = (x-a)/<span style="color: #658b00">float</span>(n)
+    I = <span style="color: #B452CD">0.5</span>*f(a)
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1</span>, n):
+        I += f(a + i*h)
+    I += <span style="color: #B452CD">0.5</span>*f(x)
+    I *= h
+    <span style="color: #8B008B; font-weight: bold">return</span> I
+</pre></div>
+<p>
+Class <code>Integral</code> holds <code>f</code>, <code>a</code> and <code>n</code> as attributes and has a call special method for computing the integral:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Integral</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f, a, n=<span style="color: #B452CD">100</span>):
+        <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.a, <span style="color: #658b00">self</span>.n = f, a, n
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        <span style="color: #8B008B; font-weight: bold">return</span> trapezoidal(<span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.a, x, <span style="color: #658b00">self</span>.n)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Special method for printing  <a name="___sec37"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> In Python, we can usually print an object <code>a</code> by <code>print a</code>,
+    works for built-in types (strings, lists, floats, ...)</li>
+  <p><li> Python does not know how to print objects of a user-defined class,
+    but if the class defines a method <code>__str__</code>, Python will use this method to convert an object to a string</li>
+</ul>
+<p>
+
+Example:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Y</span>:
+    ...
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, t):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.v0*t - <span style="color: #B452CD">0.5</span>*<span style="color: #658b00">self</span>.g*t**<span style="color: #B452CD">2</span>
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__str__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #CD5555">&#39;v0*t - 0.5*g*t**2; v0=%g&#39;</span> % <span style="color: #658b00">self</span>.v0
+</pre></div>
+<p>
+Demo:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; y = Y(<span style="color: #B452CD">1.5</span>)
+&gt;&gt;&gt; y(<span style="color: #B452CD">0.2</span>)
+<span style="color: #B452CD">0.1038</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> y
+v0*t - <span style="color: #B452CD">0.5</span>*g*t**<span style="color: #B452CD">2</span>; v0=<span style="color: #B452CD">1.5</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class for polynomials; functionality  <a name="___sec38"></a></h2>
+
+<p>
+A polynomial can be specified by a list of its coefficients. For example,
+\( 1 - x^2 + 2x^3 \) is
+
+<p>&nbsp;<br>
+$$  1 + 0\cdot x - 1\cdot x^2 + 2\cdot x^3 $$
+<p>&nbsp;<br>
+
+
+<p>
+and the coefficients can be stored as <code>[1, 0, -1, 2]</code>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Desired application code:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; p1 = Polynomial([<span style="color: #B452CD">1</span>, -<span style="color: #B452CD">1</span>])
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> p1
+<span style="color: #B452CD">1</span> - x
+&gt;&gt;&gt; p2 = Polynomial([<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">0</span>, -<span style="color: #B452CD">6</span>, -<span style="color: #B452CD">1</span>])
+&gt;&gt;&gt; p3 = p1 + p2
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> p3.coeff
+[<span style="color: #B452CD">1</span>, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">0</span>, -<span style="color: #B452CD">6</span>, -<span style="color: #B452CD">1</span>]
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> p3
+<span style="color: #B452CD">1</span> - <span style="color: #B452CD">6</span>*x^<span style="color: #B452CD">4</span> - x^<span style="color: #B452CD">5</span>
+&gt;&gt;&gt; p2.differentiate()
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> p2
+<span style="color: #B452CD">1</span> - <span style="color: #B452CD">24</span>*x^<span style="color: #B452CD">3</span> - <span style="color: #B452CD">5</span>*x^<span style="color: #B452CD">4</span>
+</pre></div>
+<p>
+How can we make class <code>Polynomial</code>?
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class Polynomial; basic code  <a name="___sec39"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Polynomial</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, coefficients):
+        <span style="color: #658b00">self</span>.coeff = coefficients
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        s = <span style="color: #B452CD">0</span>
+        <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(<span style="color: #658b00">self</span>.coeff)):
+            s += <span style="color: #658b00">self</span>.coeff[i]*x**i
+        <span style="color: #8B008B; font-weight: bold">return</span> s
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class Polynomial; addition  <a name="___sec40"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Polynomial</span>:
+    ...
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__add__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #228B22"># return self + other</span>
+
+        <span style="color: #228B22"># start with the longest list and add in the other:</span>
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">len</span>(<span style="color: #658b00">self</span>.coeff) &gt; <span style="color: #658b00">len</span>(other.coeff):
+            coeffsum = <span style="color: #658b00">self</span>.coeff[:]  <span style="color: #228B22"># copy!</span>
+            <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(other.coeff)):
+                coeffsum[i] += other.coeff[i]
+        <span style="color: #8B008B; font-weight: bold">else</span>:
+            coeffsum = other.coeff[:] <span style="color: #228B22"># copy!</span>
+            <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(<span style="color: #658b00">self</span>.coeff)):
+                coeffsum[i] += <span style="color: #658b00">self</span>.coeff[i]
+        <span style="color: #8B008B; font-weight: bold">return</span> Polynomial(coeffsum)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class Polynomial; multiplication  <a name="___sec41"></a></h2>
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-small">
+<b>Mathematics:</b>
+<p>
+Multiplication of two general polynomials:
+
+<p>&nbsp;<br>
+$$ \left(\sum_{i=0}^Mc_ix^i\right)\left(\sum_{j=0}^N d_jx^j\right)
+= \sum_{i=0}^M \sum_{j=0}^N c_id_j x^{i+j} $$
+<p>&nbsp;<br>
+
+
+<p>
+The coeff. corresponding to power \( i+j \) is \( c_i\cdot d_j \). The
+list <code>r</code> of coefficients of the result:
+<code>r[i+j] = c[i]*d[j]</code> (<code>i</code> and <code>j</code> running from
+0 to \( M \) and \( N \), resp.)
+</div>
+
+
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Implementation:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Polynomial</span>:
+    ...
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__mul__</span>(<span style="color: #658b00">self</span>, other):
+        M = <span style="color: #658b00">len</span>(<span style="color: #658b00">self</span>.coeff) - <span style="color: #B452CD">1</span>
+        N = <span style="color: #658b00">len</span>(other.coeff) - <span style="color: #B452CD">1</span>
+        coeff = [<span style="color: #B452CD">0</span>]*(M+N+<span style="color: #B452CD">1</span>)  <span style="color: #228B22"># or zeros(M+N+1)</span>
+        <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">0</span>, M+<span style="color: #B452CD">1</span>):
+            <span style="color: #8B008B; font-weight: bold">for</span> j <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">0</span>, N+<span style="color: #B452CD">1</span>):
+                coeff[i+j] += <span style="color: #658b00">self</span>.coeff[i]*other.coeff[j]
+        <span style="color: #8B008B; font-weight: bold">return</span> Polynomial(coeff)
+</pre></div>
+
+</div>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class Polynomial; differentation  <a name="___sec42"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-small">
+<b>Mathematics:</b>
+<p>
+Rule for differentiating a general polynomial:
+
+<p>&nbsp;<br>
+$$ {d\over dx}\sum_{i=0}^n c_ix^i = \sum_{i=1}^n ic_ix^{i-1}$$
+<p>&nbsp;<br>
+
+
+<p>
+If <code>c</code> is the list of coefficients, the derivative has a list
+of coefficients, <code>dc</code>, where <code>dc[i-1] = i*c[i]</code> for
+<code>i</code> running from 1 to the largest index in <code>c</code>.
+Note that <code>dc</code> has one element less than <code>c</code>.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Implementation:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Polynomial</span>:
+    ...
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">differentiate</span>(<span style="color: #658b00">self</span>):    <span style="color: #228B22"># change self</span>
+        <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1</span>, <span style="color: #658b00">len</span>(<span style="color: #658b00">self</span>.coeff)):
+            <span style="color: #658b00">self</span>.coeff[i-<span style="color: #B452CD">1</span>] = i*<span style="color: #658b00">self</span>.coeff[i]
+        <span style="color: #8B008B; font-weight: bold">del</span> <span style="color: #658b00">self</span>.coeff[-<span style="color: #B452CD">1</span>]
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">derivative</span>(<span style="color: #658b00">self</span>):       <span style="color: #228B22"># return new polynomial</span>
+        dpdx = Polynomial(<span style="color: #658b00">self</span>.coeff[:])  <span style="color: #228B22"># copy</span>
+        dpdx.differentiate()
+        <span style="color: #8B008B; font-weight: bold">return</span> dpdx
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class Polynomial; pretty print  <a name="___sec43"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Polynomial</span>:
+    ...
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__str__</span>(<span style="color: #658b00">self</span>):
+        s = <span style="color: #CD5555">&#39;&#39;</span>
+        <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">0</span>, <span style="color: #658b00">len</span>(<span style="color: #658b00">self</span>.coeff)):
+            <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">self</span>.coeff[i] != <span style="color: #B452CD">0</span>:
+                s += <span style="color: #CD5555">&#39; + %g*x^%d&#39;</span> % (<span style="color: #658b00">self</span>.coeff[i], i)
+        <span style="color: #228B22"># fix layout (lots of special cases):</span>
+        s = s.replace(<span style="color: #CD5555">&#39;+ -&#39;</span>, <span style="color: #CD5555">&#39;- &#39;</span>)
+        s = s.replace(<span style="color: #CD5555">&#39; 1*&#39;</span>, <span style="color: #CD5555">&#39; &#39;</span>)
+        s = s.replace(<span style="color: #CD5555">&#39;x^0&#39;</span>, <span style="color: #CD5555">&#39;1&#39;</span>)
+        s = s.replace(<span style="color: #CD5555">&#39;x^1 &#39;</span>, <span style="color: #CD5555">&#39;x &#39;</span>)
+        s = s.replace(<span style="color: #CD5555">&#39;x^1&#39;</span>, <span style="color: #CD5555">&#39;x&#39;</span>)
+        <span style="color: #8B008B; font-weight: bold">if</span> s[<span style="color: #B452CD">0</span>:<span style="color: #B452CD">3</span>] == <span style="color: #CD5555">&#39; + &#39;</span>:  <span style="color: #228B22"># remove initial +</span>
+            s = s[<span style="color: #B452CD">3</span>:]
+        <span style="color: #8B008B; font-weight: bold">if</span> s[<span style="color: #B452CD">0</span>:<span style="color: #B452CD">3</span>] == <span style="color: #CD5555">&#39; - &#39;</span>:  <span style="color: #228B22"># fix spaces for initial -</span>
+            s = <span style="color: #CD5555">&#39;-&#39;</span> + s[<span style="color: #B452CD">3</span>:]
+        <span style="color: #8B008B; font-weight: bold">return</span> s
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class for polynomials; usage  <a name="___sec44"></a></h2>
+
+<p>
+Consider
+
+<p>&nbsp;<br>
+$$ p_1(x)= 1-x,\quad p_2(x)=x - 6x^4 - x^5 $$
+<p>&nbsp;<br>
+
+and their sum
+
+<p>&nbsp;<br>
+$$ p_3(x) = p_1(x) + p_2(x) = 1 -6x^4 - x^5 $$
+<p>&nbsp;<br>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; p1 = Polynomial([<span style="color: #B452CD">1</span>, -<span style="color: #B452CD">1</span>])
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> p1
+<span style="color: #B452CD">1</span> - x
+&gt;&gt;&gt; p2 = Polynomial([<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">0</span>, -<span style="color: #B452CD">6</span>, -<span style="color: #B452CD">1</span>])
+&gt;&gt;&gt; p3 = p1 + p2
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> p3.coeff
+[<span style="color: #B452CD">1</span>, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">0</span>, -<span style="color: #B452CD">6</span>, -<span style="color: #B452CD">1</span>]
+&gt;&gt;&gt; p2.differentiate()
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> p2
+<span style="color: #B452CD">1</span> - <span style="color: #B452CD">24</span>*x^<span style="color: #B452CD">3</span> - <span style="color: #B452CD">5</span>*x^<span style="color: #B452CD">4</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The programmer is in charge of defining special methods!  <a name="___sec45"></a></h2>
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+How should, e.g., <code>__add__(self, other)</code> be defined? This is completely up to the programmer, depending on what is meaningful by <code>object1 + object2</code>.
+</div>
+
+
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+An anthropologist was asking a primitive tribesman about arithmetic.  When the anthropologist asked, <em>What does two and two make?</em> the tribesman replied, <em>Five.</em>  Asked to explain, the tribesman said, <em>If I have a rope with two knots, and another rope with two knots, and I join the ropes together, then I have five knots.</em>
+</div>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Special methods for arithmetic operations  <a name="___sec46"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">c = a + b    <span style="color: #228B22">#  c = a.__add__(b)</span>
+
+c = a - b    <span style="color: #228B22">#  c = a.__sub__(b)</span>
+
+c = a*b      <span style="color: #228B22">#  c = a.__mul__(b)</span>
+
+c = a/b      <span style="color: #228B22">#  c = a.__div__(b)</span>
+
+c = a**e     <span style="color: #228B22">#  c = a.__pow__(e)</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Special methods for comparisons  <a name="___sec47"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">a == b       <span style="color: #228B22">#  a.__eq__(b)</span>
+
+a != b       <span style="color: #228B22">#  a.__ne__(b)</span>
+
+a &lt; b        <span style="color: #228B22">#  a.__lt__(b)</span>
+
+a &lt;= b       <span style="color: #228B22">#  a.__le__(b)</span>
+
+a &gt; b        <span style="color: #228B22">#  a.__gt__(b)</span>
+
+a &gt;= b       <span style="color: #228B22">#  a.__ge__(b)</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class for vectors in the plane  <a name="___sec48"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-small">
+<b>Mathematical operations for vectors in the plane:</b>
+<p>
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+(a,b) + (c,d) &= (a+c, b+d)\\
+(a,b) - (c,d) &= (a-c, b-d)\\
+(a,b)\cdot(c,d) &= ac + bd\\
+(a,b) &= (c, d)\hbox{ if }a=c\hbox{ and }b=d
+\end{align*}
+$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Desired application code:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; u = Vec2D(<span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>)
+&gt;&gt;&gt; v = Vec2D(<span style="color: #B452CD">1</span>,<span style="color: #B452CD">0</span>)
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> u + v
+(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>)
+&gt;&gt;&gt; a = u + v
+&gt;&gt;&gt; w = Vec2D(<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>)
+&gt;&gt;&gt; a == w
+<span style="color: #658b00">True</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> u - v
+(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>)
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> u*v
+<span style="color: #B452CD">0</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class for vectors; implementation  <a name="___sec49"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"> <span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Vec2D</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, x, y):
+        <span style="color: #658b00">self</span>.x = x;  <span style="color: #658b00">self</span>.y = y
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__add__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">return</span> Vec2D(<span style="color: #658b00">self</span>.x+other.x, <span style="color: #658b00">self</span>.y+other.y)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__sub__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">return</span> Vec2D(<span style="color: #658b00">self</span>.x-other.x, <span style="color: #658b00">self</span>.y-other.y)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__mul__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.x*other.x + <span style="color: #658b00">self</span>.y*other.y
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__abs__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">return</span> math.sqrt(<span style="color: #658b00">self</span>.x**<span style="color: #B452CD">2</span> + <span style="color: #658b00">self</span>.y**<span style="color: #B452CD">2</span>)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__eq__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.x == other.x <span style="color: #8B008B">and</span> <span style="color: #658b00">self</span>.y == other.y
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__str__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #CD5555">&#39;(%g, %g)&#39;</span> % (<span style="color: #658b00">self</span>.x, <span style="color: #658b00">self</span>.y)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__ne__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #8B008B">not</span> <span style="color: #658b00">self</span>.__eq__(other)  <span style="color: #228B22"># reuse __eq__</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The repr special method: <code>eval(repr(p))</code> creates <code>p</code>  <a name="___sec50"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">MyClass</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, a, b):
+        <span style="color: #658b00">self</span>.a, <span style="color: #658b00">self</span>.b = a, b
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__str__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #CD5555">&quot;&quot;&quot;Return string with pretty print.&quot;&quot;&quot;</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #CD5555">&#39;a=%s, b=%s&#39;</span> % (<span style="color: #658b00">self</span>.a, <span style="color: #658b00">self</span>.b)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__repr__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #CD5555">&quot;&quot;&quot;Return string such that eval(s) recreates self.&quot;&quot;&quot;</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #CD5555">&#39;MyClass(%s, %s)&#39;</span> % (<span style="color: #658b00">self</span>.a, <span style="color: #658b00">self</span>.b)
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; m = MyClass(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">5</span>)
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> m      <span style="color: #228B22"># calls m.__str__()</span>
+a=<span style="color: #B452CD">1</span>, b=<span style="color: #B452CD">5</span>
+&gt;&gt;&gt; <span style="color: #658b00">str</span>(m)       <span style="color: #228B22"># calls m.__str__()</span>
+<span style="color: #CD5555">&#39;a=1, b=5&#39;</span>
+&gt;&gt;&gt; s = <span style="color: #658b00">repr</span>(m)  <span style="color: #228B22"># calls m.__repr__()</span>
+&gt;&gt;&gt; s
+<span style="color: #CD5555">&#39;MyClass(1, 5)&#39;</span>
+&gt;&gt;&gt; m2 = <span style="color: #658b00">eval</span>(s) <span style="color: #228B22"># same as m2 = MyClass(1, 5)</span>
+&gt;&gt;&gt; m2           <span style="color: #228B22"># calls m.__repr__()</span>
+<span style="color: #CD5555">&#39;MyClass(1, 5)&#39;</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class Y revisited with repr print method  <a name="___sec51"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Y</span>:
+    <span style="color: #CD5555">&quot;&quot;&quot;Class for function y(t; v0, g) = v0*t - 0.5*g*t**2.&quot;&quot;&quot;</span>
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, v0):
+        <span style="color: #CD5555">&quot;&quot;&quot;Store parameters.&quot;&quot;&quot;</span>
+        <span style="color: #658b00">self</span>.v0 = v0
+        <span style="color: #658b00">self</span>.g = <span style="color: #B452CD">9.81</span>
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, t):
+        <span style="color: #CD5555">&quot;&quot;&quot;Evaluate function.&quot;&quot;&quot;</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.v0*t - <span style="color: #B452CD">0.5</span>*<span style="color: #658b00">self</span>.g*t**<span style="color: #B452CD">2</span>
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__str__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #CD5555">&quot;&quot;&quot;Pretty print.&quot;&quot;&quot;</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #CD5555">&#39;v0*t - 0.5*g*t**2; v0=%g&#39;</span> % <span style="color: #658b00">self</span>.v0
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__repr__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #CD5555">&quot;&quot;&quot;Print code for regenerating this instance.&quot;&quot;&quot;</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #CD5555">&#39;Y(%s)&#39;</span> % <span style="color: #658b00">self</span>.v0
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class for complex numbers; functionality  <a name="___sec52"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Python already has a class <code>complex</code> for complex numbers, but implementing such a class is a good pedagogical example on class programming (especially with special methods).
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Usage:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; u = Complex(<span style="color: #B452CD">2</span>,-<span style="color: #B452CD">1</span>)
+&gt;&gt;&gt; v = Complex(<span style="color: #B452CD">1</span>)     <span style="color: #228B22"># zero imaginary part</span>
+&gt;&gt;&gt; w = u + v
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> w
+(<span style="color: #B452CD">3</span>, -<span style="color: #B452CD">1</span>)
+&gt;&gt;&gt; w != u
+<span style="color: #658b00">True</span>
+&gt;&gt;&gt; u*v
+Complex(<span style="color: #B452CD">2</span>, -<span style="color: #B452CD">1</span>)
+&gt;&gt;&gt; u &lt; v
+illegal operation <span style="color: #CD5555">&quot;&lt;&quot;</span> <span style="color: #8B008B; font-weight: bold">for</span> <span style="color: #658b00">complex</span> numbers
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> w + <span style="color: #B452CD">4</span>
+(<span style="color: #B452CD">7</span>, -<span style="color: #B452CD">1</span>)
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #B452CD">4</span> - w
+(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class for complex numbers; implementation (part 1)  <a name="___sec53"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Complex</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, real, imag=<span style="color: #B452CD">0.0</span>):
+        <span style="color: #658b00">self</span>.real = real
+        <span style="color: #658b00">self</span>.imag = imag
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__add__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">return</span> Complex(<span style="color: #658b00">self</span>.real + other.real,
+                       <span style="color: #658b00">self</span>.imag + other.imag)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__sub__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">return</span> Complex(<span style="color: #658b00">self</span>.real - other.real,
+                       <span style="color: #658b00">self</span>.imag - other.imag)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__mul__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">return</span> Complex(<span style="color: #658b00">self</span>.real*other.real - <span style="color: #658b00">self</span>.imag*other.imag,
+                       <span style="color: #658b00">self</span>.imag*other.real + <span style="color: #658b00">self</span>.real*other.imag)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__div__</span>(<span style="color: #658b00">self</span>, other):
+        ar, ai, br, bi = <span style="color: #658b00">self</span>.real, <span style="color: #658b00">self</span>.imag, \
+                         other.real, other.imag <span style="color: #228B22"># short forms</span>
+        r = <span style="color: #658b00">float</span>(br**<span style="color: #B452CD">2</span> + bi**<span style="color: #B452CD">2</span>)
+        <span style="color: #8B008B; font-weight: bold">return</span> Complex((ar*br+ai*bi)/r, (ai*br-ar*bi)/r)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class for complex numbers; implementation (part 2)  <a name="___sec54"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__abs__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">return</span> sqrt(<span style="color: #658b00">self</span>.real**<span style="color: #B452CD">2</span> + <span style="color: #658b00">self</span>.imag**<span style="color: #B452CD">2</span>)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__neg__</span>(<span style="color: #658b00">self</span>):   <span style="color: #228B22"># defines -c (c is Complex)</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> Complex(-<span style="color: #658b00">self</span>.real, -<span style="color: #658b00">self</span>.imag)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__eq__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.real == other.real <span style="color: #8B008B">and</span> \
+               <span style="color: #658b00">self</span>.imag == other.imag
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__ne__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #8B008B">not</span> <span style="color: #658b00">self</span>.__eq__(other)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__str__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #CD5555">&#39;(%g, %g)&#39;</span> % (<span style="color: #658b00">self</span>.real, <span style="color: #658b00">self</span>.imag)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__repr__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #CD5555">&#39;Complex&#39;</span> + <span style="color: #658b00">str</span>(<span style="color: #658b00">self</span>)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__pow__</span>(<span style="color: #658b00">self</span>, power):
+        <span style="color: #8B008B; font-weight: bold">raise</span> <span style="color: #008b45; font-weight: bold">NotImplementedError</span>(
+          <span style="color: #CD5555">&#39;self**power is not yet impl. for Complex&#39;</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Refining the special methods for arithmetics  <a name="___sec55"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Can we add a real number to a complex number?
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; u = Complex(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>)
+&gt;&gt;&gt; w = u + <span style="color: #B452CD">4.5</span>
+...
+<span style="color: #008b45; font-weight: bold">AttributeError</span>: <span style="color: #CD5555">&#39;float&#39;</span> <span style="color: #658b00">object</span> has no attribute <span style="color: #CD5555">&#39;real&#39;</span>
+</pre></div>
+<p>
+Problem: we have assumed that <code>other</code> is <code>Complex</code>.
+Remedy:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Complex</span>:
+    ...
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__add__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">isinstance</span>(other, (<span style="color: #658b00">float</span>,<span style="color: #658b00">int</span>)):
+            other = Complex(other)
+        <span style="color: #8B008B; font-weight: bold">return</span> Complex(<span style="color: #658b00">self</span>.real + other.real,
+                       <span style="color: #658b00">self</span>.imag + other.imag)
+
+<span style="color: #228B22"># or</span>
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__add__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">isinstance</span>(other, (<span style="color: #658b00">float</span>,<span style="color: #658b00">int</span>)):
+            <span style="color: #8B008B; font-weight: bold">return</span> Complex(<span style="color: #658b00">self</span>.real + other, <span style="color: #658b00">self</span>.imag)
+        <span style="color: #8B008B; font-weight: bold">else</span>:
+            <span style="color: #8B008B; font-weight: bold">return</span> Complex(<span style="color: #658b00">self</span>.real + other.real,
+                           <span style="color: #658b00">self</span>.imag + other.imag)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Special methods for &quot;right&quot; operands; addition  <a name="___sec56"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+What if we try this:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; u = Complex(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>)
+&gt;&gt;&gt; w = <span style="color: #B452CD">4.5</span> + u
+...
+<span style="color: #008b45; font-weight: bold">TypeError</span>: unsupported operand <span style="color: #658b00">type</span>(s) <span style="color: #8B008B; font-weight: bold">for</span> +:
+    <span style="color: #CD5555">&#39;float&#39;</span> <span style="color: #8B008B">and</span> <span style="color: #CD5555">&#39;instance&#39;</span>
+</pre></div>
+<p>
+Problem: Python's <code>float</code> objects cannot add a <code>Complex</code>.
+
+<p>
+Remedy: if a class has an <code>__radd__(self, other)</code> special method, Python applies this for <code>other + self</code>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Complex</span>:
+    ...
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__radd__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #CD5555">&quot;&quot;&quot;Rturn other + self.&quot;&quot;&quot;</span>
+        <span style="color: #228B22"># other + self = self + other:</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.__add__(other)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Special methods for &quot;right&quot; operands; subtraction  <a name="___sec57"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Right operands for subtraction is a bit more complicated since \( a-b \neq b-a \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Complex</span>:
+    ...
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__sub__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">isinstance</span>(other, (<span style="color: #658b00">float</span>,<span style="color: #658b00">int</span>)):
+            other = Complex(other)
+        <span style="color: #8B008B; font-weight: bold">return</span> Complex(<span style="color: #658b00">self</span>.real - other.real,
+                       <span style="color: #658b00">self</span>.imag - other.imag)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__rsub__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">isinstance</span>(other, (<span style="color: #658b00">float</span>,<span style="color: #658b00">int</span>)):
+            other = Complex(other)
+        <span style="color: #8B008B; font-weight: bold">return</span> other.__sub__(<span style="color: #658b00">self</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>What's in a class?  <a name="___sec58"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"> <span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">A</span>:
+    <span style="color: #CD5555">&quot;&quot;&quot;A class for demo purposes.&quot;&quot;&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, value):
+        <span style="color: #658b00">self</span>.v = value
+</pre></div>
+<p>
+Any instance holds its attributes in the <code>self.__dict__</code> dictionary (Python automatically creates this dict)
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; a = A([<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>])
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> a.__dict__  <span style="color: #228B22"># all attributes</span>
+{<span style="color: #CD5555">&#39;v&#39;</span>: [<span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>]}
+&gt;&gt;&gt; <span style="color: #658b00">dir</span>(a)            <span style="color: #228B22"># what&#39;s in object a?</span>
+<span style="color: #CD5555">&#39;__doc__&#39;</span>, <span style="color: #CD5555">&#39;__init__&#39;</span>, <span style="color: #CD5555">&#39;__module__&#39;</span>, <span style="color: #CD5555">&#39;dump&#39;</span>, <span style="color: #CD5555">&#39;v&#39;</span>]
+&gt;&gt;&gt; a.__doc__         <span style="color: #228B22"># programmer&#39;s documentation of A</span>
+<span style="color: #CD5555">&#39;A class for demo purposes.&#39;</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Ooops - we can add new attributes as we want!  <a name="___sec59"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; a.myvar = <span style="color: #B452CD">10</span>            <span style="color: #228B22"># add new attribute (!)</span>
+&gt;&gt;&gt; a.__dict__
+{<span style="color: #CD5555">&#39;myvar&#39;</span>: <span style="color: #B452CD">10</span>, <span style="color: #CD5555">&#39;v&#39;</span>: [<span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>]}
+&gt;&gt;&gt; <span style="color: #658b00">dir</span>(a)
+[<span style="color: #CD5555">&#39;__doc__&#39;</span>, <span style="color: #CD5555">&#39;__init__&#39;</span>, <span style="color: #CD5555">&#39;__module__&#39;</span>, <span style="color: #CD5555">&#39;dump&#39;</span>, <span style="color: #CD5555">&#39;myvar&#39;</span>, <span style="color: #CD5555">&#39;v&#39;</span>]
+
+&gt;&gt;&gt; b = A(-<span style="color: #B452CD">1</span>)
+&gt;&gt;&gt; b.__dict__              <span style="color: #228B22"># b has no myvar attribute</span>
+{<span style="color: #CD5555">&#39;v&#39;</span>: -<span style="color: #B452CD">1</span>}
+&gt;&gt;&gt; <span style="color: #658b00">dir</span>(b)
+[<span style="color: #CD5555">&#39;__doc__&#39;</span>, <span style="color: #CD5555">&#39;__init__&#39;</span>, <span style="color: #CD5555">&#39;__module__&#39;</span>, <span style="color: #CD5555">&#39;dump&#39;</span>, <span style="color: #CD5555">&#39;v&#39;</span>]
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Summary of defining a class  <a name="___sec60"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Example on a defining a class with attributes and methods:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Gravity</span>:
+    <span style="color: #CD5555">&quot;&quot;&quot;Gravity force between two objects.&quot;&quot;&quot;</span>
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, m, M):
+        <span style="color: #658b00">self</span>.m = m
+        <span style="color: #658b00">self</span>.M = M
+        <span style="color: #658b00">self</span>.G = <span style="color: #B452CD">6.67428E-11</span> <span style="color: #228B22"># gravity constant</span>
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">force</span>(<span style="color: #658b00">self</span>, r):
+        G, m, M = <span style="color: #658b00">self</span>.G, <span style="color: #658b00">self</span>.m, <span style="color: #658b00">self</span>.M
+        <span style="color: #8B008B; font-weight: bold">return</span> G*m*M/r**<span style="color: #B452CD">2</span>
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">visualize</span>(<span style="color: #658b00">self</span>, r_start, r_stop, n=<span style="color: #B452CD">100</span>):
+        <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.std</span> <span style="color: #8B008B; font-weight: bold">import</span> plot, linspace
+        r = linspace(r_start, r_stop, n)
+        g = <span style="color: #658b00">self</span>.force(r)
+        title=<span style="color: #CD5555">&#39;m=%g, M=%g&#39;</span> % (<span style="color: #658b00">self</span>.m, <span style="color: #658b00">self</span>.M)
+        plot(r, g, title=title)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Summary of using a class  <a name="___sec61"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Example on using the class:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">mass_moon = <span style="color: #B452CD">7.35E+22</span>
+mass_earth = <span style="color: #B452CD">5.97E+24</span>
+
+<span style="color: #228B22"># make instance of class Gravity:</span>
+gravity = Gravity(mass_moon, mass_earth)
+
+r = <span style="color: #B452CD">3.85E+8</span>  <span style="color: #228B22"># earth-moon distance in meters</span>
+Fg = gravity.force(r)   <span style="color: #228B22"># call class method</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Summary of special methods  <a name="___sec62"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> <code>c = a + b</code> implies <code>c = a.__add__(b)</code></li>
+  <p><li> There are special methods for <code>a+b</code>, <code>a-b</code>, <code>a*b</code>, <code>a/b</code>, <code>a**b</code>, <code>-a</code>, <code>if a:</code>, <code>len(a)</code>, <code>str(a)</code> (pretty print), <code>repr(a)</code> (recreate <code>a</code> with <code>eval</code>), etc.</li>
+  <p><li> With special methods we can create new mathematical objects like vectors, polynomials and complex numbers and write &quot;mathematical code&quot; (arithmetics)</li>
+  <p><li> The call special method is particularly handy: <code>v = c(5)</code> means <code>v = c.__call__(5)</code></li>
+  <p><li> Functions with parameters should be represented by a class with the parameters as attributes and with a call special method for evaluating the function</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Summarizing example: interval arithmetics for uncertainty quantification in formulas  <a name="___sec63"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Uncertainty quantification:</b>
+<p>
+Consider measuring gravity \( g \) by dropping a ball from \( y=y_0 \) to \( y=0 \)
+in time \( T \):
+
+<p>&nbsp;<br>
+$$ g = 2y_0T^{-2} $$
+<p>&nbsp;<br>
+
+
+<p>
+What if \( y_0 \) and \( T \) are uncertain? Say \( y_0\in [0.99,1.01] \) m
+and \( T\in [0.43, 0.47] \) s. What is the uncertainty in \( g \)?
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The uncertainty can be computed by interval arithmetics  <a name="___sec64"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Interval arithmetics.</b>
+<p>
+Rules for computing with intervals, \( p=[a,b] \) and \( q=[c,d] \):
+
+<ul>
+ <p><li> \( p+q = [a + c, b + d] \)</li>
+ <p><li> \( p-q = [a - d, b - c] \)</li>
+ <p><li> \( pq =  [\min(ac, ad, bc, bd), \max(ac, ad, bc, bd)] \)</li>
+ <p><li> \( p/q = [\min(a/c, a/d, b/c, b/d), \max(a/c, a/d, b/c, b/d)] \)
+   (\( [c,d] \) cannot contain zero)</li>
+</ul>
+<p>
+
+Obvious idea: make a class for interval arithmetics!
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class for interval arithmetics  <a name="___sec65"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">IntervalMath</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, lower, upper):
+        <span style="color: #658b00">self</span>.lo = <span style="color: #658b00">float</span>(lower)
+        <span style="color: #658b00">self</span>.up = <span style="color: #658b00">float</span>(upper)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__add__</span>(<span style="color: #658b00">self</span>, other):
+        a, b, c, d = <span style="color: #658b00">self</span>.lo, <span style="color: #658b00">self</span>.up, other.lo, other.up
+        <span style="color: #8B008B; font-weight: bold">return</span> IntervalMath(a + c, b + d)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__sub__</span>(<span style="color: #658b00">self</span>, other):
+        a, b, c, d = <span style="color: #658b00">self</span>.lo, <span style="color: #658b00">self</span>.up, other.lo, other.up
+        <span style="color: #8B008B; font-weight: bold">return</span> IntervalMath(a - d, b - c)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__mul__</span>(<span style="color: #658b00">self</span>, other):
+        a, b, c, d = <span style="color: #658b00">self</span>.lo, <span style="color: #658b00">self</span>.up, other.lo, other.up
+        <span style="color: #8B008B; font-weight: bold">return</span> IntervalMath(<span style="color: #658b00">min</span>(a*c, a*d, b*c, b*d),
+                            <span style="color: #658b00">max</span>(a*c, a*d, b*c, b*d))
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__div__</span>(<span style="color: #658b00">self</span>, other):
+        a, b, c, d = <span style="color: #658b00">self</span>.lo, <span style="color: #658b00">self</span>.up, other.lo, other.up
+        <span style="color: #8B008B; font-weight: bold">if</span> c*d &lt;= <span style="color: #B452CD">0</span>: <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">None</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> IntervalMath(<span style="color: #658b00">min</span>(a/c, a/d, b/c, b/d),
+                            <span style="color: #658b00">max</span>(a/c, a/d, b/c, b/d))
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__str__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #CD5555">&#39;[%g, %g]&#39;</span> % (<span style="color: #658b00">self</span>.lo, <span style="color: #658b00">self</span>.up)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Demo of the new class for interval arithmetics  <a name="___sec66"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Code:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">I = IntervalMath   <span style="color: #228B22"># abbreviate</span>
+a = I(-<span style="color: #B452CD">3</span>,-<span style="color: #B452CD">2</span>)
+b = I(<span style="color: #B452CD">4</span>,<span style="color: #B452CD">5</span>)
+
+expr = <span style="color: #CD5555">&#39;a+b&#39;</span>, <span style="color: #CD5555">&#39;a-b&#39;</span>, <span style="color: #CD5555">&#39;a*b&#39;</span>, <span style="color: #CD5555">&#39;a/b&#39;</span>   <span style="color: #228B22"># test expressions</span>
+<span style="color: #8B008B; font-weight: bold">for</span> e <span style="color: #8B008B">in</span> expr:
+    <span style="color: #8B008B; font-weight: bold">print</span> e, <span style="color: #CD5555">&#39;=&#39;</span>, <span style="color: #658b00">eval</span>(e)
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Output:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">a+b = [<span style="color: #B452CD">1</span>, <span style="color: #B452CD">3</span>]
+a-b = [-<span style="color: #B452CD">8</span>, -<span style="color: #B452CD">6</span>]
+a*b = [-<span style="color: #B452CD">15</span>, -<span style="color: #B452CD">8</span>]
+a/b = [-<span style="color: #B452CD">0.75</span>, -<span style="color: #B452CD">0.4</span>]
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Shortcomings of the class  <a name="___sec67"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+This code
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">a = I(<span style="color: #B452CD">4</span>,<span style="color: #B452CD">5</span>)
+q = <span style="color: #B452CD">2</span>
+b = a*q
+</pre></div>
+<p>
+leads to
+
+<p>
+
+<!-- code=text typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">  File &quot;IntervalMath.py&quot;, line 15, in __mul__
+    a, b, c, d = self.lo, self.up, other.lo, other.up
+AttributeError: &#39;float&#39; object has no attribute &#39;lo&#39;
+</pre></div>
+<p>
+Problem: <code>IntervalMath</code> times <code>int</code> is not defined.
+
+<p>
+Remedy: (cf. class <code>Complex</code>)
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">IntervalArithmetics</span>:
+    ...
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__mul__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">isinstance</span>(other, (<span style="color: #658b00">int</span>, <span style="color: #658b00">float</span>)):      <span style="color: #228B22"># NEW</span>
+            other = IntervalMath(other, other)   <span style="color: #228B22"># NEW</span>
+        a, b, c, d = <span style="color: #658b00">self</span>.lo, <span style="color: #658b00">self</span>.up, other.lo, other.up
+        <span style="color: #8B008B; font-weight: bold">return</span> IntervalMath(<span style="color: #658b00">min</span>(a*c, a*d, b*c, b*d),
+                            <span style="color: #658b00">max</span>(a*c, a*d, b*c, b*d))
+</pre></div>
+<p>
+(with similar adjustments of other special methods)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>More shortcomings of the class  <a name="___sec68"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Try to compute <code>g = 2*y0*T**(-2)</code>:
+multiplication of <code>int</code> (2) and
+<code>IntervalMath</code> (<code>y0</code>),
+and power operation <code>T**(-2)</code> are not defined
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">IntervalArithmetics</span>:
+    ...
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__rmul__</span>(<span style="color: #658b00">self</span>, other):
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">isinstance</span>(other, (<span style="color: #658b00">int</span>, <span style="color: #658b00">float</span>)):
+            other = IntervalMath(other, other)
+        <span style="color: #8B008B; font-weight: bold">return</span> other*<span style="color: #658b00">self</span>
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__pow__</span>(<span style="color: #658b00">self</span>, exponent):
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">isinstance</span>(exponent, <span style="color: #658b00">int</span>):
+            p = <span style="color: #B452CD">1</span>
+            <span style="color: #8B008B; font-weight: bold">if</span> exponent &gt; <span style="color: #B452CD">0</span>:
+                <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(exponent):
+                    p = p*<span style="color: #658b00">self</span>
+            <span style="color: #8B008B; font-weight: bold">elif</span> exponent &lt; <span style="color: #B452CD">0</span>:
+                <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(-exponent):
+                    p = p*<span style="color: #658b00">self</span>
+                p = <span style="color: #B452CD">1</span>/p
+            <span style="color: #8B008B; font-weight: bold">else</span>:   <span style="color: #228B22"># exponent == 0</span>
+                p = IntervalMath(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>)
+            <span style="color: #8B008B; font-weight: bold">return</span> p
+        <span style="color: #8B008B; font-weight: bold">else</span>:
+            <span style="color: #8B008B; font-weight: bold">raise</span> <span style="color: #008b45; font-weight: bold">TypeError</span>(<span style="color: #CD5555">&#39;exponent must int&#39;</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Adding more functionality to the class: rounding  <a name="___sec69"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+&quot;Rounding&quot; to the midpoint value:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; a = IntervalMath(<span style="color: #B452CD">5</span>,<span style="color: #B452CD">7</span>)
+&gt;&gt;&gt; <span style="color: #658b00">float</span>(a)
+<span style="color: #B452CD">6</span>
+</pre></div>
+<p>
+is achieved by
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">IntervalArithmetics</span>:
+    ...
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__float__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">0.5</span>*(<span style="color: #658b00">self</span>.lo + <span style="color: #658b00">self</span>.up)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Adding more functionality to the class: repr and str methods  <a name="___sec70"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">IntervalArithmetics</span>:
+    ...
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__str__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #CD5555">&#39;[%g, %g]&#39;</span> % (<span style="color: #658b00">self</span>.lo, <span style="color: #658b00">self</span>.up)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__repr__</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #CD5555">&#39;%s(%g, %g)&#39;</span> % \
+          (<span style="color: #658b00">self</span>.__class__.__name__, <span style="color: #658b00">self</span>.lo, <span style="color: #658b00">self</span>.up)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Demonstrating the class: \( g=2y_0T^{-2} \)  <a name="___sec71"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; g = <span style="color: #B452CD">9.81</span>
+&gt;&gt;&gt; y_0 = I(<span style="color: #B452CD">0.99</span>, <span style="color: #B452CD">1.01</span>)
+&gt;&gt;&gt; Tm = <span style="color: #B452CD">0.45</span>                 <span style="color: #228B22"># mean T</span>
+&gt;&gt;&gt; T = I(Tm*<span style="color: #B452CD">0.95</span>, Tm*<span style="color: #B452CD">1.05</span>)   <span style="color: #228B22"># 10% uncertainty</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> T
+[<span style="color: #B452CD">0.4275</span>, <span style="color: #B452CD">0.4725</span>]
+&gt;&gt;&gt; g = <span style="color: #B452CD">2</span>*y_0*T**(-<span style="color: #B452CD">2</span>)
+&gt;&gt;&gt; g
+IntervalMath(<span style="color: #B452CD">8.86873</span>, <span style="color: #B452CD">11.053</span>)
+&gt;&gt;&gt; <span style="color: #228B22"># computing with mean values:</span>
+&gt;&gt;&gt; T = <span style="color: #658b00">float</span>(T)
+&gt;&gt;&gt; y = <span style="color: #B452CD">1</span>
+&gt;&gt;&gt; g = <span style="color: #B452CD">2</span>*y_0*T**(-<span style="color: #B452CD">2</span>)
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%.2f&#39;</span> % g
+<span style="color: #B452CD">9.88</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Demonstrating the class: volume of a sphere  <a name="___sec72"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; R = I(<span style="color: #B452CD">6</span>*<span style="color: #B452CD">0.9</span>, <span style="color: #B452CD">6</span>*<span style="color: #B452CD">1.1</span>)   <span style="color: #228B22"># 20 % error</span>
+&gt;&gt;&gt; V = (<span style="color: #B452CD">4.</span>/<span style="color: #B452CD">3</span>)*pi*R**<span style="color: #B452CD">3</span>
+&gt;&gt;&gt; V
+IntervalMath(<span style="color: #B452CD">659.584</span>, <span style="color: #B452CD">1204.26</span>)
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> V
+[<span style="color: #B452CD">659.584</span>, <span style="color: #B452CD">1204.26</span>]
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #658b00">float</span>(V)
+<span style="color: #B452CD">931.922044761</span>
+&gt;&gt;&gt; <span style="color: #228B22"># compute with mean values:</span>
+&gt;&gt;&gt; R = <span style="color: #658b00">float</span>(R)
+&gt;&gt;&gt; V = (<span style="color: #B452CD">4.</span>/<span style="color: #B452CD">3</span>)*pi*R**<span style="color: #B452CD">3</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> V
+<span style="color: #B452CD">904.778684234</span>
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+20% uncertainty in \( R \) gives almost 60% uncertainty in \( V \)
+</div>
+
+
+
+</section>
+
+
+
+</div> <!-- class="slides" -->
+</div> <!-- class="reveal" -->
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width: 1170,  // original: 960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
+});
+</script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
+
+
+</body>
+</html>
