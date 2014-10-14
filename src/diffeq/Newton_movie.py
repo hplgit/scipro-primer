@@ -52,8 +52,6 @@ def illustrate_Newton(info, f, df, xmin, xmax):
              hardcopy='tmp_%04d.pdf' % frame_counter,
              title='approximate root = %g; f(%g) = %g' % (root, root, value))
         frame_counter += 1
-    movie('tmp_*.pdf', encoder='convert', fps=2,
-          output_file='tmpmovie.gif')
 
 try:
     f_formula = sys.argv[1]
@@ -67,7 +65,8 @@ except IndexError:
 
 # Clean up all plot files
 import glob, os
-for filename in glob.glob('tmp_*.pdf'): os.remove(filename)
+for filename in glob.glob('tmp_*.pdf'):
+    os.remove(filename)
 
 f = StringFunction(f_formula)
 f.vectorize(globals())
@@ -81,4 +80,3 @@ else:
     df.vectorize(globals())
 x, info = Newton(f, x0, df, store=True)
 illustrate_Newton(info, f, df, xmin, xmax)
-
