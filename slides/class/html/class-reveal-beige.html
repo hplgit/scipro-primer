@@ -139,7 +139,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>&nbsp;<br>
-<center><h4>Oct 13, 2014</h4></center> <!-- date -->
+<center><h4>Oct 14, 2014</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -1100,7 +1100,43 @@ A circle <span style="color: #8B008B; font-weight: bold">with</span> radius <spa
 
 <section>
 
-<h1 style="text-align: center;">Special methods  <a name="___sec25"></a></h1>
+<h2>Test function for class Circle  <a name="___sec25"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_Circle</span>():
+    R = <span style="color: #B452CD">2.5</span>
+    c = Circle(<span style="color: #B452CD">7.4</span>, -<span style="color: #B452CD">8.1</span>, R)
+
+    <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> pi
+    exact_area = pi*R**<span style="color: #B452CD">2</span>
+    computed_area = c.area()
+    diff = <span style="color: #658b00">abs</span>(exact_area - computed_area)
+    tol = <span style="color: #B452CD">1E-14</span>
+    <span style="color: #8B008B; font-weight: bold">assert</span> diff &lt; tol, <span style="color: #CD5555">&#39;bug in Circle.area, diff=%s&#39;</span> % diff
+
+    exact_circumference = <span style="color: #B452CD">2</span>*pi*R
+    computed_circumference = c.circumference()
+    diff = <span style="color: #658b00">abs</span>(exact_circumference - computed_circumference)
+    <span style="color: #8B008B; font-weight: bold">assert</span> diff &lt; tol, <span style="color: #CD5555">&#39;bug in Circle.circumference, diff=%s&#39;</span> % diff
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1 style="text-align: center;">Special methods  <a name="___sec26"></a></h1>
 
 <p>
 
@@ -1141,7 +1177,7 @@ p6 = p1**<span style="color: #B452CD">7</span> + <span style="color: #B452CD">4<
 
 <section>
 
-<h2><em>Special methods</em> allow nice syntax and are recognized by double leading and trailing underscores  <a name="___sec26"></a></h2>
+<h2><em>Special methods</em> allow nice syntax and are recognized by double leading and trailing underscores  <a name="___sec27"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1178,7 +1214,7 @@ We shall learn about many more such <em>special methods</em>
 
 <section>
 
-<h2>Example on a call special method  <a name="___sec27"></a></h2>
+<h2>Example on a call special method  <a name="___sec28"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1223,7 +1259,7 @@ Note:
 
 <section>
 
-<h2>Representing a function by a class revisited  <a name="___sec28"></a></h2>
+<h2>Representing a function by a class revisited  <a name="___sec29"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1268,7 +1304,7 @@ are attributes and <code>__call__(x)</code> computes \( f(x) \)
 
 <section>
 
-<h2>Can we automatically differentiate a function?  <a name="___sec29"></a></h2>
+<h2>Can we automatically differentiate a function?  <a name="___sec30"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1309,7 +1345,7 @@ so that <code>dfdx</code> behaves as a function that computes the derivative of 
 
 <section>
 
-<h2>Automagic differentiation; solution  <a name="___sec30"></a></h2>
+<h2>Automagic differentiation; solution  <a name="___sec31"></a></h2>
 
 <p>
 
@@ -1356,7 +1392,7 @@ for a small (yet moderate) \( h \), say \( h=10^{-5} \)
 
 <section>
 
-<h2>Automagic differentiation; demo  <a name="___sec31"></a></h2>
+<h2>Automagic differentiation; demo  <a name="___sec32"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1391,7 +1427,7 @@ for a small (yet moderate) \( h \), say \( h=10^{-5} \)
 
 <section>
 
-<h2>Automagic differentiation; useful in Newton's method  <a name="___sec32"></a></h2>
+<h2>Automagic differentiation; useful in Newton's method  <a name="___sec33"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1431,7 +1467,109 @@ Suppose \( f'(x) \) requires boring/lengthy derivation, then class <code>Derivat
 
 <section>
 
-<h2>Automagic differentiation detour; sympy solution (exact differentiation via symbolic expressions)  <a name="___sec33"></a></h2>
+<h2>Automagic differentiation; test function  <a name="___sec34"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> How can we test class <code>Derivative</code>?</li>
+  <p><li> Method 1: compute \( (f(x+h)-f(x))/h \) by hand for some \( f \) and \( h \)</li>
+  <p><li> Method 2: utilize that linear functions are differentiated
+    exactly by our numerical formula, regardless of \( h \)</li>
+</ul>
+<p>
+
+Test function based on method 2:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_Derivative</span>():
+    <span style="color: #228B22"># The formula is exact for linear functions, regardless of h</span>
+    f = <span style="color: #8B008B; font-weight: bold">lambda</span> x: a*x + b
+    a = <span style="color: #B452CD">3.5</span>; b = <span style="color: #B452CD">8</span>
+    dfdx = Derivative(f, h=<span style="color: #B452CD">0.5</span>)
+    diff = <span style="color: #658b00">abs</span>(dfdx(<span style="color: #B452CD">4.5</span>) - a)
+    <span style="color: #8B008B; font-weight: bold">assert</span> diff &lt; <span style="color: #B452CD">1E-14</span>, <span style="color: #CD5555">&#39;bug in class Derivative, diff=%s&#39;</span> % diff
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Automagic differentiation; explanation of the test function  <a name="___sec35"></a></h2>
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Use of lambda functions:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">f = <span style="color: #8B008B; font-weight: bold">lambda</span> x: a*x + b
+</pre></div>
+<p>
+is equivalent to
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> a*x + b
+</pre></div>
+<p>
+Lambda functions are convenient for producing quick, short code
+</div>
+
+
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Use of closure:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">f = <span style="color: #8B008B; font-weight: bold">lambda</span> x: a*x + b
+a = <span style="color: #B452CD">3.5</span>; b = <span style="color: #B452CD">8</span>
+dfdx = Derivative(f, h=<span style="color: #B452CD">0.5</span>)
+dfdx(<span style="color: #B452CD">4.5</span>)
+</pre></div>
+<p>
+Looks straightforward...but
+
+<ul>
+ <p><li class="fragment"> How can <code>Derivative.__call__</code> know <code>a</code> and <code>b</code> when it calls
+   our <code>f(x)</code> function?</li>
+ <p><li class="fragment"> Local functions inside functions remember (have access to)
+   <em>all</em> local variables in the function they are defined (!)</li>
+ <p><li class="fragment"> <code>f</code> can access <code>a</code> and <code>b</code> in <code>test_Derivative</code> even when
+   called from <code>__call__</code> in class `Derivative</li>
+ <p><li class="fragment"> <code>f</code> is known as a <em>closure</em> in computer science</li>
+</ul>
+</div>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Automagic differentiation detour; sympy solution (exact differentiation via symbolic expressions)  <a name="___sec36"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1467,7 +1605,7 @@ SymPy can perform exact, symbolic differentiation:
 
 <section>
 
-<h2>Automagic differentiation detour; class based on sympy  <a name="___sec34"></a></h2>
+<h2>Automagic differentiation detour; class based on sympy  <a name="___sec37"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1522,7 +1660,7 @@ SymPy can perform exact, symbolic differentiation:
 
 <section>
 
-<h2>Automagic integration; problem setting  <a name="___sec35"></a></h2>
+<h2>Automagic integration; problem setting  <a name="___sec38"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1570,7 +1708,7 @@ x = <span style="color: #B452CD">1.2</span>
 
 <section>
 
-<h2>Automagic integration; implementation  <a name="___sec36"></a></h2>
+<h2>Automagic integration; implementation  <a name="___sec39"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1613,7 +1751,147 @@ Class <code>Integral</code> holds <code>f</code>, <code>a</code> and <code>n</co
 
 <section>
 
-<h2>Special method for printing  <a name="___sec37"></a></h2>
+<h2>Automagic differentiation; test function  <a name="___sec40"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> How can we test class <code>Derivative</code>?</li>
+  <p><li> Method 1: compute \( (f(x+h)-f(x))/h \) by hand for some \( f \) and \( h \)</li>
+  <p><li> Method 2: utilize that linear functions are differentiated
+    exactly by our numerical formula, regardless of \( h \)</li>
+</ul>
+<p>
+
+Test function based on method 2:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_Derivative</span>():
+    <span style="color: #228B22"># The formula is exact for linear functions, regardless of h</span>
+    f = <span style="color: #8B008B; font-weight: bold">lambda</span> x: a*x + b
+    a = <span style="color: #B452CD">3.5</span>; b = <span style="color: #B452CD">8</span>
+    dfdx = Derivative(f, h=<span style="color: #B452CD">0.5</span>)
+    diff = <span style="color: #658b00">abs</span>(dfdx(<span style="color: #B452CD">4.5</span>) - a)
+    <span style="color: #8B008B; font-weight: bold">assert</span> diff &lt; <span style="color: #B452CD">1E-14</span>, <span style="color: #CD5555">&#39;bug in class Derivative, diff=%s&#39;</span> % diff
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Automagic differentiation; explanation of the test function  <a name="___sec41"></a></h2>
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Use of lambda functions:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">f = <span style="color: #8B008B; font-weight: bold">lambda</span> x: a*x + b
+</pre></div>
+<p>
+is equivalent to
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> a*x + b
+</pre></div>
+<p>
+Lambda functions are convenient for producing quick, short code
+</div>
+
+
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Use of closure:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">f = <span style="color: #8B008B; font-weight: bold">lambda</span> x: a*x + b
+a = <span style="color: #B452CD">3.5</span>; b = <span style="color: #B452CD">8</span>
+dfdx = Derivative(f, h=<span style="color: #B452CD">0.5</span>)
+dfdx(<span style="color: #B452CD">4.5</span>)
+</pre></div>
+<p>
+Looks straightforward...but
+
+<ul>
+ <p><li class="fragment"> How can <code>Derivative.__call__</code> know <code>a</code> and <code>b</code> when it calls
+   our <code>f(x)</code> function?</li>
+ <p><li class="fragment"> Local functions inside functions remember (have access to)
+   <em>all</em> local variables in the function they are defined (!)</li>
+ <p><li class="fragment"> <code>f</code> can access <code>a</code> and <code>b</code> in <code>test_Derivative</code> even when
+   called from <code>__call__</code> in class `Derivative</li>
+ <p><li class="fragment"> <code>f</code> is known as a <em>closure</em> in computer science</li>
+</ul>
+</div>
+
+
+
+</section>
+
+
+<section>
+
+<h2>Automagic integration; test function  <a name="___sec42"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <p><li> Method 1: compute with the Trapezoidal rule by hand</li>
+ <p><li> Method 2: utilize the fact that the Trapezoidal rule
+   integrates linear functions exactly</li>
+</ul>
+<p>
+
+Test function based on method 2:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_Integral</span>():
+    <span style="color: #228B22"># The Trapezoidal rule is exact for linear functions</span>
+    f = <span style="color: #8B008B; font-weight: bold">lambda</span> x: <span style="color: #B452CD">2</span>*x + <span style="color: #B452CD">5</span>
+    F = <span style="color: #8B008B; font-weight: bold">lambda</span> x: x**<span style="color: #B452CD">2</span> + <span style="color: #B452CD">5</span>*x  <span style="color: #228B22"># integral of f</span>
+    a = <span style="color: #B452CD">2</span>
+    I = Integral(f, a, n=<span style="color: #B452CD">4</span>)
+    x = <span style="color: #B452CD">6</span>
+    diff = <span style="color: #658b00">abs</span>(I(x) - (F(x) - F(a)))
+    <span style="color: #8B008B; font-weight: bold">assert</span> diff &lt; <span style="color: #B452CD">1E-15</span>, <span style="color: #CD5555">&#39;bug in class Integral, diff=%s&#39;</span> % diff
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Special method for printing  <a name="___sec43"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1664,7 +1942,7 @@ v0*t - <span style="color: #B452CD">0.5</span>*g*t**<span style="color: #B452CD"
 
 <section>
 
-<h2>Class for polynomials; functionality  <a name="___sec38"></a></h2>
+<h2>Class for polynomials; functionality  <a name="___sec44"></a></h2>
 
 <p>
 A polynomial can be specified by a list of its coefficients. For example,
@@ -1710,7 +1988,7 @@ How can we make class <code>Polynomial</code>?
 
 <section>
 
-<h2>Class Polynomial; basic code  <a name="___sec39"></a></h2>
+<h2>Class Polynomial; basic code  <a name="___sec45"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1740,7 +2018,7 @@ How can we make class <code>Polynomial</code>?
 
 <section>
 
-<h2>Class Polynomial; addition  <a name="___sec40"></a></h2>
+<h2>Class Polynomial; addition  <a name="___sec46"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1777,7 +2055,7 @@ How can we make class <code>Polynomial</code>?
 
 <section>
 
-<h2>Class Polynomial; multiplication  <a name="___sec41"></a></h2>
+<h2>Class Polynomial; multiplication  <a name="___sec47"></a></h2>
 
 <p>
 
@@ -1832,7 +2110,7 @@ list <code>r</code> of coefficients of the result:
 
 <section>
 
-<h2>Class Polynomial; differentation  <a name="___sec42"></a></h2>
+<h2>Class Polynomial; differentation  <a name="___sec48"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-small">
@@ -1883,7 +2161,7 @@ Note that <code>dc</code> has one element less than <code>c</code>.
 
 <section>
 
-<h2>Class Polynomial; pretty print  <a name="___sec43"></a></h2>
+<h2>Class Polynomial; pretty print  <a name="___sec49"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1922,7 +2200,7 @@ Note that <code>dc</code> has one element less than <code>c</code>.
 
 <section>
 
-<h2>Class for polynomials; usage  <a name="___sec44"></a></h2>
+<h2>Class for polynomials; usage  <a name="___sec50"></a></h2>
 
 <p>
 Consider
@@ -1967,7 +2245,7 @@ $$ p_3(x) = p_1(x) + p_2(x) = 1 -6x^4 - x^5 $$
 
 <section>
 
-<h2>The programmer is in charge of defining special methods!  <a name="___sec45"></a></h2>
+<h2>The programmer is in charge of defining special methods!  <a name="___sec51"></a></h2>
 
 <p>
 
@@ -1996,7 +2274,7 @@ An anthropologist was asking a primitive tribesman about arithmetic.  When the a
 
 <section>
 
-<h2>Special methods for arithmetic operations  <a name="___sec46"></a></h2>
+<h2>Special methods for arithmetic operations  <a name="___sec52"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2026,7 +2304,7 @@ c = a**e     <span style="color: #228B22">#  c = a.__pow__(e)</span>
 
 <section>
 
-<h2>Special methods for comparisons  <a name="___sec47"></a></h2>
+<h2>Special methods for comparisons  <a name="___sec53"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2058,7 +2336,7 @@ a &gt;= b       <span style="color: #228B22">#  a.__ge__(b)</span>
 
 <section>
 
-<h2>Class for vectors in the plane  <a name="___sec48"></a></h2>
+<h2>Class for vectors in the plane  <a name="___sec54"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-small">
@@ -2109,7 +2387,7 @@ $$
 
 <section>
 
-<h2>Class for vectors; implementation  <a name="___sec49"></a></h2>
+<h2>Class for vectors; implementation  <a name="___sec55"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2154,7 +2432,7 @@ $$
 
 <section>
 
-<h2>The repr special method: <code>eval(repr(p))</code> creates <code>p</code>  <a name="___sec50"></a></h2>
+<h2>The repr special method: <code>eval(repr(p))</code> creates <code>p</code>  <a name="___sec56"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2209,7 +2487,7 @@ a=<span style="color: #B452CD">1</span>, b=<span style="color: #B452CD">5</span>
 
 <section>
 
-<h2>Class Y revisited with repr print method  <a name="___sec51"></a></h2>
+<h2>Class Y revisited with repr print method  <a name="___sec57"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2249,7 +2527,7 @@ a=<span style="color: #B452CD">1</span>, b=<span style="color: #B452CD">5</span>
 
 <section>
 
-<h2>Class for complex numbers; functionality  <a name="___sec52"></a></h2>
+<h2>Class for complex numbers; functionality  <a name="___sec58"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2293,7 +2571,7 @@ illegal operation <span style="color: #CD5555">&quot;&lt;&quot;</span> <span sty
 
 <section>
 
-<h2>Class for complex numbers; implementation (part 1)  <a name="___sec53"></a></h2>
+<h2>Class for complex numbers; implementation (part 1)  <a name="___sec59"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2336,7 +2614,7 @@ illegal operation <span style="color: #CD5555">&quot;&lt;&quot;</span> <span sty
 
 <section>
 
-<h2>Class for complex numbers; implementation (part 2)  <a name="___sec54"></a></h2>
+<h2>Class for complex numbers; implementation (part 2)  <a name="___sec60"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2379,7 +2657,7 @@ illegal operation <span style="color: #CD5555">&quot;&lt;&quot;</span> <span sty
 
 <section>
 
-<h2>Refining the special methods for arithmetics  <a name="___sec55"></a></h2>
+<h2>Refining the special methods for arithmetics  <a name="___sec61"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2430,7 +2708,7 @@ Remedy:
 
 <section>
 
-<h2>Special methods for &quot;right&quot; operands; addition  <a name="___sec56"></a></h2>
+<h2>Special methods for &quot;right&quot; operands; addition  <a name="___sec62"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2474,7 +2752,7 @@ Remedy: if a class has an <code>__radd__(self, other)</code> special method, Pyt
 
 <section>
 
-<h2>Special methods for &quot;right&quot; operands; subtraction  <a name="___sec57"></a></h2>
+<h2>Special methods for &quot;right&quot; operands; subtraction  <a name="___sec63"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2509,7 +2787,7 @@ Right operands for subtraction is a bit more complicated since \( a-b \neq b-a \
 
 <section>
 
-<h2>What's in a class?  <a name="___sec58"></a></h2>
+<h2>What's in a class?  <a name="___sec64"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2548,7 +2826,7 @@ Any instance holds its attributes in the <code>self.__dict__</code> dictionary (
 
 <section>
 
-<h2>Ooops - we can add new attributes as we want!  <a name="___sec59"></a></h2>
+<h2>Ooops - we can add new attributes as we want!  <a name="___sec65"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2580,7 +2858,7 @@ Any instance holds its attributes in the <code>self.__dict__</code> dictionary (
 
 <section>
 
-<h2>Summary of defining a class  <a name="___sec60"></a></h2>
+<h2>Summary of defining a class  <a name="___sec66"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2618,7 +2896,7 @@ Any instance holds its attributes in the <code>self.__dict__</code> dictionary (
 
 <section>
 
-<h2>Summary of using a class  <a name="___sec61"></a></h2>
+<h2>Summary of using a class  <a name="___sec67"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2647,7 +2925,7 @@ Fg = gravity.force(r)   <span style="color: #228B22"># call class method</span>
 
 <section>
 
-<h2>Summary of special methods  <a name="___sec62"></a></h2>
+<h2>Summary of special methods  <a name="___sec68"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2671,7 +2949,7 @@ Fg = gravity.force(r)   <span style="color: #228B22"># call class method</span>
 
 <section>
 
-<h2>Summarizing example: interval arithmetics for uncertainty quantification in formulas  <a name="___sec63"></a></h2>
+<h2>Summarizing example: interval arithmetics for uncertainty quantification in formulas  <a name="___sec69"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2698,7 +2976,7 @@ and \( T\in [0.43, 0.47] \) s. What is the uncertainty in \( g \)?
 
 <section>
 
-<h2>The uncertainty can be computed by interval arithmetics  <a name="___sec64"></a></h2>
+<h2>The uncertainty can be computed by interval arithmetics  <a name="___sec70"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2726,7 +3004,7 @@ Obvious idea: make a class for interval arithmetics!
 
 <section>
 
-<h2>Class for interval arithmetics  <a name="___sec65"></a></h2>
+<h2>Class for interval arithmetics  <a name="___sec71"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2772,7 +3050,7 @@ Obvious idea: make a class for interval arithmetics!
 
 <section>
 
-<h2>Demo of the new class for interval arithmetics  <a name="___sec66"></a></h2>
+<h2>Demo of the new class for interval arithmetics  <a name="___sec72"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2816,7 +3094,7 @@ a/b = [-<span style="color: #B452CD">0.75</span>, -<span style="color: #B452CD">
 
 <section>
 
-<h2>Shortcomings of the class  <a name="___sec67"></a></h2>
+<h2>Shortcomings of the class  <a name="___sec73"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2871,7 +3149,7 @@ Remedy: (cf. class <code>Complex</code>)
 
 <section>
 
-<h2>More shortcomings of the class  <a name="___sec68"></a></h2>
+<h2>More shortcomings of the class  <a name="___sec74"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2925,7 +3203,7 @@ and power operation <code>T**(-2)</code> are not defined
 
 <section>
 
-<h2>Adding more functionality to the class: rounding  <a name="___sec69"></a></h2>
+<h2>Adding more functionality to the class: rounding  <a name="___sec75"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2962,7 +3240,7 @@ is achieved by
 
 <section>
 
-<h2>Adding more functionality to the class: repr and str methods  <a name="___sec70"></a></h2>
+<h2>Adding more functionality to the class: repr and str methods  <a name="___sec76"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2991,7 +3269,7 @@ is achieved by
 
 <section>
 
-<h2>Demonstrating the class: \( g=2y_0T^{-2} \)  <a name="___sec71"></a></h2>
+<h2>Demonstrating the class: \( g=2y_0T^{-2} \)  <a name="___sec77"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -3027,7 +3305,7 @@ IntervalMath(<span style="color: #B452CD">8.86873</span>, <span style="color: #B
 
 <section>
 
-<h2>Demonstrating the class: volume of a sphere  <a name="___sec72"></a></h2>
+<h2>Demonstrating the class: volume of a sphere  <a name="___sec78"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">

@@ -146,12 +146,17 @@ class Circle:
 def test_Circle():
     R = 2.5
     c = Circle(7.4, -8.1, R)
+
     from math import pi
-    area = pi*R**2; circumference = 2*pi*R
-    diff = abs(c.area() - area)
+    exact_area = pi*R**2
+    computed_area = c.area()
+    diff = abs(exact_area - computed_area)
     tol = 1E-14
     assert diff < tol, 'bug in Circle.area, diff=%s' % diff
-    diff = abs(c.circumference() - circumference)
+
+    exact_circumference = 2*pi*R
+    computed_circumference = c.circumference()
+    diff = abs(exact_circumference - computed_circumference)
     assert diff < tol, 'bug in Circle.circumference, diff=%s' % diff
 
 class Derivative:
