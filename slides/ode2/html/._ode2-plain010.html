@@ -1,0 +1,318 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="App.E: Programming of differential equations">
+
+<title>App.E: Programming of differential equations</title>
+
+
+<style type="text/css">
+/* bloodish style */
+
+body {
+  font-family: Helvetica, Verdana, Arial, Sans-serif;
+  color: #404040;
+  background: #ffffff;
+}
+h1 { font-size: 1.8em;  color: #8A0808; }
+h2 { font-size: 1.6em;  color: #8A0808; }
+h3 { font-size: 1.4em;  color: #8A0808; }
+h4 { color: #8A0808; }
+a { color: #8A0808; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(u' How to solve any ordinary scalar differential equation ',
+               1,
+               None,
+               '___sec0'),
+              (u' Examples on scalar differential equations (ODEs) ',
+               2,
+               None,
+               '___sec1'),
+              (u" We shall write an ODE in a generic form: $u'=f(u,t)$ ",
+               2,
+               None,
+               '___sec2'),
+              (u' What is the $f(u,t)$? ', 2, None, '___sec3'),
+              (u' How to solve a general ODE numerically by the Forward Euler method ',
+               2,
+               None,
+               '___sec4'),
+              (u' Illustration of the forward finite difference ',
+               2,
+               None,
+               '___sec5'),
+              (u" Let's apply the method! ", 2, None, '___sec6'),
+              (u' We continue solution by hand ', 2, None, '___sec7'),
+              (u" What about the general case $u'=f(u,t)$? ",
+               2,
+               None,
+               '___sec8'),
+              (u" A special program for the special ODE $u'=u$, $u(0)=U_0$ ",
+               2,
+               None,
+               '___sec9'),
+              (u' The solution if we plot $u$ against $t$ ',
+               2,
+               None,
+               '___sec10'),
+              (u" The algorithm for the general ODE $u'=f(u,t)$ ",
+               2,
+               None,
+               '___sec11'),
+              (u" Implementation of the general algorithm for $u'=f(u,t)$ ",
+               2,
+               None,
+               '___sec12'),
+              (u' Example on using the function ', 2, None, '___sec13'),
+              (u' Now you can solve any ODE! ', 2, None, '___sec14'),
+              (u' A class for solving ODEs ', 2, None, '___sec15'),
+              (u' The code for a class for solving ODEs (part 1) ',
+               2,
+               None,
+               '___sec16'),
+              (u' The code for a class for solving ODEs (part 2) ',
+               2,
+               None,
+               '___sec17'),
+              (u' Alternative class code solving ODEs (part 1) ',
+               2,
+               None,
+               '___sec18'),
+              (u' Alternative class code for solving ODEs (part 2) ',
+               2,
+               None,
+               '___sec19'),
+              (u' Verifying the class implementation; mathematics ',
+               2,
+               None,
+               '___sec20'),
+              (u' Verifying the class implementation; implementation ',
+               2,
+               None,
+               '___sec21'),
+              (u' Using a class to hold the right-hand side $f(u,t)$ ',
+               2,
+               None,
+               '___sec22'),
+              (u' Figure of the solution ', 2, None, '___sec23'),
+              (u' Numerical methods for ordinary differential equations ',
+               2,
+               None,
+               '___sec24'),
+              (u' A superclass for ODE methods ', 2, None, '___sec25'),
+              (u' The superclass code ', 2, None, '___sec26'),
+              (u' Implementation of the Forward Euler method ',
+               2,
+               None,
+               '___sec27'),
+              (u' The implementation of a Runge-Kutta method ',
+               2,
+               None,
+               '___sec28'),
+              (u' The user should be able to check intermediate solutions and terminate the time stepping ',
+               2,
+               None,
+               '___sec29'),
+              (u' Systems of differential equations (vector ODE) ',
+               1,
+               None,
+               '___sec30'),
+              (u' Example on a system of ODEs (vector ODE) ',
+               2,
+               None,
+               '___sec31'),
+              (u' The ODE system that is the final project in the course ',
+               2,
+               None,
+               '___sec32'),
+              (u' Another example on a system of ODEs (vector ODE) ',
+               2,
+               None,
+               '___sec33'),
+              (u' Making a flexible toolbox for solving ODEs ',
+               2,
+               None,
+               '___sec34'),
+              (u' Vector notation for systems of ODEs: unknowns and equations ',
+               2,
+               None,
+               '___sec35'),
+              (u' Vector notation for systems of ODEs: vectors ',
+               2,
+               None,
+               '___sec36'),
+              (u' How to make class ODESolver work for systems of ODEs ',
+               2,
+               None,
+               '___sec37'),
+              (u' The adjusted superclass code (part 1) ',
+               2,
+               None,
+               '___sec38'),
+              (u' The superclass code (part 2) ', 2, None, '___sec39'),
+              (u' Example on how to use the general class hierarchy ',
+               2,
+               None,
+               '___sec40'),
+              (u' Alternative implementation of the $f$ function via a class ',
+               2,
+               None,
+               '___sec41'),
+              (u' Throwing a ball; ODE model ', 2, None, '___sec42'),
+              (u' Throwing a ball; code ', 2, None, '___sec43'),
+              (u' Throwing a ball; results ', 2, None, '___sec44'),
+              (u' Logistic growth model; ODE and code overview ',
+               2,
+               None,
+               '___sec45'),
+              (u' Logistic growth model; class Problem ($f$) ',
+               2,
+               None,
+               '___sec46'),
+              (u' Logistic growth model; class Solver ', 2, None, '___sec47'),
+              (u' Logistic growth model; results ', 2, None, '___sec48')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<a name="part0010"></a>
+<p>
+
+</p>
+
+<p>
+<!-- !split -->
+
+<h2>A special program for the special ODE \( u'=u \), \( u(0)=U_0 \)  <a name="___sec9"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Algorithm:</b>
+<p>
+Given \( \Delta t \) (<code>dt</code>) and \( n \)
+
+<ul>
+ <li> Create arrays <code>t</code> and <code>u</code> of length \( n+1 \)</li>
+ <li> Create array <code>u</code> to hold \( u_k \) and</li>
+ <li> Set initial condition: <code>u[0]</code> = \( U_0 \), <code>t[0]=0</code></li>
+ <li> For \( k=0,1,2,\ldots,n-1 \):</li>
+
+<ul>
+  <li> <code>t[k+1] = t[k] + dt</code></li>
+  <li> <code>u[k+1] = (1 + dt)*u[k]</code></li>
+</ul>
+
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Program:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
+
+dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
+U0 <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+T <span style="color: #666666">=</span> <span style="color: #666666">4</span>
+n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(T<span style="color: #666666">/</span>dt)
+
+t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n<span style="color: #666666">+1</span>)
+u <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n<span style="color: #666666">+1</span>)
+
+t[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> U0
+<span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n):
+    t[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> t[k] <span style="color: #666666">+</span> dt
+    u[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">+</span> dt)<span style="color: #666666">*</span>u[k]
+
+<span style="color: #408080; font-style: italic"># plot u against t</span>
+</pre></div>
+
+</div>
+
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._ode2-plain009.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._ode2-plain011.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
