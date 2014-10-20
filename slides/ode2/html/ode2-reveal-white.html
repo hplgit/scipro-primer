@@ -1,0 +1,2251 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="App.E: Programming of differential equations">
+
+<title>App.E: Programming of differential equations</title>
+
+
+
+
+
+
+
+<!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<!--
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+-->
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .reveal .alert-text-small   { font-size: 80%;  }
+    .reveal .alert-text-large   { font-size: 130%; }
+    .reveal .alert-text-normal  { font-size: 90%;  }
+    .reveal .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+             -webkit-border-radius: 14px; -moz-border-radius: 14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .reveal .alert-block {padding-top:14px; padding-bottom:14px}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     /*.reveal .alert li {margin-top: 1em}*/
+     .reveal .alert-block p+p {margin-top:5px}
+     /*.reveal .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="reveal">
+
+<!-- Any section element inside the <div class="slides"> container
+     is displayed as a slide -->
+
+<div class="slides">
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+
+
+
+<section>
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<center><h1 style="text-align: center;">App.E: Programming of differential equations</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>&nbsp;<br>
+<!-- institution(s) -->
+
+<center>[1] <b>Simula Research Laboratory</b></center>
+<center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
+<p>&nbsp;<br>
+<center><h4>Oct 20, 2014</h4></center> <!-- date -->
+<p>
+
+</section>
+
+
+<section>
+
+<h1 style="text-align: center;">How to solve any ordinary scalar differential equation  <a name="___sec0"></a></h1>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<p>&nbsp;<br>
+$$
+\begin{align*}
+{\color{red}u'(t)} &= \alpha {\color{red}u(t)}(1 - R^{-1}{\color{red}u(t)})\\
+{\color{red}u(0)} &= U_0
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+</td>
+<td class="padding">
+<center><p><img src="fig-ode2/logistic_func_mpl.png" align="bottom" width=400></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Examples on scalar differential equations (ODEs)  <a name="___sec1"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Terminology:</b>
+<p>
+
+<ul>
+ <p><li> <em>Scalar ODE</em>: a single ODE, one unknown function</li>
+ <p><li> <em>Vector ODE</em> or <em>systems of ODEs</em>: several ODEs, several unknown functions</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Examples:</b>
+<p>
+<p>&nbsp;<br>
+$$
+\begin{align*}
+u'&=\alpha u\quad\hbox{exponential growth}\\
+u'&=\alpha u\left(  1-\frac{u}{R}\right)\quad\hbox{logistic growth}\\
+u'&=-b|u|u + g\quad\hbox{body in fluid}
+\end{align*}
+$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We shall write an ODE in a generic form: \( u'=f(u,t) \)  <a name="___sec2"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <p><li> Numerical solution methods do not depend on how the ODE looks like</li>
+ <p><li> Method and software aim at <em>any</em> ODE</li>
+ <p><li> Therefore we need an abstract notation for an arbitrary ODE</li>
+</ul>
+<p>
+
+<p>&nbsp;<br>
+$$ u^{\prime}(t) = f(u(t), t)$$
+<p>&nbsp;<br>
+
+
+<p>
+The three ODEs on the last slide correspond to
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+f(u,t) &= \alpha u,\quad\hbox{exponential growth}\\
+f(u,t) &= \alpha u\left(  1-\frac{u}{R}\right),\quad\hbox{logistic growth}\\
+f(u,t) &= -b|u|u + g,\quad\hbox{body in fluid}
+\end{align*}
+$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Our task: write functions and classes that take \( f \) and
+produces the solution \( u \)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>What is the \( f(u,t) \)?  <a name="___sec3"></a></h2>
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Problem:</b>
+<p>
+Given an ODE,
+
+<p>&nbsp;<br>
+$$ \sqrt{u}u' - \alpha(t) u^{3/2}(1-\frac{u}{R(t)}) = 0,$$
+<p>&nbsp;<br>
+
+what is the \( f(u,t) \)?
+</div>
+
+
+<p>
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Solution:</b>
+<p>
+The target form is \( u'=f(u,t) \), so we need to isolate \( u' \) on the
+left-hand side:
+
+<p>&nbsp;<br>
+$$ u' = \underbrace{\alpha(t) u(1-\frac{u}{R(t)})}_{f(u,t)} $$
+<p>&nbsp;<br>
+
+
+
+</div>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>How to solve a general ODE numerically by the Forward Euler method  <a name="___sec4"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>\( u'=f(u,t) \).</b>
+<p>
+Assume we have computed \( u \) at discrete time points
+\( t_0,t_1,\ldots,t_n \). At \( t_k \) we have the ODE
+
+<p>&nbsp;<br>
+$$ u'(t_k) = f(u(t_k),t_k) $$
+<p>&nbsp;<br>
+
+
+<p>
+Approximate \( u'(t_k) \) by a forward finite difference,
+
+<p>&nbsp;<br>
+$$ u'(t_k)\approx \frac{u(t_{k+1})-u(t_k)}{\Delta t}$$
+<p>&nbsp;<br>
+
+
+<p>
+Insert in the ODE at \( t=t_k \):
+
+<p>&nbsp;<br>
+$$ \frac{u(t_{k+1})-u(t_k)}{\Delta t} = f(u(t_k),t_k) $$
+<p>&nbsp;<br>
+
+
+<p>
+Everything with \( u(t_k) \) is known, \( u(t_{k+1}) \) is unknown:
+
+<p>&nbsp;<br>
+$$ u(t_{k+1}) = u(t_k) + \Delta t f(u(t_k), t_k)$$
+<p>&nbsp;<br>
+
+
+<p>
+This is a very simple formula that we can use repeatedly for
+\( u(t_1) \), \( u(t_2) \), \( u(t_3) \) and so forth.
+
+<p>
+The technique is called <em>Euler's method</em> or the <em>Forward Euler method</em>.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Illustration of the forward finite difference  <a name="___sec5"></a></h2>
+
+<p>
+<center><p><img src="fig-ode2/fd_forward.png" align="bottom" width=500></p></center>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Notation:</b>
+<p>
+We let \( u_k \) denote the numerical approximation to the exact solution \( u(t) \)
+for \( t=t_k \).
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Let's apply the method!  <a name="___sec6"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Problem: The world's simplest ODE:</b>
+<p>
+
+<p>&nbsp;<br>
+$$ u' = u,\quad t\in (0,T] $$
+<p>&nbsp;<br>
+
+
+<p>
+Solve \( u \) at discrete time points: \( t_k=k\Delta t \), \( k=0,1,2,\ldots,t_n \),
+\( t_0=0 \), \( t_n=T \)
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Forward Euler method:</b>
+<p>
+<p>&nbsp;<br>
+$$ u_{k+1} = u_k + \Delta t f(u_k,t_k)$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Solution by hand:</b>
+<p>
+What is \( f \)? \( f(u,t)=u \)
+
+<p>&nbsp;<br>
+$$ u_{k+1} = u_k + \Delta t f(u_k,t_k) = u_k + \Delta t u_k = (1+\Delta t)u_k$$
+<p>&nbsp;<br>
+
+
+<p>
+First step:
+<p>&nbsp;<br>
+$$ u_1 = (1+\Delta t) u_0$$
+<p>&nbsp;<br>
+
+but what is \( u_0 \)?
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Initial condition:</b>
+<p>
+
+<ul>
+ <p><li> Any ODE \( u'=f(u,t) \) <em>must</em> have an initial condition \( u(0)=U_0 \), with
+   known \( U_0 \), otherwise we cannot start the method!</li>
+ <p><li> In mathematics: \( u(0)=U_0 \) must be specified to get a unique solution</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We continue solution by hand  <a name="___sec7"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Say \( U_0=2 \):
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+u_1 &= (1+\Delta t) u_0 = (1+\Delta t) U_0 = (1+\Delta t)2 \\
+u_2 &= (1+\Delta t) u_1 = (1+\Delta t) (1+\Delta t)2 = 2(1+\Delta t)^2\\
+u_3 &= (1+\Delta t) u_2 = (1+\Delta t) 2(1+\Delta t)^2 = 2(1+\Delta t)^3\\
+u_4 &= (1+\Delta t) u_3 = (1+\Delta t) 2(1+\Delta t)^3 = 2(1+\Delta t)^4\\
+u_5 &= (1+\Delta t) u_4 = (1+\Delta t) 2(1+\Delta t)^4 = 2(1+\Delta t)^5\\
+\vdots &= \vdots\\
+u_k &= 2(1+\Delta t)^k
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+Actually, we found a formula for \( u_k \)! No need to program...
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>What about the general case \( u'=f(u,t) \)?  <a name="___sec8"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Given any \( U_0 \):
+<p>&nbsp;<br>
+$$
+\begin{align*}
+u_1 &= u_0 + \Delta t f(u_0, t_0)\\
+u_2 &= u_1 + \Delta t f(u_1, t_1)\\
+u_3 &= u_2 + \Delta t f(u_2, t_2)\\
+u_4 &= u_3 + \Delta t f(u_3, t_3)\\
+\vdots &= \vdots
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+No general formula in this case...
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Rule of thumb:</b>
+<p>
+These hand calculations get very boring, so let's program!
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A special program for the special ODE \( u'=u \), \( u(0)=U_0 \)  <a name="___sec9"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Algorithm:</b>
+<p>
+Given \( \Delta t \) (<code>dt</code>) and \( n \)
+
+<ul>
+ <p><li> Create arrays <code>t</code> and <code>u</code> of length \( n+1 \)</li>
+ <p><li> Create array <code>u</code> to hold \( u_k \) and</li>
+ <p><li> Set initial condition: <code>u[0]</code> = \( U_0 \), <code>t[0]=0</code></li>
+ <p><li> For \( k=0,1,2,\ldots,n-1 \):</li>
+
+<ul>
+  <p><li> <code>t[k+1] = t[k] + dt</code></li>
+  <p><li> <code>u[k+1] = (1 + dt)*u[k]</code></li>
+</ul>
+<p>
+
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Program:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
+
+dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
+U0 <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+T <span style="color: #666666">=</span> <span style="color: #666666">4</span>
+n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(T<span style="color: #666666">/</span>dt)
+
+t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n<span style="color: #666666">+1</span>)
+u <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n<span style="color: #666666">+1</span>)
+
+t[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> U0
+<span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n):
+    t[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> t[k] <span style="color: #666666">+</span> dt
+    u[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">+</span> dt)<span style="color: #666666">*</span>u[k]
+
+<span style="color: #408080; font-style: italic"># plot u against t</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The solution if we plot \( u \) against \( t \)  <a name="___sec10"></a></h2>
+
+<p>
+\( \Delta t = 0.4 \) and \( \Delta t=0.2 \):
+
+<p>
+<center><p><img src="fig-ode2/FE_n_10_20.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The algorithm for the general ODE \( u'=f(u,t) \)  <a name="___sec11"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Algorithm:</b>
+<p>
+Given \( \Delta t \) (<code>dt</code>) and \( n \)
+
+<ul>
+ <p><li> Create arrays <code>t</code> and <code>u</code> of length \( n+1 \)</li>
+ <p><li> Create array <code>u</code> to hold \( u_k \) and</li>
+ <p><li> Set initial condition: <code>u[0]</code> = \( U_0 \), <code>t[0]=0</code></li>
+ <p><li> For \( k=0,1,2,\ldots,n-1 \):</li>
+
+<ul>
+  <p><li> <code>u[k+1] = u[k] + dt*f(u[k], t[k])</code> \<font color="red">(the only change!)</font></li>
+  <p><li> <code>t[k+1] = t[k] + dt</code></li>
+</ul>
+<p>
+
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Implementation of the general algorithm for \( u'=f(u,t) \)  <a name="___sec12"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>General function:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">ForwardEuler</span>(f, U0, T, n):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=f(u,t), u(0)=U0, with n steps until t=T.&quot;&quot;&quot;</span>
+    <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+    t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n<span style="color: #666666">+1</span>)
+    u <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># u[k] is the solution at time t[k]</span>
+
+    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> U0
+    t[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    dt <span style="color: #666666">=</span> T<span style="color: #666666">/</span><span style="color: #008000">float</span>(n)
+
+    <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n):
+        t[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> t[k] <span style="color: #666666">+</span> dt
+        u[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> u[k] <span style="color: #666666">+</span> dt<span style="color: #666666">*</span>f(u[k], t[k])
+
+    <span style="color: #008000; font-weight: bold">return</span> u, t
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Magic:</b>
+<p>
+This simple function can solve any ODE (!)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Example on using the function  <a name="___sec13"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Mathematical problem:</b>
+<p>
+Solve \( u'=u \), \( u(0)=1 \), for \( t\in [0,4] \),
+with \( \Delta t = 0.4 \) Exact solution is \( u(t)=e^t \).
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Basic code:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(u, t):
+    <span style="color: #008000; font-weight: bold">return</span> u
+
+U0 <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+T <span style="color: #666666">=</span> <span style="color: #666666">3</span>
+n <span style="color: #666666">=</span> <span style="color: #666666">30</span>
+u, t <span style="color: #666666">=</span> ForwardEuler(f, U0, T, n)
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Compare exact and numerical solution:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scitools.std</span> <span style="color: #008000; font-weight: bold">import</span> plot, exp
+u_exact <span style="color: #666666">=</span> exp(t)
+plot(t, u, <span style="color: #BA2121">&#39;r-&#39;</span>, t, u_exact, <span style="color: #BA2121">&#39;b-&#39;</span>,
+     xlabel<span style="color: #666666">=</span><span style="color: #BA2121">&#39;t&#39;</span>, ylabel<span style="color: #666666">=</span><span style="color: #BA2121">&#39;u&#39;</span>, legend<span style="color: #666666">=</span>(<span style="color: #BA2121">&#39;numerical&#39;</span>, <span style="color: #BA2121">&#39;exact&#39;</span>),
+     title<span style="color: #666666">=</span><span style="color: #BA2121">&quot;Solution of the ODE u&#39;=u, u(0)=1&quot;</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Now you can solve any ODE!  <a name="___sec14"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Recipe:</b>
+<p>
+
+<ul>
+ <p><li> Identify \( f(u,t) \) in your ODE</li>
+ <p><li> Make sure you have an initial condition \( U_0 \)</li>
+ <p><li> Implement the \( f(u,t) \) formula in a Python function <code>f(u, t)</code></li>
+ <p><li> Choose \( \Delta t \) or no of steps \( n \)</li>
+ <p><li> Call <code>u, t = ForwardEuler(f, U0, T, n)</code></li>
+ <p><li> <code>plot(t, u)</code></li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Warning:</b>
+<p>
+The Forward Euler method may give very inaccurate solutions if
+\( \Delta t \) is not sufficiently small. For some problems
+(like \( u''+u=0 \)) other methods should be used.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A class for solving ODEs  <a name="___sec15"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Instead of a function for solving any ODE we now want to make a class
+and use it like this:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">method <span style="color: #666666">=</span> ForwardEuler(f, dt)
+method<span style="color: #666666">.</span>set_initial_condition(U0, t0)
+u, t <span style="color: #666666">=</span> method<span style="color: #666666">.</span>solve(T)
+plot(t, u)
+</pre></div>
+<p>
+How?
+
+<ul>
+  <p><li> Store \( f \), \( \Delta t \), and the sequences \( u_k \), \( t_k \) as attributes</li>
+  <p><li> Split the steps in the <code>ForwardEuler</code> function into three methods:</li>
+
+<ul>
+     <p><li> the constructor (<code>__init__</code>)</li>
+     <p><li> <code>set_initial_condition</code> for \( u(0)=U_0 \)</li>
+     <p><li> <code>solve</code> for running the Forward Euler algorithm</li>
+     <p><li> <code>advance</code> for isolating the numerical updating formula <br />
+       (new numerical methods just need a diferent <code>advance</code> method,
+       the rest is the same)</li>
+</ul>
+<p>
+
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The code for a class for solving ODEs (part 1)  <a name="___sec16"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">ForwardEuler_v1</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f, dt):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>dt <span style="color: #666666">=</span> f, dt
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">set_initial_condition</span>(<span style="color: #008000">self</span>, U0):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>U0 <span style="color: #666666">=</span> <span style="color: #008000">float</span>(U0)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The code for a class for solving ODEs (part 2)  <a name="___sec17"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">ForwardEuler_v1</span>:
+    <span style="color: #666666">...</span>
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solve</span>(<span style="color: #008000">self</span>, T):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Compute solution for 0 &lt;= t &lt;= T.&quot;&quot;&quot;</span>
+        n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span><span style="color: #008000">self</span><span style="color: #666666">.</span>dt))
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>u <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n<span style="color: #666666">+1</span>)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n<span style="color: #666666">+1</span>)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #008000">float</span>(<span style="color: #008000">self</span><span style="color: #666666">.</span>U0)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>t[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #008000">float</span>(<span style="color: #666666">0</span>)
+
+        <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">self</span><span style="color: #666666">.</span>n):
+            <span style="color: #008000">self</span><span style="color: #666666">.</span>k <span style="color: #666666">=</span> k
+            <span style="color: #008000">self</span><span style="color: #666666">.</span>t[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>t[k] <span style="color: #666666">+</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>dt
+            <span style="color: #008000">self</span><span style="color: #666666">.</span>u[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>advance()
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>u, <span style="color: #008000">self</span><span style="color: #666666">.</span>t
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">advance</span>(<span style="color: #008000">self</span>):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Advance the solution one time step.&quot;&quot;&quot;</span>
+        u, dt, f, k, t <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>u, <span style="color: #008000">self</span><span style="color: #666666">.</span>dt, <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>k, <span style="color: #008000">self</span><span style="color: #666666">.</span>t
+
+        unew <span style="color: #666666">=</span> u[k] <span style="color: #666666">+</span> dt<span style="color: #666666">*</span>f(u[k], t[k])
+        <span style="color: #008000; font-weight: bold">return</span> unew
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Alternative class code solving ODEs (part 1)  <a name="___sec18"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #408080; font-style: italic"># Idea: drop dt in the constructor.</span>
+<span style="color: #408080; font-style: italic"># Let the user provide all time points (in solve).</span>
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">ForwardEuler</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f):
+
+        <span style="color: #408080; font-style: italic"># test that f is a function</span>
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">callable</span>(f):
+            <span style="color: #008000; font-weight: bold">raise</span> <span style="color: #D2413A; font-weight: bold">TypeError</span>(<span style="color: #BA2121">&#39;f is </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">, not a function&#39;</span> <span style="color: #666666">%</span> <span style="color: #008000">type</span>(f))
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">set_initial_condition</span>(<span style="color: #008000">self</span>, U0):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>U0 <span style="color: #666666">=</span> <span style="color: #008000">float</span>(U0)
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solve</span>(<span style="color: #008000">self</span>, time_points):
+        <span style="color: #666666">...</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Alternative class code for solving ODEs (part 2)  <a name="___sec19"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">ForwardEuler</span>:
+    <span style="color: #666666">...</span>
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solve</span>(<span style="color: #008000">self</span>, time_points):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Compute u for t values in time_points list.&quot;&quot;&quot;</span>
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>asarray(time_points)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>u <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(<span style="color: #008000">len</span>(time_points))
+
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>U0
+
+        <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(<span style="color: #008000">self</span><span style="color: #666666">.</span>t)<span style="color: #666666">-1</span>):
+            <span style="color: #008000">self</span><span style="color: #666666">.</span>k <span style="color: #666666">=</span> k
+            <span style="color: #008000">self</span><span style="color: #666666">.</span>u[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>advance()
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>u, <span style="color: #008000">self</span><span style="color: #666666">.</span>t
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">advance</span>(<span style="color: #008000">self</span>):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Advance the solution one time step.&quot;&quot;&quot;</span>
+        u, f, k, t <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>u, <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>k, <span style="color: #008000">self</span><span style="color: #666666">.</span>t
+
+        dt <span style="color: #666666">=</span> t[k<span style="color: #666666">+1</span>] <span style="color: #666666">-</span> t[k]
+        unew <span style="color: #666666">=</span> u[k] <span style="color: #666666">+</span> dt<span style="color: #666666">*</span>f(u[k], t[k])
+        <span style="color: #008000; font-weight: bold">return</span> unew
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Verifying the class implementation; mathematics  <a name="___sec20"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Mathematical problem:</b>
+<p>
+Important result: the numerical method (and most others) will
+exactly reproduce \( u \) if it is linear in \( t \) (!):
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+u(t) &= at+b = 0.2t + 3\\
+h(t) &= u(t)\\
+u'(t) &=0.2 + (u-h(t))^4,\quad u(0)=3,\quad t\in [0,3]
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+This \( u \) should be reproduced to machine precision for &quot;any&quot; \( \Delta t \)
+(not too large).
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Verifying the class implementation; implementation  <a name="___sec21"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Code:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_ForwardEuler_against_linear_solution</span>():
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(u, t):
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0.2</span> <span style="color: #666666">+</span> (u <span style="color: #666666">-</span> h(t))<span style="color: #666666">**4</span>
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(t):
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0.2*</span>t <span style="color: #666666">+</span> <span style="color: #666666">3</span>
+
+    solver <span style="color: #666666">=</span> ForwardEuler(f)
+    solver<span style="color: #666666">.</span>set_initial_condition(U0<span style="color: #666666">=3</span>)
+    dt <span style="color: #666666">=</span> <span style="color: #666666">0.4</span>; T <span style="color: #666666">=</span> <span style="color: #666666">3</span>; n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(<span style="color: #008000">float</span>(T)<span style="color: #666666">/</span>dt))
+    time_points <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, T, n<span style="color: #666666">+1</span>)
+    u, t <span style="color: #666666">=</span> solver<span style="color: #666666">.</span>solve(time_points)
+    u_exact <span style="color: #666666">=</span> h(t)
+    diff <span style="color: #666666">=</span> np<span style="color: #666666">.</span>abs(u_exact <span style="color: #666666">-</span> u)<span style="color: #666666">.</span>max()
+    tol <span style="color: #666666">=</span> <span style="color: #666666">1E-14</span>
+    success <span style="color: #666666">=</span> diff <span style="color: #666666">&lt;</span> tol
+    <span style="color: #008000; font-weight: bold">assert</span> success
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Using a class to hold the right-hand side \( f(u,t) \)  <a name="___sec22"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Mathematical problem:</b>
+<p>
+<p>&nbsp;<br>
+$$ u^{\prime}(t)=\alpha u(t)\left(  1-\frac{u(t)}{R}\right),\quad u(0)=U_0,\quad t\in [0,40]$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Class for right-hand side \( f(u,t) \):</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Logistic</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, alpha, R, U0):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>alpha, <span style="color: #008000">self</span><span style="color: #666666">.</span>R, <span style="color: #008000">self</span><span style="color: #666666">.</span>U0 <span style="color: #666666">=</span> alpha, <span style="color: #008000">float</span>(R), U0
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, u, t):   <span style="color: #408080; font-style: italic"># f(u,t)</span>
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>alpha<span style="color: #666666">*</span>u<span style="color: #666666">*</span>(<span style="color: #666666">1</span> <span style="color: #666666">-</span> u<span style="color: #666666">/</span><span style="color: #008000">self</span><span style="color: #666666">.</span>R)
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Main program:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">problem <span style="color: #666666">=</span> Logistic(<span style="color: #666666">0.2</span>, <span style="color: #666666">1</span>, <span style="color: #666666">0.1</span>)
+time_points <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">40</span>, <span style="color: #666666">401</span>)
+method <span style="color: #666666">=</span> ForwardEuler(problem)
+method<span style="color: #666666">.</span>set_initial_condition(problem<span style="color: #666666">.</span>U0)
+u, t <span style="color: #666666">=</span> method<span style="color: #666666">.</span>solve(time_points)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Figure of the solution  <a name="___sec23"></a></h2>
+
+<p>
+<center><p><img src="fig-ode2/logistic_func_mpl.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Numerical methods for ordinary differential equations  <a name="___sec24"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Forward Euler method:</b>
+<p>
+<p>&nbsp;<br>
+$$ u_{k+1} = u_k + \Delta t\, f(u_k, t_k) $$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>4th-order Runge-Kutta method:</b>
+<p>
+<p>&nbsp;<br>
+$$ u_{k+1} = u_k + {1\over 6}\left( K_1 + 2K_2 + 2K_3 + K_4\right)$$
+<p>&nbsp;<br>
+
+where
+<p>&nbsp;<br>
+$$
+\begin{align*}
+K_1 &= \Delta t\,f(u_k, t_k)\\
+K_2 &= \Delta t\,f(u_k + {1\over2}K_1, t_k + {1\over2}\Delta t)\\
+K_3 &= \Delta t\,f(u_k + {1\over2}K_2, t_k + {1\over2}\Delta t)\\
+K_4 &= \Delta t\,f(u_k + K3, t_k + \Delta t)
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+And lots of other methods! How to program a collection of methods?
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A superclass for ODE methods  <a name="___sec25"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Common tasks for ODE solvers:</b>
+<p>
+
+<ul>
+  <p><li> Store the solution \( u_k \) and the corresponding time levels \( t_k \), \( k=0,1,2,\ldots,n \)</li>
+  <p><li> Store the right-hand side function \( f(u,t) \)</li>
+  <p><li> Set and store the initial condition</li>
+  <p><li> Run the loop over all time steps</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Principles:</b>
+<p>
+
+<ul>
+  <p><li> Common data and functionality are placed in superclass <code>ODESolver</code></li>
+  <p><li> Isolate the numerical updating formula in a method <code>advance</code></li>
+  <p><li> Subclasses, e.g., <code>ForwardEuler</code>, just implement the specific numerical formula in <code>advance</code></li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The superclass code  <a name="___sec26"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">ODESolver</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> f
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">advance</span>(<span style="color: #008000">self</span>):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Advance solution one time step.&quot;&quot;&quot;</span>
+        <span style="color: #008000; font-weight: bold">raise</span> <span style="color: #D2413A; font-weight: bold">NotImplementedError</span>  <span style="color: #408080; font-style: italic"># implement in subclass</span>
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">set_initial_condition</span>(<span style="color: #008000">self</span>, U0):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>U0 <span style="color: #666666">=</span> <span style="color: #008000">float</span>(U0)
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solve</span>(<span style="color: #008000">self</span>, time_points):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>asarray(time_points)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>u <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(<span style="color: #008000">len</span>(<span style="color: #008000">self</span><span style="color: #666666">.</span>t))
+        <span style="color: #408080; font-style: italic"># Assume that self.t[0] corresponds to self.U0</span>
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>U0
+
+        <span style="color: #408080; font-style: italic"># Time loop</span>
+        <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n<span style="color: #666666">-1</span>):
+            <span style="color: #008000">self</span><span style="color: #666666">.</span>k <span style="color: #666666">=</span> k
+            <span style="color: #008000">self</span><span style="color: #666666">.</span>u[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>advance()
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>u, <span style="color: #008000">self</span><span style="color: #666666">.</span>t
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">advance</span>(<span style="color: #008000">self</span>):
+        <span style="color: #008000; font-weight: bold">raise</span> NotImplemtedError <span style="color: #408080; font-style: italic"># to be impl. in subclasses</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Implementation of the Forward Euler method  <a name="___sec27"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Subclass code:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">ForwardEuler</span>(ODESolver):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">advance</span>(<span style="color: #008000">self</span>):
+        u, f, k, t <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>u, <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>k, <span style="color: #008000">self</span><span style="color: #666666">.</span>t
+
+        dt <span style="color: #666666">=</span> t[k<span style="color: #666666">+1</span>] <span style="color: #666666">-</span> t[k]
+        unew <span style="color: #666666">=</span> u[k] <span style="color: #666666">+</span> dt<span style="color: #666666">*</span>f(u[k], t)
+        <span style="color: #008000; font-weight: bold">return</span> unew
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Application code for \( u'-u=0 \), \( u(0)=1 \), \( t\in [0,3] \), \( \Delta t=0.1 \):</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">ODESolver</span> <span style="color: #008000; font-weight: bold">import</span> ForwardEuler
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test1</span>(u, t):
+    <span style="color: #008000; font-weight: bold">return</span> u
+
+method <span style="color: #666666">=</span> ForwardEuler(test1)
+method<span style="color: #666666">.</span>set_initial_condition(U0<span style="color: #666666">=1</span>)
+u, t <span style="color: #666666">=</span> method<span style="color: #666666">.</span>solve(time_points<span style="color: #666666">=</span>np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">31</span>))
+plot(t, u)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The implementation of a Runge-Kutta method  <a name="___sec28"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Subclass code:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">RungeKutta4</span>(ODESolver):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">advance</span>(<span style="color: #008000">self</span>):
+        u, f, k, t <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>u, <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>k, <span style="color: #008000">self</span><span style="color: #666666">.</span>t
+
+        dt <span style="color: #666666">=</span> t[k<span style="color: #666666">+1</span>] <span style="color: #666666">-</span> t[k]
+        dt2 <span style="color: #666666">=</span> dt<span style="color: #666666">/2.0</span>
+        K1 <span style="color: #666666">=</span> dt<span style="color: #666666">*</span>f(u[k], t)
+        K2 <span style="color: #666666">=</span> dt<span style="color: #666666">*</span>f(u[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>K1, t <span style="color: #666666">+</span> dt2)
+        K3 <span style="color: #666666">=</span> dt<span style="color: #666666">*</span>f(u[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>K2, t <span style="color: #666666">+</span> dt2)
+        K4 <span style="color: #666666">=</span> dt<span style="color: #666666">*</span>f(u[k] <span style="color: #666666">+</span> K3, t <span style="color: #666666">+</span> dt)
+        unew <span style="color: #666666">=</span> u[k] <span style="color: #666666">+</span> (<span style="color: #666666">1/6.0</span>)<span style="color: #666666">*</span>(K1 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>K2 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>K3 <span style="color: #666666">+</span> K4)
+        <span style="color: #008000; font-weight: bold">return</span> unew
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Application code (same as for ForwardEuler):</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">ODESolver</span> <span style="color: #008000; font-weight: bold">import</span> RungeKutta4
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test1</span>(u, t):
+    <span style="color: #008000; font-weight: bold">return</span> u
+
+method <span style="color: #666666">=</span> RungeKutta4(test1)
+method<span style="color: #666666">.</span>set_initial_condition(U0<span style="color: #666666">=1</span>)
+u, t <span style="color: #666666">=</span> method<span style="color: #666666">.</span>solve(time_points<span style="color: #666666">=</span>np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">31</span>))
+plot(t, u)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The user should be able to check intermediate solutions and terminate the time stepping  <a name="___sec29"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <p><li> Sometimes a property of the solution determines when to stop the solution process: e.g., when \( u < 10^{-7}\approx 0 \).</li>
+
+<ul>
+  <p><li> Extension <code>solve(time_points, terminate)</code></li>
+  <p><li> <code>terminate(u, t, step_no)</code> is called at every time step, is user-defined,
+    and returns <code>True</code> when the time stepping should be terminated</li>
+  <p><li> Last computed solution is <code>u[step_no]</code> at time <code>t[step_no]</code></li>
+</ul>
+<p>
+
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">terminate</span>(u, t, step_no):
+    eps <span style="color: #666666">=</span> <span style="color: #666666">1.0E-6</span>                     <span style="color: #408080; font-style: italic"># small number</span>
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">abs</span>(u[step_no,<span style="color: #666666">0</span>]) <span style="color: #666666">&lt;</span> eps   <span style="color: #408080; font-style: italic"># close enough to zero?</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h1 style="text-align: center;">Systems of differential equations (vector ODE)  <a name="___sec30"></a></h1>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<p>&nbsp;<br>
+$$
+\begin{align*}
+u' &= v\\
+v' &= -u\\
+u(0) &= 1\\
+v(0) &= 0
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+</td>
+<td class="padding">
+<center><p><img src="fig-ode2/cos_sin.png" align="bottom" width=500></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Example on a system of ODEs (vector ODE)  <a name="___sec31"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Two ODEs with two unknowns \( u(t) \) and \( v(t) \):
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+   u'(t) &= v(t),\\
+   v'(t) &= -u(t)
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Each unknown must have an initial condition, say
+
+<p>&nbsp;<br>
+$$ u(0)=0,\quad v(0)=1 $$
+<p>&nbsp;<br>
+
+
+<p>
+In this case, one can derive the exact solution
+
+<p>&nbsp;<br>
+$$ u(t)=\sin (t),\quad v(t)=\cos (t)$$
+<p>&nbsp;<br>
+
+
+<p>
+Systems of ODEs appear frequently in physics, biology, finance, ...
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The ODE system that is the final project in the course  <a name="___sec32"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Model for spreading of a disease in a population:
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+S' &= - \beta SI\\
+I' &= \beta SI -\nu R\\
+R' &= \nu I\\
+S(0) &= S_0\\
+I(0) &= I_0\\
+R(0) &= 0
+\end{align*}
+$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Another example on a system of ODEs (vector ODE)  <a name="___sec33"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Second-order ordinary differential equation, for a spring-mass system
+(from Newton's second law):
+
+<p>&nbsp;<br>
+$$ mu'' + \beta u' + ku = 0,\quad u(0)=U_0,\ u'(0)=0$$
+<p>&nbsp;<br>
+
+
+<p>
+We can rewrite this as a system of two <em>first-order</em> equations, by
+introducing two new unknowns
+
+<p>&nbsp;<br>
+$$ u^{(0)}(t) \equiv u(t),\quad u^{(1)}(t) \equiv u'(t)$$
+<p>&nbsp;<br>
+
+
+<p>
+The first-order system is then
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+{d\over dt} u^{(0)}(t) &=& u^{(1)}(t)\\
+{d\over dt} u^{(1)}(t) &=& -m^{-1}\beta u^{(1)} - m^{-1}ku^{(0)}
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Initial conditions:
+<p>&nbsp;<br>
+$$ u^{(0)}(0) = U_0,\quad u^{(1)}(0)=0$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Making a flexible toolbox for solving ODEs  <a name="___sec34"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> For scalar ODEs we could make one general class hierarchy to solve
+    &quot;all&quot; problems with a range of methods</li>
+  <p><li> Can we easily extend class hierarchy to systems of ODEs?</li>
+  <p><li> Yes!</li>
+  <p><li> The example here can easily be extended to professional code
+    (<a href="https://github.com/hplgit/odespy" target="_blank">Odespy</a>)</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Vector notation for systems of ODEs: unknowns and equations  <a name="___sec35"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+General software for any vector/scalar ODE demands a general
+mathematical notation. We introduce \( n \) unknowns
+
+<p>&nbsp;<br>
+$$ u^{(0)}(t), u^{(1)}(t), \ldots, u^{(n-1)}(t) $$
+<p>&nbsp;<br>
+
+in a system of \( n \) ODEs:
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+{d\over dt}u^{(0)} &= f^{(0)}(u^{(0)}, u^{(1)}, \ldots, u^{(n-1)}, t)\\
+{d\over dt}u^{(1)} &= f^{(1)}(u^{(0)}, u^{(1)}, \ldots, u^{(n-1)}, t)\\
+\vdots &=& \vdots\\
+{d\over dt}u^{(n-1)} &= f^{(n-1)}(u^{(0)}, u^{(1)}, \ldots, u^{(n-1)}, t)
+\end{align*}
+$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Vector notation for systems of ODEs: vectors  <a name="___sec36"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+We can collect the \( u^{(i)}(t) \) functions and right-hand side functions \( f^{(i)} \) in vectors:
+
+<p>&nbsp;<br>
+$$ u = (u^{(0)}, u^{(1)}, \ldots, u^{(n-1)})$$
+<p>&nbsp;<br>
+
+
+<p>&nbsp;<br>
+$$ f = (f^{(0)}, f^{(1)}, \ldots, f^{(n-1)})$$
+<p>&nbsp;<br>
+
+
+<p>
+The first-order system can then be written
+
+<p>&nbsp;<br>
+$$ u' = f(u, t),\quad u(0) = U_0$$
+<p>&nbsp;<br>
+
+where \( u \) and \( f \) are vectors and \( U_0 \) is a vector of initial conditions
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>The magic of this notation:</b>
+<p>
+Observe that the notation makes a scalar ODE and a system look the same,
+and we can easily make Python code that can handle both cases within
+the same lines of code (!)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>How to make class ODESolver work for systems of ODEs  <a name="___sec37"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> Recall: ODESolver was written for a scalar ODE</li>
+  <p><li> Now we want it to work for a system \( u'=f \), \( u(0)=U_0 \), where \( u \), \( f \) and \( U_0 \) are vectors (arrays)</li>
+  <p><li> What are the problems?</li>
+</ul>
+<p>
+
+Forward Euler applied to a system:
+
+<p>&nbsp;<br>
+$$
+\underbrace{u_{k+1}}_{\mbox{vector}} =
+\underbrace{u_k}_{\mbox{vector}} +
+\Delta t\, \underbrace{f(u_k, t_k)}_{\mbox{vector}}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+In Python code:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">unew <span style="color: #666666">=</span> u[k] <span style="color: #666666">+</span> dt<span style="color: #666666">*</span>f(u[k], t)
+</pre></div>
+<p>
+where
+
+<ul>
+  <p><li> <code>u</code> is a two-dim. array (<code>u[k]</code> is a row)</li>
+  <p><li> <code>f</code> is a function returning an array
+    (all the right-hand sides \( f^{(0)},\ldots,f^{(n-1)} \))</li>
+  <p><li> Result: ODESolver will work for systems!</li>
+  <p><li> The only change: ensure that <code>f(u,t)</code> returns an array <br />
+    (This can be done be a general adjustment in the superclass!)</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The adjusted superclass code (part 1)  <a name="___sec38"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">ODESolver</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, f):
+        <span style="color: #408080; font-style: italic"># Wrap user&#39;s f in a new function that always</span>
+        <span style="color: #408080; font-style: italic"># converts list/tuple to array (or let array be array)</span>
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>f <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> u, t: np<span style="color: #666666">.</span>asarray(f(u, t), <span style="color: #008000">float</span>)
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">set_initial_condition</span>(<span style="color: #008000">self</span>, U0):
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #008000">isinstance</span>(U0, (<span style="color: #008000">float</span>,<span style="color: #008000">int</span>)):  <span style="color: #408080; font-style: italic"># scalar ODE</span>
+            <span style="color: #008000">self</span><span style="color: #666666">.</span>neq <span style="color: #666666">=</span> <span style="color: #666666">1</span>                 <span style="color: #408080; font-style: italic"># no of equations</span>
+            U0 <span style="color: #666666">=</span> <span style="color: #008000">float</span>(U0)
+        <span style="color: #008000; font-weight: bold">else</span>:                            <span style="color: #408080; font-style: italic"># system of ODEs</span>
+            U0 <span style="color: #666666">=</span> np<span style="color: #666666">.</span>asarray(U0)
+            <span style="color: #008000">self</span><span style="color: #666666">.</span>neq <span style="color: #666666">=</span> U0<span style="color: #666666">.</span>size           <span style="color: #408080; font-style: italic"># no of equations</span>
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>U0 <span style="color: #666666">=</span> U0
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The superclass code (part 2)  <a name="___sec39"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">ODESolver</span>:
+    <span style="color: #666666">...</span>
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solve</span>(<span style="color: #008000">self</span>, time_points, terminate<span style="color: #666666">=</span><span style="color: #008000">None</span>):
+        <span style="color: #008000; font-weight: bold">if</span> terminate <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #008000">None</span>:
+            terminate <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> u, t, step_no: <span style="color: #008000">False</span>
+
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>asarray(time_points)
+        n <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>t<span style="color: #666666">.</span>size
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>neq <span style="color: #666666">==</span> <span style="color: #666666">1</span>:  <span style="color: #408080; font-style: italic"># scalar ODEs</span>
+            <span style="color: #008000">self</span><span style="color: #666666">.</span>u <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
+        <span style="color: #008000; font-weight: bold">else</span>:              <span style="color: #408080; font-style: italic"># systems of ODEs</span>
+            <span style="color: #008000">self</span><span style="color: #666666">.</span>u <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((n,<span style="color: #008000">self</span><span style="color: #666666">.</span>neq))
+
+        <span style="color: #408080; font-style: italic"># Assume that self.t[0] corresponds to self.U0</span>
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>U0
+
+        <span style="color: #408080; font-style: italic"># Time loop</span>
+        <span style="color: #008000; font-weight: bold">for</span> k <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n<span style="color: #666666">-1</span>):
+            <span style="color: #008000">self</span><span style="color: #666666">.</span>k <span style="color: #666666">=</span> k
+            <span style="color: #008000">self</span><span style="color: #666666">.</span>u[k<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>advance()
+            <span style="color: #008000; font-weight: bold">if</span> terminate(<span style="color: #008000">self</span><span style="color: #666666">.</span>u, <span style="color: #008000">self</span><span style="color: #666666">.</span>t, <span style="color: #008000">self</span><span style="color: #666666">.</span>k<span style="color: #666666">+1</span>):
+                <span style="color: #008000; font-weight: bold">break</span>  <span style="color: #408080; font-style: italic"># terminate loop over k</span>
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>u[:k<span style="color: #666666">+2</span>], <span style="color: #008000">self</span><span style="color: #666666">.</span>t[:k<span style="color: #666666">+2</span>]
+</pre></div>
+<p>
+All subclasses from the scalar ODE works for systems as well
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Example on how to use the general class hierarchy  <a name="___sec40"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Spring-mass system formulated as a system of ODEs:</b>
+<p>
+<p>&nbsp;<br>
+$$ mu'' + \beta u' + ku = 0,\quad u(0),\ u'(0)\hbox{ known}$$
+<p>&nbsp;<br>
+
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+u^{(0)} &= u,\quad u^{(1)} = u'\\
+u(t) &= (u^{(0)}(t), u^{(1)}(t))\\
+f(u,t)&=(u^{(1)}(t), -m^{-1}\beta u^{(1)} - m^{-1}ku^{(0)})\\
+u'(t) &= f(u,t)
+\end{align*}
+$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Code defining the right-hand side:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">myf</span>(u, t):
+    <span style="color: #408080; font-style: italic"># u is array with two components u[0] and u[1]:</span>
+    <span style="color: #008000; font-weight: bold">return</span> [u[<span style="color: #666666">1</span>],
+            <span style="color: #666666">-</span>beta<span style="color: #666666">*</span>u[<span style="color: #666666">1</span>]<span style="color: #666666">/</span>m <span style="color: #666666">-</span> k<span style="color: #666666">*</span>u[<span style="color: #666666">0</span>]<span style="color: #666666">/</span>m]
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Alternative implementation of the \( f \) function via a class  <a name="___sec41"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Better (no global variables):</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">MyF</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, m, k, beta):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>m, <span style="color: #008000">self</span><span style="color: #666666">.</span>k, <span style="color: #008000">self</span><span style="color: #666666">.</span>beta <span style="color: #666666">=</span> m, k, beta
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, u, t):
+        m, k, beta <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>m, <span style="color: #008000">self</span><span style="color: #666666">.</span>k, <span style="color: #008000">self</span><span style="color: #666666">.</span>beta
+        <span style="color: #008000; font-weight: bold">return</span> [u[<span style="color: #666666">1</span>], <span style="color: #666666">-</span>beta<span style="color: #666666">*</span>u[<span style="color: #666666">1</span>]<span style="color: #666666">/</span>m <span style="color: #666666">-</span> k<span style="color: #666666">*</span>u[<span style="color: #666666">0</span>]<span style="color: #666666">/</span>m]
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Main program:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">ODESolver</span> <span style="color: #008000; font-weight: bold">import</span> ForwardEuler
+<span style="color: #408080; font-style: italic"># initial condition:</span>
+U0 <span style="color: #666666">=</span> [<span style="color: #666666">1.0</span>, <span style="color: #666666">0</span>]
+f <span style="color: #666666">=</span> MyF(<span style="color: #666666">1.0</span>, <span style="color: #666666">1.0</span>, <span style="color: #666666">0.0</span>)   <span style="color: #408080; font-style: italic"># u&#39;&#39; + u = 0 =&gt; u(t)=cos(t)</span>
+solver <span style="color: #666666">=</span> ForwardEuler(f)
+solver<span style="color: #666666">.</span>set_initial_condition(U0)
+
+T <span style="color: #666666">=</span> <span style="color: #666666">4*</span>pi; dt <span style="color: #666666">=</span> pi<span style="color: #666666">/20</span>; n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))
+time_points <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, T, n<span style="color: #666666">+1</span>)
+u, t <span style="color: #666666">=</span> solver<span style="color: #666666">.</span>solve(time_points)
+
+<span style="color: #408080; font-style: italic"># u is an array of [u0,u1] arrays, plot all u0 values:</span>
+u0_values <span style="color: #666666">=</span> u[:,<span style="color: #666666">0</span>]
+u0_exact <span style="color: #666666">=</span> cos(t)
+plot(t, u0_values, <span style="color: #BA2121">&#39;r-&#39;</span>,  t, u0_exact, <span style="color: #BA2121">&#39;b-&#39;</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Throwing a ball; ODE model  <a name="___sec42"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Newton's 2nd law for a ball's trajectory through air leads to
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+{dx\over dt} &=& v_x\\
+{dv_x\over dt} &=& 0\\
+{dy\over dt} &=& v_y\\
+{dv_y\over dt} &=& -g
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+Air resistance is neglected but can easily be added!
+
+<ul>
+  <p><li> 4 ODEs with 4 unknowns:</li>
+
+<ul>
+    <p><li> the ball's position \( x(t) \), \( y(t) \)</li>
+    <p><li> the velocity \( v_x(t) \), \( v_y(t) \)</li>
+</ul>
+<p>
+
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Throwing a ball; code  <a name="___sec43"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Define the right-hand side:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(u, t):
+    x, vx, y, vy <span style="color: #666666">=</span> u
+    g <span style="color: #666666">=</span> <span style="color: #666666">9.81</span>
+    <span style="color: #008000; font-weight: bold">return</span> [vx, <span style="color: #666666">0</span>, vy, <span style="color: #666666">-</span>g]
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Main program:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">ODESolver</span> <span style="color: #008000; font-weight: bold">import</span> ForwardEuler
+<span style="color: #408080; font-style: italic"># t=0: prescribe x, y, vx, vy</span>
+x <span style="color: #666666">=</span> y <span style="color: #666666">=</span> <span style="color: #666666">0</span>                     <span style="color: #408080; font-style: italic"># start at the origin</span>
+v0 <span style="color: #666666">=</span> <span style="color: #666666">5</span>;  theta <span style="color: #666666">=</span> <span style="color: #666666">80*</span>pi<span style="color: #666666">/180</span>    <span style="color: #408080; font-style: italic"># velocity magnitude and angle</span>
+vx <span style="color: #666666">=</span> v0<span style="color: #666666">*</span>cos(theta)
+vy <span style="color: #666666">=</span> v0<span style="color: #666666">*</span>sin(theta)
+<span style="color: #408080; font-style: italic"># Initial condition:</span>
+U0 <span style="color: #666666">=</span> [x, vx, y, vy]
+
+solver<span style="color: #666666">=</span> ForwardEuler(f)
+solver<span style="color: #666666">.</span>set_initial_condition(u0)
+time_points <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1.2</span>, <span style="color: #666666">101</span>)
+u, t <span style="color: #666666">=</span> solver<span style="color: #666666">.</span>solve(time_points)
+
+<span style="color: #408080; font-style: italic"># u is an array of [x,vx,y,vy] arrays, plot y vs x:</span>
+x <span style="color: #666666">=</span> u[:,<span style="color: #666666">0</span>];  y <span style="color: #666666">=</span> u[:,<span style="color: #666666">2</span>]
+plot(x, y)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Throwing a ball; results  <a name="___sec44"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Comparison of exact and Forward Euler solutions
+</div>
+
+
+<p>
+<center><p><img src="fig-ode2/oo_ode_apps_ball.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Logistic growth model; ODE and code overview  <a name="___sec45"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Model:</b>
+<p>
+<p>&nbsp;<br>
+$$ u' = \alpha u(1 - u/{\color{red}R(t)}),\quad u(0)=U_0 $$
+<p>&nbsp;<br>
+
+\( R \) is the maximum population size,
+which can vary with changes in the environment over time
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Implementation features:</b>
+<p>
+
+<ul>
+  <p><li> Class Problem holds &quot;all physics&quot;: \( \alpha \), \( R(t) \), \( U_0 \), \( T \) (end time), \( f(u,t) \) in ODE</li>
+  <p><li> Class Solver holds &quot;all numerics&quot;: \( \Delta t \), solution method; solves the problem and plots the solution</li>
+  <p><li> Solve for \( t\in [0,T] \) but terminate when \( |u-R| < \hbox{tol} \)</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Logistic growth model; class Problem (\( f \))  <a name="___sec46"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Problem</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, alpha, R, U0, T):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>alpha, <span style="color: #008000">self</span><span style="color: #666666">.</span>R, <span style="color: #008000">self</span><span style="color: #666666">.</span>U0, <span style="color: #008000">self</span><span style="color: #666666">.</span>T <span style="color: #666666">=</span> alpha, R, U0, T
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, u, t):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Return f(u, t).&quot;&quot;&quot;</span>
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>alpha<span style="color: #666666">*</span>u<span style="color: #666666">*</span>(<span style="color: #666666">1</span> <span style="color: #666666">-</span> u<span style="color: #666666">/</span><span style="color: #008000">self</span><span style="color: #666666">.</span>R(t))
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">terminate</span>(<span style="color: #008000">self</span>, u, t, step_no):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Terminate when u is close to R.&quot;&quot;&quot;</span>
+        tol <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>R<span style="color: #666666">*0.01</span>
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">abs</span>(u[step_no] <span style="color: #666666">-</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>R) <span style="color: #666666">&lt;</span> tol
+
+problem <span style="color: #666666">=</span> Problem(alpha<span style="color: #666666">=0.1</span>, R<span style="color: #666666">=500</span>, U0<span style="color: #666666">=2</span>, T<span style="color: #666666">=130</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Logistic growth model; class Solver  <a name="___sec47"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Solver</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, problem, dt,
+                 method<span style="color: #666666">=</span>ODESolver<span style="color: #666666">.</span>ForwardEuler):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>problem, <span style="color: #008000">self</span><span style="color: #666666">.</span>dt <span style="color: #666666">=</span> problem, dt
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>method <span style="color: #666666">=</span> method
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solve</span>(<span style="color: #008000">self</span>):
+        solver <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>method(<span style="color: #008000">self</span><span style="color: #666666">.</span>problem)
+        solver<span style="color: #666666">.</span>set_initial_condition(<span style="color: #008000">self</span><span style="color: #666666">.</span>problem<span style="color: #666666">.</span>U0)
+        n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(<span style="color: #008000">self</span><span style="color: #666666">.</span>problem<span style="color: #666666">.</span>T<span style="color: #666666">/</span><span style="color: #008000">self</span><span style="color: #666666">.</span>dt))
+        t_points <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #008000">self</span><span style="color: #666666">.</span>problem<span style="color: #666666">.</span>T, n<span style="color: #666666">+1</span>)
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>u, <span style="color: #008000">self</span><span style="color: #666666">.</span>t <span style="color: #666666">=</span> solver<span style="color: #666666">.</span>solve(t_points,
+                                      <span style="color: #008000">self</span><span style="color: #666666">.</span>problem<span style="color: #666666">.</span>terminate)
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">plot</span>(<span style="color: #008000">self</span>):
+        plot(<span style="color: #008000">self</span><span style="color: #666666">.</span>t, <span style="color: #008000">self</span><span style="color: #666666">.</span>u)
+
+problem <span style="color: #666666">=</span> Problem(alpha<span style="color: #666666">=0.1</span>, U0<span style="color: #666666">=2</span>, T<span style="color: #666666">=130</span>,
+                  R<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> t: <span style="color: #666666">500</span> <span style="color: #008000; font-weight: bold">if</span> t <span style="color: #666666">&lt;</span> <span style="color: #666666">60</span> <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">100</span>)
+solver <span style="color: #666666">=</span> Solver(problem, dt<span style="color: #666666">=1.</span>)
+solver<span style="color: #666666">.</span>solve()
+solver<span style="color: #666666">.</span>plot()
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;max u:&#39;</span>, solver<span style="color: #666666">.</span>u<span style="color: #666666">.</span>max()
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Logistic growth model; results  <a name="___sec48"></a></h2>
+
+<p>
+<center><p><img src="fig-ode2/oo_ode_apps_logistic_varying_R.png" align="bottom" width=600></p></center>
+
+
+</section>
+
+
+
+</div> <!-- class="slides" -->
+</div> <!-- class="reveal" -->
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width: 1170,  // original: 960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
+});
+</script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
+
+
+</body>
+</html>
