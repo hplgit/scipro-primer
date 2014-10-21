@@ -139,7 +139,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>&nbsp;<br>
-<center><h4>Oct 20, 2014</h4></center> <!-- date -->
+<center><h4>Oct 21, 2014</h4></center> <!-- date -->
 <p>
 
 </section>
@@ -204,7 +204,7 @@ $$
 \begin{align*}
 u'&=\alpha u\quad\hbox{exponential growth}\\
 u'&=\alpha u\left(  1-\frac{u}{R}\right)\quad\hbox{logistic growth}\\
-u'&=-b|u|u + g\quad\hbox{body in fluid}
+u' + b|u|u &= g\quad\hbox{falling body in fluid}
 \end{align*}
 $$
 <p>&nbsp;<br>
@@ -226,8 +226,7 @@ $$
 <p>
 
 <ul>
- <p><li> Numerical solution methods do not depend on how the ODE looks like</li>
- <p><li> Method and software aim at <em>any</em> ODE</li>
+ <p><li> Our methods and software should be applicable to <em>any</em> ODE</li>
  <p><li> Therefore we need an abstract notation for an arbitrary ODE</li>
 </ul>
 <p>
@@ -235,8 +234,12 @@ $$
 <p>&nbsp;<br>
 $$ u^{\prime}(t) = f(u(t), t)$$
 <p>&nbsp;<br>
+</div>
 
 
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
 <p>
 The three ODEs on the last slide correspond to
 
@@ -256,8 +259,8 @@ $$
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-Our task: write functions and classes that take \( f \) and
-produces the solution \( u \)
+Our task: write functions and classes that take \( f \) as input and
+produce \( u \) as output
 </div>
 
 
@@ -285,7 +288,9 @@ what is the \( f(u,t) \)?
 </div>
 
 
+
 <p>
+
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Solution:</b>
 <p>
@@ -309,14 +314,49 @@ $$ u' = \underbrace{\alpha(t) u(1-\frac{u}{R(t)})}_{f(u,t)} $$
 
 <section>
 
-<h2>How to solve a general ODE numerically by the Forward Euler method  <a name="___sec4"></a></h2>
+<h2>Such abstract \( f \) functions are widely used in mathematics  <a name="___sec4"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>We can make generic software for:</b>
+<p>
+
+<ul>
+ <p><li> Numerical differentiation: \( f'(x) \)</li>
+ <p><li> Numerical integration: \( \int_a^b f(x)dx \)</li>
+ <p><li> Numerical solution of algebraic equations: \( f(x)=0 \)</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Applications:</b>
+<p>
+
+<ol>
+<p><li> \( \frac{d}{dx} x^a\sin (wx) \): \( f(x)=x^a\sin (wx) \)</li>
+<p><li> \( \int_{-1}^1 (x^2\tanh^{-1}x - (1+x^2)^{-1})dx \): \( f(x)=x^2\tanh^{-1}x - (1+x^2)^{-1} \), \( a=-1 \), \( b=1 \)</li>
+<p><li> Solve \( x^4\sin x = \tan x \): \( f(x)=x^4\sin x - \tan x \)</li>
+</ol>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We use finite difference approximations to derivatives to turn an ODE into a difference equation  <a name="___sec5"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>\( u'=f(u,t) \).</b>
 <p>
 Assume we have computed \( u \) at discrete time points
-\( t_0,t_1,\ldots,t_n \). At \( t_k \) we have the ODE
+\( t_0,t_1,\ldots,t_k \). At \( t_k \) we have the ODE
 
 <p>&nbsp;<br>
 $$ u'(t_k) = f(u(t_k),t_k) $$
@@ -340,8 +380,25 @@ $$ \frac{u(t_{k+1})-u(t_k)}{\Delta t} = f(u(t_k),t_k) $$
 
 
 <p>
-Everything with \( u(t_k) \) is known, \( u(t_{k+1}) \) is unknown:
+Terms with \( u(t_k) \) are known, and this is an algebraic (difference) equation
+for \( u(t_{k+1}) \)
+</div>
 
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The Forward Euler (or Euler's) method  <a name="___sec6"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Solving with respect to \( u(t_{k+1}) \)
 <p>&nbsp;<br>
 $$ u(t_{k+1}) = u(t_k) + \Delta t f(u(t_k), t_k)$$
 <p>&nbsp;<br>
@@ -350,9 +407,23 @@ $$ u(t_{k+1}) = u(t_k) + \Delta t f(u(t_k), t_k)$$
 <p>
 This is a very simple formula that we can use repeatedly for
 \( u(t_1) \), \( u(t_2) \), \( u(t_3) \) and so forth.
+</div>
+
 
 <p>
-The technique is called <em>Euler's method</em> or the <em>Forward Euler method</em>.
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Difference equation notation:</b>
+<p>
+Let \( u_k \) denote the numerical approximation to the exact solution \( u(t) \)
+at \( t=t_k \).
+
+<p>&nbsp;<br>
+$$ u_{k+1} = u_k + \Delta t f(u_k,t_k)$$
+<p>&nbsp;<br>
+
+
+<p>
+This is an ordinary difference equation we can solve!
 </div>
 
 
@@ -363,32 +434,23 @@ The technique is called <em>Euler's method</em> or the <em>Forward Euler method<
 
 <section>
 
-<h2>Illustration of the forward finite difference  <a name="___sec5"></a></h2>
+<h2>Illustration of the forward finite difference  <a name="___sec7"></a></h2>
 
 <p>
 <center><p><img src="fig-ode2/fd_forward.png" align="bottom" width=500></p></center>
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal">
-<b>Notation:</b>
-<p>
-We let \( u_k \) denote the numerical approximation to the exact solution \( u(t) \)
-for \( t=t_k \).
-</div>
-
-
-<p>
 
 </section>
 
 
 <section>
 
-<h2>Let's apply the method!  <a name="___sec6"></a></h2>
+<h2>Let's apply the method!  <a name="___sec8"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b>Problem: The world's simplest ODE:</b>
+<b>Problem: The world's simplest ODE.</b>
 <p>
 
 <p>&nbsp;<br>
@@ -397,7 +459,7 @@ $$ u' = u,\quad t\in (0,T] $$
 
 
 <p>
-Solve \( u \) at discrete time points: \( t_k=k\Delta t \), \( k=0,1,2,\ldots,t_n \),
+Solve for \( u \) at \( t=t_k=k\Delta t \), \( k=0,1,2,\ldots,t_n \),
 \( t_0=0 \), \( t_n=T \)
 </div>
 
@@ -407,7 +469,7 @@ Solve \( u \) at discrete time points: \( t_k=k\Delta t \), \( k=0,1,2,\ldots,t_
 <b>Forward Euler method:</b>
 <p>
 <p>&nbsp;<br>
-$$ u_{k+1} = u_k + \Delta t f(u_k,t_k)$$
+$$ u_{k+1} = u_k + \Delta t\, f(u_k,t_k)$$
 <p>&nbsp;<br>
 </div>
 
@@ -434,15 +496,40 @@ but what is \( u_0 \)?
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal">
-<b>Initial condition:</b>
-<p>
 
-<ul>
- <p><li> Any ODE \( u'=f(u,t) \) <em>must</em> have an initial condition \( u(0)=U_0 \), with
-   known \( U_0 \), otherwise we cannot start the method!</li>
- <p><li> In mathematics: \( u(0)=U_0 \) must be specified to get a unique solution</li>
-</ul>
+</section>
+
+
+<section>
+
+<h2>An ODE needs an initial condition: \( u(0)=U_0 \)  <a name="___sec9"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Numerics:</b>
+<p>
+Any ODE \( u'=f(u,t) \) <em>must</em> have an initial condition \( u(0)=U_0 \), with
+known \( U_0 \), otherwise we cannot start the method!
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Mathematics:</b>
+<p>
+In mathematics: \( u(0)=U_0 \) must be specified to get a unique solution.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Example:</b>
+<p>
+<p>&nbsp;<br>
+$$ u'=u $$
+<p>&nbsp;<br>
+
+Solution: \( u=Ce^t \) for any constant \( C \). Say \( u(0)=U_0 \): \( u=U_0e^t \).
 </div>
 
 
@@ -453,7 +540,7 @@ but what is \( u_0 \)?
 
 <section>
 
-<h2>We continue solution by hand  <a name="___sec7"></a></h2>
+<h2>We continue solution by hand  <a name="___sec10"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -486,7 +573,47 @@ Actually, we found a formula for \( u_k \)! No need to program...
 
 <section>
 
-<h2>What about the general case \( u'=f(u,t) \)?  <a name="___sec8"></a></h2>
+<h2>How accurate is our numerical method?  <a name="___sec11"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <p><li> Exact solution: \( u(t)=2e^t \), \( u(t_k)=2e^{k\Delta t} = 2(e^{\Delta t})^k \)</li>
+ <p><li> Numerical solution: \( u_k = 2(1+\Delta t)^k \)</li>
+</ul>
+<p>
+
+When going from \( t_k \) to \( t_{k+1} \), the solution is amplified by a factor:
+
+<ul>
+ <p><li> Exact: \( u(t_{k+1}) = e^{\Delta t}u(t_k) \)</li>
+ <p><li> Numerical: \( u_{k+1} = (1+\Delta t)u_k \)</li>
+</ul>
+<p>
+
+Using Taylor series for \( e^x \) we see that
+
+<p>&nbsp;<br>
+$$ e^{\Delta t} - (1+\Delta t) = 1 + \Delta t + \frac{\Delta t^2}{2}
++ frac{\Delta t^3}{6} + \cdots - (1+\Delta t) = frac{\Delta t^3}{6}
++ {\cal O}(\Delta t^4)$$
+<p>&nbsp;<br>
+
+This error approaches 0 as \( \Delta t\rightarrow 0 \).
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>What about the general case \( u'=f(u,t) \)?  <a name="___sec12"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -500,7 +627,7 @@ u_1 &= u_0 + \Delta t f(u_0, t_0)\\
 u_2 &= u_1 + \Delta t f(u_1, t_1)\\
 u_3 &= u_2 + \Delta t f(u_2, t_2)\\
 u_4 &= u_3 + \Delta t f(u_3, t_3)\\
-\vdots &= \vdots
+&\vdots
 \end{align*}
 $$
 <p>&nbsp;<br>
@@ -513,7 +640,7 @@ No general formula in this case...
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Rule of thumb:</b>
 <p>
-These hand calculations get very boring, so let's program!
+When hand calculations get boring, let's program!
 </div>
 
 
@@ -524,7 +651,7 @@ These hand calculations get very boring, so let's program!
 
 <section>
 
-<h2>A special program for the special ODE \( u'=u \), \( u(0)=U_0 \)  <a name="___sec9"></a></h2>
+<h2>We start with a specialized program for \( u'=u \), \( u(0)=U_0 \)  <a name="___sec13"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -534,7 +661,6 @@ Given \( \Delta t \) (<code>dt</code>) and \( n \)
 
 <ul>
  <p><li> Create arrays <code>t</code> and <code>u</code> of length \( n+1 \)</li>
- <p><li> Create array <code>u</code> to hold \( u_k \) and</li>
  <p><li> Set initial condition: <code>u[0]</code> = \( U_0 \), <code>t[0]=0</code></li>
  <p><li> For \( k=0,1,2,\ldots,n-1 \):</li>
 
@@ -547,6 +673,15 @@ Given \( \Delta t \) (<code>dt</code>) and \( n \)
 </ul>
 </div>
 
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We start with a specialized program for \( u'=u \), \( u(0)=U_0 \)  <a name="___sec14"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -585,10 +720,12 @@ u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> U
 
 <section>
 
-<h2>The solution if we plot \( u \) against \( t \)  <a name="___sec10"></a></h2>
+<h2>The solution if we plot \( u \) against \( t \)  <a name="___sec15"></a></h2>
 
 <p>
 \( \Delta t = 0.4 \) and \( \Delta t=0.2 \):
+<br />
+<br />
 
 <p>
 <center><p><img src="fig-ode2/FE_n_10_20.png" align="bottom" width=600></p></center>
@@ -600,7 +737,7 @@ u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> U
 
 <section>
 
-<h2>The algorithm for the general ODE \( u'=f(u,t) \)  <a name="___sec11"></a></h2>
+<h2>The algorithm for the general ODE \( u'=f(u,t) \)  <a name="___sec16"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -615,7 +752,7 @@ Given \( \Delta t \) (<code>dt</code>) and \( n \)
  <p><li> For \( k=0,1,2,\ldots,n-1 \):</li>
 
 <ul>
-  <p><li> <code>u[k+1] = u[k] + dt*f(u[k], t[k])</code> \<font color="red">(the only change!)</font></li>
+  <p><li> <code>u[k+1] = u[k] + dt*f(u[k], t[k])</code> <font color="red">(the only change!)</font></li>
   <p><li> <code>t[k+1] = t[k] + dt</code></li>
 </ul>
 <p>
@@ -631,7 +768,7 @@ Given \( \Delta t \) (<code>dt</code>) and \( n \)
 
 <section>
 
-<h2>Implementation of the general algorithm for \( u'=f(u,t) \)  <a name="___sec12"></a></h2>
+<h2>Implementation of the general algorithm for \( u'=f(u,t) \)  <a name="___sec17"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -675,14 +812,15 @@ This simple function can solve any ODE (!)
 
 <section>
 
-<h2>Example on using the function  <a name="___sec13"></a></h2>
+<h2>Example on using the function  <a name="___sec18"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Mathematical problem:</b>
 <p>
 Solve \( u'=u \), \( u(0)=1 \), for \( t\in [0,4] \),
-with \( \Delta t = 0.4 \) Exact solution is \( u(t)=e^t \).
+with \( \Delta t = 0.4 \) <br />
+Exact solution: \( u(t)=e^t \).
 </div>
 
 
@@ -729,7 +867,7 @@ plot(t, u, <span style="color: #BA2121">&#39;r-&#39;</span>, t, u_exact, <span s
 
 <section>
 
-<h2>Now you can solve any ODE!  <a name="___sec14"></a></h2>
+<h2>Now you can solve any ODE!  <a name="___sec19"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -764,15 +902,12 @@ The Forward Euler method may give very inaccurate solutions if
 
 <section>
 
-<h2>A class for solving ODEs  <a name="___sec15"></a></h2>
+<h2>Let us make a class instead of a function for solving ODEs  <a name="___sec20"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b></b>
+<b>Usage of the class:</b>
 <p>
-Instead of a function for solving any ODE we now want to make a class
-and use it like this:
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -781,19 +916,25 @@ method<span style="color: #666666">.</span>set_initial_condition(U0, t0)
 u, t <span style="color: #666666">=</span> method<span style="color: #666666">.</span>solve(T)
 plot(t, u)
 </pre></div>
+
+</div>
+
+
 <p>
-How?
+<div class="alert alert-block alert-block alert-text-normal">
+<b>How?</b>
+<p>
 
 <ul>
   <p><li> Store \( f \), \( \Delta t \), and the sequences \( u_k \), \( t_k \) as attributes</li>
-  <p><li> Split the steps in the <code>ForwardEuler</code> function into three methods:</li>
+  <p><li> Split the steps in the <code>ForwardEuler</code> function into four methods:</li>
 
 <ul>
      <p><li> the constructor (<code>__init__</code>)</li>
      <p><li> <code>set_initial_condition</code> for \( u(0)=U_0 \)</li>
-     <p><li> <code>solve</code> for running the Forward Euler algorithm</li>
+     <p><li> <code>solve</code> for running the numerical time stepping</li>
      <p><li> <code>advance</code> for isolating the numerical updating formula <br />
-       (new numerical methods just need a diferent <code>advance</code> method,
+       (new numerical methods just need a different <code>advance</code> method,
        the rest is the same)</li>
 </ul>
 <p>
@@ -809,7 +950,7 @@ How?
 
 <section>
 
-<h2>The code for a class for solving ODEs (part 1)  <a name="___sec16"></a></h2>
+<h2>The code for a class for solving ODEs (part 1)  <a name="___sec21"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -838,7 +979,7 @@ How?
 
 <section>
 
-<h2>The code for a class for solving ODEs (part 2)  <a name="___sec17"></a></h2>
+<h2>The code for a class for solving ODEs (part 2)  <a name="___sec22"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -851,7 +992,7 @@ How?
     <span style="color: #666666">...</span>
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solve</span>(<span style="color: #008000">self</span>, T):
         <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Compute solution for 0 &lt;= t &lt;= T.&quot;&quot;&quot;</span>
-        n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span><span style="color: #008000">self</span><span style="color: #666666">.</span>dt))
+        n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span><span style="color: #008000">self</span><span style="color: #666666">.</span>dt))  <span style="color: #408080; font-style: italic"># no of intervals</span>
         <span style="color: #008000">self</span><span style="color: #666666">.</span>u <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n<span style="color: #666666">+1</span>)
         <span style="color: #008000">self</span><span style="color: #666666">.</span>t <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n<span style="color: #666666">+1</span>)
         <span style="color: #008000">self</span><span style="color: #666666">.</span>u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #008000">float</span>(<span style="color: #008000">self</span><span style="color: #666666">.</span>U0)
@@ -865,6 +1006,8 @@ How?
 
     <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">advance</span>(<span style="color: #008000">self</span>):
         <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Advance the solution one time step.&quot;&quot;&quot;</span>
+        <span style="color: #408080; font-style: italic"># Create local variables to get rid of &quot;self.&quot; in</span>
+        <span style="color: #408080; font-style: italic"># the numerical formula</span>
         u, dt, f, k, t <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>u, <span style="color: #008000">self</span><span style="color: #666666">.</span>dt, <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>k, <span style="color: #008000">self</span><span style="color: #666666">.</span>t
 
         unew <span style="color: #666666">=</span> u[k] <span style="color: #666666">+</span> dt<span style="color: #666666">*</span>f(u[k], t[k])
@@ -881,7 +1024,7 @@ How?
 
 <section>
 
-<h2>Alternative class code solving ODEs (part 1)  <a name="___sec18"></a></h2>
+<h2>Alternative class code for solving ODEs (part 1)  <a name="___sec23"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -918,7 +1061,7 @@ How?
 
 <section>
 
-<h2>Alternative class code for solving ODEs (part 2)  <a name="___sec19"></a></h2>
+<h2>Alternative class code for solving ODEs (part 2)  <a name="___sec24"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -960,7 +1103,7 @@ How?
 
 <section>
 
-<h2>Verifying the class implementation; mathematics  <a name="___sec20"></a></h2>
+<h2>Verifying the class implementation; mathematics  <a name="___sec25"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -991,7 +1134,7 @@ This \( u \) should be reproduced to machine precision for &quot;any&quot; \( \D
 
 <section>
 
-<h2>Verifying the class implementation; implementation  <a name="___sec21"></a></h2>
+<h2>Verifying the class implementation; implementation  <a name="___sec26"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1029,7 +1172,7 @@ This \( u \) should be reproduced to machine precision for &quot;any&quot; \( \D
 
 <section>
 
-<h2>Using a class to hold the right-hand side \( f(u,t) \)  <a name="___sec22"></a></h2>
+<h2>Using a class to hold the right-hand side \( f(u,t) \)  <a name="___sec27"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1083,7 +1226,7 @@ u, t <span style="color: #666666">=</span> method<span style="color: #666666">.<
 
 <section>
 
-<h2>Figure of the solution  <a name="___sec23"></a></h2>
+<h2>Figure of the solution  <a name="___sec28"></a></h2>
 
 <p>
 <center><p><img src="fig-ode2/logistic_func_mpl.png" align="bottom" width=600></p></center>
@@ -1095,7 +1238,7 @@ u, t <span style="color: #666666">=</span> method<span style="color: #666666">.<
 
 <section>
 
-<h2>Numerical methods for ordinary differential equations  <a name="___sec24"></a></h2>
+<h2>Numerical methods for ordinary differential equations  <a name="___sec29"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1115,7 +1258,7 @@ $$ u_{k+1} = u_k + \Delta t\, f(u_k, t_k) $$
 $$ u_{k+1} = u_k + {1\over 6}\left( K_1 + 2K_2 + 2K_3 + K_4\right)$$
 <p>&nbsp;<br>
 
-where
+
 <p>&nbsp;<br>
 $$
 \begin{align*}
@@ -1129,7 +1272,8 @@ $$
 
 
 <p>
-And lots of other methods! How to program a collection of methods?
+And lots of other methods! How to program a wide collection of methods?
+Use object-oriented programming!
 </div>
 
 
@@ -1140,33 +1284,37 @@ And lots of other methods! How to program a collection of methods?
 
 <section>
 
-<h2>A superclass for ODE methods  <a name="___sec25"></a></h2>
+<h2>A superclass for ODE methods  <a name="___sec30"></a></h2>
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal">
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Common tasks for ODE solvers:</b>
 <p>
 
 <ul>
-  <p><li> Store the solution \( u_k \) and the corresponding time levels \( t_k \), \( k=0,1,2,\ldots,n \)</li>
-  <p><li> Store the right-hand side function \( f(u,t) \)</li>
-  <p><li> Set and store the initial condition</li>
-  <p><li> Run the loop over all time steps</li>
+  <p><li class="fragment"> Store the solution \( u_k \) and the corresponding time levels \( t_k \), \( k=0,1,2,\ldots,n \)</li>
+  <p><li class="fragment"> Store the right-hand side function \( f(u,t) \)</li>
+  <p><li class="fragment"> Set and store the initial condition</li>
+  <p><li class="fragment"> Run the loop over all time steps</li>
 </ul>
 </div>
 
 
+
 <p>
-<div class="alert alert-block alert-block alert-text-normal">
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Principles:</b>
 <p>
 
 <ul>
-  <p><li> Common data and functionality are placed in superclass <code>ODESolver</code></li>
-  <p><li> Isolate the numerical updating formula in a method <code>advance</code></li>
-  <p><li> Subclasses, e.g., <code>ForwardEuler</code>, just implement the specific numerical formula in <code>advance</code></li>
+  <p><li class="fragment"> Common data and functionality are placed in superclass <code>ODESolver</code></li>
+  <p><li class="fragment"> Isolate the numerical updating formula in a method <code>advance</code></li>
+  <p><li class="fragment"> Subclasses, e.g., <code>ForwardEuler</code>, just implement the specific numerical formula in <code>advance</code></li>
 </ul>
 </div>
+
 
 
 <p>
@@ -1176,7 +1324,7 @@ And lots of other methods! How to program a collection of methods?
 
 <section>
 
-<h2>The superclass code  <a name="___sec26"></a></h2>
+<h2>The superclass code  <a name="___sec31"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1222,7 +1370,7 @@ And lots of other methods! How to program a collection of methods?
 
 <section>
 
-<h2>Implementation of the Forward Euler method  <a name="___sec27"></a></h2>
+<h2>Implementation of the Forward Euler method  <a name="___sec32"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1270,7 +1418,7 @@ plot(t, u)
 
 <section>
 
-<h2>The implementation of a Runge-Kutta method  <a name="___sec28"></a></h2>
+<h2>The implementation of a Runge-Kutta method  <a name="___sec33"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1323,7 +1471,7 @@ plot(t, u)
 
 <section>
 
-<h2>The user should be able to check intermediate solutions and terminate the time stepping  <a name="___sec29"></a></h2>
+<h2>The user should be able to check intermediate solutions and terminate the time stepping  <a name="___sec34"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1332,15 +1480,10 @@ plot(t, u)
 
 <ul>
  <p><li> Sometimes a property of the solution determines when to stop the solution process: e.g., when \( u < 10^{-7}\approx 0 \).</li>
-
-<ul>
-  <p><li> Extension <code>solve(time_points, terminate)</code></li>
-  <p><li> <code>terminate(u, t, step_no)</code> is called at every time step, is user-defined,
-    and returns <code>True</code> when the time stepping should be terminated</li>
-  <p><li> Last computed solution is <code>u[step_no]</code> at time <code>t[step_no]</code></li>
-</ul>
-<p>
-
+ <p><li> Extension: <code>solve(time_points, terminate)</code></li>
+ <p><li> <code>terminate(u, t, step_no)</code> is called at every time step, is user-defined,
+   and returns <code>True</code> when the time stepping should be terminated</li>
+ <p><li> Last computed solution is <code>u[step_no]</code> at time <code>t[step_no]</code></li>
 </ul>
 <p>
 
@@ -1362,7 +1505,7 @@ plot(t, u)
 
 <section>
 
-<h1 style="text-align: center;">Systems of differential equations (vector ODE)  <a name="___sec30"></a></h1>
+<h1 style="text-align: center;">Systems of differential equations (vector ODE)  <a name="___sec35"></a></h1>
 
 <p>
 
@@ -1398,7 +1541,7 @@ $$
 
 <section>
 
-<h2>Example on a system of ODEs (vector ODE)  <a name="___sec31"></a></h2>
+<h2>Example on a system of ODEs (vector ODE)  <a name="___sec36"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1409,7 +1552,7 @@ Two ODEs with two unknowns \( u(t) \) and \( v(t) \):
 <p>&nbsp;<br>
 $$
 \begin{align*}
-   u'(t) &= v(t),\\
+   u'(t) &= v(t)\\
    v'(t) &= -u(t)
 \end{align*}
 $$
@@ -1425,7 +1568,7 @@ $$ u(0)=0,\quad v(0)=1 $$
 
 
 <p>
-In this case, one can derive the exact solution
+In this case, one can derive the exact solution to be
 
 <p>&nbsp;<br>
 $$ u(t)=\sin (t),\quad v(t)=\cos (t)$$
@@ -1444,7 +1587,7 @@ Systems of ODEs appear frequently in physics, biology, finance, ...
 
 <section>
 
-<h2>The ODE system that is the final project in the course  <a name="___sec32"></a></h2>
+<h2>The ODE system that is the final project in the course  <a name="___sec37"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1457,7 +1600,18 @@ $$
 \begin{align*}
 S' &= - \beta SI\\
 I' &= \beta SI -\nu R\\
-R' &= \nu I\\
+R' &= \nu I
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Initial conditions:
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
 S(0) &= S_0\\
 I(0) &= I_0\\
 R(0) &= 0
@@ -1474,7 +1628,7 @@ $$
 
 <section>
 
-<h2>Another example on a system of ODEs (vector ODE)  <a name="___sec33"></a></h2>
+<h2>Another example on a system of ODEs (vector ODE)  <a name="___sec38"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1503,18 +1657,15 @@ The first-order system is then
 <p>&nbsp;<br>
 $$
 \begin{align*}
-{d\over dt} u^{(0)}(t) &=& u^{(1)}(t)\\
-{d\over dt} u^{(1)}(t) &=& -m^{-1}\beta u^{(1)} - m^{-1}ku^{(0)}
+{d\over dt} u^{(0)}(t) &= u^{(1)}(t)\\
+{d\over dt} u^{(1)}(t) &= -m^{-1}\beta u^{(1)} - m^{-1}ku^{(0)}
 \end{align*}
 $$
 <p>&nbsp;<br>
 
 
 <p>
-Initial conditions:
-<p>&nbsp;<br>
-$$ u^{(0)}(0) = U_0,\quad u^{(1)}(0)=0$$
-<p>&nbsp;<br>
+Initial conditions: \( u^{(0)}(0) = U_0 \), \( u^{(1)}(0)=0 \)
 </div>
 
 
@@ -1525,7 +1676,7 @@ $$ u^{(0)}(0) = U_0,\quad u^{(1)}(0)=0$$
 
 <section>
 
-<h2>Making a flexible toolbox for solving ODEs  <a name="___sec34"></a></h2>
+<h2>Making a flexible toolbox for solving ODEs  <a name="___sec39"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1550,7 +1701,7 @@ $$ u^{(0)}(0) = U_0,\quad u^{(1)}(0)=0$$
 
 <section>
 
-<h2>Vector notation for systems of ODEs: unknowns and equations  <a name="___sec35"></a></h2>
+<h2>Vector notation for systems of ODEs: unknowns and equations  <a name="___sec40"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1585,7 +1736,7 @@ $$
 
 <section>
 
-<h2>Vector notation for systems of ODEs: vectors  <a name="___sec36"></a></h2>
+<h2>Vector notation for systems of ODEs: vectors  <a name="___sec41"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1631,7 +1782,7 @@ the same lines of code (!)
 
 <section>
 
-<h2>How to make class ODESolver work for systems of ODEs  <a name="___sec37"></a></h2>
+<h2>How to make class ODESolver work for systems of ODEs  <a name="___sec42"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1671,9 +1822,6 @@ where
   <p><li> <code>u</code> is a two-dim. array (<code>u[k]</code> is a row)</li>
   <p><li> <code>f</code> is a function returning an array
     (all the right-hand sides \( f^{(0)},\ldots,f^{(n-1)} \))</li>
-  <p><li> Result: ODESolver will work for systems!</li>
-  <p><li> The only change: ensure that <code>f(u,t)</code> returns an array <br />
-    (This can be done be a general adjustment in the superclass!)</li>
 </ul>
 </div>
 
@@ -1685,7 +1833,21 @@ where
 
 <section>
 
-<h2>The adjusted superclass code (part 1)  <a name="___sec38"></a></h2>
+<h2>The adjusted superclass code (part 1)  <a name="___sec43"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>To make ODESolver work for systems:</b>
+<p>
+
+<ul>
+ <p><li> Ensure that <code>f(u,t)</code> returns an array. <br />
+   This can be done be a general adjustment in the superclass!</li>
+ <p><li> Inspect \( U_0 \) to see if it is a number or list/tuple and
+   make corresponding <code>u</code> 1-dim or 2-dim array</li>
+</ul>
+</div>
+
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1720,7 +1882,7 @@ where
 
 <section>
 
-<h2>The superclass code (part 2)  <a name="___sec39"></a></h2>
+<h2>The superclass code (part 2)  <a name="___sec44"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1765,7 +1927,7 @@ All subclasses from the scalar ODE works for systems as well
 
 <section>
 
-<h2>Example on how to use the general class hierarchy  <a name="___sec40"></a></h2>
+<h2>Example on how to use the general class hierarchy  <a name="___sec45"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1812,7 +1974,7 @@ $$
 
 <section>
 
-<h2>Alternative implementation of the \( f \) function via a class  <a name="___sec41"></a></h2>
+<h2>Alternative implementation of the \( f \) function via a class  <a name="___sec46"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1867,7 +2029,7 @@ plot(t, u0_values, <span style="color: #BA2121">&#39;r-&#39;</span>,  t, u0_exac
 
 <section>
 
-<h2>Throwing a ball; ODE model  <a name="___sec42"></a></h2>
+<h2>Throwing a ball; ODE model  <a name="___sec47"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1878,10 +2040,10 @@ Newton's 2nd law for a ball's trajectory through air leads to
 <p>&nbsp;<br>
 $$
 \begin{align*}
-{dx\over dt} &=& v_x\\
-{dv_x\over dt} &=& 0\\
-{dy\over dt} &=& v_y\\
-{dv_y\over dt} &=& -g
+{dx\over dt} &= v_x\\
+{dv_x\over dt} &= 0\\
+{dy\over dt} &= v_y\\
+{dv_y\over dt} &= -g
 \end{align*}
 $$
 <p>&nbsp;<br>
@@ -1908,7 +2070,7 @@ Air resistance is neglected but can easily be added!
 
 <section>
 
-<h2>Throwing a ball; code  <a name="___sec43"></a></h2>
+<h2>Throwing a ball; code  <a name="___sec48"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1962,7 +2124,7 @@ plot(x, y)
 
 <section>
 
-<h2>Throwing a ball; results  <a name="___sec44"></a></h2>
+<h2>Throwing a ball; results  <a name="___sec49"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1982,7 +2144,7 @@ Comparison of exact and Forward Euler solutions
 
 <section>
 
-<h2>Logistic growth model; ODE and code overview  <a name="___sec45"></a></h2>
+<h2>Logistic growth model; ODE and code overview  <a name="___sec50"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2017,7 +2179,7 @@ which can vary with changes in the environment over time
 
 <section>
 
-<h2>Logistic growth model; class Problem (\( f \))  <a name="___sec46"></a></h2>
+<h2>Logistic growth model; class Problem (\( f \))  <a name="___sec51"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2052,7 +2214,7 @@ problem <span style="color: #666666">=</span> Problem(alpha<span style="color: #
 
 <section>
 
-<h2>Logistic growth model; class Solver  <a name="___sec47"></a></h2>
+<h2>Logistic growth model; class Solver  <a name="___sec52"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2096,7 +2258,7 @@ solver<span style="color: #666666">.</span>plot()
 
 <section>
 
-<h2>Logistic growth model; results  <a name="___sec48"></a></h2>
+<h2>Logistic growth model; results  <a name="___sec53"></a></h2>
 
 <p>
 <center><p><img src="fig-ode2/oo_ode_apps_logistic_varying_R.png" align="bottom" width=600></p></center>
