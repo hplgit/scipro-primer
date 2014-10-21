@@ -78,144 +78,167 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec2'),
               (u' What is the $f(u,t)$? ', 2, None, '___sec3'),
-              (u' How to solve a general ODE numerically by the Forward Euler method ',
+              (u' Such abstract $f$ functions are widely used in mathematics ',
                2,
                None,
                '___sec4'),
-              (u' Illustration of the forward finite difference ',
+              (u' We use finite difference approximations to derivatives to turn an ODE into a difference equation ',
                2,
                None,
                '___sec5'),
-              (u" Let's apply the method! ", 2, None, '___sec6'),
-              (u' We continue solution by hand ', 2, None, '___sec7'),
-              (u" What about the general case $u'=f(u,t)$? ",
+              (u" The Forward Euler (or Euler's) method ",
                2,
                None,
-               '___sec8'),
-              (u" A special program for the special ODE $u'=u$, $u(0)=U_0$ ",
+               '___sec6'),
+              (u' Illustration of the forward finite difference ',
+               2,
+               None,
+               '___sec7'),
+              (u" Let's apply the method! ", 2, None, '___sec8'),
+              (u' An ODE needs an initial condition: $u(0)=U_0$ ',
                2,
                None,
                '___sec9'),
-              (u' The solution if we plot $u$ against $t$ ',
-               2,
-               None,
-               '___sec10'),
-              (u" The algorithm for the general ODE $u'=f(u,t)$ ",
+              (u' We continue solution by hand ', 2, None, '___sec10'),
+              (u' How accurate is our numerical method? ',
                2,
                None,
                '___sec11'),
-              (u" Implementation of the general algorithm for $u'=f(u,t)$ ",
+              (u" What about the general case $u'=f(u,t)$? ",
                2,
                None,
                '___sec12'),
-              (u' Example on using the function ', 2, None, '___sec13'),
-              (u' Now you can solve any ODE! ', 2, None, '___sec14'),
-              (u' A class for solving ODEs ', 2, None, '___sec15'),
-              (u' The code for a class for solving ODEs (part 1) ',
+              (u" We start with a specialized program for $u'=u$, $u(0)=U_0$ ",
+               2,
+               None,
+               '___sec13'),
+              (u" We start with a specialized program for $u'=u$, $u(0)=U_0$ ",
+               2,
+               None,
+               '___sec14'),
+              (u' The solution if we plot $u$ against $t$ ',
+               2,
+               None,
+               '___sec15'),
+              (u" The algorithm for the general ODE $u'=f(u,t)$ ",
                2,
                None,
                '___sec16'),
-              (u' The code for a class for solving ODEs (part 2) ',
+              (u" Implementation of the general algorithm for $u'=f(u,t)$ ",
                2,
                None,
                '___sec17'),
-              (u' Alternative class code solving ODEs (part 1) ',
-               2,
-               None,
-               '___sec18'),
-              (u' Alternative class code for solving ODEs (part 2) ',
-               2,
-               None,
-               '___sec19'),
-              (u' Verifying the class implementation; mathematics ',
+              (u' Example on using the function ', 2, None, '___sec18'),
+              (u' Now you can solve any ODE! ', 2, None, '___sec19'),
+              (u' Let us make a class instead of a function for solving ODEs ',
                2,
                None,
                '___sec20'),
-              (u' Verifying the class implementation; implementation ',
+              (u' The code for a class for solving ODEs (part 1) ',
                2,
                None,
                '___sec21'),
-              (u' Using a class to hold the right-hand side $f(u,t)$ ',
+              (u' The code for a class for solving ODEs (part 2) ',
                2,
                None,
                '___sec22'),
-              (u' Figure of the solution ', 2, None, '___sec23'),
-              (u' Numerical methods for ordinary differential equations ',
+              (u' Alternative class code for solving ODEs (part 1) ',
+               2,
+               None,
+               '___sec23'),
+              (u' Alternative class code for solving ODEs (part 2) ',
                2,
                None,
                '___sec24'),
-              (u' A superclass for ODE methods ', 2, None, '___sec25'),
-              (u' The superclass code ', 2, None, '___sec26'),
-              (u' Implementation of the Forward Euler method ',
+              (u' Verifying the class implementation; mathematics ',
+               2,
+               None,
+               '___sec25'),
+              (u' Verifying the class implementation; implementation ',
+               2,
+               None,
+               '___sec26'),
+              (u' Using a class to hold the right-hand side $f(u,t)$ ',
                2,
                None,
                '___sec27'),
-              (u' The implementation of a Runge-Kutta method ',
-               2,
-               None,
-               '___sec28'),
-              (u' The user should be able to check intermediate solutions and terminate the time stepping ',
+              (u' Figure of the solution ', 2, None, '___sec28'),
+              (u' Numerical methods for ordinary differential equations ',
                2,
                None,
                '___sec29'),
-              (u' Systems of differential equations (vector ODE) ',
-               1,
-               None,
-               '___sec30'),
-              (u' Example on a system of ODEs (vector ODE) ',
-               2,
-               None,
-               '___sec31'),
-              (u' The ODE system that is the final project in the course ',
+              (u' A superclass for ODE methods ', 2, None, '___sec30'),
+              (u' The superclass code ', 2, None, '___sec31'),
+              (u' Implementation of the Forward Euler method ',
                2,
                None,
                '___sec32'),
-              (u' Another example on a system of ODEs (vector ODE) ',
+              (u' The implementation of a Runge-Kutta method ',
                2,
                None,
                '___sec33'),
-              (u' Making a flexible toolbox for solving ODEs ',
+              (u' The user should be able to check intermediate solutions and terminate the time stepping ',
                2,
                None,
                '___sec34'),
-              (u' Vector notation for systems of ODEs: unknowns and equations ',
-               2,
+              (u' Systems of differential equations (vector ODE) ',
+               1,
                None,
                '___sec35'),
-              (u' Vector notation for systems of ODEs: vectors ',
+              (u' Example on a system of ODEs (vector ODE) ',
                2,
                None,
                '___sec36'),
-              (u' How to make class ODESolver work for systems of ODEs ',
+              (u' The ODE system that is the final project in the course ',
                2,
                None,
                '___sec37'),
-              (u' The adjusted superclass code (part 1) ',
+              (u' Another example on a system of ODEs (vector ODE) ',
                2,
                None,
                '___sec38'),
-              (u' The superclass code (part 2) ', 2, None, '___sec39'),
-              (u' Example on how to use the general class hierarchy ',
+              (u' Making a flexible toolbox for solving ODEs ',
+               2,
+               None,
+               '___sec39'),
+              (u' Vector notation for systems of ODEs: unknowns and equations ',
                2,
                None,
                '___sec40'),
-              (u' Alternative implementation of the $f$ function via a class ',
+              (u' Vector notation for systems of ODEs: vectors ',
                2,
                None,
                '___sec41'),
-              (u' Throwing a ball; ODE model ', 2, None, '___sec42'),
-              (u' Throwing a ball; code ', 2, None, '___sec43'),
-              (u' Throwing a ball; results ', 2, None, '___sec44'),
-              (u' Logistic growth model; ODE and code overview ',
+              (u' How to make class ODESolver work for systems of ODEs ',
+               2,
+               None,
+               '___sec42'),
+              (u' The adjusted superclass code (part 1) ',
+               2,
+               None,
+               '___sec43'),
+              (u' The superclass code (part 2) ', 2, None, '___sec44'),
+              (u' Example on how to use the general class hierarchy ',
                2,
                None,
                '___sec45'),
-              (u' Logistic growth model; class Problem ($f$) ',
+              (u' Alternative implementation of the $f$ function via a class ',
                2,
                None,
                '___sec46'),
-              (u' Logistic growth model; class Solver ', 2, None, '___sec47'),
-              (u' Logistic growth model; results ', 2, None, '___sec48')]}
+              (u' Throwing a ball; ODE model ', 2, None, '___sec47'),
+              (u' Throwing a ball; code ', 2, None, '___sec48'),
+              (u' Throwing a ball; results ', 2, None, '___sec49'),
+              (u' Logistic growth model; ODE and code overview ',
+               2,
+               None,
+               '___sec50'),
+              (u' Logistic growth model; class Problem ($f$) ',
+               2,
+               None,
+               '___sec51'),
+              (u' Logistic growth model; class Solver ', 2, None, '___sec52'),
+              (u' Logistic growth model; results ', 2, None, '___sec53')]}
 end of tocinfo -->
 
 <body>
@@ -245,39 +268,49 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Another example on a system of ODEs (vector ODE)  <a name="___sec33"></a></h2>
+<h2>The implementation of a Runge-Kutta method  <a name="___sec33"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b></b>
+<b>Subclass code:</b>
 <p>
-Second-order ordinary differential equation, for a spring-mass system
-(from Newton's second law):
-
-$$ mu'' + \beta u' + ku = 0,\quad u(0)=U_0,\ u'(0)=0$$
-
-
 <p>
-We can rewrite this as a system of two <em>first-order</em> equations, by
-introducing two new unknowns
 
-$$ u^{(0)}(t) \equiv u(t),\quad u^{(1)}(t) \equiv u'(t)$$
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">RungeKutta4</span>(ODESolver):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">advance</span>(<span style="color: #008000">self</span>):
+        u, f, k, t <span style="color: #666666">=</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>u, <span style="color: #008000">self</span><span style="color: #666666">.</span>f, <span style="color: #008000">self</span><span style="color: #666666">.</span>k, <span style="color: #008000">self</span><span style="color: #666666">.</span>t
 
+        dt <span style="color: #666666">=</span> t[k<span style="color: #666666">+1</span>] <span style="color: #666666">-</span> t[k]
+        dt2 <span style="color: #666666">=</span> dt<span style="color: #666666">/2.0</span>
+        K1 <span style="color: #666666">=</span> dt<span style="color: #666666">*</span>f(u[k], t)
+        K2 <span style="color: #666666">=</span> dt<span style="color: #666666">*</span>f(u[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>K1, t <span style="color: #666666">+</span> dt2)
+        K3 <span style="color: #666666">=</span> dt<span style="color: #666666">*</span>f(u[k] <span style="color: #666666">+</span> <span style="color: #666666">0.5*</span>K2, t <span style="color: #666666">+</span> dt2)
+        K4 <span style="color: #666666">=</span> dt<span style="color: #666666">*</span>f(u[k] <span style="color: #666666">+</span> K3, t <span style="color: #666666">+</span> dt)
+        unew <span style="color: #666666">=</span> u[k] <span style="color: #666666">+</span> (<span style="color: #666666">1/6.0</span>)<span style="color: #666666">*</span>(K1 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>K2 <span style="color: #666666">+</span> <span style="color: #666666">2*</span>K3 <span style="color: #666666">+</span> K4)
+        <span style="color: #008000; font-weight: bold">return</span> unew
+</pre></div>
 
-<p>
-The first-order system is then
-
-$$
-\begin{align*}
-{d\over dt} u^{(0)}(t) &=& u^{(1)}(t)\\
-{d\over dt} u^{(1)}(t) &=& -m^{-1}\beta u^{(1)} - m^{-1}ku^{(0)}
-\end{align*}
-$$
+</div>
 
 
 <p>
-Initial conditions:
-$$ u^{(0)}(0) = U_0,\quad u^{(1)}(0)=0$$
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Application code (same as for ForwardEuler):</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">ODESolver</span> <span style="color: #008000; font-weight: bold">import</span> RungeKutta4
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test1</span>(u, t):
+    <span style="color: #008000; font-weight: bold">return</span> u
+
+method <span style="color: #666666">=</span> RungeKutta4(test1)
+method<span style="color: #666666">.</span>set_initial_condition(U0<span style="color: #666666">=1</span>)
+u, t <span style="color: #666666">=</span> method<span style="color: #666666">.</span>solve(time_points<span style="color: #666666">=</span>np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">3</span>, <span style="color: #666666">31</span>))
+plot(t, u)
+</pre></div>
+
 </div>
 
 

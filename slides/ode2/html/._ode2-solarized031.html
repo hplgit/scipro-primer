@@ -68,144 +68,167 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec2'),
               (u' What is the $f(u,t)$? ', 2, None, '___sec3'),
-              (u' How to solve a general ODE numerically by the Forward Euler method ',
+              (u' Such abstract $f$ functions are widely used in mathematics ',
                2,
                None,
                '___sec4'),
-              (u' Illustration of the forward finite difference ',
+              (u' We use finite difference approximations to derivatives to turn an ODE into a difference equation ',
                2,
                None,
                '___sec5'),
-              (u" Let's apply the method! ", 2, None, '___sec6'),
-              (u' We continue solution by hand ', 2, None, '___sec7'),
-              (u" What about the general case $u'=f(u,t)$? ",
+              (u" The Forward Euler (or Euler's) method ",
                2,
                None,
-               '___sec8'),
-              (u" A special program for the special ODE $u'=u$, $u(0)=U_0$ ",
+               '___sec6'),
+              (u' Illustration of the forward finite difference ',
+               2,
+               None,
+               '___sec7'),
+              (u" Let's apply the method! ", 2, None, '___sec8'),
+              (u' An ODE needs an initial condition: $u(0)=U_0$ ',
                2,
                None,
                '___sec9'),
-              (u' The solution if we plot $u$ against $t$ ',
-               2,
-               None,
-               '___sec10'),
-              (u" The algorithm for the general ODE $u'=f(u,t)$ ",
+              (u' We continue solution by hand ', 2, None, '___sec10'),
+              (u' How accurate is our numerical method? ',
                2,
                None,
                '___sec11'),
-              (u" Implementation of the general algorithm for $u'=f(u,t)$ ",
+              (u" What about the general case $u'=f(u,t)$? ",
                2,
                None,
                '___sec12'),
-              (u' Example on using the function ', 2, None, '___sec13'),
-              (u' Now you can solve any ODE! ', 2, None, '___sec14'),
-              (u' A class for solving ODEs ', 2, None, '___sec15'),
-              (u' The code for a class for solving ODEs (part 1) ',
+              (u" We start with a specialized program for $u'=u$, $u(0)=U_0$ ",
+               2,
+               None,
+               '___sec13'),
+              (u" We start with a specialized program for $u'=u$, $u(0)=U_0$ ",
+               2,
+               None,
+               '___sec14'),
+              (u' The solution if we plot $u$ against $t$ ',
+               2,
+               None,
+               '___sec15'),
+              (u" The algorithm for the general ODE $u'=f(u,t)$ ",
                2,
                None,
                '___sec16'),
-              (u' The code for a class for solving ODEs (part 2) ',
+              (u" Implementation of the general algorithm for $u'=f(u,t)$ ",
                2,
                None,
                '___sec17'),
-              (u' Alternative class code solving ODEs (part 1) ',
-               2,
-               None,
-               '___sec18'),
-              (u' Alternative class code for solving ODEs (part 2) ',
-               2,
-               None,
-               '___sec19'),
-              (u' Verifying the class implementation; mathematics ',
+              (u' Example on using the function ', 2, None, '___sec18'),
+              (u' Now you can solve any ODE! ', 2, None, '___sec19'),
+              (u' Let us make a class instead of a function for solving ODEs ',
                2,
                None,
                '___sec20'),
-              (u' Verifying the class implementation; implementation ',
+              (u' The code for a class for solving ODEs (part 1) ',
                2,
                None,
                '___sec21'),
-              (u' Using a class to hold the right-hand side $f(u,t)$ ',
+              (u' The code for a class for solving ODEs (part 2) ',
                2,
                None,
                '___sec22'),
-              (u' Figure of the solution ', 2, None, '___sec23'),
-              (u' Numerical methods for ordinary differential equations ',
+              (u' Alternative class code for solving ODEs (part 1) ',
+               2,
+               None,
+               '___sec23'),
+              (u' Alternative class code for solving ODEs (part 2) ',
                2,
                None,
                '___sec24'),
-              (u' A superclass for ODE methods ', 2, None, '___sec25'),
-              (u' The superclass code ', 2, None, '___sec26'),
-              (u' Implementation of the Forward Euler method ',
+              (u' Verifying the class implementation; mathematics ',
+               2,
+               None,
+               '___sec25'),
+              (u' Verifying the class implementation; implementation ',
+               2,
+               None,
+               '___sec26'),
+              (u' Using a class to hold the right-hand side $f(u,t)$ ',
                2,
                None,
                '___sec27'),
-              (u' The implementation of a Runge-Kutta method ',
-               2,
-               None,
-               '___sec28'),
-              (u' The user should be able to check intermediate solutions and terminate the time stepping ',
+              (u' Figure of the solution ', 2, None, '___sec28'),
+              (u' Numerical methods for ordinary differential equations ',
                2,
                None,
                '___sec29'),
-              (u' Systems of differential equations (vector ODE) ',
-               1,
-               None,
-               '___sec30'),
-              (u' Example on a system of ODEs (vector ODE) ',
-               2,
-               None,
-               '___sec31'),
-              (u' The ODE system that is the final project in the course ',
+              (u' A superclass for ODE methods ', 2, None, '___sec30'),
+              (u' The superclass code ', 2, None, '___sec31'),
+              (u' Implementation of the Forward Euler method ',
                2,
                None,
                '___sec32'),
-              (u' Another example on a system of ODEs (vector ODE) ',
+              (u' The implementation of a Runge-Kutta method ',
                2,
                None,
                '___sec33'),
-              (u' Making a flexible toolbox for solving ODEs ',
+              (u' The user should be able to check intermediate solutions and terminate the time stepping ',
                2,
                None,
                '___sec34'),
-              (u' Vector notation for systems of ODEs: unknowns and equations ',
-               2,
+              (u' Systems of differential equations (vector ODE) ',
+               1,
                None,
                '___sec35'),
-              (u' Vector notation for systems of ODEs: vectors ',
+              (u' Example on a system of ODEs (vector ODE) ',
                2,
                None,
                '___sec36'),
-              (u' How to make class ODESolver work for systems of ODEs ',
+              (u' The ODE system that is the final project in the course ',
                2,
                None,
                '___sec37'),
-              (u' The adjusted superclass code (part 1) ',
+              (u' Another example on a system of ODEs (vector ODE) ',
                2,
                None,
                '___sec38'),
-              (u' The superclass code (part 2) ', 2, None, '___sec39'),
-              (u' Example on how to use the general class hierarchy ',
+              (u' Making a flexible toolbox for solving ODEs ',
+               2,
+               None,
+               '___sec39'),
+              (u' Vector notation for systems of ODEs: unknowns and equations ',
                2,
                None,
                '___sec40'),
-              (u' Alternative implementation of the $f$ function via a class ',
+              (u' Vector notation for systems of ODEs: vectors ',
                2,
                None,
                '___sec41'),
-              (u' Throwing a ball; ODE model ', 2, None, '___sec42'),
-              (u' Throwing a ball; code ', 2, None, '___sec43'),
-              (u' Throwing a ball; results ', 2, None, '___sec44'),
-              (u' Logistic growth model; ODE and code overview ',
+              (u' How to make class ODESolver work for systems of ODEs ',
+               2,
+               None,
+               '___sec42'),
+              (u' The adjusted superclass code (part 1) ',
+               2,
+               None,
+               '___sec43'),
+              (u' The superclass code (part 2) ', 2, None, '___sec44'),
+              (u' Example on how to use the general class hierarchy ',
                2,
                None,
                '___sec45'),
-              (u' Logistic growth model; class Problem ($f$) ',
+              (u' Alternative implementation of the $f$ function via a class ',
                2,
                None,
                '___sec46'),
-              (u' Logistic growth model; class Solver ', 2, None, '___sec47'),
-              (u' Logistic growth model; results ', 2, None, '___sec48')]}
+              (u' Throwing a ball; ODE model ', 2, None, '___sec47'),
+              (u' Throwing a ball; code ', 2, None, '___sec48'),
+              (u' Throwing a ball; results ', 2, None, '___sec49'),
+              (u' Logistic growth model; ODE and code overview ',
+               2,
+               None,
+               '___sec50'),
+              (u' Logistic growth model; class Problem ($f$) ',
+               2,
+               None,
+               '___sec51'),
+              (u' Logistic growth model; class Solver ', 2, None, '___sec52'),
+              (u' Logistic growth model; results ', 2, None, '___sec53')]}
 end of tocinfo -->
 
 <body>
@@ -230,32 +253,38 @@ MathJax.Hub.Config({
 <a name="part0031"></a>
 <!-- !split -->
 
-<h1>Systems of differential equations (vector ODE)  <a name="___sec30"></a></h1>
+<h2>A superclass for ODE methods  <a name="___sec30"></a></h2>
 
 <p>
-
-<table border="0">
-<tr>
-<td class="padding">
-$$
-\begin{align*}
-u' &= v\\
-v' &= -u\\
-u(0) &= 1\\
-v(0) &= 0
-\end{align*}
-$$
-
-</td>
-<td class="padding">
-<center><p><img src="fig-ode2/cos_sin.png" align="bottom" width=500></p></center>
-</td>
-</tr>
-</table>
-
-
+<!-- !bpop -->
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Common tasks for ODE solvers:</b>
 <p>
 
+<ul>
+  <li> Store the solution \( u_k \) and the corresponding time levels \( t_k \), \( k=0,1,2,\ldots,n \)</li>
+  <li> Store the right-hand side function \( f(u,t) \)</li>
+  <li> Set and store the initial condition</li>
+  <li> Run the loop over all time steps</li>
+</ul>
+</div>
+
+<!-- !epop -->
+
+<p>
+<!-- !bpop -->
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Principles:</b>
+<p>
+
+<ul>
+  <li> Common data and functionality are placed in superclass <code>ODESolver</code></li>
+  <li> Isolate the numerical updating formula in a method <code>advance</code></li>
+  <li> Subclasses, e.g., <code>ForwardEuler</code>, just implement the specific numerical formula in <code>advance</code></li>
+</ul>
+</div>
+
+<!-- !epop -->
 
 <p>
 <p>
