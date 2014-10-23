@@ -11,37 +11,27 @@ Automatically generated HTML file from DocOnce source
 <title>Ch.7: Introduction to classes</title>
 
 
-<style type="text/css">
-/* bloodish style */
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
-body {
-  font-family: Helvetica, Verdana, Arial, Sans-serif;
-  color: #404040;
-  background: #ffffff;
-}
-h1 { font-size: 1.8em;  color: #8A0808; }
-h2 { font-size: 1.6em;  color: #8A0808; }
-h3 { font-size: 1.4em;  color: #8A0808; }
-h4 { color: #8A0808; }
-a { color: #8A0808; text-decoration:none; }
-tt { font-family: "Courier New", Courier; }
-/* pre style removed because it will interfer with pygments */
-p { text-indent: 0px; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
 .alert {
   padding:8px 35px 8px 14px; margin-bottom:18px;
   text-shadow:0 1px 0 rgba(255,255,255,0.5);
-  border:1px solid #bababa;
+  border:1px solid #93a1a1;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   color: #555;
-  background-color: #f8f8f8;
+  background-color: #eee8d5;
   background-position: 10px 5px;
   background-repeat: no-repeat;
   background-size: 38px;
@@ -52,10 +42,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -316,15 +306,10 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0057"></a>
-<p>
-
-</p>
-
-<p>
+<a name="part0080"></a>
 <!-- !split -->
 
-<h2>Class for vectors; implementation  <a name="___sec56"></a></h2>
+<h2>Demonstrating the class: volume of a sphere  <a name="___sec79"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -332,43 +317,38 @@ MathJax.Hub.Config({
 <p>
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"> <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Vec2D</span>:
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, x, y):
-        <span style="color: #008000">self</span><span style="color: #666666">.</span>x <span style="color: #666666">=</span> x;  <span style="color: #008000">self</span><span style="color: #666666">.</span>y <span style="color: #666666">=</span> y
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__add__</span>(<span style="color: #008000">self</span>, other):
-        <span style="color: #008000; font-weight: bold">return</span> Vec2D(<span style="color: #008000">self</span><span style="color: #666666">.</span>x<span style="color: #666666">+</span>other<span style="color: #666666">.</span>x, <span style="color: #008000">self</span><span style="color: #666666">.</span>y<span style="color: #666666">+</span>other<span style="color: #666666">.</span>y)
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__sub__</span>(<span style="color: #008000">self</span>, other):
-        <span style="color: #008000; font-weight: bold">return</span> Vec2D(<span style="color: #008000">self</span><span style="color: #666666">.</span>x<span style="color: #666666">-</span>other<span style="color: #666666">.</span>x, <span style="color: #008000">self</span><span style="color: #666666">.</span>y<span style="color: #666666">-</span>other<span style="color: #666666">.</span>y)
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__mul__</span>(<span style="color: #008000">self</span>, other):
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>x<span style="color: #666666">*</span>other<span style="color: #666666">.</span>x <span style="color: #666666">+</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>y<span style="color: #666666">*</span>other<span style="color: #666666">.</span>y
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__abs__</span>(<span style="color: #008000">self</span>):
-        <span style="color: #008000; font-weight: bold">return</span> math<span style="color: #666666">.</span>sqrt(<span style="color: #008000">self</span><span style="color: #666666">.</span>x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>y<span style="color: #666666">**2</span>)
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__eq__</span>(<span style="color: #008000">self</span>, other):
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>x <span style="color: #666666">==</span> other<span style="color: #666666">.</span>x <span style="color: #AA22FF; font-weight: bold">and</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>y <span style="color: #666666">==</span> other<span style="color: #666666">.</span>y
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__str__</span>(<span style="color: #008000">self</span>):
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #BA2121">&#39;(</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">, </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">)&#39;</span> <span style="color: #666666">%</span> (<span style="color: #008000">self</span><span style="color: #666666">.</span>x, <span style="color: #008000">self</span><span style="color: #666666">.</span>y)
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__ne__</span>(<span style="color: #008000">self</span>, other):
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>__eq__(other)  <span style="color: #408080; font-style: italic"># reuse __eq__</span>
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">&gt;&gt;&gt; R = I(<span style="color: #B452CD">6</span>*<span style="color: #B452CD">0.9</span>, <span style="color: #B452CD">6</span>*<span style="color: #B452CD">1.1</span>)   <span style="color: #228B22"># 20 % error</span>
+&gt;&gt;&gt; V = (<span style="color: #B452CD">4.</span>/<span style="color: #B452CD">3</span>)*pi*R**<span style="color: #B452CD">3</span>
+&gt;&gt;&gt; V
+IntervalMath(<span style="color: #B452CD">659.584</span>, <span style="color: #B452CD">1204.26</span>)
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> V
+[<span style="color: #B452CD">659.584</span>, <span style="color: #B452CD">1204.26</span>]
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #658b00">float</span>(V)
+<span style="color: #B452CD">931.922044761</span>
+&gt;&gt;&gt; <span style="color: #228B22"># compute with mean values:</span>
+&gt;&gt;&gt; R = <span style="color: #658b00">float</span>(R)
+&gt;&gt;&gt; V = (<span style="color: #B452CD">4.</span>/<span style="color: #B452CD">3</span>)*pi*R**<span style="color: #B452CD">3</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> V
+<span style="color: #B452CD">904.778684234</span>
 </pre></div>
 
 </div>
 
 
 <p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+20% uncertainty in \( R \) gives almost 60% uncertainty in \( V \)
+</div>
+
+
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._class-plain056.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+<div style="text-align: left;"><a href="._class-solarized079.html">&laquo; Previous</a></div>
 </td><td>
-<div style="text-align: right;"><a href="._class-plain058.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>

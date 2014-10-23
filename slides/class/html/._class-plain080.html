@@ -316,7 +316,7 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0057"></a>
+<a name="part0080"></a>
 <p>
 
 </p>
@@ -324,7 +324,7 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Class for vectors; implementation  <a name="___sec56"></a></h2>
+<h2>Demonstrating the class: volume of a sphere  <a name="___sec79"></a></h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -332,43 +332,38 @@ MathJax.Hub.Config({
 <p>
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"> <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Vec2D</span>:
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, x, y):
-        <span style="color: #008000">self</span><span style="color: #666666">.</span>x <span style="color: #666666">=</span> x;  <span style="color: #008000">self</span><span style="color: #666666">.</span>y <span style="color: #666666">=</span> y
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__add__</span>(<span style="color: #008000">self</span>, other):
-        <span style="color: #008000; font-weight: bold">return</span> Vec2D(<span style="color: #008000">self</span><span style="color: #666666">.</span>x<span style="color: #666666">+</span>other<span style="color: #666666">.</span>x, <span style="color: #008000">self</span><span style="color: #666666">.</span>y<span style="color: #666666">+</span>other<span style="color: #666666">.</span>y)
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__sub__</span>(<span style="color: #008000">self</span>, other):
-        <span style="color: #008000; font-weight: bold">return</span> Vec2D(<span style="color: #008000">self</span><span style="color: #666666">.</span>x<span style="color: #666666">-</span>other<span style="color: #666666">.</span>x, <span style="color: #008000">self</span><span style="color: #666666">.</span>y<span style="color: #666666">-</span>other<span style="color: #666666">.</span>y)
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__mul__</span>(<span style="color: #008000">self</span>, other):
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>x<span style="color: #666666">*</span>other<span style="color: #666666">.</span>x <span style="color: #666666">+</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>y<span style="color: #666666">*</span>other<span style="color: #666666">.</span>y
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__abs__</span>(<span style="color: #008000">self</span>):
-        <span style="color: #008000; font-weight: bold">return</span> math<span style="color: #666666">.</span>sqrt(<span style="color: #008000">self</span><span style="color: #666666">.</span>x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>y<span style="color: #666666">**2</span>)
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__eq__</span>(<span style="color: #008000">self</span>, other):
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>x <span style="color: #666666">==</span> other<span style="color: #666666">.</span>x <span style="color: #AA22FF; font-weight: bold">and</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>y <span style="color: #666666">==</span> other<span style="color: #666666">.</span>y
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__str__</span>(<span style="color: #008000">self</span>):
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #BA2121">&#39;(</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">, </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">)&#39;</span> <span style="color: #666666">%</span> (<span style="color: #008000">self</span><span style="color: #666666">.</span>x, <span style="color: #008000">self</span><span style="color: #666666">.</span>y)
-
-    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__ne__</span>(<span style="color: #008000">self</span>, other):
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>__eq__(other)  <span style="color: #408080; font-style: italic"># reuse __eq__</span>
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> R <span style="color: #666666">=</span> I(<span style="color: #666666">6*0.9</span>, <span style="color: #666666">6*1.1</span>)   <span style="color: #408080; font-style: italic"># 20 % error</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> V <span style="color: #666666">=</span> (<span style="color: #666666">4./3</span>)<span style="color: #666666">*</span>pi<span style="color: #666666">*</span>R<span style="color: #666666">**3</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> V
+IntervalMath(<span style="color: #666666">659.584</span>, <span style="color: #666666">1204.26</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> V
+[<span style="color: #666666">659.584</span>, <span style="color: #666666">1204.26</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> <span style="color: #008000">float</span>(V)
+<span style="color: #666666">931.922044761</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># compute with mean values:</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> R <span style="color: #666666">=</span> <span style="color: #008000">float</span>(R)
+<span style="color: #666666">&gt;&gt;&gt;</span> V <span style="color: #666666">=</span> (<span style="color: #666666">4./3</span>)<span style="color: #666666">*</span>pi<span style="color: #666666">*</span>R<span style="color: #666666">**3</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> V
+<span style="color: #666666">904.778684234</span>
 </pre></div>
 
 </div>
 
 
 <p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+20% uncertainty in \( R \) gives almost 60% uncertainty in \( V \)
+</div>
+
+
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._class-plain056.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+<div style="text-align: left;"><a href="._class-plain079.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
 </td><td>
-<div style="text-align: right;"><a href="._class-plain058.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>
