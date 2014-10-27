@@ -1,0 +1,2452 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Ch.8: Random numbers and simple games">
+
+<title>Ch.8: Random numbers and simple games</title>
+
+
+
+
+
+
+
+<!-- deck.js: https://github.com/imakewebthings/deck.js -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=1024, user-scalable=no">
+
+<!-- Required stylesheet -->
+<link rel="stylesheet" href="deck.js/core/deck.core.css">
+
+<!-- Extension CSS files go here. Remove or add as needed.
+deck.goto: Adds a shortcut key to jump to any slide number.
+Hit g, type in the slide number, and hit enter.
+
+deck.hash: Enables internal linking within slides, deep
+linking to individual slides, and updates the address bar and
+a permalink anchor with each slide change.
+
+deck.menu: Adds a menu view, letting you see all slides in a grid.
+Hit m to toggle to menu view, continue navigating your deck,
+and hit m to return to normal view. Touch devices can double-tap
+the deck to switch between views.
+
+deck.navigation: Adds clickable left and right buttons for the
+less keyboard inclined.
+
+deck.status: Adds a page number indicator. (current/total).
+
+deck.scale: Scales each slide to fit within the deck container
+using CSS Transforms for those browsers that support them.
+
+deck.pointer: Turn mouse into laser pointer (toggle with p).
+(Requires https://github.com/mikeharris100/deck.pointer.js)
+-->
+
+<link rel="stylesheet" href="deck.js/extensions/menu/deck.menu.css">
+<link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css">
+<link rel="stylesheet" href="deck.js/extensions/scale/deck.scale.css">
+<link rel="stylesheet" href="deck.js/extensions/pointer/deck.pointer.css">
+<link rel="stylesheet" href="deck.js/extensions/notes/deck.notes.css">
+<!--
+<link rel="stylesheet" href="deck.js/extensions/goto/deck.goto.css">
+<link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css">
+<link rel="stylesheet" href="deck.js/extensions/status/deck.status.css">
+-->
+
+<!-- Style theme. More available in themes/style/ or create your own. -->
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+
+<!--
+<link rel="stylesheet" href="deck.js/themes/style/neon.css">
+<link rel="stylesheet" href="deck.js/themes/style/swiss.css">
+<link rel="stylesheet" href="deck.js/themes/style/web-2.0.css">
+
+git clone git://github.com/duijf/mnml.git
+<link rel="stylesheet" href="deck.js/themes/style/mnml.css">
+
+git://github.com/groovecoder/deckjs-theme-mozilla.git
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.aurora.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.dark.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.default.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.firefox.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.light.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.mdn.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.nightly.css">
+<link rel="stylesheet" href="deck.js/themes/style/sandstone.cbc.css">
+
+git://github.com/barraq/deck.ext.js.git
+<link rel="stylesheet" href="deck.js/themes/style/beamer.css">
+-->
+
+<!--
+Transition theme. More available in /themes/transition/ or create your own. -->
+<!--
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+<link rel="stylesheet" href="deck.js/themes/transition/fade.css">
+<link rel="stylesheet" href="deck.js/themes/transition/vertical-slide.css">
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+-->
+
+<!-- Required Modernizr file -->
+<script src="deck.js/modernizr.custom.js"></script>
+
+<style type="text/css">
+/* Override h1, h2, ... styles */
+h1 { font-size: 2.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.3em; }
+h1, h2, h3, h4 { font-weight: bold; line-height: 1.2; }
+body { overflow: auto; } /* vertical scrolling */
+
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.slide .alert-text-small   { font-size: 80%;  }
+.slide .alert-text-large   { font-size: 130%; }
+.slide .alert-text-normal  { font-size: 90%;  }
+.slide .alert {
+     padding:8px 35px 8px 14px; margin-bottom:18px;
+     text-shadow:0 1px 0 rgba(255,255,255,0.5);
+     border:5px solid #bababa;
+       -webkit-border-radius:14px; -moz-border-radius:14px;
+     border-radius:14px
+     background-position: 10px 10px;
+     background-repeat: no-repeat;
+     background-size: 38px;
+     padding-left: 30px; /* 55px; if icon */
+ }
+ .slide .alert-block {padding-top:14px; padding-bottom:14px}
+ .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+ /*.slide .alert li {margin-top: 1em}*/
+ .deck .alert-block p+p {margin-top:5px}
+ /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+ .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+ .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+ .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body class="deck-container">
+
+<header>
+<!-- Here goes a potential header -->
+</header>
+
+<!-- do not use the article tag - it gives strange sizings -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+
+
+
+<section class="slide">
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<h2 style="text-align: center;">Ch.8: Random numbers and simple games</h2>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b style="font-weight: bold">Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b style="font-weight: bold">Simula Research Laboratory</b></center>
+<center>[2] <b style="font-weight: bold">University of Oslo, Dept. of Informatics</b></center>
+<p>
+<center><b style="font-weight: bold">Oct 27, 2014</b></center> <!-- date -->
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h1 style="text-align: center;">Use of random numbers in programs  <a name="___sec0"></a></h1>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<center><p><img src="fig-random/associations/random_dice2.jpg" align="bottom" width=400></p></center>
+</td>
+<td class="padding">
+<center><p><img src="fig-random/associations/random_numbers2.png" align="bottom" width=400></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Random numbers are used to simulate uncertain events  <a name="___sec1"></a></h2>
+
+<p>
+
+<div class="slide alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Deterministic problems.</b>
+<p>
+
+<ul>
+  <p><li class="slide"> Some problems in science and technology are desrcribed by &quot;exact&quot; mathematics, leading to &quot;precise&quot; results</li>
+  <p><li class="slide"> Example: throwing a ball up in the air (\( y(t)=v_0t - \frac{1}{2}gt^2 \))</li>
+</ul>
+</div>
+
+
+
+<p>
+
+<div class="slide alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Stochastic problems.</b>
+<p>
+
+<ul>
+ <p><li class="slide"> Some problems appear physically uncertain</li>
+ <p><li class="slide"> Examples: rolling a die, molecular motion, games</li>
+ <p><li class="slide"> Use <em>random numbers</em> to mimic the uncertainty of the experiment.</li>
+</ul>
+</div>
+
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Drawing random numbers  <a name="___sec2"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Python has a <code>random</code> module for drawing random numbers.
+<code>random.random()</code> draws random numbers in \( [0,1) \):
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">random</span>
+&gt;&gt;&gt; random.random()
+<span style="color: #B452CD">0.81550546885338104</span>
+&gt;&gt;&gt; random.random()
+<span style="color: #B452CD">0.44913326809029852</span>
+&gt;&gt;&gt; random.random()
+<span style="color: #B452CD">0.88320653116367454</span>
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-warning alert-text-small">
+<b style="font-weight: bold">Notice.</b>
+<p>
+The sequence of random numbers is produced by a deterministic algorithm - the numbers just appear random.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Distribution of random numbers  <a name="___sec3"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> <code>random.random()</code> generates random numbers that are <em>uniformly distributed</em> in the interval \( [0,1) \)</li>
+  <p><li> <code>random.uniform(a, b)</code> generates random numbers uniformly distributed in \( [a,b) \)</li>
+  <p><li> &quot;Uniformly distributed&quot; means that if we generate a large set of numbers, no part of \( [a,b) \) gets more numbers than others</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Distribution of random numbers visualized  <a name="___sec4"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">N = <span style="color: #B452CD">500</span>  <span style="color: #228B22"># no of samples</span>
+x = <span style="color: #658b00">range</span>(N)
+y = [random.uniform(-<span style="color: #B452CD">1</span>,<span style="color: #B452CD">1</span>) <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> x]
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.std</span> <span style="color: #8B008B; font-weight: bold">import</span> plot
+plot(x, y, <span style="color: #CD5555">&#39;+&#39;</span>, axis=[<span style="color: #B452CD">0</span>,N-<span style="color: #B452CD">1</span>,-<span style="color: #B452CD">1.2</span>,<span style="color: #B452CD">1.2</span>])
+</pre></div>
+
+</div>
+
+
+<p>
+<center><p><img src="fig-random/uniform_numbers.png" align="bottom" width=480></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Vectorized drawing of random numbers  <a name="___sec5"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> <code>random.random()</code> generates one number at a time</li>
+  <p><li> <code>numpy</code> has a <code>random</code> module that efficiently generates a (large) number of random numbers at a time</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> random
+r = random.random()            <span style="color: #228B22"># one no between 0 and 1</span>
+r = random.random(size=<span style="color: #B452CD">10000</span>)  <span style="color: #228B22"># array with 10000 numbers</span>
+r = random.uniform(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">10</span>)     <span style="color: #228B22"># one no between -1 and 10</span>
+r = random.uniform(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">10</span>, size=<span style="color: #B452CD">10000</span>)  <span style="color: #228B22"># array</span>
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Vectorized drawing is important for speeding up programs!</li>
+  <p><li> Possible problem: two <code>random</code> modules, one Python "built-in" and one in <code>numpy</code> (<code>np</code>)</li>
+  <p><li> Convention: use <code>random</code> (Python) and <code>np.random</code></li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">random.uniform(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>)                 <span style="color: #228B22"># scalar number</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+np.random.uniform(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">100000</span>)      <span style="color: #228B22"># vectorized</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Drawing integers  <a name="___sec6"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Quite often we want to draw an integer from \( [a,b] \) and not a real number</li>
+  <p><li> Python's <code>random</code> module and <code>numpy.random</code> have functions for drawing uniformly distributed integers:</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">random</span>
+r = random.randint(a, b)  <span style="color: #228B22"># a, a+1, ..., b</span>
+
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+r = np.random.randint(a, b+<span style="color: #B452CD">1</span>, N)         <span style="color: #228B22"># b+1 is not included</span>
+r = np.random.random_integers(a, b, N)   <span style="color: #228B22"># b is included</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Example: Rolling a die  <a name="___sec7"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Problem.</b>
+<p>
+
+<ul>
+  <p><li> Any no of eyes, 1-6, is equally probable when you roll a die</li>
+  <p><li> What is the chance of getting a 6?</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Solution by Monte Carlo simulation:</b>
+<p>
+Rolling a die is the same as drawing integers in \( [1,6] \).
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">random</span>
+N = <span style="color: #B452CD">10000</span>
+eyes = [random.randint(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">6</span>) <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(N)]
+M = <span style="color: #B452CD">0</span>  <span style="color: #228B22"># counter for successes: how many times we get 6 eyes</span>
+<span style="color: #8B008B; font-weight: bold">for</span> outcome <span style="color: #8B008B">in</span> eyes:
+    <span style="color: #8B008B; font-weight: bold">if</span> outcome == <span style="color: #B452CD">6</span>:
+        M += <span style="color: #B452CD">1</span>
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Got six %d times out of %d&#39;</span> % (M, N)
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Probability:&#39;</span>, <span style="color: #658b00">float</span>(M)/N
+</pre></div>
+<p>
+Probability: <code>M/N</code> (exact: \( 1/6 \))
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Example: Rolling a die; vectorized version  <a name="___sec8"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>, <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+N = <span style="color: #658b00">int</span>(sys.argv[<span style="color: #B452CD">1</span>])
+eyes = np.random.randint(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">7</span>, N)
+success = eyes == <span style="color: #B452CD">6</span>        <span style="color: #228B22"># True/False array</span>
+six = np.sum(success)      <span style="color: #228B22"># treats True as 1, False as 0</span>
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Got six %d times out of %d&#39;</span> % (six, N)
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Probability:&#39;</span>, <span style="color: #658b00">float</span>(M)/N
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Impoartant!</b>
+<p>
+Use <code>sum</code> from <code>numpy</code> and not Python's built-in <code>sum</code> function! (The latter is slow, often making a vectorized version slower than the scalar version.)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Debugging programs with random numbers requires fixing the seed of the random sequence  <a name="___sec9"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Debugging programs with random numbers is difficult because the numbers produced vary each time we run the program</li>
+  <p><li> For debugging it is important that a new run reproduces the sequence of random numbers in the last run</li>
+  <p><li> This is possible by fixing the <em>seed</em> of the <code>random</code> module: <br />
+    <code>random.seed(121)</code>   (<code>int</code> argument)</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">random</span>
+&gt;&gt;&gt; random.seed(<span style="color: #B452CD">2</span>)
+&gt;&gt;&gt; [<span style="color: #CD5555">&#39;%.2f&#39;</span> % random.random() <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">7</span>)]
+[<span style="color: #CD5555">&#39;0.96&#39;</span>, <span style="color: #CD5555">&#39;0.95&#39;</span>, <span style="color: #CD5555">&#39;0.06&#39;</span>, <span style="color: #CD5555">&#39;0.08&#39;</span>, <span style="color: #CD5555">&#39;0.84&#39;</span>, <span style="color: #CD5555">&#39;0.74&#39;</span>, <span style="color: #CD5555">&#39;0.67&#39;</span>]
+&gt;&gt;&gt; [<span style="color: #CD5555">&#39;%.2f&#39;</span> % random.random() <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">7</span>)]
+[<span style="color: #CD5555">&#39;0.31&#39;</span>, <span style="color: #CD5555">&#39;0.61&#39;</span>, <span style="color: #CD5555">&#39;0.61&#39;</span>, <span style="color: #CD5555">&#39;0.58&#39;</span>, <span style="color: #CD5555">&#39;0.16&#39;</span>, <span style="color: #CD5555">&#39;0.43&#39;</span>, <span style="color: #CD5555">&#39;0.39&#39;</span>]
+
+&gt;&gt;&gt; random.seed(<span style="color: #B452CD">2</span>)    <span style="color: #228B22"># repeat the random sequence</span>
+&gt;&gt;&gt; [<span style="color: #CD5555">&#39;%.2f&#39;</span> % random.random() <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">7</span>)]
+[<span style="color: #CD5555">&#39;0.96&#39;</span>, <span style="color: #CD5555">&#39;0.95&#39;</span>, <span style="color: #CD5555">&#39;0.06&#39;</span>, <span style="color: #CD5555">&#39;0.08&#39;</span>, <span style="color: #CD5555">&#39;0.84&#39;</span>, <span style="color: #CD5555">&#39;0.74&#39;</span>, <span style="color: #CD5555">&#39;0.67&#39;</span>]
+</pre></div>
+<p>
+By default, the seed is based on the current time
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Drawing random elements from a list  <a name="___sec10"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+There are different methods for picking an element from a list at random, but the main method applies <code>choice(list)</code>:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; awards = [<span style="color: #CD5555">&#39;car&#39;</span>, <span style="color: #CD5555">&#39;computer&#39;</span>, <span style="color: #CD5555">&#39;ball&#39;</span>, <span style="color: #CD5555">&#39;pen&#39;</span>]
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">random</span>
+&gt;&gt;&gt; random.choice(awards)
+<span style="color: #CD5555">&#39;car&#39;</span>
+</pre></div>
+<p>
+Alternatively, we can compute a random index:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; index = random.randint(<span style="color: #B452CD">0</span>, <span style="color: #658b00">len</span>(awards)-<span style="color: #B452CD">1</span>)
+&gt;&gt;&gt; awards[index]
+<span style="color: #CD5555">&#39;pen&#39;</span>
+</pre></div>
+<p>
+We can also shuffle the list randomly, and then pick any element:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; random.shuffle(awards)
+&gt;&gt;&gt; awards[<span style="color: #B452CD">0</span>]
+<span style="color: #CD5555">&#39;computer&#39;</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Example: Drawing cards from a deck; make deck and draw  <a name="___sec11"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Make a deck of cards:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #228B22"># A: ace, J: jack, Q: queen, K: king</span>
+<span style="color: #228B22"># C: clubs, D: diamonds, H: hearts, S: spades</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">make_deck</span>():
+    ranks = [<span style="color: #CD5555">&#39;A&#39;</span>, <span style="color: #CD5555">&#39;2&#39;</span>, <span style="color: #CD5555">&#39;3&#39;</span>, <span style="color: #CD5555">&#39;4&#39;</span>, <span style="color: #CD5555">&#39;5&#39;</span>, <span style="color: #CD5555">&#39;6&#39;</span>, <span style="color: #CD5555">&#39;7&#39;</span>,
+             <span style="color: #CD5555">&#39;8&#39;</span>, <span style="color: #CD5555">&#39;9&#39;</span>, <span style="color: #CD5555">&#39;10&#39;</span>, <span style="color: #CD5555">&#39;J&#39;</span>, <span style="color: #CD5555">&#39;Q&#39;</span>, <span style="color: #CD5555">&#39;K&#39;</span>]
+    suits = [<span style="color: #CD5555">&#39;C&#39;</span>, <span style="color: #CD5555">&#39;D&#39;</span>, <span style="color: #CD5555">&#39;H&#39;</span>, <span style="color: #CD5555">&#39;S&#39;</span>]
+    deck = []
+    <span style="color: #8B008B; font-weight: bold">for</span> s <span style="color: #8B008B">in</span> suits:
+        <span style="color: #8B008B; font-weight: bold">for</span> r <span style="color: #8B008B">in</span> ranks:
+            deck.append(s + r)
+    random.shuffle(deck)
+    <span style="color: #8B008B; font-weight: bold">return</span> deck
+
+deck = make_deck()
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Draw a card at random:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">deck = make_deck()
+card = deck[<span style="color: #B452CD">0</span>]
+<span style="color: #8B008B; font-weight: bold">del</span> deck[<span style="color: #B452CD">0</span>]
+
+card = deck.pop(<span style="color: #B452CD">0</span>)  <span style="color: #228B22"># return and remove element with index 0</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Example: Drawing cards from a deck; draw a hand of cards  <a name="___sec12"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Draw a hand of <code>n</code> cards:</b>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">deal_hand</span>(n, deck):
+    hand = [deck[i] <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n)]
+    <span style="color: #8B008B; font-weight: bold">del</span> deck[:n]
+    <span style="color: #8B008B; font-weight: bold">return</span> hand, deck
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Note:</b>
+<p>
+
+<ul>
+ <p><li> <code>deck</code> is returned since the function changes the list</li>
+ <p><li> <code>deck</code> is changed in-place so the change affects the <code>deck</code> object in the calling code anyway, but returning changed arguments is a Python convention and good habit</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Example: Drawing cards from a deck; deal  <a name="___sec13"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Deal hands for a set of players:</b>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">deal</span>(cards_per_hand, no_of_players):
+    deck = make_deck()
+    hands = []
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(no_of_players):
+        hand, deck = deal_hand(cards_per_hand, deck)
+        hands.append(hand)
+    <span style="color: #8B008B; font-weight: bold">return</span> hands
+
+players = deal(<span style="color: #B452CD">5</span>, <span style="color: #B452CD">4</span>)
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">pprint</span>; pprint.pprint(players)
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Resulting output:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">[[<span style="color: #CD5555">&#39;D4&#39;</span>, <span style="color: #CD5555">&#39;CQ&#39;</span>, <span style="color: #CD5555">&#39;H10&#39;</span>, <span style="color: #CD5555">&#39;DK&#39;</span>, <span style="color: #CD5555">&#39;CK&#39;</span>],
+ [<span style="color: #CD5555">&#39;D7&#39;</span>, <span style="color: #CD5555">&#39;D6&#39;</span>, <span style="color: #CD5555">&#39;SJ&#39;</span>, <span style="color: #CD5555">&#39;S4&#39;</span>, <span style="color: #CD5555">&#39;C5&#39;</span>],
+ [<span style="color: #CD5555">&#39;C3&#39;</span>, <span style="color: #CD5555">&#39;DQ&#39;</span>, <span style="color: #CD5555">&#39;S3&#39;</span>, <span style="color: #CD5555">&#39;C9&#39;</span>, <span style="color: #CD5555">&#39;DJ&#39;</span>],
+ [<span style="color: #CD5555">&#39;H6&#39;</span>, <span style="color: #CD5555">&#39;H9&#39;</span>, <span style="color: #CD5555">&#39;C6&#39;</span>, <span style="color: #CD5555">&#39;D5&#39;</span>, <span style="color: #CD5555">&#39;S6&#39;</span>]]
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Example: Drawing cards from a deck; analyze results (1)  <a name="___sec14"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Analyze the no of pairs or n-of-a-kind in a hand:</b>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">same_rank</span>(hand, n_of_a_kind):
+    ranks = [card[<span style="color: #B452CD">1</span>:] <span style="color: #8B008B; font-weight: bold">for</span> card <span style="color: #8B008B">in</span> hand]
+    counter = <span style="color: #B452CD">0</span>
+    already_counted = []
+    <span style="color: #8B008B; font-weight: bold">for</span> rank <span style="color: #8B008B">in</span> ranks:
+        <span style="color: #8B008B; font-weight: bold">if</span> rank <span style="color: #8B008B">not</span> <span style="color: #8B008B">in</span> already_counted <span style="color: #8B008B">and</span> \
+               ranks.count(rank) == n_of_a_kind:
+            counter += <span style="color: #B452CD">1</span>
+            already_counted.append(rank)
+    <span style="color: #8B008B; font-weight: bold">return</span> counter
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Example: Drawing cards from a deck; analyze results (2)  <a name="___sec15"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Analyze the no of combinations of the same suit:</b>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">same_suit</span>(hand):
+    suits = [card[<span style="color: #B452CD">0</span>] <span style="color: #8B008B; font-weight: bold">for</span> card <span style="color: #8B008B">in</span> hand]
+    counter = {}   <span style="color: #228B22"># counter[suit] = how many cards of suit</span>
+    <span style="color: #8B008B; font-weight: bold">for</span> suit <span style="color: #8B008B">in</span> suits:
+        <span style="color: #228B22"># attention only to count &gt; 1:</span>
+        count = suits.count(suit)
+        <span style="color: #8B008B; font-weight: bold">if</span> count &gt; <span style="color: #B452CD">1</span>:
+            counter[suit] = count
+    <span style="color: #8B008B; font-weight: bold">return</span> counter
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Example: Drawing cards from a deck; analyze results (3)   <a name="___sec16"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Analysis of how many cards we have of the same suit or the same rank, with some nicely formatted printout (see the book):
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">The hand D4, CQ, H10, DK, CK
+    has <span style="color: #B452CD">1</span> pairs, <span style="color: #B452CD">0</span> <span style="color: #B452CD">3</span>-of-a-kind <span style="color: #8B008B">and</span>
+    <span style="color: #B452CD">2</span>+<span style="color: #B452CD">2</span> cards of the same suit.
+The hand D7, D6, SJ, S4, C5
+    has <span style="color: #B452CD">0</span> pairs, <span style="color: #B452CD">0</span> <span style="color: #B452CD">3</span>-of-a-kind <span style="color: #8B008B">and</span>
+    <span style="color: #B452CD">2</span>+<span style="color: #B452CD">2</span> cards of the same suit.
+The hand C3, DQ, S3, C9, DJ
+    has <span style="color: #B452CD">1</span> pairs, <span style="color: #B452CD">0</span> <span style="color: #B452CD">3</span>-of-a-kind <span style="color: #8B008B">and</span>
+    <span style="color: #B452CD">2</span>+<span style="color: #B452CD">2</span> cards of the same suit.
+The hand H6, H9, C6, D5, S6
+    has <span style="color: #B452CD">0</span> pairs, <span style="color: #B452CD">1</span> <span style="color: #B452CD">3</span>-of-a-kind <span style="color: #8B008B">and</span>
+    <span style="color: #B452CD">2</span> cards of the same suit.
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Class implementation of a deck; class Deck  <a name="___sec17"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Class version.</b>
+<p>
+We can wrap the previous functions in a class:
+
+<ul>
+ <p><li> Attribute: the deck</li>
+ <p><li> Methods for shuffling, dealing, putting a card back</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Code:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Deck</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, shuffle=<span style="color: #658b00">True</span>):
+        ranks = [<span style="color: #CD5555">&#39;A&#39;</span>, <span style="color: #CD5555">&#39;2&#39;</span>, <span style="color: #CD5555">&#39;3&#39;</span>, <span style="color: #CD5555">&#39;4&#39;</span>, <span style="color: #CD5555">&#39;5&#39;</span>, <span style="color: #CD5555">&#39;6&#39;</span>, <span style="color: #CD5555">&#39;7&#39;</span>,
+                 <span style="color: #CD5555">&#39;8&#39;</span>, <span style="color: #CD5555">&#39;9&#39;</span>, <span style="color: #CD5555">&#39;10&#39;</span>, <span style="color: #CD5555">&#39;J&#39;</span>, <span style="color: #CD5555">&#39;Q&#39;</span>, <span style="color: #CD5555">&#39;K&#39;</span>]
+        suits = [<span style="color: #CD5555">&#39;C&#39;</span>, <span style="color: #CD5555">&#39;D&#39;</span>, <span style="color: #CD5555">&#39;H&#39;</span>, <span style="color: #CD5555">&#39;S&#39;</span>]
+        <span style="color: #658b00">self</span>.deck = [s+r <span style="color: #8B008B; font-weight: bold">for</span> s <span style="color: #8B008B">in</span> suits <span style="color: #8B008B; font-weight: bold">for</span> r <span style="color: #8B008B">in</span> ranks]
+        random.shuffle(<span style="color: #658b00">self</span>.deck)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">hand</span>(<span style="color: #658b00">self</span>, n=<span style="color: #B452CD">1</span>):
+        <span style="color: #CD5555">&quot;&quot;&quot;Deal n cards. Return hand as list.&quot;&quot;&quot;</span>
+        hand = [<span style="color: #658b00">self</span>.deck[i] <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n)]
+        <span style="color: #8B008B; font-weight: bold">del</span> <span style="color: #658b00">self</span>.deck[:n]
+
+        <span style="color: #228B22"># alternative:</span>
+        <span style="color: #228B22"># hand = [self.pop(0) for i in range(n)]</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> hand
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">putback</span>(<span style="color: #658b00">self</span>, card):
+        <span style="color: #CD5555">&quot;&quot;&quot;Put back a card under the rest.&quot;&quot;&quot;</span>
+        <span style="color: #658b00">self</span>.deck.append(card)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Class implementation of a deck; alternative  <a name="___sec18"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Card</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, suit, rank):
+        <span style="color: #658b00">self</span>.card = suit + <span style="color: #658b00">str</span>(rank)
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Hand</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, list_of_cards):
+        <span style="color: #658b00">self</span>.hand = list_of_cards
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Deck</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, shuffle=<span style="color: #658b00">True</span>):
+        ranks = [<span style="color: #CD5555">&#39;A&#39;</span>, <span style="color: #CD5555">&#39;2&#39;</span>, <span style="color: #CD5555">&#39;3&#39;</span>, <span style="color: #CD5555">&#39;4&#39;</span>, <span style="color: #CD5555">&#39;5&#39;</span>, <span style="color: #CD5555">&#39;6&#39;</span>, <span style="color: #CD5555">&#39;7&#39;</span>,
+                 <span style="color: #CD5555">&#39;8&#39;</span>, <span style="color: #CD5555">&#39;9&#39;</span>, <span style="color: #CD5555">&#39;10&#39;</span>, <span style="color: #CD5555">&#39;J&#39;</span>, <span style="color: #CD5555">&#39;Q&#39;</span>, <span style="color: #CD5555">&#39;K&#39;</span>]
+        suits = [<span style="color: #CD5555">&#39;C&#39;</span>, <span style="color: #CD5555">&#39;D&#39;</span>, <span style="color: #CD5555">&#39;H&#39;</span>, <span style="color: #CD5555">&#39;S&#39;</span>]
+        <span style="color: #658b00">self</span>.deck = [Card(s,r) <span style="color: #8B008B; font-weight: bold">for</span> s <span style="color: #8B008B">in</span> suits <span style="color: #8B008B; font-weight: bold">for</span> r <span style="color: #8B008B">in</span> ranks]
+        random.shuffle(<span style="color: #658b00">self</span>.deck)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">deal</span>(<span style="color: #658b00">self</span>, n=<span style="color: #B452CD">1</span>):
+        hand = Hand([<span style="color: #658b00">self</span>.deck[i] <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n)])
+        <span style="color: #8B008B; font-weight: bold">del</span> <span style="color: #658b00">self</span>.deck[:n]
+        <span style="color: #8B008B; font-weight: bold">return</span> hand
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">putback</span>(<span style="color: #658b00">self</span>, card):
+        <span style="color: #658b00">self</span>.deck.append(card)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Class implementation of a deck; why?  <a name="___sec19"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Warning:</b>
+<p>
+To print a <code>Deck</code> instance, <code>Card</code> and <code>Hand</code> must have <code>__repr__</code> methods that return a &quot;pretty print&quot; string (see the book), because <code>print</code> on list object applies <code>__repr__</code> to print each element.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-small">
+<b style="font-weight: bold">Is the class version better than the function version?</b>
+<p>
+Yes! The function version has functions updating a global variable <code>deck</code>, as in
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">hand, deck = deal_hand(<span style="color: #B452CD">5</span>, deck)
+</pre></div>
+<p>
+This is often considered bad programming. In the class version we avoid a global variable - the deck is stored and updated inside the class. Errors are less likely to sneak in in the class version.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Probabilities can be computed by Monte Carlo simulation  <a name="___sec20"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">What is the probability that a certain event \( A \) happens?</b>
+<p>
+Simulate \( N \) events and count how many times \( M \) the event \( A \) happens. The probability of the event \( A \) is then \( M/N \) (as \( N\rightarrow\infty \)).
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Example:</b>
+<p>
+You throw two dice, one black and one green.
+What is the probability that the number of eyes on the black is
+larger than that on the green?
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">random</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+N = <span style="color: #658b00">int</span>(sys.argv[<span style="color: #B452CD">1</span>])      <span style="color: #228B22"># no of experiments</span>
+M = <span style="color: #B452CD">0</span>                     <span style="color: #228B22"># no of successful events</span>
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(N):
+    black = random.randint(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">6</span>)   <span style="color: #228B22"># throw black</span>
+    green = random.randint(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">6</span>)   <span style="color: #228B22"># throw green</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> black &gt; green:              <span style="color: #228B22"># success?</span>
+        M += <span style="color: #B452CD">1</span>
+p = <span style="color: #658b00">float</span>(M)/N
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;probability:&#39;</span>, p
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>A vectorized version can speed up the simulations  <a name="___sec21"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+N = <span style="color: #658b00">int</span>(sys.argv[<span style="color: #B452CD">1</span>])      <span style="color: #228B22"># no of experiments</span>
+
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+r = np.random.random_integers(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">6</span>, (<span style="color: #B452CD">2</span>, N))
+
+black = r[<span style="color: #B452CD">0</span>,:]            <span style="color: #228B22"># eyes for all throws with black</span>
+green = r[<span style="color: #B452CD">1</span>,:]            <span style="color: #228B22"># eyes for all throws with green</span>
+success = black &gt; green   <span style="color: #228B22"># success[i]==True if black[i]&gt;green[i]</span>
+M = np.sum(success)       <span style="color: #228B22"># sum up all successes</span>
+
+p = <span style="color: #658b00">float</span>(M)/N
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;probability:&#39;</span>, p
+</pre></div>
+<p>
+Run 10+ times faster than scalar code
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>The exact probability can be calculated in this (simple) example  <a name="___sec22"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+All possible combinations of two dice:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">combinations = [(black, green)
+                <span style="color: #8B008B; font-weight: bold">for</span> black <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">7</span>)
+                <span style="color: #8B008B; font-weight: bold">for</span> green <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">7</span>)]
+</pre></div>
+<p>
+How many of the <code>(black, green)</code> pairs that have
+the property <code>black &gt; green</code>?
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">success = [black &gt; green <span style="color: #8B008B; font-weight: bold">for</span> black, green <span style="color: #8B008B">in</span> combinations]
+M = <span style="color: #658b00">sum</span>(success)
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;probability:&#39;</span>, <span style="color: #658b00">float</span>(M)/<span style="color: #658b00">len</span>(combinations)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>How accurate and fast is Monte Carlo simulation?  <a name="___sec23"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Programs:</b>
+<p>
+
+<ul>
+ <p><li> <code>black_gt_green.py</code>: scalar version</li>
+ <p><li> <code>black_gt_green_vec.py</code>: vectorized version</li>
+ <p><li> <code>black_gt_green_exact.py</code>: exact version</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; python black_gt_green_exact.py
+probability: 0.416666666667
+
+Terminal&gt; time python black_gt_green.py 10000
+probability: 0.4158
+
+Terminal&gt; time python black_gt_green.py 1000000
+probability: 0.416516
+real	0m1.725s
+
+Terminal&gt; time python black_gt_green.py 10000000
+probability: 0.4164688
+real	0m17.649s
+
+Terminal&gt; time python black_gt_green_vec.py 10000000
+probability: 0.4170253
+real	0m0.816s
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Gamification of this example  <a name="___sec24"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Suggested game:</b>
+<p>
+Suppose a games is constructed such that you have to pay 1 euro to
+throw the two dice. You win 2 euros if there are more eyes on the
+black than on the green die. Should you play this game?
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Code:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+N = <span style="color: #658b00">int</span>(sys.argv[<span style="color: #B452CD">1</span>])               <span style="color: #228B22"># no of experiments</span>
+
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">random</span>
+start_capital = <span style="color: #B452CD">10</span>
+money = start_capital
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(N):
+    money -= <span style="color: #B452CD">1</span>                     <span style="color: #228B22"># pay for the game</span>
+    black = random.randint(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">6</span>)   <span style="color: #228B22"># throw black</span>
+    green = random.randint(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">6</span>)   <span style="color: #228B22"># throw brown</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> black &gt; green:              <span style="color: #228B22"># success?</span>
+        money += <span style="color: #B452CD">2</span>                 <span style="color: #228B22"># get award</span>
+
+net_profit_total = money - start_capital
+net_profit_per_game = net_profit_total/<span style="color: #658b00">float</span>(N)
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Net profit per game in the long run:&#39;</span>, net_profit_per_game
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Should we play the game?  <a name="___sec25"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminaldd&gt; python black_gt_green_game.py 1000000
+Net profit per game in the long run: -0.167804
+</pre></div>
+<p>
+No!
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Vectorization of the game for speeding up the code  <a name="___sec26"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+N = <span style="color: #658b00">int</span>(sys.argv[<span style="color: #B452CD">1</span>])      <span style="color: #228B22"># no of experiments</span>
+
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+r = np.random.random_integers(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">6</span>, size=(<span style="color: #B452CD">2</span>, N))
+
+money = <span style="color: #B452CD">10</span> - N            <span style="color: #228B22"># capital after N throws</span>
+black = r[<span style="color: #B452CD">0</span>,:]            <span style="color: #228B22"># eyes for all throws with black</span>
+green = r[<span style="color: #B452CD">1</span>,:]            <span style="color: #228B22"># eyes for all throws with green</span>
+success = black &gt; green   <span style="color: #228B22"># success[i] is true if black[i]&gt;green[i]</span>
+M = np.sum(success)       <span style="color: #228B22"># sum up all successes</span>
+money += <span style="color: #B452CD">2</span>*M              <span style="color: #228B22"># add all awards for winning</span>
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Net profit per game in the long run:&#39;</span>, (money-<span style="color: #B452CD">10</span>)/<span style="color: #658b00">float</span>(N)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Example: Drawing balls from a hat  <a name="___sec27"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+We have 12 balls in a hat: four black, four red, and four blue
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">hat = []
+<span style="color: #8B008B; font-weight: bold">for</span> color <span style="color: #8B008B">in</span> <span style="color: #CD5555">&#39;black&#39;</span>, <span style="color: #CD5555">&#39;red&#39;</span>, <span style="color: #CD5555">&#39;blue&#39;</span>:
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">4</span>):
+        hat.append(color)
+</pre></div>
+<p>
+Choose two balls at random:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">random</span>
+index = random.randint(<span style="color: #B452CD">0</span>, <span style="color: #658b00">len</span>(hat)-<span style="color: #B452CD">1</span>)  <span style="color: #228B22"># random index</span>
+ball1 = hat[index];  <span style="color: #8B008B; font-weight: bold">del</span> hat[index]
+index = random.randint(<span style="color: #B452CD">0</span>, <span style="color: #658b00">len</span>(hat)-<span style="color: #B452CD">1</span>)  <span style="color: #228B22"># random index</span>
+ball2 = hat[index];  <span style="color: #8B008B; font-weight: bold">del</span> hat[index]
+
+<span style="color: #228B22"># or:</span>
+random.shuffle(hat)   <span style="color: #228B22"># random sequence of balls</span>
+ball1 = hat.pop(<span style="color: #B452CD">0</span>)
+ball2 = hat.pop(<span style="color: #B452CD">0</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>What is the probability of getting two black balls or more?  <a name="___sec28"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">new_hat</span>():  <span style="color: #228B22"># make a new hat with 12 balls</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> [color <span style="color: #8B008B; font-weight: bold">for</span> color <span style="color: #8B008B">in</span> <span style="color: #CD5555">&#39;black&#39;</span>, <span style="color: #CD5555">&#39;red&#39;</span>, <span style="color: #CD5555">&#39;blue&#39;</span>
+            <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">4</span>)]
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">draw_ball</span>(hat):
+    index = random.randint(<span style="color: #B452CD">0</span>, <span style="color: #658b00">len</span>(hat)-<span style="color: #B452CD">1</span>)
+    color = hat[index];  <span style="color: #8B008B; font-weight: bold">del</span> hat[index]
+    <span style="color: #8B008B; font-weight: bold">return</span> color, hat  <span style="color: #228B22"># (return hat since it is modified)</span>
+
+<span style="color: #228B22"># run experiments:</span>
+n = <span style="color: #658b00">input</span>(<span style="color: #CD5555">&#39;How many balls are to be drawn? &#39;</span>)
+N = <span style="color: #658b00">input</span>(<span style="color: #CD5555">&#39;How many experiments? &#39;</span>)
+M = <span style="color: #B452CD">0</span>  <span style="color: #228B22"># no of successes</span>
+
+<span style="color: #8B008B; font-weight: bold">for</span> e <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(N):
+    hat = new_hat()
+    balls = []         <span style="color: #228B22"># the n balls we draw</span>
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n):
+        color, hat = draw_ball(hat)
+        balls.append(color)
+    <span style="color: #8B008B; font-weight: bold">if</span> balls.count(<span style="color: #CD5555">&#39;black&#39;</span>) &gt;= <span style="color: #B452CD">2</span>:  <span style="color: #228B22"># two black balls or more?</span>
+        M += <span style="color: #B452CD">1</span>
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Probability:&#39;</span>, <span style="color: #658b00">float</span>(M)/N
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Examples on computing the probabilities  <a name="___sec29"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; python balls_in_hat.py
+How many balls are to be drawn? 2
+How many experiments? 10000
+Probability: 0.0914
+
+Terminal&gt; python balls_in_hat.py
+How many balls are to be drawn? 8
+How many experiments? 10000
+Probability: 0.9346
+
+Terminal&gt; python balls_in_hat.py
+How many balls are to be drawn? 4
+How many experiments? 10000
+Probability: 0.4033
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Guess a number game  <a name="___sec30"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Game:</b>
+<p>
+Let the computer pick a number at random. You guess at the number, and the computer tells if the number is too high or too low.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Program:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">random</span>
+number = random.randint(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">100</span>)   <span style="color: #228B22"># the computer&#39;s secret number</span>
+attempts = <span style="color: #B452CD">0</span>   <span style="color: #228B22"># no of attempts to guess the number</span>
+guess = <span style="color: #B452CD">0</span>      <span style="color: #228B22"># user&#39;s guess at the number</span>
+<span style="color: #8B008B; font-weight: bold">while</span> guess != number:
+    guess = <span style="color: #658b00">input</span>(<span style="color: #CD5555">&#39;Guess a number: &#39;</span>)
+    attempts += <span style="color: #B452CD">1</span>
+    <span style="color: #8B008B; font-weight: bold">if</span> guess == number:
+        <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Correct! You used&#39;</span>, attempts, <span style="color: #CD5555">&#39;attempts!&#39;</span>
+        <span style="color: #8B008B; font-weight: bold">break</span>
+    <span style="color: #8B008B; font-weight: bold">elif</span> guess &lt; number:  <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Go higher!&#39;</span>
+    <span style="color: #8B008B; font-weight: bold">else</span>:                 <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Go lower!&#39;</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h1 style="text-align: center;">Monte Carlo integration  <a name="___sec31"></a></h1>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<p>&nbsp;<br>
+$$ {\Large \int_a^b f(x)dx } $$
+<p>&nbsp;<br>
+
+</td>
+<td class="padding">
+<center><p><img src="fig-random/associations/random_numbers1.png" align="bottom" width=400></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>There is a strong link between an integral and the average of the integrand  <a name="___sec32"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Idea:</b>
+<p>
+Recall a famous theorem from calculus: Let \( f_m \) be the mean value of \( f(x) \) on \( [a,b] \). Then
+
+<p>&nbsp;<br>
+$$ \int_a^b f(x)dx = f_m(b-a)$$
+<p>&nbsp;<br>
+
+
+<p>
+Idea: compute \( f_m \) by averaging \( N \) function values.
+To choose the \( N \) coordinates \( x_0,\ldots,x_{N-1} \) we use random numbers in \( [a,b] \). Then
+
+<p>&nbsp;<br>
+$$ f_m = N^{-1}\sum_{j=0}^{N-1} f(x_j) $$
+<p>&nbsp;<br>
+
+
+<p>
+This is called Monte Carlo integration.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Implementation of Monte Carlo integration; scalar version  <a name="___sec33"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">MCint</span>(f, a, b, n):
+    s = <span style="color: #B452CD">0</span>
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n):
+        x = random.uniform(a, b)
+        s += f(x)
+    I = (<span style="color: #658b00">float</span>(b-a)/n)*s
+    <span style="color: #8B008B; font-weight: bold">return</span> I
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Implementation of Monte Carlo integration; vectorized version  <a name="___sec34"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">MCint_vec</span>(f, a, b, n):
+    x = np.random.uniform(a, b, n)
+    s = np.sum(f(x))
+    I = (<span style="color: #658b00">float</span>(b-a)/n)*s
+    <span style="color: #8B008B; font-weight: bold">return</span> I
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-small">
+<b style="font-weight: bold">Remark:</b>
+<p>
+Monte Carlo integration is slow for \( \int f(x)dx \) (slower than the Trapezoidal rule, e.g.), but very efficient for integrating functions of many variables \( \int f(x_1,x_2,\ldots,x_n)dx_1dx_2\cdots dx_n \)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Dart-inspired Monte Carlo integration  <a name="___sec35"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Choose a box \( B=[x_L,x_H]\times[y_L,y_H] \) with some geometric object \( G \) inside, what is the area of \( G \)?</li>
+  <p><li> Method: draw \( N \) points at random inside \( B \), count how many, \( M \), that fall within \( G \), \( G \)'s area is then \( M/N\times\hbox{area}(B) \)</li>
+  <p><li> Special case: \( G \) is the geometry between \( y=f(x) \) and the \( x \) axis for \( x\in [a,b] \), i.e., the area of \( G \) is \( \int_a^bf(x)dx \), and our method gives \( \int_a^bf(x)dx \approx {M\over N}m(b-a) \) if \( B \) is the box \( [a,b]\times [0,m] \)</li>
+</ul>
+</div>
+
+
+<p>
+<center><p><img src="fig-random/MC_dart.png" align="bottom" width=300></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>The code for the dart-inspired Monte Carlo integration  <a name="___sec36"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Scalar code:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">MCint_area</span>(f, a, b, n, fmax):
+    below = <span style="color: #B452CD">0</span>  <span style="color: #228B22"># counter for no of points below the curve</span>
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n):
+        x = random.uniform(a, b)
+        y = random.uniform(<span style="color: #B452CD">0</span>, fmax)
+        <span style="color: #8B008B; font-weight: bold">if</span> y &lt;= f(x):
+            below += <span style="color: #B452CD">1</span>
+    area = below/<span style="color: #658b00">float</span>(n)*(b-a)*fmax
+    <span style="color: #8B008B; font-weight: bold">return</span> area
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Vectorized code:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">MCint_area_vec</span>(f, a, b, n, fmax):
+    x = np.random.uniform(a, b, n)
+    y = np.random.uniform(<span style="color: #B452CD">0</span>, fmax, n)
+    below = y[y &lt; f(x)].size
+    area = below/<span style="color: #658b00">float</span>(n)*(b-a)*fmax
+    <span style="color: #8B008B; font-weight: bold">return</span> area
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>The development of the error in Monte Carlo integration  <a name="___sec37"></a></h2>
+
+<p>
+<center><p><img src="fig-random/MCint_1000000.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h1 style="text-align: center;">Random walk  <a name="___sec38"></a></h1>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<center><p><img src="fig-random/associations/random_walk1.jpg" align="bottom" width=400></p></center>
+</td>
+<td class="padding">
+<center><p><img src="fig-random/associations/random_walker1.gif" align="bottom" width=200></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Random walk in one space dimension  <a name="___sec39"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Basics of random walk in 1D:</b>
+<p>
+
+<ul>
+  <p><li> One particle moves to the left and right with equal probability</li>
+  <p><li> \( n \) particles start at \( x=0 \) at time \( t=0 \) - how do the particles get distributed over time?</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Applications:</b>
+<p>
+
+<ul>
+ <p><li> molecular motion</li>
+ <p><li> heat transport</li>
+ <p><li> quantum mechanics</li>
+ <p><li> polymer chains</li>
+ <p><li> population genetics</li>
+ <p><li> brain research</li>
+ <p><li> hazard games</li>
+ <p><li> pricing of financial instruments</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Program for 1D random walk  <a name="___sec40"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.std</span> <span style="color: #8B008B; font-weight: bold">import</span> plot
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">random</span>
+
+np = <span style="color: #B452CD">4</span>                 <span style="color: #228B22"># no of particles</span>
+ns = <span style="color: #B452CD">100</span>               <span style="color: #228B22"># no of steps</span>
+positions = zeros(np)  <span style="color: #228B22"># all particles start at x=0</span>
+HEAD = <span style="color: #B452CD">1</span>;  TAIL = <span style="color: #B452CD">2</span>    <span style="color: #228B22"># constants</span>
+xmax = sqrt(ns); xmin = -xmax   <span style="color: #228B22"># extent of plot axis</span>
+
+<span style="color: #8B008B; font-weight: bold">for</span> step <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(ns):
+    <span style="color: #8B008B; font-weight: bold">for</span> p <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(np):
+        coin = random_.randint(<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>)  <span style="color: #228B22"># flip coin</span>
+        <span style="color: #8B008B; font-weight: bold">if</span> coin == HEAD:
+            positions[p] += <span style="color: #B452CD">1</span>   <span style="color: #228B22"># step to the right</span>
+        <span style="color: #8B008B; font-weight: bold">elif</span> coin == TAIL:
+            positions[p] -= <span style="color: #B452CD">1</span>   <span style="color: #228B22"># step to the left</span>
+    plot(positions, y, <span style="color: #CD5555">&#39;ko3&#39;</span>,
+         axis=[xmin, xmax, -<span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">0.2</span>])
+    time.sleep(<span style="color: #B452CD">0.2</span>)             <span style="color: #228B22"># pause between moves</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Random walk as a difference equation  <a name="___sec41"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Let \( x_n \) be the position of one particle at time \( n \).
+Updating rule:
+
+<p>&nbsp;<br>
+$$ x_n = x_{n-1} + s$$
+<p>&nbsp;<br>
+
+where \( s=1 \) or \( s=-1 \), both with probability 1/2.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Computing statistics of the random walk  <a name="___sec42"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Scientists are not interested in just looking at movies of random walks - they are interested in statistics (mean position, &quot;width&quot; of the cluster of particles, how particles are distributed)
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">mean_pos  = mean(positions)
+stdev_pos = std(positions)   <span style="color: #228B22"># &quot;with&quot; of particle cluster</span>
+
+<span style="color: #228B22"># shape of particle cluster:</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.std</span> <span style="color: #8B008B; font-weight: bold">import</span> compute_histogram
+pos, freq = compute_histogram(positions, nbins=<span style="color: #658b00">int</span>(xmax),
+                              piecewise_constant=<span style="color: #658b00">True</span>)
+plot(pos, freq, <span style="color: #CD5555">&#39;b-&#39;</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+<center><p><img src="fig-random/randomwalk1D_hist.png" align="bottom" width=500></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Vectorized implementation of 1D random walk  <a name="___sec43"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+First we draw all moves at all times:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">moves = numpy.random.random_integers(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>, size=np*ns)
+moves = <span style="color: #B452CD">2</span>*moves - <span style="color: #B452CD">3</span>  <span style="color: #228B22">#  -1, 1 instead of 1, 2</span>
+moves.shape = (ns, np)
+</pre></div>
+<p>
+Evolution through time:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">positions = numpy.zeros(np)
+<span style="color: #8B008B; font-weight: bold">for</span> step <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(ns):
+    positions += moves[step, :]
+
+    <span style="color: #228B22"># can do some statistics:</span>
+    <span style="color: #8B008B; font-weight: bold">print</span> numpy.mean(positions), numpy.std(positions)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Now to more exciting stuff: 2D random walk  <a name="___sec44"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Let each particle move north, south, west, or east - each with probability 1/4
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">random_walk_2D</span>(np, ns, plot_step):
+    xpositions = numpy.zeros(np)
+    ypositions = numpy.zeros(np)
+    NORTH = <span style="color: #B452CD">1</span>;  SOUTH = <span style="color: #B452CD">2</span>;  WEST = <span style="color: #B452CD">3</span>;  EAST = <span style="color: #B452CD">4</span>
+
+    <span style="color: #8B008B; font-weight: bold">for</span> step <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(ns):
+        <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(xpositions)):
+            direction = random.randint(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">4</span>)
+            <span style="color: #8B008B; font-weight: bold">if</span> direction == NORTH:
+                ypositions[i] += <span style="color: #B452CD">1</span>
+            <span style="color: #8B008B; font-weight: bold">elif</span> direction == SOUTH:
+                ypositions[i] -= <span style="color: #B452CD">1</span>
+            <span style="color: #8B008B; font-weight: bold">elif</span> direction == EAST:
+                xpositions[i] += <span style="color: #B452CD">1</span>
+            <span style="color: #8B008B; font-weight: bold">elif</span> direction == WEST:
+                xpositions[i] -= <span style="color: #B452CD">1</span>
+    <span style="color: #8B008B; font-weight: bold">return</span> xpositions, ypositions
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Vectorized implementation of 2D random walk  <a name="___sec45"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">random_walk_2D</span>(np, ns, plot_step):
+    xpositions = zeros(np)
+    ypositions = zeros(np)
+    moves = numpy.random.random_integers(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">4</span>, size=ns*np)
+    moves.shape = (ns, np)
+    NORTH = <span style="color: #B452CD">1</span>;  SOUTH = <span style="color: #B452CD">2</span>;  WEST = <span style="color: #B452CD">3</span>;  EAST = <span style="color: #B452CD">4</span>
+
+    <span style="color: #8B008B; font-weight: bold">for</span> step <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(ns):
+        this_move = moves[step,:]
+        ypositions += where(this_move == NORTH, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">0</span>)
+        ypositions -= where(this_move == SOUTH, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">0</span>)
+        xpositions += where(this_move == EAST,  <span style="color: #B452CD">1</span>, <span style="color: #B452CD">0</span>)
+        xpositions -= where(this_move == WEST,  <span style="color: #B452CD">1</span>, <span style="color: #B452CD">0</span>)
+    <span style="color: #8B008B; font-weight: bold">return</span> xpositions, ypositions
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Visualization of 2D random walk  <a name="___sec46"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> We plot every <code>plot_step</code> step</li>
+  <p><li> One plot on the screen + one hardcopy for movie file</li>
+  <p><li> Extent of axis: it can be shown that after \( n_s \) steps, the typical width of the cluster of particles (standard deviation) is of order \( \sqrt{n_s} \), so we can set min/max axis extent as, e.g.,</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">xymax = <span style="color: #B452CD">3</span>*sqrt(ns); xymin = -xymax
+</pre></div>
+<p>
+Inside <code>for</code> loop over steps:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #228B22"># just plot every plot_step steps:</span>
+<span style="color: #8B008B; font-weight: bold">if</span> (step+<span style="color: #B452CD">1</span>) % plot_step == <span style="color: #B452CD">0</span>:
+    plot(xpositions, ypositions, <span style="color: #CD5555">&#39;ko&#39;</span>,
+         axis=[xymin, xymax, xymin, xymax],
+         title=<span style="color: #CD5555">&#39;%d particles after %d steps&#39;</span> % \
+               (np, step+<span style="color: #B452CD">1</span>),
+         savefig=<span style="color: #CD5555">&#39;tmp_%03d.png&#39;</span> % (step+<span style="color: #B452CD">1</span>))
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Class implementation of 2D random walk  <a name="___sec47"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Can classes be used to implement a random walk?</li>
+  <p><li> Yes, it sounds natural with class <code>Particle</code>, holding the position of a particle as attributes and with a method <code>move</code> for moving the particle one step</li>
+  <p><li> Class <code>Particles</code> holds a list of <code>Particle</code> instances and has a method <code>move</code> for moving all particles one step and a method <code>moves</code> for moving all particles through all steps</li>
+  <p><li> Additional methods in class <code>Particles</code> can plot and compute statistics</li>
+  <p><li> Downside: with class <code>Particle</code> the code is scalar - a vectorized version <code>must</code> use arrays inside class <code>Particles</code> instead of a list of <code>Particle</code> instances</li>
+  <p><li> The implementation is an exercise</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Summary of drawing random numbers (scalar code)  <a name="___sec48"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Draw a uniformly distributed random number in \( [0,1) \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">random</span>
+r = random.random()
+</pre></div>
+<p>
+Draw a uniformly distributed random number in \( [a,b) \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">r = random.uniform(a, b)
+</pre></div>
+<p>
+Draw a uniformly distributed random integer in \( [a,b] \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">i = random.randint(a, b)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Summary of drawing random numbers (vectorized code)  <a name="___sec49"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Draw \( n \) uniformly distributed random numbers in \( [0,1) \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+r = np.random.random(n)
+</pre></div>
+<p>
+Draw \( n \) uniformly distributed random numbers in \( [a,b) \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">r = np.random.uniform(a, b, n)
+</pre></div>
+<p>
+Draw \( n \) uniformly distributed random integers in \( [a,b] \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">i = np.random.randint(a, b+<span style="color: #B452CD">1</span>, n)
+i = np.random.random_integers(a, b, n)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Summary of probability computations  <a name="___sec50"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+
+<ul>
+  <p><li> Probability: perform \( N \) experiments, count \( M \) successes, then success has probability \( M/N \) (\( N \) must be large)</li>
+  <p><li> Monte Carlo simulation: let a program do \( N \) experiments and count \( M \) (simple method for probability problems)</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Example: investment with random interest rate  <a name="___sec51"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Recall difference equation for the development of an investment \( x_0 \) with annual interest rate \( p \):
+
+<p>&nbsp;<br>
+$$ x_{n} = x_{n-1} + {p\over 100}x_{n-1},\quad \hbox{given }x_0$$
+<p>&nbsp;<br>
+
+
+<p>
+But:
+
+<ul>
+  <p><li> In reality, \( p \) is uncertain in the future</li>
+  <p><li> Let us model this uncertainty by letting \( p \) be random</li>
+</ul>
+<p>
+
+Assume the interest is added every month:
+
+<p>&nbsp;<br>
+$$ x_{n} = x_{n-1} + {p\over 100\cdot 12}x_{n-1}$$
+<p>&nbsp;<br>
+
+where \( n \) counts months
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>The model for changing the interest rate  <a name="___sec52"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+\( p \) changes from one month to the next by \( \gamma \):
+
+<p>&nbsp;<br>
+$$ p_n = p_{n-1} + \gamma$$
+<p>&nbsp;<br>
+
+where \( \gamma \) is random
+
+<ul>
+  <p><li> With probability \( 1/M \), \( \gamma \neq 0 \) <br />
+    (i.e., the annual interest rate changes on average every \( M \) months)</li>
+  <p><li> If \( \gamma\neq 0 \), \( \gamma =\pm m \), each with probability \( 1/2 \)</li>
+  <p><li> It does not make sense to have \( p_n < 1 \) or \( p_n > 15 \)</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>The complete mathematical model  <a name="___sec53"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>&nbsp;<br>
+$$
+\begin{align*}
+x_n &= x_{n-1} + {p_{n-1}\over 12\cdot 100}x_{n-1},\quad i=1,\ldots,N\\
+r_1 &= \hbox{random number in } 1,\ldots,M\\
+r_2 &= \hbox{random number in } 1, 2\\
+\gamma &= \left\lbrace\begin{array}{ll} m, & \hbox{if } r_1 = 1 \hbox{ and } r_2=1,\\
+-m, & \hbox{if } r_1 = 1 \hbox{ and } r_2=2,\\
+0, & \hbox{if } r_1 \neq 1
+\end{array}\right.\\
+p_n &= p_{n-1} + \left\lbrace\begin{array}{ll} \gamma, & \hbox{if } p_n+\gamma\in [1,15],\\
+0, & \hbox{otherwise}
+\end{array}\right.
+\end{align*}
+$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+A particular realization \( x_n, p_n \), \( n=0,1,\ldots,N \), is called a <em>path</em> (through time) or a realization. We are interested in the statistics of many paths.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Note: this is almost a random walk for the interest rate  <a name="___sec54"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Remark:</b>
+<p>
+The development of \( p \) is like a random walk, but the "particle" moves at each time level with probability \( 1/M \) (not 1 - always - as in a normal random walk).
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Simulating the investment development; one path  <a name="___sec55"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">simulate_one_path</span>(N, x0, p0, M, m):
+    x = zeros(N+<span style="color: #B452CD">1</span>)
+    p = zeros(N+<span style="color: #B452CD">1</span>)
+    index_set = <span style="color: #658b00">range</span>(<span style="color: #B452CD">0</span>, N+<span style="color: #B452CD">1</span>)
+
+    x[<span style="color: #B452CD">0</span>] = x0
+    p[<span style="color: #B452CD">0</span>] = p0
+
+    <span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> index_set[<span style="color: #B452CD">1</span>:]:
+        x[n] = x[n-<span style="color: #B452CD">1</span>] + p[n-<span style="color: #B452CD">1</span>]/(<span style="color: #B452CD">100.0</span>*<span style="color: #B452CD">12</span>)*x[n-<span style="color: #B452CD">1</span>]
+
+        <span style="color: #228B22"># update interest rate p:</span>
+        r = random.randint(<span style="color: #B452CD">1</span>, M)
+        <span style="color: #8B008B; font-weight: bold">if</span> r == <span style="color: #B452CD">1</span>:
+            <span style="color: #228B22"># adjust gamma:</span>
+            r = random.randint(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">2</span>)
+            gamma = m <span style="color: #8B008B; font-weight: bold">if</span> r == <span style="color: #B452CD">1</span> <span style="color: #8B008B; font-weight: bold">else</span> -m
+        <span style="color: #8B008B; font-weight: bold">else</span>:
+            gamma = <span style="color: #B452CD">0</span>
+        pn = p[n-<span style="color: #B452CD">1</span>] + gamma
+        p[n] = pn <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #B452CD">1</span> &lt;= pn &lt;= <span style="color: #B452CD">15</span> <span style="color: #8B008B; font-weight: bold">else</span> p[n-<span style="color: #B452CD">1</span>]
+    <span style="color: #8B008B; font-weight: bold">return</span> x, p
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Simulating the investment development; \( N \) paths  <a name="___sec56"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Compute \( N \) paths (investment developments \( x_n \)) and their mean path (mean development)
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">simulate_n_paths</span>(n, N, L, p0, M, m):
+    xm = zeros(N+<span style="color: #B452CD">1</span>)
+    pm = zeros(N+<span style="color: #B452CD">1</span>)
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n):
+        x, p = simulate_one_path(N, L, p0, M, m)
+        <span style="color: #228B22"># accumulate paths:</span>
+        xm += x
+        pm += p
+    <span style="color: #228B22"># compute average:</span>
+    xm /= <span style="color: #658b00">float</span>(n)
+    pm /= <span style="color: #658b00">float</span>(n)
+    <span style="color: #8B008B; font-weight: bold">return</span> xm, pm
+</pre></div>
+<p>
+Can also compute the standard deviation path (&quot;width&quot; of the \( N \) paths), see the book for details
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Input and graphics  <a name="___sec57"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Here is a list of variables that constitute the input:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">x0 = <span style="color: #B452CD">1</span>        <span style="color: #228B22"># initial investment</span>
+p0 = <span style="color: #B452CD">5</span>        <span style="color: #228B22"># initial interest rate</span>
+N = <span style="color: #B452CD">10</span>*<span style="color: #B452CD">12</span>     <span style="color: #228B22"># number of months</span>
+M = <span style="color: #B452CD">3</span>         <span style="color: #228B22"># p changes (on average) every M months</span>
+n = <span style="color: #B452CD">1000</span>      <span style="color: #228B22"># number of simulations</span>
+m = <span style="color: #B452CD">0.5</span>       <span style="color: #228B22"># adjustment of p</span>
+</pre></div>
+<p>
+We may add some graphics in the program:
+
+<ul>
+    <p><li> plot some realizations of \( x_n \) and \( p_n \)</li>
+    <p><li> plot the mean \( x_n \) with plus/minus one standard deviation</li>
+    <p><li> plot the mean \( p_n \) with plus/minus one standard deviation</li>
+</ul>
+<p>
+
+See the book for graphics details (good example on updating several different plots simultaneously in a simulation)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Some realizations of the investment  <a name="___sec58"></a></h2>
+
+<p>
+<center><p><img src="fig-random/growth_random_x.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>Some realizations of the interest rate  <a name="___sec59"></a></h2>
+
+<p>
+<center><p><img src="fig-random/growth_random_p.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>The mean and uncertainty of the investment over time  <a name="___sec60"></a></h2>
+
+<p>
+<center><p><img src="fig-random/growth_random_xm.png" align="bottom" width=600></p></center>
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2>The mean and uncertainty of the interest rate over time  <a name="___sec61"></a></h2>
+
+<p>
+<center><p><img src="fig-random/growth_random_pm.png" align="bottom" width=600></p></center>
+
+
+</section>
+
+
+
+
+<footer>
+<!-- Here goes a footer -->
+</footer>
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+-->
+
+<!-- deck.goto snippet
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+-->
+
+<!-- deck.hash snippet
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+-->
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="deck.js/jquery.min.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/hash/deck.hash.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
+<script src="deck.js/extensions/goto/deck.goto.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+<script src="deck.js/extensions/notes/deck.notes.js"></script>
+
+<!-- From https://github.com/mikeharris100/deck.pointer.js -->
+<script src="deck.js/extensions/pointer/deck.pointer.js"></script>
+
+<!-- From https://github.com/stvnwrgs/presenterview
+<script type="text/javascript" src="deck.js/extensions/presenterview/deck.presenterview.js"></script> -->
+
+<!-- From https://github.com/nemec/deck.annotate.js
+<script type="text/javascript" src="deck.js/extensions/deck.annotate.js/deck.annotate.js"></script>
+-->
+
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+
+
+</body>
+</html>
