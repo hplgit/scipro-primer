@@ -1,0 +1,330 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Ch.8: Random numbers and simple games">
+
+<title>Ch.8: Random numbers and simple games</title>
+
+
+<style type="text/css">
+/* bloodish style */
+
+body {
+  font-family: Helvetica, Verdana, Arial, Sans-serif;
+  color: #404040;
+  background: #ffffff;
+}
+h1 { font-size: 1.8em;  color: #8A0808; }
+h2 { font-size: 1.6em;  color: #8A0808; }
+h3 { font-size: 1.4em;  color: #8A0808; }
+h4 { color: #8A0808; }
+a { color: #8A0808; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(u' Use of random numbers in programs ', 1, None, '___sec0'),
+              (u' Random numbers are used to simulate uncertain events ',
+               2,
+               None,
+               '___sec1'),
+              (u' Drawing random numbers ', 2, None, '___sec2'),
+              (u' Distribution of random numbers ', 2, None, '___sec3'),
+              (u' Distribution of random numbers visualized ',
+               2,
+               None,
+               '___sec4'),
+              (u' Vectorized drawing of random numbers ', 2, None, '___sec5'),
+              (u' Drawing integers ', 2, None, '___sec6'),
+              (u' Example: Rolling a die ', 2, None, '___sec7'),
+              (u' Example: Rolling a die; vectorized version ',
+               2,
+               None,
+               '___sec8'),
+              (u' Debugging programs with random numbers requires fixing the seed of the random sequence ',
+               2,
+               None,
+               '___sec9'),
+              (u' Drawing random elements from a list ', 2, None, '___sec10'),
+              (u' Example: Drawing cards from a deck; make deck and draw ',
+               2,
+               None,
+               '___sec11'),
+              (u' Example: Drawing cards from a deck; draw a hand of cards ',
+               2,
+               None,
+               '___sec12'),
+              (u' Example: Drawing cards from a deck; deal ',
+               2,
+               None,
+               '___sec13'),
+              (u' Example: Drawing cards from a deck; analyze results (1) ',
+               2,
+               None,
+               '___sec14'),
+              (u' Example: Drawing cards from a deck; analyze results (2) ',
+               2,
+               None,
+               '___sec15'),
+              (u' Example: Drawing cards from a deck; analyze results (3)  ',
+               2,
+               None,
+               '___sec16'),
+              (u' Class implementation of a deck; class Deck ',
+               2,
+               None,
+               '___sec17'),
+              (u' Class implementation of a deck; alternative ',
+               2,
+               None,
+               '___sec18'),
+              (u' Class implementation of a deck; why? ',
+               2,
+               None,
+               '___sec19'),
+              (u' Probabilities can be computed by Monte Carlo simulation ',
+               2,
+               None,
+               '___sec20'),
+              (u' A vectorized version can speed up the simulations ',
+               2,
+               None,
+               '___sec21'),
+              (u' The exact probability can be calculated in this (simple) example ',
+               2,
+               None,
+               '___sec22'),
+              (u' How accurate and fast is Monte Carlo simulation? ',
+               2,
+               None,
+               '___sec23'),
+              (u' Gamification of this example ', 2, None, '___sec24'),
+              (u' Should we play the game? ', 2, None, '___sec25'),
+              (u' Vectorization of the game for speeding up the code ',
+               2,
+               None,
+               '___sec26'),
+              (u' Example: Drawing balls from a hat ', 2, None, '___sec27'),
+              (u' What is the probability of getting two black balls or more? ',
+               2,
+               None,
+               '___sec28'),
+              (u' Examples on computing the probabilities ',
+               2,
+               None,
+               '___sec29'),
+              (u' Guess a number game ', 2, None, '___sec30'),
+              (u' Monte Carlo integration ', 1, None, '___sec31'),
+              (u' There is a strong link between an integral and the average of the integrand ',
+               2,
+               None,
+               '___sec32'),
+              (u' Implementation of Monte Carlo integration; scalar version ',
+               2,
+               None,
+               '___sec33'),
+              (u' Implementation of Monte Carlo integration; vectorized version ',
+               2,
+               None,
+               '___sec34'),
+              (u' Dart-inspired Monte Carlo integration ',
+               2,
+               None,
+               '___sec35'),
+              (u' The code for the dart-inspired Monte Carlo integration ',
+               2,
+               None,
+               '___sec36'),
+              (u' The development of the error in Monte Carlo integration ',
+               2,
+               None,
+               '___sec37'),
+              (u' Random walk ', 1, None, '___sec38'),
+              (u' Random walk in one space dimension ', 2, None, '___sec39'),
+              (u' Program for 1D random walk ', 2, None, '___sec40'),
+              (u' Random walk as a difference equation ',
+               2,
+               None,
+               '___sec41'),
+              (u' Computing statistics of the random walk ',
+               2,
+               None,
+               '___sec42'),
+              (u' Vectorized implementation of 1D random walk ',
+               2,
+               None,
+               '___sec43'),
+              (u' Now to more exciting stuff: 2D random walk ',
+               2,
+               None,
+               '___sec44'),
+              (u' Vectorized implementation of 2D random walk ',
+               2,
+               None,
+               '___sec45'),
+              (u' Visualization of 2D random walk ', 2, None, '___sec46'),
+              (u' Class implementation of 2D random walk ',
+               2,
+               None,
+               '___sec47'),
+              (u' Summary of drawing random numbers (scalar code) ',
+               2,
+               None,
+               '___sec48'),
+              (u' Summary of drawing random numbers (vectorized code) ',
+               2,
+               None,
+               '___sec49'),
+              (u' Summary of probability computations ', 2, None, '___sec50'),
+              (u' Example: investment with random interest rate ',
+               2,
+               None,
+               '___sec51'),
+              (u' The model for changing the interest rate ',
+               2,
+               None,
+               '___sec52'),
+              (u' The complete mathematical model ', 2, None, '___sec53'),
+              (u' Note: this is almost a random walk for the interest rate ',
+               2,
+               None,
+               '___sec54'),
+              (u' Simulating the investment development; one path ',
+               2,
+               None,
+               '___sec55'),
+              (u' Simulating the investment development; $N$ paths ',
+               2,
+               None,
+               '___sec56'),
+              (u' Input and graphics ', 2, None, '___sec57'),
+              (u' Some realizations of the investment ', 2, None, '___sec58'),
+              (u' Some realizations of the interest rate ',
+               2,
+               None,
+               '___sec59'),
+              (u' The mean and uncertainty of the investment over time ',
+               2,
+               None,
+               '___sec60'),
+              (u' The mean and uncertainty of the interest rate over time ',
+               2,
+               None,
+               '___sec61')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<a name="part0046"></a>
+<p>
+
+</p>
+
+<p>
+<!-- !split -->
+
+<h2>Vectorized implementation of 2D random walk  <a name="___sec45"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">random_walk_2D</span>(np, ns, plot_step):
+    xpositions <span style="color: #666666">=</span> zeros(np)
+    ypositions <span style="color: #666666">=</span> zeros(np)
+    moves <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>random<span style="color: #666666">.</span>random_integers(<span style="color: #666666">1</span>, <span style="color: #666666">4</span>, size<span style="color: #666666">=</span>ns<span style="color: #666666">*</span>np)
+    moves<span style="color: #666666">.</span>shape <span style="color: #666666">=</span> (ns, np)
+    NORTH <span style="color: #666666">=</span> <span style="color: #666666">1</span>;  SOUTH <span style="color: #666666">=</span> <span style="color: #666666">2</span>;  WEST <span style="color: #666666">=</span> <span style="color: #666666">3</span>;  EAST <span style="color: #666666">=</span> <span style="color: #666666">4</span>
+
+    <span style="color: #008000; font-weight: bold">for</span> step <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(ns):
+        this_move <span style="color: #666666">=</span> moves[step,:]
+        ypositions <span style="color: #666666">+=</span> where(this_move <span style="color: #666666">==</span> NORTH, <span style="color: #666666">1</span>, <span style="color: #666666">0</span>)
+        ypositions <span style="color: #666666">-=</span> where(this_move <span style="color: #666666">==</span> SOUTH, <span style="color: #666666">1</span>, <span style="color: #666666">0</span>)
+        xpositions <span style="color: #666666">+=</span> where(this_move <span style="color: #666666">==</span> EAST,  <span style="color: #666666">1</span>, <span style="color: #666666">0</span>)
+        xpositions <span style="color: #666666">-=</span> where(this_move <span style="color: #666666">==</span> WEST,  <span style="color: #666666">1</span>, <span style="color: #666666">0</span>)
+    <span style="color: #008000; font-weight: bold">return</span> xpositions, ypositions
+</pre></div>
+
+</div>
+
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._random-plain045.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._random-plain047.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
