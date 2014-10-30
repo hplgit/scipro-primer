@@ -285,20 +285,23 @@ MathJax.Hub.Config({
 <h2>Dart-inspired Monte Carlo integration  <a name="___sec35"></a></h2>
 
 <p>
+<center><p><img src="fig-random/MC_dart.png" align="bottom" width=300></p></center>
+
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
+<!-- !bpop -->
 
 <ul>
   <li> Choose a box \( B=[x_L,x_H]\times[y_L,y_H] \) with some geometric object \( G \) inside, what is the area of \( G \)?</li>
   <li> Method: draw \( N \) points at random inside \( B \), count how many, \( M \), that fall within \( G \), \( G \)'s area is then \( M/N\times\hbox{area}(B) \)</li>
   <li> Special case: \( G \) is the geometry between \( y=f(x) \) and the \( x \) axis for \( x\in [a,b] \), i.e., the area of \( G \) is \( \int_a^bf(x)dx \), and our method gives \( \int_a^bf(x)dx \approx {M\over N}m(b-a) \) if \( B \) is the box \( [a,b]\times [0,m] \)</li>
 </ul>
+
+<!-- !epop -->
 </div>
 
-
-<p>
-<center><p><img src="fig-random/MC_dart.png" align="bottom" width=300></p></center>
 
 <p>
 <p>

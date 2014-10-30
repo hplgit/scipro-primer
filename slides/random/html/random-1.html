@@ -294,7 +294,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>
-<center><h4>Oct 27, 2014</h4></center> <!-- date -->
+<center><h4>Oct 30, 2014</h4></center> <!-- date -->
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
@@ -1390,13 +1390,20 @@ guess <span style="color: #666666">=</span> <span style="color: #666666">0</span
 
 <p>
 <!-- !bslidecell 00 -->
-$$ {\Large \int_a^b f(x)dx } $$
+$$
+% if FORMAT in ('pdflatex', 'latex'):
+\[ {\Large \int_a^b f(x)dx } \]
+% else:
+\[ \int_a^b f(x)dx \]
+% endif
+$$
 
 <!-- !eslidecell -->
 
 <p>
 <!-- !bslidecell 01 -->
-<center><p><img src="fig-random/associations/random_numbers1.png" align="bottom" width=400></p></center>
+<!-- FIGURE: [fig-random/associations/random_numbers1, width=400] -->
+<center><p><img src="fig-random/associations/Monte_Carlo.jpg" align="bottom" width=400></p></center>
 <!-- !eslidecell -->
 
 <p>
@@ -1406,7 +1413,7 @@ $$ {\Large \int_a^b f(x)dx } $$
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b>Idea:</b>
+<b></b>
 <p>
 Recall a famous theorem from calculus: Let \( f_m \) be the mean value of \( f(x) \) on \( [a,b] \). Then
 
@@ -1485,20 +1492,23 @@ Monte Carlo integration is slow for \( \int f(x)dx \) (slower than the Trapezoid
 <h2>Dart-inspired Monte Carlo integration  <a name="___sec35"></a></h2>
 
 <p>
+<center><p><img src="fig-random/MC_dart.png" align="bottom" width=300></p></center>
+
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
+<!-- !bpop -->
 
 <ul>
   <li> Choose a box \( B=[x_L,x_H]\times[y_L,y_H] \) with some geometric object \( G \) inside, what is the area of \( G \)?</li>
   <li> Method: draw \( N \) points at random inside \( B \), count how many, \( M \), that fall within \( G \), \( G \)'s area is then \( M/N\times\hbox{area}(B) \)</li>
   <li> Special case: \( G \) is the geometry between \( y=f(x) \) and the \( x \) axis for \( x\in [a,b] \), i.e., the area of \( G \) is \( \int_a^bf(x)dx \), and our method gives \( \int_a^bf(x)dx \approx {M\over N}m(b-a) \) if \( B \) is the box \( [a,b]\times [0,m] \)</li>
 </ul>
+
+<!-- !epop -->
 </div>
 
-
-<p>
-<center><p><img src="fig-random/MC_dart.png" align="bottom" width=300></p></center>
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
@@ -1673,7 +1683,7 @@ Scientists are not interested in just looking at movies of random walks - they a
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">mean_pos  <span style="color: #666666">=</span> mean(positions)
-stdev_pos <span style="color: #666666">=</span> std(positions)   <span style="color: #408080; font-style: italic"># &quot;with&quot; of particle cluster</span>
+stdev_pos <span style="color: #666666">=</span> std(positions)   <span style="color: #408080; font-style: italic"># &quot;width&quot; of particle cluster</span>
 
 <span style="color: #408080; font-style: italic"># shape of particle cluster:</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scitools.std</span> <span style="color: #008000; font-weight: bold">import</span> compute_histogram
