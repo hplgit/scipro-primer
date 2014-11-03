@@ -1,0 +1,248 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Ch.9: Object-oriented programming">
+
+<title>Ch.9: Object-oriented programming</title>
+
+
+<style type="text/css">
+/* bloodish style */
+
+body {
+  font-family: Helvetica, Verdana, Arial, Sans-serif;
+  color: #404040;
+  background: #ffffff;
+}
+h1 { font-size: 1.8em;  color: #8A0808; }
+h2 { font-size: 1.6em;  color: #8A0808; }
+h3 { font-size: 1.4em;  color: #8A0808; }
+h4 { color: #8A0808; }
+a { color: #8A0808; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(u' Inheritance ', 1, None, '___sec0'),
+              (u' The chapter title *Object-oriented programming* (OO) may mean two different things ',
+               2,
+               None,
+               '___sec1'),
+              (u' New concept: collect classes in families (hierarchies)  ',
+               2,
+               None,
+               '___sec2'),
+              (u' Warning: OO is difficult and takes time to master ',
+               2,
+               None,
+               '___sec3'),
+              (u' A class for straight lines ', 2, None, '___sec4'),
+              (u' A class for parabolas ', 2, None, '___sec5'),
+              (u' Class Parabola as a subclass of Line; principles ',
+               2,
+               None,
+               '___sec6'),
+              (u' Class Parabola as a subclass of Line; code ',
+               2,
+               None,
+               '___sec7'),
+              (u' Class Parabola as a subclass of Line; demo ',
+               2,
+               None,
+               '___sec8'),
+              (u' Exercise 1: Point out the program flow ',
+               2,
+               None,
+               '___sec9'),
+              (u' We can check class type and class relations with `isinstance(obj, type)` and `issubclass(subclassname, superclassname)` ',
+               2,
+               None,
+               '___sec10'),
+              (u' Recall the class for numerical differentiation from Ch. 7 ',
+               2,
+               None,
+               '___sec11'),
+              (u' There are numerous formulas numerical differentiation ',
+               2,
+               None,
+               '___sec12'),
+              (u' How can we make a module that offers all these formulas? ',
+               2,
+               None,
+               '___sec13'),
+              (u' What is the problem with this type of code? ',
+               2,
+               None,
+               '___sec14'),
+              (u' Class hierarchy for numerical differentiation ',
+               2,
+               None,
+               '___sec15'),
+              (u' Use of the differentiation classes ', 2, None, '___sec16'),
+              (u' Exercise 2: Point out the program flow ',
+               2,
+               None,
+               '___sec17'),
+              (u' A flexible main program for numerical differentiation ',
+               2,
+               None,
+               '___sec18'),
+              (u' Investigating numerical approximation errors ',
+               2,
+               None,
+               '___sec19'),
+              (u' Alternative implementations (in the book) ',
+               2,
+               None,
+               '___sec20'),
+              (u' Formulas for numerical integration ', 2, None, '___sec21'),
+              (u' More formulas ', 2, None, '___sec22'),
+              (u' Why should these formulas be implemented in a class hierarchy? ',
+               2,
+               None,
+               '___sec23'),
+              (u' The superclass for integration ', 2, None, '___sec24'),
+              (u' A subclass: the Trapezoidal rule ', 2, None, '___sec25'),
+              (u" Another subclass: Simpson's rule ", 2, None, '___sec26'),
+              (u' About the program flow ', 2, None, '___sec27'),
+              (u' Exercise 3: Point out the program flow ',
+               2,
+               None,
+               '___sec28'),
+              (u' Applications of the family of integration classes ',
+               2,
+               None,
+               '___sec29'),
+              (u' Convergence rates for $m < 1$ (easy case) ',
+               2,
+               None,
+               '___sec30'),
+              (u' Convergence rates for $m>1$ (problematic case) ',
+               2,
+               None,
+               '___sec31'),
+              (u' Summary of object-orientation principles ',
+               2,
+               None,
+               '___sec32'),
+              (u' Recall the class hierarchy for differentiation ',
+               2,
+               None,
+               '___sec33'),
+              (u' Recall the class hierarchy for integration (1) ',
+               2,
+               None,
+               '___sec34'),
+              (u' Recall the class hierarchy for integration (2) ',
+               2,
+               None,
+               '___sec35'),
+              (u' A summarizing example: Generalized reading of input data ',
+               2,
+               None,
+               '___sec36'),
+              (u' Graphical user interface ', 2, None, '___sec37'),
+              (u' First we write the application code ', 2, None, '___sec38'),
+              (u' About the implementation ', 2, None, '___sec39')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<a name="part0032"></a>
+<p>
+
+</p>
+
+<p>
+<!-- !split -->
+
+<h2>Convergence rates for \( m>1 \) (problematic case)  <a name="___sec31"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Simpson and Gauss-Legendre, which are theoretically &quot;smarter&quot; than Midpoint and Trapezoidal do not show superior behavior!
+</div>
+
+
+<p>
+<center><p><img src="fig-oo/power_int_m2.png" align="bottom" width=480></p></center>
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._oo-plain031.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+<div style="text-align: right;"><a href="._oo-plain033.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
