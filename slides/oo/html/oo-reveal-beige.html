@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Ch.9: Object-oriented programming">
+
+<title>Ch.9: Object-oriented programming</title>
+
+
+
+
+
+
+
+<!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<!--
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+-->
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .reveal .alert-text-small   { font-size: 80%;  }
+    .reveal .alert-text-large   { font-size: 130%; }
+    .reveal .alert-text-normal  { font-size: 90%;  }
+    .reveal .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+             -webkit-border-radius: 14px; -moz-border-radius: 14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .reveal .alert-block {padding-top:14px; padding-bottom:14px}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     /*.reveal .alert li {margin-top: 1em}*/
+     .reveal .alert-block p+p {margin-top:5px}
+     /*.reveal .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="reveal">
+
+<!-- Any section element inside the <div class="slides"> container
+     is displayed as a slide -->
+
+<div class="slides">
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+
+
+
+<section>
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<center><h1 style="text-align: center;">Ch.9: Object-oriented programming</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>&nbsp;<br>
+<!-- institution(s) -->
+
+<center>[1] <b>Simula Research Laboratory</b></center>
+<center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
+<p>&nbsp;<br>
+<center><h4>Nov 3, 2014</h4></center> <!-- date -->
+<p>
+
+</section>
+
+
+<section>
+
+<h1 style="text-align: center;">Inheritance  <a name="___sec0"></a></h1>
+
+<p>
+
+<table border="0">
+<tr>
+<td class="padding">
+<center><p><img src="fig-oo/associations/class_inheritance1.jpg" align="bottom" width=500></p></center>
+</td>
+<td class="padding">
+<center><p><img src="fig-oo/associations/class_inheritance3.png" align="bottom" width=500></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The chapter title <em>Object-oriented programming</em> (OO) may mean two different things  <a name="___sec1"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ol>
+<p><li> Programming with classes (better: object-<em>based</em> programming)</li>
+<p><li> <font color="red">Programming with class hierarchies</font> (class families)</li>
+</ol>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+<!-- ===== New concept: collect classes in families (hierarchies) and let child classes inherit attributes and methods from parent classes ===== -->
+
+<h2>New concept: collect classes in families (hierarchies)   <a name="___sec2"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>What is a class hierarchy?</b>
+<p>
+
+<ul>
+  <p><li> A family of closely related classes</li>
+  <p><li> A key concept is <em>inheritance</em>: child classes can inherit attributes and methods from parent class(es) - this saves much typing and code duplication</li>
+</ul>
+<p>
+
+As usual, we shall learn through examples!
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+OO is a Norwegian invention by Ole-Johan Dahl and Kristen Nygaard in the 1960s - one of the most important inventions in computer science, because OO is used in all big computer systems today!
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Warning: OO is difficult and takes time to master  <a name="___sec3"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> Let ideas mature with time</li>
+  <p><li> Study many examples</li>
+  <p><li> OO is less important in Python than in C++, Java and C#, so the benefits of OO are less obvious in Python</li>
+  <p><li> Our examples here on OO employ numerical methods for \( \int_a^b f(x)dx \), \( f'(x) \), \( u'=f(u,t) \) - make sure you understand the simplest of these numerical methods before you study the combination of OO and numerics</li>
+  <p><li> Our goal: write general, reusable modules with lots of methods for numerical computing of \( \int_a^b f(x)dx \), \( f'(x) \), \( u'=f(u,t) \)</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A class for straight lines  <a name="___sec4"></a></h2>
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Problem:</b>
+<p>
+Make a class for evaluating lines \( y=c_0 + c_1x \).
+</div>
+
+
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Code:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Line</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, c0, c1):
+        <span style="color: #658b00">self</span>.c0, <span style="color: #658b00">self</span>.c1 = c0, c1
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.c0 + <span style="color: #658b00">self</span>.c1*x
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">table</span>(<span style="color: #658b00">self</span>, L, R, n):
+        <span style="color: #CD5555">&quot;&quot;&quot;Return a table with n points for L &lt;= x &lt;= R.&quot;&quot;&quot;</span>
+        s = <span style="color: #CD5555">&#39;&#39;</span>
+        <span style="color: #8B008B; font-weight: bold">for</span> x <span style="color: #8B008B">in</span> linspace(L, R, n):
+            y = <span style="color: #658b00">self</span>(x)
+            s += <span style="color: #CD5555">&#39;%12g %12g\n&#39;</span> % (x, y)
+        <span style="color: #8B008B; font-weight: bold">return</span> s
+</pre></div>
+
+</div>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A class for parabolas  <a name="___sec5"></a></h2>
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Problem:</b>
+<p>
+Make a class for evaluating parabolas \( y=c_0 + c_1x + c_2x^2 \).
+</div>
+
+
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Code:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Parabola</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, c0, c1, c2):
+        <span style="color: #658b00">self</span>.c0, <span style="color: #658b00">self</span>.c1, <span style="color: #658b00">self</span>.c2 = c0, c1, c2
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">self</span>.c2*x**<span style="color: #B452CD">2</span> + <span style="color: #658b00">self</span>.c1*x + <span style="color: #658b00">self</span>.c0
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">table</span>(<span style="color: #658b00">self</span>, L, R, n):
+        <span style="color: #CD5555">&quot;&quot;&quot;Return a table with n points for L &lt;= x &lt;= R.&quot;&quot;&quot;</span>
+        s = <span style="color: #CD5555">&#39;&#39;</span>
+        <span style="color: #8B008B; font-weight: bold">for</span> x <span style="color: #8B008B">in</span> linspace(L, R, n):
+            y = <span style="color: #658b00">self</span>(x)
+            s += <span style="color: #CD5555">&#39;%12g %12g\n&#39;</span> % (x, y)
+        <span style="color: #8B008B; font-weight: bold">return</span> s
+</pre></div>
+
+</div>
+
+
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b>Observation:</b>
+<p>
+This is almost the same code as class <code>Line</code>, except for the things with <code>c2</code>
+</div>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class Parabola as a subclass of Line; principles  <a name="___sec6"></a></h2>
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li class="fragment"> <code>Parabola</code> code = <code>Line</code> code + a little extra with the \( c_2 \) term</li>
+  <p><li class="fragment"> Can we utilize class <code>Line</code> code in class <code>Parabola</code>?</li>
+  <p><li class="fragment"> This is what inheritance is about!</li>
+</ul>
+<p>
+
+Writing
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Parabola</span>(Line):
+    <span style="color: #8B008B; font-weight: bold">pass</span>
+</pre></div>
+<p>
+makes <code>Parabola</code> inherit all methods and attributes from <code>Line</code>, so <code>Parabola</code> has attributes <code>c0</code> and <code>c1</code> and three methods
+</div>
+
+
+
+<p>
+
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li class="fragment"> <code>Line</code> is a <em>superclass</em>, <code>Parabola</code> is a <em>subclass</em> <br />
+    (parent class, base class; child class, derived class)</li>
+  <p><li class="fragment"> Class <code>Parabola</code> must add code to <code>Line</code>'s constructor (an extra <code>c2</code> attribute), <code>__call__</code> (an extra term), but <code>table</code> can be used unaltered</li>
+  <p><li class="fragment"> The principle is to reuse as much code in <code>Line</code> as possible and avoid duplicating code</li>
+</ul>
+</div>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class Parabola as a subclass of Line; code  <a name="___sec7"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+A subclass method can call a superclass method in this way:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">superclass_name.method(<span style="color: #658b00">self</span>, arg1, arg2, ...)
+</pre></div>
+<p>
+Class <code>Parabola</code> as a subclass of <code>Line</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Parabola</span>(Line):
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, c0, c1, c2):
+        Line.__init__(<span style="color: #658b00">self</span>, c0, c1)  <span style="color: #228B22"># Line stores c0, c1</span>
+        <span style="color: #658b00">self</span>.c2 = c2
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        <span style="color: #8B008B; font-weight: bold">return</span> Line.__call__(<span style="color: #658b00">self</span>, x) + <span style="color: #658b00">self</span>.c2*x**<span style="color: #B452CD">2</span>
+</pre></div>
+<p>
+What is gained?
+
+<p>
+
+
+<ul>
+  <p><li class="fragment"> Class <code>Parabola</code> just adds code to the already existing code in class <code>Line</code> - no duplication of storing <code>c0</code> and <code>c1</code>, and computing \( c_0+c_1x \)</li>
+  <p><li class="fragment"> Class <code>Parabola</code> also has a <code>table</code> method - it is inherited</li>
+  <p><li class="fragment"> <code>__init__</code> and <code>__call__</code> are <em>overridden</em> or <em>redefined</em> in the subclass</li>
+</ul>
+
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class Parabola as a subclass of Line; demo  <a name="___sec8"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">p = Parabola(<span style="color: #B452CD">1</span>, -<span style="color: #B452CD">2</span>, <span style="color: #B452CD">2</span>)
+p1 = p(<span style="color: #B452CD">2.5</span>)
+<span style="color: #8B008B; font-weight: bold">print</span> p1
+<span style="color: #8B008B; font-weight: bold">print</span> p.table(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">3</span>)
+</pre></div>
+<p>
+Output:
+
+<p>
+
+<!-- code=text (!bc dat) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">8.5
+           0            1
+         0.5          0.5
+           1            1
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2>Exercise 1: Point out the program flow  <a name="___sec9"></a></h2>
+
+<p>
+
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=class+Line%3A%0A++++def+__init__%28self%2C+c0%2C+c1%29%3A%0A++++++++self.c0%2C+self.c1+%3D+c0%2C+c1%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++return+self.c0+%2B+self.c1%2Ax%0A%0A++++def+table%28self%2C+L%2C+R%2C+n%29%3A%0A++++++++%22%22%22Return+a+table+with+n+points+for+L+%3C%3D+x+%3C%3D+R.%22%22%22%0A++++++++s+%3D+%27%27%0A++++++++for+x+in+linspace%28L%2C+R%2C+n%29%3A%0A++++++++++++y+%3D+self%28x%29%0A++++++++++++s+%2B%3D+%27%2512g+%2512g%5Cn%27+%25+%28x%2C+y%29%0A++++++++return+s%0A%0Aclass+Parabola%28Line%29%3A%0A++++def+__init__%28self%2C+c0%2C+c1%2C+c2%29%3A%0A++++++++Line.__init__%28self%2C+c0%2C+c1%29++%23+Line+stores+c0%2C+c1%0A++++++++self.c2+%3D+c2%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++return+Line.__call__%28self%2C+x%29+%2B+self.c2%2Ax%2A%2A2%0A%0Ap+%3D+Parabola%281%2C+-2%2C+2%29%0Aprint+p%282.5%29&curInstr=0&py=2&cumulative=false">
+</iframe>
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We can check class type and class relations with <code>isinstance(obj, type)</code> and <code>issubclass(subclassname, superclassname)</code>  <a name="___sec10"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">Line_Parabola</span> <span style="color: #8B008B; font-weight: bold">import</span> Line, Parabola
+&gt;&gt;&gt; l = Line(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>)
+&gt;&gt;&gt; <span style="color: #658b00">isinstance</span>(l, Line)
+<span style="color: #658b00">True</span>
+&gt;&gt;&gt; <span style="color: #658b00">isinstance</span>(l, Parabola)
+<span style="color: #658b00">False</span>
+
+&gt;&gt;&gt; p = Parabola(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">10</span>)
+&gt;&gt;&gt; <span style="color: #658b00">isinstance</span>(p, Parabola)
+<span style="color: #658b00">True</span>
+&gt;&gt;&gt; <span style="color: #658b00">isinstance</span>(p, Line)
+<span style="color: #658b00">True</span>
+
+&gt;&gt;&gt; <span style="color: #658b00">issubclass</span>(Parabola, Line)
+<span style="color: #658b00">True</span>
+&gt;&gt;&gt; <span style="color: #658b00">issubclass</span>(Line, Parabola)
+<span style="color: #658b00">False</span>
+
+&gt;&gt;&gt; p.__class__ == Parabola
+<span style="color: #658b00">True</span>
+&gt;&gt;&gt; p.__class__.__name__   <span style="color: #228B22"># string version of the class name</span>
+<span style="color: #CD5555">&#39;Parabola&#39;</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Recall the class for numerical differentiation from Ch. 7  <a name="___sec11"></a></h2>
+
+<p>&nbsp;<br>
+$$ f'(x) \approx {f(x+h)-f(x)\over h} $$
+<p>&nbsp;<br>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Derivative</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f, h=<span style="color: #B452CD">1E-5</span>):
+        <span style="color: #658b00">self</span>.f = f
+        <span style="color: #658b00">self</span>.h = <span style="color: #658b00">float</span>(h)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h      <span style="color: #228B22"># make short forms</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> (f(x+h) - f(x))/h
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> exp(-x)*cos(tanh(x))
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> exp, cos, tanh
+dfdx = Derivative(f)
+<span style="color: #8B008B; font-weight: bold">print</span> dfdx(<span style="color: #B452CD">2.0</span>)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>There are numerous formulas numerical differentiation  <a name="___sec12"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>&nbsp;<br>
+$$
+\begin{align*}
+f'(x) &= \frac{f(x+h)-f(x)}{h} + {\cal O}(h)\\
+f'(x) &= \frac{f(x)-f(x-h)}{h} + {\cal O}(h)\\
+f'(x) &= \frac{f(x+h)-f(x-h)}{2h} + {\cal O}(h^2)\\
+f'(x) &=  \frac{4}{3}\frac{f(x+h)-f(x-h)}{2h}
+  -\frac{1}{3}\frac{f(x+2h) - f(x-2h)}{4h} + {\cal O}(h^4)\\
+f'(x) &=  \frac{3}{2}\frac{f(x+h)-f(x-h)}{2h}
+  -\frac{3}{5}\frac{f(x+2h) - f(x-2h)}{4h} + \nonumber\\
+&  \frac{1}{10}\frac{f(x+3h) - f(x-3h)}{6h} + {\cal O}(h^6)\\
+f'(x) &=  \frac{1}{h}\left(
+-\frac{1}{6}f(x+2h) + f(x+h) - \frac{1}{2}f(x) - \frac{1}{3}f(x-h)\right)
+  + {\cal O}(h^3)
+\end{align*}
+$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>How can we make a module that offers all these formulas?  <a name="___sec13"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>It's easy:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Forward1</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f, h=<span style="color: #B452CD">1E-5</span>):
+        <span style="color: #658b00">self</span>.f = f
+        <span style="color: #658b00">self</span>.h = <span style="color: #658b00">float</span>(h)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
+        <span style="color: #8B008B; font-weight: bold">return</span> (f(x+h) - f(x))/h
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Backward1</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f, h=<span style="color: #B452CD">1E-5</span>):
+        <span style="color: #658b00">self</span>.f = f
+        <span style="color: #658b00">self</span>.h = <span style="color: #658b00">float</span>(h)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
+        <span style="color: #8B008B; font-weight: bold">return</span> (f(x) - f(x-h))/h
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Central2</span>:
+    <span style="color: #228B22"># same constructor</span>
+    <span style="color: #228B22"># put relevant formula in __call__</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>What is the problem with this type of code?  <a name="___sec14"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+All the constructors are identical so we duplicate a lot of code.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <p><li> A general OO idea: place code common to many classes in a superclass and inherit that code</li>
+ <p><li> Here: inhert constructor from superclass,<br />
+   let subclasses for different differentiation formulas implement
+   their version of <code>__call__</code></li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Class hierarchy for numerical differentiation  <a name="___sec15"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Superclass:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Diff</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f, h=<span style="color: #B452CD">1E-5</span>):
+        <span style="color: #658b00">self</span>.f = f
+        <span style="color: #658b00">self</span>.h = <span style="color: #658b00">float</span>(h)
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Subclass for simple 1st-order forward formula:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Forward1</span>(Diff):
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
+        <span style="color: #8B008B; font-weight: bold">return</span> (f(x+h) - f(x))/h
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Subclass for 4-th order central formula:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Central4</span>(Diff):
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
+        <span style="color: #8B008B; font-weight: bold">return</span> (<span style="color: #B452CD">4.</span>/<span style="color: #B452CD">3</span>)*(f(x+h)   - f(x-h))  /(<span style="color: #B452CD">2</span>*h) - \
+               (<span style="color: #B452CD">1.</span>/<span style="color: #B452CD">3</span>)*(f(x+<span style="color: #B452CD">2</span>*h) - f(x-<span style="color: #B452CD">2</span>*h))/(<span style="color: #B452CD">4</span>*h)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Use of the differentiation classes  <a name="___sec16"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Interactive example: \( f(x)=\sin x \), compute \( f'(x) \) for \( x=\pi \)
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">Diff</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> sin
+&gt;&gt;&gt; mycos = Central4(sin)
+&gt;&gt;&gt; <span style="color: #228B22"># compute sin&#39;(pi):</span>
+&gt;&gt;&gt; mycos(pi)
+-<span style="color: #B452CD">1.000000082740371</span>
+</pre></div>
+<p>
+<code>Central4(sin)</code> calls inherited constructor in superclass, while <code>mycos(pi)</code> calls <code>__call__</code> in the subclass <code>Central4</code>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2>Exercise 2: Point out the program flow  <a name="___sec17"></a></h2>
+
+<p>
+
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=class+Diff%3A%0A++++def+__init__%28self%2C+f%2C+h%3D1E-5%29%3A%0A++++++++self.f+%3D+f%0A++++++++self.h+%3D+float%28h%29%0A%0Aclass+Forward1%28Diff%29%3A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++f%2C+h+%3D+self.f%2C+self.h%0A++++++++return+%28f%28x%2Bh%29+-+f%28x%29%29%2Fh%0A%0Adfdx+%3D+Diff%28lambda+x%3A+x%2A%2A2%29%0Aprint+dfdx%280.5%29&curInstr=0&py=2&cumulative=false">
+</iframe>
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A flexible main program for numerical differentiation  <a name="___sec18"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Suppose we want to differentiate function expressions from the command line:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python df.py &#39;exp(sin(x))&#39; Central 2 3.1
+-1.04155573055
+
+Terminal&gt; python df.py &#39;f(x)&#39; difftype difforder x
+f&#39;(x)
+</pre></div>
+<p>
+With <code>eval</code> and the <code>Diff</code> class hierarchy this main program can be realized in a few lines (many lines in C# and Java!):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">Diff</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.StringFunction</span> <span style="color: #8B008B; font-weight: bold">import</span> StringFunction
+
+f = StringFunction(sys.argv[<span style="color: #B452CD">1</span>])
+difftype = sys.argv[<span style="color: #B452CD">2</span>]
+difforder = sys.argv[<span style="color: #B452CD">3</span>]
+classname = difftype + difforder
+df = <span style="color: #658b00">eval</span>(classname + <span style="color: #CD5555">&#39;(f)&#39;</span>)
+x = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">4</span>])
+<span style="color: #8B008B; font-weight: bold">print</span> df(x)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Investigating numerical approximation errors  <a name="___sec19"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> We can empirically investigate the accuracy of our family of 6 numerical differentiation formulas</li>
+  <p><li> Sample function: \( f(x)=\exp{(-10x)} \)</li>
+  <p><li> See the book for a little program that computes the errors:</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">.   h        Forward1        Central2        Central4
+<span style="color: #B452CD">6.25E-02</span> -<span style="color: #B452CD">2.56418286E+00</span>  <span style="color: #B452CD">6.63876231E-01</span> -<span style="color: #B452CD">5.32825724E-02</span>
+<span style="color: #B452CD">3.12E-02</span> -<span style="color: #B452CD">1.41170013E+00</span>  <span style="color: #B452CD">1.63556996E-01</span> -<span style="color: #B452CD">3.21608292E-03</span>
+<span style="color: #B452CD">1.56E-02</span> -<span style="color: #B452CD">7.42100948E-01</span>  <span style="color: #B452CD">4.07398036E-02</span> -<span style="color: #B452CD">1.99260429E-04</span>
+<span style="color: #B452CD">7.81E-03</span> -<span style="color: #B452CD">3.80648092E-01</span>  <span style="color: #B452CD">1.01756309E-02</span> -<span style="color: #B452CD">1.24266603E-05</span>
+<span style="color: #B452CD">3.91E-03</span> -<span style="color: #B452CD">1.92794011E-01</span>  <span style="color: #B452CD">2.54332554E-03</span> -<span style="color: #B452CD">7.76243120E-07</span>
+<span style="color: #B452CD">1.95E-03</span> -<span style="color: #B452CD">9.70235594E-02</span>  <span style="color: #B452CD">6.35795004E-04</span> -<span style="color: #B452CD">4.85085874E-08</span>
+</pre></div>
+<p>
+Observations:
+
+<ul>
+  <p><li> Halving \( h \) from row to row reduces the errors by a factor of 2, 4 and 16, i.e, the errors go like \( h \), \( h^2 \), and \( h^4 \)</li>
+  <p><li> <code>Central4</code> has really superior accuracy compared with <code>Forward1</code></li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Alternative implementations (in the book)  <a name="___sec20"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> <em>Pure Python functions</em> <br />
+    downside: more arguments to transfer, cannot apply formulas twice to get 2nd-order derivatives etc.</li>
+  <p><li> <em>Functional programming</em><br />
+    gives the same flexibility as the OO solution</li>
+  <p><li> <em>One class and one common math formula</em> <br />
+    applies math notation instead of programming techniques to generalize code</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+These techniques are beyond scope in the course, but place OO into a bigger perspective. Might better clarify what OO is - for some.
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Formulas for numerical integration  <a name="___sec21"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+There are numerous formulas for numerical integration and
+all of them can be put into a common notation:
+
+<p>&nbsp;<br>
+$$ \int_a^b f(x)dx \approx \sum_{i=0}^{n-1} w_i f(x_i)$$
+<p>&nbsp;<br>
+
+\( w_i \): weights, \( x_i \): points (specific to a certain formula)
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+The Trapezoidal rule has \( h=(b-a)/(n-1) \) and
+
+<p>&nbsp;<br>
+$$ x_i = a+ih, \quad w_0=w_{n-1}={h\over2},\ w_i=h\ (i\neq 0,n-1)$$
+<p>&nbsp;<br>
+
+
+<p>
+The Midpoint rule has \( h=(b-a)/n \) and
+
+<p>&nbsp;<br>
+$$ x_i = a + {h\over 2} + ih,\quad w_i=h$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>More formulas  <a name="___sec22"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Simpson's rule has
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+x_i &= a+ih,\quad h={b-a\over n-1}\\
+w_0 &=w_{n-1}={h\over6}\\
+w_i &= {h\over3}\hbox{ for }i\hbox{ even},\quad w_i={2h\over3}\hbox{ for }i\hbox{ odd}
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Other rules have more complicated formulas for \( w_i \) and \( x_i \)
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Why should these formulas be implemented in a class hierarchy?  <a name="___sec23"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+
+<ul>
+  <p><li class="fragment"> A numerical integration formula can be implemented as a class: \( a \), \( b \) and \( n \) are attributes and an <code>integrate</code> method evaluates the formula</li>
+  <p><li class="fragment"> All such classes are quite similar: the evaluation of \( \sum_jw_jf(x_j) \) is the same, only the definition of the points and weights differ among the classes</li>
+  <p><li class="fragment"> Recall: code duplication is a bad thing!</li>
+  <p><li class="fragment"> The general OO idea: place code common to many classes in a superclass and inherit that code</li>
+  <p><li class="fragment"> Here we put \( \sum_jw_jf(x_j) \) in a superclass (method <code>integrate</code>)</li>
+  <p><li class="fragment"> Subclasses extend the superclass with code specific to a math formula, i.e., \( w_i \) and \( x_i \) in a class method <code>construct_rule</code></li>
+</ul>
+
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The superclass for integration  <a name="___sec24"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Integrator</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, a, b, n):
+        <span style="color: #658b00">self</span>.a, <span style="color: #658b00">self</span>.b, <span style="color: #658b00">self</span>.n = a, b, n
+        <span style="color: #658b00">self</span>.points, <span style="color: #658b00">self</span>.weights = <span style="color: #658b00">self</span>.construct_method()
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">construct_method</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">raise</span> <span style="color: #008b45; font-weight: bold">NotImplementedError</span>(<span style="color: #CD5555">&#39;no rule in class %s&#39;</span> % \
+                                  <span style="color: #658b00">self</span>.__class__.__name__)
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">integrate</span>(<span style="color: #658b00">self</span>, f):
+        s = <span style="color: #B452CD">0</span>
+        <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(<span style="color: #658b00">self</span>.weights)):
+            s += <span style="color: #658b00">self</span>.weights[i]*f(<span style="color: #658b00">self</span>.points[i])
+        <span style="color: #8B008B; font-weight: bold">return</span> s
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">vectorized_integrate</span>(<span style="color: #658b00">self</span>, f):
+        <span style="color: #228B22"># f must be vectorized for this to work</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> dot(<span style="color: #658b00">self</span>.weights, f(<span style="color: #658b00">self</span>.points))
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A subclass: the Trapezoidal rule  <a name="___sec25"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Trapezoidal</span>(Integrator):
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">construct_method</span>(<span style="color: #658b00">self</span>):
+        h = (<span style="color: #658b00">self</span>.b - <span style="color: #658b00">self</span>.a)/<span style="color: #658b00">float</span>(<span style="color: #658b00">self</span>.n - <span style="color: #B452CD">1</span>)
+        x = linspace(<span style="color: #658b00">self</span>.a, <span style="color: #658b00">self</span>.b, <span style="color: #658b00">self</span>.n)
+        w = zeros(<span style="color: #658b00">len</span>(x))
+        w[<span style="color: #B452CD">1</span>:-<span style="color: #B452CD">1</span>] += h
+        w[<span style="color: #B452CD">0</span>] = h/<span style="color: #B452CD">2</span>;  w[-<span style="color: #B452CD">1</span>] = h/<span style="color: #B452CD">2</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> x, w
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Another subclass: Simpson's rule  <a name="___sec26"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> Simpson's rule is more tricky to implement because of different formulas for odd and even points</li>
+  <p><li> Don't bother with the details of \( w_i \) and \( x_i \) in Simpson's rule now - focus on the class design!</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Simpson</span>(Integrator):
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">construct_method</span>(<span style="color: #658b00">self</span>):
+        <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">self</span>.n % <span style="color: #B452CD">2</span> != <span style="color: #B452CD">1</span>:
+            <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;n=%d must be odd, 1 is added&#39;</span> % <span style="color: #658b00">self</span>.n
+            <span style="color: #658b00">self</span>.n += <span style="color: #B452CD">1</span>
+
+        &lt;code <span style="color: #8B008B; font-weight: bold">for</span> computing x <span style="color: #8B008B">and</span> w&gt;
+        <span style="color: #8B008B; font-weight: bold">return</span> x, w
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>About the program flow  <a name="___sec27"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Let us integrate \( \int_0^2 x^2dx \) using 101 points:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> x*x
+
+method = Simpson(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">101</span>)
+<span style="color: #8B008B; font-weight: bold">print</span> method.integrate(f)
+</pre></div>
+<p>
+Important:
+
+<ul>
+  <p><li> <code>method = Simpson(...)</code>: this invokes the superclass constructor, which calls <code>construct_method</code> in class <code>Simpson</code></li>
+  <p><li> <code>method.integrate(f)</code> invokes the inherited <code>integrate</code> method, defined in class <code>Integrator</code></li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<p>
+<!-- --- begin exercise --- -->
+
+<h2>Exercise 3: Point out the program flow  <a name="___sec28"></a></h2>
+
+<p>
+
+<iframe width="950" height="500" frameborder="0"
+        src="http://pythontutor.com/iframe-embed.html#code=class+Integrator%3A%0A++++def+__init__%28self%2C+a%2C+b%2C+n%29%3A%0A++++++++self.a%2C+self.b%2C+self.n+%3D+a%2C+b%2C+n%0A++++++++self.points%2C+self.weights+%3D+self.construct_method%28%29%0A%0A++++def+construct_method%28self%29%3A%0A++++++++raise+NotImplementedError%28%27no+rule+in+class+%25s%27+%25+%5C%0A++++++++++++++++++++++++++++++++++self.__class__.__name__%29%0A%0A++++def+integrate%28self%2C+f%29%3A%0A++++++++s+%3D+0%0A++++++++for+i+in+range%28len%28self.weights%29%29%3A%0A++++++++++++s+%2B%3D+self.weights%5Bi%5D%2Af%28self.points%5Bi%5D%29%0A++++++++return+s%0A%0Aclass+Trapezoidal%28Integrator%29%3A%0A++++def+construct_method%28self%29%3A%0A++++++++h+%3D+%28self.b+-+self.a%29%2Ffloat%28self.n+-+1%29%0A++++++++x+%3D+linspace%28self.a%2C+self.b%2C+self.n%29%0A++++++++w+%3D+zeros%28len%28x%29%29%0A++++++++w%5B1%3A-1%5D+%2B%3D+h%0A++++++++w%5B0%5D+%3D+h%2F2%3B++w%5B-1%5D+%3D+h%2F2%0A++++++++return+x%2C+w%0A%0Adef+f%28x%29%3A%0A++++return+x%2Ax%0A%0Amethod+%3D+Trapezoidal%280%2C+2%2C+101%29%0Aprint+method.integrate%28f%29&curInstr=0&py=2&cumulative=false">
+</iframe>
+<p>
+<!-- --- end exercise --- -->
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Applications of the family of integration classes  <a name="___sec29"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+We can empirically test out the accuracy of different integration methods <code>Midpoint</code>, <code>Trapezoidal</code>, <code>Simpson</code>, <code>GaussLegendre2</code>, ... applied to, e.g.,
+
+<p>&nbsp;<br>
+$$ \int\limits_0^1 \left(1 + {1\over m}\right)t^{1\over m} dt= 1$$
+<p>&nbsp;<br>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> This integral is &quot;difficult&quot; numerically for \( m>1 \).</li>
+  <p><li> Key problem: the error in numerical integration formulas is of the form \( Cn^{-r} \), mathematical theory can predict \( r \) (the &quot;order&quot;), but we can estimate \( r \) empirically too</li>
+  <p><li> See the book for computational details</li>
+  <p><li> Here we focus on the conclusions</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Convergence rates for \( m < 1 \) (easy case)  <a name="___sec30"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Simpson and Gauss-Legendre reduce the error faster than Midpoint and Trapezoidal (plot has ln(error) versus \( \ln n \))
+</div>
+
+
+<p>
+<center><p><img src="fig-oo/power_int_m1.png" align="bottom" width=480></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Convergence rates for \( m>1 \) (problematic case)  <a name="___sec31"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Simpson and Gauss-Legendre, which are theoretically &quot;smarter&quot; than Midpoint and Trapezoidal do not show superior behavior!
+</div>
+
+
+<p>
+<center><p><img src="fig-oo/power_int_m2.png" align="bottom" width=480></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Summary of object-orientation principles  <a name="___sec32"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> A subclass inherits everything from the superclass</li>
+  <p><li> When to use a subclass/superclass?</li>
+
+<ul>
+    <p><li> if code common to several classes can be placed in a superclass</li>
+    <p><li> if the problem has a natural child-parent concept</li>
+</ul>
+<p>
+
+  <p><li> The program flow jumps between super- and sub-classes</li>
+  <p><li> It takes time to master <em>when</em> and <em>how</em> to use OO</li>
+  <p><li> Study examples!</li>
+</ul>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Recall the class hierarchy for differentiation  <a name="___sec33"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-small">
+<b>Mathematical principles:</b>
+<p>
+ Collection of difference formulas for \( f'(x) \). For example,
+
+<p>&nbsp;<br>
+$$ f'(x) \approx {f(x+h)-f(x-h)\over 2h}$$
+<p>&nbsp;<br>
+
+
+<p>
+Superclass <code>Diff</code> contains common code (constructor), subclasses implement various difference formulas.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Implementation example (superclass and one subclass).</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Diff</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f, h=<span style="color: #B452CD">1E-5</span>):
+        <span style="color: #658b00">self</span>.f = f
+        <span style="color: #658b00">self</span>.h = <span style="color: #658b00">float</span>(h)
+
+<span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Central2</span>(Diff):
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__call__</span>(<span style="color: #658b00">self</span>, x):
+        f, h = <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.h
+        <span style="color: #8B008B; font-weight: bold">return</span> (f(x+h) - f(x-h))/(<span style="color: #B452CD">2</span>*h)
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Recall the class hierarchy for integration (1)  <a name="___sec34"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Mathematical principles:</b>
+<p>
+General integration formula for numerical integration:
+
+<p>&nbsp;<br>
+$$ \int_a^b f(x)dx \approx \sum_{j=0}^{n-1} w_if(x_i)$$
+<p>&nbsp;<br>
+
+
+<p>
+Superclass <code>Integrator</code> contains common code (constructor, \( \sum_j w_if(x_i) \)), subclasses implement definition of \( w_i \) and \( x_i \).
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Recall the class hierarchy for integration (2)  <a name="___sec35"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Implementation example (superclass and one subclass):</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"> <span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Integrator</span>:
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, a, b, n):
+        <span style="color: #658b00">self</span>.a, <span style="color: #658b00">self</span>.b, <span style="color: #658b00">self</span>.n = a, b, n
+        <span style="color: #658b00">self</span>.points, <span style="color: #658b00">self</span>.weights = <span style="color: #658b00">self</span>.construct_method()
+
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">integrate</span>(<span style="color: #658b00">self</span>, f):
+        s = <span style="color: #B452CD">0</span>
+        <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(<span style="color: #658b00">self</span>.weights)):
+            s += <span style="color: #658b00">self</span>.weights[i]*f(<span style="color: #658b00">self</span>.points[i])
+        <span style="color: #8B008B; font-weight: bold">return</span> s
+
+ <span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Trapezoidal</span>(Integrator):
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">construct_method</span>(<span style="color: #658b00">self</span>):
+        x = linspace(<span style="color: #658b00">self</span>.a, <span style="color: #658b00">self</span>.b, <span style="color: #658b00">self</span>.n)
+        h = (<span style="color: #658b00">self</span>.b - <span style="color: #658b00">self</span>.a)/<span style="color: #658b00">float</span>(<span style="color: #658b00">self</span>.n - <span style="color: #B452CD">1</span>)
+        w = zeros(<span style="color: #658b00">len</span>(x)) + h
+        w[<span style="color: #B452CD">0</span>] /= <span style="color: #B452CD">2</span>;  w[-<span style="color: #B452CD">1</span>] /= <span style="color: #B452CD">2</span>  <span style="color: #228B22"># adjust end weights</span>
+        <span style="color: #8B008B; font-weight: bold">return</span> x, w
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A summarizing example: Generalized reading of input data  <a name="___sec36"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Write a table of \( x\in [a,b] \) and \( f(x) \) to file:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">outfile = <span style="color: #658b00">open</span>(filename, <span style="color: #CD5555">&#39;w&#39;</span>)
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> linspace
+<span style="color: #8B008B; font-weight: bold">for</span> x <span style="color: #8B008B">in</span> linspace(a, b, n):
+    outfile.write(<span style="color: #CD5555">&#39;%12g  %12g\n&#39;</span> % (x, f(x)))
+outfile.close()
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>We want flexible input:</b>
+<p>
+Read <code>a</code>, <code>b</code>, <code>n</code>, <code>filename</code> and a formula for <code>f</code> from...
+
+<ul>
+  <p><li> the command line</li>
+  <p><li> interactive commands like <code>a=0</code>, <code>b=2</code>, <code>filename=mydat.dat</code></li>
+  <p><li> questions and answers in the terminal window</li>
+  <p><li> a graphical user interface</li>
+  <p><li> a file of the form</li>
+</ul>
+<p>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">a = <span style="color: #B452CD">0</span>
+b = <span style="color: #B452CD">2</span>
+filename = mydat.dat
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Graphical user interface  <a name="___sec37"></a></h2>
+
+<p>
+<center><p><img src="fig-oo/ReadInputGUI.png" align="bottom" width=180></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>First we write the application code  <a name="___sec38"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Desired usage:</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">ReadInput</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+
+<span style="color: #228B22"># define all input parameters as name-value pairs in a dict:</span>
+p = <span style="color: #658b00">dict</span>(formula=<span style="color: #CD5555">&#39;x+1&#39;</span>, a=<span style="color: #B452CD">0</span>, b=<span style="color: #B452CD">1</span>, n=<span style="color: #B452CD">2</span>, filename=<span style="color: #CD5555">&#39;tmp.dat&#39;</span>)
+
+<span style="color: #228B22"># read from some input medium:</span>
+inp = ReadCommandLine(p)
+<span style="color: #228B22"># or</span>
+inp = PromptUser(p)     <span style="color: #228B22"># questions in the terminal window</span>
+<span style="color: #228B22"># or</span>
+inp = ReadInputFile(p)  <span style="color: #228B22"># read file or interactive commands</span>
+<span style="color: #228B22"># or</span>
+inp = GUI(p)            <span style="color: #228B22"># read from a GUI</span>
+
+<span style="color: #228B22"># load input data into separate variables (alphabetic order)</span>
+a, b, filename, formula, n = inp.get_all()
+
+<span style="color: #228B22"># go!</span>
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>About the implementation  <a name="___sec39"></a></h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+  <p><li> A superclass <code>ReadInput</code> stores the dict and provides methods for getting input into program variables (<code>get</code>, <code>get_all</code>)</li>
+  <p><li> Subclasses read from different input sources</li>
+  <p><li> <code>ReadCommandLine</code>, <code>PromptUser</code>, <code>ReadInputFile</code>, <code>GUI</code></li>
+  <p><li> See the book or <code>ReadInput.py</code> for implementation details</li>
+  <p><li> For now the ideas and principles are more important than code details!</li>
+</ul>
+</div>
+
+
+
+</section>
+
+
+
+</div> <!-- class="slides" -->
+</div> <!-- class="reveal" -->
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width: 1170,  // original: 960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
+});
+</script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
+
+
+</body>
+</html>
