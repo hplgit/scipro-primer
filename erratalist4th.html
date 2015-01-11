@@ -51,8 +51,12 @@ div { text-align: justify; text-justify: inter-word; }
               (' Page 315 ', 3, None, '___sec9'),
               (' Page 426 ', 3, None, '___sec10'),
               (' Page 447 ', 3, None, '___sec11'),
-              (' Page 845-846 ', 3, None, '___sec12'),
-              (' Page 846 ', 3, None, '___sec13')]}
+              (' Page 676 ', 3, None, '___sec12'),
+              (' Page 765 ', 3, None, '___sec13'),
+              (' Page 789 ', 3, None, '___sec14'),
+              (' Page 845-846 ', 3, None, '___sec15'),
+              (' Page 846 ', 3, None, '___sec16'),
+              (' Page 847 ', 3, None, '___sec17')]}
 end of tocinfo -->
 
 <body>
@@ -91,7 +95,7 @@ MathJax.Hub.Config({
 <p>
 <!-- institution(s) -->
 <p>
-<center><h4>Oct 20, 2014</h4></center> <!-- date -->
+<center><h4>Nov 6, 2014</h4></center> <!-- date -->
 
 <h3>Page 4  <a name="___sec0"></a></h3>
 
@@ -175,18 +179,78 @@ a final <code>% other</code>.
 <p>
 The title of the chapter should be <em>Random numbers and simple games</em>.
 
-<h3>Page 845-846  <a name="___sec12"></a></h3>
+<h3>Page 676  <a name="___sec12"></a></h3>
+
+<p>
+The last line of the <code>integrate_ode.py</code> program should not contain
+<code>u'(t)=t**3</code>, but read
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&quot;Numerical solution of u&#39;(t)=</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">: </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">&quot;</span> <span style="color: #666666">%</span> \
+      (f_formula, integrate(T, n, u0))
+</pre></div>
+<p>
+The four terminal output sessions below are then also wrong: instead of
+<code>u'(t)=t**3</code> it should be <code>u'(t)=t**exp(t**2)</code>.
+
+<h3>Page 765  <a name="___sec13"></a></h3>
+
+<p>
+Exercise 4.1: The exact solution is \( u(t)=0.2e^{0.1t} \).
+
+<h3>Page 789  <a name="___sec14"></a></h3>
+
+<p>
+Exercise E.46: A value for \( I(0) \) is not given. Set \( I(0)=0 \).
+
+<h3>Page 845-846  <a name="___sec15"></a></h3>
 
 <p>
 To succesfully execute the <code>c2f.py</code> program, <code>cmd</code> must be <code>python c2f.y 21</code>
 or <code>./c2f.py 21</code> (if <code>c2f.py</code> is an executable file) unless <code>.</code> is in
 the user's <code>PATH</code> variable.
 
-<h3>Page 846  <a name="___sec13"></a></h3>
+<h3>Page 846  <a name="___sec16"></a></h3>
 
 <p>
 2. Under <em>Split file or folder name</em>, the name <code>user</code> in the text
 should be replaced by <code>/home/hpl</code> according to the interactive session.
+
+<h3>Page 847  <a name="___sec17"></a></h3>
+
+<p>
+The text says &quot;The import statements
+can actually be dropped since functions from <code>numpy</code> and
+<code>matplotlib</code> are imported by default when running the notebook
+in the browser or by supplying the command-line argument <code>--pylab</code>
+when starting notebooks locally on your machine.&quot;. Now, the use
+of <code>--pylab</code> is discouraged. Also, the functions from <code>numpy</code> and
+<code>matplotlib</code> are not automatically imported - you have to do that
+explicitly.
+
+<p>
+The recommended way of using IPython notebooks with <code>numpy</code> and
+<code>matplotlib</code> is to do
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #666666">%</span>matplitlib inline
+</pre></div>
+<p>
+If you want the notebook to behave more as Matlab and not use
+the <code>np</code> and <code>plt</code> interface, you can instead write
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">%</span>pylab
+</pre></div>
+<p>
 
 <!-- ------------------- end of main content --------------- -->
 
