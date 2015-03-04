@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -167,31 +167,32 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec29'),
+              (u' Test functions with many tests ', 2, None, '___sec30'),
               (u' Why write test functions according to these rules? ',
                2,
                None,
-               '___sec30'),
-              (u' Summary of if tests and functions ', 2, None, '___sec31'),
+               '___sec31'),
+              (u' Summary of if tests and functions ', 2, None, '___sec32'),
               (u' A summarizing example for Chapter 3; problem ',
                2,
                None,
-               '___sec32'),
+               '___sec33'),
               (u' The program: function for computing the formula ',
                2,
                None,
-               '___sec33'),
+               '___sec34'),
               (u' The program: function, now with test for possible errors ',
                2,
                None,
-               '___sec34'),
+               '___sec35'),
               (u' The program: application (and main program) ',
                2,
                None,
-               '___sec35'),
+               '___sec36'),
               (u' The program: verification (with test function) ',
                2,
                None,
-               '___sec36')]}
+               '___sec37')]}
 end of tocinfo -->
 
 <body>
@@ -221,8 +222,9 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Doc strings are used to document the usage of a function  <a name="___sec17"></a></h2>
+<h2 id="___sec17">Doc strings are used to document the usage of a function </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Important Python convention:</b>
 <p>

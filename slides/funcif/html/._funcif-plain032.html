@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -167,31 +167,32 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec29'),
+              (u' Test functions with many tests ', 2, None, '___sec30'),
               (u' Why write test functions according to these rules? ',
                2,
                None,
-               '___sec30'),
-              (u' Summary of if tests and functions ', 2, None, '___sec31'),
+               '___sec31'),
+              (u' Summary of if tests and functions ', 2, None, '___sec32'),
               (u' A summarizing example for Chapter 3; problem ',
                2,
                None,
-               '___sec32'),
+               '___sec33'),
               (u' The program: function for computing the formula ',
                2,
                None,
-               '___sec33'),
+               '___sec34'),
               (u' The program: function, now with test for possible errors ',
                2,
                None,
-               '___sec34'),
+               '___sec35'),
               (u' The program: application (and main program) ',
                2,
                None,
-               '___sec35'),
+               '___sec36'),
               (u' The program: verification (with test function) ',
                2,
                None,
-               '___sec36')]}
+               '___sec37')]}
 end of tocinfo -->
 
 <body>
@@ -221,49 +222,37 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Summary of if tests and functions  <a name="___sec31"></a></h2>
+<h2 id="___sec31">Why write test functions according to these rules? </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-If tests:
+
+<ul>
+ <li> Easy to recognize where functions are verified</li>
+ <li> Test frameworks, like <code>nose</code> and <code>pytest</code>, can automatically
+   run <em>all</em> your test functions
+   (in a folder tree) and report if any bugs have sneaked in</li>
+</ul>
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">if</span> x <span style="color: #666666">&lt;</span> <span style="color: #666666">0</span>:
-    value <span style="color: #666666">=</span> <span style="color: #666666">-1</span>
-<span style="color: #008000; font-weight: bold">elif</span> x <span style="color: #666666">&gt;=</span> <span style="color: #666666">0</span> <span style="color: #AA22FF; font-weight: bold">and</span> x <span style="color: #666666">&lt;=</span> <span style="color: #666666">1</span>:
-    value <span style="color: #666666">=</span> x
-<span style="color: #008000; font-weight: bold">else</span>:
-    value <span style="color: #666666">=</span> <span style="color: #666666">1</span>
-</pre></div>
-<p>
-User-defined functions:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">quadratic_polynomial</span>(x, a, b, c)
-    value <span style="color: #666666">=</span> a<span style="color: #666666">*</span>x<span style="color: #666666">*</span>x <span style="color: #666666">+</span> b<span style="color: #666666">*</span>x <span style="color: #666666">+</span> c
-    derivative <span style="color: #666666">=</span> <span style="color: #666666">2*</span>a<span style="color: #666666">*</span>x <span style="color: #666666">+</span> b
-    <span style="color: #008000; font-weight: bold">return</span> value, derivative
-
-<span style="color: #408080; font-style: italic"># function call:</span>
-x <span style="color: #666666">=</span> <span style="color: #666666">1</span>
-p, dp <span style="color: #666666">=</span> quadratic_polynomial(x, <span style="color: #666666">2</span>, <span style="color: #666666">0.5</span>, <span style="color: #666666">1</span>)
-p, dp <span style="color: #666666">=</span> quadratic_polynomial(x<span style="color: #666666">=</span>x, a<span style="color: #666666">=-4</span>, b<span style="color: #666666">=0.5</span>, c<span style="color: #666666">=0</span>)
-</pre></div>
-<p>
-Positional arguments must appear before keyword arguments:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x, A<span style="color: #666666">=1</span>, a<span style="color: #666666">=1</span>, w<span style="color: #666666">=</span>pi):
-    <span style="color: #008000; font-weight: bold">return</span> A<span style="color: #666666">*</span>exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>x)<span style="color: #666666">*</span>sin(w<span style="color: #666666">*</span>x)
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; nosetests -s .
+Terminal&gt; pytest -s .
 </pre></div>
 
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Unit tests.</b>
+<p>
+A test function as <code>test_double()</code> is often referred to as a <em>unit test</em>
+since it tests a small unit (function) of a program. When all unit
+tests work, the whole program is supposed to work.
 </div>
 
 

@@ -214,7 +214,7 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0034"></a>
+<a name="part0038"></a>
 <p>
 
 </p>
@@ -222,44 +222,52 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2 id="___sec33">A summarizing example for Chapter 3; problem </h2>
+<h2 id="___sec37">The program: verification (with test function) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-An integral
-
-$$
-\int_a^b f(x)dx
-$$
-
-can be approximated by <em>Simpson's rule</em>:
-
-$$
-\begin{align*}
-\int_a^b f(x)dx \approx {b-a\over 3n}\biggl(
-& f(a) + f(b) + 4\sum_{i=1}^{n/2} f(a + (2i-1)h)\\
-& + 2\sum_{i=1}^{n/2-1} f(a+2ih)\biggr)
-\end{align*}
-$$
-
+Property of Simpson's rule: 2nd degree polynomials are integrated exactly!
 
 <p>
-Problem: make a function <code>Simpson(f, a, b, n=500)</code> for
-computing an integral of <code>f(x)</code> by Simpson's rule.
-Call <code>Simpson(...)</code> for \( {3\over2}\int_0^\pi\sin^3x dx \) (exact
-value: 2) for \( n=2,6,12,100,500 \).
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">test_Simpson</span>():      <span style="color: #408080; font-style: italic"># rule: no arguments</span>
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Check that quadratic functions are integrated exactly.&quot;&quot;&quot;</span>
+    a <span style="color: #666666">=</span> <span style="color: #666666">1.5</span>
+    b <span style="color: #666666">=</span> <span style="color: #666666">2.0</span>
+    n <span style="color: #666666">=</span> <span style="color: #666666">8</span>
+    g <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #666666">3*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">-</span> <span style="color: #666666">7*</span>x <span style="color: #666666">+</span> <span style="color: #666666">2.5</span>       <span style="color: #408080; font-style: italic"># test integrand</span>
+    G <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">lambda</span> x: x<span style="color: #666666">**3</span> <span style="color: #666666">-</span> <span style="color: #666666">3.5*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #666666">2.5*</span>x  <span style="color: #408080; font-style: italic"># integral of g</span>
+    exact <span style="color: #666666">=</span> G(b) <span style="color: #666666">-</span> G(a)
+    approx <span style="color: #666666">=</span> Simpson(g, a, b, n)
+    success <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(exact <span style="color: #666666">-</span> approx) <span style="color: #666666">&lt;</span> <span style="color: #666666">1E-14</span>  <span style="color: #408080; font-style: italic"># tolerance for floats</span>
+    msg <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;exact=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">, approx=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (exact, approx)
+    <span style="color: #008000; font-weight: bold">assert</span> success, msg
+</pre></div>
+<p>
+Can either call <code>test_Simpson()</code> or run nose or pytest:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; nosetests -s Simpson.py
+Terminal&gt; pytest -s Simpson.py
+...
+Ran 1 test in 0.005s
+
+OK
+</pre></div>
+
 </div>
 
 
 <p>
-<p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
-<div style="text-align: left;"><a href="._funcif-plain033.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+<div style="text-align: left;"><a href="._funcif-plain037.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
 </td><td>
-<div style="text-align: right;"><a href="._funcif-plain035.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>

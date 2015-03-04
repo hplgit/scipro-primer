@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -167,31 +167,32 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec29'),
+              (u' Test functions with many tests ', 2, None, '___sec30'),
               (u' Why write test functions according to these rules? ',
                2,
                None,
-               '___sec30'),
-              (u' Summary of if tests and functions ', 2, None, '___sec31'),
+               '___sec31'),
+              (u' Summary of if tests and functions ', 2, None, '___sec32'),
               (u' A summarizing example for Chapter 3; problem ',
                2,
                None,
-               '___sec32'),
+               '___sec33'),
               (u' The program: function for computing the formula ',
                2,
                None,
-               '___sec33'),
+               '___sec34'),
               (u' The program: function, now with test for possible errors ',
                2,
                None,
-               '___sec34'),
+               '___sec35'),
               (u' The program: application (and main program) ',
                2,
                None,
-               '___sec35'),
+               '___sec36'),
               (u' The program: verification (with test function) ',
                2,
                None,
-               '___sec36')]}
+               '___sec37')]}
 end of tocinfo -->
 
 <body>
@@ -221,27 +222,29 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>The program: application (and main program)  <a name="___sec35"></a></h2>
+<h2 id="___sec35">The program: function, now with test for possible errors </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">h</span>(x):
-    <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">3./2</span>)<span style="color: #666666">*</span>sin(x)<span style="color: #666666">**3</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Simpson</span>(f, a, b, n<span style="color: #666666">=500</span>):
 
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, pi
+    <span style="color: #008000; font-weight: bold">if</span> a <span style="color: #666666">&gt;</span> b:
+        <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Error: a=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121"> &gt; b=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (a, b)
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">None</span>
 
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">application</span>():
-    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Integral of 1.5*sin^3 from 0 to pi:&#39;</span>
-    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #666666">2</span>, <span style="color: #666666">6</span>, <span style="color: #666666">12</span>, <span style="color: #666666">100</span>, <span style="color: #666666">500</span>:
-        approx <span style="color: #666666">=</span> Simpson(h, <span style="color: #666666">0</span>, pi, n)
-        <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;n=</span><span style="color: #BB6688; font-weight: bold">%3d</span><span style="color: #BA2121">, approx=</span><span style="color: #BB6688; font-weight: bold">%18.15f</span><span style="color: #BA2121">, error=</span><span style="color: #BB6688; font-weight: bold">%9.2E</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> \
-              (n, approx, <span style="color: #666666">2-</span>approx)
+    <span style="color: #408080; font-style: italic"># Check that n is even</span>
+    <span style="color: #008000; font-weight: bold">if</span> n <span style="color: #666666">%</span> <span style="color: #666666">2</span> <span style="color: #666666">!=</span> <span style="color: #666666">0</span>:
+        <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Error: n=</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> is not an even integer!&#39;</span> <span style="color: #666666">%</span> n
+        n <span style="color: #666666">=</span> n<span style="color: #666666">+1</span>  <span style="color: #408080; font-style: italic"># make n even</span>
 
-application()
+    <span style="color: #408080; font-style: italic"># as before...</span>
+    <span style="color: #666666">...</span>
+    <span style="color: #008000; font-weight: bold">return</span> integral
 </pre></div>
 
 </div>
