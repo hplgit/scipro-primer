@@ -58,7 +58,7 @@ __SciTools.__
 The package SciTools is freqently referred to and used in the book.
 You may want to install SciTools directly from its Mercurial version control
 repository. This makes it easy to upgrade the package at any time.
-SciTools is hosted at "Googlecode": "http://code.google.com/p/scitools/".
+SciTools is hosted at "Googlecode": "https://github.com/hplgit/scitools/".
 Make sure you have the Mercurial (<tt>hg</tt>) version control system
 on your computer (if not, do `sudo pip install mercurial` on Linux or Mac,
 and `pip install mercurial` in a Windows Command Prompt or Power Shell window).
@@ -142,7 +142,7 @@ refer to the "new one": "http://hplgit.github.io/edu/accesspy/accesspy_primer4.h
 
 You may want to install SciTools directly from its Mercurial version control
 repository. This makes it easy to upgrade the package at any time.
-SciTools is hosted at "Googlecode": "http://code.google.com/p/scitools/".
+SciTools is hosted at "Googlecode": "https://github.com/hplgit/scitools/".
 Make sure you have the Mercurial (<tt>hg</tt>) version control system
 on your computer (if not, do `sudo pip install mercurial` on Linux or Mac,
 and `pip install mercurial` in a Windows Command Prompt or Power Shell window).
