@@ -65,7 +65,7 @@ and `pip install mercurial` in a Windows Command Prompt or Power Shell window).
 Get the SciTools source code and install it by
 
 !bc sys
-hg clone https://langtangen@code.google.com/p/scitools/
+git clone https://github.com/hplgit/scitools.git
 cd scitools
 sudo python setup.py install
 !ec
@@ -73,8 +73,7 @@ Whenever you want to upgrade the package, just go to the `scitools`
 folder and run the commands
 
 !bc sys
-hg pull
-hg update
+git pull origin master
 sudo python setup.py install
 !ec
 
@@ -137,7 +136,7 @@ git clone https://github.com/hplgit/scipro-primer.git
 
 ===== Software installation =====
 
-The "old software description": "install.html" is not a bit outdated, so we
+The "old software description": "install.html" is now outdated, so we
 refer to the "new one": "http://hplgit.github.io/edu/accesspy/accesspy_primer4.html" that appears in the 4th edition.
 
 You may want to install SciTools directly from its Mercurial version control
