@@ -83,9 +83,10 @@ git://github.com/barraq/deck.ext.js.git
 <link rel="stylesheet" href="deck.js/themes/style/beamer.css">
 -->
 
-<!-- Transition theme. More available in /themes/transition/ or create your own. -->
-<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
 <!--
+Transition theme. More available in /themes/transition/ or create your own. -->
+<!--
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
 <link rel="stylesheet" href="deck.js/themes/transition/fade.css">
 <link rel="stylesheet" href="deck.js/themes/transition/vertical-slide.css">
 <link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
@@ -95,31 +96,39 @@ git://github.com/barraq/deck.ext.js.git
 <script src="deck.js/modernizr.custom.js"></script>
 
 <style type="text/css">
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .slide .alert-text-small   { font-size: 80%;  }
-    .slide .alert-text-large   { font-size: 130%; }
-    .slide .alert-text-normal  { font-size: 90%;  }
-    .slide .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:5px solid #bababa;
-               -webkit-border-radius:14px; -moz-border-radius:14px;
-             border-radius:14px
-             background-position: 10px 10px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 30px; /* 55px; if icon */
-     }
-     .slide .alert-block {padding-top:14px; padding-bottom:14px}
-     .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
-     /*.slide .alert li {margin-top: 1em}*/
-     .deck .alert-block p+p {margin-top:5px}
-     /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
-     .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
-     .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
-     .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+/* Override h1, h2, ... styles */
+h1 { font-size: 2.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.3em; }
+h1, h2, h3, h4 { font-weight: bold; line-height: 1.2; }
+body { overflow: auto; } /* vertical scrolling */
+
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.slide .alert-text-small   { font-size: 80%;  }
+.slide .alert-text-large   { font-size: 130%; }
+.slide .alert-text-normal  { font-size: 90%;  }
+.slide .alert {
+     padding:8px 35px 8px 14px; margin-bottom:18px;
+     text-shadow:0 1px 0 rgba(255,255,255,0.5);
+     border:5px solid #bababa;
+       -webkit-border-radius:14px; -moz-border-radius:14px;
+     border-radius:14px
+     background-position: 10px 10px;
+     background-repeat: no-repeat;
+     background-size: 38px;
+     padding-left: 30px; /* 55px; if icon */
+ }
+ .slide .alert-block {padding-top:14px; padding-bottom:14px}
+ .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+ /*.slide .alert li {margin-top: 1em}*/
+ .deck .alert-block p+p {margin-top:5px}
+ /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+ .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+ .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+ .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
 
 </style>
 
@@ -176,9 +185,7 @@ $$
 <section class="slide">
 <!-- ------------------- main content ---------------------- -->
 
-
-
-<center><h1>Ch.1: Computing with formulas</h1></center>  <!-- document title -->
+<h2 style="text-align: center;">Ch.1: Computing with formulas</h2>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -187,63 +194,55 @@ $$
 <b style="font-weight: bold">Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
 <center>[1] <b style="font-weight: bold">Simula Research Laboratory</b></center>
 <center>[2] <b style="font-weight: bold">University of Oslo, Dept. of Informatics</b></center>
 <p>
-<center><h4>Sep 9, 2014</h4></center> <!-- date -->
-<p>
-
+<center><b style="font-weight: bold">Apr 19, 2015</b></center> <!-- date -->
 </section>
 
 
 <section class="slide">
 
-<h2>Why program?  <a name="___sec0"></a></h2>
+<h2 id="___sec0">Why program? </h2>
 
+<p>
 <blockquote>
     <em>Everybody in this country should learn how to program a computer... because it teaches you how to think</em>. Steve Jobs, 1955-2011.
 </blockquote>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>The teaching strategy is example-based  <a name="___sec1"></a></h2>
+<h2 id="___sec1">The teaching strategy is example-based </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> Present a case (example)</li>
-  <p><li> Present the complete program</li>
-  <p><li> Dissect and discuss every line</li>
-  <p><li> Simulate programs by hand (be the computer!)</li>
+
+<p><li> Present a case (example)</li>
+
+<p><li> Present the complete program</li>
+
+<p><li> Dissect and discuss every line</li>
+
+<p><li> Simulate programs by hand (be the computer!)</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Evaluating a mathematical formula  <a name="___sec2"></a></h2>
+<h2 id="___sec2">Evaluating a mathematical formula </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Height of a ball in vertical motion.</b>
-<p>
-
 <p>&nbsp;<br>
 $$ y(t) = v_0t- \frac{1}{2}gt^2 $$
 <p>&nbsp;<br>
@@ -251,31 +250,30 @@ $$ y(t) = v_0t- \frac{1}{2}gt^2 $$
 where
 
 <ul>
-  <p><li> \( y \) is the height (position) as function of time \( t \)</li>
-  <p><li> \( v_0 \) is the initial velocity at \( t=0 \)</li>
-  <p><li> \( g \) is the acceleration of gravity</li>
+
+<p><li> \( y \) is the height (position) as function of time \( t \)</li>
+
+<p><li> \( v_0 \) is the initial velocity at \( t=0 \)</li>
+
+<p><li> \( g \) is the acceleration of gravity</li>
 </ul>
 <p>
 
 Task: given \( v_0 \), \( g \) and \( t \), compute \( y \).
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Use a calculator? A program is much more powerful!  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Use a calculator? A program is much more powerful! </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">What is a program?</b>
 <p>
 A sequence of instructions to the computer, written in a programming language, somewhat like English, but very much simpler - and very much stricter.
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -283,7 +281,6 @@ A sequence of instructions to the computer, written in a programming language, s
 <p>
 This course teaches the Python language.
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -295,7 +292,6 @@ Evaluate \( y(t) = v_0t- \frac{1}{2}gt^2 \) for \( v_0=5 \), \( g=9.81 \) and \(
 $$ y = 5\cdot 0.6 - \frac{1}{2}\cdot 9.81 \cdot 0.6^2$$
 <p>&nbsp;<br>
 
-
 <p>
 The complete Python program:
 
@@ -306,24 +302,21 @@ The complete Python program:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>How to write and run the program  <a name="___sec4"></a></h2>
+<h2 id="___sec4">How to write and run the program </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> A program is plain text, written in a <em>plain text editor</em></li>
-  <p><li> Use Gedit, Emacs, Vim, Spyder, or IDLE (<em>not</em> MS Word!)</li>
+
+<p><li> A program is plain text, written in a <em>plain text editor</em></li>
+
+<p><li> Use Gedit, Emacs, Vim, Spyder, or IDLE (<em>not</em> MS Word!)</li>
 </ul>
 <p>
 
@@ -356,45 +349,40 @@ Run the program:
 <p>
 The program prints out <code>1.2342</code> in the terminal window.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>In this course we probably use computers differently from what you are used to  <a name="___sec5"></a></h2>
+<h2 id="___sec5">In this course we probably use computers differently from what you are used to </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> When you use a computer, you always run some programs</li>
-  <p><li> The computer cannot do anything without being precisely told what to do, and humans write and use programs to tell the computer what to do</li>
-  <p><li> Most people are used to double-click on a symbol to run a program - in this course we give commands in a terminal window because that is more efficient if you work intensively with programming</li>
-  <p><li> Hard math problems suddenly become straightforward by writing programs</li>
+
+<p><li> When you use a computer, you always run some programs</li>
+
+<p><li> The computer cannot do anything without being precisely told what to do, and humans write and use programs to tell the computer what to do</li>
+
+<p><li> Most people are used to double-click on a symbol to run a program - in this course we give commands in a terminal window because that is more efficient if you work intensively with programming</li>
+
+<p><li> Hard math problems suddenly become straightforward by writing programs</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>A short program can calculate any integral  <a name="___sec6"></a></h2>
+<h2 id="___sec6">A short program can calculate any integral </h2>
 
+<p>
 You cannot calculate this integral by hand:
 
 <p>&nbsp;<br>
 $$ \int_{-\infty}^1 e^{-x^2}dx\tp$$
 <p>&nbsp;<br>
-
 
 <p>
 A little program can compute this and &quot;all&quot; other integrals:
@@ -424,18 +412,16 @@ I = integrate(my_function, minus_infinity, <span style="color: #B452CD">1</span>
 </pre></div>
 <p>
 <b style="font-weight: bold">The program computes an approximation with error \( 10^{-12} \) within 0.1 s</b> (\( n=10^6 \))!
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Computers are very picky about grammar rules and typos  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Computers are very picky about grammar rules and typos </h2>
 
+<p>
 
-<div class="alert alert-block alert-block alert-text-normal">
+<div class="slide alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
 Look at
@@ -443,50 +429,48 @@ Look at
 <p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">print 5*0.6 - 0.5*9.81*0.6**2
+<div class="slide" class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">print 5*0.6 - 0.5*9.81*0.6**2
 write 5*0,6 - 0,5*9,81*0,6^2
 </pre></div>
 <p>
 Would you consider these two lines to be equal?
 
 <ul>
-  <p><li class="slide"> Humans will say <em>yes</em>, computers <em>no</em></li>
-  <p><li class="slide"> The second line has no meaning as a Python program</li>
-  <p><li class="slide"> <code>write</code> is not a legal Python word in this context, comma has another
+
+<p><li class="slide"> Humans will say <em>yes</em>, computers <em>no</em></li>
+
+<p><li class="slide"> The second line has no meaning as a Python program</li>
+
+<p><li class="slide"> <code>write</code> is not a legal Python word in this context, comma has another
     meaning than in math, and the hat is not exponentiation</li>
-  <p><li class="slide"> We have to be extremely accurate with how we write computer programs!</li>
-  <p><li class="slide"> It takes time and experience to learn this</li>
+
+<p><li class="slide"> We have to be extremely accurate with how we write computer programs!</li>
+
+<p><li class="slide"> It takes time and experience to learn this</li>
 </ul>
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Programming opens up a new life  <a name="___sec8"></a></h2>
+<h2 id="___sec8">Programming opens up a new life </h2>
 
+<p>
 <blockquote>
     <em>People only become computer programmers if they're
     obsessive about details, crave power over machines, and can bear
     to be told day after day exactly how
     stupid they are.</em> G. J. E. Rawlins
 </blockquote>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Store numbers in variables to make a program more readable  <a name="___sec9"></a></h2>
+<h2 id="___sec9">Store numbers in variables to make a program more readable </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -495,7 +479,6 @@ From mathematics you are used to variables, e.g.,
 <p>&nbsp;<br>
 $$ v_0=5,\quad g=9.81,\quad t=0.6,\quad y = v_0t -\frac{1}{2}gt^2$$
 <p>&nbsp;<br>
-
 
 <p>
 We can use variables in a program too, and this makes the last program
@@ -513,28 +496,24 @@ y = v0*t - <span style="color: #B452CD">0.5</span>*g*t**<span style="color: #B45
 <p>
 This program spans several lines of text and use variables, otherwise the program performs the same calculations and gives the same output as the previous program
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>There is great flexibility in choosing variable names  <a name="___sec10"></a></h2>
+<h2 id="___sec10">There is great flexibility in choosing variable names </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> In mathematics we usually use one letter for a variable</li>
-  <p><li> The name of a variable in a program can contain the letters a-z, A-Z, underscore <code>_</code> and the digits 0-9, but cannot start with a digit</li>
-  <p><li> Variable names are case-sensitive (e.g., <code>a</code> is different from <code>A</code>)</li>
-</ul>
-<p>
 
+<p><li> In mathematics we usually use one letter for a variable</li>
+
+<p><li> The name of a variable in a program can contain the letters a-z, A-Z, underscore <code>_</code> and the digits 0-9, but cannot start with a digit</li>
+
+<p><li> Variable names are case-sensitive (e.g., <code>a</code> is different from <code>A</code>)</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
@@ -549,24 +528,20 @@ VerticalPositionOfBall = initial_velocity*TIME - \
 (Note: the backslash allows an instruction to be continued on the next line)
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
 Good variable names make a program easier to understand!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Some words are reserved in Python  <a name="___sec11"></a></h2>
+<h2 id="___sec11">Some words are reserved in Python </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -602,20 +577,16 @@ Certain words have a special meaning in Python and cannot be used as variable na
 <code>while</code>, and
 <code>yield</code>.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Comments are useful to explain how you think in programs  <a name="___sec12"></a></h2>
+<h2 id="___sec12">Comments are useful to explain how you think in programs </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Program with comments:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -630,29 +601,26 @@ y = v0*t - <span style="color: #B452CD">0.5</span>*g*t**<span style="color: #B45
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Note:</b>
-<p>
-
 <ul>
-  <p><li> Everything after <code>#</code> on a line is a comment and ignored by Python</li>
-  <p><li> Comments are used to explain what the computer instructions mean, what variables mean, how the programmer reasoned when she wrote the program, etc.</li>
-  <p><li> Bad comments say no more than the code: <code>a = 5  # set a to 5</code></li>
+
+<p><li> Everything after <code>#</code> on a line is a comment and ignored by Python</li>
+
+<p><li> Comments are used to explain what the computer instructions mean, what variables mean, how the programmer reasoned when she wrote the program, etc.</li>
+
+<p><li> Bad comments say no more than the code: <code>a = 5  # set a to 5</code></li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Comments are not always ignored....  <a name="___sec13"></a></h2>
+<h2 id="___sec13">Comments are not always ignored.... </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -683,17 +651,14 @@ Remedy: put this special comment line as the first line in your program
 <p>
 Or stick to English everywhere in a program
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>The printf syntax gives great flexibility in formatting text with numbers  <a name="___sec14"></a></h2>
+<h2 id="___sec14">The printf syntax gives great flexibility in formatting text with numbers </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -715,20 +680,16 @@ Output from calculations often contain text and numbers, e.g.,
 <p>
 The printf format has &quot;slots&quot; where the variables listed at the end are put: <code>%g</code> \( \leftarrow \) <code>t</code>, <code>%.2f</code> \( \leftarrow \) <code>y</code>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Examples on different printf formats  <a name="___sec15"></a></h2>
+<h2 id="___sec15">Examples on different printf formats </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
@@ -747,21 +708,18 @@ The printf format has &quot;slots&quot; where the variables listed at the end ar
 <p>
 (See the the book for more explanation and overview)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Using printf formatting in our program  <a name="___sec16"></a></h2>
+<h2 id="___sec16">Using printf formatting in our program </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
-Triple-quoted strings (<code>"""</code>) can be used for multi-line output, and here we combine such a string with printf formatting:
+Triple-quoted strings (<code>&quot;&quot;&quot;</code>) can be used for multi-line output, and here we combine such a string with printf formatting:
 
 <p>
 
@@ -791,62 +749,54 @@ is located at the height 1.23 m.
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Some frequently used computer science terms  <a name="___sec17"></a></h2>
-
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b style="font-weight: bold"></b>
-<p>
-
-<ul>
-  <p><li class="slide"> Program or code or application</li>
-  <p><li class="slide"> Source code (program text)</li>
-  <p><li class="slide"> Code/program snippet</li>
-  <p><li class="slide"> Execute or run a program</li>
-  <p><li class="slide"> Algorithm (recipe for a program)</li>
-  <p><li class="slide"> Implementation (writing the program)</li>
-  <p><li class="slide"> Verification (does the program work correctly?)</li>
-  <p><li class="slide"> Bugs (errors) and debugging</li>
-</ul>
-</div>
-
-
+<h2 id="___sec17">Some frequently used computer science terms </h2>
 
 <p>
-
-<p class="slide">
 
 <div class="slide alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
+<ul>
 
-Computer science meaning of terms is often different from the human language meaning
+<p><li class="slide"> Program or code or application</li>
+
+<p><li class="slide"> Source code (program text)</li>
+
+<p><li class="slide"> Code/program snippet</li>
+
+<p><li class="slide"> Execute or run a program</li>
+
+<p><li class="slide"> Algorithm (recipe for a program)</li>
+
+<p><li class="slide"> Implementation (writing the program)</li>
+
+<p><li class="slide"> Verification (does the program work correctly?)</li>
+
+<p><li class="slide"> Bugs (errors) and debugging</li>
+</ul>
 </div>
-
-
-</p>
-
 
 <p>
 
+<div class="slide alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<p>
+Computer science meaning of terms is often different from the human language meaning
+</div>
 </section>
 
 
 <section class="slide">
 
-<h2>A program consists of statements  <a name="___sec18"></a></h2>
+<h2 id="___sec18">A program consists of statements </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
@@ -867,20 +817,16 @@ in between the statements:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Assignment statements evaluate right-hand side and assign the result to the variable on the left-hand side  <a name="___sec19"></a></h2>
+<h2 id="___sec19">Assignment statements evaluate right-hand side and assign the result to the variable on the left-hand side </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
@@ -889,28 +835,23 @@ myvar = <span style="color: #B452CD">3</span>*myvar   <span style="color: #228B2
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Syntax is the exact specification of instructions to the computer  <a name="___sec20"></a></h2>
+<h2 id="___sec20">Syntax is the exact specification of instructions to the computer </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
 Programs must have correct syntax, i.e., correct use of the computer language grammar rules, and no misprints!
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">This is a program with two syntax errors:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
@@ -928,7 +869,6 @@ SyntaxError: invalid syntax
 Only the first encountered error is reported and the program is stopped (correct the error and continue with next error)
 </div>
 
-
 <p>
 
 <p class="slide">
@@ -939,17 +879,14 @@ Only the first encountered error is reported and the program is stopped (correct
 
 
 </p>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Blanks (whitespace) can be used to nicely format the program text  <a name="___sec21"></a></h2>
+<h2 id="___sec21">Blanks (whitespace) can be used to nicely format the program text </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -979,20 +916,16 @@ counter = counter + <span style="color: #B452CD">1</span>       <span style="col
 <p>
 (more about this in Ch. 2)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>A program takes some known <em>input</em> data and computes some <em>output</em> data  <a name="___sec22"></a></h2>
+<h2 id="___sec22">A program takes some known <em>input</em> data and computes some <em>output</em> data </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
@@ -1002,52 +935,51 @@ velocity = v0 - g*t
 <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;position:&#39;</span>, position, <span style="color: #CD5555">&#39;velocity:&#39;</span>, velocity
 </pre></div>
 <ul>
-  <p><li> Input: <code>v0</code>, <code>g</code>, and <code>t</code></li>
-  <p><li> Output: <code>position</code> and <code>velocity</code></li>
+
+<p><li> Input: <code>v0</code>, <code>g</code>, and <code>t</code></li>
+
+<p><li> Output: <code>position</code> and <code>velocity</code></li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>An operating system (OS) is a set of programs managing hardware and software resources on a computer  <a name="___sec23"></a></h2>
+<h2 id="___sec23">An operating system (OS) is a set of programs managing hardware and software resources on a computer </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
+<ul>
+
+<p><li> Linux, Unix (Ubuntu, RedHat, Suse, Solaris)</li>
+
+<p><li> Windows (95, 98, NT, ME, 2000, XP, Vista, 7, 8)</li>
+
+<p><li> Macintosh (old Mac OS, Mac OS X)</li>
+
+<p><li> Mac OS X \( \approx \) Unix \( \approx \) Linux \( \neq \) Windows</li>
+
+<p><li> Typical OS commands are quite similar:</li>
 
 <ul>
-  <p><li> Linux, Unix (Ubuntu, RedHat, Suse, Solaris)</li>
-  <p><li> Windows (95, 98, NT, ME, 2000, XP, Vista, 7, 8)</li>
-  <p><li> Macintosh (old Mac OS, Mac OS X)</li>
-  <p><li> Mac OS X \( \approx \) Unix \( \approx \) Linux \( \neq \) Windows</li>
-  <p><li> Typical OS commands are quite similar:</li>
 
-<ul>
-    <p><li> Linux/Unix: <code>mkdir folder; cd folder; ls</code></li>
-    <p><li> Windows: <code>mkdir folder; cd folder; dir</code></li>
+<p><li> Linux/Unix: <code>mkdir folder; cd folder; ls</code></li>
+
+<p><li> Windows: <code>mkdir folder; cd folder; dir</code></li>
 </ul>
-<p>
-
-  <p><li> Python supports cross-platform programming, i.e., a program is independent of which OS we run the program on</li>
+<p><li> Python supports cross-platform programming, i.e., a program is independent of which OS we run the program on</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Evaluating a formula for temperature conversion  <a name="___sec24"></a></h2>
+<h2 id="___sec24">Evaluating a formula for temperature conversion </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1057,7 +989,6 @@ compute the corresponding Fahrenheit degrees \( F \):
 <p>&nbsp;<br>
 $$ F = \frac{9}{5}C + 32 $$
 <p>&nbsp;<br>
-
 
 <p>
 Program:
@@ -1080,46 +1011,46 @@ Execution:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>We must always check that a new program calculates the right answer  <a name="___sec25"></a></h2>
+<h2 id="___sec25">We must always check that a new program calculates the right answer </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Using a calculator:</b>
 <p>
 9/5 times 21 plus 32 is 69.8, not 53.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>The error is caused by (unintended) integer division  <a name="___sec26"></a></h2>
+<h2 id="___sec26">The error is caused by (unintended) integer division </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> 9/5 is not 1.8 but 1 in most computer languages (!)</li>
-  <p><li> If \( a \) and \( b \) are integers, \( a/b \) implies integer division: the largest integer \( c \) such that \( cb\leq a \)</li>
-  <p><li> Examples: \( 1/5=0 \), \( 2/5=0 \), \( 7/5=1 \), \( 12/5=2 \)</li>
-  <p><li> In mathematics, 9/5 is a real number (1.8) - this is called float division in Python and is the division we want</li>
-  <p><li> One of the operands (\( a \) or \( b \)) in \( a/b \) must be a real number ("float") to get float division</li>
-  <p><li> A float in Python has a dot (or decimals): <code>9.0</code> or <code>9.</code> is float</li>
-  <p><li> No dot implies integer: <code>9</code> is an integer</li>
-  <p><li> <code>9.0/5</code> yields <code>1.8</code>, <code>9/5.</code> yields <code>1.8</code>, <code>9/5</code> yields <code>1</code></li>
+
+<p><li> 9/5 is not 1.8 but 1 in most computer languages (!)</li>
+
+<p><li> If \( a \) and \( b \) are integers, \( a/b \) implies integer division: the largest integer \( c \) such that \( cb\leq a \)</li>
+
+<p><li> Examples: \( 1/5=0 \), \( 2/5=0 \), \( 7/5=1 \), \( 12/5=2 \)</li>
+
+<p><li> In mathematics, 9/5 is a real number (1.8) - this is called float division in Python and is the division we want</li>
+
+<p><li> One of the operands (\( a \) or \( b \)) in \( a/b \) must be a real number ("float") to get float division</li>
+
+<p><li> A float in Python has a dot (or decimals): <code>9.0</code> or <code>9.</code> is float</li>
+
+<p><li> No dot implies integer: <code>9</code> is an integer</li>
+
+<p><li> <code>9.0/5</code> yields <code>1.8</code>, <code>9/5.</code> yields <code>1.8</code>, <code>9/5</code> yields <code>1</code></li>
 </ul>
 <p>
 
@@ -1134,17 +1065,14 @@ F = (<span style="color: #B452CD">9.0</span>/<span style="color: #B452CD">5</spa
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Everything in Python is an object  <a name="___sec27"></a></h2>
+<h2 id="___sec27">Everything in Python is an object </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1178,52 +1106,53 @@ f = <span style="color: #658b00">float</span>(e)       <span style="color: #228B
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Arithmetic expressions are evaluated as you have learned in mathematics  <a name="___sec28"></a></h2>
+<h2 id="___sec28">Arithmetic expressions are evaluated as you have learned in mathematics </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> Example: \( \frac{5}{9} + 2a^4/2 \), in Python written as <code>5/9 + 2*a**4/2</code></li>
-  <p><li> Same rules as in mathematics: proceed term by term (additions/subtractions) from the left, compute powers first, then multiplication and division, in each term</li>
-  <p><li> <code>r1 = 5/9</code> (=0)</li>
-  <p><li> <code>r2 = a**4</code></li>
-  <p><li> <code>r3 = 2*r2</code></li>
-  <p><li> <code>r4 = r3/2</code></li>
-  <p><li> <code>r5 = r1 + r4</code></li>
-  <p><li> Use parenthesis to override these default rules - or use parenthesis to explicitly tell how the rules work: <br />
+
+<p><li> Example: \( \frac{5}{9} + 2a^4/2 \), in Python written as <code>5/9 + 2*a**4/2</code></li>
+
+<p><li> Same rules as in mathematics: proceed term by term (additions/subtractions) from the left, compute powers first, then multiplication and division, in each term</li>
+
+<p><li> <code>r1 = 5/9</code> (=0)</li>
+
+<p><li> <code>r2 = a**4</code></li>
+
+<p><li> <code>r3 = 2*r2</code></li>
+
+<p><li> <code>r4 = r3/2</code></li>
+
+<p><li> <code>r5 = r1 + r4</code></li>
+
+<p><li> Use parenthesis to override these default rules - or use parenthesis to explicitly tell how the rules work: <br />
     <code>(5/9) + (2*(a**4))/2</code></li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Standard mathematical functions are found in the <code>math</code> module  <a name="___sec29"></a></h2>
+<h2 id="___sec29">Standard mathematical functions are found in the <code>math</code> module </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> What if we need to compute \( \sin x \), \( \cos x \), \( \ln x \), etc. in a program?</li>
-  <p><li> Such functions are available in Python's <code>math</code> module</li>
-  <p><li> In general: lots of useful functionality in Python is available in modules - but modules must be <em>imported</em> in our programs</li>
+
+<p><li> What if we need to compute \( \sin x \), \( \cos x \), \( \ln x \), etc. in a program?</li>
+
+<p><li> Such functions are available in Python's <code>math</code> module</li>
+
+<p><li> In general: lots of useful functionality in Python is available in modules - but modules must be <em>imported</em> in our programs</li>
 </ul>
 <p>
 
@@ -1243,17 +1172,14 @@ r = sqrt(<span style="color: #B452CD">2</span>)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Another example on computing with functions from <code>math</code>  <a name="___sec30"></a></h2>
+<h2 id="___sec30">Another example on computing with functions from <code>math</code> </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1275,17 +1201,14 @@ Q = sin(x)*cos(x) + <span style="color: #B452CD">4</span>*log(x)   <span style="
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Computers have inexact arithmetics because of round-off errors  <a name="___sec31"></a></h2>
+<h2 id="___sec31">Computers have inexact arithmetics because of round-off errors </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1307,23 +1230,24 @@ Output with 16 decimals becomes
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"> 0.9999999999999999 1.0000000000000000
 </pre></div>
 <ul>
-  <p><li> Most real numbers are represented inexactly on a computer (16 digits)</li>
-  <p><li> Neither 1/49 nor 1/51 is represented exactly, the error is typically \( 10^{-16} \)</li>
-  <p><li> Sometimes such small errors propagate to the final answer, sometimes not, and somtimes the small errors accumulate through many mathematical operations</li>
-  <p><li> Lesson learned: real numbers on a computer and the results of mathematical computations are only approximate</li>
+
+<p><li> Most real numbers are represented inexactly on a computer (16 digits)</li>
+
+<p><li> Neither 1/49 nor 1/51 is represented exactly, the error is typically \( 10^{-16} \)</li>
+
+<p><li> Sometimes such small errors propagate to the final answer, sometimes not, and somtimes the small errors accumulate through many mathematical operations</li>
+
+<p><li> Lesson learned: real numbers on a computer and the results of mathematical computations are only approximate</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Another example involving math functions  <a name="___sec32"></a></h2>
+<h2 id="___sec32">Another example involving math functions </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1333,7 +1257,6 @@ The \( \sinh x \) function is defined as
 $$\sinh (x) = \frac{1}{2}\left(e^{x} - e^{-x}\right) $$
 <p>&nbsp;<br>
 
-
 <p>
 We can evaluate this function in three ways:
 
@@ -1342,8 +1265,6 @@ We can evaluate this function in three ways:
  <p><li> combination of two <code>math.exp</code></li>
  <p><li> combination of two powers of <code>math.e</code></li>
 </ol>
-<p>
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1359,30 +1280,27 @@ Output: <code>r1</code> is \( 267.744894041016\underline{4369} \), <code>r2</cod
 \( 267.744894041016\underline{4369} \), <code>r3</code> is
 \( 267.744894041016\underline{3232} \) (!)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Python can be used interactively as a calculator and to test statements  <a name="___sec33"></a></h2>
+<h2 id="___sec33">Python can be used interactively as a calculator and to test statements </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> So far we have performed calculations in Python <em>programs</em></li>
-  <p><li> Python can also be used interactively in what is known as a <em>shell</em></li>
-  <p><li> Type <code>python</code>, <code>ipython</code>, or <code>idle</code> in the terminal window</li>
-  <p><li> A Python shell is entered where you can write statements after <code>>>></code>
+
+<p><li> So far we have performed calculations in Python <em>programs</em></li>
+
+<p><li> Python can also be used interactively in what is known as a <em>shell</em></li>
+
+<p><li> Type <code>python</code>, <code>ipython</code>, or <code>idle</code> in the terminal window</li>
+
+<p><li> A Python shell is entered where you can write statements after <code>&gt;&gt;&gt;</code>
     (IPython has a different prompt)</li>
 </ul>
-<p>
-
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
@@ -1399,26 +1317,20 @@ Python <span style="color: #B452CD">2.7</span>.<span style="color: #B452CD">6</s
 <p>
 Previous commands can be recalled and edited
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Python has full support for complex numbers  <a name="___sec34"></a></h2>
+<h2 id="___sec34">Python has full support for complex numbers </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> \( 2+3i \) in mathematics is written as <code>2 + 3j</code> in Python</li>
-</ul>
-<p>
 
+<p><li> \( 2+3i \) in mathematics is written as <code>2 + 3j</code> in Python</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
@@ -1439,27 +1351,21 @@ Previous commands can be recalled and edited
 <p>
 See the book for additional info
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Python can also do symbolic computing  <a name="___sec35"></a></h2>
+<h2 id="___sec35">Python can also do symbolic computing </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
  <p><li> Numerical computing: computation with numbers</li>
  <p><li> Symbolic computing: work with formulas (as in trad. math)</li>
 </ul>
 </div>
-
 
 <p>
 
@@ -1476,15 +1382,14 @@ acceleration: -g
 &gt;&gt;&gt; y2
 -g*t**<span style="color: #B452CD">2</span>/<span style="color: #B452CD">2</span> + t*v0
 </pre></div>
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>SymPy can do a lot of traditional mathematics  <a name="___sec36"></a></h2>
+<h2 id="___sec36">SymPy can do a lot of traditional mathematics </h2>
 
+<p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; y = v0*t - Rational(<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>)*g*t**<span style="color: #B452CD">2</span>
@@ -1499,40 +1404,40 @@ cos(x + y)
 &gt;&gt;&gt; expand(sin(x+y), trig=<span style="color: #658b00">True</span>)  <span style="color: #228B22"># requires a trigonometric hint</span>
 sin(x)*cos(y) + sin(y)*cos(x)
 </pre></div>
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Summary of Chapter 1 (part 1)  <a name="___sec37"></a></h2>
+<h2 id="___sec37">Summary of Chapter 1 (part 1) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> Programs must be accurate!</li>
-  <p><li> Variables are names for objects</li>
-  <p><li> We have met different object types: <code>int</code>, <code>float</code>, <code>str</code></li>
-  <p><li> Choose variable names close to the mathematical symbols in
+
+<p><li> Programs must be accurate!</li>
+
+<p><li> Variables are names for objects</li>
+
+<p><li> We have met different object types: <code>int</code>, <code>float</code>, <code>str</code></li>
+
+<p><li> Choose variable names close to the mathematical symbols in
     the problem being solved</li>
-  <p><li> Arithmetic operations in Python: term by term (+/-) from left to right, power before * and / - as in mathematics; use parenthesis when there is any doubt</li>
-  <p><li> Watch out for unintended integer division!</li>
+
+<p><li> Arithmetic operations in Python: term by term (+/-) from left to right, power before * and / - as in mathematics; use parenthesis when there is any doubt</li>
+
+<p><li> Watch out for unintended integer division!</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Summary of Chapter 1 (part 2)  <a name="___sec38"></a></h2>
+<h2 id="___sec38">Summary of Chapter 1 (part 2) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1551,42 +1456,39 @@ Use printf syntax for full control of output of text and numbers!
 <p>
 Important terms: object, variable, algorithm, statement, assignment, implementation, verification, debugging
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Programming is challenging  <a name="___sec39"></a></h2>
+<h2 id="___sec39">Programming is challenging </h2>
 
+<p>
 <blockquote>
     
     <ul>
-      <p><li> <em>You think you know when you can learn,<br />
+
+<p><li> <em>You think you know when you can learn,<br />
         are more sure when you can write,<br />
         even more when you can teach,<br />
         but certain when you can program</em></li>
-      <p><li> <em>Within a computer, natural language is unnatural</em></li>
-      <p><li> <em>To understand a program you must become both the machine and the program</em></li>
+
+<p><li> <em>Within a computer, natural language is unnatural</em></li>
+
+<p><li> <em>To understand a program you must become both the machine and the program</em></li>
     </ul>
 <p>
     
     Alan Perlis, computer scientist, 1922-1990.
 </blockquote>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Summarizing example: throwing a ball (problem)  <a name="___sec40"></a></h2>
+<h2 id="___sec40">Summarizing example: throwing a ball (problem) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1598,29 +1500,28 @@ $$ y = x\tan\theta - \frac{1}{2v_0}\frac{gx^2}{\cos^2\theta} + y_0 $$
 
 
 <ul>
-  <p><li> Program tasks:</li>
+
+<p><li> Program tasks:</li>
 
 <ul>
-   <p><li> initialize input data (\( v_0 \), \( g \), \( \theta \), \( y_0 \))</li>
-   <p><li> import from <code>math</code></li>
-   <p><li> compute \( y \)</li>
-</ul>
-<p>
 
-  <p><li> We give \( x \), \( y \) and \( y_0 \) in m, \( g = 9.81\hbox {m/s}^2 \), \( v_0 \) in km/h and \( \theta \) in degrees - this requires conversion of \( v_0 \) to m/s and \( \theta \) to radians</li>
+<p><li> initialize input data (\( v_0 \), \( g \), \( \theta \), \( y_0 \))</li>
+
+<p><li> import from <code>math</code></li>
+
+<p><li> compute \( y \)</li>
+</ul>
+<p><li> We give \( x \), \( y \) and \( y_0 \) in m, \( g = 9.81\hbox {m/s}^2 \), \( v_0 \) in km/h and \( \theta \) in degrees - this requires conversion of \( v_0 \) to m/s and \( \theta \) to radians</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Summarizing example: throwing a ball (solution)  <a name="___sec41"></a></h2>
+<h2 id="___sec41">Summarizing example: throwing a ball (solution) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1651,9 +1552,6 @@ y = x*tan(theta) - <span style="color: #B452CD">1</span>/(<span style="color: #B
 </pre></div>
 
 </div>
-
-
-
 </section>
 
 
