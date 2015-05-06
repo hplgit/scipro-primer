@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,43 +288,10 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Assignment of an array does not copy the elements!  <a name="___sec47"></a></h2>
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> x
-a[<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> q
-</pre></div>
-<p>
-Is <code>x[-1]</code> also changed to <code>q</code>?<br />
-Yes, because <code>a</code> refers to the same array as <code>x</code>.
+<h2 id="___sec46">Plot based on 1000 points </h2>
 
 <p>
-Avoid changing <code>x</code> by letting <code>a</code> be a copy of <code>x</code>:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> x<span style="color: #666666">.</span>copy()
-</pre></div>
-<p>
-The same yields slices:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> x[r:]   <span style="color: #408080; font-style: italic"># a refers to a part of the x array</span>
-a[<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> q   <span style="color: #408080; font-style: italic"># changes x[-1]!</span>
-a <span style="color: #666666">=</span> x[r:]<span style="color: #666666">.</span>copy()
-a[<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> q   <span style="color: #408080; font-style: italic"># does not change x[-1]</span>
-</pre></div>
-
-</div>
-
+<center><p><img src="fig-plot/sin1overx2.png" align="bottom" width=480></p></center>
 
 <p>
 <p>

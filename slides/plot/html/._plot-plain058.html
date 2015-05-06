@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,48 +288,34 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>How to loop over two-dimensional arrays  <a name="___sec58"></a></h2>
+<h2 id="___sec57">From nested list to two-dimensional array </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
+Let us make a table of numbers in a nested list:
+
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> table2<span style="color: #666666">.</span>shape   <span style="color: #408080; font-style: italic"># see the number of elements in each dir.</span>
-(<span style="color: #666666">3</span>, <span style="color: #666666">2</span>)             <span style="color: #408080; font-style: italic"># 3 rows, 2 columns</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> Cdegrees <span style="color: #666666">=</span> [<span style="color: #666666">-30</span> <span style="color: #666666">+</span> i<span style="color: #666666">*10</span> <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">3</span>)]
+<span style="color: #666666">&gt;&gt;&gt;</span> Fdegrees <span style="color: #666666">=</span> [<span style="color: #666666">9./5*</span>C <span style="color: #666666">+</span> <span style="color: #666666">32</span> <span style="color: #008000; font-weight: bold">for</span> C <span style="color: #AA22FF; font-weight: bold">in</span> Cdegrees]
+<span style="color: #666666">&gt;&gt;&gt;</span> table <span style="color: #666666">=</span> [[C, F] <span style="color: #008000; font-weight: bold">for</span> C, F <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(Cdegrees, Fdegrees)]
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> table
+[[<span style="color: #666666">-30</span>, <span style="color: #666666">-22.0</span>], [<span style="color: #666666">-20</span>, <span style="color: #666666">-4.0</span>], [<span style="color: #666666">-10</span>, <span style="color: #666666">14.0</span>]]
 </pre></div>
 <p>
-A for loop over all array elements:
+Turn into NumPy array:
 
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(table2<span style="color: #666666">.</span>shape[<span style="color: #666666">0</span>]):
-<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">for</span> j <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(table2<span style="color: #666666">.</span>shape[<span style="color: #666666">1</span>]):
-<span style="color: #666666">...</span>         <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;table2[</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">,</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">] = </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (i, j, table2[i,j])
-<span style="color: #666666">...</span>
-table2[<span style="color: #666666">0</span>,<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">-30</span>
-table2[<span style="color: #666666">0</span>,<span style="color: #666666">1</span>] <span style="color: #666666">=</span> <span style="color: #666666">-22</span>
-<span style="color: #666666">...</span>
-table2[<span style="color: #666666">2</span>,<span style="color: #666666">1</span>] <span style="color: #666666">=</span> <span style="color: #666666">14</span>
-</pre></div>
-<p>
-Alternative single loop over all elements:
-
-<p>
-
-<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">for</span> index_tuple, value <span style="color: #AA22FF; font-weight: bold">in</span> np<span style="color: #666666">.</span>ndenumerate(table2):
-<span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;index </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"> has value </span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> \
-<span style="color: #666666">...</span>           (index_tuple, table2[index_tuple])
-<span style="color: #666666">...</span>
-index (<span style="color: #666666">0</span>,<span style="color: #666666">0</span>) has value <span style="color: #666666">-30</span>
-index (<span style="color: #666666">0</span>,<span style="color: #666666">1</span>) has value <span style="color: #666666">-22</span>
-<span style="color: #666666">...</span>
-index (<span style="color: #666666">2</span>,<span style="color: #666666">1</span>) has value <span style="color: #666666">14</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000">type</span>(index_tuple)
-<span style="color: #666666">&lt;</span><span style="color: #008000">type</span> <span style="color: #BA2121">&#39;tuple&#39;</span><span style="color: #666666">&gt;</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> table2 <span style="color: #666666">=</span> array(table)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> table2
+[[<span style="color: #666666">-30.</span> <span style="color: #666666">-22.</span>]
+ [<span style="color: #666666">-20.</span>  <span style="color: #666666">-4.</span>]
+ [<span style="color: #666666">-10.</span>  <span style="color: #666666">14.</span>]]
 </pre></div>
 
 </div>

@@ -11,8 +11,8 @@ Automatically generated HTML file from DocOnce source
 <title>Ch.5: Array computing and curve plotting</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
@@ -20,6 +20,11 @@ Automatically generated HTML file from DocOnce source
 h1 {color: #b58900;}  /* yellow */
 /* h1 {color: #cb4b16;}  orange */
 /* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -42,10 +47,10 @@ h1 {color: #b58900;}  /* yellow */
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -273,48 +278,44 @@ MathJax.Hub.Config({
 <a name="part0051"></a>
 <!-- !split -->
 
-<h2>Useful array operations  <a name="___sec51"></a></h2>
+<h2 id="___sec50">In-place arithmetics only saves memory, no significant speed-up </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-Make a new array with same size as another array:
+Let's use IPython to measure the computational time:
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+<!-- code=ipy (!bc ipy) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #555555">In [1]: </span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">expression</span>(x):
+<span style="color: #555555">   ...: </span>    <span style="color: #8B008B; font-weight: bold">return</span> (<span style="color: #B452CD">3</span>*x**<span style="color: #B452CD">4</span> + <span style="color: #B452CD">2</span>*x + <span style="color: #B452CD">4</span>)/(x + <span style="color: #B452CD">1</span>)
+<span style="color: #555555">   ...:</span>
 
-<span style="color: #228B22"># x is numpy array</span>
-a = x.copy()
+<span style="color: #555555">In [2]: </span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">expression_inplace</span>(x):
+<span style="color: #555555">   ...: </span>    a = x.copy()
+<span style="color: #555555">   ...: </span>    a **= <span style="color: #B452CD">4</span>
+<span style="color: #555555">   ...: </span>    a *= <span style="color: #B452CD">3</span>
+<span style="color: #555555">   ...: </span>    a += <span style="color: #B452CD">2</span>*x
+<span style="color: #555555">   ...: </span>    a += <span style="color: #B452CD">4</span>
+<span style="color: #555555">   ...: </span>    a /= x + <span style="color: #B452CD">1</span>
+<span style="color: #555555">   ...: </span>    <span style="color: #8B008B; font-weight: bold">return</span> a
+<span style="color: #555555">   ...:</span>
 
-<span style="color: #228B22"># or</span>
-a = zeros(x.shape, x.dtype)
+<span style="color: #555555">In [3]: </span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
-<span style="color: #228B22"># or</span>
-a = zeros_like(x)  <span style="color: #228B22"># zeros and same size as x</span>
+<span style="color: #555555">In [4]: </span>x = np.linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">10000000</span>)
+
+<span style="color: #555555">In [5]: </span>%<span style="color: #8B008B; font-weight: bold">timeit</span>  expression(x)
+<span style="color: #888888">1 loops, best of 3: 771 ms per loop</span>
+
+<span style="color: #555555">In [6]: </span>%<span style="color: #8B008B; font-weight: bold">timeit</span>  expression_inplace(x)
+<span style="color: #888888">1 loops, best of 3: 728 ms per loop</span>
 </pre></div>
 <p>
-Make sure a list or array is an array:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">a = asarray(a)
-b = asarray(somearray, dtype=<span style="color: #658b00">float</span>)  <span style="color: #228B22"># specify data type</span>
-</pre></div>
-<p>
-Test if an object is an array:
-
-<p>
-
-<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #658b00">type</span>(a)
-&lt;<span style="color: #658b00">type</span> <span style="color: #CD5555">&#39;numpy.ndarray&#39;</span>&gt;
-&gt;&gt;&gt; <span style="color: #658b00">isinstance</span>(a, ndarray)
-<span style="color: #658b00">True</span>
-</pre></div>
-
+Only 5% speed-up, so use <code>+=</code>, <code>-=</code>, etc. when arrays are large and
+you need to save memory
 </div>
 
 

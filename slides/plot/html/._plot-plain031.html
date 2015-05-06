@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,46 +288,41 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Making MP4, Ogg, WebM, or Flash videos  <a name="___sec31"></a></h2>
+<h2 id="___sec30">Make and play animated GIF file </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-Tool: <code>avconv</code> or <code>ffmpeg</code>
+Tool: <code>convert</code> from the ImageMagick software suite.
+
+<p>
+Unix command:
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; avconv -r 5 -i tmp_%04d.png -vcodec flv movie.flv
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; convert -delay 50 tmp_*.png movie.gif
 </pre></div>
 <p>
-where
-
-<ul>
-  <li> <code>-r 5</code> specifies 5 frames per second</li>
-  <li> <code>-i tmp_%04d.png</code> specifies filenames <br />
-    (<code>tmp_0000.png</code>, <code>tmp_0001.png</code>, ...)</li>
-</ul>
-
-Different formats apply different codecs (<code>-vcodec</code>) and
-video filenamet extensions:
+Delay: 50/100 s, i.e., 0.5 s between each frame.
 
 <p>
-<!-- Add vertical space -->
-<br />
+Play animated GIF file with <code>animate</code> from ImageMagick:
 
 <p>
-<table border="1">
-<thead>
-<tr><th align="center">Format</th> <th align="center">           Codec and filename           </th> </tr>
-</thead>
-<tbody>
-<tr><td align="left">   Flash     </td> <td align="left">   <code>-vcodec flv movie.flv</code>          </td> </tr>
-<tr><td align="left">   MP4       </td> <td align="left">   <code>-vcodec libx264 movie.mp4</code>      </td> </tr>
-<tr><td align="left">   Webm      </td> <td align="left">   <code>-vcodec libvpx movie.webm</code>      </td> </tr>
-<tr><td align="left">   Ogg       </td> <td align="left">   <code>-vcodec libtheora movie.ogg</code>    </td> </tr>
-</tbody>
-</table>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; animate movie.gif
+</pre></div>
+<p>
+or insert this HTML code in some file <code>tmp.html</code> loaded into a browser:
+
+<p>
+
+<!-- code=html (!bc htmlcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;img</span> <span style="color: #7D9029">src=</span><span style="color: #BA2121">&quot;movie.gif&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
+</pre></div>
 
 </div>
 

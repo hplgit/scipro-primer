@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,27 +288,32 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Alternativ plotting of \( y=f(x) \) curves  <a name="___sec63"></a></h2>
+<h2 id="___sec62">Summary of plotting \( y=f(x) \) curves </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-Single SciTools <code>plot</code> command with keyword arguments:
+Curve plotting (unified syntax for Matplotlib and SciTools):
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scitools.std</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #408080; font-style: italic">#from scitools.std import *</span>
+
+plot(x, y)         <span style="color: #408080; font-style: italic"># simplest command</span>
 
 plot(t1, y1, <span style="color: #BA2121">&#39;r&#39;</span>,  <span style="color: #408080; font-style: italic"># curve 1, red line</span>
      t2, y2, <span style="color: #BA2121">&#39;b&#39;</span>,  <span style="color: #408080; font-style: italic"># curve 2, blue line</span>
-     t3, y3, <span style="color: #BA2121">&#39;o&#39;</span>,  <span style="color: #408080; font-style: italic"># curve 3, circles at data points</span>
-     axis<span style="color: #666666">=</span>[t1[<span style="color: #666666">0</span>], t1[<span style="color: #666666">-1</span>], <span style="color: #666666">-1.1</span>, <span style="color: #666666">1.1</span>],
-     legend<span style="color: #666666">=</span>(<span style="color: #BA2121">&#39;model 1&#39;</span>, <span style="color: #BA2121">&#39;model 2&#39;</span>, <span style="color: #BA2121">&#39;measurements&#39;</span>),
-     xlabel<span style="color: #666666">=</span><span style="color: #BA2121">&#39;time&#39;</span>, ylabel<span style="color: #666666">=</span><span style="color: #BA2121">&#39;force&#39;</span>,
-     savefig<span style="color: #666666">=</span><span style="color: #BA2121">&#39;myframe_</span><span style="color: #BB6688; font-weight: bold">%04d</span><span style="color: #BA2121">.png&#39;</span> <span style="color: #666666">%</span> plot_counter)
+     t3, y3, <span style="color: #BA2121">&#39;o&#39;</span>)  <span style="color: #408080; font-style: italic"># curve 3, circles at data points</span>
+axis([t1[<span style="color: #666666">0</span>], t1[<span style="color: #666666">-1</span>], <span style="color: #666666">-1.1</span>, <span style="color: #666666">1.1</span>])
+legend([<span style="color: #BA2121">&#39;model 1&#39;</span>, <span style="color: #BA2121">&#39;model 2&#39;</span>, <span style="color: #BA2121">&#39;measurements&#39;</span>])
+xlabel(<span style="color: #BA2121">&#39;time&#39;</span>);  ylabel(<span style="color: #BA2121">&#39;force&#39;</span>)
+savefig(<span style="color: #BA2121">&#39;myframe_</span><span style="color: #BB6688; font-weight: bold">%04d</span><span style="color: #BA2121">.png&#39;</span> <span style="color: #666666">%</span> plot_counter)
 </pre></div>
-
+<p>
+Note: straight lines are drawn between each data point
 </div>
 
 

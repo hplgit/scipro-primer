@@ -123,7 +123,7 @@ MathJax.Hub.Config({
 
 
 
-<center><h1>Ch.5: Array computing and curve plotting</h1></center>  <!-- document title -->
+<center><h1 style="text-align: center;">Ch.5: Array computing and curve plotting</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -132,99 +132,84 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>&nbsp;<br>
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>&nbsp;<br>
-<center><h4>Sep 16, 2014</h4></center> <!-- date -->
-<p>
-
+<center><h4>May 6, 2015</h4></center> <!-- date -->
 </section>
 
 
 <section>
-
-<h2>Goal: learn to visualize functions  <a name="___sec0"></a></h2>
-
-<center><p><img src="fig-plot/plot2a_pylab.png" align="bottom" width=600></p></center>
+<h2 id="___sec0">Goal: learn to visualize functions </h2>
 
 <p>
+<center><p><img src="fig-plot/comic_plot.png" align="bottom" width=600></p></center>
 
+<p>
+<!-- FIGURE: [fig-plot/plot2a_pylab.png, width=600 frac=0.9] -->
 </section>
 
 
 <section>
+<h2 id="___sec1">We need to learn about a new object: array </h2>
 
-<h2>We need to learn about a new object: array  <a name="___sec1"></a></h2>
+<p>
 
-
-<div class="alert alert-block alert-block alert-text-normal">
+<div class="fragment alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li class="fragment"> Curves \( y=f(x) \) are visualized by drawing straight lines between points along the curve</li>
-  <p><li class="fragment"> Meed to store the coordinates of the points along the curve in lists or <em>arrays</em> <code>x</code> and <code>y</code></li>
-  <p><li class="fragment"> Arrays \( \approx \) lists, but computationally much more efficient</li>
-  <p><li class="fragment"> To compute the <code>y</code> coordinates (in an array) we need to learn about <em>array computations</em> or <em>vectorization</em></li>
-  <p><li class="fragment"> Array computations are useful for much more than plotting curves!</li>
+
+<p><li class="fragment"> Curves \( y=f(x) \) are visualized by drawing straight lines between points along the curve</li>
+
+<p><li class="fragment"> Meed to store the coordinates of the points along the curve in lists or <em>arrays</em> <code>x</code> and <code>y</code></li>
+
+<p><li class="fragment"> Arrays \( \approx \) lists, but computationally much more efficient</li>
+
+<p><li class="fragment"> To compute the <code>y</code> coordinates (in an array) we need to learn about <em>array computations</em> or <em>vectorization</em></li>
+
+<p><li class="fragment"> Array computations are useful for much more than plotting curves!</li>
 </ul>
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec2">The minimal need-to-know about vectors </h2>
 
-<h2>The minimal need-to-know about vectors  <a name="___sec2"></a></h2>
-
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
 <p>
 
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b></b>
 <ul>
-  <p><li class="fragment"> Vectors are known from high school mathematics, e.g., <br />
+
+<p><li class="fragment"> Vectors are known from high school mathematics, e.g., <br />
     point \( (x,y) \) in the plane, point \( (x,y,z) \) in space</li>
-  <p><li class="fragment"> In general, a vector \( v \) is an \( n \)-tuple of numbers:<br />
+
+<p><li class="fragment"> In general, a vector \( v \) is an \( n \)-tuple of numbers:<br />
     \( v=(v_0,\ldots,v_{n-1}) \)</li>
-  <p><li class="fragment"> Vectors can be represented by lists: \( v_i \) is stored as <code>v[i]</code>,<br />
+
+<p><li class="fragment"> Vectors can be represented by lists: \( v_i \) is stored as <code>v[i]</code>,<br />
     but we shall use arrays instead</li>
 </ul>
 </div>
 
-
-
 <p>
-
-<p class="fragment">
 
 <div class="fragment alert alert-block alert-block alert-text-small">
 <b></b>
-
+<p>
 Vectors and arrays are key concepts in this chapter. It takes separate math courses to understand what vectors and arrays really are, but in this course we only need a small subset of the complete story. A learning strategy may be to just start using vectors/arrays in programs and later, if necessary, go back to the more mathematical details in the first part of Ch. 5.
 </div>
-
-
-</p>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec3">The minimal need-to-know about arrays </h2>
 
-<h2>The minimal need-to-know about arrays  <a name="___sec3"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -251,33 +236,27 @@ $$
 <p>&nbsp;<br>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> The no of indices in an array is the <em>rank</em> or <em>number of dimensions</em></li>
-  <p><li> Vector = one-dimensional array, or rank 1 array</li>
-  <p><li> In Python code, we use Numerical Python arrays instead of nested lists to represent mathematical arrays (because this is computationally more efficient)</li>
+
+<p><li> The no of indices in an array is the <em>rank</em> or <em>number of dimensions</em></li>
+
+<p><li> Vector = one-dimensional array, or rank 1 array</li>
+
+<p><li> In Python code, we use Numerical Python arrays instead of nested lists to represent mathematical arrays (because this is computationally more efficient)</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec4">Storing (x,y) points on a curve in lists </h2>
 
-<h2>Storing (x,y) points on a curve in lists  <a name="___sec4"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Collect points on a function curve \( y=f(x) \) in lists:</b>
-<p>
-
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -294,11 +273,9 @@ $$
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Turn lists into Numerical Python (NumPy) arrays:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -308,20 +285,15 @@ $$
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec5">Make arrays directly (instead of lists) </h2>
 
-<h2>Make arrays directly (instead of lists)  <a name="___sec5"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>The pro drops lists and makes NumPy arrays directly:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -336,46 +308,42 @@ $$
 Note:
 
 <ul>
-  <p><li> <code>xrange</code> is like <code>range</code> but faster
+
+<p><li> <code>xrange</code> is like <code>range</code> but faster
     (esp. for large <code>n</code> - <code>xrange</code> does not explicitly build
     a list of integers, <code>xrange</code> just lets you loop over the values)</li>
-  <p><li> Entire arrays must be made by <code>numpy</code> (<code>np</code>) functions</li>
+
+<p><li> Entire arrays must be made by <code>numpy</code> (<code>np</code>) functions</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec6">Arrays are not as flexible as list, but computational much more efficient </h2>
 
-<h2>Arrays are not as flexible as list, but computational much more efficient  <a name="___sec6"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> List elements can be <em>any</em> Python objects</li>
-  <p><li> Array elements can only be of <em>one object type</em></li>
-  <p><li> Arrays are very efficient to store in memory and compute with<br />
+
+<p><li> List elements can be <em>any</em> Python objects</li>
+
+<p><li> Array elements can only be of <em>one object type</em></li>
+
+<p><li> Arrays are very efficient to store in memory and compute with<br />
     if the element type is <code>float</code>, <code>int</code>, or <code>complex</code></li>
-  <p><li> Rule: use arrays for sequences of numbers!</li>
+
+<p><li> Rule: use arrays for sequences of numbers!</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec7">We can work with entire arrays at once - instead of one element at a time </h2>
 
-<h2>We can work with entire arrays at once - instead of one element at a time  <a name="___sec7"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -400,32 +368,26 @@ However, if <code>x</code> is array, <code>y</code> can be computed by
 <p>
 The loop is now inside <code>np.sin</code> and implemented in very efficient C code.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec8">Operating on entire arrays at once is called <em>vectorization</em> </h2>
 
-<h2>Operating on entire arrays at once is called <em>vectorization</em>  <a name="___sec8"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Vectorization gives:</b>
-<p>
-
 <ul>
-  <p><li> shorter, more readable code, closer to the mathematics</li>
-  <p><li> much faster code</li>
+
+<p><li> shorter, more readable code, closer to the mathematics</li>
+
+<p><li> much faster code</li>
 </ul>
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Use <code>%timeit</code> in IPython to measure the speed-up for \( y=\sin x e^{-x} \):</b>
-<p>
 <p>
 
 <!-- code=ipy (!bc ipy) typeset with pygments style "native" -->
@@ -437,11 +399,11 @@ The loop is now inside <code>np.sin</code> and implemented in very efficient C c
 
 <span style="color: #aaaaaa">In [4]: </span><span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">np.zeros(</span><span style="color: #24909d">len</span><span style="color: #d0d0d0">(x))</span>
 
-<span style="color: #aaaaaa">In [5]: </span><span style="color: #d0d0d0">%</span><span style="color: #6ab825; font-weight: bold">timeit</span> <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">i</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #24909d">xrange</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">len</span><span style="color: #d0d0d0">(x)):</span> \
+<span style="color: #aaaaaa">In [5]: </span><span style="color: #d0d0d0">%</span><span style="color: #6ab825; font-weight: bold">timeit</span> for i in xrange(len(x)): \
 <span style="color: #cccccc">        y[i] = np.sin(x[i])*np.exp(-x[i])</span>
 <span style="color: #cccccc">1 loops, best of 3: 247 ms per loop</span>
 
-<span style="color: #aaaaaa">In [6]: </span><span style="color: #d0d0d0">%</span><span style="color: #6ab825; font-weight: bold">timeit</span> <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">np.sin(x)*np.exp(-x)</span>
+<span style="color: #aaaaaa">In [6]: </span><span style="color: #d0d0d0">%</span><span style="color: #6ab825; font-weight: bold">timeit</span> y = np.sin(x)*np.exp(-x)
 <span style="color: #cccccc">100 loops, best of 3: 4.77 ms per loop</span>
 
 <span style="color: #aaaaaa">In [7]: </span><span style="color: #3677a9">247</span><span style="color: #d0d0d0">/</span><span style="color: #3677a9">4.77</span>
@@ -449,17 +411,13 @@ The loop is now inside <code>np.sin</code> and implemented in very efficient C c
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec9">A function <code>f(x)</code> written for a number <code>x</code> usually works for array <code>x</code> too </h2>
 
-<h2>A function <code>f(x)</code> written for a number <code>x</code> usually works for array <code>x</code> too  <a name="___sec9"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -480,11 +438,9 @@ from numpy import sin, exp, linspace
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-notice alert-text-normal">
 <b>Note: <code>math</code> is for numbers and <code>numpy</code> for arrays.</b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -502,62 +458,54 @@ from numpy import sin, exp, linspace
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec10">Array arithmetics is broken down to a series of unary/binary array operations </h2>
 
-<h2>Array arithmetics is broken down to a series of unary/binary array operations  <a name="___sec10"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
  <p><li> Consider <code>y = f(x)</code>, where <code>f</code> returns <code>x**3 + sin(x)*exp(-3*x)</code></li>
  <p><li> <code>f(x)</code> leads to the following set of vectorized sub-computations:</li>
 
 <ol>
-  <p><li> <code>r1 = x**3</code> <br />
-     <code>for i in range(len(x)): r1[i] = x[i]**3</code><br />
-     (but with loop in C)</li>
-  <p><li> <code>r2 = sin(x)</code> (computed elementwise in C)</li>
-  <p><li> <code>r3 = -3*x</code></li>
-  <p><li> <code>r4 = exp(r3)</code></li>
-  <p><li> <code>r5 = r3*r4</code></li>
-  <p><li> <code>r6 = r1 + r5</code></li>
-  <p><li> <code>y = r6</code></li>
-</ol>
-<p>
 
- <p><li> Note: this is the same set of operations as you would do with a calculator
+<p><li> <code>r1 = x**3</code> <br />
+     <code>for i in range(len(x)): r1[i] = x[i]**3</code> <br />
+     (but with loop in C)</li>
+
+<p><li> <code>r2 = sin(x)</code> (computed elementwise in C)</li>
+
+<p><li> <code>r3 = -3*x</code></li>
+
+<p><li> <code>r4 = exp(r3)</code></li>
+
+<p><li> <code>r5 = r3*r4</code></li>
+
+<p><li> <code>r6 = r1 + r5</code></li>
+
+<p><li> <code>y = r6</code></li>
+</ol>
+<p><li> Note: this is the same set of operations as you would do with a calculator
    when <code>x</code> is a number</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Very important application: vectorized code for computing points along a curve  <a name="___sec11"></a></h2>
+<h2 id="___sec11">Very important application: vectorized code for computing points along a curve </h2>
 
 <p>&nbsp;<br>
 $$ f(x) = x^2e^{-\frac{1}{2}x}\sin(x-\frac{1}{3}\pi),\quad x\in [0, 4\pi]$$
 <p>&nbsp;<br>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Vectorized computation of \( n+1 \) points along the curve.</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -569,57 +517,48 @@ $$ f(x) = x^2e^{-\frac{1}{2}x}\sin(x-\frac{1}{3}\pi),\quad x\in [0, 4\pi]$$
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec12">New term: vectorization </h2>
 
-<h2>New term: vectorization  <a name="___sec12"></a></h2>
-
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
 <p>
 
+<div class="fragment alert alert-block alert-block alert-text-normal">
+<b></b>
 <ul>
-  <p><li class="fragment"> <em>Scalar</em>: a number</li>
-  <p><li class="fragment"> <em>Vector</em> or <em>array</em>: sequence of numbers (vector in mathematics)</li>
-  <p><li class="fragment"> We speak about scalar computations (one number at a time) versus
+
+<p><li class="fragment"> <em>Scalar</em>: a number</li>
+
+<p><li class="fragment"> <em>Vector</em> or <em>array</em>: sequence of numbers (vector in mathematics)</li>
+
+<p><li class="fragment"> We speak about scalar computations (one number at a time) versus
     vectorized computations (operations on entire arrays, no Python loops)</li>
 </ul>
 </div>
 
-
 <p>
-<div class="alert alert-block alert-block alert-text-normal">
+<div class="fragment alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li class="fragment"> <em>Vectorized functions</em> can operate on arrays (vectors)</li>
-  <p><li class="fragment"> <em>Vectorization</em> is the process of turning a non-vectorized algorithm with (Python) loops into a vectorized version without (Python) loops</li>
-  <p><li class="fragment"> Mathematical functions in Python without <code>if</code> tests automatically work for both scalar and vector (array) arguments (i.e., no vectorization is needed by the programmer)</li>
+
+<p><li class="fragment"> <em>Vectorized functions</em> can operate on arrays (vectors)</li>
+
+<p><li class="fragment"> <em>Vectorization</em> is the process of turning a non-vectorized algorithm with (Python) loops into a vectorized version without (Python) loops</li>
+
+<p><li class="fragment"> Mathematical functions in Python without <code>if</code> tests automatically work for both scalar and vector (array) arguments (i.e., no vectorization is needed by the programmer)</li>
 </ul>
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec13">Plotting the curve of a function: the very basics </h2>
 
-<h2>Plotting the curve of a function: the very basics  <a name="___sec13"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Plot the curve of \( y(t) = t^2e^{-t^2} \):</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -636,33 +575,25 @@ $$ f(x) = x^2e^{-\frac{1}{2}x}\sin(x-\frac{1}{3}\pi),\quad x\in [0, 4\pi]$$
 
 </div>
 
-
 <p>
 <center><p><img src="fig-plot/plot1a_pylab.png" align="bottom" width=300></p></center>
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec14">A plot should have labels on axis and a title </h2>
 
-<h2>A plot should have labels on axis and a title  <a name="___sec14"></a></h2>
-
+<p>
 <center><p><img src="fig-plot/plot1c_pylab.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec15">The code that makes the last plot </h2>
 
-<h2>The code that makes the last plot  <a name="___sec15"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -684,29 +615,25 @@ $$ f(x) = x^2e^{-\frac{1}{2}x}\sin(x-\frac{1}{3}\pi),\quad x\in [0, 4\pi]$$
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec16">SciTools vs. NumPy and Matplotlib </h2>
 
-<h2>SciTools vs. NumPy and Matplotlib  <a name="___sec16"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> SciTools is a Python package with lots of useful tools for mathematical computations, developed here in Oslo (Langtangen, Ring, Wilbers, Bredesen, ...)</li>
-  <p><li> Easyviz is a subpackage of SciTools (<code>scitools.easyviz</code>) doing plotting with Matlab-like syntax</li>
-  <p><li> Easyviz can use many plotting engine to produce a plot: Matplotlib, Gnuplot, Grace, Matlab, VTK, OpenDx, ... but the syntax remains the same</li>
-  <p><li> Matplotlib is the standard plotting package in the Python community - Easyviz can use the same syntax as Matplotlib</li>
-</ul>
-<p>
 
+<p><li> SciTools is a Python package with lots of useful tools for mathematical computations, developed here in Oslo (Langtangen, Ring, Wilbers, Bredesen, ...)</li>
+
+<p><li> Easyviz is a subpackage of SciTools (<code>scitools.easyviz</code>) doing plotting with Matlab-like syntax</li>
+
+<p><li> Easyviz can use many plotting engine to produce a plot: Matplotlib, Gnuplot, Grace, Matlab, VTK, OpenDx, ... but the syntax remains the same</li>
+
+<p><li> Matplotlib is the standard plotting package in the Python community - Easyviz can use the same syntax as Matplotlib</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -719,17 +646,13 @@ $$ f(x) = x^2e^{-\frac{1}{2}x}\sin(x-\frac{1}{3}\pi),\quad x\in [0, 4\pi]$$
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec17">Easyviz (imported from <code>scitools.std</code>) allows a more compact &quot;Pythonic&quot; syntax for plotting curves </h2>
 
-<h2>Easyviz (imported from <code>scitools.std</code>) allows a more compact &quot;Pythonic&quot; syntax for plotting curves  <a name="___sec17"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -751,22 +674,17 @@ Use keyword arguments instead of separate function calls:
 (This cannot be done with Matplotlib.)
 </div>
 
-
 <p>
 <center><p><img src="fig-plot/plot1c_pylab.png" align="bottom" width=300></p></center>
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec18">Plotting several curves in one plot </h2>
 
-<h2>Plotting several curves in one plot  <a name="___sec18"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Plot \( t^2e^{-t^2} \) and \( t^4e^{-t^2} \) in the same plot:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -794,20 +712,15 @@ Use keyword arguments instead of separate function calls:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec19">Alternative, more compact plot command </h2>
 
-<h2>Alternative, more compact plot command  <a name="___sec19"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -830,28 +743,21 @@ Use keyword arguments instead of separate function calls:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec20">The resulting plot with two curves </h2>
 
-<h2>The resulting plot with two curves  <a name="___sec20"></a></h2>
-
+<p>
 <center><p><img src="fig-plot/plot2a_pylab.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec21">Controlling line styles </h2>
 
-<h2>Controlling line styles  <a name="___sec21"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -877,20 +783,15 @@ Documentation of colors and line styles: see the book, <a href="http://hplgit.gi
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec22">Quick plotting with minimal typing </h2>
 
-<h2>Quick plotting with minimal typing  <a name="___sec22"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>A lazy pro would do this:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -899,20 +800,15 @@ Documentation of colors and line styles: see the book, <a href="http://hplgit.gi
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec23">Plot function given on the command line </h2>
 
-<h2>Plot function given on the command line  <a name="___sec23"></a></h2>
-
+<p>
 <div class="alert alert-block alert-question alert-text-normal">
 <b>Task: plot function given on the command line.</b>
-<p>
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "native" -->
@@ -923,20 +819,15 @@ Terminal&gt; python plotf.py &quot;exp(-0.2*x)*sin(2*pi*x)&quot; 0 4*pi
 Should plot \( e^{-0.2x}\sin (2\pi x) \), \( x\in [0,4\pi] \).
 <code>plotf.py</code> should work for &quot;any&quot; mathematical expression.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec24">Solution </h2>
 
-<h2>Solution  <a name="___sec24"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Complete program:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -955,21 +846,21 @@ Should plot \( e^{-0.2x}\sin (2\pi x) \), \( x\in [0,4\pi] \).
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec25">Let's make a movie/animation </h2>
 
-<h2>Let's make a movie/animation  <a name="___sec25"></a></h2>
-
+<p>
 <center><p><img src="fig-plot/plot4_thick.png" align="bottom" width=600></p></center>
+</section>
 
-<h2>The Gaussian/bell function  <a name="___sec26"></a></h2>
 
+<section>
+<h2 id="___sec26">The Gaussian/bell function </h2>
+
+<p>
 
 <table border="0">
 <tr>
@@ -980,9 +871,12 @@ Should plot \( e^{-0.2x}\sin (2\pi x) \), \( x\in [0,4\pi] \).
    \[ f(x; m, s) = {1\over\sqrt{2\pi}}{1\over s}\exp{\left[-{1\over2}\left({x-m\over s}\right)^2\right]} \]
 
 <ul>
-  <p><li> \( m \) is the location of the peak</li>
-  <p><li> \( s \) is a measure of the width of the function</li>
-  <p><li> Make a movie (animation) of how \( f(x;m,s) \) changes shape as \( s \) goes from 2 to 0.2</li>
+
+<p><li> \( m \) is the location of the peak</li>
+
+<p><li> \( s \) is a measure of the width of the function</li>
+
+<p><li> Make a movie (animation) of how \( f(x;m,s) \) changes shape as \( s \) goes from 2 to 0.2</li>
 </ul>
 </div>
 
@@ -992,46 +886,36 @@ Should plot \( e^{-0.2x}\sin (2\pi x) \), \( x\in [0,4\pi] \).
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec27">Movies are made from a (large) set of individual plots </h2>
 
-<h2>Movies are made from a (large) set of individual plots  <a name="___sec27"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Goal: make a movie showing how \( f(x) \) varies in shape as \( s \) decreases</li>
-  <p><li> Idea: put many plots (for different \( s \) values) together<br />
+
+<p><li> Goal: make a movie showing how \( f(x) \) varies in shape as \( s \) decreases</li>
+
+<p><li> Idea: put many plots (for different \( s \) values) together<br />
     (exactly as a cartoon movie)</li>
-  <p><li> How to program: loop over \( s \) values, call <code>plot</code> for each \( s \) and make hardcopy, combine all hardcopies to a movie</li>
-  <p><li> Very important: fix the \( y \) axis! Otherwise, the \( y \) axis always adapts to the peak of the function and the visual impression gets completely wrong</li>
+
+<p><li> How to program: loop over \( s \) values, call <code>plot</code> for each \( s \) and make hardcopy, combine all hardcopies to a movie</li>
+
+<p><li> Very important: fix the \( y \) axis! Otherwise, the \( y \) axis always adapts to the peak of the function and the visual impression gets completely wrong</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec28">The complete code for making the animation </h2>
 
-<h2>The complete code for making the animation  <a name="___sec28"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1063,17 +947,13 @@ Should plot \( e^{-0.2x}\sin (2\pi x) \), \( x\in [0,4\pi] \).
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec29">How to combine plot files to a movie (video file) </h2>
 
-<h2>How to combine plot files to a movie (video file)  <a name="___sec29"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1092,17 +972,13 @@ We use some program to combine these files to a video file:
  <p><li> <code>avconv</code> for MP4, WebM, Ogg, and Flash formats</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec30">Make and play animated GIF file </h2>
 
-<h2>Make and play animated GIF file  <a name="___sec30"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1137,17 +1013,13 @@ or insert this HTML code in some file <code>tmp.html</code> loaded into a browse
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec31">Making MP4, Ogg, WebM, or Flash videos </h2>
 
-<h2>Making MP4, Ogg, WebM, or Flash videos  <a name="___sec31"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1162,8 +1034,10 @@ Tool: <code>avconv</code> or <code>ffmpeg</code>
 where
 
 <ul>
-  <p><li> <code>-r 5</code> specifies 5 frames per second</li>
-  <p><li> <code>-i tmp_%04d.png</code> specifies filenames <br />
+
+<p><li> <code>-r 5</code> specifies 5 frames per second</li>
+
+<p><li> <code>-i tmp_%04d.png</code> specifies filenames <br />
     (<code>tmp_0000.png</code>, <code>tmp_0001.png</code>, ...)</li>
 </ul>
 <p>
@@ -1189,20 +1063,15 @@ video filenamet extensions:
 </table>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec32">How to play movie files in general </h2>
 
-<h2>How to play movie files in general  <a name="___sec32"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "native" -->
@@ -1214,20 +1083,15 @@ Terminal&gt; vlc movie.mp4
 <p>
 Other players (on Linux) are <code>mplayer</code>, <code>totem</code>, ...
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec33">HTML PNG file player </h2>
 
-<h2>HTML PNG file player  <a name="___sec33"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "native" -->
@@ -1237,29 +1101,24 @@ Other players (on Linux) are <code>mplayer</code>, <code>totem</code>, ...
 makes a player of <code>tmp_*.png</code> files in a file <code>mymovie.html</code>
 (load into a web browser), 4 frames per second
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec34">It is possible to plot curves in pure text (!) </h2>
 
-<h2>It is possible to plot curves in pure text (!)  <a name="___sec34"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Plots are stored in image files of type PDF and PNG</li>
-  <p><li> Sometimes you want a plot to be included in your program,<br />
-    e.g., to prove that the curve looks right in a compulsory exercise where only the program (and not a nicely typeset report) is submitted</li>
-  <p><li> <code>scitools.aplotter</code> can then be used for drawing primitive curves in pure text (ASCII) format</li>
-</ul>
-<p>
 
+<p><li> Plots are stored in image files of type PDF and PNG</li>
+
+<p><li> Sometimes you want a plot to be included in your program,<br />
+    e.g., to prove that the curve looks right in a compulsory exercise where only the program (and not a nicely typeset report) is submitted</li>
+
+<p><li> <code>scitools.aplotter</code> can then be used for drawing primitive curves in pure text (ASCII) format</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -1272,17 +1131,13 @@ makes a player of <code>tmp_*.png</code> files in a file <code>mymovie.html</cod
 <p>
 Try these statements out!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec35">Let's try to plot a discontinuous function </h2>
 
-<h2>Let's try to plot a discontinuous function  <a name="___sec35"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1307,22 +1162,17 @@ Python implementation:
 
 </div>
 
-
 <p>
 <center><p><img src="fig-plot/Heaviside3.png" align="bottom" width=300></p></center>
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec36">Plotting the Heaviside function: first try </h2>
 
-<h2>Plotting the Heaviside function: first try  <a name="___sec36"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Standard approach:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1352,21 +1202,15 @@ Let us debug in an interactive shell:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec37"><code>if x &lt; 0</code> does not work if <code>x</code> is array </h2>
 
-<h2><code>if x &lt; 0</code> does not work if <code>x</code> is array  <a name="___sec37"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Remedy 1: use a loop over <code>x</code> values.</b>
-<p>
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1383,21 +1227,15 @@ Let us debug in an interactive shell:
 <p>
 Downside: much to write, slow code if <code>n</code> is large
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec38"><code>if x &lt; 0</code> does not work if <code>x</code> is array </h2>
 
-<h2><code>if x &lt; 0</code> does not work if <code>x</code> is array  <a name="___sec38"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Remedy 2: use <code>vectorize</code>.</b>
-<p>
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1410,47 +1248,33 @@ Downside: much to write, slow code if <code>n</code> is large
 <p>
 Downside: The resulting function is as slow as Remedy 1
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec39"><code>if x &lt; 0</code> does not work if <code>x</code> is array </h2>
 
-<h2><code>if x &lt; 0</code> does not work if <code>x</code> is array  <a name="___sec39"></a></h2>
-
-
-<p class="fragment">
+<p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Remedy 3: code the <code>if</code> test differently.</b>
-
-
+<p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">Hv</span><span style="color: #d0d0d0">(x):</span>
+<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">Hv</span><span style="color: #d0d0d0">(x):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">where(x</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">0.0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1.0</span><span style="color: #d0d0d0">)</span>
 </pre></div>
 
 </div>
 
-
-</p>
-
-
 <p>
-
-<p class="fragment">
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>More generally:</b>
-
-
+<p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
+<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
     <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">condition:</span>
         <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">&lt;expression1&gt;</span>
     <span style="color: #6ab825; font-weight: bold">else</span><span style="color: #d0d0d0">:</span>
@@ -1466,20 +1290,13 @@ Downside: The resulting function is as slow as Remedy 1
 </pre></div>
 
 </div>
-
-
-</p>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec40">Back to plotting the Heaviside function </h2>
 
-<h2>Back to plotting the Heaviside function  <a name="___sec40"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1495,30 +1312,24 @@ With a vectorized <code>Hv(x)</code> function we can plot in the standard way
 
 </div>
 
-
 <p>
 <center><p><img src="fig-plot/Heaviside2.png" align="bottom" width=300></p></center>
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec41">How to make the function look discontinuous in the plot? </h2>
 
-<h2>How to make the function look discontinuous in the plot?  <a name="___sec41"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Newbie: use a lot of \( x \) points; the curve gets steeper</li>
-  <p><li> Pro: plot just two horizontal line segments<br />
+
+<p><li> Newbie: use a lot of \( x \) points; the curve gets steeper</li>
+
+<p><li> Pro: plot just two horizontal line segments<br />
     one from \( x=-10 \) to \( x=0 \), \( y=0 \); and one from \( x=0 \) to \( x=10 \), \( y=1 \)</li>
 </ul>
-<p>
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1528,28 +1339,21 @@ With a vectorized <code>Hv(x)</code> function we can plot in the standard way
 <p>
 Draws straight lines between \( (-10,0) \), \( (0,0) \), \( (0,1) \), \( (10, 1) \)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec42">The final plot of the discontinuous Heaviside function </h2>
 
-<h2>The final plot of the discontinuous Heaviside function  <a name="___sec42"></a></h2>
-
+<p>
 <center><p><img src="fig-plot/Heaviside.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec43">Removing the vertical jump from the plot </h2>
 
-<h2>Removing the vertical jump from the plot  <a name="___sec43"></a></h2>
-
+<p>
 <div class="alert alert-block alert-question alert-text-normal">
 <b>Question.</b>
 <p>
@@ -1557,22 +1361,17 @@ Some will argue and say that at high school they would draw \( H(x) \) as two ho
 How can we plot such a curve?
 </div>
 
-
 <p>
 <!-- Plot two curves, each corresponding to x < 0 and x > 0 -->
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec44">Some functions are challenging to visualize </h2>
 
-<h2>Some functions are challenging to visualize  <a name="___sec44"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Plot \( f(x) = \sin (1/x) \).</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1586,42 +1385,31 @@ How can we plot such a curve?
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec45">Plot based on 10 points </h2>
 
-<h2>Plot based on 10 points  <a name="___sec45"></a></h2>
-
+<p>
 <center><p><img src="fig-plot/sin1overx1.png" align="bottom" width=480></p></center>
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec46">Plot based on 1000 points </h2>
 
-<h2>Plot based on 1000 points  <a name="___sec46"></a></h2>
-
+<p>
 <center><p><img src="fig-plot/sin1overx2.png" align="bottom" width=480></p></center>
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec47">Assignment of an array does not copy the elements! </h2>
 
-<h2>Assignment of an array does not copy the elements!  <a name="___sec47"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1653,17 +1441,13 @@ The same yields slices:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec48">In-place array arithmetics </h2>
 
-<h2>In-place array arithmetics  <a name="___sec48"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1679,29 +1463,27 @@ The two following statements are mathematically equivalent:
 However,
 
 <ul>
-  <p><li> <code>a = a + b</code> is computed as (extra array needed)</li>
+
+<p><li> <code>a = a + b</code> is computed as (extra array needed)</li>
 
 <ol>
-   <p><li> <code>r1 = a + b</code></li>
-   <p><li> <code>a = r1</code></li>
-</ol>
-<p>
 
-  <p><li> <code>a += b</code> is computed as <code>a[i] += b[i]</code> for <code>i</code> in all indices (i.e., not extra array)</li>
-  <p><li> <code>a += b</code> is an <em>in-place</em> addition, because we change each element <em>in</em> <code>a</code>, rather than letting the name <code>a</code> refer to a new array, the result of <code>a+b</code></li>
+<p><li> <code>r1 = a + b</code></li>
+
+<p><li> <code>a = r1</code></li>
+</ol>
+<p><li> <code>a += b</code> is computed as <code>a[i] += b[i]</code> for <code>i</code> in all indices (i.e., not extra array)</li>
+
+<p><li> <code>a += b</code> is an <em>in-place</em> addition, because we change each element <em>in</em> <code>a</code>, rather than letting the name <code>a</code> refer to a new array, the result of <code>a+b</code></li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec49">In-place array arithmetics can save memory demands </h2>
 
-<h2>In-place array arithmetics can save memory demands  <a name="___sec49"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1737,17 +1519,13 @@ though at the cost of much less readable code:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec50">In-place arithmetics only saves memory, no significant speed-up </h2>
 
-<h2>In-place arithmetics only saves memory, no significant speed-up  <a name="___sec50"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1774,27 +1552,23 @@ Let's use IPython to measure the computational time:
 
 <span style="color: #aaaaaa">In [4]: </span><span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">np.linspace(</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">10000000</span><span style="color: #d0d0d0">)</span>
 
-<span style="color: #aaaaaa">In [5]: </span><span style="color: #d0d0d0">%</span><span style="color: #6ab825; font-weight: bold">timeit</span>  <span style="color: #d0d0d0">expression(x)</span>
+<span style="color: #aaaaaa">In [5]: </span><span style="color: #d0d0d0">%</span><span style="color: #6ab825; font-weight: bold">timeit</span>  expression(x)
 <span style="color: #cccccc">1 loops, best of 3: 771 ms per loop</span>
 
-<span style="color: #aaaaaa">In [6]: </span><span style="color: #d0d0d0">%</span><span style="color: #6ab825; font-weight: bold">timeit</span>  <span style="color: #d0d0d0">expression_inplace(x)</span>
+<span style="color: #aaaaaa">In [6]: </span><span style="color: #d0d0d0">%</span><span style="color: #6ab825; font-weight: bold">timeit</span>  expression_inplace(x)
 <span style="color: #cccccc">1 loops, best of 3: 728 ms per loop</span>
 </pre></div>
 <p>
 Only 5% speed-up, so use <code>+=</code>, <code>-=</code>, etc. when arrays are large and
 you need to save memory
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec51">Useful array operations </h2>
 
-<h2>Useful array operations  <a name="___sec51"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1836,20 +1610,15 @@ Test if an object is an array:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec52">Example: vectorizing a constant function </h2>
 
-<h2>Example: vectorizing a constant function  <a name="___sec52"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1882,17 +1651,13 @@ New version valid both for scalar and array <code>x</code>:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec53">Generalized array indexing </h2>
 
-<h2>Generalized array indexing  <a name="___sec53"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1917,20 +1682,15 @@ Any integer list or array can be used to indicate a set of indices:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec54">Generalized array indexing with boolean expressions </h2>
 
-<h2>Generalized array indexing with boolean expressions  <a name="___sec54"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -1946,17 +1706,13 @@ Any integer list or array can be used to indicate a set of indices:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec55">Two-dimensional arrays; math intro </h2>
 
-<h2>Two-dimensional arrays; math intro  <a name="___sec55"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1985,17 +1741,13 @@ A_{m-1,0} & \cdots & A_{m-1,n-1}
 $$
 <p>&nbsp;<br>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec56">Two-dimensional arrays; Python code </h2>
 
-<h2>Two-dimensional arrays; Python code  <a name="___sec56"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -2017,17 +1769,13 @@ Making and filling a two-dimensional NumPy array goes like this:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec57">From nested list to two-dimensional array </h2>
 
-<h2>From nested list to two-dimensional array  <a name="___sec57"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -2056,20 +1804,15 @@ Turn into NumPy array:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec58">How to loop over two-dimensional arrays </h2>
 
-<h2>How to loop over two-dimensional arrays  <a name="___sec58"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -2110,17 +1853,13 @@ Alternative single loop over all elements:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec59">How to take slices of two-dimensional arrays </h2>
 
-<h2>How to take slices of two-dimensional arrays  <a name="___sec59"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -2151,97 +1890,79 @@ Rule: can use slices <code>start:stop:inc</code> for each index
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec60">Time for a question </h2>
 
-<h2>Time for a question  <a name="___sec60"></a></h2>
-
-
-<p class="fragment">
+<p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Problem:</b>
-
+<p>
 Given
 
-
+<p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">t</span>
+<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">t</span>
 <span style="color: #d0d0d0">array([[</span>  <span style="color: #3677a9">1.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">2.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">3.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">4.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">5.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">6.</span><span style="color: #d0d0d0">],</span>
        <span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">7.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">8.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">],</span>
        <span style="color: #d0d0d0">[</span> <span style="color: #3677a9">13.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">14.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">15.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">16.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">17.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">18.</span><span style="color: #d0d0d0">],</span>
        <span style="color: #d0d0d0">[</span> <span style="color: #3677a9">19.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">20.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">21.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">22.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">23.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">24.</span><span style="color: #d0d0d0">],</span>
        <span style="color: #d0d0d0">[</span> <span style="color: #3677a9">25.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">26.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">27.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">28.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">29.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">30.</span><span style="color: #d0d0d0">]])</span>
 </pre></div>
-
+<p>
 What will <code>t[1:-1:2, 2:]</code> be?
 </div>
 
-
-</p>
-
-
 <p>
-
-<p class="fragment">
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Solution:</b>
-
+<p>
 Slice <code>1:-1:2</code> for first index results in
 
-
+<p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">7.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">8.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">]</span>
+<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">7.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">8.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">]</span>
 <span style="color: #d0d0d0">[</span> <span style="color: #3677a9">19.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">20.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">21.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">22.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">23.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">24.</span><span style="color: #d0d0d0">]</span>
 </pre></div>
-
+<p>
 Slice <code>2:</code> for the second index then gives
 
-
+<p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">]</span>
+<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">]</span>
 <span style="color: #d0d0d0">[</span> <span style="color: #3677a9">21.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">22.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">23.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">24.</span><span style="color: #d0d0d0">]</span>
 </pre></div>
 
 </div>
-
-
-</p>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec61">Summary of vectors and arrays </h2>
 
-<h2>Summary of vectors and arrays  <a name="___sec61"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Vector/array computing: apply a mathematical expression to every element in the vector/array (no loops in Python)</li>
-  <p><li> Ex: <code>sin(x**4)*exp(-x**2)</code>, <code>x</code> can be array or scalar<br />
-    for array the <code>i</code>'th element becomes <code>sin(x[i]**4)*exp(-x[i]**2)</code></li>
-  <p><li> Vectorization: make scalar mathematical computation valid for vectors/arrays</li>
-  <p><li> Pure mathematical expressions require no extra vectorization</li>
-  <p><li> Mathematical formulas involving <code>if</code> tests require manual work for vectorization:</li>
-</ul>
-<p>
 
+<p><li> Vector/array computing: apply a mathematical expression to every element in the vector/array (no loops in Python)</li>
+
+<p><li> Ex: <code>sin(x**4)*exp(-x**2)</code>, <code>x</code> can be array or scalar<br />
+    for array the <code>i</code>'th element becomes <code>sin(x[i]**4)*exp(-x[i]**2)</code></li>
+
+<p><li> Vectorization: make scalar mathematical computation valid for vectors/arrays</li>
+
+<p><li> Pure mathematical expressions require no extra vectorization</li>
+
+<p><li> Mathematical formulas involving <code>if</code> tests require manual work for vectorization:</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2250,17 +1971,13 @@ Slice <code>2:</code> for the second index then gives
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec62">Summary of plotting \( y=f(x) \) curves </h2>
 
-<h2>Summary of plotting \( y=f(x) \) curves  <a name="___sec62"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -2285,17 +2002,13 @@ Curve plotting (unified syntax for Matplotlib and SciTools):
 <p>
 Note: straight lines are drawn between each data point
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec63">Alternativ plotting of \( y=f(x) \) curves </h2>
 
-<h2>Alternativ plotting of \( y=f(x) \) curves  <a name="___sec63"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -2316,27 +2029,19 @@ Single SciTools <code>plot</code> command with keyword arguments:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec64">Summary of making animations </h2>
 
-<h2>Summary of making animations  <a name="___sec64"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
  <p><li> Make a hardcopy of each plot frame (PNG or PDF format)</li>
  <p><li> Use <code>avconv</code> or <code>ffmpeg</code> to make movie</li>
 </ul>
-<p>
-
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "native" -->
@@ -2344,17 +2049,13 @@ Single SciTools <code>plot</code> command with keyword arguments:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec65">Array functionality </h2>
 
-<h2>Array functionality  <a name="___sec65"></a></h2>
-
+<p>
 <table border="1">
 <thead>
 <tr><th align="center">            Construction            </th> <th align="center">                                     Meaning                                     </th> </tr>
@@ -2383,21 +2084,18 @@ Single SciTools <code>plot</code> command with keyword arguments:
 <tr><td align="left">   <code>isinstance(a, ndarray)</code>     </td> <td align="left">   is <code>True</code> if <code>a</code> is an array                                   </td> </tr>
 </tbody>
 </table>
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec66">Summarizing example: animating a function (part 1) </h2>
 
-<h2>Summarizing example: animating a function (part 1)  <a name="___sec66"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Goal: visualize the temperature in the ground as a function of</li>
+
+<p><li> Goal: visualize the temperature in the ground as a function of</li>
 </ul>
 <p>
 
@@ -2405,10 +2103,9 @@ Single SciTools <code>plot</code> command with keyword arguments:
  \[ T(z,t) = T_0 + Ae^{-az}\cos (\omega t - az),\quad a =\sqrt{\omega\over 2k} \]
 
 <ul>
-  <p><li> First we make a <em>general</em> animation function for an \( f(x,t) \):</li>
-</ul>
-<p>
 
+<p><li> First we make a <em>general</em> animation function for an \( f(x,t) \):</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2427,23 +2124,19 @@ Single SciTools <code>plot</code> command with keyword arguments:
         <span style="color: #d0d0d0">counter</span> <span style="color: #d0d0d0">+=</span> <span style="color: #3677a9">1</span>
 </pre></div>
 <ul>
-  <p><li> Then we call this function with our special \( T(z,t) \) function</li>
+
+<p><li> Then we call this function with our special \( T(z,t) \) function</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec67">Summarizing example: animating a function (part 2) </h2>
 
-<h2>Summarizing example: animating a function (part 2)  <a name="___sec67"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2475,9 +2168,6 @@ Single SciTools <code>plot</code> command with keyword arguments:
 </pre></div>
 
 </div>
-
-
-
 </section>
 
 

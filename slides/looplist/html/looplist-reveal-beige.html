@@ -123,7 +123,7 @@ MathJax.Hub.Config({
 
 
 
-<center><h1>Ch.2: Loops and lists</h1></center>  <!-- document title -->
+<center><h1 style="text-align: center;">Ch.2: Loops and lists</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -132,23 +132,20 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>&nbsp;<br>
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>&nbsp;<br>
-<center><h4>Sep 14, 2014</h4></center> <!-- date -->
-<p>
-
+<center><h4>May 6, 2015</h4></center> <!-- date -->
 </section>
 
 
 <section>
+<h2 id="___sec0">Make a table of Celsius and Fahrenheit degrees </h2>
 
-<h2>Make a table of Celsius and Fahrenheit degrees  <a name="___sec0"></a></h2>
-
+<p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">-20  -4.0
@@ -171,17 +168,13 @@ MathJax.Hub.Config({
 <p>
 How can a program write out such a table?
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec1">Making a table: the simple naive solution </h2>
 
-<h2>Making a table: the simple naive solution  <a name="___sec1"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -207,23 +200,23 @@ C =  <span style="color: #B452CD">35</span>;  F = <span style="color: #B452CD">9
 C =  <span style="color: #B452CD">40</span>;  F = <span style="color: #B452CD">9.0</span>/<span style="color: #B452CD">5</span>*C + <span style="color: #B452CD">32</span>;  <span style="color: #8B008B; font-weight: bold">print</span> C, F
 </pre></div>
 <ul>
-  <p><li> Very boring to write, easy to introduce a misprint</li>
-  <p><li> When programming becomes boring, there is usually a construct that automates the writing!</li>
-  <p><li> The computer is extremely good at performing repetitive tasks</li>
-  <p><li> For this purpose we use <em>loops</em></li>
+
+<p><li> Very boring to write, easy to introduce a misprint</li>
+
+<p><li> When programming becomes boring, there is usually a construct that automates the writing!</li>
+
+<p><li> The computer is extremely good at performing repetitive tasks</li>
+
+<p><li> For this purpose we use <em>loops</em></li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec2">The while loop makes it possible to repeat almost similar tasks </h2>
 
-<h2>The while loop makes it possible to repeat almost similar tasks  <a name="___sec2"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -240,24 +233,21 @@ a boolean condition is true
 &lt;first statement after loop&gt;
 </pre></div>
 <ul>
-  <p><li> All statements in the loop must be indented!</li>
-  <p><li> The loop ends when an unindented statement is encountered</li>
+
+<p><li> All statements in the loop must be indented!</li>
+
+<p><li> The loop ends when an unindented statement is encountered</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec3">The while loop for making a table </h2>
 
-<h2>The while loop for making a table  <a name="___sec3"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
@@ -272,17 +262,13 @@ dC = <span style="color: #B452CD">5</span>                     <span style="colo
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec4">The program flow in a while loop </h2>
 
-<h2>The program flow in a while loop  <a name="___sec4"></a></h2>
-
+<p>
 
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=C+%3D+-20%0AdC+%3D+5%0Awhile+C+%3C%3D+40%3A%0A++++F+%3D+%289.0%2F5%29%2AC+%2B+32%0A++++print+C%2C+F%0A++++C+%3D+C+%2B+dC&curInstr=0&py=2&cumulative=false">
@@ -291,22 +277,24 @@ dC = <span style="color: #B452CD">5</span>                     <span style="colo
 Let us simulate the while loop by hand:
 
 <ul>
-  <p><li> First <code>C</code> is -20, \( -20 \leq 40 \) is true, therefore we execute the loop statements</li>
-  <p><li> Compute <code>F</code>, print, and update <code>C</code> to -15</li>
-  <p><li> We jump up to the <code>while</code> line, evaluate \( C\leq 40 \), which is true, hence a new round in the loop</li>
-  <p><li> We continue this way until <code>C</code> is updated to 45</li>
-  <p><li> Now the loop condition \( 45\leq 40 \) is false, and the program jumps to the first line after the loop - the loop is over</li>
+
+<p><li> First <code>C</code> is -20, \( -20 \leq 40 \) is true, therefore we execute the loop statements</li>
+
+<p><li> Compute <code>F</code>, print, and update <code>C</code> to -15</li>
+
+<p><li> We jump up to the <code>while</code> line, evaluate \( C\leq 40 \), which is true, hence a new round in the loop</li>
+
+<p><li> We continue this way until <code>C</code> is updated to 45</li>
+
+<p><li> Now the loop condition \( 45\leq 40 \) is false, and the program jumps to the first line after the loop - the loop is over</li>
 </ul>
-<p>
-
-
 </section>
 
 
 <section>
+<h2 id="___sec5">Boolean expressions are true or false </h2>
 
-<h2>Boolean expressions are true or false  <a name="___sec5"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -338,17 +326,13 @@ We can test boolean expressions in a Python shell:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec6">Combining boolean expressions </h2>
 
-<h2>Combining boolean expressions  <a name="___sec6"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -388,17 +372,13 @@ Rule 2: <code>C1 or C2</code> is <code>True</code> if one of <code>C1</code> or 
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec7">Lists are objects for storing a sequence of things (objects) </h2>
 
-<h2>Lists are objects for storing a sequence of things (objects)  <a name="___sec7"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -431,17 +411,13 @@ Better: a set of values can be collected in a list
 <p>
 Now there is one variable, <code>C</code>, holding all the values
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec8">List operations: initialization and indexing </h2>
 
-<h2>List operations: initialization and indexing  <a name="___sec8"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -473,20 +449,15 @@ List indices start at <code>0</code>: <code>0</code>, <code>1</code>, <code>2</c
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec9">List operations: append, extend, insert, delete </h2>
 
-<h2>List operations: append, extend, insert, delete  <a name="___sec9"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
@@ -511,20 +482,15 @@ List indices start at <code>0</code>: <code>0</code>, <code>1</code>, <code>2</c
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec10">List operations: search for elements, negative indices </h2>
 
-<h2>List operations: search for elements, negative indices  <a name="___sec10"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
@@ -547,17 +513,13 @@ List indices start at <code>0</code>: <code>0</code>, <code>1</code>, <code>2</c
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec11">Loop over elements in a list with a for loop </h2>
 
-<h2>Loop over elements in a list with a for loop  <a name="___sec11"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -571,17 +533,13 @@ Use a <em>for</em> loop to loop over a list and process each element:
 <p>
 As with <em>while</em> loops, the statements in the loop must be indented!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec12">Simulate a for loop by hand </h2>
 
-<h2>Simulate a for loop by hand  <a name="___sec12"></a></h2>
-
+<p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">degrees = [<span style="color: #B452CD">0</span>, <span style="color: #B452CD">10</span>, <span style="color: #B452CD">20</span>, <span style="color: #B452CD">40</span>, <span style="color: #B452CD">100</span>]
@@ -593,24 +551,24 @@ As with <em>while</em> loops, the statements in the loop must be indented!
 Simulation by hand:
 
 <ul>
-  <p><li> First pass: <code>C</code> is 0</li>
-  <p><li> Second pass: <code>C</code> is 10 ...and so on...</li>
-  <p><li> Third pass: <code>C</code> is 20 ...and so on...</li>
-  <p><li> Fifth pass: <code>C</code> is 100, now the loop is over and the program flow jumps to the first statement with the same indentation as the <code>for C in degrees</code> line</li>
+
+<p><li> First pass: <code>C</code> is 0</li>
+
+<p><li> Second pass: <code>C</code> is 10 ...and so on...</li>
+
+<p><li> Third pass: <code>C</code> is 20 ...and so on...</li>
+
+<p><li> Fifth pass: <code>C</code> is 100, now the loop is over and the program flow jumps to the first statement with the same indentation as the <code>for C in degrees</code> line</li>
 </ul>
-<p>
-
-
 </section>
 
 
 <section>
+<h2 id="___sec13">Making a table with a for loop </h2>
 
-<h2>Making a table with a for loop  <a name="___sec13"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Table of Celsius and Fahreheit degrees:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -646,17 +604,13 @@ Output:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec14">A for loop can always be translated to a while loop </h2>
 
-<h2>A for loop can always be translated to a while loop  <a name="___sec14"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -683,27 +637,21 @@ can always be transformed to a corresponding while loop
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
 But not all while loops can be expressed as for loops!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec15">While loop version of the for loop for making a table </h2>
 
-<h2>While loop version of the for loop for making a table  <a name="___sec15"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -718,26 +666,19 @@ index = <span style="color: #B452CD">0</span>
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Implement a mathematical sum via a loop  <a name="___sec16"></a></h2>
+<h2 id="___sec16">Implement a mathematical sum via a loop </h2>
 
 <p>&nbsp;<br>
 $$ S = \sum_{i=1}^N i^2 $$
 <p>&nbsp;<br>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -762,24 +703,19 @@ i = <span style="color: #B452CD">1</span>
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
 Mathematical sums appear often so remember the implementation!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec17">Storing the table columns as lists </h2>
 
-<h2>Storing the table columns as lists  <a name="___sec17"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -801,17 +737,13 @@ Let us put all the Fahrenheit values in a list as well:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec18">For loop with list indices </h2>
 
-<h2>For loop with list indices  <a name="___sec18"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -847,20 +779,15 @@ We can alternatively loop over list indices:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec19">How can we change the elements in a list? </h2>
 
-<h2>How can we change the elements in a list?  <a name="___sec19"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Say we want to add 2 to all numbers in a list:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
@@ -874,21 +801,18 @@ We can alternatively loop over list indices:
 
 </div>
 
-
 <p>
 
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=v+%3D+%5B-1%2C+1%2C+10%5D%0Afor+e+in+v%3A%0A++++e+%3D+e+%2B+2&curInstr=0&py=2&cumulative=false">
 </iframe>
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec20">Changing a list element requires assignment to an indexed element </h2>
 
-<h2>Changing a list element requires assignment to an indexed element  <a name="___sec20"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -915,20 +839,15 @@ Solution: must <em>index a list element</em> to change its value:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec21">List comprehensions: compact creation of lists </h2>
 
-<h2>List comprehensions: compact creation of lists  <a name="___sec21"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Example: compute two lists in a for loop.</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -959,34 +878,26 @@ General form of a list comprehension:
 <p>
 where <code>expression</code> involves <code>element</code>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec22">Interactive demonstration of list comprehensions </h2>
 
-<h2>Interactive demonstration of list comprehensions  <a name="___sec22"></a></h2>
-
+<p>
 
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=n+%3D+4%0ACdegrees+%3D+%5B-5+%2B+i%2A2+for+i+in+range%28n%29%5D%0AFdegrees+%3D+%5B%289.0%2F5%29%2AC+%2B+32+for+C+in+Cdegrees%5D&curInstr=0&py=2&cumulative=false">
 </iframe>
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec23">Traversing multiple lists simultaneously with zip </h2>
 
-<h2>Traversing multiple lists simultaneously with zip  <a name="___sec23"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Can we one loop running over two lists?</b>
-<p>
-
 <p>
 Solution 1: loop over indices
 
@@ -1021,27 +932,21 @@ Example with three lists:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec24">Nested lists: list of lists </h2>
 
-<h2>Nested lists: list of lists  <a name="___sec24"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> A list can contain <em>any</em> object, also another list</li>
-  <p><li> Instead of storing a table as two separate lists (one for each column), we can stick the two lists together in a new list:</li>
-</ul>
-<p>
 
+<p><li> A list can contain <em>any</em> object, also another list</li>
+
+<p><li> Instead of storing a table as two separate lists (one for each column), we can stick the two lists together in a new list:</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1056,27 +961,21 @@ table1[<span style="color: #B452CD">1</span>][<span style="color: #B452CD">2</sp
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec25">Table of columns vs table of rows </h2>
 
-<h2>Table of columns vs table of rows  <a name="___sec25"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> The previous <code>table = [Cdegrees,Fdegrees]</code> is a table of (two) columns</li>
-  <p><li> Let us make a table of rows instead, each row is a <code>[C,F]</code> pair:</li>
-</ul>
-<p>
 
+<p><li> The previous <code>table = [Cdegrees,Fdegrees]</code> is a table of (two) columns</li>
+
+<p><li> Let us make a table of rows instead, each row is a <code>[C,F]</code> pair:</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1112,39 +1011,29 @@ Iteration over a nested list:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec26">Illustration of table of columns </h2>
 
-<h2>Illustration of table of columns  <a name="___sec26"></a></h2>
-
+<p>
 <center><p><img src="fig-looplist/table1.png" align="bottom" width=340></p></center>
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec27">Illustration of table of rows </h2>
 
-<h2>Illustration of table of rows  <a name="___sec27"></a></h2>
-
+<p>
 <center><p><img src="fig-looplist/table2.png" align="bottom" width=400></p></center>
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec28">Extracting sublists (or slices) </h2>
 
-<h2>Extracting sublists (or slices)  <a name="___sec28"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1172,20 +1061,15 @@ We can easily grab parts of a list:
 <p>
 Note: sublists (slices) are <em>copies</em> of the original list!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec29">What does this code snippet do? </h2>
 
-<h2>What does this code snippet do?  <a name="___sec29"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1195,16 +1079,15 @@ Note: sublists (slices) are <em>copies</em> of the original list!
 
 </div>
 
-
 <p>
 
-<div class="alert alert-block alert-block alert-text-normal">
+<div class="fragment alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li class="fragment"> This is a for loop over a sublist of <code>table2</code></li>
-  <p><li class="fragment"> Sublist indices: <code>Cdegrees.index(10)</code>, <code>Cdegrees.index(35)</code>, i.e., the indices corresponding to elements 10 and 35</li>
+
+<p><li class="fragment"> This is a for loop over a sublist of <code>table2</code></li>
+
+<p><li class="fragment"> Sublist indices: <code>Cdegrees.index(10)</code>, <code>Cdegrees.index(35)</code>, i.e., the indices corresponding to elements 10 and 35</li>
 </ul>
 <p>
 
@@ -1213,7 +1096,7 @@ Output:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #B452CD">10</span>  <span style="color: #B452CD">50.0</span>
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #B452CD">10</span>  <span style="color: #B452CD">50.0</span>
 <span style="color: #B452CD">15</span>  <span style="color: #B452CD">59.0</span>
 <span style="color: #B452CD">20</span>  <span style="color: #B452CD">68.0</span>
 <span style="color: #B452CD">25</span>  <span style="color: #B452CD">77.0</span>
@@ -1221,29 +1104,22 @@ Output:
 </pre></div>
 
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec30">Iteration over general nested lists </h2>
 
-<h2>Iteration over general nested lists  <a name="___sec30"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
 List with many indices: <code>somelist[i1][i2][i3]...</code>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Loops over list indices:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1257,11 +1133,9 @@ List with many indices: <code>somelist[i1][i2][i3]...</code>
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Loops over sublists:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1274,17 +1148,13 @@ List with many indices: <code>somelist[i1][i2][i3]...</code>
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec31">Iteration over a specific nested list </h2>
 
-<h2>Iteration over a specific nested list  <a name="___sec31"></a></h2>
-
+<p>
 
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=L+%3D+%5B%5B9%2C+7%5D%2C+%5B-1%2C+5%2C+6%5D%5D%0Afor+row+in+L%3A%0A++++for+column+in+row%3A%0A++++++++print+column&curInstr=0&py=2&cumulative=false">
@@ -1298,17 +1168,13 @@ Simulate this program by hand!
 <p>
 How can we index element with value 5?
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec32">Tuples are constant lists </h2>
 
-<h2>Tuples are constant lists  <a name="___sec32"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1349,41 +1215,52 @@ Tuples can do much of what lists can do:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec33">Why tuples when lists have more functionality? </h2>
 
-<h2>Why tuples when lists have more functionality?  <a name="___sec33"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Tuples are constant and thus protected against accidental changes</li>
-  <p><li> Tuples are faster than lists</li>
-  <p><li> Tuples are widely used in Python software<br />
+
+<p><li> Tuples are constant and thus protected against accidental changes</li>
+
+<p><li> Tuples are faster than lists</li>
+
+<p><li> Tuples are widely used in Python software<br />
     (so you need to know about them!)</li>
-  <p><li> Tuples (but not lists) can be used as keys is dictionaries<br />
+
+<p><li> Tuples (but not lists) can be used as keys is dictionaries<br />
     (more about dictionaries later)</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec34">Key topics from this chapter </h2>
 
-<h2>Summary of loops, lists and tuples  <a name="___sec34"></a></h2>
+<p>
+<center><p><img src="fig-looplist/opt_exec.png" align="bottom" width=800></p></center>
 
+<ul>
+ <p><li> While loops</li>
+ <p><li> Boolean expressions</li>
+ <p><li> For loops</li>
+ <p><li> Lists</li>
+ <p><li> Nested lists</li>
+ <p><li> Tuples</li>
+</ul>
+</section>
+
+
+<section>
+<h2 id="___sec35">Summary of loops, lists and tuples </h2>
+
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1412,17 +1289,13 @@ mytuple[<span style="color: #B452CD">1</span>] = -<span style="color: #B452CD">1
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec36">List functionality </h2>
 
-<h2>List functionality  <a name="___sec35"></a></h2>
-
+<p>
 <table border="1">
 <thead>
 <tr><th align="center">            Construction            </th> <th align="center">                         Meaning                          </th> </tr>
@@ -1452,15 +1325,13 @@ mytuple[<span style="color: #B452CD">1</span>] = -<span style="color: #B452CD">1
 <tr><td align="left">   <code>type(a) is list</code>            </td> <td align="left">   is <code>True</code> if <code>a</code> is a list              </td> </tr>
 </tbody>
 </table>
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec37">A summarizing example; problem </h2>
 
-<h2>A summarizing example; problem  <a name="___sec36"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1480,7 +1351,8 @@ mytuple[<span style="color: #B452CD">1</span>] = -<span style="color: #B452CD">1
 Tasks:
 
 <ul>
-  <p><li> Compute the average number of sun hours for each month during</li>
+
+<p><li> Compute the average number of sun hours for each month during</li>
 </ul>
 <p>
 
@@ -1489,28 +1361,23 @@ r'Which month has the best weather according to the means found in the
 preceding task?
 
 <ul>
-  <p><li> For each decade, 1930-1939, 1949-1949, \( \ldots \), 2000-2009,</li>
+
+<p><li> For each decade, 1930-1939, 1949-1949, \( \ldots \), 2000-2009,</li>
 </ul>
 <p>
 
 compute the average number of sun hours per day in January
 and December
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec38">A summarizing example; program (task 1) </h2>
 
-<h2>A summarizing example; program (task 1)  <a name="___sec37"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1537,20 +1404,15 @@ month_names = [<span style="color: #CD5555">&#39;Jan&#39;</span>, <span style="c
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec39">A summarizing example; program (task 2) </h2>
 
-<h2>A summarizing example; program (task 2)  <a name="___sec38"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1570,20 +1432,15 @@ max_value = -<span style="color: #B452CD">1E+20</span>
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec40">A summarizing example; program (task 3) </h2>
 
-<h2>A summarizing example; program (task 3)  <a name="___sec39"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1602,17 +1459,13 @@ max_value = -<span style="color: #B452CD">1E+20</span>
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec41">Using a debugger to trace the execution </h2>
 
-<h2>Using a debugger to trace the execution  <a name="___sec40"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1642,50 +1495,46 @@ Example:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec42">How to find Python info </h2>
 
-<h2>How to find Python info  <a name="___sec41"></a></h2>
-
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> The book contains only fragments of the Python language <br />
+
+<p><li> The book contains only fragments of the Python language <br />
     (intended for real beginners!)</li>
-  <p><li> These slides are even briefer, so you will need to look up more Python information</li>
-  <p><li> Primary reference: The official Python documentation at <a href="http://docs.python.org/index.html" target="_blank"><tt>docs.python.org</tt></a></li>
-  <p><li> Very useful: The Python Library Reference, especially the <a href="https://docs.python.org/2/genindex.html" target="_blank">index</a></li>
-  <p><li> Example: what can I find in the <code>math</code> module?</li>
+
+<p><li> These slides are even briefer, so you will need to look up more Python information</li>
+
+<p><li> Primary reference: The official Python documentation at <a href="http://docs.python.org/index.html" target="_blank"><tt>docs.python.org</tt></a></li>
+
+<p><li> Very useful: The Python Library Reference, especially the <a href="https://docs.python.org/2/genindex.html" target="_blank">index</a></li>
+
+<p><li> Example: what can I find in the <code>math</code> module?</li>
 
 <ul>
-    <p><li> Go to the <a href="https://docs.python.org/2/reference/index.html" target="_blank">Python Library Reference</a>, click <a href="https://docs.python.org/2/genindex.html" target="_blank">index</a></li>
-    <p><li> Go to <a href="https://docs.python.org/2/genindex-M.html" target="_blank">M</a></li>
-    <p><li> find <em>math (module)</em>, click on the <a href="https://docs.python.org/2/library/math.html#module-math" target="_blank">link</a></li>
-</ul>
-<p>
 
-  <p><li> Alternative: run <code>pydoc math</code> in the terminal window (briefer)</li>
+<p><li> Go to the <a href="https://docs.python.org/2/reference/index.html" target="_blank">Python Library Reference</a>, click <a href="https://docs.python.org/2/genindex.html" target="_blank">index</a></li>
+
+<p><li> Go to <a href="https://docs.python.org/2/genindex-M.html" target="_blank">M</a></li>
+
+<p><li> find <em>math (module)</em>, click on the <a href="https://docs.python.org/2/library/math.html#module-math" target="_blank">link</a></li>
+</ul>
+<p><li> Alternative: run <code>pydoc math</code> in the terminal window (briefer)</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec43">Warning about reading programming documentation </h2>
 
-<h2>Warning about reading programming documentation  <a name="___sec42"></a></h2>
-
+<p>
 <div class="alert alert-block alert-warning alert-text-normal">
 <b>Warning.</b>
 <p>
@@ -1695,9 +1544,6 @@ For a newbie it is difficult to read manuals (intended for experts!) - you will 
 It's much like googling in general: only a fraction of the information
 is relevant for you.
 </div>
-
-
-
 </section>
 
 

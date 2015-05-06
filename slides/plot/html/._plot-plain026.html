@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,38 +288,10 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Let's make a movie/animation  <a name="___sec25"></a></h2>
+<h2 id="___sec25">Let's make a movie/animation </h2>
 
+<p>
 <center><p><img src="fig-plot/plot4_thick.png" align="bottom" width=600></p></center>
-
-<h2>The Gaussian/bell function  <a name="___sec26"></a></h2>
-
-
-<table border="0">
-<tr>
-<td class="padding">
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-   \[ f(x; m, s) = {1\over\sqrt{2\pi}}{1\over s}\exp{\left[-{1\over2}\left({x-m\over s}\right)^2\right]} \]
-
-<ul>
-  <li> \( m \) is the location of the peak</li>
-  <li> \( s \) is a measure of the width of the function</li>
-  <li> Make a movie (animation) of how \( f(x;m,s) \) changes shape as \( s \) goes from 2 to 0.2</li>
-</ul>
-</div>
-
-</td>
-<td class="padding">
-<center><p><img src="fig-plot/plot4_thick.png" align="bottom" width=300></p></center>
-</td>
-</tr>
-</table>
-
-
-<p>
-
 
 <p>
 <p>

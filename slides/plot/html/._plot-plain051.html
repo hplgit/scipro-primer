@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,48 +288,44 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Useful array operations  <a name="___sec51"></a></h2>
+<h2 id="___sec50">In-place arithmetics only saves memory, no significant speed-up </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-Make a new array with same size as another array:
+Let's use IPython to measure the computational time:
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">expression</span>(x):
+<span style="color: #000080; font-weight: bold">   ...: </span>    <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">3*</span>x<span style="color: #666666">**4</span> <span style="color: #666666">+</span> <span style="color: #666666">2*</span>x <span style="color: #666666">+</span> <span style="color: #666666">4</span>)<span style="color: #666666">/</span>(x <span style="color: #666666">+</span> <span style="color: #666666">1</span>)
+<span style="color: #000080; font-weight: bold">   ...:</span>
 
-<span style="color: #408080; font-style: italic"># x is numpy array</span>
-a <span style="color: #666666">=</span> x<span style="color: #666666">.</span>copy()
+<span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">expression_inplace</span>(x):
+<span style="color: #000080; font-weight: bold">   ...: </span>    a <span style="color: #666666">=</span> x<span style="color: #666666">.</span>copy()
+<span style="color: #000080; font-weight: bold">   ...: </span>    a <span style="color: #666666">**=</span> <span style="color: #666666">4</span>
+<span style="color: #000080; font-weight: bold">   ...: </span>    a <span style="color: #666666">*=</span> <span style="color: #666666">3</span>
+<span style="color: #000080; font-weight: bold">   ...: </span>    a <span style="color: #666666">+=</span> <span style="color: #666666">2*</span>x
+<span style="color: #000080; font-weight: bold">   ...: </span>    a <span style="color: #666666">+=</span> <span style="color: #666666">4</span>
+<span style="color: #000080; font-weight: bold">   ...: </span>    a <span style="color: #666666">/=</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
+<span style="color: #000080; font-weight: bold">   ...: </span>    <span style="color: #008000; font-weight: bold">return</span> a
+<span style="color: #000080; font-weight: bold">   ...:</span>
 
-<span style="color: #408080; font-style: italic"># or</span>
-a <span style="color: #666666">=</span> zeros(x<span style="color: #666666">.</span>shape, x<span style="color: #666666">.</span>dtype)
+<span style="color: #000080; font-weight: bold">In [3]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
-<span style="color: #408080; font-style: italic"># or</span>
-a <span style="color: #666666">=</span> zeros_like(x)  <span style="color: #408080; font-style: italic"># zeros and same size as x</span>
+<span style="color: #000080; font-weight: bold">In [4]: </span>x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">10000000</span>)
+
+<span style="color: #000080; font-weight: bold">In [5]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span>  expression(x)
+<span style="color: #888888">1 loops, best of 3: 771 ms per loop</span>
+
+<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span>  expression_inplace(x)
+<span style="color: #888888">1 loops, best of 3: 728 ms per loop</span>
 </pre></div>
 <p>
-Make sure a list or array is an array:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> asarray(a)
-b <span style="color: #666666">=</span> asarray(somearray, dtype<span style="color: #666666">=</span><span style="color: #008000">float</span>)  <span style="color: #408080; font-style: italic"># specify data type</span>
-</pre></div>
-<p>
-Test if an object is an array:
-
-<p>
-
-<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000">type</span>(a)
-<span style="color: #666666">&lt;</span><span style="color: #008000">type</span> <span style="color: #BA2121">&#39;numpy.ndarray&#39;</span><span style="color: #666666">&gt;</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000">isinstance</span>(a, ndarray)
-<span style="color: #008000">True</span>
-</pre></div>
-
+Only 5% speed-up, so use <code>+=</code>, <code>-=</code>, etc. when arrays are large and
+you need to save memory
 </div>
 
 

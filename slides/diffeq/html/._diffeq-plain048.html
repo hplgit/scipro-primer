@@ -1,0 +1,269 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="App. A: Sequences and difference equations">
+
+<title>App. A: Sequences and difference equations</title>
+
+
+<style type="text/css">
+/* bloodish style */
+
+body {
+  font-family: Helvetica, Verdana, Arial, Sans-serif;
+  color: #404040;
+  background: #ffffff;
+}
+h1 { font-size: 1.8em;  color: #8A0808; }
+h2 { font-size: 1.6em;  color: #8A0808; }
+h3 { font-size: 1.4em;  color: #8A0808; }
+h4 { color: #8A0808; }
+a { color: #8A0808; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(u' Sequences ', 2, None, '___sec0'),
+              (u' Other examples of sequences ', 2, None, '___sec1'),
+              (u' Finite and infinite sequences ', 2, None, '___sec2'),
+              (u' Difference equations ', 2, None, '___sec3'),
+              (u' Modeling interest rates ', 2, None, '___sec4'),
+              (u' Simulating the difference equation for interest rates ',
+               2,
+               None,
+               '___sec5'),
+              (u' We do not need to store the entire sequence, but it is convenient for programming and later plotting ',
+               2,
+               None,
+               '___sec6'),
+              (u' Daily interest rate ', 2, None, '___sec7'),
+              (u' Program for daily interest rate ', 2, None, '___sec8'),
+              (u' But the annual interest rate may change quite often... ',
+               2,
+               None,
+               '___sec9'),
+              (u' Payback of a loan ', 2, None, '___sec10'),
+              (u' How to make a living from a fortune with constant consumption ',
+               2,
+               None,
+               '___sec11'),
+              (u' How to make a living from a fortune with inflation-adjusted consumption ',
+               2,
+               None,
+               '___sec12'),
+              (u' The mathematics of Fibonacci numbers ',
+               2,
+               None,
+               '___sec13'),
+              (u' Program for generating Fibonacci numbers ',
+               2,
+               None,
+               '___sec14'),
+              (u' Fibonacci numbers can cause overflow in NumPy arrays ',
+               2,
+               None,
+               '___sec15'),
+              (u' No overflow when using Python int types ',
+               2,
+               None,
+               '___sec16'),
+              (u" Program with Python's int type for integers ",
+               2,
+               None,
+               '___sec17'),
+              (u' New problem setting: exponential growth with limited environmental resources ',
+               2,
+               None,
+               '___sec18'),
+              (u' Modeling growth in an environment with limited resources ',
+               2,
+               None,
+               '___sec19'),
+              (u' The evolution of logistic growth ', 2, None, '___sec20'),
+              (u' The factorial as a difference equation ',
+               2,
+               None,
+               '___sec21'),
+              (u' Difference equations must have an initial condition ',
+               2,
+               None,
+               '___sec22'),
+              (u' Have you ever though about how $\\sin x$ is really calculated? ',
+               2,
+               None,
+               '___sec23'),
+              (u' Would you expect these fantastic mathematical results? ',
+               2,
+               None,
+               '___sec24'),
+              (u' Taylor polynomials ', 2, None, '___sec25'),
+              (u' Taylor polynomials around an arbitrary point ',
+               2,
+               None,
+               '___sec26'),
+              (u' Taylor polynomial as one difference equation ',
+               2,
+               u'diffeq:Taylor:exp:1',
+               u'diffeq:Taylor:exp:1'),
+              (u' More efficient computation: the Taylor polynomial as two difference equations ',
+               2,
+               None,
+               '___sec28'),
+              (u' Nonlinear algebraic equations ', 2, None, '___sec29'),
+              (u" Newton's method for finding zeros; illustration ",
+               2,
+               None,
+               '___sec30'),
+              (u" Newton's method for finding zeros; mathematics ",
+               2,
+               None,
+               '___sec31'),
+              (u" A program for Newton's method ", 2, None, '___sec32'),
+              (u" An improved function for Newton's method ",
+               2,
+               None,
+               '___sec33'),
+              (u" Application of Newton's method ", 2, None, '___sec34'),
+              (u' Results from this test problem ', 2, None, '___sec35'),
+              (u' What happened here?? ', 2, None, '___sec36'),
+              (u" First step: we're moving to the right ($x=4$?) ",
+               2,
+               None,
+               '___sec37'),
+              (u' Second step: oops, too much to the right... ',
+               2,
+               None,
+               '___sec38'),
+              (u" Third step: disaster since we're ``done'' ($f(x)\\approx 0$) ",
+               2,
+               None,
+               '___sec39'),
+              (u' Programming with sound ', 2, None, '___sec40'),
+              (u' Making a sound file with single tone (part 1) ',
+               2,
+               None,
+               '___sec41'),
+              (u' Making a sound file with single tone (part 2) ',
+               2,
+               None,
+               '___sec42'),
+              (u' Reading sound from file ', 2, None, '___sec43'),
+              (u' Playing many notes ', 2, None, '___sec44'),
+              (u' Summary of difference equations ', 2, None, '___sec45'),
+              (u' Summarizing example: music of sequences ',
+               2,
+               None,
+               '___sec46'),
+              (u' Module file: soundeq.py ', 2, None, '___sec47')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<a name="part0048"></a>
+<p>
+
+</p>
+
+<p>
+<!-- !split -->
+
+<h2 id="___sec47">Module file: soundeq.py </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <li> Three functions: two for generating sequences, one for the sound</li>
+ <li> Look at <code>files/soundeq.py</code> for complete code</li>
+</ul>
+
+Try it out in these examples:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python soundseq.py oscillations 40
+Terminal&gt; python soundseq.py logistic 100
+</pre></div>
+<p>
+Try to change the frequency range from 200 to 400.
+</div>
+
+
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._diffeq-plain047.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

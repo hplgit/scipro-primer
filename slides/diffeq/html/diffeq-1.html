@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -152,44 +152,51 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec28'),
               (u' Nonlinear algebraic equations ', 2, None, '___sec29'),
-              (u" Newton's method for finding zeros ", 2, None, '___sec30'),
-              (u" A program for Newton's method ", 2, None, '___sec31'),
+              (u" Newton's method for finding zeros; illustration ",
+               2,
+               None,
+               '___sec30'),
+              (u" Newton's method for finding zeros; mathematics ",
+               2,
+               None,
+               '___sec31'),
+              (u" A program for Newton's method ", 2, None, '___sec32'),
               (u" An improved function for Newton's method ",
                2,
                None,
-               '___sec32'),
-              (u" Application of Newton's method ", 2, None, '___sec33'),
-              (u' Results from this test problem ', 2, None, '___sec34'),
-              (u' What happened here?? ', 2, None, '___sec35'),
+               '___sec33'),
+              (u" Application of Newton's method ", 2, None, '___sec34'),
+              (u' Results from this test problem ', 2, None, '___sec35'),
+              (u' What happened here?? ', 2, None, '___sec36'),
               (u" First step: we're moving to the right ($x=4$?) ",
                2,
                None,
-               '___sec36'),
+               '___sec37'),
               (u' Second step: oops, too much to the right... ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (u" Third step: disaster since we're ``done'' ($f(x)\\approx 0$) ",
                2,
                None,
-               '___sec38'),
-              (u' Programming with sound ', 2, None, '___sec39'),
+               '___sec39'),
+              (u' Programming with sound ', 2, None, '___sec40'),
               (u' Making a sound file with single tone (part 1) ',
                2,
                None,
-               '___sec40'),
+               '___sec41'),
               (u' Making a sound file with single tone (part 2) ',
                2,
                None,
-               '___sec41'),
-              (u' Reading sound from file ', 2, None, '___sec42'),
-              (u' Playing many notes ', 2, None, '___sec43'),
-              (u' Summary of difference equations ', 2, None, '___sec44'),
+               '___sec42'),
+              (u' Reading sound from file ', 2, None, '___sec43'),
+              (u' Playing many notes ', 2, None, '___sec44'),
+              (u' Summary of difference equations ', 2, None, '___sec45'),
               (u' Summarizing example: music of sequences ',
                2,
                None,
-               '___sec45'),
-              (u' Module file: soundeq.py ', 2, None, '___sec46')]}
+               '___sec46'),
+              (u' Module file: soundeq.py ', 2, None, '___sec47')]}
 end of tocinfo -->
 
 <body>
@@ -224,18 +231,17 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>
-<center><h4>Sep 24, 2014</h4></center> <!-- date -->
+<center><h4>May 6, 2015</h4></center> <!-- date -->
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Sequences  <a name="___sec0"></a></h2>
+<h2 id="___sec0">Sequences </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -245,12 +251,10 @@ MathJax.Hub.Config({
 
 $$ x_0,\ x_1,\ x_2,\ \ldots,\ x_n,\ldots, $$
 
-
 <p>
 Example: all odd numbers
 
 $$ 1, 3, 5, 7, \ldots, 2n+1,\ldots $$
-
 
 <p>
 For this sequence we have a formula for the \( n \)-th term:
@@ -266,7 +270,7 @@ $$ (x_n)_{n=0}^\infty,\quad x_n = 2n+1$$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Other examples of sequences  <a name="___sec1"></a></h2>
+<h2 id="___sec1">Other examples of sequences </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -288,7 +292,7 @@ $$ 1,\ 1+x,\ 1+x+{1\over2}x^2,\ 1+x+{1\over2}x^2+{1\over6}x^3,\ \ldots\quad (x_n
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Finite and infinite sequences  <a name="___sec2"></a></h2>
+<h2 id="___sec2">Finite and infinite sequences </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -310,7 +314,7 @@ $$ 1,\ 1+x,\ 1+x+{1\over2}x^2,\ 1+x+{1\over2}x^2+{1\over6}x^3,\ \ldots\quad (x_n
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Difference equations  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Difference equations </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -331,7 +335,7 @@ $$ 1,\ 1+x,\ 1+x+{1\over2}x^2,\ 1+x+{1\over2}x^2+{1\over6}x^3,\ \ldots\quad (x_n
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Modeling interest rates  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Modeling interest rates </h2>
 
 <p>
 <!-- !bpop -->
@@ -352,7 +356,6 @@ The fundamental information relates the value at year \( n \), \( x_n \), to the
 
 $$ x_{n} = x_{n-1} + {p\over 100}x_{n-1} $$
 
-
 <p>
 How to solve for \( x_n \)? Start with \( x_0 \), compute \( x_1 \), \( x_2 \), ...
 </div>
@@ -362,7 +365,7 @@ How to solve for \( x_n \)? Start with \( x_0 \), compute \( x_1 \), \( x_2 \), 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Simulating the difference equation for interest rates  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Simulating the difference equation for interest rates </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -400,7 +403,7 @@ plot(index_set, x, <span style="color: #BA2121">&#39;ro&#39;</span>, xlabel<span
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>We do not need to store the entire sequence, but it is convenient for programming and later plotting  <a name="___sec6"></a></h2>
+<h2 id="___sec6">We do not need to store the entire sequence, but it is convenient for programming and later plotting </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -430,7 +433,7 @@ However, programming with an array <code>x[n]</code> is simpler, safer, and enab
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Daily interest rate  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Daily interest rate </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -446,7 +449,6 @@ However, programming with an array <code>x[n]</code> is simpler, safer, and enab
 Just a minor change in the model:
 
 $$x_{n} = x_{n-1} + {r\over 100}x_{n-1}$$
-
 
 <p>
 How can we find the number of days between two dates?
@@ -468,7 +470,7 @@ How can we find the number of days between two dates?
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Program for daily interest rate  <a name="___sec8"></a></h2>
+<h2 id="___sec8">Program for daily interest rate </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -503,7 +505,7 @@ plot(index_set, x, <span style="color: #BA2121">&#39;ro&#39;</span>, xlabel<span
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>But the annual interest rate may change quite often...  <a name="___sec9"></a></h2>
+<h2 id="___sec9">But the annual interest rate may change quite often... </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -538,7 +540,7 @@ x[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> x
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Payback of a loan  <a name="___sec10"></a></h2>
+<h2 id="___sec10">Payback of a loan </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -560,7 +562,6 @@ which simplifies to
 
 $$ x_n = x_{n-1}  - {L\over N}$$
 
-
 <p>
 (\( L/N \) makes the equation <em>nonhomogeneous</em>)
 </div>
@@ -569,7 +570,7 @@ $$ x_n = x_{n-1}  - {L\over N}$$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>How to make a living from a fortune with constant consumption  <a name="___sec11"></a></h2>
+<h2 id="___sec11">How to make a living from a fortune with constant consumption </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -586,7 +587,6 @@ A fundamental relation from one year to the other is
 
 $$ x_n = x_{n-1} + {p\over 100}x_{n-1} - c_n $$
 
-
 <p>
 Simplest possibility: keep \( c_n \) constant, but inflation
 demands \( c_n \) to increase...
@@ -596,7 +596,7 @@ demands \( c_n \) to increase...
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>How to make a living from a fortune with inflation-adjusted consumption  <a name="___sec12"></a></h2>
+<h2 id="___sec12">How to make a living from a fortune with inflation-adjusted consumption </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -618,7 +618,6 @@ c_n &= c_{n-1} + {I\over100}c_{n-1}
 \end{align*}
 $$
 
-
 <p>
 This is a coupled system of <em>two</em> difference equations, but the programming
 is still simple: we update two arrays, first <code>x[n]</code>, then <code>c[n]</code>, inside the loop
@@ -629,7 +628,7 @@ is still simple: we update two arrays, first <code>x[n]</code>, then <code>c[n]<
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The mathematics of Fibonacci numbers  <a name="___sec13"></a></h2>
+<h2 id="___sec13">The mathematics of Fibonacci numbers </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -660,7 +659,7 @@ Fibonacci derived the sequence by modeling rat populations, but the sequence of 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Program for generating Fibonacci numbers  <a name="___sec14"></a></h2>
+<h2 id="___sec14">Program for generating Fibonacci numbers </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -685,7 +684,7 @@ x[<span style="color: #666666">1</span>] <span style="color: #666666">=</span> <
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Fibonacci numbers can cause overflow in NumPy arrays  <a name="___sec15"></a></h2>
+<h2 id="___sec15">Fibonacci numbers can cause overflow in NumPy arrays </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -719,7 +718,7 @@ Note:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>No overflow when using Python int types  <a name="___sec16"></a></h2>
+<h2 id="___sec16">No overflow when using Python int types </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -737,7 +736,7 @@ Note:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Program with Python's int type for integers  <a name="___sec17"></a></h2>
+<h2 id="___sec17">Program with Python's int type for integers </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -781,7 +780,7 @@ Limition: your computer's memory
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>New problem setting: exponential growth with limited environmental resources  <a name="___sec18"></a></h2>
+<h2 id="___sec18">New problem setting: exponential growth with limited environmental resources </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -790,7 +789,6 @@ Limition: your computer's memory
 The model for growth of money in a bank has a solution of the type
 
 $$ x_n = x_0C^n \quad (= x_0e^{n\ln C})$$
-
 
 <p>
 Note:
@@ -807,7 +805,7 @@ Note:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Modeling growth in an environment with limited resources  <a name="___sec19"></a></h2>
+<h2 id="___sec19">Modeling growth in an environment with limited resources </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -817,13 +815,11 @@ Initially, when there are enough resources, the growth is exponential:
 
 $$ x_n = x_{n-1} + {r\over 100}x_{n-1}$$
 
-
 <p>
 The growth rate \( r \) must decay to zero as \( x_n \) approaches \( M \). The simplest
 variation of \( r(n) \) is a linear:
 
 $$   r(n) = \varrho \left(1 - {x_n\over M}\right) $$
-
 
 <p>
 Observe: \( r(n)\approx \varrho \) for small \( n \) when \( x_n\ll M \), and
@@ -844,7 +840,7 @@ $$ x_n = x_{n-1} + {\varrho\over 100} x_{n-1}\left(1 - {x_{n-1}\over M}\right)$$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The evolution of logistic growth  <a name="___sec20"></a></h2>
+<h2 id="___sec20">The evolution of logistic growth </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -875,7 +871,7 @@ by
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The factorial as a difference equation  <a name="___sec21"></a></h2>
+<h2 id="___sec21">The factorial as a difference equation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -884,7 +880,6 @@ by
 The factorial \( n! \) is defined as
 
 $$ n(n-1)(n-2)\cdots 1,\quad 0!=1$$
-
 
 <p>
 The following difference equation has \( x_n=n! \) as solution and can be used to compute the factorial:
@@ -896,7 +891,7 @@ $$ x_n = nx_{n-1},\quad x_0 = 1 $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Difference equations must have an initial condition  <a name="___sec22"></a></h2>
+<h2 id="___sec22">Difference equations must have an initial condition </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -918,7 +913,7 @@ $$ x_n = nx_{n-1},\quad x_0 = 1 $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Have you ever though about how \( \sin x \) is really calculated?  <a name="___sec23"></a></h2>
+<h2 id="___sec23">Have you ever though about how \( \sin x \) is really calculated? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -939,7 +934,7 @@ $$ x_n = nx_{n-1},\quad x_0 = 1 $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Would you expect these fantastic mathematical results?  <a name="___sec24"></a></h2>
+<h2 id="___sec24">Would you expect these fantastic mathematical results? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -963,7 +958,7 @@ we can evaluate \( f \) at any \( x \) (!!!)
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Taylor polynomials  <a name="___sec25"></a></h2>
+<h2 id="___sec25">Taylor polynomials </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -971,7 +966,6 @@ we can evaluate \( f \) at any \( x \) (!!!)
 <p>
 $$ f(x) \approx \sum_{k=0}^{{\color{red} N}}
 \frac{1}{k!}(\frac{d^k}{dx^k} f(0))x^k $$
-
 
 <p>
 \( N=1 \) is <em>very</em> popular and has been essential in developing
@@ -996,7 +990,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Taylor polynomials around an arbitrary point  <a name="___sec26"></a></h2>
+<h2 id="___sec26">Taylor polynomials around an arbitrary point </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1012,7 +1006,7 @@ $$ f(x) \approx \sum_{k=0}^N \frac{1}{k!}(\frac{d^k}{dx^k} f(a))(x-a)^k $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Taylor polynomial as one difference equation <a name="diffeq:Taylor:exp:1"></a></h2>
+<h2 id="diffeq:Taylor:exp:1">Taylor polynomial as one difference equation</h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1022,13 +1016,11 @@ The Taylor series for \( e^x \) around \( x=0 \) reads
 
 $$  e^x= \sum_{n=0}^\infty {x^n\over n!} $$
 
-
 <p>
 Define
 
 $$ e_{n}=\sum_{k=0}^{n-1} \frac{x^k}{k!} =
 \sum_{k=0}^{n-2} \frac{x^k}{k!} + \frac{x^{n-1}}{(n-1)!}$$
-
 
 <p>
 We can formulate the sum in \( e_n \) as the following difference equation:
@@ -1040,7 +1032,7 @@ $$ e_n = e_{n-1} + \frac{x^{n-1}}{(n-1)!},\quad e_0=0 $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>More efficient computation: the Taylor polynomial as two difference equations  <a name="___sec28"></a></h2>
+<h2 id="___sec28">More efficient computation: the Taylor polynomial as two difference equations </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1050,12 +1042,10 @@ Observe:
 
 $$ \frac{x^n}{n!} = \frac{x^{n-1}}{(n-1)!}\cdot \frac{x}{n} $$
 
-
 <p>
 Let \( a_n = x^n/n! \). Then we can efficiently compute \( a_n \) via
 
 $$ a_n = a_{n-1}\frac{x}{n},\quad a_0 = 1$$
-
 
 <p>
 Now we can update each term via the \( a_n \) equation and sum the terms via
@@ -1064,10 +1054,9 @@ the \( e_n \) equation:
 $$
 \begin{align*}
 e_n &= e_{n-1} + a_{n-1},\quad e_0 = 0,\ a_0 = 1\\
-a_n &= {x\over n} a_{n-1}
+a_n &= \frac{x}{n} a_{n-1}
 \end{align*}
 $$
-
 
 <p>
 See the book for more details
@@ -1077,7 +1066,7 @@ See the book for more details
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Nonlinear algebraic equations  <a name="___sec29"></a></h2>
+<h2 id="___sec29">Nonlinear algebraic equations </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1115,7 +1104,15 @@ See the book for more details
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Newton's method for finding zeros  <a name="___sec30"></a></h2>
+<h2 id="___sec30">Newton's method for finding zeros; illustration </h2>
+
+<p>
+<center><p><img src="fig-diffeq/comic_root.png" align="bottom" width=800></p></center>
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec31">Newton's method for finding zeros; mathematics </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1127,7 +1124,6 @@ method for solving \( f(x)=0 \) (based on ideas by Newton):
 $$
 x_n = x_{n-1} - {f(x_{n-1})\over f'(x_{n-1})},\quad x_0 \hbox{ given}
 $$
-
 
 <p>
 Note:
@@ -1146,7 +1142,7 @@ Note:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>A program for Newton's method  <a name="___sec31"></a></h2>
+<h2 id="___sec32">A program for Newton's method </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1176,7 +1172,7 @@ Note:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>An improved function for Newton's method  <a name="___sec32"></a></h2>
+<h2 id="___sec33">An improved function for Newton's method </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1209,7 +1205,7 @@ Only one \( f(x) \) call in each iteration, optional storage of \( (x,f(x)) \) v
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Application of Newton's method  <a name="___sec33"></a></h2>
+<h2 id="___sec34">Application of Newton's method </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1255,7 +1251,7 @@ x, info <span style="color: #666666">=</span> Newton(g, x0, dg, store<span style
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Results from this test problem  <a name="___sec34"></a></h2>
+<h2 id="___sec35">Results from this test problem </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1290,7 +1286,7 @@ Iteration  <span style="color: #666666">2</span>: f(<span style="color: #666666"
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>What happened here??  <a name="___sec35"></a></h2>
+<h2 id="___sec36">What happened here?? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1320,7 +1316,7 @@ Newton's method may work fine or give wrong results! You need to understand the 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>First step: we're moving to the right (\( x=4 \)?)  <a name="___sec36"></a></h2>
+<h2 id="___sec37">First step: we're moving to the right (\( x=4 \)?) </h2>
 
 <p>
 <center><p><img src="fig-diffeq/Newton_demo_divergence_0000.png" align="bottom" width=600></p></center>
@@ -1328,7 +1324,7 @@ Newton's method may work fine or give wrong results! You need to understand the 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Second step: oops, too much to the right...  <a name="___sec37"></a></h2>
+<h2 id="___sec38">Second step: oops, too much to the right... </h2>
 
 <p>
 <center><p><img src="fig-diffeq/Newton_demo_divergence_0001.png" align="bottom" width=600></p></center>
@@ -1336,7 +1332,7 @@ Newton's method may work fine or give wrong results! You need to understand the 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Third step: disaster since we're &quot;done&quot; (\( f(x)\approx 0 \))  <a name="___sec38"></a></h2>
+<h2 id="___sec39">Third step: disaster since we're &quot;done&quot; (\( f(x)\approx 0 \)) </h2>
 
 <p>
 <center><p><img src="fig-diffeq/Newton_demo_divergence_0002.png" align="bottom" width=600></p></center>
@@ -1344,7 +1340,7 @@ Newton's method may work fine or give wrong results! You need to understand the 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Programming with sound  <a name="___sec39"></a></h2>
+<h2 id="___sec40">Programming with sound </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1353,7 +1349,6 @@ Newton's method may work fine or give wrong results! You need to understand the 
 A tone <b>A</b> (440 Hz) is a sine wave with frequency 440 Hz:
 
 $$ s(t) = A\sin\left( 2\pi f t\right),\quad f = 440 $$
-
 
 <p>
 On a computer we represent \( s(t) \) by a discrete set of points on the function curve (exactly as we do when we plot \( s(t) \)).
@@ -1364,7 +1359,7 @@ CD quality needs 44100 samples per second.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Making a sound file with single tone (part 1)  <a name="___sec40"></a></h2>
+<h2 id="___sec41">Making a sound file with single tone (part 1) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1383,7 +1378,6 @@ $$ s_n =
 A\sin\left( 2\pi f {n\over r}\right),
 \quad n=0,1,\ldots, m\cdot r
 $$
-
 
 <p>
 Code (we use descriptive names: <code>frequency</code> \( f \), <code>length</code> \( m \), <code>amplitude</code> \( A \), <code>sample_rate</code> \( r \)):
@@ -1407,7 +1401,7 @@ Code (we use descriptive names: <code>frequency</code> \( f \), <code>length</co
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Making a sound file with single tone (part 2)  <a name="___sec41"></a></h2>
+<h2 id="___sec42">Making a sound file with single tone (part 2) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1437,7 +1431,7 @@ scitools<span style="color: #666666">.</span>sound<span style="color: #666666">.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Reading sound from file  <a name="___sec42"></a></h2>
+<h2 id="___sec43">Reading sound from file </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1482,7 +1476,7 @@ scitools<span style="color: #666666">.</span>sound<span style="color: #666666">.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Playing many notes  <a name="___sec43"></a></h2>
+<h2 id="___sec44">Playing many notes </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1523,7 +1517,7 @@ scitools<span style="color: #666666">.</span>sound<span style="color: #666666">.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Summary of difference equations  <a name="___sec44"></a></h2>
+<h2 id="___sec45">Summary of difference equations </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1564,7 +1558,7 @@ Taylor series and numerical methods such as Newton's method can be formulated as
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Summarizing example: music of sequences  <a name="___sec45"></a></h2>
+<h2 id="___sec46">Summarizing example: music of sequences </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1585,7 +1579,6 @@ and
 
 $$ x_n = x_{n-1} + q x_{n-1}\left(1 - x_{n-1}\right),\quad x = x_0 $$
 
-
 <p>
 The first has values in \( [-1,1] \), the other from \( x_0=0.01 \) up to around 1
 
@@ -1603,7 +1596,7 @@ $$ y_n = 440 + 200 x_n $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Module file: soundeq.py  <a name="___sec46"></a></h2>
+<h2 id="___sec47">Module file: soundeq.py </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">

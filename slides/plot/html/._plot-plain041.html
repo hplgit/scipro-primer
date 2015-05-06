@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,28 +288,27 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>How to make the function look discontinuous in the plot?  <a name="___sec41"></a></h2>
+<h2 id="___sec40">Back to plotting the Heaviside function </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-
-<ul>
-  <li> Newbie: use a lot of \( x \) points; the curve gets steeper</li>
-  <li> Pro: plot just two horizontal line segments<br />
-    one from \( x=-10 \) to \( x=0 \), \( y=0 \); and one from \( x=0 \) to \( x=10 \), \( y=1 \)</li>
-</ul>
+With a vectorized <code>Hv(x)</code> function we can plot in the standard way
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">plot([<span style="color: #666666">-10</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">10</span>], [<span style="color: #666666">0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">1</span>],
-     axis<span style="color: #666666">=</span>[x[<span style="color: #666666">0</span>], x[<span style="color: #666666">-1</span>], <span style="color: #666666">-0.1</span>, <span style="color: #666666">1.1</span>])
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x <span style="color: #666666">=</span> linspace(<span style="color: #666666">-10</span>, <span style="color: #666666">10</span>, <span style="color: #666666">5</span>)   <span style="color: #408080; font-style: italic"># linspace(-10, 10, 50)</span>
+y <span style="color: #666666">=</span> Hv(x)
+plot(x, y, axis<span style="color: #666666">=</span>[x[<span style="color: #666666">0</span>], x[<span style="color: #666666">-1</span>], <span style="color: #666666">-0.1</span>, <span style="color: #666666">1.1</span>])
 </pre></div>
-<p>
-Draws straight lines between \( (-10,0) \), \( (0,0) \), \( (0,1) \), \( (10, 1) \)
+
 </div>
 
+
+<p>
+<center><p><img src="fig-plot/Heaviside2.png" align="bottom" width=300></p></center>
 
 <p>
 <p>

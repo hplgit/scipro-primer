@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,30 +288,57 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Summary of vectors and arrays  <a name="___sec61"></a></h2>
+<h2 id="___sec60">Time for a question </h2>
 
+<p>
+<!-- !bpop -->
 <div class="alert alert-block alert-block alert-text-normal">
-<b></b>
+<b>Problem:</b>
+<p>
+Given
+
 <p>
 
-<ul>
-  <li> Vector/array computing: apply a mathematical expression to every element in the vector/array (no loops in Python)</li>
-  <li> Ex: <code>sin(x**4)*exp(-x**2)</code>, <code>x</code> can be array or scalar<br />
-    for array the <code>i</code>'th element becomes <code>sin(x[i]**4)*exp(-x[i]**2)</code></li>
-  <li> Vectorization: make scalar mathematical computation valid for vectors/arrays</li>
-  <li> Pure mathematical expressions require no extra vectorization</li>
-  <li> Mathematical formulas involving <code>if</code> tests require manual work for vectorization:</li>
-</ul>
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> t
+array([[  <span style="color: #666666">1.</span>,   <span style="color: #666666">2.</span>,   <span style="color: #666666">3.</span>,   <span style="color: #666666">4.</span>,   <span style="color: #666666">5.</span>,   <span style="color: #666666">6.</span>],
+       [  <span style="color: #666666">7.</span>,   <span style="color: #666666">8.</span>,   <span style="color: #666666">9.</span>,  <span style="color: #666666">10.</span>,  <span style="color: #666666">11.</span>,  <span style="color: #666666">12.</span>],
+       [ <span style="color: #666666">13.</span>,  <span style="color: #666666">14.</span>,  <span style="color: #666666">15.</span>,  <span style="color: #666666">16.</span>,  <span style="color: #666666">17.</span>,  <span style="color: #666666">18.</span>],
+       [ <span style="color: #666666">19.</span>,  <span style="color: #666666">20.</span>,  <span style="color: #666666">21.</span>,  <span style="color: #666666">22.</span>,  <span style="color: #666666">23.</span>,  <span style="color: #666666">24.</span>],
+       [ <span style="color: #666666">25.</span>,  <span style="color: #666666">26.</span>,  <span style="color: #666666">27.</span>,  <span style="color: #666666">28.</span>,  <span style="color: #666666">29.</span>,  <span style="color: #666666">30.</span>]])
+</pre></div>
+<p>
+What will <code>t[1:-1:2, 2:]</code> be?
+</div>
+
+<!-- !epop -->
+
+<p>
+<!-- !bpop -->
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Solution:</b>
+<p>
+Slice <code>1:-1:2</code> for first index results in
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">scalar_result <span style="color: #666666">=</span> expression1 <span style="color: #008000; font-weight: bold">if</span> condition <span style="color: #008000; font-weight: bold">else</span> expression2
-vector_result <span style="color: #666666">=</span> where(condition, expression1, expression2)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[  <span style="color: #666666">7.</span>,   <span style="color: #666666">8.</span>,   <span style="color: #666666">9.</span>,  <span style="color: #666666">10.</span>,  <span style="color: #666666">11.</span>,  <span style="color: #666666">12.</span>]
+[ <span style="color: #666666">19.</span>,  <span style="color: #666666">20.</span>,  <span style="color: #666666">21.</span>,  <span style="color: #666666">22.</span>,  <span style="color: #666666">23.</span>,  <span style="color: #666666">24.</span>]
+</pre></div>
+<p>
+Slice <code>2:</code> for the second index then gives
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[  <span style="color: #666666">9.</span>,  <span style="color: #666666">10.</span>,  <span style="color: #666666">11.</span>,  <span style="color: #666666">12.</span>]
+[ <span style="color: #666666">21.</span>,  <span style="color: #666666">22.</span>,  <span style="color: #666666">23.</span>,  <span style="color: #666666">24.</span>]
 </pre></div>
 
 </div>
 
+<!-- !epop -->
 
 <p>
 <p>

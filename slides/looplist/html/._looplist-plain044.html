@@ -1,0 +1,242 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Ch.2: Loops and lists">
+
+<title>Ch.2: Loops and lists</title>
+
+
+<style type="text/css">
+/* bloodish style */
+
+body {
+  font-family: Helvetica, Verdana, Arial, Sans-serif;
+  color: #404040;
+  background: #ffffff;
+}
+h1 { font-size: 1.8em;  color: #8A0808; }
+h2 { font-size: 1.6em;  color: #8A0808; }
+h3 { font-size: 1.4em;  color: #8A0808; }
+h4 { color: #8A0808; }
+a { color: #8A0808; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #bababa;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #f8f8f8;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(u' Make a table of Celsius and Fahrenheit degrees ',
+               2,
+               None,
+               '___sec0'),
+              (u' Making a table: the simple naive solution ',
+               2,
+               None,
+               '___sec1'),
+              (u' The while loop makes it possible to repeat almost similar tasks ',
+               2,
+               None,
+               '___sec2'),
+              (u' The while loop for making a table ', 2, None, '___sec3'),
+              (u' The program flow in a while loop ', 2, None, '___sec4'),
+              (u' Boolean expressions are true or false ',
+               2,
+               None,
+               '___sec5'),
+              (u' Combining boolean expressions ', 2, None, '___sec6'),
+              (u' Lists are objects for storing a sequence of things (objects) ',
+               2,
+               None,
+               '___sec7'),
+              (u' List operations: initialization and indexing ',
+               2,
+               None,
+               '___sec8'),
+              (u' List operations: append, extend, insert, delete ',
+               2,
+               None,
+               '___sec9'),
+              (u' List operations: search for elements, negative indices ',
+               2,
+               None,
+               '___sec10'),
+              (u' Loop over elements in a list with a for loop ',
+               2,
+               None,
+               '___sec11'),
+              (u' Simulate a for loop by hand ', 2, None, '___sec12'),
+              (u' Making a table with a for loop ', 2, None, '___sec13'),
+              (u' A for loop can always be translated to a while loop ',
+               2,
+               None,
+               '___sec14'),
+              (u' While loop version of the for loop for making a table ',
+               2,
+               None,
+               '___sec15'),
+              (u' Implement a mathematical sum via a loop ',
+               2,
+               None,
+               '___sec16'),
+              (u' Storing the table columns as lists ', 2, None, '___sec17'),
+              (u' For loop with list indices ', 2, None, '___sec18'),
+              (u' How can we change the elements in a list? ',
+               2,
+               None,
+               '___sec19'),
+              (u' Changing a list element requires assignment to an indexed element ',
+               2,
+               None,
+               '___sec20'),
+              (u' List comprehensions: compact creation of lists ',
+               2,
+               None,
+               '___sec21'),
+              (u' Interactive demonstration of list comprehensions ',
+               2,
+               None,
+               '___sec22'),
+              (u' Traversing multiple lists simultaneously with zip ',
+               2,
+               None,
+               '___sec23'),
+              (u' Nested lists: list of lists ', 2, None, '___sec24'),
+              (u' Table of columns vs table of rows ', 2, None, '___sec25'),
+              (u' Illustration of table of columns ', 2, None, '___sec26'),
+              (u' Illustration of table of rows ', 2, None, '___sec27'),
+              (u' Extracting sublists (or slices) ', 2, None, '___sec28'),
+              (u' What does this code snippet do? ', 2, None, '___sec29'),
+              (u' Iteration over general nested lists ', 2, None, '___sec30'),
+              (u' Iteration over a specific nested list ',
+               2,
+               None,
+               '___sec31'),
+              (u' Tuples are constant lists ', 2, None, '___sec32'),
+              (u' Why tuples when lists have more functionality? ',
+               2,
+               None,
+               '___sec33'),
+              (u' Key topics from this chapter ', 2, None, '___sec34'),
+              (u' Summary of loops, lists and tuples ', 2, None, '___sec35'),
+              (u' List functionality ', 2, None, '___sec36'),
+              (u' A summarizing example; problem ', 2, None, '___sec37'),
+              (u' A summarizing example; program (task 1) ',
+               2,
+               None,
+               '___sec38'),
+              (u' A summarizing example; program (task 2) ',
+               2,
+               None,
+               '___sec39'),
+              (u' A summarizing example; program (task 3) ',
+               2,
+               None,
+               '___sec40'),
+              (u' Using a debugger to trace the execution ',
+               2,
+               None,
+               '___sec41'),
+              (u' How to find Python info ', 2, None, '___sec42'),
+              (u' Warning about reading programming documentation ',
+               2,
+               None,
+               '___sec43')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<a name="part0044"></a>
+<p>
+
+</p>
+
+<p>
+<!-- !split -->
+
+<h2 id="___sec43">Warning about reading programming documentation </h2>
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Warning.</b>
+<p>
+For a newbie it is difficult to read manuals (intended for experts!) - you will need a lot of training; just browse, don't read everything, try to dig out the key info.
+
+<p>
+It's much like googling in general: only a fraction of the information
+is relevant for you.
+</div>
+
+
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._looplist-plain043.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+</td><td>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

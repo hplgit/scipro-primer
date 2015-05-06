@@ -132,22 +132,18 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>&nbsp;<br>
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>&nbsp;<br>
-<center><h4>Oct 23, 2014</h4></center> <!-- date -->
-<p>
-
+<center><h4>May 6, 2015</h4></center> <!-- date -->
 </section>
 
 
 <section>
-
-<h1 style="text-align: center;">Basics of classes  <a name="___sec0"></a></h1>
+<h1 id="___sec0">Basics of classes </h1>
 
 <p>
 
@@ -161,45 +157,37 @@ MathJax.Hub.Config({
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class = functions + data (variables) in one unit  <a name="___sec1"></a></h2>
+<h2 id="___sec1">Class = functions + data (variables) in one unit </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> A class packs together data (a collection of variables) and functions as <em>one single unit</em></li>
-  <p><li> As a programmer you can create a new class and thereby a new object type (like <code>float</code>, <code>list</code>, <code>file</code>, ...)</li>
-  <p><li> A class is much like a module: a collection of &quot;global&quot; variables and functions that belong together</li>
-  <p><li> There is only one instance of a module while a class can have many instances (copies)</li>
-  <p><li> Modern programming applies classes to a large extent</li>
-  <p><li> It will take some time to master the class concept</li>
-  <p><li> Let's learn by doing!</li>
+
+<p><li> A class packs together data (a collection of variables) and functions as <em>one single unit</em></li>
+
+<p><li> As a programmer you can create a new class and thereby a new object type (like <code>float</code>, <code>list</code>, <code>file</code>, ...)</li>
+
+<p><li> A class is much like a module: a collection of &quot;global&quot; variables and functions that belong together</li>
+
+<p><li> There is only one instance of a module while a class can have many instances (copies)</li>
+
+<p><li> Modern programming applies classes to a large extent</li>
+
+<p><li> It will take some time to master the class concept</li>
+
+<p><li> Let's learn by doing!</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Representing a function by a class; background  <a name="___sec2"></a></h2>
+<h2 id="___sec2">Representing a function by a class; background </h2>
 
 <p>
 Consider a function of \( t \) with a parameter \( v_0 \):
@@ -208,7 +196,6 @@ Consider a function of \( t \) with a parameter \( v_0 \):
 $$ y(t; v_0)=v_0t - {1\over2}gt^2$$
 <p>&nbsp;<br>
 
-
 <p>
 We need both \( v_0 \) and \( t \) to evaluate \( y \) (and \( g=9.81 \)), but
 how should we implement this?
@@ -216,7 +203,6 @@ how should we implement this?
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Having \( t \) and \( v_0 \) as arguments:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -227,11 +213,9 @@ how should we implement this?
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Having \( t \) as argument and \( v_0 \) as global variable:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -243,25 +227,18 @@ how should we implement this?
 Motivation: \( y(t) \) is a function of \( t \) only
 </div>
 
-
 <p>
 <!-- Because \( y(t) \) is a function of \( t \) only. With a class, with -->
 <!-- have a function \( y(t) \) of \( t \) only, but it also contains the value of \( v_0 \). -->
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Representing a function by a class; idea  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Representing a function by a class; idea </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
  <p><li> With a class, <code>y(t)</code> can be a function of <code>t</code> only, but still have</li>
 </ul>
@@ -273,46 +250,35 @@ Motivation: \( y(t) \) is a function of \( t \) only
  <p><li> The class packs together a function <code>y(t)</code> and data (<code>v0</code>, <code>g</code>)</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Representing a function by a class; technical overview  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Representing a function by a class; technical overview </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> We make a class <code>Y</code> for \( y(t;v_0) \) with variables <code>v0</code> and <code>g</code>
+
+<p><li> We make a class <code>Y</code> for \( y(t;v_0) \) with variables <code>v0</code> and <code>g</code>
     and a function <code>value(t)</code> for computing \( y(t;v_0) \)</li>
-  <p><li> Any class should also have a function <code>__init__</code> for initialization of the variables</li>
+
+<p><li> Any class should also have a function <code>__init__</code> for initialization of the variables</li>
 </ul>
 </div>
 
-
 <p>
 <center><p><img src="fig-class/UML_class_Y.png" align="bottom" width=120></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Representing a function by a class; the code  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Representing a function by a class; the code </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -335,16 +301,11 @@ Usage:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Representing a function by a class; the constructor  <a name="___sec6"></a></h2>
+<h2 id="___sec6">Representing a function by a class; the constructor </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -370,23 +331,16 @@ we create a new variable (instance) <code>y</code> of type <code>Y</code>.
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>What is this <code>self</code> variable? Stay cool - it will be understood later as you get used to it  <a name="___sec7"></a></h2>
+<h2 id="___sec7">What is this <code>self</code> variable? Stay cool - it will be understood later as you get used to it </h2>
 
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
  <p><li class="fragment"> Think of <code>self</code> as <code>y</code>, i.e., the new variable to be created. <code>self.v0 = ...</code> means that we attach a variable <code>v0</code> to <code>self</code> (<code>y</code>).</li>
  <p><li class="fragment"> <code>Y(3)</code> means <code>Y.__init__(y, 3)</code>, i.e., set <code>self=y</code>, <code>v0=3</code></li>
@@ -395,16 +349,12 @@ we create a new variable (instance) <code>y</code> of type <code>Y</code>.
 </ul>
 <p>
 
-<p>
-
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
 <div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">y.v0</span>
 <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">y.g</span>
 </pre></div>
 
 </div>
-
-
 
 <p>
 
@@ -417,26 +367,20 @@ we create a new variable (instance) <code>y</code> of type <code>Y</code>.
     John von Neumann, mathematician, 1903-1957.
 </blockquote>
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Representing a function by a class; the value method  <a name="___sec8"></a></h2>
+<h2 id="___sec8">Representing a function by a class; the value method </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Functions in classes are called <em>methods</em></li>
-  <p><li> Variables in classes are called <em>attributes</em></li>
+
+<p><li> Functions in classes are called <em>methods</em></li>
+
+<p><li> Variables in classes are called <em>attributes</em></li>
 </ul>
 <p>
 
@@ -475,29 +419,23 @@ Inside <code>value</code> things &quot;appear&quot; as
 <p>
 <code>self</code> gives access to &quot;global variables&quot; in the class object.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Representing a function by a class; summary  <a name="___sec9"></a></h2>
+<h2 id="___sec9">Representing a function by a class; summary </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Class <code>Y</code> collects the attributes <code>v0</code> and <code>g</code> and the method <code>value</code> as one unit</li>
-  <p><li> <code>value(t)</code> is function of <code>t</code> only, but has automatically access to the parameters <code>v0</code> and <code>g</code> as <code>self.v0</code> and <code>self.g</code></li>
-  <p><li> The great advantage: we can send <code>y.value</code> as an ordinary function of <code>t</code> to any other function that expects a function <code>f(t)</code> of one variable</li>
-</ul>
-<p>
 
+<p><li> Class <code>Y</code> collects the attributes <code>v0</code> and <code>g</code> and the method <code>value</code> as one unit</li>
+
+<p><li> <code>value(t)</code> is function of <code>t</code> only, but has automatically access to the parameters <code>v0</code> and <code>g</code> as <code>self.v0</code> and <code>self.g</code></li>
+
+<p><li> The great advantage: we can send <code>y.value</code> as an ordinary function of <code>t</code> to any other function that expects a function <code>f(t)</code> of one variable</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -515,16 +453,11 @@ Inside <code>value</code> things &quot;appear&quot; as
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Representing a function by a class; the general case  <a name="___sec10"></a></h2>
+<h2 id="___sec10">Representing a function by a class; the general case </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -540,11 +473,9 @@ it is wise to represent <code>f</code> by a class where
 \( p_0,\ldots,p_n \) are attributes and where there is a method, say <code>value(self, x)</code>, for computing \( f(x) \)
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -560,16 +491,11 @@ it is wise to represent <code>f</code> by a class where
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class for a function with four parameters  <a name="___sec11"></a></h2>
+<h2 id="___sec11">Class for a function with four parameters </h2>
 
 <p>&nbsp;<br>
 $$
@@ -578,11 +504,9 @@ v(r; \beta, \mu_0, n, R) = \left({\beta\over 2\mu_0}\right)^{{1\over n}}
 $$
 <p>&nbsp;<br>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -604,22 +528,16 @@ $$
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Rough sketch of a Python class  <a name="___sec12"></a></h2>
+<h2 id="___sec12">Rough sketch of a general Python class </h2>
 
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -643,8 +561,6 @@ $$
 
 </div>
 
-
-
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
@@ -652,39 +568,29 @@ $$
 <p>
 It is common to have a constructor where attributes are initialized, but this is not a requirement - attributes can be defined whenever desired
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>You can learn about other versions and views of class Y in the course book  <a name="___sec13"></a></h2>
+<h2 id="___sec13">You can learn about other versions and views of class Y in the course book </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> The book features a section on a different version of class <code>Y</code> where there is no constructor (which is possible)</li>
-  <p><li> The book also features a section on how to implement classes without using classes</li>
-  <p><li> These sections may be clarifying - or confusing</li>
+
+<p><li> The book features a section on a different version of class <code>Y</code> where there is no constructor (which is possible)</li>
+
+<p><li> The book also features a section on how to implement classes without using classes</li>
+
+<p><li> These sections may be clarifying - or confusing</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>But what is this self variable? I want to know now!  <a name="___sec14"></a></h2>
+<h2 id="___sec14">But what is this self variable? I want to know now! </h2>
 
 <p>
 <div class="alert alert-block alert-warning alert-text-normal">
@@ -698,7 +604,6 @@ You have two choices:
    experience with class programming (suddenly <code>self</code> becomes clear!)</li>
 </ol>
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -737,21 +642,15 @@ is actually
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>How <code>self</code> works in the <code>value</code> method  <a name="___sec15"></a></h2>
+<h2 id="___sec15">How <code>self</code> works in the <code>value</code> method </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -769,16 +668,11 @@ can alternatively be written as
 So, when we do <code>instance.method(arg1, arg2)</code>, <code>self</code> becomes
 <code>instance</code> inside <code>method</code>.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Working with multiple instances may help explain <code>self</code>  <a name="___sec16"></a></h2>
+<h2 id="___sec16">Working with multiple instances may help explain <code>self</code> </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -802,11 +696,9 @@ So, when we do <code>instance.method(arg1, arg2)</code>, <code>self</code> becom
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -836,33 +728,168 @@ So, when we do <code>instance.method(arg1, arg2)</code>, <code>self</code> becom
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec17">But what is this self variable? I want to know now! </h2>
 
-<h2>Another class example: a bank account  <a name="___sec17"></a></h2>
+<p>
+<div class="alert alert-block alert-warning alert-text-normal">
+<b>Warning.</b>
+<p>
+You have two choices:
+
+<ol>
+<p><li> follow the detailed explanations of what <code>self </code> really is</li>
+<p><li> postpone understanding <code>self</code> until you have much more
+   experience with class programming (suddenly <code>self</code> becomes clear!)</li>
+</ol>
+</div>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+The syntax
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">Y(</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">)</span>
+</pre></div>
+<p>
+can be thought of as
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">Y.__init__(y,</span> <span style="color: #3677a9">3</span><span style="color: #d0d0d0">)</span>   <span style="color: #999999; font-style: italic"># class prefix Y. is like a module prefix</span>
+</pre></div>
+<p>
+Then
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #24909d">self</span><span style="color: #d0d0d0">.v0</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">v0</span>
+</pre></div>
+<p>
+is actually
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">y.v0</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">3</span>
+</pre></div>
+
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec18">How <code>self</code> works in the <code>value</code> method </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
 
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">v</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">y.value(</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">)</span>
+</pre></div>
+<p>
+can alternatively be written as
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">v</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">Y.value(y,</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">)</span>
+</pre></div>
+<p>
+So, when we do <code>instance.method(arg1, arg2)</code>, <code>self</code> becomes
+<code>instance</code> inside <code>method</code>.
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec19">Working with multiple instances may help explain <code>self</code> </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<code>id(obj)</code>: print unique Python identifier of an object
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">SelfExplorer</span><span style="color: #d0d0d0">:</span>
+    <span style="color: #ed9d13">&quot;&quot;&quot;Class for computing a*x.&quot;&quot;&quot;</span>
+    <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">__init__</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">a):</span>
+        <span style="color: #24909d">self</span><span style="color: #d0d0d0">.a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">a</span>
+        <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;init: a=%g, id(self)=%d&#39;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">.a,</span> <span style="color: #24909d">id</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">))</span>
+
+    <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">value</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">x):</span>
+        <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;value: a=%g, id(self)=%d&#39;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">.a,</span> <span style="color: #24909d">id</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">))</span>
+        <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.a*x</span>
+</pre></div>
+
+</div>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "native" -->
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">s1</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">SelfExplorer(</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">init:</span> <span style="color: #d0d0d0">a=</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">id</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">)=</span><span style="color: #3677a9">38085696</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #24909d">id</span><span style="color: #d0d0d0">(s1)</span>
+<span style="color: #3677a9">38085696</span>
+
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">s2</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">SelfExplorer(</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">init:</span> <span style="color: #d0d0d0">a=</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">id</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">)=</span><span style="color: #3677a9">38085192</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #24909d">id</span><span style="color: #d0d0d0">(s2)</span>
+<span style="color: #3677a9">38085192</span>
+
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">s1.value(</span><span style="color: #3677a9">4</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">value:</span> <span style="color: #d0d0d0">a=</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">id</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">)=</span><span style="color: #3677a9">38085696</span>
+<span style="color: #3677a9">4</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">SelfExplorer.value(s1,</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">value:</span> <span style="color: #d0d0d0">a=</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">id</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">)=</span><span style="color: #3677a9">38085696</span>
+<span style="color: #3677a9">4</span>
+
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">s2.value(</span><span style="color: #3677a9">5</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">value:</span> <span style="color: #d0d0d0">a=</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">id</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">)=</span><span style="color: #3677a9">38085192</span>
+<span style="color: #3677a9">10</span>
+<span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">SelfExplorer.value(s2,</span> <span style="color: #3677a9">5</span><span style="color: #d0d0d0">)</span>
+<span style="color: #d0d0d0">value:</span> <span style="color: #d0d0d0">a=</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">id</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">)=</span><span style="color: #3677a9">38085192</span>
+<span style="color: #3677a9">10</span>
+</pre></div>
+
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec20">Another class example: a bank account </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
 <ul>
-  <p><li> Attributes: name of owner, account number, balance</li>
-  <p><li> Methods: deposit, withdraw, pretty print</li>
+
+<p><li> Attributes: name of owner, account number, balance</li>
+
+<p><li> Methods: deposit, withdraw, pretty print</li>
 </ul>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -885,33 +912,23 @@ So, when we do <code>instance.method(arg1, arg2)</code>, <code>self</code> becom
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>UML diagram of class Account  <a name="___sec18"></a></h2>
+<h2 id="___sec21">UML diagram of class Account </h2>
 
 <p>
 <center><p><img src="fig-class/UML_class_Account.png" align="bottom" width=120></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example on using class Account  <a name="___sec19"></a></h2>
+<h2 id="___sec22">Example on using class Account </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -930,22 +947,16 @@ So, when we do <code>instance.method(arg1, arg2)</code>, <code>self</code> becom
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Use underscore in attribute names to avoid misuse  <a name="___sec20"></a></h2>
+<h2 id="___sec23">Use underscore in attribute names to avoid misuse </h2>
 
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Possible, but not intended use:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -956,22 +967,19 @@ So, when we do <code>instance.method(arg1, arg2)</code>, <code>self</code> becom
 
 </div>
 
-
-
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>The assumptions on correct usage:</b>
-<p>
-
 <ul>
-  <p><li class="fragment"> The attributes should <em>not</em> be changed!</li>
-  <p><li class="fragment"> The <code>balance</code> attribute can be viewed</li>
-  <p><li class="fragment"> Changing <code>balance</code> is done through <code>withdraw</code> or <code>deposit</code></li>
+
+<p><li class="fragment"> The attributes should <em>not</em> be changed!</li>
+
+<p><li class="fragment"> The <code>balance</code> attribute can be viewed</li>
+
+<p><li class="fragment"> Changing <code>balance</code> is done through <code>withdraw</code> or <code>deposit</code></li>
 </ul>
 </div>
-
-
 
 <p>
 
@@ -980,22 +988,15 @@ So, when we do <code>instance.method(arg1, arg2)</code>, <code>self</code> becom
 <p>
 Attributes and methods not intended for use outside the class can be marked as <em>protected</em> by prefixing the name with an underscore (e.g., <code>_name</code>). This is just a convention - and no technical way of avoiding attributes and methods to be accessed.
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Improved class with attribute protection (underscore)  <a name="___sec21"></a></h2>
+<h2 id="___sec24">Improved class with attribute protection (underscore) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1021,21 +1022,15 @@ Attributes and methods not intended for use outside the class can be marked as <
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Usage of improved class AccountP  <a name="___sec22"></a></h2>
+<h2 id="___sec25">Usage of improved class AccountP </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1050,67 +1045,59 @@ Attributes and methods not intended for use outside the class can be marked as <
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Another example: a phone book  <a name="___sec23"></a></h2>
+<h2 id="___sec26">Another example: a phone book </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
+<ul>
+
+<p><li> A phone book is a list of data about persons</li>
+
+<p><li> Data about a person: name, mobile phone, office phone, private phone, email</li>
+
+<p><li> Let us create a class for data about a person!</li>
+
+<p><li> Methods:</li>
 
 <ul>
-  <p><li> A phone book is a list of data about persons</li>
-  <p><li> Data about a person: name, mobile phone, office phone, private phone, email</li>
-  <p><li> Let us create a class for data about a person!</li>
-  <p><li> Methods:</li>
 
-<ul>
-    <p><li> Constructor for initializing name, plus one or more other data</li>
-    <p><li> Add new mobile number</li>
-    <p><li> Add new office number</li>
-    <p><li> Add new private number</li>
-    <p><li> Add new email</li>
-    <p><li> Write out person data</li>
+<p><li> Constructor for initializing name, plus one or more other data</li>
+
+<p><li> Add new mobile number</li>
+
+<p><li> Add new office number</li>
+
+<p><li> Add new private number</li>
+
+<p><li> Add new email</li>
+
+<p><li> Write out person data</li>
 </ul>
 <p>
-
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>UML diagram of class Person  <a name="___sec24"></a></h2>
+<h2 id="___sec27">UML diagram of class Person </h2>
 
 <p>
 <center><p><img src="fig-class/UML_class_Person.png" align="bottom" width=240></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Basic code of class Person  <a name="___sec25"></a></h2>
+<h2 id="___sec28">Basic code of class Person </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1138,21 +1125,15 @@ Attributes and methods not intended for use outside the class can be marked as <
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Code of a dump method for printing all class contents  <a name="___sec26"></a></h2>
+<h2 id="___sec29">Code of a dump method for printing all class contents </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1173,11 +1154,9 @@ Attributes and methods not intended for use outside the class can be marked as <
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Usage:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1192,35 +1171,30 @@ Attributes and methods not intended for use outside the class can be marked as <
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Another example: a class for a circle  <a name="___sec27"></a></h2>
+<h2 id="___sec30">Another example: a class for a circle </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> A circle is defined by its center point \( x_0 \), \( y_0 \) and its radius \( R \)</li>
-  <p><li> These data can be attributes in a class</li>
-  <p><li> Possible methods in the class: <code>area</code>, <code>circumference</code></li>
-  <p><li> The constructor initializes \( x_0 \), \( y_0 \) and \( R \)</li>
+
+<p><li> A circle is defined by its center point \( x_0 \), \( y_0 \) and its radius \( R \)</li>
+
+<p><li> These data can be attributes in a class</li>
+
+<p><li> Possible methods in the class: <code>area</code>, <code>circumference</code></li>
+
+<p><li> The constructor initializes \( x_0 \), \( y_0 \) and \( R \)</li>
 </ul>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1237,11 +1211,9 @@ Attributes and methods not intended for use outside the class can be marked as <
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -1252,21 +1224,15 @@ Attributes and methods not intended for use outside the class can be marked as <
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Test function for class Circle  <a name="___sec28"></a></h2>
+<h2 id="___sec31">Test function for class Circle </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1275,32 +1241,24 @@ Attributes and methods not intended for use outside the class can be marked as <
     <span style="color: #d0d0d0">c</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">Circle(</span><span style="color: #3677a9">7.4</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">-</span><span style="color: #3677a9">8.1</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">R)</span>
 
     <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">math</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">pi</span>
-    <span style="color: #d0d0d0">exact_area</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">pi*R**</span><span style="color: #3677a9">2</span>
+    <span style="color: #d0d0d0">expected_area</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">pi*R**</span><span style="color: #3677a9">2</span>
     <span style="color: #d0d0d0">computed_area</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">c.area()</span>
-    <span style="color: #d0d0d0">diff</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">abs</span><span style="color: #d0d0d0">(exact_area</span> <span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">computed_area)</span>
+    <span style="color: #d0d0d0">diff</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">abs</span><span style="color: #d0d0d0">(expected_area</span> <span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">computed_area)</span>
     <span style="color: #d0d0d0">tol</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1E-14</span>
     <span style="color: #6ab825; font-weight: bold">assert</span> <span style="color: #d0d0d0">diff</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #d0d0d0">tol,</span> <span style="color: #ed9d13">&#39;bug in Circle.area, diff=%s&#39;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">diff</span>
 
-    <span style="color: #d0d0d0">exact_circumference</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">*pi*R</span>
+    <span style="color: #d0d0d0">expected_circumference</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">*pi*R</span>
     <span style="color: #d0d0d0">computed_circumference</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">c.circumference()</span>
-    <span style="color: #d0d0d0">diff</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">abs</span><span style="color: #d0d0d0">(exact_circumference</span> <span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">computed_circumference)</span>
+    <span style="color: #d0d0d0">diff</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">abs</span><span style="color: #d0d0d0">(expected_circumference</span> <span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">computed_circumference)</span>
     <span style="color: #6ab825; font-weight: bold">assert</span> <span style="color: #d0d0d0">diff</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #d0d0d0">tol,</span> <span style="color: #ed9d13">&#39;bug in Circle.circumference, diff=%s&#39;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">diff</span>
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h1 style="text-align: center;">Special methods  <a name="___sec29"></a></h1>
-
-<p>
-
+<h1 id="___sec32">Special methods </h1>
 
 <p>
 
@@ -1329,21 +1287,15 @@ Attributes and methods not intended for use outside the class can be marked as <
 </td>
 </tr>
 </table>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2><em>Special methods</em> allow nice syntax and are recognized by double leading and trailing underscores  <a name="___sec30"></a></h2>
+<h2 id="___sec33"><em>Special methods</em> allow nice syntax and are recognized by double leading and trailing underscores </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1366,16 +1318,11 @@ Attributes and methods not intended for use outside the class can be marked as <
 <p>
 We shall learn about many more such <em>special methods</em>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example on a call special method  <a name="___sec31"></a></h2>
+<h2 id="___sec34">Example on a call special method </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1411,16 +1358,11 @@ Note:
  <p><li> The <code>value(t)</code> method does the same, but <code>__call__</code> allows nicer syntax for computing function values</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Representing a function by a class revisited  <a name="___sec32"></a></h2>
+<h2 id="___sec35">Representing a function by a class revisited </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1436,11 +1378,9 @@ it is wise to represent <code>f</code> by a class where \( p_0,\ldots,p_n \)
 are attributes and <code>__call__(x)</code> computes \( f(x) \)
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1456,16 +1396,11 @@ are attributes and <code>__call__(x)</code> computes \( f(x) \)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Can we automatically differentiate a function?  <a name="___sec33"></a></h2>
+<h2 id="___sec36">Can we automatically differentiate a function? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1497,16 +1432,11 @@ so that <code>dfdx</code> behaves as a function that computes the derivative of 
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Automagic differentiation; solution  <a name="___sec34"></a></h2>
+<h2 id="___sec37">Automagic differentiation; solution </h2>
 
 <p>
 
@@ -1522,13 +1452,10 @@ $$ f'(x) \approx {f(x+h)-f(x)\over h} $$
 for a small (yet moderate) \( h \), say \( h=10^{-5} \)
 </div>
 
-
-
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Implementation.</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1543,22 +1470,15 @@ for a small (yet moderate) \( h \), say \( h=10^{-5} \)
 </pre></div>
 
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Automagic differentiation; demo  <a name="___sec35"></a></h2>
+<h2 id="___sec38">Automagic differentiation; demo </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -1579,16 +1499,11 @@ for a small (yet moderate) \( h \), say \( h=10^{-5} \)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Automagic differentiation; useful in Newton's method  <a name="___sec36"></a></h2>
+<h2 id="___sec39">Automagic differentiation; useful in Newton's method </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1619,26 +1534,22 @@ Suppose \( f'(x) \) requires boring/lengthy derivation, then class <code>Derivat
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Automagic differentiation; test function  <a name="___sec37"></a></h2>
+<h2 id="___sec40">Automagic differentiation; test function </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> How can we test class <code>Derivative</code>?</li>
-  <p><li> Method 1: compute \( (f(x+h)-f(x))/h \) by hand for some \( f \) and \( h \)</li>
-  <p><li> Method 2: utilize that linear functions are differentiated
+
+<p><li> How can we test class <code>Derivative</code>?</li>
+
+<p><li> Method 1: compute \( (f(x+h)-f(x))/h \) by hand for some \( f \) and \( h \)</li>
+
+<p><li> Method 2: utilize that linear functions are differentiated
     exactly by our numerical formula, regardless of \( h \)</li>
 </ul>
 <p>
@@ -1658,21 +1569,15 @@ Test function based on method 2:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Automagic differentiation; explanation of the test function  <a name="___sec38"></a></h2>
+<h2 id="___sec41">Automagic differentiation; explanation of the test function </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Use of lambda functions:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1691,11 +1596,9 @@ is equivalent to
 Lambda functions are convenient for producing quick, short code
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Use of closure:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1717,16 +1620,11 @@ Looks straightforward...but
  <p><li> <code>f</code> is known as a <em>closure</em> in computer science</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Automagic differentiation detour; sympy solution (exact differentiation via symbolic expressions)  <a name="___sec39"></a></h2>
+<h2 id="___sec42">Automagic differentiation detour; sympy solution (exact differentiation via symbolic expressions) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1753,21 +1651,15 @@ SymPy can perform exact, symbolic differentiation:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Automagic differentiation detour; class based on sympy  <a name="___sec40"></a></h2>
+<h2 id="___sec43">Automagic differentiation detour; class based on sympy </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1784,11 +1676,9 @@ SymPy can perform exact, symbolic differentiation:
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -1808,16 +1698,14 @@ SymPy can perform exact, symbolic differentiation:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec44">Automagic integration; problem setting </h2>
 
-<h2>Automagic integration; problem setting  <a name="___sec41"></a></h2>
+<p>
+<center><p><img src="fig-class/integral_comic_strip.png" align="bottom" width=800></p></center>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1828,17 +1716,28 @@ Given a function \( f(x) \), we want to compute
 <p>&nbsp;<br>
 $$ F(x; a) = \int_a^x f(t)dt $$
 <p>&nbsp;<br>
+</div>
+</section>
 
+
+<section>
+<h2 id="___sec45">Automagic integration; technique </h2>
 
 <p>
-Technique: Trapezoidal rule
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>&nbsp;<br>
+$$ F(x; a) = \int_a^x f(t)dt $$
+<p>&nbsp;<br>
+
+<p>
+Technique: Midpoint rule or Trapezoidal rule, here the latter:
 
 <p>&nbsp;<br>
 $$
 \int_a^x f(t)dt = h\left({1\over2}f(a) + \sum_{i=1}^{n-1} f(a+ih) + {1\over2}f(x)\right)
 $$
 <p>&nbsp;<br>
-
 
 <p>
 Desired application code:
@@ -1856,22 +1755,15 @@ Desired application code:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Automagic integration; implementation  <a name="___sec42"></a></h2>
+<h2 id="___sec46">Automagic integration; implementation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -1899,26 +1791,22 @@ Class <code>Integral</code> holds <code>f</code>, <code>a</code> and <code>n</co
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Automagic integration; test function  <a name="___sec43"></a></h2>
+<h2 id="___sec47">Automagic integration; test function </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> How can we test class <code>Integral</code>?</li>
-  <p><li> Method 1: compute by hand for some \( f \) and small \( n \)</li>
-  <p><li> Method 2: utilize that linear functions are integrated
+
+<p><li> How can we test class <code>Integral</code>?</li>
+
+<p><li> Method 1: compute by hand for some \( f \) and small \( n \)</li>
+
+<p><li> Method 2: utilize that linear functions are integrated
     exactly by our numerical formula, regardless of \( n \)</li>
 </ul>
 <p>
@@ -1939,26 +1827,21 @@ Test function based on method 2:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Special method for printing  <a name="___sec44"></a></h2>
+<h2 id="___sec48">Special method for printing </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> In Python, we can usually print an object <code>a</code> by <code>print a</code>,
+
+<p><li> In Python, we can usually print an object <code>a</code> by <code>print a</code>,
     works for built-in types (strings, lists, floats, ...)</li>
-  <p><li> Python does not know how to print objects of a user-defined class,
+
+<p><li> Python does not know how to print objects of a user-defined class,
     but if the class defines a method <code>__str__</code>, Python will use this method to convert an object to a string</li>
 </ul>
 <p>
@@ -1990,16 +1873,11 @@ Demo:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class for polynomials; functionality  <a name="___sec45"></a></h2>
+<h2 id="___sec49">Class for polynomials; functionality </h2>
 
 <p>
 A polynomial can be specified by a list of its coefficients. For example,
@@ -2009,14 +1887,12 @@ A polynomial can be specified by a list of its coefficients. For example,
 $$  1 + 0\cdot x - 1\cdot x^2 + 2\cdot x^3 $$
 <p>&nbsp;<br>
 
-
 <p>
 and the coefficients can be stored as <code>[1, 0, -1, 2]</code>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Desired application code:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -2036,21 +1912,15 @@ and the coefficients can be stored as <code>[1, 0, -1, 2]</code>
 <p>
 How can we make class <code>Polynomial</code>?
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class Polynomial; basic code  <a name="___sec46"></a></h2>
+<h2 id="___sec50">Class Polynomial; basic code </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2066,21 +1936,15 @@ How can we make class <code>Polynomial</code>?
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class Polynomial; addition  <a name="___sec47"></a></h2>
+<h2 id="___sec51">Class Polynomial; addition </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2103,16 +1967,11 @@ How can we make class <code>Polynomial</code>?
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class Polynomial; multiplication  <a name="___sec48"></a></h2>
+<h2 id="___sec52">Class Polynomial; multiplication </h2>
 
 <p>
 
@@ -2126,7 +1985,6 @@ $$ \left(\sum_{i=0}^Mc_ix^i\right)\left(\sum_{j=0}^N d_jx^j\right)
 = \sum_{i=0}^M \sum_{j=0}^N c_id_j x^{i+j} $$
 <p>&nbsp;<br>
 
-
 <p>
 The coeff. corresponding to power \( i+j \) is \( c_i\cdot d_j \). The
 list <code>r</code> of coefficients of the result:
@@ -2134,13 +1992,10 @@ list <code>r</code> of coefficients of the result:
 0 to \( M \) and \( N \), resp.)
 </div>
 
-
-
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Implementation:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2157,17 +2012,11 @@ list <code>r</code> of coefficients of the result:
 </pre></div>
 
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class Polynomial; differentation  <a name="___sec49"></a></h2>
+<h2 id="___sec53">Class Polynomial; differentation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-small">
@@ -2179,7 +2028,6 @@ Rule for differentiating a general polynomial:
 $$ {d\over dx}\sum_{i=0}^n c_ix^i = \sum_{i=1}^n ic_ix^{i-1}$$
 <p>&nbsp;<br>
 
-
 <p>
 If <code>c</code> is the list of coefficients, the derivative has a list
 of coefficients, <code>dc</code>, where <code>dc[i-1] = i*c[i]</code> for
@@ -2187,11 +2035,9 @@ of coefficients, <code>dc</code>, where <code>dc[i-1] = i*c[i]</code> for
 Note that <code>dc</code> has one element less than <code>c</code>.
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Implementation:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2209,21 +2055,15 @@ Note that <code>dc</code> has one element less than <code>c</code>.
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class Polynomial; pretty print  <a name="___sec50"></a></h2>
+<h2 id="___sec54">Class Polynomial; pretty print </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2248,16 +2088,11 @@ Note that <code>dc</code> has one element less than <code>c</code>.
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class for polynomials; usage  <a name="___sec51"></a></h2>
+<h2 id="___sec55">Class for polynomials; usage </h2>
 
 <p>
 Consider
@@ -2272,11 +2107,9 @@ and their sum
 $$ p_3(x) = p_1(x) + p_2(x) = 1 -6x^4 - x^5 $$
 <p>&nbsp;<br>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -2293,16 +2126,11 @@ $$ p_3(x) = p_1(x) + p_2(x) = 1 -6x^4 - x^5 $$
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The programmer is in charge of defining special methods!  <a name="___sec52"></a></h2>
+<h2 id="___sec56">The programmer is in charge of defining special methods! </h2>
 
 <p>
 
@@ -2312,8 +2140,6 @@ $$ p_3(x) = p_1(x) + p_2(x) = 1 -6x^4 - x^5 $$
 How should, e.g., <code>__add__(self, other)</code> be defined? This is completely up to the programmer, depending on what is meaningful by <code>object1 + object2</code>.
 </div>
 
-
-
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
@@ -2321,22 +2147,15 @@ How should, e.g., <code>__add__(self, other)</code> be defined? This is complete
 <p>
 An anthropologist was asking a primitive tribesman about arithmetic.  When the anthropologist asked, <em>What does two and two make?</em> the tribesman replied, <em>Five.</em>  Asked to explain, the tribesman said, <em>If I have a rope with two knots, and another rope with two knots, and I join the ropes together, then I have five knots.</em>
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Special methods for arithmetic operations  <a name="___sec53"></a></h2>
+<h2 id="___sec57">Special methods for arithmetic operations </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2352,21 +2171,15 @@ An anthropologist was asking a primitive tribesman about arithmetic.  When the a
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Special methods for comparisons  <a name="___sec54"></a></h2>
+<h2 id="___sec58">Special methods for comparisons </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2384,22 +2197,15 @@ An anthropologist was asking a primitive tribesman about arithmetic.  When the a
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class for vectors in the plane  <a name="___sec55"></a></h2>
+<h2 id="___sec59">Class for vectors in the plane </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-small">
 <b>Mathematical operations for vectors in the plane:</b>
-<p>
-
 <p>&nbsp;<br>
 $$
 \begin{align*}
@@ -2412,11 +2218,9 @@ $$
 <p>&nbsp;<br>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Desired application code:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -2435,21 +2239,15 @@ $$
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class for vectors; implementation  <a name="___sec56"></a></h2>
+<h2 id="___sec60">Class for vectors; implementation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2480,21 +2278,15 @@ $$
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The repr special method: <code>eval(repr(p))</code> creates <code>p</code>  <a name="___sec57"></a></h2>
+<h2 id="___sec61">The repr special method: <code>eval(repr(p))</code> creates <code>p</code> </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2513,11 +2305,9 @@ $$
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -2535,21 +2325,15 @@ $$
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class Y revisited with repr print method  <a name="___sec58"></a></h2>
+<h2 id="___sec62">Class Y revisited with repr print method </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2575,16 +2359,11 @@ $$
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class for complex numbers; functionality  <a name="___sec59"></a></h2>
+<h2 id="___sec63">Class for complex numbers; functionality </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2593,11 +2372,9 @@ $$
 Python already has a class <code>complex</code> for complex numbers, but implementing such a class is a good pedagogical example on class programming (especially with special methods).
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Usage:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -2619,21 +2396,15 @@ Python already has a class <code>complex</code> for complex numbers, but impleme
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class for complex numbers; implementation (part 1)  <a name="___sec60"></a></h2>
+<h2 id="___sec64">Class for complex numbers; implementation (part 1) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2662,21 +2433,15 @@ Python already has a class <code>complex</code> for complex numbers, but impleme
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class for complex numbers; implementation (part 2)  <a name="___sec61"></a></h2>
+<h2 id="___sec65">Class for complex numbers; implementation (part 2) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2705,16 +2470,11 @@ Python already has a class <code>complex</code> for complex numbers, but impleme
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Refining the special methods for arithmetics  <a name="___sec62"></a></h2>
+<h2 id="___sec66">Refining the special methods for arithmetics </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2756,16 +2516,11 @@ Remedy:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Special methods for &quot;right&quot; operands; addition  <a name="___sec63"></a></h2>
+<h2 id="___sec67">Special methods for &quot;right&quot; operands; addition </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2800,16 +2555,11 @@ Remedy: if a class has an <code>__radd__(self, other)</code> special method, Pyt
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Special methods for &quot;right&quot; operands; subtraction  <a name="___sec64"></a></h2>
+<h2 id="___sec68">Special methods for &quot;right&quot; operands; subtraction </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2835,21 +2585,15 @@ Right operands for subtraction is a bit more complicated since \( a-b \neq b-a \
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>What's in a class?  <a name="___sec65"></a></h2>
+<h2 id="___sec69">What's in a class? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2874,21 +2618,15 @@ Any instance holds its attributes in the <code>self.__dict__</code> dictionary (
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Ooops - we can add new attributes as we want!  <a name="___sec66"></a></h2>
+<h2 id="___sec70">Ooops - we can add new attributes as we want! </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -2906,21 +2644,15 @@ Any instance holds its attributes in the <code>self.__dict__</code> dictionary (
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Summary of defining a class  <a name="___sec67"></a></h2>
+<h2 id="___sec71">Summary of defining a class </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Example on a defining a class with attributes and methods:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2944,21 +2676,15 @@ Any instance holds its attributes in the <code>self.__dict__</code> dictionary (
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Summary of using a class  <a name="___sec68"></a></h2>
+<h2 id="___sec72">Summary of using a class </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Example on using the class:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -2973,40 +2699,33 @@ Any instance holds its attributes in the <code>self.__dict__</code> dictionary (
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Summary of special methods  <a name="___sec69"></a></h2>
+<h2 id="___sec73">Summary of special methods </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> <code>c = a + b</code> implies <code>c = a.__add__(b)</code></li>
-  <p><li> There are special methods for <code>a+b</code>, <code>a-b</code>, <code>a*b</code>, <code>a/b</code>, <code>a**b</code>, <code>-a</code>, <code>if a:</code>, <code>len(a)</code>, <code>str(a)</code> (pretty print), <code>repr(a)</code> (recreate <code>a</code> with <code>eval</code>), etc.</li>
-  <p><li> With special methods we can create new mathematical objects like vectors, polynomials and complex numbers and write &quot;mathematical code&quot; (arithmetics)</li>
-  <p><li> The call special method is particularly handy: <code>v = c(5)</code> means <code>v = c.__call__(5)</code></li>
-  <p><li> Functions with parameters should be represented by a class with the parameters as attributes and with a call special method for evaluating the function</li>
+
+<p><li> <code>c = a + b</code> implies <code>c = a.__add__(b)</code></li>
+
+<p><li> There are special methods for <code>a+b</code>, <code>a-b</code>, <code>a*b</code>, <code>a/b</code>, <code>a**b</code>, <code>-a</code>, <code>if a:</code>, <code>len(a)</code>, <code>str(a)</code> (pretty print), <code>repr(a)</code> (recreate <code>a</code> with <code>eval</code>), etc.</li>
+
+<p><li> With special methods we can create new mathematical objects like vectors, polynomials and complex numbers and write &quot;mathematical code&quot; (arithmetics)</li>
+
+<p><li> The call special method is particularly handy: <code>v = c(5)</code> means <code>v = c.__call__(5)</code></li>
+
+<p><li> Functions with parameters should be represented by a class with the parameters as attributes and with a call special method for evaluating the function</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Summarizing example: interval arithmetics for uncertainty quantification in formulas  <a name="___sec70"></a></h2>
+<h2 id="___sec74">Summarizing example: interval arithmetics for uncertainty quantification in formulas </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -3019,21 +2738,15 @@ in time \( T \):
 $$ g = 2y_0T^{-2} $$
 <p>&nbsp;<br>
 
-
 <p>
 What if \( y_0 \) and \( T \) are uncertain? Say \( y_0\in [0.99,1.01] \) m
 and \( T\in [0.43, 0.47] \) s. What is the uncertainty in \( g \)?
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The uncertainty can be computed by interval arithmetics  <a name="___sec71"></a></h2>
+<h2 id="___sec75">The uncertainty can be computed by interval arithmetics </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -3052,21 +2765,15 @@ Rules for computing with intervals, \( p=[a,b] \) and \( q=[c,d] \):
 
 Obvious idea: make a class for interval arithmetics!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class for interval arithmetics  <a name="___sec72"></a></h2>
+<h2 id="___sec76">Class for interval arithmetics </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -3098,21 +2805,15 @@ Obvious idea: make a class for interval arithmetics!
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Demo of the new class for interval arithmetics  <a name="___sec73"></a></h2>
+<h2 id="___sec77">Demo of the new class for interval arithmetics </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Code:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -3127,11 +2828,9 @@ Obvious idea: make a class for interval arithmetics!
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Output:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -3142,16 +2841,11 @@ Obvious idea: make a class for interval arithmetics!
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Shortcomings of the class  <a name="___sec74"></a></h2>
+<h2 id="___sec78">Shortcomings of the class </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -3197,16 +2891,11 @@ Remedy: (cf. class <code>Complex</code>)
 <p>
 (with similar adjustments of other special methods)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>More shortcomings of the class  <a name="___sec75"></a></h2>
+<h2 id="___sec79">More shortcomings of the class </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -3218,11 +2907,9 @@ multiplication of <code>int</code> (2) and
 and power operation <code>T**(-2)</code> are not defined
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -3251,16 +2938,11 @@ and power operation <code>T**(-2)</code> are not defined
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Adding more functionality to the class: rounding  <a name="___sec76"></a></h2>
+<h2 id="___sec80">Adding more functionality to the class: rounding </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -3288,21 +2970,15 @@ is achieved by
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Adding more functionality to the class: repr and str methods  <a name="___sec77"></a></h2>
+<h2 id="___sec81">Adding more functionality to the class: repr and str methods </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
@@ -3317,21 +2993,15 @@ is achieved by
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Demonstrating the class: \( g=2y_0T^{-2} \)  <a name="___sec78"></a></h2>
+<h2 id="___sec82">Demonstrating the class: \( g=2y_0T^{-2} \) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -3353,21 +3023,15 @@ is achieved by
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Demonstrating the class: volume of a sphere  <a name="___sec79"></a></h2>
+<h2 id="___sec83">Demonstrating the class: volume of a sphere </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
@@ -3388,16 +3052,12 @@ is achieved by
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
 20% uncertainty in \( R \) gives almost 60% uncertainty in \( V \)
 </div>
-
-
-
 </section>
 
 

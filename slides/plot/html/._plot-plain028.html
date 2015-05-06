@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,41 +288,20 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>The complete code for making the animation  <a name="___sec28"></a></h2>
+<h2 id="___sec27">Movies are made from a (large) set of individual plots </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-<p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scitools.std</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">time</span>
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x, m, s):
-    <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">1.0/</span>(sqrt(<span style="color: #666666">2*</span>pi)<span style="color: #666666">*</span>s))<span style="color: #666666">*</span>exp(<span style="color: #666666">-0.5*</span>((x<span style="color: #666666">-</span>m)<span style="color: #666666">/</span>s)<span style="color: #666666">**2</span>)
-
-m <span style="color: #666666">=</span> <span style="color: #666666">0</span>;  s_start <span style="color: #666666">=</span> <span style="color: #666666">2</span>;  s_stop <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
-s_values <span style="color: #666666">=</span> linspace(s_start, s_stop, <span style="color: #666666">30</span>)
-
-x <span style="color: #666666">=</span> linspace(m <span style="color: #666666">-3*</span>s_start, m <span style="color: #666666">+</span> <span style="color: #666666">3*</span>s_start, <span style="color: #666666">1000</span>)
-<span style="color: #408080; font-style: italic"># f is max for x=m (smaller s gives larger max value)</span>
-max_f <span style="color: #666666">=</span> f(m, m, s_stop)
-
-<span style="color: #408080; font-style: italic"># Show the movie on the screen</span>
-<span style="color: #408080; font-style: italic"># and make hardcopies of frames simultaneously</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">time</span>
-frame_counter <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-
-<span style="color: #008000; font-weight: bold">for</span> s <span style="color: #AA22FF; font-weight: bold">in</span> s_values:
-    y <span style="color: #666666">=</span> f(x, m, s)
-    plot(x, y, axis<span style="color: #666666">=</span>[x[<span style="color: #666666">0</span>], x[<span style="color: #666666">-1</span>], <span style="color: #666666">-0.1</span>, max_f],
-         xlabel<span style="color: #666666">=</span><span style="color: #BA2121">&#39;x&#39;</span>, ylabel<span style="color: #666666">=</span><span style="color: #BA2121">&#39;f&#39;</span>, legend<span style="color: #666666">=</span><span style="color: #BA2121">&#39;s=</span><span style="color: #BB6688; font-weight: bold">%4.2f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> s,
-         savefig<span style="color: #666666">=</span><span style="color: #BA2121">&#39;tmp_</span><span style="color: #BB6688; font-weight: bold">%04d</span><span style="color: #BA2121">.png&#39;</span> <span style="color: #666666">%</span> frame_counter)
-    frame_counter <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
-    <span style="color: #408080; font-style: italic">#time.sleep(0.2)  # pause to control movie speed</span>
-</pre></div>
-
+<ul>
+  <li> Goal: make a movie showing how \( f(x) \) varies in shape as \( s \) decreases</li>
+  <li> Idea: put many plots (for different \( s \) values) together<br />
+    (exactly as a cartoon movie)</li>
+  <li> How to program: loop over \( s \) values, call <code>plot</code> for each \( s \) and make hardcopy, combine all hardcopies to a movie</li>
+  <li> Very important: fix the \( y \) axis! Otherwise, the \( y \) axis always adapts to the peak of the function and the visual impression gets completely wrong</li>
+</ul>
 </div>
 
 

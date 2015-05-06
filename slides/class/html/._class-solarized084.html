@@ -1,0 +1,383 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Ch.7: Introduction to classes">
+
+<title>Ch.7: Introduction to classes</title>
+
+
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(u' Basics of classes ', 1, None, '___sec0'),
+              (u' Class = functions + data (variables) in one unit ',
+               2,
+               None,
+               '___sec1'),
+              (u' Representing a function by a class; background ',
+               2,
+               None,
+               '___sec2'),
+              (u' Representing a function by a class; idea ',
+               2,
+               None,
+               '___sec3'),
+              (u' Representing a function by a class; technical overview ',
+               2,
+               None,
+               '___sec4'),
+              (u' Representing a function by a class; the code ',
+               2,
+               None,
+               '___sec5'),
+              (u' Representing a function by a class; the constructor ',
+               2,
+               None,
+               '___sec6'),
+              (u' What is this `self` variable? Stay cool - it will be understood later as you get used to it ',
+               2,
+               None,
+               '___sec7'),
+              (u' Representing a function by a class; the value method ',
+               2,
+               None,
+               '___sec8'),
+              (u' Representing a function by a class; summary ',
+               2,
+               None,
+               '___sec9'),
+              (u' Representing a function by a class; the general case ',
+               2,
+               None,
+               '___sec10'),
+              (u' Class for a function with four parameters ',
+               2,
+               None,
+               '___sec11'),
+              (u' Rough sketch of a general Python class ',
+               2,
+               None,
+               '___sec12'),
+              (u' You can learn about other versions and views of class Y in the course book ',
+               2,
+               None,
+               '___sec13'),
+              (u' But what is this self variable? I want to know now! ',
+               2,
+               None,
+               '___sec14'),
+              (u' How `self` works in the `value` method ',
+               2,
+               None,
+               '___sec15'),
+              (u' Working with multiple instances may help explain `self` ',
+               2,
+               None,
+               '___sec16'),
+              (u' But what is this self variable? I want to know now! ',
+               2,
+               None,
+               '___sec17'),
+              (u' How `self` works in the `value` method ',
+               2,
+               None,
+               '___sec18'),
+              (u' Working with multiple instances may help explain `self` ',
+               2,
+               None,
+               '___sec19'),
+              (u' Another class example: a bank account ',
+               2,
+               None,
+               '___sec20'),
+              (u' UML diagram of class Account ', 2, None, '___sec21'),
+              (u' Example on using class Account ', 2, None, '___sec22'),
+              (u' Use underscore in attribute names to avoid misuse ',
+               2,
+               None,
+               '___sec23'),
+              (u' Improved class with attribute protection (underscore) ',
+               2,
+               None,
+               '___sec24'),
+              (u' Usage of improved class AccountP ', 2, None, '___sec25'),
+              (u' Another example: a phone book ', 2, None, '___sec26'),
+              (u' UML diagram of class Person ', 2, None, '___sec27'),
+              (u' Basic code of class Person ', 2, None, '___sec28'),
+              (u' Code of a dump method for printing all class contents ',
+               2,
+               None,
+               '___sec29'),
+              (u' Another example: a class for a circle ',
+               2,
+               None,
+               '___sec30'),
+              (u' Test function for class Circle ', 2, None, '___sec31'),
+              (u' Special methods ', 1, None, '___sec32'),
+              (u' *Special methods* allow nice syntax and are recognized by double leading and trailing underscores ',
+               2,
+               None,
+               '___sec33'),
+              (u' Example on a call special method ', 2, None, '___sec34'),
+              (u' Representing a function by a class revisited ',
+               2,
+               None,
+               '___sec35'),
+              (u' Can we automatically differentiate a function? ',
+               2,
+               None,
+               '___sec36'),
+              (u' Automagic differentiation; solution ', 2, None, '___sec37'),
+              (u' Automagic differentiation; demo ', 2, None, '___sec38'),
+              (u" Automagic differentiation; useful in Newton's method ",
+               2,
+               None,
+               '___sec39'),
+              (u' Automagic differentiation; test function ',
+               2,
+               None,
+               '___sec40'),
+              (u' Automagic differentiation; explanation of the test function ',
+               2,
+               None,
+               '___sec41'),
+              (u' Automagic differentiation detour; sympy solution (exact differentiation via symbolic expressions) ',
+               2,
+               None,
+               '___sec42'),
+              (u' Automagic differentiation detour; class based on sympy ',
+               2,
+               None,
+               '___sec43'),
+              (u' Automagic integration; problem setting ',
+               2,
+               None,
+               '___sec44'),
+              (u' Automagic integration; technique ', 2, None, '___sec45'),
+              (u' Automagic integration; implementation ',
+               2,
+               None,
+               '___sec46'),
+              (u' Automagic integration; test function ',
+               2,
+               None,
+               '___sec47'),
+              (u' Special method for printing ', 2, None, '___sec48'),
+              (u' Class for polynomials; functionality ',
+               2,
+               None,
+               '___sec49'),
+              (u' Class Polynomial; basic code ', 2, None, '___sec50'),
+              (u' Class Polynomial; addition ', 2, None, '___sec51'),
+              (u' Class Polynomial; multiplication ', 2, None, '___sec52'),
+              (u' Class Polynomial; differentation ', 2, None, '___sec53'),
+              (u' Class Polynomial; pretty print ', 2, None, '___sec54'),
+              (u' Class for polynomials; usage ', 2, None, '___sec55'),
+              (u' The programmer is in charge of defining special methods! ',
+               2,
+               None,
+               '___sec56'),
+              (u' Special methods for arithmetic operations ',
+               2,
+               None,
+               '___sec57'),
+              (u' Special methods for comparisons ', 2, None, '___sec58'),
+              (u' Class for vectors in the plane ', 2, None, '___sec59'),
+              (u' Class for vectors; implementation ', 2, None, '___sec60'),
+              (u' The repr special method: `eval(repr(p))` creates `p` ',
+               2,
+               None,
+               '___sec61'),
+              (u' Class Y revisited with repr print method ',
+               2,
+               None,
+               '___sec62'),
+              (u' Class for complex numbers; functionality ',
+               2,
+               None,
+               '___sec63'),
+              (u' Class for complex numbers; implementation (part 1) ',
+               2,
+               None,
+               '___sec64'),
+              (u' Class for complex numbers; implementation (part 2) ',
+               2,
+               None,
+               '___sec65'),
+              (u' Refining the special methods for arithmetics ',
+               2,
+               None,
+               '___sec66'),
+              (u" Special methods for ``right'' operands; addition ",
+               2,
+               None,
+               '___sec67'),
+              (u" Special methods for ``right'' operands; subtraction ",
+               2,
+               None,
+               '___sec68'),
+              (u" What's in a class? ", 2, None, '___sec69'),
+              (u' Ooops - we can add new attributes as we want! ',
+               2,
+               None,
+               '___sec70'),
+              (u' Summary of defining a class ', 2, None, '___sec71'),
+              (u' Summary of using a class ', 2, None, '___sec72'),
+              (u' Summary of special methods ', 2, None, '___sec73'),
+              (u' Summarizing example: interval arithmetics for uncertainty quantification in formulas ',
+               2,
+               None,
+               '___sec74'),
+              (u' The uncertainty can be computed by interval arithmetics ',
+               2,
+               None,
+               '___sec75'),
+              (u' Class for interval arithmetics ', 2, None, '___sec76'),
+              (u' Demo of the new class for interval arithmetics ',
+               2,
+               None,
+               '___sec77'),
+              (u' Shortcomings of the class ', 2, None, '___sec78'),
+              (u' More shortcomings of the class ', 2, None, '___sec79'),
+              (u' Adding more functionality to the class: rounding ',
+               2,
+               None,
+               '___sec80'),
+              (u' Adding more functionality to the class: repr and str methods ',
+               2,
+               None,
+               '___sec81'),
+              (u' Demonstrating the class: $g=2y_0T^{-2}$ ',
+               2,
+               None,
+               '___sec82'),
+              (u' Demonstrating the class: volume of a sphere ',
+               2,
+               None,
+               '___sec83')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<a name="part0084"></a>
+<!-- !split -->
+
+<h2 id="___sec83">Demonstrating the class: volume of a sphere </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">&gt;&gt;&gt; R = I(<span style="color: #B452CD">6</span>*<span style="color: #B452CD">0.9</span>, <span style="color: #B452CD">6</span>*<span style="color: #B452CD">1.1</span>)   <span style="color: #228B22"># 20 % error</span>
+&gt;&gt;&gt; V = (<span style="color: #B452CD">4.</span>/<span style="color: #B452CD">3</span>)*pi*R**<span style="color: #B452CD">3</span>
+&gt;&gt;&gt; V
+IntervalMath(<span style="color: #B452CD">659.584</span>, <span style="color: #B452CD">1204.26</span>)
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> V
+[<span style="color: #B452CD">659.584</span>, <span style="color: #B452CD">1204.26</span>]
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #658b00">float</span>(V)
+<span style="color: #B452CD">931.922044761</span>
+&gt;&gt;&gt; <span style="color: #228B22"># compute with mean values:</span>
+&gt;&gt;&gt; R = <span style="color: #658b00">float</span>(R)
+&gt;&gt;&gt; V = (<span style="color: #B452CD">4.</span>/<span style="color: #B452CD">3</span>)*pi*R**<span style="color: #B452CD">3</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> V
+<span style="color: #B452CD">904.778684234</span>
+</pre></div>
+
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+20% uncertainty in \( R \) gives almost 60% uncertainty in \( V \)
+</div>
+
+
+<p>
+<!-- begin bottom navigation -->
+<table style="width: 100%"><tr><td>
+<div style="text-align: left;"><a href="._class-solarized083.html">&laquo; Previous</a></div>
+</td><td>
+</td></tr></table>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

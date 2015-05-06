@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,8 +288,9 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Operating on entire arrays at once is called <em>vectorization</em>  <a name="___sec8"></a></h2>
+<h2 id="___sec8">Operating on entire arrays at once is called <em>vectorization</em> </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Vectorization gives:</b>
 <p>
@@ -316,11 +317,11 @@ MathJax.Hub.Config({
 
 <span style="color: #000080; font-weight: bold">In [4]: </span>y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(<span style="color: #008000">len</span>(x))
 
-<span style="color: #000080; font-weight: bold">In [5]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">xrange</span>(<span style="color: #008000">len</span>(x)): \
+<span style="color: #000080; font-weight: bold">In [5]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> for i in xrange(len(x)): \
 <span style="color: #888888">        y[i] = np.sin(x[i])*np.exp(-x[i])</span>
 <span style="color: #888888">1 loops, best of 3: 247 ms per loop</span>
 
-<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>sin(x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x)
+<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #666666">%</span><span style="color: #008000; font-weight: bold">timeit</span> y = np.sin(x)*np.exp(-x)
 <span style="color: #888888">100 loops, best of 3: 4.77 ms per loop</span>
 
 <span style="color: #000080; font-weight: bold">In [7]: </span><span style="color: #666666">247/4.77</span>

@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,9 +288,26 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Plot based on 10 points  <a name="___sec45"></a></h2>
+<h2 id="___sec44">Some functions are challenging to visualize </h2>
 
-<center><p><img src="fig-plot/sin1overx1.png" align="bottom" width=480></p></center>
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Plot \( f(x) = \sin (1/x) \).</b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> sin(<span style="color: #666666">1.0/</span>x)
+
+x1 <span style="color: #666666">=</span> linspace(<span style="color: #666666">-1</span>, <span style="color: #666666">1</span>, <span style="color: #666666">10</span>)    <span style="color: #408080; font-style: italic"># use 10 points</span>
+x2 <span style="color: #666666">=</span> linspace(<span style="color: #666666">-1</span>, <span style="color: #666666">1</span>, <span style="color: #666666">1000</span>)  <span style="color: #408080; font-style: italic"># use 1000 points</span>
+plot(x1, f(x1), label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> points&#39;</span> <span style="color: #666666">%</span> <span style="color: #008000">len</span>(x))
+plot(x2, f(x2), label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> points&#39;</span> <span style="color: #666666">%</span> <span style="color: #008000">len</span>(x))
+</pre></div>
+
+</div>
+
 
 <p>
 <p>
