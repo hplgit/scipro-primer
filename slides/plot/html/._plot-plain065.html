@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,36 +288,27 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Array functionality  <a name="___sec65"></a></h2>
+<h2 id="___sec64">Summary of making animations </h2>
 
-<table border="1">
-<thead>
-<tr><th align="center">            Construction            </th> <th align="center">                                     Meaning                                     </th> </tr>
-</thead>
-<tbody>
-<tr><td align="left">   <code>array(ld)</code>                  </td> <td align="left">   copy list data <code>ld</code> to a <code>numpy</code> array                         </td> </tr>
-<tr><td align="left">   <code>asarray(d)</code>                 </td> <td align="left">   make array of data <code>d</code> (no data copy if already array)                    </td> </tr>
-<tr><td align="left">   <code>zeros(n)</code>                   </td> <td align="left">   make a <code>float</code> vector/array of length <code>n</code>, with zeros          </td> </tr>
-<tr><td align="left">   <code>zeros(n, int)</code>              </td> <td align="left">   make an <code>int</code> vector/array of length <code>n</code> with zeros            </td> </tr>
-<tr><td align="left">   <code>zeros((m,n))</code>               </td> <td align="left">   make a two-dimensional <code>float</code> array with shape (<code>m</code>,`n`)      </td> </tr>
-<tr><td align="left">   <code>zeros_like(x)</code>              </td> <td align="left">   make array of same shape and element type as <code>x</code>                          </td> </tr>
-<tr><td align="left">   <code>linspace(a,b,m)</code>            </td> <td align="left">   uniform sequence of <code>m</code> numbers in \( [a,b] \)                            </td> </tr>
-<tr><td align="left">   <code>a.shape</code>                    </td> <td align="left">   tuple containing <code>a</code>'s shape                                              </td> </tr>
-<tr><td align="left">   <code>a.size</code>                     </td> <td align="left">   total no of elements in <code>a</code>                                               </td> </tr>
-<tr><td align="left">   <code>len(a)</code>                     </td> <td align="left">   length of a one-dim. array <code>a</code> (same as <code>a.shape[0]</code>)          </td> </tr>
-<tr><td align="left">   <code>a.dtype</code>                    </td> <td align="left">   the type of elements in <code>a</code>                                               </td> </tr>
-<tr><td align="left">   <code>a.reshape(3,2)</code>             </td> <td align="left">   return <code>a</code> reshaped as \( 3\times 2 \) array                              </td> </tr>
-<tr><td align="left">   <code>a[i]</code>                       </td> <td align="left">   vector indexing                                                                      </td> </tr>
-<tr><td align="left">   <code>a[i,j]</code>                     </td> <td align="left">   two-dim. array indexing                                                              </td> </tr>
-<tr><td align="left">   <code>a[1:k]</code>                     </td> <td align="left">   slice: reference data with indices <code>1</code>,\ldots,`k-1`                       </td> </tr>
-<tr><td align="left">   <code>a[1:8:3]</code>                   </td> <td align="left">   slice: reference data with indices <code>1</code>, <code>4</code>,\ldots,`7`         </td> </tr>
-<tr><td align="left">   <code>b = a.copy()</code>               </td> <td align="left">   copy an array                                                                        </td> </tr>
-<tr><td align="left">   <code>sin(a), exp(a), ...</code>        </td> <td align="left">   <code>numpy</code> functions applicable to arrays                                    </td> </tr>
-<tr><td align="left">   <code>c = concatenate((a, b))</code>    </td> <td align="left">   <code>c</code> contains <code>a</code> with <code>b</code> appended                  </td> </tr>
-<tr><td align="left">   <code>c = where(cond, a1, a2)</code>    </td> <td align="left">   <code>c[i] = a1[i]</code> if <code>cond[i]</code>, else <code>c[i] = a2[i]</code>    </td> </tr>
-<tr><td align="left">   <code>isinstance(a, ndarray)</code>     </td> <td align="left">   is <code>True</code> if <code>a</code> is an array                                   </td> </tr>
-</tbody>
-</table>
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <li> Make a hardcopy of each plot frame (PNG or PDF format)</li>
+ <li> Use <code>avconv</code> or <code>ffmpeg</code> to make movie</li>
+</ul>
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; avconv -r 5 -i tmp_%04d.png -vcodec flv movie.flv
+</pre></div>
+
+</div>
+
+
 <p>
 <p>
 <!-- begin bottom navigation -->

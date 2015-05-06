@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,49 +288,54 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Summarizing example: animating a function (part 2)  <a name="___sec67"></a></h2>
+<h2 id="___sec66">Summarizing example: animating a function (part 1) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
+
+<ul>
+  <li> Goal: visualize the temperature in the ground as a function of</li>
+</ul>
+
+ depth (\( z \)) and time (\( t \)), displayed as a movie in time:
+ \[ T(z,t) = T_0 + Ae^{-az}\cos (\omega t - az),\quad a =\sqrt{\omega\over 2k} \]
+
+<ul>
+  <li> First we make a <em>general</em> animation function for an \( f(x,t) \):</li>
+</ul>
+
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic"># remove old plot files:</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">glob</span><span style="color: #666666">,</span> <span style="color: #0000FF; font-weight: bold">os</span>
-<span style="color: #008000; font-weight: bold">for</span> filename <span style="color: #AA22FF; font-weight: bold">in</span> glob<span style="color: #666666">.</span>glob(<span style="color: #BA2121">&#39;tmp_*.png&#39;</span>): os<span style="color: #666666">.</span>remove(filename)
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">T</span>(z, t):
-    <span style="color: #408080; font-style: italic"># T0, A, k, and omega are global variables</span>
-    a <span style="color: #666666">=</span> sqrt(omega<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>k))
-    <span style="color: #008000; font-weight: bold">return</span> T0 <span style="color: #666666">+</span> A<span style="color: #666666">*</span>exp(<span style="color: #666666">-</span>a<span style="color: #666666">*</span>z)<span style="color: #666666">*</span>cos(omega<span style="color: #666666">*</span>t <span style="color: #666666">-</span> a<span style="color: #666666">*</span>z)
-
-k <span style="color: #666666">=</span> <span style="color: #666666">1E-6</span>     <span style="color: #408080; font-style: italic"># heat conduction coefficient (in m*m/s)</span>
-P <span style="color: #666666">=</span> <span style="color: #666666">24*60*60.</span><span style="color: #408080; font-style: italic"># oscillation period of 24 h (in seconds)</span>
-omega <span style="color: #666666">=</span> <span style="color: #666666">2*</span>pi<span style="color: #666666">/</span>P
-dt <span style="color: #666666">=</span> P<span style="color: #666666">/24</span>    <span style="color: #408080; font-style: italic"># time lag: 1 h</span>
-tmax <span style="color: #666666">=</span> <span style="color: #666666">3*</span>P   <span style="color: #408080; font-style: italic"># 3 day/night simulation</span>
-T0 <span style="color: #666666">=</span> <span style="color: #666666">10</span>      <span style="color: #408080; font-style: italic"># mean surface temperature in Celsius</span>
-A <span style="color: #666666">=</span> <span style="color: #666666">10</span>       <span style="color: #408080; font-style: italic"># amplitude of the temperature variations (in C)</span>
-a <span style="color: #666666">=</span> sqrt(omega<span style="color: #666666">/</span>(<span style="color: #666666">2*</span>k))
-D <span style="color: #666666">=</span> <span style="color: #666666">-</span>(<span style="color: #666666">1/</span>a)<span style="color: #666666">*</span>log(<span style="color: #666666">0.001</span>) <span style="color: #408080; font-style: italic"># max depth</span>
-n <span style="color: #666666">=</span> <span style="color: #666666">501</span>      <span style="color: #408080; font-style: italic"># no of points in the z direction</span>
-
-z <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, D, n)
-animate(tmax, dt, z, T, T0<span style="color: #666666">-</span>A, T0<span style="color: #666666">+</span>A, <span style="color: #666666">0</span>, <span style="color: #BA2121">&#39;z&#39;</span>, <span style="color: #BA2121">&#39;T&#39;</span>)
-<span style="color: #408080; font-style: italic"># make movie files:</span>
-movie(<span style="color: #BA2121">&#39;tmp_*.png&#39;</span>, encoder<span style="color: #666666">=</span><span style="color: #BA2121">&#39;convert&#39;</span>, fps<span style="color: #666666">=2</span>,
-      output_file<span style="color: #666666">=</span><span style="color: #BA2121">&#39;tmp_heatwave.gif&#39;</span>)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">animate</span>(tmax, dt, x, function, ymin, ymax, t0<span style="color: #666666">=0</span>,
+            xlabel<span style="color: #666666">=</span><span style="color: #BA2121">&#39;x&#39;</span>, ylabel<span style="color: #666666">=</span><span style="color: #BA2121">&#39;y&#39;</span>, filename<span style="color: #666666">=</span><span style="color: #BA2121">&#39;tmp_&#39;</span>):
+    t <span style="color: #666666">=</span> t0
+    counter <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">while</span> t <span style="color: #666666">&lt;=</span> tmax:
+        y <span style="color: #666666">=</span> function(x, t)
+        plot(x, y,
+             axis<span style="color: #666666">=</span>[x[<span style="color: #666666">0</span>], x[<span style="color: #666666">-1</span>], ymin, ymax],
+             title<span style="color: #666666">=</span><span style="color: #BA2121">&#39;time=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> t,
+             xlabel<span style="color: #666666">=</span>xlabel, ylabel<span style="color: #666666">=</span>ylabel,
+             savefig<span style="color: #666666">=</span>filename <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%04d</span><span style="color: #BA2121">.png&#39;</span> <span style="color: #666666">%</span> counter)
+        t <span style="color: #666666">+=</span> dt
+        counter <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
 </pre></div>
-
+<ul>
+  <li> Then we call this function with our special \( T(z,t) \) function</li>
+</ul>
 </div>
 
 
+<p>
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._plot-plain066.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
 </td><td>
+<div style="text-align: right;"><a href="._plot-plain068.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>

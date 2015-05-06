@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,29 +288,41 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Generalized array indexing  <a name="___sec53"></a></h2>
+<h2 id="___sec52">Example: vectorizing a constant function </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-Recall slicing: <code>a[f:t:i]</code>, where the slice <code>f:t:i</code> implies a set of indices
-(from, to, increment).
-
-<p>
-Any integer list or array can be used to indicate a set of indices:
-
 <p>
 
-<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> linspace(<span style="color: #666666">1</span>, <span style="color: #666666">8</span>, <span style="color: #666666">8</span>)
-<span style="color: #666666">&gt;&gt;&gt;</span> a
-array([ <span style="color: #666666">1.</span>,  <span style="color: #666666">2.</span>,  <span style="color: #666666">3.</span>,  <span style="color: #666666">4.</span>,  <span style="color: #666666">5.</span>,  <span style="color: #666666">6.</span>,  <span style="color: #666666">7.</span>,  <span style="color: #666666">8.</span>])
-<span style="color: #666666">&gt;&gt;&gt;</span> a[[<span style="color: #666666">1</span>,<span style="color: #666666">6</span>,<span style="color: #666666">7</span>]] <span style="color: #666666">=</span> <span style="color: #666666">10</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> a
-array([  <span style="color: #666666">1.</span>,  <span style="color: #666666">10.</span>,   <span style="color: #666666">3.</span>,   <span style="color: #666666">4.</span>,   <span style="color: #666666">5.</span>,   <span style="color: #666666">6.</span>,  <span style="color: #666666">10.</span>,  <span style="color: #666666">10.</span>])
-<span style="color: #666666">&gt;&gt;&gt;</span> a[<span style="color: #008000">range</span>(<span style="color: #666666">2</span>,<span style="color: #666666">8</span>,<span style="color: #666666">3</span>)] <span style="color: #666666">=</span> <span style="color: #666666">-2</span>   <span style="color: #408080; font-style: italic"># same as a[2:8:3] = -2</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> a
-array([  <span style="color: #666666">1.</span>,  <span style="color: #666666">10.</span>,  <span style="color: #666666">-2.</span>,   <span style="color: #666666">4.</span>,   <span style="color: #666666">5.</span>,  <span style="color: #666666">-2.</span>,  <span style="color: #666666">10.</span>,  <span style="color: #666666">10.</span>])
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">2</span>
+</pre></div>
+<p>
+Vectorized version must return array of 2's:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">fv</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> zeros(x<span style="color: #666666">.</span>shape, x<span style="color: #666666">.</span>dtype) <span style="color: #666666">+</span> <span style="color: #666666">2</span>
+</pre></div>
+<p>
+New version valid both for scalar and array <code>x</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">f</span>(x):
+    <span style="color: #008000; font-weight: bold">if</span> <span style="color: #008000">isinstance</span>(x, (<span style="color: #008000">float</span>, <span style="color: #008000">int</span>)):
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">2</span>
+    <span style="color: #008000; font-weight: bold">elif</span> <span style="color: #008000">isinstance</span>(x, ndarray):
+        <span style="color: #008000; font-weight: bold">return</span> zeros(x<span style="color: #666666">.</span>shape, x<span style="color: #666666">.</span>dtype) <span style="color: #666666">+</span> <span style="color: #666666">2</span>
+    <span style="color: #008000; font-weight: bold">else</span>:
+        <span style="color: #008000; font-weight: bold">raise</span> <span style="color: #D2413A; font-weight: bold">TypeError</span>(
+           <span style="color: #BA2121">&#39;x must be int/float/ndarray, not </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> <span style="color: #008000">type</span>(x))
 </pre></div>
 
 </div>

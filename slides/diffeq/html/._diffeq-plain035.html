@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -152,44 +152,51 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec28'),
               (u' Nonlinear algebraic equations ', 2, None, '___sec29'),
-              (u" Newton's method for finding zeros ", 2, None, '___sec30'),
-              (u" A program for Newton's method ", 2, None, '___sec31'),
+              (u" Newton's method for finding zeros; illustration ",
+               2,
+               None,
+               '___sec30'),
+              (u" Newton's method for finding zeros; mathematics ",
+               2,
+               None,
+               '___sec31'),
+              (u" A program for Newton's method ", 2, None, '___sec32'),
               (u" An improved function for Newton's method ",
                2,
                None,
-               '___sec32'),
-              (u" Application of Newton's method ", 2, None, '___sec33'),
-              (u' Results from this test problem ', 2, None, '___sec34'),
-              (u' What happened here?? ', 2, None, '___sec35'),
+               '___sec33'),
+              (u" Application of Newton's method ", 2, None, '___sec34'),
+              (u' Results from this test problem ', 2, None, '___sec35'),
+              (u' What happened here?? ', 2, None, '___sec36'),
               (u" First step: we're moving to the right ($x=4$?) ",
                2,
                None,
-               '___sec36'),
+               '___sec37'),
               (u' Second step: oops, too much to the right... ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (u" Third step: disaster since we're ``done'' ($f(x)\\approx 0$) ",
                2,
                None,
-               '___sec38'),
-              (u' Programming with sound ', 2, None, '___sec39'),
+               '___sec39'),
+              (u' Programming with sound ', 2, None, '___sec40'),
               (u' Making a sound file with single tone (part 1) ',
                2,
                None,
-               '___sec40'),
+               '___sec41'),
               (u' Making a sound file with single tone (part 2) ',
                2,
                None,
-               '___sec41'),
-              (u' Reading sound from file ', 2, None, '___sec42'),
-              (u' Playing many notes ', 2, None, '___sec43'),
-              (u' Summary of difference equations ', 2, None, '___sec44'),
+               '___sec42'),
+              (u' Reading sound from file ', 2, None, '___sec43'),
+              (u' Playing many notes ', 2, None, '___sec44'),
+              (u' Summary of difference equations ', 2, None, '___sec45'),
               (u' Summarizing example: music of sequences ',
                2,
                None,
-               '___sec45'),
-              (u' Module file: soundeq.py ', 2, None, '___sec46')]}
+               '___sec46'),
+              (u' Module file: soundeq.py ', 2, None, '___sec47')]}
 end of tocinfo -->
 
 <body>
@@ -219,33 +226,44 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Results from this test problem  <a name="___sec34"></a></h2>
+<h2 id="___sec34">Application of Newton's method </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-\( x_0=1.7 \) gives quick convergence towards the closest root \( x=0 \):
+$$ e^{-0.1x^2}\sin ({\pi\over 2}x) =0\]
 
+Solutions: $x=0, \pm 2, \pm 4, \pm 6, \ldots$
+$$
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Main program:</b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">zero: <span style="color: #666666">1.999999999768449</span>
-Iteration  <span style="color: #666666">0</span>: f(<span style="color: #666666">1.7</span>)<span style="color: #666666">=0.340044</span>
-Iteration  <span style="color: #666666">1</span>: f(<span style="color: #666666">1.99215</span>)<span style="color: #666666">=0.00828786</span>
-Iteration  <span style="color: #666666">2</span>: f(<span style="color: #666666">1.99998</span>)<span style="color: #666666">=2.53347e-05</span>
-Iteration  <span style="color: #666666">3</span>: f(<span style="color: #666666">2</span>)<span style="color: #666666">=2.43808e-10</span>
-</pre></div>
-<p>
-Start value \( x_0=3 \) (closest root \( x=2 \) or \( x=4 \)):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, cos, exp, pi
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
 
-<p>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> exp(<span style="color: #666666">-0.1*</span>x<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>sin(pi<span style="color: #666666">/2*</span>x)
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">zero: <span style="color: #666666">42.49723316011362</span>
-Iteration  <span style="color: #666666">0</span>: f(<span style="color: #666666">3</span>)<span style="color: #666666">=-0.40657</span>
-Iteration  <span style="color: #666666">1</span>: f(<span style="color: #666666">4.66667</span>)<span style="color: #666666">=0.0981146</span>
-Iteration  <span style="color: #666666">2</span>: f(<span style="color: #666666">42.4972</span>)<span style="color: #666666">=-2.59037e-79</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">dg</span>(x):
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">-2*0.1*</span>x<span style="color: #666666">*</span>exp(<span style="color: #666666">-0.1*</span>x<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>sin(pi<span style="color: #666666">/2*</span>x) <span style="color: #666666">+</span> \
+           pi<span style="color: #666666">/2*</span>exp(<span style="color: #666666">-0.1*</span>x<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>cos(pi<span style="color: #666666">/2*</span>x)
+
+x0 <span style="color: #666666">=</span> <span style="color: #008000">float</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
+x, info <span style="color: #666666">=</span> Newton(g, x0, dg, store<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Computed zero:&#39;</span>, x
+
+<span style="color: #408080; font-style: italic"># Print the evolution of the difference equation</span>
+<span style="color: #408080; font-style: italic"># (i.e., the search for the root)</span>
+<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(info)):
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Iteration </span><span style="color: #BB6688; font-weight: bold">%3d</span><span style="color: #BA2121">: f(</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">)=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (i, info[i][<span style="color: #666666">0</span>], info[i][<span style="color: #666666">1</span>])
 </pre></div>
 
 </div>

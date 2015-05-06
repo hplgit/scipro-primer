@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,23 +288,28 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2><code>if x &lt; 0</code> does not work if <code>x</code> is array  <a name="___sec38"></a></h2>
+<h2 id="___sec37"><code>if x &lt; 0</code> does not work if <code>x</code> is array </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b>Remedy 2: use <code>vectorize</code>.</b>
+<b>Remedy 1: use a loop over <code>x</code> values.</b>
 <p>
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> vectorize
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">H_loop</span>(x):
+    r <span style="color: #666666">=</span> zeros(<span style="color: #008000">len</span>(x))  <span style="color: #408080; font-style: italic"># or r = x.copy()</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">xrange</span>(<span style="color: #008000">len</span>(x)):
+        r[i] <span style="color: #666666">=</span> H(x[i])
+    <span style="color: #008000; font-weight: bold">return</span> r
 
-<span style="color: #408080; font-style: italic"># Automatic vectorization of function H</span>
-Hv <span style="color: #666666">=</span> vectorize(H)
-<span style="color: #408080; font-style: italic"># Hv(x) works with array x</span>
+n <span style="color: #666666">=</span> <span style="color: #666666">5</span>
+x <span style="color: #666666">=</span> linspace(<span style="color: #666666">-5</span>, <span style="color: #666666">5</span>, n<span style="color: #666666">+1</span>)
+y <span style="color: #666666">=</span> H_loop(x)
 </pre></div>
 <p>
-Downside: The resulting function is as slow as Remedy 1
+Downside: much to write, slow code if <code>n</code> is large
 </div>
 
 

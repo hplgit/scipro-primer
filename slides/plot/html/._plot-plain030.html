@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,41 +288,26 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Make and play animated GIF file  <a name="___sec30"></a></h2>
+<h2 id="___sec29">How to combine plot files to a movie (video file) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-Tool: <code>convert</code> from the ImageMagick software suite.
-
-<p>
-Unix command:
+We now have a lot of files:
 
 <p>
 
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; convert -delay 50 tmp_*.png movie.gif
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">tmp_0000.png  tmp_0001.png  tmp_0002.png ...
 </pre></div>
 <p>
-Delay: 50/100 s, i.e., 0.5 s between each frame.
+We use some program to combine these files to a video file:
 
-<p>
-Play animated GIF file with <code>animate</code> from ImageMagick:
-
-<p>
-
-<!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; animate movie.gif
-</pre></div>
-<p>
-or insert this HTML code in some file <code>tmp.html</code> loaded into a browser:
-
-<p>
-
-<!-- code=html (!bc htmlcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;img</span> <span style="color: #7D9029">src=</span><span style="color: #BA2121">&quot;movie.gif&quot;</span><span style="color: #008000; font-weight: bold">&gt;</span>
-</pre></div>
-
+<ul>
+ <li> <code>convert</code> for animted GIF format (if just a few plot files)</li>
+ <li> <code>avconv</code> for MP4, WebM, Ogg, and Flash formats</li>
+</ul>
 </div>
 
 

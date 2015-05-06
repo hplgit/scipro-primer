@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -86,159 +86,167 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec5'),
-              (u" The Forward Euler (or Euler's) method ",
+              (u" The Forward Euler (or Euler's) method; idea ",
                2,
                None,
                '___sec6'),
-              (u' Illustration of the forward finite difference ',
+              (u" The Forward Euler (or Euler's) method; idea ",
                2,
                None,
                '___sec7'),
-              (u" Let's apply the method! ", 2, None, '___sec8'),
-              (u' An ODE needs an initial condition: $u(0)=U_0$ ',
+              (u" The Forward Euler (or Euler's) method; mathematics ",
+               2,
+               None,
+               '___sec8'),
+              (u' Illustration of the forward finite difference ',
                2,
                None,
                '___sec9'),
-              (u' We continue solution by hand ', 2, None, '___sec10'),
-              (u' How accurate is our numerical method? ',
+              (u" Let's apply the method! ", 2, None, '___sec10'),
+              (u' An ODE needs an initial condition: $u(0)=U_0$ ',
                2,
                None,
                '___sec11'),
-              (u" What about the general case $u'=f(u,t)$? ",
-               2,
-               None,
-               '___sec12'),
-              (u" We start with a specialized program for $u'=u$, $u(0)=U_0$ ",
+              (u' We continue solution by hand ', 2, None, '___sec12'),
+              (u' How accurate is our numerical method? ',
                2,
                None,
                '___sec13'),
-              (u" We start with a specialized program for $u'=u$, $u(0)=U_0$ ",
+              (u" What about the general case $u'=f(u,t)$? ",
                2,
                None,
                '___sec14'),
-              (u' The solution if we plot $u$ against $t$ ',
+              (u" We start with a specialized program for $u'=u$, $u(0)=U_0$ ",
                2,
                None,
                '___sec15'),
-              (u" The algorithm for the general ODE $u'=f(u,t)$ ",
+              (u" We start with a specialized program for $u'=u$, $u(0)=U_0$ ",
                2,
                None,
                '___sec16'),
-              (u" Implementation of the general algorithm for $u'=f(u,t)$ ",
+              (u' The solution if we plot $u$ against $t$ ',
                2,
                None,
                '___sec17'),
-              (u' Example on using the function ', 2, None, '___sec18'),
-              (u' Now you can solve any ODE! ', 2, None, '___sec19'),
+              (u" The algorithm for the general ODE $u'=f(u,t)$ ",
+               2,
+               None,
+               '___sec18'),
+              (u" Implementation of the general algorithm for $u'=f(u,t)$ ",
+               2,
+               None,
+               '___sec19'),
+              (u' Example on using the function ', 2, None, '___sec20'),
+              (u' Now you can solve any ODE! ', 2, None, '___sec21'),
               (u' Let us make a class instead of a function for solving ODEs ',
                2,
                None,
-               '___sec20'),
+               '___sec22'),
               (u' The code for a class for solving ODEs (part 1) ',
                2,
                None,
-               '___sec21'),
+               '___sec23'),
               (u' The code for a class for solving ODEs (part 2) ',
                2,
                None,
-               '___sec22'),
+               '___sec24'),
               (u' Alternative class code for solving ODEs (part 1) ',
                2,
                None,
-               '___sec23'),
+               '___sec25'),
               (u' Alternative class code for solving ODEs (part 2) ',
                2,
                None,
-               '___sec24'),
+               '___sec26'),
               (u' Verifying the class implementation; mathematics ',
                2,
                None,
-               '___sec25'),
+               '___sec27'),
               (u' Verifying the class implementation; implementation ',
                2,
                None,
-               '___sec26'),
+               '___sec28'),
               (u' Using a class to hold the right-hand side $f(u,t)$ ',
                2,
                None,
-               '___sec27'),
-              (u' Figure of the solution ', 2, None, '___sec28'),
+               '___sec29'),
+              (u' Figure of the solution ', 2, None, '___sec30'),
               (u' Numerical methods for ordinary differential equations ',
                2,
                None,
-               '___sec29'),
-              (u' A superclass for ODE methods ', 2, None, '___sec30'),
-              (u' The superclass code ', 2, None, '___sec31'),
+               '___sec31'),
+              (u' A superclass for ODE methods ', 2, None, '___sec32'),
+              (u' The superclass code ', 2, None, '___sec33'),
               (u' Implementation of the Forward Euler method ',
                2,
                None,
-               '___sec32'),
+               '___sec34'),
               (u' The implementation of a Runge-Kutta method ',
                2,
                None,
-               '___sec33'),
+               '___sec35'),
               (u' The user should be able to check intermediate solutions and terminate the time stepping ',
                2,
                None,
-               '___sec34'),
+               '___sec36'),
               (u' Systems of differential equations (vector ODE) ',
                1,
                None,
-               '___sec35'),
+               '___sec37'),
               (u' Example on a system of ODEs (vector ODE) ',
                2,
                None,
-               '___sec36'),
+               '___sec38'),
               (u' The ODE system that is the final project in the course ',
                2,
                None,
-               '___sec37'),
+               '___sec39'),
               (u' Another example on a system of ODEs (vector ODE) ',
                2,
                None,
-               '___sec38'),
+               '___sec40'),
               (u' Making a flexible toolbox for solving ODEs ',
                2,
                None,
-               '___sec39'),
+               '___sec41'),
               (u' Vector notation for systems of ODEs: unknowns and equations ',
                2,
                None,
-               '___sec40'),
+               '___sec42'),
               (u' Vector notation for systems of ODEs: vectors ',
                2,
                None,
-               '___sec41'),
+               '___sec43'),
               (u' How to make class ODESolver work for systems of ODEs ',
                2,
                None,
-               '___sec42'),
+               '___sec44'),
               (u' The adjusted superclass code (part 1) ',
                2,
                None,
-               '___sec43'),
-              (u' The superclass code (part 2) ', 2, None, '___sec44'),
+               '___sec45'),
+              (u' The superclass code (part 2) ', 2, None, '___sec46'),
               (u' Example on how to use the general class hierarchy ',
                2,
                None,
-               '___sec45'),
+               '___sec47'),
               (u' Alternative implementation of the $f$ function via a class ',
                2,
                None,
-               '___sec46'),
-              (u' Throwing a ball; ODE model ', 2, None, '___sec47'),
-              (u' Throwing a ball; code ', 2, None, '___sec48'),
-              (u' Throwing a ball; results ', 2, None, '___sec49'),
+               '___sec48'),
+              (u' Throwing a ball; ODE model ', 2, None, '___sec49'),
+              (u' Throwing a ball; code ', 2, None, '___sec50'),
+              (u' Throwing a ball; results ', 2, None, '___sec51'),
               (u' Logistic growth model; ODE and code overview ',
                2,
                None,
-               '___sec50'),
+               '___sec52'),
               (u' Logistic growth model; class Problem ($f$) ',
                2,
                None,
-               '___sec51'),
-              (u' Logistic growth model; class Solver ', 2, None, '___sec52'),
-              (u' Logistic growth model; results ', 2, None, '___sec53')]}
+               '___sec53'),
+              (u' Logistic growth model; class Solver ', 2, None, '___sec54'),
+              (u' Logistic growth model; results ', 2, None, '___sec55')]}
 end of tocinfo -->
 
 <body>
@@ -268,32 +276,32 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>How accurate is our numerical method?  <a name="___sec11"></a></h2>
+<h2 id="___sec11">An ODE needs an initial condition: \( u(0)=U_0 \) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
-<b></b>
+<b>Numerics:</b>
 <p>
+Any ODE \( u'=f(u,t) \) <em>must</em> have an initial condition \( u(0)=U_0 \), with
+known \( U_0 \), otherwise we cannot start the method!
+</div>
 
-<ul>
- <li> Exact solution: \( u(t)=2e^t \), \( u(t_k)=2e^{k\Delta t} = 2(e^{\Delta t})^k \)</li>
- <li> Numerical solution: \( u_k = 2(1+\Delta t)^k \)</li>
-</ul>
 
-When going from \( t_k \) to \( t_{k+1} \), the solution is amplified by a factor:
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Mathematics:</b>
+<p>
+In mathematics: \( u(0)=U_0 \) must be specified to get a unique solution.
+</div>
 
-<ul>
- <li> Exact: \( u(t_{k+1}) = e^{\Delta t}u(t_k) \)</li>
- <li> Numerical: \( u_{k+1} = (1+\Delta t)u_k \)</li>
-</ul>
 
-Using Taylor series for \( e^x \) we see that
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Example:</b>
+<p>
+$$ u'=u $$
 
-$$ e^{\Delta t} - (1+\Delta t) = 1 + \Delta t + \frac{\Delta t^2}{2}
-+ frac{\Delta t^3}{6} + \cdots - (1+\Delta t) = frac{\Delta t^3}{6}
-+ {\cal O}(\Delta t^4)$$
-
-This error approaches 0 as \( \Delta t\rightarrow 0 \).
+Solution: \( u=Ce^t \) for any constant \( C \). Say \( u(0)=U_0 \): \( u=U_0e^t \).
 </div>
 
 

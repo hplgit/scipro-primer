@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -156,30 +156,31 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec33'),
-              (u' Summary of loops, lists and tuples ', 2, None, '___sec34'),
-              (u' List functionality ', 2, None, '___sec35'),
-              (u' A summarizing example; problem ', 2, None, '___sec36'),
+              (u' Key topics from this chapter ', 2, None, '___sec34'),
+              (u' Summary of loops, lists and tuples ', 2, None, '___sec35'),
+              (u' List functionality ', 2, None, '___sec36'),
+              (u' A summarizing example; problem ', 2, None, '___sec37'),
               (u' A summarizing example; program (task 1) ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (u' A summarizing example; program (task 2) ',
                2,
                None,
-               '___sec38'),
+               '___sec39'),
               (u' A summarizing example; program (task 3) ',
                2,
                None,
-               '___sec39'),
+               '___sec40'),
               (u' Using a debugger to trace the execution ',
                2,
                None,
-               '___sec40'),
-              (u' How to find Python info ', 2, None, '___sec41'),
+               '___sec41'),
+              (u' How to find Python info ', 2, None, '___sec42'),
               (u' Warning about reading programming documentation ',
                2,
                None,
-               '___sec42')]}
+               '___sec43')]}
 end of tocinfo -->
 
 <body>
@@ -209,39 +210,20 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Summary of loops, lists and tuples  <a name="___sec34"></a></h2>
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-While loops and for loops:
+<h2 id="___sec34">Key topics from this chapter </h2>
 
 <p>
+<center><p><img src="fig-looplist/opt_exec.png" align="bottom" width=800></p></center>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">while</span> condition:
-    <span style="color: #666666">&lt;</span>block of statements<span style="color: #666666">&gt;</span>
+<ul>
+ <li> While loops</li>
+ <li> Boolean expressions</li>
+ <li> For loops</li>
+ <li> Lists</li>
+ <li> Nested lists</li>
+ <li> Tuples</li>
+</ul>
 
-<span style="color: #008000; font-weight: bold">for</span> element <span style="color: #AA22FF; font-weight: bold">in</span> somelist:
-    <span style="color: #666666">&lt;</span>block of statements<span style="color: #666666">&gt;</span>
-</pre></div>
-<p>
-Lists and tuples:
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">mylist  <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;a string&#39;</span>, <span style="color: #666666">2.5</span>, <span style="color: #666666">6</span>, <span style="color: #BA2121">&#39;another string&#39;</span>]
-mytuple <span style="color: #666666">=</span> (<span style="color: #BA2121">&#39;a string&#39;</span>, <span style="color: #666666">2.5</span>, <span style="color: #666666">6</span>, <span style="color: #BA2121">&#39;another string&#39;</span>)
-mylist[<span style="color: #666666">1</span>]  <span style="color: #666666">=</span> <span style="color: #666666">-10</span>
-mylist<span style="color: #666666">.</span>append(<span style="color: #BA2121">&#39;a third string&#39;</span>)
-mytuple[<span style="color: #666666">1</span>] <span style="color: #666666">=</span> <span style="color: #666666">-10</span>  <span style="color: #408080; font-style: italic"># illegal: cannot change a tuple</span>
-</pre></div>
-
-</div>
-
-
-<p>
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>

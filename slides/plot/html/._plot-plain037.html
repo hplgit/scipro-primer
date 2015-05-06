@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,27 +288,40 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2><code>if x &lt; 0</code> does not work if <code>x</code> is array  <a name="___sec37"></a></h2>
+<h2 id="___sec36">Plotting the Heaviside function: first try </h2>
 
-<div class="alert alert-block alert-block alert-text-normal">
-<b>Remedy 1: use a loop over <code>x</code> values.</b>
 <p>
-
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Standard approach:</b>
+<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">H_loop</span>(x):
-    r <span style="color: #666666">=</span> zeros(<span style="color: #008000">len</span>(x))  <span style="color: #408080; font-style: italic"># or r = x.copy()</span>
-    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">xrange</span>(<span style="color: #008000">len</span>(x)):
-        r[i] <span style="color: #666666">=</span> H(x[i])
-    <span style="color: #008000; font-weight: bold">return</span> r
-
-n <span style="color: #666666">=</span> <span style="color: #666666">5</span>
-x <span style="color: #666666">=</span> linspace(<span style="color: #666666">-5</span>, <span style="color: #666666">5</span>, n<span style="color: #666666">+1</span>)
-y <span style="color: #666666">=</span> H_loop(x)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x <span style="color: #666666">=</span> linspace(<span style="color: #666666">-10</span>, <span style="color: #666666">10</span>, <span style="color: #666666">5</span>)  <span style="color: #408080; font-style: italic"># few points (simple curve)</span>
+y <span style="color: #666666">=</span> H(x)
+plot(x, y)
 </pre></div>
 <p>
-Downside: much to write, slow code if <code>n</code> is large
+First problem: <code>ValueError</code> error in <code>H(x)</code> from <code>if x &lt; 0</code>
+
+<p>
+Let us debug in an interactive shell:
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> linspace(<span style="color: #666666">-10</span>,<span style="color: #666666">10</span>,<span style="color: #666666">5</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> x
+array([<span style="color: #666666">-10.</span>,  <span style="color: #666666">-5.</span>,   <span style="color: #666666">0.</span>,   <span style="color: #666666">5.</span>,  <span style="color: #666666">10.</span>])
+<span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> x <span style="color: #666666">&lt;</span> <span style="color: #666666">0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b
+array([ <span style="color: #008000">True</span>,  <span style="color: #008000">True</span>, <span style="color: #008000">False</span>, <span style="color: #008000">False</span>, <span style="color: #008000">False</span>], dtype<span style="color: #666666">=</span><span style="color: #008000">bool</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000">bool</span>(b)  <span style="color: #408080; font-style: italic"># evaluate b in a boolean context</span>
+<span style="color: #666666">...</span>
+<span style="color: #D2413A; font-weight: bold">ValueError</span>: The truth value of an array <span style="color: #008000; font-weight: bold">with</span> more than
+one element <span style="color: #AA22FF; font-weight: bold">is</span> ambiguous<span style="color: #666666">.</span> Use a<span style="color: #666666">.</span>any() <span style="color: #AA22FF; font-weight: bold">or</span> a<span style="color: #666666">.</span>all()
+</pre></div>
+
 </div>
 
 

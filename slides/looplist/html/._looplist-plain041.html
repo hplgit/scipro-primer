@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -156,30 +156,31 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec33'),
-              (u' Summary of loops, lists and tuples ', 2, None, '___sec34'),
-              (u' List functionality ', 2, None, '___sec35'),
-              (u' A summarizing example; problem ', 2, None, '___sec36'),
+              (u' Key topics from this chapter ', 2, None, '___sec34'),
+              (u' Summary of loops, lists and tuples ', 2, None, '___sec35'),
+              (u' List functionality ', 2, None, '___sec36'),
+              (u' A summarizing example; problem ', 2, None, '___sec37'),
               (u' A summarizing example; program (task 1) ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (u' A summarizing example; program (task 2) ',
                2,
                None,
-               '___sec38'),
+               '___sec39'),
               (u' A summarizing example; program (task 3) ',
                2,
                None,
-               '___sec39'),
+               '___sec40'),
               (u' Using a debugger to trace the execution ',
                2,
                None,
-               '___sec40'),
-              (u' How to find Python info ', 2, None, '___sec41'),
+               '___sec41'),
+              (u' How to find Python info ', 2, None, '___sec42'),
               (u' Warning about reading programming documentation ',
                2,
                None,
-               '___sec42')]}
+               '___sec43')]}
 end of tocinfo -->
 
 <body>
@@ -209,34 +210,27 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Using a debugger to trace the execution  <a name="___sec40"></a></h2>
+<h2 id="___sec40">A summarizing example; program (task 3) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-A <em>debugger</em> is a program that can be used to inspect and understand programs.
-Example:
-
 <p>
 
-<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span>run <span style="color: #666666">-</span>d some_program<span style="color: #666666">.</span>py
-<span style="color: #888888">ipdb&gt; continue  # or just c (go to first statement)</span>
-<span style="color: #888888">1---&gt; 1 g = 9.81;  v0 = 5</span>
-<span style="color: #888888">      2 dt = 0.05</span>
-<span style="color: #888888">      3</span>
-<span style="color: #888888">ipdb&gt; step  # or just s (execute next statement)</span>
-<span style="color: #888888">ipdb&gt; print g</span>
-<span style="color: #000080; font-weight: bold">Out[1]: </span><span style="color: #888888">9.8100000000000005</span>
-<span style="color: #888888">ipdb&gt; list  # or just l (list parts of the program)</span>
-<span style="color: #888888">1     1 g = 9.81;  v0 = 5</span>
-<span style="color: #888888">----&gt; 2 dt = 0.05</span>
-<span style="color: #888888">      3</span>
-<span style="color: #888888">      4 def y(t):</span>
-<span style="color: #888888">      5     return v0*t - 0.5*g*t**2</span>
-<span style="color: #888888">      6</span>
-<span style="color: #888888">ipdb&gt; break 15   # stop program at line 15</span>
-<span style="color: #888888">ipdb&gt; c          # continue to next break point</span>
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">decade_mean <span style="color: #666666">=</span> []
+<span style="color: #008000; font-weight: bold">for</span> decade_start <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1930</span>, <span style="color: #666666">2010</span>, <span style="color: #666666">10</span>):
+    Jan_index <span style="color: #666666">=</span> <span style="color: #666666">0</span>; Dec_index <span style="color: #666666">=</span> <span style="color: #666666">11</span>  <span style="color: #408080; font-style: italic"># indices</span>
+    s <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+    <span style="color: #008000; font-weight: bold">for</span> year <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(decade_start, decade_start<span style="color: #666666">+10</span>):
+        y <span style="color: #666666">=</span> year <span style="color: #666666">-</span> <span style="color: #666666">1929</span>  <span style="color: #408080; font-style: italic"># list index</span>
+        <span style="color: #008000; font-weight: bold">print</span> data[y<span style="color: #666666">-1</span>][Dec_index] <span style="color: #666666">+</span> data[y][Jan_index]
+        s <span style="color: #666666">+=</span> data[y<span style="color: #666666">-1</span>][Dec_index] <span style="color: #666666">+</span> data[y][Jan_index]
+    decade_mean<span style="color: #666666">.</span>append(s<span style="color: #666666">/</span>(<span style="color: #666666">20.*30</span>))
+<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(decade_mean)):
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Decade </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">-</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">: </span><span style="color: #BB6688; font-weight: bold">%.1f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> \
+          (<span style="color: #666666">1930+</span>i<span style="color: #666666">*10</span>, <span style="color: #666666">1939+</span>i<span style="color: #666666">*10</span>, decade_mean[i])
 </pre></div>
 
 </div>

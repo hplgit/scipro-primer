@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,28 +288,32 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Two-dimensional arrays; Python code  <a name="___sec56"></a></h2>
+<h2 id="___sec55">Two-dimensional arrays; math intro </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-Making and filling a two-dimensional NumPy array goes like this:
+When we have a table of numbers,
 
-<p>
+$$
+\left\lbrack\begin{array}{cccc}
+0 & 12 & -1 & 5\\
+-1 & -1 & -1 & 0\\
+11 & 5 & 5 & -2
+\end{array}\right\rbrack
+$$
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">A <span style="color: #666666">=</span> zeros((<span style="color: #666666">3</span>,<span style="color: #666666">4</span>))   <span style="color: #408080; font-style: italic"># 3x4 table of numbers</span>
-A[<span style="color: #666666">0</span>,<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">-1</span>
-A[<span style="color: #666666">1</span>,<span style="color: #666666">0</span>] <span style="color: #666666">=</span>  <span style="color: #666666">1</span>
-A[<span style="color: #666666">2</span>,<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">10</span>
-A[<span style="color: #666666">0</span>,<span style="color: #666666">1</span>] <span style="color: #666666">=</span> <span style="color: #666666">-5</span>
-<span style="color: #666666">...</span>
-A[<span style="color: #666666">2</span>,<span style="color: #666666">3</span>] <span style="color: #666666">=</span> <span style="color: #666666">-100</span>
+(called <em>matrix</em> by mathematicians) it is natural to use a two-dimensional array \( A_{i,j} \) with one index for the rows and one for the columns:
 
-<span style="color: #408080; font-style: italic"># can also write (as for nested lists)</span>
-A[<span style="color: #666666">2</span>][<span style="color: #666666">3</span>] <span style="color: #666666">=</span> <span style="color: #666666">-100</span>
-</pre></div>
-
+$$
+A =
+\left\lbrack\begin{array}{ccc}
+A_{0,0} & \cdots &  A_{0,n-1}\\
+\vdots & \ddots &  \vdots\\
+A_{m-1,0} & \cdots & A_{m-1,n-1}
+\end{array}\right\rbrack
+$$
 </div>
 
 

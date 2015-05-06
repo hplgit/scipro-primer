@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -156,30 +156,31 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec33'),
-              (u' Summary of loops, lists and tuples ', 2, None, '___sec34'),
-              (u' List functionality ', 2, None, '___sec35'),
-              (u' A summarizing example; problem ', 2, None, '___sec36'),
+              (u' Key topics from this chapter ', 2, None, '___sec34'),
+              (u' Summary of loops, lists and tuples ', 2, None, '___sec35'),
+              (u' List functionality ', 2, None, '___sec36'),
+              (u' A summarizing example; problem ', 2, None, '___sec37'),
               (u' A summarizing example; program (task 1) ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (u' A summarizing example; program (task 2) ',
                2,
                None,
-               '___sec38'),
+               '___sec39'),
               (u' A summarizing example; program (task 3) ',
                2,
                None,
-               '___sec39'),
+               '___sec40'),
               (u' Using a debugger to trace the execution ',
                2,
                None,
-               '___sec40'),
-              (u' How to find Python info ', 2, None, '___sec41'),
+               '___sec41'),
+              (u' How to find Python info ', 2, None, '___sec42'),
               (u' Warning about reading programming documentation ',
                2,
                None,
-               '___sec42')]}
+               '___sec43')]}
 end of tocinfo -->
 
 <body>
@@ -214,19 +215,19 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>
-<center><h4>Sep 14, 2014</h4></center> <!-- date -->
+<center><h4>May 6, 2015</h4></center> <!-- date -->
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Make a table of Celsius and Fahrenheit degrees  <a name="___sec0"></a></h2>
+<h2 id="___sec0">Make a table of Celsius and Fahrenheit degrees </h2>
 
+<p>
 
 <!-- code=text typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">-20  -4.0
@@ -254,8 +255,9 @@ How can a program write out such a table?
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Making a table: the simple naive solution  <a name="___sec1"></a></h2>
+<h2 id="___sec1">Making a table: the simple naive solution </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -292,8 +294,9 @@ C <span style="color: #666666">=</span>  <span style="color: #666666">40</span>;
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The while loop makes it possible to repeat almost similar tasks  <a name="___sec2"></a></h2>
+<h2 id="___sec2">The while loop makes it possible to repeat almost similar tasks </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -319,8 +322,9 @@ a boolean condition is true
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The while loop for making a table  <a name="___sec3"></a></h2>
+<h2 id="___sec3">The while loop for making a table </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -343,8 +347,9 @@ dC <span style="color: #666666">=</span> <span style="color: #666666">5</span>  
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The program flow in a while loop  <a name="___sec4"></a></h2>
+<h2 id="___sec4">The program flow in a while loop </h2>
 
+<p>
 
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=C+%3D+-20%0AdC+%3D+5%0Awhile+C+%3C%3D+40%3A%0A++++F+%3D+%289.0%2F5%29%2AC+%2B+32%0A++++print+C%2C+F%0A++++C+%3D+C+%2B+dC&curInstr=0&py=2&cumulative=false">
@@ -362,8 +367,9 @@ Let us simulate the while loop by hand:
 
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Boolean expressions are true or false  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Boolean expressions are true or false </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -400,8 +406,9 @@ We can test boolean expressions in a Python shell:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Combining boolean expressions  <a name="___sec6"></a></h2>
+<h2 id="___sec6">Combining boolean expressions </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -446,8 +453,9 @@ Rule 2: <code>C1 or C2</code> is <code>True</code> if one of <code>C1</code> or 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Lists are objects for storing a sequence of things (objects)  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Lists are objects for storing a sequence of things (objects) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -485,8 +493,9 @@ Now there is one variable, <code>C</code>, holding all the values
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>List operations: initialization and indexing  <a name="___sec8"></a></h2>
+<h2 id="___sec8">List operations: initialization and indexing </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -523,8 +532,9 @@ List indices start at <code>0</code>: <code>0</code>, <code>1</code>, <code>2</c
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>List operations: append, extend, insert, delete  <a name="___sec9"></a></h2>
+<h2 id="___sec9">List operations: append, extend, insert, delete </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -557,8 +567,9 @@ List indices start at <code>0</code>: <code>0</code>, <code>1</code>, <code>2</c
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>List operations: search for elements, negative indices  <a name="___sec10"></a></h2>
+<h2 id="___sec10">List operations: search for elements, negative indices </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -589,8 +600,9 @@ List indices start at <code>0</code>: <code>0</code>, <code>1</code>, <code>2</c
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Loop over elements in a list with a for loop  <a name="___sec11"></a></h2>
+<h2 id="___sec11">Loop over elements in a list with a for loop </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -609,8 +621,9 @@ As with <em>while</em> loops, the statements in the loop must be indented!
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Simulate a for loop by hand  <a name="___sec12"></a></h2>
+<h2 id="___sec12">Simulate a for loop by hand </h2>
 
+<p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">degrees <span style="color: #666666">=</span> [<span style="color: #666666">0</span>, <span style="color: #666666">10</span>, <span style="color: #666666">20</span>, <span style="color: #666666">40</span>, <span style="color: #666666">100</span>]
@@ -630,8 +643,9 @@ Simulation by hand:
 
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Making a table with a for loop  <a name="___sec13"></a></h2>
+<h2 id="___sec13">Making a table with a for loop </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Table of Celsius and Fahreheit degrees:</b>
 <p>
@@ -675,8 +689,9 @@ Output:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>A for loop can always be translated to a while loop  <a name="___sec14"></a></h2>
+<h2 id="___sec14">A for loop can always be translated to a while loop </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -715,8 +730,9 @@ But not all while loops can be expressed as for loops!
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>While loop version of the for loop for making a table  <a name="___sec15"></a></h2>
+<h2 id="___sec15">While loop version of the for loop for making a table </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -739,10 +755,9 @@ index <span style="color: #666666">=</span> <span style="color: #666666">0</span
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Implement a mathematical sum via a loop  <a name="___sec16"></a></h2>
+<h2 id="___sec16">Implement a mathematical sum via a loop </h2>
 
 $$ S = \sum_{i=1}^N i^2 $$
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -784,8 +799,9 @@ Mathematical sums appear often so remember the implementation!
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Storing the table columns as lists  <a name="___sec17"></a></h2>
+<h2 id="___sec17">Storing the table columns as lists </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -812,8 +828,9 @@ Let us put all the Fahrenheit values in a list as well:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>For loop with list indices  <a name="___sec18"></a></h2>
+<h2 id="___sec18">For loop with list indices </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -854,8 +871,9 @@ We can alternatively loop over list indices:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>How can we change the elements in a list?  <a name="___sec19"></a></h2>
+<h2 id="___sec19">How can we change the elements in a list? </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Say we want to add 2 to all numbers in a list:</b>
 <p>
@@ -881,8 +899,9 @@ We can alternatively loop over list indices:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Changing a list element requires assignment to an indexed element  <a name="___sec20"></a></h2>
+<h2 id="___sec20">Changing a list element requires assignment to an indexed element </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -914,8 +933,9 @@ Solution: must <em>index a list element</em> to change its value:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>List comprehensions: compact creation of lists  <a name="___sec21"></a></h2>
+<h2 id="___sec21">List comprehensions: compact creation of lists </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Example: compute two lists in a for loop.</b>
 <p>
@@ -954,8 +974,9 @@ where <code>expression</code> involves <code>element</code>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Interactive demonstration of list comprehensions  <a name="___sec22"></a></h2>
+<h2 id="___sec22">Interactive demonstration of list comprehensions </h2>
 
+<p>
 
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=n+%3D+4%0ACdegrees+%3D+%5B-5+%2B+i%2A2+for+i+in+range%28n%29%5D%0AFdegrees+%3D+%5B%289.0%2F5%29%2AC+%2B+32+for+C+in+Cdegrees%5D&curInstr=0&py=2&cumulative=false">
@@ -963,8 +984,9 @@ where <code>expression</code> involves <code>element</code>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Traversing multiple lists simultaneously with zip  <a name="___sec23"></a></h2>
+<h2 id="___sec23">Traversing multiple lists simultaneously with zip </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Can we one loop running over two lists?</b>
 <p>
@@ -1008,8 +1030,9 @@ Example with three lists:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Nested lists: list of lists  <a name="___sec24"></a></h2>
+<h2 id="___sec24">Nested lists: list of lists </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1038,8 +1061,9 @@ table1[<span style="color: #666666">1</span>][<span style="color: #666666">2</sp
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Table of columns vs table of rows  <a name="___sec25"></a></h2>
+<h2 id="___sec25">Table of columns vs table of rows </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1089,22 +1113,25 @@ Iteration over a nested list:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Illustration of table of columns  <a name="___sec26"></a></h2>
+<h2 id="___sec26">Illustration of table of columns </h2>
 
+<p>
 <center><p><img src="fig-looplist/table1.png" align="bottom" width=340></p></center>
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Illustration of table of rows  <a name="___sec27"></a></h2>
+<h2 id="___sec27">Illustration of table of rows </h2>
 
+<p>
 <center><p><img src="fig-looplist/table2.png" align="bottom" width=400></p></center>
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Extracting sublists (or slices)  <a name="___sec28"></a></h2>
+<h2 id="___sec28">Extracting sublists (or slices) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1137,8 +1164,9 @@ Note: sublists (slices) are <em>copies</em> of the original list!
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>What does this code snippet do?  <a name="___sec29"></a></h2>
+<h2 id="___sec29">What does this code snippet do? </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1182,8 +1210,9 @@ Output:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Iteration over general nested lists  <a name="___sec30"></a></h2>
+<h2 id="___sec30">Iteration over general nested lists </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1230,8 +1259,9 @@ List with many indices: <code>somelist[i1][i2][i3]...</code>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Iteration over a specific nested list  <a name="___sec31"></a></h2>
+<h2 id="___sec31">Iteration over a specific nested list </h2>
 
+<p>
 
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=L+%3D+%5B%5B9%2C+7%5D%2C+%5B-1%2C+5%2C+6%5D%5D%0Afor+row+in+L%3A%0A++++for+column+in+row%3A%0A++++++++print+column&curInstr=0&py=2&cumulative=false">
@@ -1250,8 +1280,9 @@ How can we index element with value 5?
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Tuples are constant lists  <a name="___sec32"></a></h2>
+<h2 id="___sec32">Tuples are constant lists </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1297,8 +1328,9 @@ Tuples can do much of what lists can do:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Why tuples when lists have more functionality?  <a name="___sec33"></a></h2>
+<h2 id="___sec33">Why tuples when lists have more functionality? </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1317,8 +1349,25 @@ Tuples can do much of what lists can do:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Summary of loops, lists and tuples  <a name="___sec34"></a></h2>
+<h2 id="___sec34">Key topics from this chapter </h2>
 
+<p>
+<center><p><img src="fig-looplist/opt_exec.png" align="bottom" width=800></p></center>
+
+<ul>
+ <li> While loops</li>
+ <li> Boolean expressions</li>
+ <li> For loops</li>
+ <li> Lists</li>
+ <li> Nested lists</li>
+ <li> Tuples</li>
+</ul>
+
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec35">Summary of loops, lists and tuples </h2>
+
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1352,8 +1401,9 @@ mytuple[<span style="color: #666666">1</span>] <span style="color: #666666">=</s
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>List functionality  <a name="___sec35"></a></h2>
+<h2 id="___sec36">List functionality </h2>
 
+<p>
 <table border="1">
 <thead>
 <tr><th align="center">            Construction            </th> <th align="center">                         Meaning                          </th> </tr>
@@ -1386,8 +1436,9 @@ mytuple[<span style="color: #666666">1</span>] <span style="color: #666666">=</s
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>A summarizing example; problem  <a name="___sec36"></a></h2>
+<h2 id="___sec37">A summarizing example; problem </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1426,8 +1477,9 @@ and December
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>A summarizing example; program (task 1)  <a name="___sec37"></a></h2>
+<h2 id="___sec38">A summarizing example; program (task 1) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1463,8 +1515,9 @@ month_names <span style="color: #666666">=</span> [<span style="color: #BA2121">
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>A summarizing example; program (task 2)  <a name="___sec38"></a></h2>
+<h2 id="___sec39">A summarizing example; program (task 2) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1492,8 +1545,9 @@ max_value <span style="color: #666666">=</span> <span style="color: #666666">-1E
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>A summarizing example; program (task 3)  <a name="___sec39"></a></h2>
+<h2 id="___sec40">A summarizing example; program (task 3) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1520,8 +1574,9 @@ max_value <span style="color: #666666">=</span> <span style="color: #666666">-1E
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Using a debugger to trace the execution  <a name="___sec40"></a></h2>
+<h2 id="___sec41">Using a debugger to trace the execution </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1556,8 +1611,9 @@ Example:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>How to find Python info  <a name="___sec41"></a></h2>
+<h2 id="___sec42">How to find Python info </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1584,8 +1640,9 @@ Example:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Warning about reading programming documentation  <a name="___sec42"></a></h2>
+<h2 id="___sec43">Warning about reading programming documentation </h2>
 
+<p>
 <div class="alert alert-block alert-warning alert-text-normal">
 <b>Warning.</b>
 <p>

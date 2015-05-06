@@ -11,8 +11,8 @@ Automatically generated HTML file from DocOnce source
 <title>Ch.2: Loops and lists</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
@@ -20,6 +20,11 @@ Automatically generated HTML file from DocOnce source
 h1 {color: #b58900;}  /* yellow */
 /* h1 {color: #cb4b16;}  orange */
 /* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -42,10 +47,10 @@ h1 {color: #b58900;}  /* yellow */
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -146,30 +151,31 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec33'),
-              (u' Summary of loops, lists and tuples ', 2, None, '___sec34'),
-              (u' List functionality ', 2, None, '___sec35'),
-              (u' A summarizing example; problem ', 2, None, '___sec36'),
+              (u' Key topics from this chapter ', 2, None, '___sec34'),
+              (u' Summary of loops, lists and tuples ', 2, None, '___sec35'),
+              (u' List functionality ', 2, None, '___sec36'),
+              (u' A summarizing example; problem ', 2, None, '___sec37'),
               (u' A summarizing example; program (task 1) ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (u' A summarizing example; program (task 2) ',
                2,
                None,
-               '___sec38'),
+               '___sec39'),
               (u' A summarizing example; program (task 3) ',
                2,
                None,
-               '___sec39'),
+               '___sec40'),
               (u' Using a debugger to trace the execution ',
                2,
                None,
-               '___sec40'),
-              (u' How to find Python info ', 2, None, '___sec41'),
+               '___sec41'),
+              (u' How to find Python info ', 2, None, '___sec42'),
               (u' Warning about reading programming documentation ',
                2,
                None,
-               '___sec42')]}
+               '___sec43')]}
 end of tocinfo -->
 
 <body>
@@ -194,26 +200,28 @@ MathJax.Hub.Config({
 <a name="part0040"></a>
 <!-- !split -->
 
-<h2>A summarizing example; program (task 3)  <a name="___sec39"></a></h2>
+<h2 id="___sec39">A summarizing example; program (task 2) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">decade_mean = []
-<span style="color: #8B008B; font-weight: bold">for</span> decade_start <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1930</span>, <span style="color: #B452CD">2010</span>, <span style="color: #B452CD">10</span>):
-    Jan_index = <span style="color: #B452CD">0</span>; Dec_index = <span style="color: #B452CD">11</span>  <span style="color: #228B22"># indices</span>
-    s = <span style="color: #B452CD">0</span>
-    <span style="color: #8B008B; font-weight: bold">for</span> year <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(decade_start, decade_start+<span style="color: #B452CD">10</span>):
-        y = year - <span style="color: #B452CD">1929</span>  <span style="color: #228B22"># list index</span>
-        <span style="color: #8B008B; font-weight: bold">print</span> data[y-<span style="color: #B452CD">1</span>][Dec_index] + data[y][Jan_index]
-        s += data[y-<span style="color: #B452CD">1</span>][Dec_index] + data[y][Jan_index]
-    decade_mean.append(s/(<span style="color: #B452CD">20.</span>*<span style="color: #B452CD">30</span>))
-<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(decade_mean)):
-    <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Decade %d-%d: %.1f&#39;</span> % \
-          (<span style="color: #B452CD">1930</span>+i*<span style="color: #B452CD">10</span>, <span style="color: #B452CD">1939</span>+i*<span style="color: #B452CD">10</span>, decade_mean[i])
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">max_value = <span style="color: #658b00">max</span>(monthly_mean)
+month = month_names[monthly_mean.index(max_value)]
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%s has best weather with %.1f sun hours on average&#39;</span> % \
+      (month, max_value)
+
+max_value = -<span style="color: #B452CD">1E+20</span>
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(monthly_mean)):
+    value = monthly_mean[i]
+    <span style="color: #8B008B; font-weight: bold">if</span> value &gt; max_value:
+        max_value = value
+        max_i = i  <span style="color: #228B22"># store index too</span>
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%s has best weather with %.1f sun hours on average&#39;</span> % \
+      (month_names[max_i], max_value)
 </pre></div>
 
 </div>

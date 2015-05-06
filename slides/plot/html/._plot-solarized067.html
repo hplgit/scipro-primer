@@ -11,8 +11,8 @@ Automatically generated HTML file from DocOnce source
 <title>Ch.5: Array computing and curve plotting</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
@@ -20,6 +20,11 @@ Automatically generated HTML file from DocOnce source
 h1 {color: #b58900;}  /* yellow */
 /* h1 {color: #cb4b16;}  orange */
 /* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -42,10 +47,10 @@ h1 {color: #b58900;}  /* yellow */
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -273,49 +278,54 @@ MathJax.Hub.Config({
 <a name="part0067"></a>
 <!-- !split -->
 
-<h2>Summarizing example: animating a function (part 2)  <a name="___sec67"></a></h2>
+<h2 id="___sec66">Summarizing example: animating a function (part 1) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
+
+<ul>
+  <li> Goal: visualize the temperature in the ground as a function of</li>
+</ul>
+
+ depth (\( z \)) and time (\( t \)), displayed as a movie in time:
+ \[ T(z,t) = T_0 + Ae^{-az}\cos (\omega t - az),\quad a =\sqrt{\omega\over 2k} \]
+
+<ul>
+  <li> First we make a <em>general</em> animation function for an \( f(x,t) \):</li>
+</ul>
+
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #228B22"># remove old plot files:</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">glob</span>, <span style="color: #008b45; text-decoration: underline">os</span>
-<span style="color: #8B008B; font-weight: bold">for</span> filename <span style="color: #8B008B">in</span> glob.glob(<span style="color: #CD5555">&#39;tmp_*.png&#39;</span>): os.remove(filename)
-
-<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">T</span>(z, t):
-    <span style="color: #228B22"># T0, A, k, and omega are global variables</span>
-    a = sqrt(omega/(<span style="color: #B452CD">2</span>*k))
-    <span style="color: #8B008B; font-weight: bold">return</span> T0 + A*exp(-a*z)*cos(omega*t - a*z)
-
-k = <span style="color: #B452CD">1E-6</span>     <span style="color: #228B22"># heat conduction coefficient (in m*m/s)</span>
-P = <span style="color: #B452CD">24</span>*<span style="color: #B452CD">60</span>*<span style="color: #B452CD">60.</span><span style="color: #228B22"># oscillation period of 24 h (in seconds)</span>
-omega = <span style="color: #B452CD">2</span>*pi/P
-dt = P/<span style="color: #B452CD">24</span>    <span style="color: #228B22"># time lag: 1 h</span>
-tmax = <span style="color: #B452CD">3</span>*P   <span style="color: #228B22"># 3 day/night simulation</span>
-T0 = <span style="color: #B452CD">10</span>      <span style="color: #228B22"># mean surface temperature in Celsius</span>
-A = <span style="color: #B452CD">10</span>       <span style="color: #228B22"># amplitude of the temperature variations (in C)</span>
-a = sqrt(omega/(<span style="color: #B452CD">2</span>*k))
-D = -(<span style="color: #B452CD">1</span>/a)*log(<span style="color: #B452CD">0.001</span>) <span style="color: #228B22"># max depth</span>
-n = <span style="color: #B452CD">501</span>      <span style="color: #228B22"># no of points in the z direction</span>
-
-z = linspace(<span style="color: #B452CD">0</span>, D, n)
-animate(tmax, dt, z, T, T0-A, T0+A, <span style="color: #B452CD">0</span>, <span style="color: #CD5555">&#39;z&#39;</span>, <span style="color: #CD5555">&#39;T&#39;</span>)
-<span style="color: #228B22"># make movie files:</span>
-movie(<span style="color: #CD5555">&#39;tmp_*.png&#39;</span>, encoder=<span style="color: #CD5555">&#39;convert&#39;</span>, fps=<span style="color: #B452CD">2</span>,
-      output_file=<span style="color: #CD5555">&#39;tmp_heatwave.gif&#39;</span>)
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">animate</span>(tmax, dt, x, function, ymin, ymax, t0=<span style="color: #B452CD">0</span>,
+            xlabel=<span style="color: #CD5555">&#39;x&#39;</span>, ylabel=<span style="color: #CD5555">&#39;y&#39;</span>, filename=<span style="color: #CD5555">&#39;tmp_&#39;</span>):
+    t = t0
+    counter = <span style="color: #B452CD">0</span>
+    <span style="color: #8B008B; font-weight: bold">while</span> t &lt;= tmax:
+        y = function(x, t)
+        plot(x, y,
+             axis=[x[<span style="color: #B452CD">0</span>], x[-<span style="color: #B452CD">1</span>], ymin, ymax],
+             title=<span style="color: #CD5555">&#39;time=%g&#39;</span> % t,
+             xlabel=xlabel, ylabel=ylabel,
+             savefig=filename + <span style="color: #CD5555">&#39;%04d.png&#39;</span> % counter)
+        t += dt
+        counter += <span style="color: #B452CD">1</span>
 </pre></div>
-
+<ul>
+  <li> Then we call this function with our special \( T(z,t) \) function</li>
+</ul>
 </div>
 
 
+<p>
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._plot-solarized066.html">&laquo; Previous</a></div>
 </td><td>
+<div style="text-align: right;"><a href="._plot-solarized068.html">Next &raquo;</a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>

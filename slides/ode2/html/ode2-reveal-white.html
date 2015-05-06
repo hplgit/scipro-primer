@@ -132,22 +132,18 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>&nbsp;<br>
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>&nbsp;<br>
-<center><h4>Oct 21, 2014</h4></center> <!-- date -->
-<p>
-
+<center><h4>May 6, 2015</h4></center> <!-- date -->
 </section>
 
 
 <section>
-
-<h1 style="text-align: center;">How to solve any ordinary scalar differential equation  <a name="___sec0"></a></h1>
+<h1 id="___sec0">How to solve any ordinary scalar differential equation </h1>
 
 <p>
 
@@ -169,36 +165,24 @@ $$
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Examples on scalar differential equations (ODEs)  <a name="___sec1"></a></h2>
+<h2 id="___sec1">Examples on scalar differential equations (ODEs) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Terminology:</b>
-<p>
-
 <ul>
  <p><li> <em>Scalar ODE</em>: a single ODE, one unknown function</li>
  <p><li> <em>Vector ODE</em> or <em>systems of ODEs</em>: several ODEs, several unknown functions</li>
 </ul>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Examples:</b>
-<p>
 <p>&nbsp;<br>
 $$
 \begin{align*}
@@ -209,33 +193,23 @@ u' + b|u|u &= g\quad\hbox{falling body in fluid}
 $$
 <p>&nbsp;<br>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>We shall write an ODE in a generic form: \( u'=f(u,t) \)  <a name="___sec2"></a></h2>
+<h2 id="___sec2">We shall write an ODE in a generic form: \( u'=f(u,t) \) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
  <p><li> Our methods and software should be applicable to <em>any</em> ODE</li>
  <p><li> Therefore we need an abstract notation for an arbitrary ODE</li>
 </ul>
-<p>
-
 <p>&nbsp;<br>
 $$ u^{\prime}(t) = f(u(t), t)$$
 <p>&nbsp;<br>
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -254,7 +228,6 @@ $$
 <p>&nbsp;<br>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -262,16 +235,11 @@ $$
 Our task: write functions and classes that take \( f \) as input and
 produce \( u \) as output
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>What is the \( f(u,t) \)?  <a name="___sec3"></a></h2>
+<h2 id="___sec3">What is the \( f(u,t) \)? </h2>
 
 <p>
 
@@ -287,8 +255,6 @@ $$ \sqrt{u}u' - \alpha(t) u^{3/2}(1-\frac{u}{R(t)}) = 0,$$
 what is the \( f(u,t) \)?
 </div>
 
-
-
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
@@ -302,25 +268,16 @@ $$ u' = \underbrace{\alpha(t) u(1-\frac{u}{R(t)})}_{f(u,t)} $$
 <p>&nbsp;<br>
 
 
-
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Such abstract \( f \) functions are widely used in mathematics  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Such abstract \( f \) functions are widely used in mathematics </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>We can make generic software for:</b>
-<p>
-
 <ul>
  <p><li> Numerical differentiation: \( f'(x) \)</li>
  <p><li> Numerical integration: \( \int_a^b f(x)dx \)</li>
@@ -328,28 +285,20 @@ $$ u' = \underbrace{\alpha(t) u(1-\frac{u}{R(t)})}_{f(u,t)} $$
 </ul>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Applications:</b>
-<p>
-
 <ol>
 <p><li> \( \frac{d}{dx} x^a\sin (wx) \): \( f(x)=x^a\sin (wx) \)</li>
 <p><li> \( \int_{-1}^1 (x^2\tanh^{-1}x - (1+x^2)^{-1})dx \): \( f(x)=x^2\tanh^{-1}x - (1+x^2)^{-1} \), \( a=-1 \), \( b=1 \)</li>
 <p><li> Solve \( x^4\sin x = \tan x \): \( f(x)=x^4\sin x - \tan x \)</li>
 </ol>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>We use finite difference approximations to derivatives to turn an ODE into a difference equation  <a name="___sec5"></a></h2>
+<h2 id="___sec5">We use finite difference approximations to derivatives to turn an ODE into a difference equation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -362,14 +311,12 @@ Assume we have computed \( u \) at discrete time points
 $$ u'(t_k) = f(u(t_k),t_k) $$
 <p>&nbsp;<br>
 
-
 <p>
 Approximate \( u'(t_k) \) by a forward finite difference,
 
 <p>&nbsp;<br>
 $$ u'(t_k)\approx \frac{u(t_{k+1})-u(t_k)}{\Delta t}$$
 <p>&nbsp;<br>
-
 
 <p>
 Insert in the ODE at \( t=t_k \):
@@ -378,21 +325,31 @@ Insert in the ODE at \( t=t_k \):
 $$ \frac{u(t_{k+1})-u(t_k)}{\Delta t} = f(u(t_k),t_k) $$
 <p>&nbsp;<br>
 
-
 <p>
 Terms with \( u(t_k) \) are known, and this is an algebraic (difference) equation
 for \( u(t_{k+1}) \)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec6">The Forward Euler (or Euler's) method; idea </h2>
 
-<h2>The Forward Euler (or Euler's) method  <a name="___sec6"></a></h2>
+<p>
+<center><p><img src="fig-ode2/FE_comic_1.png" align="bottom" width=600></p></center>
+</section>
+
+
+<section>
+<h2 id="___sec7">The Forward Euler (or Euler's) method; idea </h2>
+
+<p>
+<center><p><img src="fig-ode2/FE_comic_2.png" align="bottom" width=600></p></center>
+</section>
+
+
+<section>
+<h2 id="___sec8">The Forward Euler (or Euler's) method; mathematics </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -403,12 +360,10 @@ Solving with respect to \( u(t_{k+1}) \)
 $$ u(t_{k+1}) = u(t_k) + \Delta t f(u(t_k), t_k)$$
 <p>&nbsp;<br>
 
-
 <p>
 This is a very simple formula that we can use repeatedly for
 \( u(t_1) \), \( u(t_2) \), \( u(t_3) \) and so forth.
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -421,58 +376,42 @@ at \( t=t_k \).
 $$ u_{k+1} = u_k + \Delta t f(u_k,t_k)$$
 <p>&nbsp;<br>
 
-
 <p>
 This is an ordinary difference equation we can solve!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Illustration of the forward finite difference  <a name="___sec7"></a></h2>
+<h2 id="___sec9">Illustration of the forward finite difference </h2>
 
 <p>
 <center><p><img src="fig-ode2/fd_forward.png" align="bottom" width=500></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Let's apply the method!  <a name="___sec8"></a></h2>
+<h2 id="___sec10">Let's apply the method! </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Problem: The world's simplest ODE.</b>
-<p>
-
 <p>&nbsp;<br>
 $$ u' = u,\quad t\in (0,T] $$
 <p>&nbsp;<br>
-
 
 <p>
 Solve for \( u \) at \( t=t_k=k\Delta t \), \( k=0,1,2,\ldots,t_n \),
 \( t_0=0 \), \( t_n=T \)
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Forward Euler method:</b>
-<p>
 <p>&nbsp;<br>
 $$ u_{k+1} = u_k + \Delta t\, f(u_k,t_k)$$
 <p>&nbsp;<br>
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -484,7 +423,6 @@ What is \( f \)? \( f(u,t)=u \)
 $$ u_{k+1} = u_k + \Delta t f(u_k,t_k) = u_k + \Delta t u_k = (1+\Delta t)u_k$$
 <p>&nbsp;<br>
 
-
 <p>
 First step:
 <p>&nbsp;<br>
@@ -493,16 +431,11 @@ $$ u_1 = (1+\Delta t) u_0$$
 
 but what is \( u_0 \)?
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>An ODE needs an initial condition: \( u(0)=U_0 \)  <a name="___sec9"></a></h2>
+<h2 id="___sec11">An ODE needs an initial condition: \( u(0)=U_0 \) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -512,7 +445,6 @@ Any ODE \( u'=f(u,t) \) <em>must</em> have an initial condition \( u(0)=U_0 \), 
 known \( U_0 \), otherwise we cannot start the method!
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Mathematics:</b>
@@ -520,27 +452,20 @@ known \( U_0 \), otherwise we cannot start the method!
 In mathematics: \( u(0)=U_0 \) must be specified to get a unique solution.
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Example:</b>
-<p>
 <p>&nbsp;<br>
 $$ u'=u $$
 <p>&nbsp;<br>
 
 Solution: \( u=Ce^t \) for any constant \( C \). Say \( u(0)=U_0 \): \( u=U_0e^t \).
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>We continue solution by hand  <a name="___sec10"></a></h2>
+<h2 id="___sec12">We continue solution by hand </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -564,22 +489,15 @@ $$
 
 Actually, we found a formula for \( u_k \)! No need to program...
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>How accurate is our numerical method?  <a name="___sec11"></a></h2>
+<h2 id="___sec13">How accurate is our numerical method? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
  <p><li> Exact solution: \( u(t)=2e^t \), \( u(t_k)=2e^{k\Delta t} = 2(e^{\Delta t})^k \)</li>
  <p><li> Numerical solution: \( u_k = 2(1+\Delta t)^k \)</li>
@@ -604,16 +522,11 @@ $$ e^{\Delta t} - (1+\Delta t) = 1 + \Delta t + \frac{\Delta t^2}{2}
 
 This error approaches 0 as \( \Delta t\rightarrow 0 \).
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>What about the general case \( u'=f(u,t) \)?  <a name="___sec12"></a></h2>
+<h2 id="___sec14">What about the general case \( u'=f(u,t) \)? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -635,23 +548,17 @@ $$
 No general formula in this case...
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Rule of thumb:</b>
 <p>
 When hand calculations get boring, let's program!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>We start with a specialized program for \( u'=u \), \( u(0)=U_0 \)  <a name="___sec13"></a></h2>
+<h2 id="___sec15">We start with a specialized program for \( u'=u \), \( u(0)=U_0 \) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -665,28 +572,23 @@ Given \( \Delta t \) (<code>dt</code>) and \( n \)
  <p><li> For \( k=0,1,2,\ldots,n-1 \):</li>
 
 <ul>
-  <p><li> <code>t[k+1] = t[k] + dt</code></li>
-  <p><li> <code>u[k+1] = (1 + dt)*u[k]</code></li>
+
+<p><li> <code>t[k+1] = t[k] + dt</code></li>
+
+<p><li> <code>u[k+1] = (1 + dt)*u[k]</code></li>
 </ul>
 <p>
-
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>We start with a specialized program for \( u'=u \), \( u(0)=U_0 \)  <a name="___sec14"></a></h2>
+<h2 id="___sec16">We start with a specialized program for \( u'=u \), \( u(0)=U_0 \) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Program:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -711,16 +613,11 @@ u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> U
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The solution if we plot \( u \) against \( t \)  <a name="___sec15"></a></h2>
+<h2 id="___sec17">The solution if we plot \( u \) against \( t \) </h2>
 
 <p>
 \( \Delta t = 0.4 \) and \( \Delta t=0.2 \):
@@ -729,15 +626,11 @@ u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> U
 
 <p>
 <center><p><img src="fig-ode2/FE_n_10_20.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The algorithm for the general ODE \( u'=f(u,t) \)  <a name="___sec16"></a></h2>
+<h2 id="___sec18">The algorithm for the general ODE \( u'=f(u,t) \) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -752,28 +645,23 @@ Given \( \Delta t \) (<code>dt</code>) and \( n \)
  <p><li> For \( k=0,1,2,\ldots,n-1 \):</li>
 
 <ul>
-  <p><li> <code>u[k+1] = u[k] + dt*f(u[k], t[k])</code> <font color="red">(the only change!)</font></li>
-  <p><li> <code>t[k+1] = t[k] + dt</code></li>
+
+<p><li> <code>u[k+1] = u[k] + dt*f(u[k], t[k])</code> <font color="red">(the only change!)</font></li>
+
+<p><li> <code>t[k+1] = t[k] + dt</code></li>
 </ul>
 <p>
-
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Implementation of the general algorithm for \( u'=f(u,t) \)  <a name="___sec17"></a></h2>
+<h2 id="___sec19">Implementation of the general algorithm for \( u'=f(u,t) \) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>General function:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -796,23 +684,17 @@ Given \( \Delta t \) (<code>dt</code>) and \( n \)
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Magic:</b>
 <p>
 This simple function can solve any ODE (!)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example on using the function  <a name="___sec18"></a></h2>
+<h2 id="___sec20">Example on using the function </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -823,11 +705,9 @@ with \( \Delta t = 0.4 \) <br />
 Exact solution: \( u(t)=e^t \).
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Basic code:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -842,11 +722,9 @@ u, t <span style="color: #666666">=</span> ForwardEuler(f, U0, T, n)
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Compare exact and numerical solution:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -858,22 +736,15 @@ plot(t, u, <span style="color: #BA2121">&#39;r-&#39;</span>, t, u_exact, <span s
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Now you can solve any ODE!  <a name="___sec19"></a></h2>
+<h2 id="___sec21">Now you can solve any ODE! </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Recipe:</b>
-<p>
-
 <ul>
  <p><li> Identify \( f(u,t) \) in your ODE</li>
  <p><li> Make sure you have an initial condition \( U_0 \)</li>
@@ -884,7 +755,6 @@ plot(t, u, <span style="color: #BA2121">&#39;r-&#39;</span>, t, u_exact, <span s
 </ul>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Warning:</b>
@@ -893,21 +763,15 @@ The Forward Euler method may give very inaccurate solutions if
 \( \Delta t \) is not sufficiently small. For some problems
 (like \( u''+u=0 \)) other methods should be used.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Let us make a class instead of a function for solving ODEs  <a name="___sec20"></a></h2>
+<h2 id="___sec22">Let us make a class instead of a function for solving ODEs </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Usage of the class:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -919,43 +783,39 @@ plot(t, u)
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>How?</b>
-<p>
+<ul>
+
+<p><li> Store \( f \), \( \Delta t \), and the sequences \( u_k \), \( t_k \) as attributes</li>
+
+<p><li> Split the steps in the <code>ForwardEuler</code> function into four methods:</li>
 
 <ul>
-  <p><li> Store \( f \), \( \Delta t \), and the sequences \( u_k \), \( t_k \) as attributes</li>
-  <p><li> Split the steps in the <code>ForwardEuler</code> function into four methods:</li>
 
-<ul>
-     <p><li> the constructor (<code>__init__</code>)</li>
-     <p><li> <code>set_initial_condition</code> for \( u(0)=U_0 \)</li>
-     <p><li> <code>solve</code> for running the numerical time stepping</li>
-     <p><li> <code>advance</code> for isolating the numerical updating formula <br />
+<p><li> the constructor (<code>__init__</code>)</li>
+
+<p><li> <code>set_initial_condition</code> for \( u(0)=U_0 \)</li>
+
+<p><li> <code>solve</code> for running the numerical time stepping</li>
+
+<p><li> <code>advance</code> for isolating the numerical updating formula <br />
        (new numerical methods just need a different <code>advance</code> method,
        the rest is the same)</li>
 </ul>
 <p>
-
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The code for a class for solving ODEs (part 1)  <a name="___sec21"></a></h2>
+<h2 id="___sec23">The code for a class for solving ODEs (part 1) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -970,21 +830,15 @@ plot(t, u)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The code for a class for solving ODEs (part 2)  <a name="___sec22"></a></h2>
+<h2 id="___sec24">The code for a class for solving ODEs (part 2) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1015,21 +869,15 @@ plot(t, u)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Alternative class code for solving ODEs (part 1)  <a name="___sec23"></a></h2>
+<h2 id="___sec25">Alternative class code for solving ODEs (part 1) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1052,21 +900,15 @@ plot(t, u)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Alternative class code for solving ODEs (part 2)  <a name="___sec24"></a></h2>
+<h2 id="___sec26">Alternative class code for solving ODEs (part 2) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1094,16 +936,11 @@ plot(t, u)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Verifying the class implementation; mathematics  <a name="___sec25"></a></h2>
+<h2 id="___sec27">Verifying the class implementation; mathematics </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1122,24 +959,17 @@ u'(t) &=0.2 + (u-h(t))^4,\quad u(0)=3,\quad t\in [0,3]
 $$
 <p>&nbsp;<br>
 
-This \( u \) should be reproduced to machine precision for &quot;any&quot; \( \Delta t \)
-(not too large).
+This \( u \) should be reproduced to machine precision for any \( \Delta t \).
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Verifying the class implementation; implementation  <a name="___sec26"></a></h2>
+<h2 id="___sec28">Verifying the class implementation; implementation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Code:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1163,31 +993,23 @@ This \( u \) should be reproduced to machine precision for &quot;any&quot; \( \D
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Using a class to hold the right-hand side \( f(u,t) \)  <a name="___sec27"></a></h2>
+<h2 id="___sec29">Using a class to hold the right-hand side \( f(u,t) \) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Mathematical problem:</b>
-<p>
 <p>&nbsp;<br>
 $$ u^{\prime}(t)=\alpha u(t)\left(  1-\frac{u(t)}{R}\right),\quad u(0)=U_0,\quad t\in [0,40]$$
 <p>&nbsp;<br>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Class for right-hand side \( f(u,t) \):</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1201,11 +1023,9 @@ $$ u^{\prime}(t)=\alpha u(t)\left(  1-\frac{u(t)}{R}\right),\quad u(0)=U_0,\quad
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Main program:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1217,47 +1037,34 @@ u, t <span style="color: #666666">=</span> method<span style="color: #666666">.<
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Figure of the solution  <a name="___sec28"></a></h2>
+<h2 id="___sec30">Figure of the solution </h2>
 
 <p>
 <center><p><img src="fig-ode2/logistic_func_mpl.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Numerical methods for ordinary differential equations  <a name="___sec29"></a></h2>
+<h2 id="___sec31">Numerical methods for ordinary differential equations </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Forward Euler method:</b>
-<p>
 <p>&nbsp;<br>
 $$ u_{k+1} = u_k + \Delta t\, f(u_k, t_k) $$
 <p>&nbsp;<br>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>4th-order Runge-Kutta method:</b>
-<p>
 <p>&nbsp;<br>
 $$ u_{k+1} = u_k + {1\over 6}\left( K_1 + 2K_2 + 2K_3 + K_4\right)$$
 <p>&nbsp;<br>
-
 
 <p>&nbsp;<br>
 $$
@@ -1270,66 +1077,54 @@ K_4 &= \Delta t\,f(u_k + K3, t_k + \Delta t)
 $$
 <p>&nbsp;<br>
 
-
 <p>
 And lots of other methods! How to program a wide collection of methods?
 Use object-oriented programming!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>A superclass for ODE methods  <a name="___sec30"></a></h2>
+<h2 id="___sec32">A superclass for ODE methods </h2>
 
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Common tasks for ODE solvers:</b>
-<p>
-
 <ul>
-  <p><li class="fragment"> Store the solution \( u_k \) and the corresponding time levels \( t_k \), \( k=0,1,2,\ldots,n \)</li>
-  <p><li class="fragment"> Store the right-hand side function \( f(u,t) \)</li>
-  <p><li class="fragment"> Set and store the initial condition</li>
-  <p><li class="fragment"> Run the loop over all time steps</li>
+
+<p><li class="fragment"> Store the solution \( u_k \) and the corresponding time levels \( t_k \), \( k=0,1,2,\ldots,n \)</li>
+
+<p><li class="fragment"> Store the right-hand side function \( f(u,t) \)</li>
+
+<p><li class="fragment"> Set and store the initial condition</li>
+
+<p><li class="fragment"> Run the loop over all time steps</li>
 </ul>
 </div>
-
-
 
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Principles:</b>
-<p>
-
 <ul>
-  <p><li class="fragment"> Common data and functionality are placed in superclass <code>ODESolver</code></li>
-  <p><li class="fragment"> Isolate the numerical updating formula in a method <code>advance</code></li>
-  <p><li class="fragment"> Subclasses, e.g., <code>ForwardEuler</code>, just implement the specific numerical formula in <code>advance</code></li>
+
+<p><li class="fragment"> Common data and functionality are placed in superclass <code>ODESolver</code></li>
+
+<p><li class="fragment"> Isolate the numerical updating formula in a method <code>advance</code></li>
+
+<p><li class="fragment"> Subclasses, e.g., <code>ForwardEuler</code>, just implement the specific numerical formula in <code>advance</code></li>
 </ul>
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The superclass code  <a name="___sec31"></a></h2>
+<h2 id="___sec33">The superclass code </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1361,21 +1156,15 @@ Use object-oriented programming!
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Implementation of the Forward Euler method  <a name="___sec32"></a></h2>
+<h2 id="___sec34">Implementation of the Forward Euler method </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Subclass code:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1390,11 +1179,9 @@ Use object-oriented programming!
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Application code for \( u'-u=0 \), \( u(0)=1 \), \( t\in [0,3] \), \( \Delta t=0.1 \):</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1409,21 +1196,15 @@ plot(t, u)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The implementation of a Runge-Kutta method  <a name="___sec33"></a></h2>
+<h2 id="___sec35">The implementation of a Runge-Kutta method </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Subclass code:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1443,11 +1224,9 @@ plot(t, u)
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Application code (same as for ForwardEuler):</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1462,22 +1241,15 @@ plot(t, u)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The user should be able to check intermediate solutions and terminate the time stepping  <a name="___sec34"></a></h2>
+<h2 id="___sec36">The user should be able to check intermediate solutions and terminate the time stepping </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
  <p><li> Sometimes a property of the solution determines when to stop the solution process: e.g., when \( u < 10^{-7}\approx 0 \).</li>
  <p><li> Extension: <code>solve(time_points, terminate)</code></li>
@@ -1487,8 +1259,6 @@ plot(t, u)
 </ul>
 <p>
 
-<p>
-
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">terminate</span>(u, t, step_no):
     eps <span style="color: #666666">=</span> <span style="color: #666666">1.0E-6</span>                     <span style="color: #408080; font-style: italic"># small number</span>
@@ -1496,16 +1266,11 @@ plot(t, u)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h1 style="text-align: center;">Systems of differential equations (vector ODE)  <a name="___sec35"></a></h1>
+<h1 id="___sec37">Systems of differential equations (vector ODE) </h1>
 
 <p>
 
@@ -1529,19 +1294,11 @@ $$
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example on a system of ODEs (vector ODE)  <a name="___sec36"></a></h2>
+<h2 id="___sec38">Example on a system of ODEs (vector ODE) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1558,14 +1315,12 @@ $$
 $$
 <p>&nbsp;<br>
 
-
 <p>
 Each unknown must have an initial condition, say
 
 <p>&nbsp;<br>
 $$ u(0)=0,\quad v(0)=1 $$
 <p>&nbsp;<br>
-
 
 <p>
 In this case, one can derive the exact solution to be
@@ -1574,20 +1329,14 @@ In this case, one can derive the exact solution to be
 $$ u(t)=\sin (t),\quad v(t)=\cos (t)$$
 <p>&nbsp;<br>
 
-
 <p>
 Systems of ODEs appear frequently in physics, biology, finance, ...
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The ODE system that is the final project in the course  <a name="___sec37"></a></h2>
+<h2 id="___sec39">The ODE system that is the final project in the course </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1605,7 +1354,6 @@ R' &= \nu I
 $$
 <p>&nbsp;<br>
 
-
 <p>
 Initial conditions:
 
@@ -1619,16 +1367,11 @@ R(0) &= 0
 $$
 <p>&nbsp;<br>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Another example on a system of ODEs (vector ODE)  <a name="___sec38"></a></h2>
+<h2 id="___sec40">Another example on a system of ODEs (vector ODE) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1641,7 +1384,6 @@ Second-order ordinary differential equation, for a spring-mass system
 $$ mu'' + \beta u' + ku = 0,\quad u(0)=U_0,\ u'(0)=0$$
 <p>&nbsp;<br>
 
-
 <p>
 We can rewrite this as a system of two <em>first-order</em> equations, by
 introducing two new unknowns
@@ -1649,7 +1391,6 @@ introducing two new unknowns
 <p>&nbsp;<br>
 $$ u^{(0)}(t) \equiv u(t),\quad u^{(1)}(t) \equiv u'(t)$$
 <p>&nbsp;<br>
-
 
 <p>
 The first-order system is then
@@ -1663,45 +1404,36 @@ $$
 $$
 <p>&nbsp;<br>
 
-
 <p>
 Initial conditions: \( u^{(0)}(0) = U_0 \), \( u^{(1)}(0)=0 \)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Making a flexible toolbox for solving ODEs  <a name="___sec39"></a></h2>
+<h2 id="___sec41">Making a flexible toolbox for solving ODEs </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> For scalar ODEs we could make one general class hierarchy to solve
+
+<p><li> For scalar ODEs we could make one general class hierarchy to solve
     &quot;all&quot; problems with a range of methods</li>
-  <p><li> Can we easily extend class hierarchy to systems of ODEs?</li>
-  <p><li> Yes!</li>
-  <p><li> The example here can easily be extended to professional code
+
+<p><li> Can we easily extend class hierarchy to systems of ODEs?</li>
+
+<p><li> Yes!</li>
+
+<p><li> The example here can easily be extended to professional code
     (<a href="https://github.com/hplgit/odespy" target="_blank">Odespy</a>)</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Vector notation for systems of ODEs: unknowns and equations  <a name="___sec40"></a></h2>
+<h2 id="___sec42">Vector notation for systems of ODEs: unknowns and equations </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1727,16 +1459,11 @@ $$
 $$
 <p>&nbsp;<br>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Vector notation for systems of ODEs: vectors  <a name="___sec41"></a></h2>
+<h2 id="___sec43">Vector notation for systems of ODEs: vectors </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1748,11 +1475,9 @@ We can collect the \( u^{(i)}(t) \) functions and right-hand side functions \( f
 $$ u = (u^{(0)}, u^{(1)}, \ldots, u^{(n-1)})$$
 <p>&nbsp;<br>
 
-
 <p>&nbsp;<br>
 $$ f = (f^{(0)}, f^{(1)}, \ldots, f^{(n-1)})$$
 <p>&nbsp;<br>
-
 
 <p>
 The first-order system can then be written
@@ -1764,7 +1489,6 @@ $$ u' = f(u, t),\quad u(0) = U_0$$
 where \( u \) and \( f \) are vectors and \( U_0 \) is a vector of initial conditions
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>The magic of this notation:</b>
@@ -1773,26 +1497,22 @@ Observe that the notation makes a scalar ODE and a system look the same,
 and we can easily make Python code that can handle both cases within
 the same lines of code (!)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>How to make class ODESolver work for systems of ODEs  <a name="___sec42"></a></h2>
+<h2 id="___sec44">How to make class ODESolver work for systems of ODEs </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Recall: ODESolver was written for a scalar ODE</li>
-  <p><li> Now we want it to work for a system \( u'=f \), \( u(0)=U_0 \), where \( u \), \( f \) and \( U_0 \) are vectors (arrays)</li>
-  <p><li> What are the problems?</li>
+
+<p><li> Recall: ODESolver was written for a scalar ODE</li>
+
+<p><li> Now we want it to work for a system \( u'=f \), \( u(0)=U_0 \), where \( u \), \( f \) and \( U_0 \) are vectors (arrays)</li>
+
+<p><li> What are the problems?</li>
 </ul>
 <p>
 
@@ -1806,7 +1526,6 @@ $$
 $$
 <p>&nbsp;<br>
 
-
 <p>
 In Python code:
 
@@ -1819,27 +1538,22 @@ In Python code:
 where
 
 <ul>
-  <p><li> <code>u</code> is a two-dim. array (<code>u[k]</code> is a row)</li>
-  <p><li> <code>f</code> is a function returning an array
+
+<p><li> <code>u</code> is a two-dim. array (<code>u[k]</code> is a row)</li>
+
+<p><li> <code>f</code> is a function returning an array
     (all the right-hand sides \( f^{(0)},\ldots,f^{(n-1)} \))</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The adjusted superclass code (part 1)  <a name="___sec43"></a></h2>
+<h2 id="___sec45">The adjusted superclass code (part 1) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>To make ODESolver work for systems:</b>
-<p>
-
 <ul>
  <p><li> Ensure that <code>f(u,t)</code> returns an array. <br />
    This can be done be a general adjustment in the superclass!</li>
@@ -1848,11 +1562,9 @@ where
 </ul>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1873,21 +1585,15 @@ where
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The superclass code (part 2)  <a name="___sec44"></a></h2>
+<h2 id="___sec46">The superclass code (part 2) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1918,25 +1624,18 @@ where
 <p>
 All subclasses from the scalar ODE works for systems as well
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example on how to use the general class hierarchy  <a name="___sec45"></a></h2>
+<h2 id="___sec47">Example on how to use the general class hierarchy </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Spring-mass system formulated as a system of ODEs:</b>
-<p>
 <p>&nbsp;<br>
 $$ mu'' + \beta u' + ku = 0,\quad u(0),\ u'(0)\hbox{ known}$$
 <p>&nbsp;<br>
-
 
 <p>&nbsp;<br>
 $$
@@ -1950,11 +1649,9 @@ $$
 <p>&nbsp;<br>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Code defining the right-hand side:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1965,21 +1662,15 @@ $$
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Alternative implementation of the \( f \) function via a class  <a name="___sec46"></a></h2>
+<h2 id="___sec48">Alternative implementation of the \( f \) function via a class </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Better (no global variables):</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1994,11 +1685,9 @@ $$
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Main program:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -2020,16 +1709,11 @@ plot(t, u0_values, <span style="color: #BA2121">&#39;r-&#39;</span>,  t, u0_exac
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Throwing a ball; ODE model  <a name="___sec47"></a></h2>
+<h2 id="___sec49">Throwing a ball; ODE model </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2051,31 +1735,27 @@ $$
 Air resistance is neglected but can easily be added!
 
 <ul>
-  <p><li> 4 ODEs with 4 unknowns:</li>
+
+<p><li> 4 ODEs with 4 unknowns:</li>
 
 <ul>
-    <p><li> the ball's position \( x(t) \), \( y(t) \)</li>
-    <p><li> the velocity \( v_x(t) \), \( v_y(t) \)</li>
+
+<p><li> the ball's position \( x(t) \), \( y(t) \)</li>
+
+<p><li> the velocity \( v_x(t) \), \( v_y(t) \)</li>
 </ul>
 <p>
-
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Throwing a ball; code  <a name="___sec48"></a></h2>
+<h2 id="___sec50">Throwing a ball; code </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Define the right-hand side:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -2087,11 +1767,9 @@ Air resistance is neglected but can easily be added!
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Main program:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -2115,16 +1793,11 @@ plot(x, y)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Throwing a ball; results  <a name="___sec49"></a></h2>
+<h2 id="___sec51">Throwing a ball; results </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2133,23 +1806,17 @@ plot(x, y)
 Comparison of exact and Forward Euler solutions
 </div>
 
-
 <p>
 <center><p><img src="fig-ode2/oo_ode_apps_ball.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Logistic growth model; ODE and code overview  <a name="___sec50"></a></h2>
+<h2 id="___sec52">Logistic growth model; ODE and code overview </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Model:</b>
-<p>
 <p>&nbsp;<br>
 $$ u' = \alpha u(1 - u/{\color{red}R(t)}),\quad u(0)=U_0 $$
 <p>&nbsp;<br>
@@ -2158,33 +1825,27 @@ $$ u' = \alpha u(1 - u/{\color{red}R(t)}),\quad u(0)=U_0 $$
 which can vary with changes in the environment over time
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Implementation features:</b>
-<p>
-
 <ul>
-  <p><li> Class Problem holds &quot;all physics&quot;: \( \alpha \), \( R(t) \), \( U_0 \), \( T \) (end time), \( f(u,t) \) in ODE</li>
-  <p><li> Class Solver holds &quot;all numerics&quot;: \( \Delta t \), solution method; solves the problem and plots the solution</li>
-  <p><li> Solve for \( t\in [0,T] \) but terminate when \( |u-R| < \hbox{tol} \)</li>
+
+<p><li> Class Problem holds &quot;all physics&quot;: \( \alpha \), \( R(t) \), \( U_0 \), \( T \) (end time), \( f(u,t) \) in ODE</li>
+
+<p><li> Class Solver holds &quot;all numerics&quot;: \( \Delta t \), solution method; solves the problem and plots the solution</li>
+
+<p><li> Solve for \( t\in [0,T] \) but terminate when \( |u-R| < \hbox{tol} \)</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Logistic growth model; class Problem (\( f \))  <a name="___sec51"></a></h2>
+<h2 id="___sec53">Logistic growth model; class Problem (\( f \)) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -2205,21 +1866,15 @@ problem <span style="color: #666666">=</span> Problem(alpha<span style="color: #
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Logistic growth model; class Solver  <a name="___sec52"></a></h2>
+<h2 id="___sec54">Logistic growth model; class Solver </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -2249,21 +1904,14 @@ solver<span style="color: #666666">.</span>plot()
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Logistic growth model; results  <a name="___sec53"></a></h2>
+<h2 id="___sec55">Logistic growth model; results </h2>
 
 <p>
 <center><p><img src="fig-ode2/oo_ode_apps_logistic_varying_R.png" align="bottom" width=600></p></center>
-
-
 </section>
 
 

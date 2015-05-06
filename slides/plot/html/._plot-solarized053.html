@@ -11,8 +11,8 @@ Automatically generated HTML file from DocOnce source
 <title>Ch.5: Array computing and curve plotting</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
@@ -20,6 +20,11 @@ Automatically generated HTML file from DocOnce source
 h1 {color: #b58900;}  /* yellow */
 /* h1 {color: #cb4b16;}  orange */
 /* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -42,10 +47,10 @@ h1 {color: #b58900;}  /* yellow */
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -273,29 +278,41 @@ MathJax.Hub.Config({
 <a name="part0053"></a>
 <!-- !split -->
 
-<h2>Generalized array indexing  <a name="___sec53"></a></h2>
+<h2 id="___sec52">Example: vectorizing a constant function </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-Recall slicing: <code>a[f:t:i]</code>, where the slice <code>f:t:i</code> implies a set of indices
-(from, to, increment).
-
-<p>
-Any integer list or array can be used to indicate a set of indices:
-
 <p>
 
-<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">&gt;&gt;&gt; a = linspace(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">8</span>, <span style="color: #B452CD">8</span>)
-&gt;&gt;&gt; a
-array([ <span style="color: #B452CD">1.</span>,  <span style="color: #B452CD">2.</span>,  <span style="color: #B452CD">3.</span>,  <span style="color: #B452CD">4.</span>,  <span style="color: #B452CD">5.</span>,  <span style="color: #B452CD">6.</span>,  <span style="color: #B452CD">7.</span>,  <span style="color: #B452CD">8.</span>])
-&gt;&gt;&gt; a[[<span style="color: #B452CD">1</span>,<span style="color: #B452CD">6</span>,<span style="color: #B452CD">7</span>]] = <span style="color: #B452CD">10</span>
-&gt;&gt;&gt; a
-array([  <span style="color: #B452CD">1.</span>,  <span style="color: #B452CD">10.</span>,   <span style="color: #B452CD">3.</span>,   <span style="color: #B452CD">4.</span>,   <span style="color: #B452CD">5.</span>,   <span style="color: #B452CD">6.</span>,  <span style="color: #B452CD">10.</span>,  <span style="color: #B452CD">10.</span>])
-&gt;&gt;&gt; a[<span style="color: #658b00">range</span>(<span style="color: #B452CD">2</span>,<span style="color: #B452CD">8</span>,<span style="color: #B452CD">3</span>)] = -<span style="color: #B452CD">2</span>   <span style="color: #228B22"># same as a[2:8:3] = -2</span>
-&gt;&gt;&gt; a
-array([  <span style="color: #B452CD">1.</span>,  <span style="color: #B452CD">10.</span>,  -<span style="color: #B452CD">2.</span>,   <span style="color: #B452CD">4.</span>,   <span style="color: #B452CD">5.</span>,  -<span style="color: #B452CD">2.</span>,  <span style="color: #B452CD">10.</span>,  <span style="color: #B452CD">10.</span>])
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">2</span>
+</pre></div>
+<p>
+Vectorized version must return array of 2's:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">fv</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> zeros(x.shape, x.dtype) + <span style="color: #B452CD">2</span>
+</pre></div>
+<p>
+New version valid both for scalar and array <code>x</code>:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #658b00">isinstance</span>(x, (<span style="color: #658b00">float</span>, <span style="color: #658b00">int</span>)):
+        <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">2</span>
+    <span style="color: #8B008B; font-weight: bold">elif</span> <span style="color: #658b00">isinstance</span>(x, ndarray):
+        <span style="color: #8B008B; font-weight: bold">return</span> zeros(x.shape, x.dtype) + <span style="color: #B452CD">2</span>
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        <span style="color: #8B008B; font-weight: bold">raise</span> <span style="color: #008b45; font-weight: bold">TypeError</span>(
+           <span style="color: #CD5555">&#39;x must be int/float/ndarray, not %s&#39;</span> % <span style="color: #658b00">type</span>(x))
 </pre></div>
 
 </div>

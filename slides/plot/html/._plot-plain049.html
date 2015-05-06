@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,42 +288,34 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>In-place array arithmetics can save memory demands  <a name="___sec49"></a></h2>
+<h2 id="___sec48">In-place array arithmetics </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-Consider
+The two following statements are mathematically equivalent:
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> (<span style="color: #666666">3*</span>x<span style="color: #666666">**4</span> <span style="color: #666666">+</span> <span style="color: #666666">2*</span>x <span style="color: #666666">+</span> <span style="color: #666666">4</span>)<span style="color: #666666">/</span>(x <span style="color: #666666">+</span> <span style="color: #666666">1</span>)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> a <span style="color: #666666">+</span> b    <span style="color: #408080; font-style: italic"># a and b are arrays</span>
+a <span style="color: #666666">+=</span> b
 </pre></div>
 <p>
-Here are the actual computations in the computer:
+However,
 
-<p>
+<ul>
+  <li> <code>a = a + b</code> is computed as (extra array needed)</li>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">r1 <span style="color: #666666">=</span> x<span style="color: #666666">**4</span>;  r2 <span style="color: #666666">=</span> <span style="color: #666666">3*</span>r1;  r3 <span style="color: #666666">=</span> <span style="color: #666666">2*</span>x;  r4 <span style="color: #666666">=</span> r1 <span style="color: #666666">+</span> r3
-r5 <span style="color: #666666">=</span> r4 <span style="color: #666666">+</span> <span style="color: #666666">4</span>;  r6 <span style="color: #666666">=</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>; r7 <span style="color: #666666">=</span> r5<span style="color: #666666">/</span>r6; a <span style="color: #666666">=</span> r7
-</pre></div>
-<p>
-With in-place arithmetics we can save four extra arrays,
-though at the cost of much less readable code:
+<ol>
+   <li> <code>r1 = a + b</code></li>
+   <li> <code>a = r1</code></li>
+</ol>
 
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> x<span style="color: #666666">.</span>copy()
-a <span style="color: #666666">**=</span> <span style="color: #666666">4</span>
-a <span style="color: #666666">*=</span> <span style="color: #666666">3</span>
-a <span style="color: #666666">+=</span> <span style="color: #666666">2*</span>x
-a <span style="color: #666666">+=</span> <span style="color: #666666">4</span>
-a <span style="color: #666666">/=</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>
-</pre></div>
-
+  <li> <code>a += b</code> is computed as <code>a[i] += b[i]</code> for <code>i</code> in all indices (i.e., not extra array)</li>
+  <li> <code>a += b</code> is an <em>in-place</em> addition, because we change each element <em>in</em> <code>a</code>, rather than letting the name <code>a</code> refer to a new array, the result of <code>a+b</code></li>
+</ul>
 </div>
 
 

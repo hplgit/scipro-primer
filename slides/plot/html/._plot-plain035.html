@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -288,35 +288,33 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Let's try to plot a discontinuous function  <a name="___sec35"></a></h2>
+<h2 id="___sec34">It is possible to plot curves in pure text (!) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-The Heaviside function is frequently used in science and engineering:
 
-<p>
-\[ H(x) = \left\lbrace\begin{array}{ll}
-0, & x<0\\
-1, & x\geq 0
-\end{array}\right.
-\]
-
-<p>
-Python implementation:
+<ul>
+  <li> Plots are stored in image files of type PDF and PNG</li>
+  <li> Sometimes you want a plot to be included in your program,<br />
+    e.g., to prove that the curve looks right in a compulsory exercise where only the program (and not a nicely typeset report) is submitted</li>
+  <li> <code>scitools.aplotter</code> can then be used for drawing primitive curves in pure text (ASCII) format</li>
+</ul>
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">H</span>(x):
-    <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">0</span> <span style="color: #008000; font-weight: bold">if</span> x <span style="color: #666666">&lt;</span> <span style="color: #666666">0</span> <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">1</span>)
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scitools.aplotter</span> <span style="color: #008000; font-weight: bold">import</span> plot
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, exp, cos, pi
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> linspace(<span style="color: #666666">-2</span>, <span style="color: #666666">2</span>, <span style="color: #666666">81</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.5*</span>x<span style="color: #666666">**2</span>)<span style="color: #666666">*</span>cos(pi<span style="color: #666666">*</span>x)
+<span style="color: #666666">&gt;&gt;&gt;</span> plot(x, y)
 </pre></div>
-
+<p>
+Try these statements out!
 </div>
 
-
-<p>
-<center><p><img src="fig-plot/Heaviside3.png" align="bottom" width=300></p></center>
 
 <p>
 <p>

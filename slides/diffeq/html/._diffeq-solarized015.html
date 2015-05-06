@@ -11,8 +11,8 @@ Automatically generated HTML file from DocOnce source
 <title>App. A: Sequences and difference equations</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
@@ -20,6 +20,11 @@ Automatically generated HTML file from DocOnce source
 h1 {color: #b58900;}  /* yellow */
 /* h1 {color: #cb4b16;}  orange */
 /* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -42,10 +47,10 @@ h1 {color: #b58900;}  /* yellow */
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -142,44 +147,51 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec28'),
               (u' Nonlinear algebraic equations ', 2, None, '___sec29'),
-              (u" Newton's method for finding zeros ", 2, None, '___sec30'),
-              (u" A program for Newton's method ", 2, None, '___sec31'),
+              (u" Newton's method for finding zeros; illustration ",
+               2,
+               None,
+               '___sec30'),
+              (u" Newton's method for finding zeros; mathematics ",
+               2,
+               None,
+               '___sec31'),
+              (u" A program for Newton's method ", 2, None, '___sec32'),
               (u" An improved function for Newton's method ",
                2,
                None,
-               '___sec32'),
-              (u" Application of Newton's method ", 2, None, '___sec33'),
-              (u' Results from this test problem ', 2, None, '___sec34'),
-              (u' What happened here?? ', 2, None, '___sec35'),
+               '___sec33'),
+              (u" Application of Newton's method ", 2, None, '___sec34'),
+              (u' Results from this test problem ', 2, None, '___sec35'),
+              (u' What happened here?? ', 2, None, '___sec36'),
               (u" First step: we're moving to the right ($x=4$?) ",
                2,
                None,
-               '___sec36'),
+               '___sec37'),
               (u' Second step: oops, too much to the right... ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (u" Third step: disaster since we're ``done'' ($f(x)\\approx 0$) ",
                2,
                None,
-               '___sec38'),
-              (u' Programming with sound ', 2, None, '___sec39'),
+               '___sec39'),
+              (u' Programming with sound ', 2, None, '___sec40'),
               (u' Making a sound file with single tone (part 1) ',
                2,
                None,
-               '___sec40'),
+               '___sec41'),
               (u' Making a sound file with single tone (part 2) ',
                2,
                None,
-               '___sec41'),
-              (u' Reading sound from file ', 2, None, '___sec42'),
-              (u' Playing many notes ', 2, None, '___sec43'),
-              (u' Summary of difference equations ', 2, None, '___sec44'),
+               '___sec42'),
+              (u' Reading sound from file ', 2, None, '___sec43'),
+              (u' Playing many notes ', 2, None, '___sec44'),
+              (u' Summary of difference equations ', 2, None, '___sec45'),
               (u' Summarizing example: music of sequences ',
                2,
                None,
-               '___sec45'),
-              (u' Module file: soundeq.py ', 2, None, '___sec46')]}
+               '___sec46'),
+              (u' Module file: soundeq.py ', 2, None, '___sec47')]}
 end of tocinfo -->
 
 <body>
@@ -204,7 +216,7 @@ MathJax.Hub.Config({
 <a name="part0015"></a>
 <!-- !split -->
 
-<h2>Program for generating Fibonacci numbers  <a name="___sec14"></a></h2>
+<h2 id="___sec14">Program for generating Fibonacci numbers </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">

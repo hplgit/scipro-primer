@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -156,30 +156,31 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec33'),
-              (u' Summary of loops, lists and tuples ', 2, None, '___sec34'),
-              (u' List functionality ', 2, None, '___sec35'),
-              (u' A summarizing example; problem ', 2, None, '___sec36'),
+              (u' Key topics from this chapter ', 2, None, '___sec34'),
+              (u' Summary of loops, lists and tuples ', 2, None, '___sec35'),
+              (u' List functionality ', 2, None, '___sec36'),
+              (u' A summarizing example; problem ', 2, None, '___sec37'),
               (u' A summarizing example; program (task 1) ',
                2,
                None,
-               '___sec37'),
+               '___sec38'),
               (u' A summarizing example; program (task 2) ',
                2,
                None,
-               '___sec38'),
+               '___sec39'),
               (u' A summarizing example; program (task 3) ',
                2,
                None,
-               '___sec39'),
+               '___sec40'),
               (u' Using a debugger to trace the execution ',
                2,
                None,
-               '___sec40'),
-              (u' How to find Python info ', 2, None, '___sec41'),
+               '___sec41'),
+              (u' How to find Python info ', 2, None, '___sec42'),
               (u' Warning about reading programming documentation ',
                2,
                None,
-               '___sec42')]}
+               '___sec43')]}
 end of tocinfo -->
 
 <body>
@@ -209,37 +210,41 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>A summarizing example; program (task 1)  <a name="___sec37"></a></h2>
+<h2 id="___sec37">A summarizing example; problem </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
+<code>src/misc/Oxford_sun_hours.txt</code>: data of the no of sun hours in Oxford, UK, for every month since Jan, 1929:
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">data <span style="color: #666666">=</span> [
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">[
 [<span style="color: #666666">43.8</span>, <span style="color: #666666">60.5</span>, <span style="color: #666666">190.2</span>, <span style="color: #666666">...</span>],
 [<span style="color: #666666">49.9</span>, <span style="color: #666666">54.3</span>, <span style="color: #666666">109.7</span>, <span style="color: #666666">...</span>],
 [<span style="color: #666666">63.7</span>, <span style="color: #666666">72.0</span>, <span style="color: #666666">142.3</span>, <span style="color: #666666">...</span>],
 <span style="color: #666666">...</span>
 ]
-monthly_mean <span style="color: #666666">=</span> [<span style="color: #666666">0</span>]<span style="color: #666666">*12</span>
-<span style="color: #008000; font-weight: bold">for</span> month <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, <span style="color: #666666">13</span>):
-    m <span style="color: #666666">=</span> month <span style="color: #666666">-</span> <span style="color: #666666">1</span>   <span style="color: #408080; font-style: italic"># corresponding list index (starts at 0)</span>
-    s <span style="color: #666666">=</span> <span style="color: #666666">0</span>           <span style="color: #408080; font-style: italic"># sum</span>
-    n <span style="color: #666666">=</span> <span style="color: #666666">2009</span> <span style="color: #666666">-</span> <span style="color: #666666">1929</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span>  <span style="color: #408080; font-style: italic"># no of years</span>
-    <span style="color: #008000; font-weight: bold">for</span> year <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1929</span>, <span style="color: #666666">2010</span>):
-        y <span style="color: #666666">=</span> year <span style="color: #666666">-</span> <span style="color: #666666">1929</span>  <span style="color: #408080; font-style: italic"># corresponding list index (starts at 0)</span>
-        s <span style="color: #666666">+=</span> data[y][m]
-    monthly_mean[m] <span style="color: #666666">=</span> s<span style="color: #666666">/</span>n
-month_names <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Jan&#39;</span>, <span style="color: #BA2121">&#39;Feb&#39;</span>, <span style="color: #BA2121">&#39;Mar&#39;</span>, <span style="color: #BA2121">&#39;Apr&#39;</span>, <span style="color: #BA2121">&#39;May&#39;</span>, <span style="color: #BA2121">&#39;Jun&#39;</span>,
-               <span style="color: #BA2121">&#39;Jul&#39;</span>, <span style="color: #BA2121">&#39;Aug&#39;</span>, <span style="color: #BA2121">&#39;Sep&#39;</span>, <span style="color: #BA2121">&#39;Oct&#39;</span>, <span style="color: #BA2121">&#39;Nov&#39;</span>, <span style="color: #BA2121">&#39;Dec&#39;</span>]
-<span style="color: #408080; font-style: italic"># nice printout:</span>
-<span style="color: #008000; font-weight: bold">for</span> name, value <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(month_names, monthly_mean):
-    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">: </span><span style="color: #BB6688; font-weight: bold">%.1f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (name, value)
 </pre></div>
+<p>
+Tasks:
 
+<ul>
+  <li> Compute the average number of sun hours for each month during</li>
+</ul>
+
+the total data period (1929--2009)',
+r'Which month has the best weather according to the means found in the
+preceding task?
+
+<ul>
+  <li> For each decade, 1930-1939, 1949-1949, \( \ldots \), 2000-2009,</li>
+</ul>
+
+compute the average number of sun hours per day in January
+and December
 </div>
 
 
