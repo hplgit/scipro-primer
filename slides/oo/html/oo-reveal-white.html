@@ -132,22 +132,20 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>&nbsp;<br>
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
+<br>
 <p>&nbsp;<br>
-<center><h4>Nov 3, 2014</h4></center> <!-- date -->
-<p>
-
+<center><h4>Aug 15, 2015</h4></center> <!-- date -->
+<br>
 </section>
 
 
 <section>
-
-<h1 style="text-align: center;">Inheritance  <a name="___sec0"></a></h1>
+<h1 id="___sec0">Inheritance </h1>
 
 <p>
 
@@ -161,56 +159,41 @@ MathJax.Hub.Config({
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The chapter title <em>Object-oriented programming</em> (OO) may mean two different things  <a name="___sec1"></a></h2>
+<h2 id="___sec1">The chapter title <em>Object-oriented programming</em> (OO) may mean two different things </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ol>
 <p><li> Programming with classes (better: object-<em>based</em> programming)</li>
 <p><li> <font color="red">Programming with class hierarchies</font> (class families)</li>
 </ol>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
 <!-- ===== New concept: collect classes in families (hierarchies) and let child classes inherit attributes and methods from parent classes ===== -->
 
-<h2>New concept: collect classes in families (hierarchies)   <a name="___sec2"></a></h2>
+<h2 id="___sec2">New concept: collect classes in families (hierarchies)  </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>What is a class hierarchy?</b>
-<p>
-
 <ul>
-  <p><li> A family of closely related classes</li>
-  <p><li> A key concept is <em>inheritance</em>: child classes can inherit attributes and methods from parent class(es) - this saves much typing and code duplication</li>
+
+<p><li> A family of closely related classes</li>
+
+<p><li> A key concept is <em>inheritance</em>: child classes can inherit attributes and methods from parent class(es) - this saves much typing and code duplication</li>
 </ul>
 <p>
 
 As usual, we shall learn through examples!
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -218,40 +201,33 @@ As usual, we shall learn through examples!
 <p>
 OO is a Norwegian invention by Ole-Johan Dahl and Kristen Nygaard in the 1960s - one of the most important inventions in computer science, because OO is used in all big computer systems today!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Warning: OO is difficult and takes time to master  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Warning: OO is difficult and takes time to master </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Let ideas mature with time</li>
-  <p><li> Study many examples</li>
-  <p><li> OO is less important in Python than in C++, Java and C#, so the benefits of OO are less obvious in Python</li>
-  <p><li> Our examples here on OO employ numerical methods for \( \int_a^b f(x)dx \), \( f'(x) \), \( u'=f(u,t) \) - make sure you understand the simplest of these numerical methods before you study the combination of OO and numerics</li>
-  <p><li> Our goal: write general, reusable modules with lots of methods for numerical computing of \( \int_a^b f(x)dx \), \( f'(x) \), \( u'=f(u,t) \)</li>
+
+<p><li> Let ideas mature with time</li>
+
+<p><li> Study many examples</li>
+
+<p><li> OO is less important in Python than in C++, Java and C#, so the benefits of OO are less obvious in Python</li>
+
+<p><li> Our examples here on OO employ numerical methods for \( \int_a^b f(x)dx \), \( f'(x) \), \( u'=f(u,t) \) - make sure you understand the simplest of these numerical methods before you study the combination of OO and numerics</li>
+
+<p><li> Our goal: write general, reusable modules with lots of methods for numerical computing of \( \int_a^b f(x)dx \), \( f'(x) \), \( u'=f(u,t) \)</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>A class for straight lines  <a name="___sec4"></a></h2>
+<h2 id="___sec4">A class for straight lines </h2>
 
 <p>
 
@@ -261,13 +237,10 @@ OO is a Norwegian invention by Ole-Johan Dahl and Kristen Nygaard in the 1960s -
 Make a class for evaluating lines \( y=c_0 + c_1x \).
 </div>
 
-
-
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Code:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -288,17 +261,11 @@ Make a class for evaluating lines \( y=c_0 + c_1x \).
 </pre></div>
 
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>A class for parabolas  <a name="___sec5"></a></h2>
+<h2 id="___sec5">A class for parabolas </h2>
 
 <p>
 
@@ -308,13 +275,10 @@ Make a class for evaluating lines \( y=c_0 + c_1x \).
 Make a class for evaluating parabolas \( y=c_0 + c_1x + c_2x^2 \).
 </div>
 
-
-
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Code:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -336,8 +300,6 @@ Make a class for evaluating parabolas \( y=c_0 + c_1x + c_2x^2 \).
 
 </div>
 
-
-
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
@@ -345,28 +307,23 @@ Make a class for evaluating parabolas \( y=c_0 + c_1x + c_2x^2 \).
 <p>
 This is almost the same code as class <code>Line</code>, except for the things with <code>c2</code>
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class Parabola as a subclass of Line; principles  <a name="___sec6"></a></h2>
+<h2 id="___sec6">Class Parabola as a subclass of Line; principles </h2>
 
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li class="fragment"> <code>Parabola</code> code = <code>Line</code> code + a little extra with the \( c_2 \) term</li>
-  <p><li class="fragment"> Can we utilize class <code>Line</code> code in class <code>Parabola</code>?</li>
-  <p><li class="fragment"> This is what inheritance is about!</li>
+
+<p><li class="fragment"> <code>Parabola</code> code = <code>Line</code> code + a little extra with the \( c_2 \) term</li>
+
+<p><li class="fragment"> Can we utilize class <code>Line</code> code in class <code>Parabola</code>?</li>
+
+<p><li class="fragment"> This is what inheritance is about!</li>
 </ul>
 <p>
 
@@ -382,32 +339,25 @@ Writing
 makes <code>Parabola</code> inherit all methods and attributes from <code>Line</code>, so <code>Parabola</code> has attributes <code>c0</code> and <code>c1</code> and three methods
 </div>
 
-
-
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li class="fragment"> <code>Line</code> is a <em>superclass</em>, <code>Parabola</code> is a <em>subclass</em> <br />
+
+<p><li class="fragment"> <code>Line</code> is a <em>superclass</em>, <code>Parabola</code> is a <em>subclass</em> <br />
     (parent class, base class; child class, derived class)</li>
-  <p><li class="fragment"> Class <code>Parabola</code> must add code to <code>Line</code>'s constructor (an extra <code>c2</code> attribute), <code>__call__</code> (an extra term), but <code>table</code> can be used unaltered</li>
-  <p><li class="fragment"> The principle is to reuse as much code in <code>Line</code> as possible and avoid duplicating code</li>
+
+<p><li class="fragment"> Class <code>Parabola</code> must add code to <code>Line</code>'s constructor (an extra <code>c2</code> attribute), <code>__call__</code> (an extra term), but <code>table</code> can be used unaltered</li>
+
+<p><li class="fragment"> The principle is to reuse as much code in <code>Line</code> as possible and avoid duplicating code</li>
 </ul>
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class Parabola as a subclass of Line; code  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Class Parabola as a subclass of Line; code </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -437,32 +387,26 @@ Class <code>Parabola</code> as a subclass of <code>Line</code>:
 <p>
 What is gained?
 
-<p>
-
-
 <ul>
-  <p><li class="fragment"> Class <code>Parabola</code> just adds code to the already existing code in class <code>Line</code> - no duplication of storing <code>c0</code> and <code>c1</code>, and computing \( c_0+c_1x \)</li>
-  <p><li class="fragment"> Class <code>Parabola</code> also has a <code>table</code> method - it is inherited</li>
-  <p><li class="fragment"> <code>__init__</code> and <code>__call__</code> are <em>overridden</em> or <em>redefined</em> in the subclass</li>
+
+<p><li class="fragment"> Class <code>Parabola</code> just adds code to the already existing code in class <code>Line</code> - no duplication of storing <code>c0</code> and <code>c1</code>, and computing \( c_0+c_1x \)</li>
+
+<p><li class="fragment"> Class <code>Parabola</code> also has a <code>table</code> method - it is inherited</li>
+
+<p><li class="fragment"> <code>__init__</code> and <code>__call__</code> are <em>overridden</em> or <em>redefined</em> in the subclass</li>
 </ul>
 
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class Parabola as a subclass of Line; demo  <a name="___sec8"></a></h2>
+<h2 id="___sec8">Class Parabola as a subclass of Line; demo </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -484,10 +428,6 @@ Output:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
@@ -496,7 +436,7 @@ Output:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 1: Point out the program flow  <a name="___sec9"></a></h2>
+<h2 id="___sec9">Exercise 1: Point out the program flow </h2>
 
 <p>
 
@@ -505,20 +445,15 @@ Output:
 </iframe>
 <p>
 <!-- --- end exercise --- -->
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>We can check class type and class relations with <code>isinstance(obj, type)</code> and <code>issubclass(subclassname, superclassname)</code>  <a name="___sec10"></a></h2>
+<h2 id="___sec10">We can check class type and class relations with <code>isinstance(obj, type)</code> and <code>issubclass(subclassname, superclassname)</code> </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
@@ -547,26 +482,70 @@ Output:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
+<h2 id="___sec11">Line as a subclass of Parabola </h2>
 
-<h2>Recall the class for numerical differentiation from Ch. 7  <a name="___sec11"></a></h2>
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<ul>
+ <p><li> Subclasses are often special cases of a superclass</li>
+ <p><li> A line \( c_0+c_1x \) is a special case of a parabola \( c_0+c_1x+c_2x^2 \)</li>
+ <p><li> Can <code>Line</code> be a subclass of <code>Parabola</code>?</li>
+ <p><li> No problem - this is up to the programmer's choice</li>
+ <p><li> Many will prefer this relation between a line and a parabola</li>
+</ul>
+</div>
+</section>
 
-<p>&nbsp;<br>
-$$ f'(x) \approx {f(x+h)-f(x)\over h} $$
-<p>&nbsp;<br>
 
+<section>
+<h2 id="___sec12">Code when Line is a subclass of Parabola </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Parabola</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, c0, c1, c2):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>c0, <span style="color: #008000">self</span><span style="color: #666666">.</span>c1, <span style="color: #008000">self</span><span style="color: #666666">.</span>c2 <span style="color: #666666">=</span> c0, c1, c2
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>c2<span style="color: #666666">*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>c1<span style="color: #666666">*</span>x <span style="color: #666666">+</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>c0
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">table</span>(<span style="color: #008000">self</span>, L, R, n):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Return a table with n points for L &lt;= x &lt;= R.&quot;&quot;&quot;</span>
+        s <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;&#39;</span>
+        <span style="color: #008000; font-weight: bold">for</span> x <span style="color: #AA22FF; font-weight: bold">in</span> linspace(L, R, n):
+            y <span style="color: #666666">=</span> <span style="color: #008000">self</span>(x)
+            s <span style="color: #666666">+=</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%12g</span><span style="color: #BA2121"> </span><span style="color: #BB6688; font-weight: bold">%12g</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (x, y)
+        <span style="color: #008000; font-weight: bold">return</span> s
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Line</span>(Parabola):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, c0, c1):
+        Parabola<span style="color: #666666">.</span>__init__(<span style="color: #008000">self</span>, c0, c1, <span style="color: #666666">0</span>)
+</pre></div>
+<p>
+Note: <code>__call__</code> and <code>table</code> can be reused in class <code>Line</code>!
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec13">Recall the class for numerical differentiation from Ch. 7 </h2>
+
+<p>&nbsp;<br>
+$$ f'(x) \approx {f(x+h)-f(x)\over h} $$
+<p>&nbsp;<br>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -588,21 +567,15 @@ dfdx <span style="color: #666666">=</span> Derivative(f)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>There are numerous formulas numerical differentiation  <a name="___sec12"></a></h2>
+<h2 id="___sec14">There are numerous formulas numerical differentiation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>&nbsp;<br>
 $$
 \begin{align*}
@@ -621,21 +594,15 @@ f'(x) &=  \frac{1}{h}\left(
 $$
 <p>&nbsp;<br>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>How can we make a module that offers all these formulas?  <a name="___sec13"></a></h2>
+<h2 id="___sec15">How can we make a module that offers all these formulas? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>It's easy:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -663,16 +630,11 @@ $$
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>What is the problem with this type of code?  <a name="___sec14"></a></h2>
+<h2 id="___sec16">What is the problem with this type of code? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -681,12 +643,9 @@ $$
 All the constructors are identical so we duplicate a lot of code.
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
  <p><li> A general OO idea: place code common to many classes in a superclass and inherit that code</li>
  <p><li> Here: inhert constructor from superclass,<br />
@@ -694,21 +653,15 @@ All the constructors are identical so we duplicate a lot of code.
    their version of <code>__call__</code></li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class hierarchy for numerical differentiation  <a name="___sec15"></a></h2>
+<h2 id="___sec17">Class hierarchy for numerical differentiation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Superclass:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -720,11 +673,9 @@ All the constructors are identical so we duplicate a lot of code.
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Subclass for simple 1st-order forward formula:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -736,11 +687,9 @@ All the constructors are identical so we duplicate a lot of code.
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Subclass for 4-th order central formula:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -752,16 +701,11 @@ All the constructors are identical so we duplicate a lot of code.
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Use of the differentiation classes  <a name="___sec16"></a></h2>
+<h2 id="___sec18">Use of the differentiation classes </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -782,10 +726,6 @@ Interactive example: \( f(x)=\sin x \), compute \( f'(x) \) for \( x=\pi \)
 <p>
 <code>Central4(sin)</code> calls inherited constructor in superclass, while <code>mycos(pi)</code> calls <code>__call__</code> in the subclass <code>Central4</code>
 </div>
-
-
-<p>
-
 </section>
 
 
@@ -794,7 +734,7 @@ Interactive example: \( f(x)=\sin x \), compute \( f'(x) \) for \( x=\pi \)
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 2: Point out the program flow  <a name="___sec17"></a></h2>
+<h2 id="___sec19">Exercise 2: Point out the program flow </h2>
 
 <p>
 
@@ -803,15 +743,11 @@ Interactive example: \( f(x)=\sin x \), compute \( f'(x) \) for \( x=\pi \)
 </iframe>
 <p>
 <!-- --- end exercise --- -->
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>A flexible main program for numerical differentiation  <a name="___sec18"></a></h2>
+<h2 id="___sec20">A flexible main program for numerical differentiation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -849,29 +785,23 @@ x <span style="color: #666666">=</span> <span style="color: #008000">float</span
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Investigating numerical approximation errors  <a name="___sec19"></a></h2>
+<h2 id="___sec21">Investigating numerical approximation errors </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> We can empirically investigate the accuracy of our family of 6 numerical differentiation formulas</li>
-  <p><li> Sample function: \( f(x)=\exp{(-10x)} \)</li>
-  <p><li> See the book for a little program that computes the errors:</li>
-</ul>
-<p>
 
+<p><li> We can empirically investigate the accuracy of our family of 6 numerical differentiation formulas</li>
+
+<p><li> Sample function: \( f(x)=\exp{(-10x)} \)</li>
+
+<p><li> See the book for a little program that computes the errors:</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -887,36 +817,33 @@ x <span style="color: #666666">=</span> <span style="color: #008000">float</span
 Observations:
 
 <ul>
-  <p><li> Halving \( h \) from row to row reduces the errors by a factor of 2, 4 and 16, i.e, the errors go like \( h \), \( h^2 \), and \( h^4 \)</li>
-  <p><li> <code>Central4</code> has really superior accuracy compared with <code>Forward1</code></li>
+
+<p><li> Halving \( h \) from row to row reduces the errors by a factor of 2, 4 and 16, i.e, the errors go like \( h \), \( h^2 \), and \( h^4 \)</li>
+
+<p><li> <code>Central4</code> has really superior accuracy compared with <code>Forward1</code></li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Alternative implementations (in the book)  <a name="___sec20"></a></h2>
+<h2 id="___sec22">Alternative implementations (in the book) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> <em>Pure Python functions</em> <br />
+
+<p><li> <em>Pure Python functions</em> <br />
     downside: more arguments to transfer, cannot apply formulas twice to get 2nd-order derivatives etc.</li>
-  <p><li> <em>Functional programming</em><br />
+
+<p><li> <em>Functional programming</em><br />
     gives the same flexibility as the OO solution</li>
-  <p><li> <em>One class and one common math formula</em> <br />
+
+<p><li> <em>One class and one common math formula</em> <br />
     applies math notation instead of programming techniques to generalize code</li>
 </ul>
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -924,16 +851,11 @@ Observations:
 <p>
 These techniques are beyond scope in the course, but place OO into a bigger perspective. Might better clarify what OO is - for some.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Formulas for numerical integration  <a name="___sec21"></a></h2>
+<h2 id="___sec23">Formulas for numerical integration </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -949,7 +871,6 @@ $$ \int_a^b f(x)dx \approx \sum_{i=0}^{n-1} w_i f(x_i)$$
 \( w_i \): weights, \( x_i \): points (specific to a certain formula)
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -960,7 +881,6 @@ The Trapezoidal rule has \( h=(b-a)/(n-1) \) and
 $$ x_i = a+ih, \quad w_0=w_{n-1}={h\over2},\ w_i=h\ (i\neq 0,n-1)$$
 <p>&nbsp;<br>
 
-
 <p>
 The Midpoint rule has \( h=(b-a)/n \) and
 
@@ -968,16 +888,11 @@ The Midpoint rule has \( h=(b-a)/n \) and
 $$ x_i = a + {h\over 2} + ih,\quad w_i=h$$
 <p>&nbsp;<br>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>More formulas  <a name="___sec22"></a></h2>
+<h2 id="___sec24">More formulas </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -995,53 +910,44 @@ w_i &= {h\over3}\hbox{ for }i\hbox{ even},\quad w_i={2h\over3}\hbox{ for }i\hbox
 $$
 <p>&nbsp;<br>
 
-
 <p>
 Other rules have more complicated formulas for \( w_i \) and \( x_i \)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Why should these formulas be implemented in a class hierarchy?  <a name="___sec23"></a></h2>
+<h2 id="___sec25">Why should these formulas be implemented in a class hierarchy? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
-
 <ul>
-  <p><li class="fragment"> A numerical integration formula can be implemented as a class: \( a \), \( b \) and \( n \) are attributes and an <code>integrate</code> method evaluates the formula</li>
-  <p><li class="fragment"> All such classes are quite similar: the evaluation of \( \sum_jw_jf(x_j) \) is the same, only the definition of the points and weights differ among the classes</li>
-  <p><li class="fragment"> Recall: code duplication is a bad thing!</li>
-  <p><li class="fragment"> The general OO idea: place code common to many classes in a superclass and inherit that code</li>
-  <p><li class="fragment"> Here we put \( \sum_jw_jf(x_j) \) in a superclass (method <code>integrate</code>)</li>
-  <p><li class="fragment"> Subclasses extend the superclass with code specific to a math formula, i.e., \( w_i \) and \( x_i \) in a class method <code>construct_rule</code></li>
+
+<p><li class="fragment"> A numerical integration formula can be implemented as a class: \( a \), \( b \) and \( n \) are attributes and an <code>integrate</code> method evaluates the formula</li>
+
+<p><li class="fragment"> All such classes are quite similar: the evaluation of \( \sum_jw_jf(x_j) \) is the same, only the definition of the points and weights differ among the classes</li>
+
+<p><li class="fragment"> Recall: code duplication is a bad thing!</li>
+
+<p><li class="fragment"> The general OO idea: place code common to many classes in a superclass and inherit that code</li>
+
+<p><li class="fragment"> Here we put \( \sum_jw_jf(x_j) \) in a superclass (method <code>integrate</code>)</li>
+
+<p><li class="fragment"> Subclasses extend the superclass with code specific to a math formula, i.e., \( w_i \) and \( x_i \) in a class method <code>construct_rule</code></li>
 </ul>
 
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The superclass for integration  <a name="___sec24"></a></h2>
+<h2 id="___sec26">The superclass for integration </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1066,21 +972,15 @@ Other rules have more complicated formulas for \( w_i \) and \( x_i \)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>A subclass: the Trapezoidal rule  <a name="___sec25"></a></h2>
+<h2 id="___sec27">A subclass: the Trapezoidal rule </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1095,33 +995,26 @@ Other rules have more complicated formulas for \( w_i \) and \( x_i \)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Another subclass: Simpson's rule  <a name="___sec26"></a></h2>
+<h2 id="___sec28">Another subclass: Simpson's rule </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Simpson's rule is more tricky to implement because of different formulas for odd and even points</li>
-  <p><li> Don't bother with the details of \( w_i \) and \( x_i \) in Simpson's rule now - focus on the class design!</li>
+
+<p><li> Simpson's rule is more tricky to implement because of different formulas for odd and even points</li>
+
+<p><li> Don't bother with the details of \( w_i \) and \( x_i \) in Simpson's rule now - focus on the class design!</li>
 </ul>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1137,16 +1030,11 @@ Other rules have more complicated formulas for \( w_i \) and \( x_i \)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>About the program flow  <a name="___sec27"></a></h2>
+<h2 id="___sec29">About the program flow </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1167,14 +1055,12 @@ method <span style="color: #666666">=</span> Simpson(<span style="color: #666666
 Important:
 
 <ul>
-  <p><li> <code>method = Simpson(...)</code>: this invokes the superclass constructor, which calls <code>construct_method</code> in class <code>Simpson</code></li>
-  <p><li> <code>method.integrate(f)</code> invokes the inherited <code>integrate</code> method, defined in class <code>Integrator</code></li>
+
+<p><li> <code>method = Simpson(...)</code>: this invokes the superclass constructor, which calls <code>construct_method</code> in class <code>Simpson</code></li>
+
+<p><li> <code>method.integrate(f)</code> invokes the inherited <code>integrate</code> method, defined in class <code>Integrator</code></li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
@@ -1183,7 +1069,7 @@ Important:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 3: Point out the program flow  <a name="___sec28"></a></h2>
+<h2 id="___sec30">Exercise 3: Point out the program flow </h2>
 
 <p>
 
@@ -1192,15 +1078,11 @@ Important:
 </iframe>
 <p>
 <!-- --- end exercise --- -->
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Applications of the family of integration classes  <a name="___sec29"></a></h2>
+<h2 id="___sec31">Applications of the family of integration classes </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1213,29 +1095,25 @@ $$ \int\limits_0^1 \left(1 + {1\over m}\right)t^{1\over m} dt= 1$$
 <p>&nbsp;<br>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> This integral is &quot;difficult&quot; numerically for \( m>1 \).</li>
-  <p><li> Key problem: the error in numerical integration formulas is of the form \( Cn^{-r} \), mathematical theory can predict \( r \) (the &quot;order&quot;), but we can estimate \( r \) empirically too</li>
-  <p><li> See the book for computational details</li>
-  <p><li> Here we focus on the conclusions</li>
+
+<p><li> This integral is &quot;difficult&quot; numerically for \( m>1 \).</li>
+
+<p><li> Key problem: the error in numerical integration formulas is of the form \( Cn^{-r} \), mathematical theory can predict \( r \) (the &quot;order&quot;), but we can estimate \( r \) empirically too</li>
+
+<p><li> See the book for computational details</li>
+
+<p><li> Here we focus on the conclusions</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Convergence rates for \( m < 1 \) (easy case)  <a name="___sec30"></a></h2>
+<h2 id="___sec32">Convergence rates for \( m < 1 \) (easy case) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1244,18 +1122,13 @@ $$ \int\limits_0^1 \left(1 + {1\over m}\right)t^{1\over m} dt= 1$$
 Simpson and Gauss-Legendre reduce the error faster than Midpoint and Trapezoidal (plot has ln(error) versus \( \ln n \))
 </div>
 
-
 <p>
 <center><p><img src="fig-oo/power_int_m1.png" align="bottom" width=480></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Convergence rates for \( m>1 \) (problematic case)  <a name="___sec31"></a></h2>
+<h2 id="___sec33">Convergence rates for \( m>1 \) (problematic case) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1264,49 +1137,41 @@ Simpson and Gauss-Legendre reduce the error faster than Midpoint and Trapezoidal
 Simpson and Gauss-Legendre, which are theoretically &quot;smarter&quot; than Midpoint and Trapezoidal do not show superior behavior!
 </div>
 
-
 <p>
 <center><p><img src="fig-oo/power_int_m2.png" align="bottom" width=480></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Summary of object-orientation principles  <a name="___sec32"></a></h2>
+<h2 id="___sec34">Summary of object-orientation principles </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
+<ul>
+
+<p><li> A subclass inherits everything from the superclass</li>
+
+<p><li> When to use a subclass/superclass?</li>
 
 <ul>
-  <p><li> A subclass inherits everything from the superclass</li>
-  <p><li> When to use a subclass/superclass?</li>
 
-<ul>
-    <p><li> if code common to several classes can be placed in a superclass</li>
-    <p><li> if the problem has a natural child-parent concept</li>
+<p><li> if code common to several classes can be placed in a superclass</li>
+
+<p><li> if the problem has a natural child-parent concept</li>
 </ul>
-<p>
+<p><li> The program flow jumps between super- and sub-classes</li>
 
-  <p><li> The program flow jumps between super- and sub-classes</li>
-  <p><li> It takes time to master <em>when</em> and <em>how</em> to use OO</li>
-  <p><li> Study examples!</li>
+<p><li> It takes time to master <em>when</em> and <em>how</em> to use OO</li>
+
+<p><li> Study examples!</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Recall the class hierarchy for differentiation  <a name="___sec33"></a></h2>
+<h2 id="___sec35">Recall the class hierarchy for differentiation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-small">
@@ -1318,16 +1183,13 @@ Simpson and Gauss-Legendre, which are theoretically &quot;smarter&quot; than Mid
 $$ f'(x) \approx {f(x+h)-f(x-h)\over 2h}$$
 <p>&nbsp;<br>
 
-
 <p>
 Superclass <code>Diff</code> contains common code (constructor), subclasses implement various difference formulas.
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Implementation example (superclass and one subclass).</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1343,16 +1205,11 @@ Superclass <code>Diff</code> contains common code (constructor), subclasses impl
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Recall the class hierarchy for integration (1)  <a name="___sec34"></a></h2>
+<h2 id="___sec36">Recall the class hierarchy for integration (1) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1364,25 +1221,18 @@ General integration formula for numerical integration:
 $$ \int_a^b f(x)dx \approx \sum_{j=0}^{n-1} w_if(x_i)$$
 <p>&nbsp;<br>
 
-
 <p>
 Superclass <code>Integrator</code> contains common code (constructor, \( \sum_j w_if(x_i) \)), subclasses implement definition of \( w_i \) and \( x_i \).
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Recall the class hierarchy for integration (2)  <a name="___sec35"></a></h2>
+<h2 id="___sec37">Recall the class hierarchy for integration (2) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Implementation example (superclass and one subclass):</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1407,21 +1257,15 @@ Superclass <code>Integrator</code> contains common code (constructor, \( \sum_j 
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>A summarizing example: Generalized reading of input data  <a name="___sec36"></a></h2>
+<h2 id="___sec38">A summarizing example: Generalized reading of input data </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Write a table of \( x\in [a,b] \) and \( f(x) \) to file:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1434,7 +1278,6 @@ outfile<span style="color: #666666">.</span>close()
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>We want flexible input:</b>
@@ -1442,14 +1285,17 @@ outfile<span style="color: #666666">.</span>close()
 Read <code>a</code>, <code>b</code>, <code>n</code>, <code>filename</code> and a formula for <code>f</code> from...
 
 <ul>
-  <p><li> the command line</li>
-  <p><li> interactive commands like <code>a=0</code>, <code>b=2</code>, <code>filename=mydat.dat</code></li>
-  <p><li> questions and answers in the terminal window</li>
-  <p><li> a graphical user interface</li>
-  <p><li> a file of the form</li>
-</ul>
-<p>
 
+<p><li> the command line</li>
+
+<p><li> interactive commands like <code>a=0</code>, <code>b=2</code>, <code>filename=mydat.dat</code></li>
+
+<p><li> questions and answers in the terminal window</li>
+
+<p><li> a graphical user interface</li>
+
+<p><li> a file of the form</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1459,33 +1305,23 @@ filename <span style="color: #666666">=</span> mydat<span style="color: #666666"
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Graphical user interface  <a name="___sec37"></a></h2>
+<h2 id="___sec39">Graphical user interface </h2>
 
 <p>
 <center><p><img src="fig-oo/ReadInputGUI.png" align="bottom" width=180></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>First we write the application code  <a name="___sec38"></a></h2>
+<h2 id="___sec40">First we write the application code </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Desired usage:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1510,33 +1346,28 @@ a, b, filename, formula, n <span style="color: #666666">=</span> inp<span style=
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>About the implementation  <a name="___sec39"></a></h2>
+<h2 id="___sec41">About the implementation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> A superclass <code>ReadInput</code> stores the dict and provides methods for getting input into program variables (<code>get</code>, <code>get_all</code>)</li>
-  <p><li> Subclasses read from different input sources</li>
-  <p><li> <code>ReadCommandLine</code>, <code>PromptUser</code>, <code>ReadInputFile</code>, <code>GUI</code></li>
-  <p><li> See the book or <code>ReadInput.py</code> for implementation details</li>
-  <p><li> For now the ideas and principles are more important than code details!</li>
+
+<p><li> A superclass <code>ReadInput</code> stores the dict and provides methods for getting input into program variables (<code>get</code>, <code>get_all</code>)</li>
+
+<p><li> Subclasses read from different input sources</li>
+
+<p><li> <code>ReadCommandLine</code>, <code>PromptUser</code>, <code>ReadInputFile</code>, <code>GUI</code></li>
+
+<p><li> See the book or <code>ReadInput.py</code> for implementation details</li>
+
+<p><li> For now the ideas and principles are more important than code details!</li>
 </ul>
 </div>
-
-
-
 </section>
 
 

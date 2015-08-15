@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -65,191 +65,182 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(u' Use of random numbers in programs ', 1, None, '___sec0'),
-              (u' Random numbers are used to simulate uncertain events ',
+ 'sections': [(u'Use of random numbers in programs', 1, None, '___sec0'),
+              (u'Random numbers are used to simulate uncertain events',
                2,
                None,
                '___sec1'),
-              (u' Drawing random numbers ', 2, None, '___sec2'),
-              (u' Distribution of random numbers ', 2, None, '___sec3'),
-              (u' Distribution of random numbers visualized ',
+              (u'Drawing random numbers', 2, None, '___sec2'),
+              (u'Distribution of random numbers', 2, None, '___sec3'),
+              (u'Distribution of random numbers visualized',
                2,
                None,
                '___sec4'),
-              (u' Vectorized drawing of random numbers ', 2, None, '___sec5'),
-              (u' Drawing integers ', 2, None, '___sec6'),
-              (u' Example: Rolling a die ', 2, None, '___sec7'),
-              (u' Example: Rolling a die; vectorized version ',
+              (u'Vectorized drawing of random numbers', 2, None, '___sec5'),
+              (u'Drawing integers', 2, None, '___sec6'),
+              (u'Example: Rolling a die', 2, None, '___sec7'),
+              (u'Example: Rolling a die; vectorized version',
                2,
                None,
                '___sec8'),
-              (u' Debugging programs with random numbers requires fixing the seed of the random sequence ',
+              (u'Debugging programs with random numbers requires fixing the seed of the random sequence',
                2,
                None,
                '___sec9'),
-              (u' Drawing random elements from a list ', 2, None, '___sec10'),
-              (u' Example: Drawing cards from a deck; make deck and draw ',
+              (u'Drawing random elements from a list', 2, None, '___sec10'),
+              (u'Example: Drawing cards from a deck; make deck and draw',
                2,
                None,
                '___sec11'),
-              (u' Example: Drawing cards from a deck; draw a hand of cards ',
+              (u'Example: Drawing cards from a deck; draw a hand of cards',
                2,
                None,
                '___sec12'),
-              (u' Example: Drawing cards from a deck; deal ',
+              (u'Example: Drawing cards from a deck; deal',
                2,
                None,
                '___sec13'),
-              (u' Example: Drawing cards from a deck; analyze results (1) ',
+              (u'Example: Drawing cards from a deck; analyze results (1)',
                2,
                None,
                '___sec14'),
-              (u' Example: Drawing cards from a deck; analyze results (2) ',
+              (u'Example: Drawing cards from a deck; analyze results (2)',
                2,
                None,
                '___sec15'),
-              (u' Example: Drawing cards from a deck; analyze results (3)  ',
+              (u'Example: Drawing cards from a deck; analyze results (3)',
                2,
                None,
                '___sec16'),
-              (u' Class implementation of a deck; class Deck ',
+              (u'Class implementation of a deck; class Deck',
                2,
                None,
                '___sec17'),
-              (u' Class implementation of a deck; alternative ',
+              (u'Class implementation of a deck; alternative',
                2,
                None,
                '___sec18'),
-              (u' Class implementation of a deck; why? ',
-               2,
-               None,
-               '___sec19'),
-              (u' Probabilities can be computed by Monte Carlo simulation ',
+              (u'Class implementation of a deck; why?', 2, None, '___sec19'),
+              (u'Probabilities can be computed by Monte Carlo simulation',
                2,
                None,
                '___sec20'),
-              (u' A vectorized version can speed up the simulations ',
+              (u'A vectorized version can speed up the simulations',
                2,
                None,
                '___sec21'),
-              (u' The exact probability can be calculated in this (simple) example ',
+              (u'The exact probability can be calculated in this (simple) example',
                2,
                None,
                '___sec22'),
-              (u' How accurate and fast is Monte Carlo simulation? ',
+              (u'How accurate and fast is Monte Carlo simulation?',
                2,
                None,
                '___sec23'),
-              (u' Gamification of this example ', 2, None, '___sec24'),
-              (u' Should we play the game? ', 2, None, '___sec25'),
-              (u' Vectorization of the game for speeding up the code ',
+              (u'Gamification of this example', 2, None, '___sec24'),
+              (u'Should we play the game?', 2, None, '___sec25'),
+              (u'Vectorization of the game for speeding up the code',
                2,
                None,
                '___sec26'),
-              (u' Example: Drawing balls from a hat ', 2, None, '___sec27'),
-              (u' What is the probability of getting two black balls or more? ',
+              (u'Example: Drawing balls from a hat', 2, None, '___sec27'),
+              (u'What is the probability of getting two black balls or more?',
                2,
                None,
                '___sec28'),
-              (u' Examples on computing the probabilities ',
+              (u'Examples on computing the probabilities',
                2,
                None,
                '___sec29'),
-              (u' Guess a number game ', 2, None, '___sec30'),
-              (u' Monte Carlo integration ', 1, None, '___sec31'),
-              (u' There is a strong link between an integral and the average of the integrand ',
+              (u'Guess a number game', 2, None, '___sec30'),
+              (u'Monte Carlo integration', 1, None, '___sec31'),
+              (u'There is a strong link between an integral and the average of the integrand',
                2,
                None,
                '___sec32'),
-              (u' Implementation of Monte Carlo integration; scalar version ',
+              (u'Implementation of Monte Carlo integration; scalar version',
                2,
                None,
                '___sec33'),
-              (u' Implementation of Monte Carlo integration; vectorized version ',
+              (u'Implementation of Monte Carlo integration; vectorized version',
                2,
                None,
                '___sec34'),
-              (u' Dart-inspired Monte Carlo integration ',
-               2,
-               None,
-               '___sec35'),
-              (u' The code for the dart-inspired Monte Carlo integration ',
+              (u'Dart-inspired Monte Carlo integration', 2, None, '___sec35'),
+              (u'The code for the dart-inspired Monte Carlo integration',
                2,
                None,
                '___sec36'),
-              (u' The development of the error in Monte Carlo integration ',
+              (u'The development of the error in Monte Carlo integration',
                2,
                None,
                '___sec37'),
-              (u' Random walk ', 1, None, '___sec38'),
-              (u' Random walk in one space dimension ', 2, None, '___sec39'),
-              (u' Program for 1D random walk ', 2, None, '___sec40'),
-              (u' Random walk as a difference equation ',
-               2,
-               None,
-               '___sec41'),
-              (u' Computing statistics of the random walk ',
+              (u'Random walk', 1, None, '___sec38'),
+              (u'Random walk in one space dimension', 2, None, '___sec39'),
+              (u'Program for 1D random walk', 2, None, '___sec40'),
+              (u'Random walk as a difference equation', 2, None, '___sec41'),
+              (u'Computing statistics of the random walk',
                2,
                None,
                '___sec42'),
-              (u' Vectorized implementation of 1D random walk ',
+              (u'Vectorized implementation of 1D random walk',
                2,
                None,
                '___sec43'),
-              (u' Now to more exciting stuff: 2D random walk ',
+              (u'Now to more exciting stuff: 2D random walk',
                2,
                None,
                '___sec44'),
-              (u' Vectorized implementation of 2D random walk ',
+              (u'Vectorized implementation of 2D random walk',
                2,
                None,
                '___sec45'),
-              (u' Visualization of 2D random walk ', 2, None, '___sec46'),
-              (u' Class implementation of 2D random walk ',
+              (u'Visualization of 2D random walk', 2, None, '___sec46'),
+              (u'Class implementation of 2D random walk',
                2,
                None,
                '___sec47'),
-              (u' Summary of drawing random numbers (scalar code) ',
+              (u'Summary of drawing random numbers (scalar code)',
                2,
                None,
                '___sec48'),
-              (u' Summary of drawing random numbers (vectorized code) ',
+              (u'Summary of drawing random numbers (vectorized code)',
                2,
                None,
                '___sec49'),
-              (u' Summary of probability computations ', 2, None, '___sec50'),
-              (u' Example: investment with random interest rate ',
+              (u'Summary of probability computations', 2, None, '___sec50'),
+              (u'Example: investment with random interest rate',
                2,
                None,
                '___sec51'),
-              (u' The model for changing the interest rate ',
+              (u'The model for changing the interest rate',
                2,
                None,
                '___sec52'),
-              (u' The complete mathematical model ', 2, None, '___sec53'),
-              (u' Note: this is almost a random walk for the interest rate ',
+              (u'The complete mathematical model', 2, None, '___sec53'),
+              (u'Note: this is almost a random walk for the interest rate',
                2,
                None,
                '___sec54'),
-              (u' Simulating the investment development; one path ',
+              (u'Simulating the investment development; one path',
                2,
                None,
                '___sec55'),
-              (u' Simulating the investment development; $N$ paths ',
+              (u'Simulating the investment development; $N$ paths',
                2,
                None,
                '___sec56'),
-              (u' Input and graphics ', 2, None, '___sec57'),
-              (u' Some realizations of the investment ', 2, None, '___sec58'),
-              (u' Some realizations of the interest rate ',
+              (u'Input and graphics', 2, None, '___sec57'),
+              (u'Some realizations of the investment', 2, None, '___sec58'),
+              (u'Some realizations of the interest rate',
                2,
                None,
                '___sec59'),
-              (u' The mean and uncertainty of the investment over time ',
+              (u'The mean and uncertainty of the investment over time',
                2,
                None,
                '___sec60'),
-              (u' The mean and uncertainty of the interest rate over time ',
+              (u'The mean and uncertainty of the interest rate over time',
                2,
                None,
                '___sec61')]}
@@ -287,18 +278,19 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
+<br>
 <p>
-<center><h4>Oct 30, 2014</h4></center> <!-- date -->
+<center><h4>Aug 15, 2015</h4></center> <!-- date -->
+<br>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1>Use of random numbers in programs  <a name="___sec0"></a></h1>
+<h1 id="___sec0">Use of random numbers in programs </h1>
 
 <p>
 <!-- !bslidecell 00 -->
@@ -313,7 +305,7 @@ MathJax.Hub.Config({
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Random numbers are used to simulate uncertain events  <a name="___sec1"></a></h2>
+<h2 id="___sec1">Random numbers are used to simulate uncertain events </h2>
 
 <p>
 <!-- !bpop -->
@@ -347,7 +339,7 @@ MathJax.Hub.Config({
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Drawing random numbers  <a name="___sec2"></a></h2>
+<h2 id="___sec2">Drawing random numbers </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -382,7 +374,7 @@ The sequence of random numbers is produced by a deterministic algorithm - the nu
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Distribution of random numbers  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Distribution of random numbers </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -400,7 +392,7 @@ The sequence of random numbers is produced by a deterministic algorithm - the nu
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Distribution of random numbers visualized  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Distribution of random numbers visualized </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -425,7 +417,7 @@ plot(x, y, <span style="color: #BA2121">&#39;+&#39;</span>, axis<span style="col
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Vectorized drawing of random numbers  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Vectorized drawing of random numbers </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -475,7 +467,7 @@ np<span style="color: #666666">.</span>random<span style="color: #666666">.</spa
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Drawing integers  <a name="___sec6"></a></h2>
+<h2 id="___sec6">Drawing integers </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -504,7 +496,7 @@ r <span style="color: #666666">=</span> np<span style="color: #666666">.</span>r
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Example: Rolling a die  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Example: Rolling a die </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -545,7 +537,7 @@ Probability: <code>M/N</code> (exact: \( 1/6 \))
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Example: Rolling a die; vectorized version  <a name="___sec8"></a></h2>
+<h2 id="___sec8">Example: Rolling a die; vectorized version </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -577,7 +569,7 @@ Use <code>sum</code> from <code>numpy</code> and not Python's built-in <code>sum
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Debugging programs with random numbers requires fixing the seed of the random sequence  <a name="___sec9"></a></h2>
+<h2 id="___sec9">Debugging programs with random numbers requires fixing the seed of the random sequence </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -613,7 +605,7 @@ By default, the seed is based on the current time
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Drawing random elements from a list  <a name="___sec10"></a></h2>
+<h2 id="___sec10">Drawing random elements from a list </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -656,7 +648,7 @@ We can also shuffle the list randomly, and then pick any element:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Example: Drawing cards from a deck; make deck and draw  <a name="___sec11"></a></h2>
+<h2 id="___sec11">Example: Drawing cards from a deck; make deck and draw </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -705,7 +697,7 @@ card <span style="color: #666666">=</span> deck<span style="color: #666666">.</s
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Example: Drawing cards from a deck; draw a hand of cards  <a name="___sec12"></a></h2>
+<h2 id="___sec12">Example: Drawing cards from a deck; draw a hand of cards </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -739,7 +731,7 @@ card <span style="color: #666666">=</span> deck<span style="color: #666666">.</s
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Example: Drawing cards from a deck; deal  <a name="___sec13"></a></h2>
+<h2 id="___sec13">Example: Drawing cards from a deck; deal </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -783,7 +775,7 @@ players <span style="color: #666666">=</span> deal(<span style="color: #666666">
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Example: Drawing cards from a deck; analyze results (1)  <a name="___sec14"></a></h2>
+<h2 id="___sec14">Example: Drawing cards from a deck; analyze results (1) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -811,7 +803,7 @@ players <span style="color: #666666">=</span> deal(<span style="color: #666666">
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Example: Drawing cards from a deck; analyze results (2)  <a name="___sec15"></a></h2>
+<h2 id="___sec15">Example: Drawing cards from a deck; analyze results (2) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -838,7 +830,7 @@ players <span style="color: #666666">=</span> deal(<span style="color: #666666">
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Example: Drawing cards from a deck; analyze results (3)   <a name="___sec16"></a></h2>
+<h2 id="___sec16">Example: Drawing cards from a deck; analyze results (3)  </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -875,7 +867,7 @@ The hand H6, H9, C6, D5, S6
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Class implementation of a deck; class Deck  <a name="___sec17"></a></h2>
+<h2 id="___sec17">Class implementation of a deck; class Deck </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -925,7 +917,7 @@ We can wrap the previous functions in a class:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Class implementation of a deck; alternative  <a name="___sec18"></a></h2>
+<h2 id="___sec18">Class implementation of a deck; alternative </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -965,7 +957,7 @@ We can wrap the previous functions in a class:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Class implementation of a deck; why?  <a name="___sec19"></a></h2>
+<h2 id="___sec19">Class implementation of a deck; why? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -994,7 +986,7 @@ This is often considered bad programming. In the class version we avoid a global
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Probabilities can be computed by Monte Carlo simulation  <a name="___sec20"></a></h2>
+<h2 id="___sec20">Probabilities can be computed by Monte Carlo simulation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1034,7 +1026,7 @@ p <span style="color: #666666">=</span> <span style="color: #008000">float</span
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>A vectorized version can speed up the simulations  <a name="___sec21"></a></h2>
+<h2 id="___sec21">A vectorized version can speed up the simulations </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1065,7 +1057,7 @@ Run 10+ times faster than scalar code
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The exact probability can be calculated in this (simple) example  <a name="___sec22"></a></h2>
+<h2 id="___sec22">The exact probability can be calculated in this (simple) example </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1098,7 +1090,7 @@ M <span style="color: #666666">=</span> <span style="color: #008000">sum</span>(
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>How accurate and fast is Monte Carlo simulation?  <a name="___sec23"></a></h2>
+<h2 id="___sec23">How accurate and fast is Monte Carlo simulation? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1145,7 +1137,7 @@ real	0m0.816s
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Gamification of this example  <a name="___sec24"></a></h2>
+<h2 id="___sec24">Gamification of this example </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1188,7 +1180,7 @@ net_profit_per_game <span style="color: #666666">=</span> net_profit_total<span 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Should we play the game?  <a name="___sec25"></a></h2>
+<h2 id="___sec25">Should we play the game? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1208,7 +1200,7 @@ No!
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Vectorization of the game for speeding up the code  <a name="___sec26"></a></h2>
+<h2 id="___sec26">Vectorization of the game for speeding up the code </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1238,7 +1230,7 @@ money <span style="color: #666666">+=</span> <span style="color: #666666">2*</sp
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Example: Drawing balls from a hat  <a name="___sec27"></a></h2>
+<h2 id="___sec27">Example: Drawing balls from a hat </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1278,7 +1270,7 @@ ball2 <span style="color: #666666">=</span> hat<span style="color: #666666">.</s
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>What is the probability of getting two black balls or more?  <a name="___sec28"></a></h2>
+<h2 id="___sec28">What is the probability of getting two black balls or more? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1318,7 +1310,7 @@ M <span style="color: #666666">=</span> <span style="color: #666666">0</span>  <
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Examples on computing the probabilities  <a name="___sec29"></a></h2>
+<h2 id="___sec29">Examples on computing the probabilities </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1349,7 +1341,7 @@ Probability: 0.4033
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Guess a number game  <a name="___sec30"></a></h2>
+<h2 id="___sec30">Guess a number game </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1386,7 +1378,7 @@ guess <span style="color: #666666">=</span> <span style="color: #666666">0</span
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1>Monte Carlo integration  <a name="___sec31"></a></h1>
+<h1 id="___sec31">Monte Carlo integration </h1>
 
 <p>
 <!-- !bslidecell 00 -->
@@ -1409,7 +1401,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>There is a strong link between an integral and the average of the integrand  <a name="___sec32"></a></h2>
+<h2 id="___sec32">There is a strong link between an integral and the average of the integrand </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1419,13 +1411,11 @@ Recall a famous theorem from calculus: Let \( f_m \) be the mean value of \( f(x
 
 $$ \int_a^b f(x)dx = f_m(b-a)$$
 
-
 <p>
 Idea: compute \( f_m \) by averaging \( N \) function values.
 To choose the \( N \) coordinates \( x_0,\ldots,x_{N-1} \) we use random numbers in \( [a,b] \). Then
 
 $$ f_m = N^{-1}\sum_{j=0}^{N-1} f(x_j) $$
-
 
 <p>
 This is called Monte Carlo integration.
@@ -1435,7 +1425,7 @@ This is called Monte Carlo integration.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Implementation of Monte Carlo integration; scalar version  <a name="___sec33"></a></h2>
+<h2 id="___sec33">Implementation of Monte Carlo integration; scalar version </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1459,7 +1449,7 @@ This is called Monte Carlo integration.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Implementation of Monte Carlo integration; vectorized version  <a name="___sec34"></a></h2>
+<h2 id="___sec34">Implementation of Monte Carlo integration; vectorized version </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1489,7 +1479,7 @@ Monte Carlo integration is slow for \( \int f(x)dx \) (slower than the Trapezoid
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Dart-inspired Monte Carlo integration  <a name="___sec35"></a></h2>
+<h2 id="___sec35">Dart-inspired Monte Carlo integration </h2>
 
 <p>
 <center><p><img src="fig-random/MC_dart.png" align="bottom" width=300></p></center>
@@ -1513,7 +1503,7 @@ Monte Carlo integration is slow for \( \int f(x)dx \) (slower than the Trapezoid
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The code for the dart-inspired Monte Carlo integration  <a name="___sec36"></a></h2>
+<h2 id="___sec36">The code for the dart-inspired Monte Carlo integration </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1559,7 +1549,7 @@ Monte Carlo integration is slow for \( \int f(x)dx \) (slower than the Trapezoid
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The development of the error in Monte Carlo integration  <a name="___sec37"></a></h2>
+<h2 id="___sec37">The development of the error in Monte Carlo integration </h2>
 
 <p>
 <center><p><img src="fig-random/MCint_1000000.png" align="bottom" width=600></p></center>
@@ -1567,7 +1557,7 @@ Monte Carlo integration is slow for \( \int f(x)dx \) (slower than the Trapezoid
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1>Random walk  <a name="___sec38"></a></h1>
+<h1 id="___sec38">Random walk </h1>
 
 <p>
 <!-- !bslidecell 00 -->
@@ -1582,7 +1572,7 @@ Monte Carlo integration is slow for \( \int f(x)dx \) (slower than the Trapezoid
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Random walk in one space dimension  <a name="___sec39"></a></h2>
+<h2 id="___sec39">Random walk in one space dimension </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1617,7 +1607,7 @@ Monte Carlo integration is slow for \( \int f(x)dx \) (slower than the Trapezoid
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Program for 1D random walk  <a name="___sec40"></a></h2>
+<h2 id="___sec40">Program for 1D random walk </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1653,7 +1643,7 @@ xmax <span style="color: #666666">=</span> sqrt(ns); xmin <span style="color: #6
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Random walk as a difference equation  <a name="___sec41"></a></h2>
+<h2 id="___sec41">Random walk as a difference equation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1671,7 +1661,7 @@ where \( s=1 \) or \( s=-1 \), both with probability 1/2.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Computing statistics of the random walk  <a name="___sec42"></a></h2>
+<h2 id="___sec42">Computing statistics of the random walk </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1701,7 +1691,7 @@ plot(pos, freq, <span style="color: #BA2121">&#39;b-&#39;</span>)
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Vectorized implementation of 1D random walk  <a name="___sec43"></a></h2>
+<h2 id="___sec43">Vectorized implementation of 1D random walk </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1736,7 +1726,7 @@ Evolution through time:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Now to more exciting stuff: 2D random walk  <a name="___sec44"></a></h2>
+<h2 id="___sec44">Now to more exciting stuff: 2D random walk </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1772,7 +1762,7 @@ Let each particle move north, south, west, or east - each with probability 1/4
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Vectorized implementation of 2D random walk  <a name="___sec45"></a></h2>
+<h2 id="___sec45">Vectorized implementation of 2D random walk </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1803,7 +1793,7 @@ Let each particle move north, south, west, or east - each with probability 1/4
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Visualization of 2D random walk  <a name="___sec46"></a></h2>
+<h2 id="___sec46">Visualization of 2D random walk </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1842,7 +1832,7 @@ Inside <code>for</code> loop over steps:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Class implementation of 2D random walk  <a name="___sec47"></a></h2>
+<h2 id="___sec47">Class implementation of 2D random walk </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1863,7 +1853,7 @@ Inside <code>for</code> loop over steps:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Summary of drawing random numbers (scalar code)  <a name="___sec48"></a></h2>
+<h2 id="___sec48">Summary of drawing random numbers (scalar code) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1900,7 +1890,7 @@ Draw a uniformly distributed random integer in \( [a,b] \):
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Summary of drawing random numbers (vectorized code)  <a name="___sec49"></a></h2>
+<h2 id="___sec49">Summary of drawing random numbers (vectorized code) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1938,7 +1928,7 @@ i <span style="color: #666666">=</span> np<span style="color: #666666">.</span>r
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Summary of probability computations  <a name="___sec50"></a></h2>
+<h2 id="___sec50">Summary of probability computations </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1955,7 +1945,7 @@ i <span style="color: #666666">=</span> np<span style="color: #666666">.</span>r
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Example: investment with random interest rate  <a name="___sec51"></a></h2>
+<h2 id="___sec51">Example: investment with random interest rate </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1964,7 +1954,6 @@ i <span style="color: #666666">=</span> np<span style="color: #666666">.</span>r
 Recall difference equation for the development of an investment \( x_0 \) with annual interest rate \( p \):
 
 $$ x_{n} = x_{n-1} + {p\over 100}x_{n-1},\quad \hbox{given }x_0$$
-
 
 <p>
 But:
@@ -1985,7 +1974,7 @@ where \( n \) counts months
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The model for changing the interest rate  <a name="___sec52"></a></h2>
+<h2 id="___sec52">The model for changing the interest rate </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2009,7 +1998,7 @@ where \( \gamma \) is random
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The complete mathematical model  <a name="___sec53"></a></h2>
+<h2 id="___sec53">The complete mathematical model </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2043,7 +2032,7 @@ A particular realization \( x_n, p_n \), \( n=0,1,\ldots,N \), is called a <em>p
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Note: this is almost a random walk for the interest rate  <a name="___sec54"></a></h2>
+<h2 id="___sec54">Note: this is almost a random walk for the interest rate </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2056,7 +2045,7 @@ The development of \( p \) is like a random walk, but the "particle" moves at ea
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Simulating the investment development; one path  <a name="___sec55"></a></h2>
+<h2 id="___sec55">Simulating the investment development; one path </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2095,7 +2084,7 @@ The development of \( p \) is like a random walk, but the "particle" moves at ea
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Simulating the investment development; \( N \) paths  <a name="___sec56"></a></h2>
+<h2 id="___sec56">Simulating the investment development; \( N \) paths </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2127,7 +2116,7 @@ Can also compute the standard deviation path (&quot;width&quot; of the \( N \) p
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Input and graphics  <a name="___sec57"></a></h2>
+<h2 id="___sec57">Input and graphics </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2161,7 +2150,7 @@ See the book for graphics details (good example on updating several different pl
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Some realizations of the investment  <a name="___sec58"></a></h2>
+<h2 id="___sec58">Some realizations of the investment </h2>
 
 <p>
 <center><p><img src="fig-random/growth_random_x.png" align="bottom" width=600></p></center>
@@ -2169,7 +2158,7 @@ See the book for graphics details (good example on updating several different pl
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Some realizations of the interest rate  <a name="___sec59"></a></h2>
+<h2 id="___sec59">Some realizations of the interest rate </h2>
 
 <p>
 <center><p><img src="fig-random/growth_random_p.png" align="bottom" width=600></p></center>
@@ -2177,7 +2166,7 @@ See the book for graphics details (good example on updating several different pl
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The mean and uncertainty of the investment over time  <a name="___sec60"></a></h2>
+<h2 id="___sec60">The mean and uncertainty of the investment over time </h2>
 
 <p>
 <center><p><img src="fig-random/growth_random_xm.png" align="bottom" width=600></p></center>
@@ -2185,7 +2174,7 @@ See the book for graphics details (good example on updating several different pl
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The mean and uncertainty of the interest rate over time  <a name="___sec61"></a></h2>
+<h2 id="___sec61">The mean and uncertainty of the interest rate over time </h2>
 
 <p>
 <center><p><img src="fig-random/growth_random_pm.png" align="bottom" width=600></p></center>
