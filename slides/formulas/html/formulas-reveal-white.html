@@ -143,8 +143,10 @@ $$
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
+<br>
 <p>&nbsp;<br>
-<center><h4>Apr 19, 2015</h4></center> <!-- date -->
+<center><h4>Aug 15, 2015</h4></center> <!-- date -->
+<br>
 </section>
 
 
@@ -599,12 +601,13 @@ Output from calculations often contain text and numbers, e.g.,
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">At t=0.6 s, y is 1.23 m.
 </pre></div>
 <p>
- We want to control the formatting of numbers: no of decimals, style: <code>0.6</code> vs <code>6E-01</code> or <code>6.0e-01</code>. So-called <em>printf formatting</em> is useful for this purpose:
+We want to control the formatting of numbers: no of decimals, style: <code>0.6</code> vs <code>6E-01</code> or <code>6.0e-01</code>. So-called <em>printf formatting</em> is useful for this purpose:
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;At t=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121"> s, y is </span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121"> m.&#39;</span> <span style="color: #666666">%</span> (t, y)
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">t <span style="color: #666666">=</span> <span style="color: #666666">0.6</span>;  y <span style="color: #666666">=</span> <span style="color: #666666">1.2342</span>
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;At t=</span><span style="color: #BB6688; font-weight: bold">%g</span><span style="color: #BA2121"> s, y is </span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121"> m.&#39;</span> <span style="color: #666666">%</span> (t, y)
 </pre></div>
 <p>
 The printf format has &quot;slots&quot; where the variables listed at the end are put: <code>%g</code> \( \leftarrow \) <code>t</code>, <code>%.2f</code> \( \leftarrow \) <code>y</code>
@@ -829,10 +832,11 @@ Here blanks do matter:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">while</span> counter <span style="color: #666666">&lt;=</span> <span style="color: #666666">10</span>:
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">counter <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<span style="color: #008000; font-weight: bold">while</span> counter <span style="color: #666666">&lt;=</span> <span style="color: #666666">4</span>:
     counter <span style="color: #666666">=</span> counter <span style="color: #666666">+</span> <span style="color: #666666">1</span>   <span style="color: #408080; font-style: italic"># correct (4 leading blanks)</span>
 
-<span style="color: #008000; font-weight: bold">while</span> counter <span style="color: #666666">&lt;=</span> <span style="color: #666666">10</span>:
+<span style="color: #008000; font-weight: bold">while</span> counter <span style="color: #666666">&lt;=</span> <span style="color: #666666">4</span>:
 counter <span style="color: #666666">=</span> counter <span style="color: #666666">+</span> <span style="color: #666666">1</span>       <span style="color: #408080; font-style: italic"># invalid syntax</span>
 </pre></div>
 <p>

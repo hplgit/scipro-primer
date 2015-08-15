@@ -2,9 +2,9 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Ch.6: Dictionaries and Strings">
+<meta name="description" content="Ch.6: Dictionaries and strings">
 
-<title>Ch.6: Dictionaries and Strings</title>
+<title>Ch.6: Dictionaries and strings</title>
 
 
 
@@ -123,7 +123,7 @@ MathJax.Hub.Config({
 
 
 
-<center><h1 style="text-align: center;">Ch.6: Dictionaries and Strings</h1></center>  <!-- document title -->
+<center><h1 style="text-align: center;">Ch.6: Dictionaries and strings</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -132,35 +132,30 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>&nbsp;<br>
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
+<br>
 <p>&nbsp;<br>
-<center><h4>Sep 30, 2014</h4></center> <!-- date -->
-<p>
-
+<center><h4>Aug 15, 2015</h4></center> <!-- date -->
+<br>
 </section>
 
 
 <section>
-
-<h2>Goals  <a name="___sec0"></a></h2>
+<h2 id="___sec0">Goals </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
  <p><li> Learn more about file reading</li>
  <p><li> Store file data in a new object type: <em>dictionary</em></li>
  <p><li> Interpret content in files via string manipulation</li>
 </ul>
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-small">
@@ -169,16 +164,11 @@ MathJax.Hub.Config({
 The main focus in the course is on working with files, dictionaries and strings.
 The book has additional material on how to utilize data from the Internet.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h1 style="text-align: center;">Dictionaries  <a name="___sec1"></a></h1>
+<h1 id="___sec1">Dictionaries </h1>
 
 <p>
 
@@ -192,46 +182,38 @@ figfiles[<span style="color: #CD5555">&#39;fig3.png&#39;</span>] = os.path.getsi
 </pre></div>
 <p>
 <center><p><img src="fig-files/dictionary2.png" align="bottom" width=300></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>A dictionary is a generalization of a list  <a name="___sec2"></a></h2>
+<h2 id="___sec2">A dictionary is a generalization of a list </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
+<ul>
+
+<p><li> Features of lists:</li>
 
 <ul>
-  <p><li> Features of lists:</li>
 
-<ul>
-   <p><li> store a <em>sequence</em> of elements in a single object (<code>[1,3,-1]</code>)</li>
-   <p><li> each element is a Python object</li>
-   <p><li> the elements are indexed by integers 0, 1, ...</li>
+<p><li> store a <em>sequence</em> of elements in a single object (<code>[1,3,-1]</code>)</li>
+
+<p><li> each element is a Python object</li>
+
+<p><li> the elements are indexed by integers 0, 1, ...</li>
 </ul>
-<p>
-
-  <p><li> Dictionaries can index objects in a collection via text<br />
+<p><li> Dictionaries can index objects in a collection via text<br />
     (= &quot;lists with text index&quot;)</li>
-  <p><li> Dictionary in Python is called hash, HashMap and associative array in other languages</li>
+
+<p><li> Dictionary in Python is called hash, HashMap and associative array in other languages</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The list index is sometimes unnatural for locating an element of a collection of objects  <a name="___sec3"></a></h2>
+<h2 id="___sec3">The list index is sometimes unnatural for locating an element of a collection of objects </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -257,21 +239,15 @@ Can look up a temperature by mapping city to index to float
 <p>
 But it would be more natural to write <code>temps[Oslo]</code>!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Dictionaries map strings to objects  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Dictionaries map strings to objects </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -286,21 +262,16 @@ temps = {<span style="color: #CD5555">&#39;Oslo&#39;</span>: <span style="color:
 Important:
 
 <ul>
- <p><li> The string index, like `Oslo', is called <em>key</em>, while <code>temps['Oslo']</code>
+ <p><li> The string index, like <code>Oslo</code>, is called <em>key</em>, while <code>temps['Oslo']</code>
    is the associated <em>value</em></li>
  <p><li> A dictionary is an <em>unordered</em> collection of key-value pairs</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Initializing dictionaries  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Initializing dictionaries </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -333,21 +304,15 @@ Add a new element to a dict (dict = dictionary):
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Looping (iterating) over a dict means looping over the keys  <a name="___sec6"></a></h2>
+<h2 id="___sec6">Looping (iterating) over a dict means looping over the keys </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -382,16 +347,11 @@ particular sequence:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Can test for particular keys, delete elements, etc  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Can test for particular keys, delete elements, etc </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -425,16 +385,11 @@ Delete an element of a dict:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The keys and values can be reached as lists  <a name="___sec8"></a></h2>
+<h2 id="___sec8">The keys and values can be reached as lists </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -467,21 +422,15 @@ London
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Caution: two variables can alter the same dictionary  <a name="___sec9"></a></h2>
+<h2 id="___sec9">Caution: two variables can alter the same dictionary </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
@@ -513,28 +462,19 @@ Recall the same for lists:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Any constant object can be used as key  <a name="___sec10"></a></h2>
+<h2 id="___sec10">Any constant object can be used as key </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
  <p><li> So far: key is text (string object)</li>
  <p><li> Keys can be any <em>immutable</em> (constant) object (!)</li>
 </ul>
-<p>
-
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
@@ -547,16 +487,11 @@ Recall the same for lists:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example: Polynomials represented by dictionaries  <a name="___sec11"></a></h2>
+<h2 id="___sec11">Example: Polynomials represented by dictionaries </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -578,7 +513,6 @@ coefficient as value (<code>float</code>):
 </pre></div>
 
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -607,16 +541,11 @@ Short pro version:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Polynomials can also be represented by lists  <a name="___sec12"></a></h2>
+<h2 id="___sec12">Polynomials can also be represented by lists </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -635,7 +564,6 @@ The general polynomial \( \sum_{i=0}^N c_ix^i \) is stored as
 <code>[c0, c1, c2, ..., cN]</code>.
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -653,16 +581,11 @@ Evaluate such a polynomial \( \sum_{i=0}^N c_ix^i \) for some \( x \):
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>What is best for polynomials: lists or dictionaries?  <a name="___sec13"></a></h2>
+<h2 id="___sec13">What is best for polynomials: lists or dictionaries? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -688,21 +611,15 @@ Dictionaries can easily handle negative powers, e.g., \( {1\over2}x^{-3} + 2x^4 
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Quick recap of file reading  <a name="___sec14"></a></h2>
+<h2 id="___sec14">Quick recap of file reading </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -717,21 +634,15 @@ infile.close()                <span style="color: #228B22"># recall to close!</s
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example: Read file data into a dictionary  <a name="___sec15"></a></h2>
+<h2 id="___sec15">Example: Read file data into a dictionary </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Data file:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -746,11 +657,9 @@ Helsinki:      <span style="color: #B452CD">17.8</span>
 Store in dict, with city names as keys and temperatures as values
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Program:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
@@ -763,21 +672,15 @@ temps = {}                  <span style="color: #228B22"># start with empty dict
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>A tabular file can be read into a nested dictionary  <a name="___sec16"></a></h2>
+<h2 id="___sec16">A tabular file can be read into a nested dictionary </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Data file <code>table.dat</code>:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -793,69 +696,56 @@ temps = {}                  <span style="color: #228B22"># start with empty dict
 Create a dict <code>data[p][i]</code> (dict of dict) to hold measurement no. <code>i</code>
 (<code>1</code>, <code>2</code>, etc.) of property <code>p</code> (<code>'A'</code>, <code>'B'</code>, etc.)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>We must first develop the plan (algorithm) for doing this  <a name="___sec17"></a></h2>
+<h2 id="___sec17">We must first develop the plan (algorithm) for doing this </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ol>
  <p><li> Examine the first line:</li>
 
 <ol>
-  <p><li> split it into words</li>
-  <p><li> initialize a dictionary with the property names as keys
+
+<p><li> split it into words</li>
+
+<p><li> initialize a dictionary with the property names as keys
      and empty dictionaries <code>{}</code> as values</li>
 </ol>
-<p>
-
- <p><li> For each of the remaining lines:</li>
+<p><li> For each of the remaining lines:</li>
 
 <ol>
-  <p><li> split line into words</li>
-  <p><li> for each word after the first: if word is not <code>no</code>,
+
+<p><li> split line into words</li>
+
+<p><li> for each word after the first: if word is not <code>no</code>,
      convert to float and store</li>
 </ol>
 <p>
-
 </ol>
 <p>
 
 Good exercise: do this now!<br />
 (See the book for a complete implementation.)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example: Download data from the web and visualize  <a name="___sec18"></a></h2>
+<h2 id="___sec18">Example: Download data from the web and visualize </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Problem:</b>
-<p>
-
 <ul>
-  <p><li> Compare the stock prices of Microsoft, Apple, and Google over decades</li>
-  <p><li> <a href="http://finance.yahoo.com/" target="_blank"><tt>http://finance.yahoo.com/</tt></a> offers such data in files with tabular form</li>
-</ul>
-<p>
 
+<p><li> Compare the stock prices of Microsoft, Apple, and Google over decades</li>
+
+<p><li> <a href="http://finance.yahoo.com/" target="_blank"><tt>http://finance.yahoo.com/</tt></a> offers such data in files with tabular form</li>
+</ul>
 <p>
 
 <!-- code=text (!bc dat) typeset with pygments style "perldoc" -->
@@ -871,21 +761,15 @@ Good exercise: do this now!<br />
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>We need to analyze the file format to find the algorithm for interpreting the content  <a name="___sec19"></a></h2>
+<h2 id="___sec19">We need to analyze the file format to find the algorithm for interpreting the content </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=text (!bc dat) typeset with pygments style "perldoc" -->
@@ -903,27 +787,23 @@ Good exercise: do this now!<br />
 File format:
 
 <ul>
-  <p><li> Columns are separated by comma</li>
-  <p><li> First column is the date, the final is the price of interest</li>
-  <p><li> The prizes start at different dates</li>
+
+<p><li> Columns are separated by comma</li>
+
+<p><li> First column is the date, the final is the price of interest</li>
+
+<p><li> The prizes start at different dates</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>We need algorithms before we can write code  <a name="___sec20"></a></h2>
+<h2 id="___sec20">We need algorithms before we can write code </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Algorithm for reading data:</b>
-<p>
-
 <ol>
  <p><li> skip first line</li>
  <p><li> read line by line</li>
@@ -935,28 +815,20 @@ File format:
 </ol>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Plotting:</b>
-<p>
-
 <ol>
  <p><li> Convert year-month-day time specifications in strings
     into year coordinates along the x axis</li>
  <p><li> Note that the companies' price history starts at different years</li>
 </ol>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>No code is presented here...  <a name="___sec21"></a></h2>
+<h2 id="___sec21">No code is presented here... </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -965,31 +837,22 @@ File format:
 See the book for all details. If you understand this quite comprehensive
 example, you know and understand a lot!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Plot of normalized stock prices in logarithmic scale  <a name="___sec22"></a></h2>
+<h2 id="___sec22">Plot of normalized stock prices in logarithmic scale </h2>
 
 <p>
 Much computer history in this plot:
 
 <p>
 <center><p><img src="fig-files/stockprices1.png" align="bottom" width=700></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h1 style="text-align: center;">String manipulation  <a name="___sec23"></a></h1>
+<h1 id="___sec23">String manipulation </h1>
 
 <p>
 
@@ -1016,29 +879,22 @@ Much computer history in this plot:
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>String manipulation is key to interpret the content of files  <a name="___sec24"></a></h2>
+<h2 id="___sec24">String manipulation is key to interpret the content of files </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Text in Python is represented as strings</li>
-  <p><li> Inspecting and manipulating strings is the way we can understand the contents of files</li>
-  <p><li> Plan: first show basic operations, then address real examples</li>
+
+<p><li> Text in Python is represented as strings</li>
+
+<p><li> Inspecting and manipulating strings is the way we can understand the contents of files</li>
+
+<p><li> Plan: first show basic operations, then address real examples</li>
 </ul>
 <p>
 
@@ -1064,16 +920,11 @@ Strings behave much like lists/tuples - they are a sequence of characters:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Extracting substrings  <a name="___sec25"></a></h2>
+<h2 id="___sec25">Extracting substrings </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1110,21 +961,15 @@ Find start of substring:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Checking if a substring is contained in a string  <a name="___sec26"></a></h2>
+<h2 id="___sec26">Checking if a substring is contained in a string </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
@@ -1142,16 +987,11 @@ C found
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Substituting a substring by another string  <a name="___sec27"></a></h2>
+<h2 id="___sec27">Substituting a substring by another string </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1182,16 +1022,11 @@ Example: replace the text before the first colon by <code>'Bonn'</code>
 1) <code>s.find(':')</code> returns 6, 2) <code>s[:6]</code> is <code>'Berlin'</code>, 3) <code>Berlin</code>
 is replaced by <code>'Bonn'</code>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Splitting a string into a list of substrings  <a name="___sec28"></a></h2>
+<h2 id="___sec28">Splitting a string into a list of substrings </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1224,28 +1059,21 @@ Try to understand this one:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Splitting a string into lines  <a name="___sec29"></a></h2>
+<h2 id="___sec29">Splitting a string into lines </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Very often, a string contains lots of text and we want to split the text into separate lines</li>
-  <p><li> Lines may be separated by different control characters on different platforms: <code>\n</code> on Unix/Linux/Mac, <code>\r\n</code> on Windows</li>
-</ul>
-<p>
 
+<p><li> Very often, a string contains lots of text and we want to split the text into separate lines</li>
+
+<p><li> Lines may be separated by different control characters on different platforms: <code>\n</code> on Unix/Linux/Mac, <code>\r\n</code> on Windows</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
@@ -1266,16 +1094,11 @@ Try to understand this one:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Strings are constant - immutable - objects  <a name="___sec30"></a></h2>
+<h2 id="___sec30">Strings are constant - immutable - objects </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1297,21 +1120,15 @@ You cannot change a string in-place (as you can with lists and arrays) - all cha
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Stripping off leading/trailing whitespace  <a name="___sec31"></a></h2>
+<h2 id="___sec31">Stripping off leading/trailing whitespace </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
@@ -1325,21 +1142,15 @@ You cannot change a string in-place (as you can with lists and arrays) - all cha
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Some convenient string functions  <a name="___sec32"></a></h2>
+<h2 id="___sec32">Some convenient string functions </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
@@ -1371,16 +1182,11 @@ You cannot change a string in-place (as you can with lists and arrays) - all cha
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Joining a list of substrings to a new string  <a name="___sec33"></a></h2>
+<h2 id="___sec33">Joining a list of substrings to a new string </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1418,22 +1224,15 @@ Split off the first two words on a line:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example: Read pairs of numbers (x,y) from a file  <a name="___sec34"></a></h2>
+<h2 id="___sec34">Example: Read pairs of numbers (x,y) from a file </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Sample file:</b>
-<p>
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1444,12 +1243,9 @@ Split off the first two words on a line:
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Algorithm:</b>
-<p>
-
 <ol>
 <p><li> Read line by line</li>
 <p><li> For each line, split line into words</li>
@@ -1457,21 +1253,15 @@ Split off the first two words on a line:
    and split the rest wrt comma</li>
 </ol>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The code for reading pairs  <a name="___sec35"></a></h2>
+<h2 id="___sec35">The code for reading pairs </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1489,21 +1279,15 @@ pairs = []   <span style="color: #228B22"># list of (n1, n2) pairs of numbers</s
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Output of a pretty print of the pairs list  <a name="___sec36"></a></h2>
+<h2 id="___sec36">Output of a pretty print of the pairs list </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1519,16 +1303,11 @@ pairs = []   <span style="color: #228B22"># list of (n1, n2) pairs of numbers</s
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Alternative solution: Python syntax in file format  <a name="___sec37"></a></h2>
+<h2 id="___sec37">Alternative solution: Python syntax in file format </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1564,16 +1343,11 @@ pairs = <span style="color: #658b00">eval</span>(text)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Web pages are nothing but text files  <a name="___sec38"></a></h2>
+<h2 id="___sec38">Web pages are nothing but text files </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1604,34 +1378,23 @@ if desired.
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The web page generated by HTML code from the previous slide  <a name="___sec39"></a></h2>
+<h2 id="___sec39">The web page generated by HTML code from the previous slide </h2>
 
 <p>
 <center><p><img src="fig-files/simple_webpage.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Programs can extract data from web pages  <a name="___sec40"></a></h2>
+<h2 id="___sec40">Programs can extract data from web pages </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
  <p><li> A program can download a web page, as an HTML file, and extract data by interpreting the text in the file (using string operations).</li>
  <p><li> Example: <a href="http://www.metoffice.gov.uk/climate/uk/stationdata/" target="_blank">climate data from the UK</a></li>
@@ -1651,16 +1414,11 @@ urllib.urlretrieve(url, filename=<span style="color: #CD5555">&#39;Oxford.txt&#3
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The structure of the Oxfort.txt weather data file  <a name="___sec41"></a></h2>
+<h2 id="___sec41">The structure of the Oxfort.txt weather data file </h2>
 
 <p>
 
@@ -1685,20 +1443,15 @@ Sunshine data taken <span style="color: #8B008B; font-weight: bold">from</span> 
    <span style="color: #B452CD">2010</span>   <span style="color: #B452CD">7</span>   <span style="color: #B452CD">23.3</span>*   <span style="color: #B452CD">14.1</span>*      <span style="color: #B452CD">0</span>*   <span style="color: #B452CD">24.4</span>*  <span style="color: #B452CD">184.4</span>*  Provisional
    <span style="color: #B452CD">2010</span>  <span style="color: #B452CD">10</span>   <span style="color: #B452CD">14.6</span>     <span style="color: #B452CD">7.4</span>       <span style="color: #B452CD">2</span>    <span style="color: #B452CD">43.5</span>   <span style="color: #B452CD">128.8</span>   Provisional
 </pre></div>
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Reading the climate data  <a name="___sec42"></a></h2>
+<h2 id="___sec42">Reading the climate data </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Algorithm:</b>
-<p>
-
 <ol>
  <p><li> Read the place and location in the file header</li>
  <p><li> Skip the next 5 (for us uninteresting) lines</li>
@@ -1707,11 +1460,9 @@ Sunshine data taken <span style="color: #8B008B; font-weight: bold">from</span> 
 </ol>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Program, part 1:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1726,21 +1477,15 @@ data[<span style="color: #CD5555">&#39;location&#39;</span>] = infile.readline()
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Reading the climate data - program, part 2  <a name="___sec43"></a></h2>
+<h2 id="___sec43">Reading the climate data - program, part 2 </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Program, part 2:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1764,21 +1509,15 @@ data[<span style="color: #CD5555">&#39;location&#39;</span>] = infile.readline()
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Reading the climate data - program, part 3  <a name="___sec44"></a></h2>
+<h2 id="___sec44">Reading the climate data - program, part 3 </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Program, part 3.</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1795,16 +1534,11 @@ data[<span style="color: #CD5555">&#39;location&#39;</span>] = infile.readline()
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Summary of dictionary functionality  <a name="___sec45"></a></h2>
+<h2 id="___sec45">Summary of dictionary functionality </h2>
 
 <p>
 <table border="1">
@@ -1829,19 +1563,15 @@ data[<span style="color: #CD5555">&#39;location&#39;</span>] = infile.readline()
 <tr><td align="left">   <code>isinstance(a, dict)</code>                   </td> <td align="left">   is <code>True</code> if <code>a</code> is a dictionary                       </td> </tr>
 </tbody>
 </table>
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Summary of some string operations  <a name="___sec46"></a></h2>
+<h2 id="___sec46">Summary of some string operations </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1860,9 +1590,6 @@ s.strip()        <span style="color: #228B22"># remove leading/trailing blanks</
 </pre></div>
 
 </div>
-
-
-
 </section>
 
 

@@ -199,8 +199,10 @@ $$
 
 <center>[1] <b style="font-weight: bold">Simula Research Laboratory</b></center>
 <center>[2] <b style="font-weight: bold">University of Oslo, Dept. of Informatics</b></center>
+<br>
 <p>
-<center><b style="font-weight: bold">Apr 19, 2015</b></center> <!-- date -->
+<center><b style="font-weight: bold">Aug 15, 2015</b></center> <!-- date -->
+<br>
 </section>
 
 
@@ -670,12 +672,13 @@ Output from calculations often contain text and numbers, e.g.,
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">At t=0.6 s, y is 1.23 m.
 </pre></div>
 <p>
- We want to control the formatting of numbers: no of decimals, style: <code>0.6</code> vs <code>6E-01</code> or <code>6.0e-01</code>. So-called <em>printf formatting</em> is useful for this purpose:
+We want to control the formatting of numbers: no of decimals, style: <code>0.6</code> vs <code>6E-01</code> or <code>6.0e-01</code>. So-called <em>printf formatting</em> is useful for this purpose:
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;At t=%g s, y is %.2f m.&#39;</span> % (t, y)
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">t = <span style="color: #B452CD">0.6</span>;  y = <span style="color: #B452CD">1.2342</span>
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;At t=%g s, y is %.2f m.&#39;</span> % (t, y)
 </pre></div>
 <p>
 The printf format has &quot;slots&quot; where the variables listed at the end are put: <code>%g</code> \( \leftarrow \) <code>t</code>, <code>%.2f</code> \( \leftarrow \) <code>y</code>
@@ -907,10 +910,11 @@ Here blanks do matter:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">while</span> counter &lt;= <span style="color: #B452CD">10</span>:
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">counter = <span style="color: #B452CD">1</span>
+<span style="color: #8B008B; font-weight: bold">while</span> counter &lt;= <span style="color: #B452CD">4</span>:
     counter = counter + <span style="color: #B452CD">1</span>   <span style="color: #228B22"># correct (4 leading blanks)</span>
 
-<span style="color: #8B008B; font-weight: bold">while</span> counter &lt;= <span style="color: #B452CD">10</span>:
+<span style="color: #8B008B; font-weight: bold">while</span> counter &lt;= <span style="color: #B452CD">4</span>:
 counter = counter + <span style="color: #B452CD">1</span>       <span style="color: #228B22"># invalid syntax</span>
 </pre></div>
 <p>

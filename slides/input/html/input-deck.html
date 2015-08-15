@@ -83,9 +83,10 @@ git://github.com/barraq/deck.ext.js.git
 <link rel="stylesheet" href="deck.js/themes/style/beamer.css">
 -->
 
-<!-- Transition theme. More available in /themes/transition/ or create your own. -->
-<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
 <!--
+Transition theme. More available in /themes/transition/ or create your own. -->
+<!--
+<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
 <link rel="stylesheet" href="deck.js/themes/transition/fade.css">
 <link rel="stylesheet" href="deck.js/themes/transition/vertical-slide.css">
 <link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
@@ -95,31 +96,39 @@ git://github.com/barraq/deck.ext.js.git
 <script src="deck.js/modernizr.custom.js"></script>
 
 <style type="text/css">
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
-    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .slide .alert-text-small   { font-size: 80%;  }
-    .slide .alert-text-large   { font-size: 130%; }
-    .slide .alert-text-normal  { font-size: 90%;  }
-    .slide .alert {
-             padding:8px 35px 8px 14px; margin-bottom:18px;
-             text-shadow:0 1px 0 rgba(255,255,255,0.5);
-             border:5px solid #bababa;
-               -webkit-border-radius:14px; -moz-border-radius:14px;
-             border-radius:14px
-             background-position: 10px 10px;
-             background-repeat: no-repeat;
-             background-size: 38px;
-             padding-left: 30px; /* 55px; if icon */
-     }
-     .slide .alert-block {padding-top:14px; padding-bottom:14px}
-     .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
-     /*.slide .alert li {margin-top: 1em}*/
-     .deck .alert-block p+p {margin-top:5px}
-     /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
-     .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
-     .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
-     .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+/* Override h1, h2, ... styles */
+h1 { font-size: 2.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.3em; }
+h1, h2, h3, h4 { font-weight: bold; line-height: 1.2; }
+body { overflow: auto; } /* vertical scrolling */
+
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.slide .alert-text-small   { font-size: 80%;  }
+.slide .alert-text-large   { font-size: 130%; }
+.slide .alert-text-normal  { font-size: 90%;  }
+.slide .alert {
+     padding:8px 35px 8px 14px; margin-bottom:18px;
+     text-shadow:0 1px 0 rgba(255,255,255,0.5);
+     border:5px solid #bababa;
+       -webkit-border-radius:14px; -moz-border-radius:14px;
+     border-radius:14px
+     background-position: 10px 10px;
+     background-repeat: no-repeat;
+     background-size: 38px;
+     padding-left: 30px; /* 55px; if icon */
+ }
+ .slide .alert-block {padding-top:14px; padding-bottom:14px}
+ .slide .alert-block > p, .alert-block > ul {margin-bottom:0}
+ /*.slide .alert li {margin-top: 1em}*/
+ .deck .alert-block p+p {margin-top:5px}
+ /*.slide .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_notice.png); }
+ .slide .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_summary.png); }
+ .slide .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images//small_gray_warning.png); }
+ .slide .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
 
 </style>
 
@@ -176,9 +185,7 @@ $$
 <section class="slide">
 <!-- ------------------- main content ---------------------- -->
 
-
-
-<center><h1>Ch.4: User input and error handling</h1></center>  <!-- document title -->
+<h2 style="text-align: center;">Ch.4: User input and error handling</h2>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -187,32 +194,29 @@ $$
 <b style="font-weight: bold">Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
 <center>[1] <b style="font-weight: bold">Simula Research Laboratory</b></center>
 <center>[2] <b style="font-weight: bold">University of Oslo, Dept. of Informatics</b></center>
+<br>
 <p>
-<center><h4>Sep 9, 2014</h4></center> <!-- date -->
-<p>
-
+<center><b style="font-weight: bold">Aug 15, 2015</b></center> <!-- date -->
+<br>
 </section>
 
 
 <section class="slide">
 
-<h2>Programs until now hardcode input data  <a name="___sec0"></a></h2>
+<h2 id="___sec0">Programs until now hardcode input data </h2>
 
 <p>&nbsp;<br>
 $$ y = v_0t - 0.5gt^2 $$
 <p>&nbsp;<br>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -226,66 +230,63 @@ y = v0*t - <span style="color: #B452CD">0.5</span>*g*t**<span style="color: #B45
 Note:
 
 <ul>
-  <p><li> Input data (\( v_0 \), \( t \)) are hardcoded (explicitly set)</li>
-  <p><li> Changing input data requires <em>editing</em></li>
-  <p><li> This is considered bad programming <br />
+
+<p><li> Input data (\( v_0 \), \( t \)) are hardcoded (explicitly set)</li>
+
+<p><li> Changing input data requires <em>editing</em></li>
+
+<p><li> This is considered bad programming <br />
     (because editing programs may easily introduce errors!)</li>
-  <p><li> Rule: read input from user - avoid editing a correct program</li>
+
+<p><li> Rule: read input from user - avoid editing a correct program</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>How do professional programs get their input?  <a name="___sec1"></a></h2>
+<h2 id="___sec1">How do professional programs get their input? </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> Consider a web browser: how do you specify a web address? How do you change the font?</li>
-  <p><li> You don't need to go into the program and edit it...</li>
+
+<p><li> Consider a web browser: how do you specify a web address? How do you change the font?</li>
+
+<p><li> You don't need to go into the program and edit it...</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>How can we specify input data in programs?  <a name="___sec2"></a></h2>
+<h2 id="___sec2">How can we specify input data in programs? </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> Hardcode values</li>
-  <p><li> Ask the user questions and read answers</li>
-  <p><li> Read command-line arguments</li>
-  <p><li> Read data from a file</li>
+
+<p><li> Hardcode values</li>
+
+<p><li> Ask the user questions and read answers</li>
+
+<p><li> Read command-line arguments</li>
+
+<p><li> Read data from a file</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Getting input from questions and anwsers  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Getting input from questions and anwsers </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -308,7 +309,7 @@ F = (<span style="color: #B452CD">9.</span>/<span style="color: #B452CD">5</span
 <span style="color: #8B008B; font-weight: bold">print</span> F
 </pre></div>
 <p>
-Testing:
+Running in a terminal window:
 
 <p>
 
@@ -319,20 +320,16 @@ C=? 21
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Another example: print the n first even numbers  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Another example: print the n first even numbers </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -350,20 +347,16 @@ C=? 21
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Command-line arguments are words written after the program name  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Command-line arguments are words written after the program name </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Examples on command-line arguments:</b>
-<p>
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
@@ -374,20 +367,16 @@ Terminal&gt; ls -l
 <p>
 Unix programs (<code>rm</code>, <code>ls</code>, <code>cp</code>, ...) make heavy use of command-line arguments, (see e.g. <code>man ls</code>). We shall do the same.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>How to use a command-line argument in our sample program  <a name="___sec6"></a></h2>
+<h2 id="___sec6">How to use a command-line argument in our sample program </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
@@ -417,17 +406,14 @@ F = <span style="color: #B452CD">9.0</span>*C/<span style="color: #B452CD">5</sp
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Command-line arguments are separated by blanks  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Command-line arguments are separated by blanks </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -451,23 +437,20 @@ Terminal&gt; python print_cml.py 21 &quot;string with blanks&quot; 1.3
 [&#39;21&#39;, &#39;string with blanks&#39;, &#39;1.3&#39;]
 </pre></div>
 <p>
-Note 1: use quotes, as in <code>"string with blanks"</code>, to override the rule
+Note 1: use quotes, as in <code>&quot;string with blanks&quot;</code>, to override the rule
 that command-line arguments are separate by blanks.
 
 <p>
 Note 2: all list elements are surrounded by quotes, demonstrating that command-line arguments are strings.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>The magic eval function turns a string into live code  <a name="___sec8"></a></h2>
+<h2 id="___sec8">The magic eval function turns a string into live code </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -492,17 +475,14 @@ written directly into the program
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Note: be careful with eval and string values  <a name="___sec9"></a></h2>
+<h2 id="___sec9">Note: be careful with eval and string values </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -535,20 +515,16 @@ r = <span style="color: #658b00">eval</span>(s)                <span style="colo
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>With eval, a little program can do much...  <a name="___sec10"></a></h2>
+<h2 id="___sec10">With eval, a little program (<code>add_input.py</code>) can do much... </h2>
 
-<div class="alert alert-block alert-block alert-text-normal">
-<b style="font-weight: bold">Program <code>add_input.py</code>:</b>
 <p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Program:</b>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -560,7 +536,6 @@ r = i1 + i2
 </pre></div>
 
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -591,20 +566,16 @@ with value [1, 2, -1, 0, 1]
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>This great flexibility also quickly breaks programs...  <a name="___sec11"></a></h2>
+<h2 id="___sec11">This great flexibility also quickly breaks programs... </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
@@ -634,28 +605,24 @@ TypeError: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>A similar magic function: exec  <a name="___sec12"></a></h2>
+<h2 id="___sec12">A similar magic function: exec </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> <code>eval(s)</code> evaluates an <em>expression</em> <code>s</code></li>
-  <p><li> <code>eval('r = 1+1')</code> is illegal because this is a statement, not only an expression</li>
-  <p><li> ...but we can use <code>exec</code> to turn one or more complete statements into live code:</li>
-</ul>
-<p>
 
+<p><li> <code>eval(s)</code> evaluates an <em>expression</em> <code>s</code></li>
+
+<p><li> <code>eval('r = 1+1')</code> is illegal because this is a statement, not only an expression</li>
+
+<p><li> ...but we can use <code>exec</code> to turn one or more complete statements into live code:</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -679,17 +646,14 @@ For longer code we can use multi-line strings:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>exec can be used for building a function at run-time  <a name="___sec13"></a></h2>
+<h2 id="___sec13">exec can be used for building a function at run-time </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -703,7 +667,8 @@ code = <span style="color: #CD5555">&quot;&quot;&quot;</span>
 <span style="color: #CD5555">def f(x):</span>
 <span style="color: #CD5555">    return %s</span>
 <span style="color: #CD5555">&quot;&quot;&quot;</span> % formula
-<span style="color: #8B008B; font-weight: bold">exec</span>(code)     <span style="color: #228B22"># turn string formula into live function</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> *  <span style="color: #228B22"># make sure we have sin, cos, log, etc</span>
+<span style="color: #8B008B; font-weight: bold">exec</span>(code)          <span style="color: #228B22"># turn string formula into live function</span>
 
 <span style="color: #228B22"># Ask the user for x values and evaluate f(x)</span>
 x = <span style="color: #B452CD">0</span>
@@ -716,30 +681,26 @@ x = <span style="color: #B452CD">0</span>
 <p>
 While the program is running, the user types a formula, which becomes a function, the user gives <code>x</code> values until the answer is <code>None</code>, and the program evaluates the function <code>f(x)</code>. Note: the programmer knows nothing about the user's choice of <code>f(x)</code> when she writes the program (!).
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>We can run the program in the Python Online Tutor  <a name="___sec14"></a></h2>
+<h2 id="___sec14">We can run the program in the Python Online Tutor </h2>
 
+<p>
 
 <iframe width="950" height="500" frameborder="0"
-        src="http://pythontutor.com/iframe-embed.html#code=formula+%3D+raw_input%28%27Write+a+formula+involving+x%3A+%27%29%0Acode+%3D+%22%22%22%0Adef+f%28x%29%3A%0A++++return+%25s%0A%22%22%22+%25+formula%0Aexec%28code%29+++++%23+turn+string+formula+into+live+function%0A%0A%23+Ask+the+user+for+x+values+and+evaluate+f%28x%29%0Ax+%3D+0%0Awhile+x+is+not+None%3A%0A++++x+%3D+eval%28raw_input%28%27Give+x+%28None+to+quit%29%3A+%27%29%29%0A++++if+x+is+not+None%3A%0A++++++++y+%3D+f%28x%29%0A++++++++print+%27f%28%25g%29%3D%25g%27+%25+%28x%2C+y%29&curInstr=0&py=2&cumulative=false">
+        src="http://pythontutor.com/iframe-embed.html#code=formula+%3D+raw_input%28%27Write+a+formula+involving+x%3A+%27%29%0Acode+%3D+%22%22%22%0Adef+f%28x%29%3A%0A++++return+%25s%0A%22%22%22+%25+formula%0Afrom+math+import+%2A++%23+make+sure+we+have+sin%2C+cos%2C+log%2C+etc%0Aexec%28code%29++++++++++%23+turn+string+formula+into+live+function%0A%0A%23+Ask+the+user+for+x+values+and+evaluate+f%28x%29%0Ax+%3D+0%0Awhile+x+is+not+None%3A%0A++++x+%3D+eval%28raw_input%28%27Give+x+%28None+to+quit%29%3A+%27%29%29%0A++++if+x+is+not+None%3A%0A++++++++y+%3D+f%28x%29%0A++++++++print+%27f%28%25g%29%3D%25g%27+%25+%28x%2C+y%29&curInstr=0&py=2&cumulative=false">
 </iframe>
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>StringFunction: turn string formulas into Python functions  <a name="___sec15"></a></h2>
+<h2 id="___sec15">StringFunction: turn string formulas into Python functions </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -753,6 +714,7 @@ It is common for programs to read formulas and turn them into functions so we ha
 &gt;&gt;&gt; f = StringFunction(formula)
 &gt;&gt;&gt; f(<span style="color: #B452CD">0</span>)
 <span style="color: #B452CD">0.0</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> pi
 &gt;&gt;&gt; f(pi)
 <span style="color: #B452CD">2.8338239229952166e-15</span>
 &gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #658b00">str</span>(f)
@@ -772,53 +734,42 @@ g.set_parameters(A=<span style="color: #B452CD">2</span>, x=<span style="color: 
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Example: program for numerical differentiation  <a name="___sec16"></a></h2>
-
-
-<p class="slide">
-
-<div class="slide alert alert-block alert-block alert-text-normal">
-<b style="font-weight: bold">Usage:</b>
-
-
-
-<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; python diff.py &#39;exp(x)*sin(x)&#39; 3.4
-Numerical derivative: -36.6262969164
-</pre></div>
-
-Differentiate \( e^x\sin x \) at \( x=3.4 \) numerically.
-</div>
-
-
-</p>
-
+<h2 id="___sec16">Example: program for numerical differentiation </h2>
 
 <p>
 
-<p class="slide">
+<div class="slide alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Usage:</b>
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="slide" class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; python diff.py &#39;exp(x)*sin(x)&#39; 3.4
+Numerical derivative: -36.6262969164
+</pre></div>
+<p>
+Differentiate \( e^x\sin x \) at \( x=3.4 \) numerically.
+</div>
+
+<p>
 
 <div class="slide alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Implementation:</b>
-
-&nbsp;<br>&nbsp;<br>
+<p>&nbsp;<br>
 $$ f'(x)\approx \frac{f(x+h)-f(x-h)}{2h}\quad (h\mbox{ small}) $$
-&nbsp;<br>&nbsp;<br>
+<p>&nbsp;<br>
 
+<p>
+<!-- Must use pypro-t here since the notebook cannot handle sys.argv[1] -->
 
-
+<p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+<div class="slide" class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.std</span> <span style="color: #8B008B; font-weight: bold">import</span> StringFunction
 f = StringFunction(sys.argv[<span style="color: #B452CD">1</span>], independent_variable=<span style="color: #CD5555">&#39;x&#39;</span>)
 x = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">2</span>])
@@ -830,23 +781,16 @@ x = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452
 </pre></div>
 
 </div>
-
-
-</p>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Can we extend the program to also include symbolic differentiation? (Yes, but the code is advanced...)  <a name="___sec17"></a></h2>
+<h2 id="___sec17">We can extend the program to also include symbolic differentiation </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
@@ -861,16 +805,13 @@ Program extension:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #228B22"># Import all sin, cos, exp, ... functions from sympy such that</span>
-<span style="color: #228B22"># we can build a sympy expression out of str(f)</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sympy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
-x_value = x   <span style="color: #228B22"># store the value of x, x will be used as symbol</span>
-x = sympy.symbols(<span style="color: #CD5555">&#39;x&#39;</span>)  <span style="color: #228B22"># need x as symbol for the next statement</span>
-<span style="color: #228B22"># Turn the string formula in f into a sympy expression</span>
-formula = <span style="color: #658b00">eval</span>(<span style="color: #658b00">str</span>(f))  <span style="color: #228B22"># ex: eval(&#39;exp(x)*sin(x)&#39;)</span>
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sympy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">sym</span>
+x_value = x   <span style="color: #228B22"># store the value of x; x will be used as symbol</span>
+x = sym.symbols(<span style="color: #CD5555">&#39;x&#39;</span>)  <span style="color: #228B22"># need x as symbol</span>
+formula = sym.sympify(<span style="color: #658b00">str</span>(f))  <span style="color: #228B22"># turn f into sympy expression</span>
 
 <span style="color: #228B22"># Differentiate formula wrt symbol x</span>
-dfdx = diff(formula, x)
+dfdx = sym.diff(formula, x)
 <span style="color: #228B22"># Substitute symbol x by x_value</span>
 dfdx_value = dfdx.subs(x, x_value)
 
@@ -880,21 +821,16 @@ dfdx_value = dfdx.subs(x, x_value)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Example on reading 4 parameters from the command line  <a name="___sec18"></a></h2>
+<h2 id="___sec18">Example on reading 4 parameters from the command line </h2>
 
 <p>&nbsp;<br>
 $$ s(t)=s_0 + v_0t + {1\over2}at^2$$
 <p>&nbsp;<br>
-
 
 <p>
 Input data: \( s_0 \) (initial location), \( v_0 \) (initial velocity), \( a \) (constant acceleration) and \( t \) (time)
@@ -931,17 +867,14 @@ s  = s0 + v0*t + <span style="color: #B452CD">0.5</span>*a*t*t
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Command-line arguments with options  <a name="___sec19"></a></h2>
+<h2 id="___sec19">Command-line arguments with options </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -961,20 +894,16 @@ we provide only the values we want to change.
 Such option-value pairs make it easier to understand what the input
 is (cf. keyword arguments).
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Programming option-value pairs with the argparse module  <a name="___sec20"></a></h2>
+<h2 id="___sec20">Programming option-value pairs with the argparse module </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1005,17 +934,14 @@ s = s0 + v0*t + <span style="color: #B452CD">0.5</span>*a*t**<span style="color:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>The program has long and short command-line arguments  <a name="___sec21"></a></h2>
+<h2 id="___sec21">The program has long and short command-line arguments </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1029,76 +955,68 @@ Terminal&gt; python location.py --initial_velocity 1.2 --time 0.2
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Graphical user interfaces  <a name="___sec22"></a></h2>
+<h2 id="___sec22">Graphical user interfaces </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
+<ul>
+
+<p><li> Most programs today fetch input data from <em>graphical user interfaces</em> (GUI), consisting of windows and graphical elements on the screen: buttons, menus, text fields, etc.</li>
+
+<p><li> Why don't we learn to make such type of programs?</li>
 
 <ul>
-  <p><li> Most programs today fetch input data from <em>graphical user interfaces</em> (GUI), consisting of windows and graphical elements on the screen: buttons, menus, text fields, etc.</li>
-  <p><li> Why don't we learn to make such type of programs?</li>
 
-<ul>
-    <p><li> GUI demands much extra complicated programming</li>
-    <p><li> Experienced users often prefer command-line input</li>
-    <p><li> Programs with command-line or file input can easily be combined with each other, this is difficult with GUI-based programs</li>
+<p><li> GUI demands much extra complicated programming</li>
+
+<p><li> Experienced users often prefer command-line input</li>
+
+<p><li> Programs with command-line or file input can easily be combined with each other, this is difficult with GUI-based programs</li>
 </ul>
-<p>
+<p><li> Assertion: command-line input will probably fill all your needs in university courses</li>
 
-  <p><li> Assertion: command-line input will probably fill all your needs in university courses</li>
-  <p><li> But let's have a look at GUI programming!</li>
+<p><li> But let's have a look at GUI programming!</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>A graphical Celsius-Fahrenheit conversion program  <a name="___sec23"></a></h2>
+<h2 id="___sec23">A graphical Celsius-Fahrenheit conversion program </h2>
 
+<p>
 <center><p><img src="fig-input/c2f_gui.png" align="bottom" width=360></p></center>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> The Celsius degrees can be filled in as a number in a field</li>
-  <p><li> Clicking the "is" button computes the corresponding Fahrenheit temperature</li>
+
+<p><li> The Celsius degrees can be filled in as a number in a field</li>
+
+<p><li> Clicking the "is" button computes the corresponding Fahrenheit temperature</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>The GUI code  <a name="___sec24"></a></h2>
+<h2 id="___sec24">The GUI code </h2>
 
+<p>
 <center><p><img src="fig-input/c2f_gui.png" align="bottom" width=360></p></center>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1126,17 +1044,14 @@ root.mainloop()
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Reading data from files  <a name="___sec25"></a></h2>
+<h2 id="___sec25">Reading data from files </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1144,11 +1059,9 @@ Scientific data are often available in files. We want to read the data
 into objects in a program to compute with the data.
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Example on a data file.</b>
-<p>
 <p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
@@ -1162,17 +1075,14 @@ into objects in a program to compute with the data.
 <p>
 One number on each line. How can we read these numbers?
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Reading a file line by line  <a name="___sec26"></a></h2>
+<h2 id="___sec26">Reading a file line by line </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1198,24 +1108,22 @@ mean = <span style="color: #B452CD">0</span>
     number = <span style="color: #658b00">float</span>(line)          <span style="color: #228B22"># line is string</span>
     mean = mean + number
 mean = mean/<span style="color: #658b00">len</span>(lines)
+<span style="color: #8B008B; font-weight: bold">print</span> mean
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Alternative ways to read a file  <a name="___sec27"></a></h2>
+<h2 id="___sec27">Alternative ways to read a file </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
-Read all lines at ones into a list of strings (lines):
+Read all lines at once into a list of strings (lines):
 
 <p>
 
@@ -1223,6 +1131,7 @@ Read all lines at ones into a list of strings (lines):
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">lines = infile.readlines()
 <span style="color: #8B008B; font-weight: bold">for</span> line <span style="color: #8B008B">in</span> lines:
     <span style="color: #228B22"># process line</span>
+infile.close()
 </pre></div>
 <p>
 The modern <code>with</code> statement:
@@ -1245,6 +1154,7 @@ The old-fashioned <code>while</code> construction:
     <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #8B008B">not</span> line:
         <span style="color: #8B008B; font-weight: bold">break</span>
     <span style="color: #228B22"># process line</span>
+infile.close()
 </pre></div>
 <p>
 Reading the whole file into a string:
@@ -1257,22 +1167,87 @@ Reading the whole file into a string:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Most data files contain text mixed with numbers  <a name="___sec28"></a></h2>
+<h2 id="___sec28">Demo of file reading </h2>
 
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">File:</b>
+<p>
+Line 1.
+Line 2.
+Line 3.
+Line 4.
+</div>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Session:</b>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; infile = <span style="color: #658b00">open</span>(<span style="color: #CD5555">&#39;tmp.txt&#39;</span>, <span style="color: #CD5555">&#39;r&#39;</span>)
+&gt;&gt;&gt; lines = infile.readlines()  <span style="color: #228B22"># read all lines</span>
+&gt;&gt;&gt; lines
+[<span style="color: #CD5555">&#39;Line 1.\n&#39;</span>, <span style="color: #CD5555">&#39;Line 2.\n&#39;</span>, <span style="color: #CD5555">&#39;Line 3.\n&#39;</span>, <span style="color: #CD5555">&#39;Line 4.\n&#39;</span>]
+&gt;&gt;&gt; infile.readline()  <span style="color: #228B22"># no more to read</span>
+<span style="color: #CD5555">&#39;&#39;</span>
+&gt;&gt;&gt; infile = <span style="color: #658b00">open</span>(<span style="color: #CD5555">&#39;tmp.txt&#39;</span>, <span style="color: #CD5555">&#39;r&#39;</span>)
+&gt;&gt;&gt; infile.readline()    <span style="color: #228B22"># read one line</span>
+<span style="color: #CD5555">&#39;Line 1.\n&#39;</span>
+&gt;&gt;&gt; infile.readline()    <span style="color: #228B22"># read next line</span>
+<span style="color: #CD5555">&#39;Line 2.\n&#39;</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">for</span> line <span style="color: #8B008B">in</span> infile:  <span style="color: #228B22"># read the next lines to the end</span>
+...     <span style="color: #8B008B; font-weight: bold">print</span> line
+...
+Line <span style="color: #B452CD">3.</span>
+Line <span style="color: #B452CD">4.</span>
+</pre></div>
+
+</div>
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec29">More demo of file reading and string splitting </h2>
+
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
-Data about rainfall:
 
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; infile = <span style="color: #658b00">open</span>(<span style="color: #CD5555">&#39;tmp.txt&#39;</span>, <span style="color: #CD5555">&#39;r&#39;</span>)
+&gt;&gt;&gt; filestr = infile.read()
+&gt;&gt;&gt; filestr
+<span style="color: #CD5555">&#39;Line 1.\nLine 2.\nLine 3.\nLine 4.\n&#39;</span>
+
+&gt;&gt;&gt; filestr.split()  <span style="color: #228B22"># split out all words</span>
+[<span style="color: #CD5555">&#39;Line&#39;</span>, <span style="color: #CD5555">&#39;1.&#39;</span>, <span style="color: #CD5555">&#39;Line&#39;</span>, <span style="color: #CD5555">&#39;2.&#39;</span>, <span style="color: #CD5555">&#39;Line&#39;</span>, <span style="color: #CD5555">&#39;3.&#39;</span>, <span style="color: #CD5555">&#39;Line&#39;</span>, <span style="color: #CD5555">&#39;4.&#39;</span>]
+
+&gt;&gt;&gt; line = <span style="color: #CD5555">&#39;Line 3.\n&#39;</span>
+&gt;&gt;&gt; line.split()
+[<span style="color: #CD5555">&#39;Line&#39;</span>, <span style="color: #CD5555">&#39;3.&#39;</span>]
+&gt;&gt;&gt; line.split(<span style="color: #CD5555">&#39;e&#39;</span>)
+[<span style="color: #CD5555">&#39;Lin&#39;</span>, <span style="color: #CD5555">&#39; 3.\n&#39;</span>]
+</pre></div>
+
+</div>
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec30">Most data files contain text mixed with numbers </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">File with data about rainfall:</b>
 <p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
@@ -1294,17 +1269,14 @@ Year 792.9
 <p>
 How do we read such a file?
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Reading a mixture of text and numbers  <a name="___sec29"></a></h2>
+<h2 id="___sec31">Reading a mixture of text and numbers </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1328,34 +1300,25 @@ Can split with respect to any string <code>s</code>: <code>line.split(s)</code>
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; line = <span style="color: #CD5555">&#39;Values: 1.2, 1.4, 2.7&#39;</span>
-&gt;&gt;&gt; line.split()
-[<span style="color: #CD5555">&#39;Values:&#39;</span>, <span style="color: #CD5555">&#39;1.2,&#39;</span>, <span style="color: #CD5555">&#39;1.4,&#39;</span>, <span style="color: #CD5555">&#39;2.7&#39;</span>]
-&gt;&gt;&gt; line.split(<span style="color: #CD5555">&#39;:&#39;</span>)
-[<span style="color: #CD5555">&#39;Values&#39;</span>, <span style="color: #CD5555">&#39; 1.2, 1.4, 2.7&#39;</span>]
-&gt;&gt;&gt; text, values = line.split(<span style="color: #CD5555">&#39;:&#39;</span>)
-&gt;&gt;&gt; values.split(<span style="color: #CD5555">&#39;,&#39;</span>)
-[<span style="color: #CD5555">&#39; 1.2&#39;</span>, <span style="color: #CD5555">&#39; 1.4&#39;</span>, <span style="color: #CD5555">&#39; 2.7&#39;</span>]
-&gt;&gt;&gt; values = [<span style="color: #658b00">float</span>(v) <span style="color: #8B008B; font-weight: bold">for</span> v <span style="color: #8B008B">in</span> values.split(<span style="color: #CD5555">&#39;,&#39;</span>)]
-&gt;&gt;&gt; values
-[<span style="color: #B452CD">1.2</span>, <span style="color: #B452CD">1.4</span>, <span style="color: #B452CD">2.7</span>]
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; line = <span style="color: #CD5555">&#39;Oct  117.7&#39;</span>
+&gt;&gt;&gt; words = line.split()
+&gt;&gt;&gt; words
+[<span style="color: #CD5555">&#39;Oct&#39;</span>, <span style="color: #CD5555">&#39;117.7,&#39;</span>]
+&gt;&gt;&gt; <span style="color: #658b00">type</span>(words[<span style="color: #B452CD">1</span>])   <span style="color: #228B22"># string, not a number!</span>
+&lt;<span style="color: #658b00">type</span> <span style="color: #CD5555">&#39;str&#39;</span>&gt;
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Complete program for reading rainfall data  <a name="___sec30"></a></h2>
+<h2 id="___sec32">Complete program for reading rainfall data </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
@@ -1383,17 +1346,14 @@ months, values, avg = extract_data(<span style="color: #CD5555">&#39;rainfall.da
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Writing data to file  <a name="___sec31"></a></h2>
+<h2 id="___sec33">Writing data to file </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1410,19 +1370,16 @@ Basic pattern:
 outfile.close()
 </pre></div>
 <p>
-Can append text to a file with <code>open(filename, 'a')</code>.
+Can <em>append</em> text to a file with <code>open(filename, 'a')</code>.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Example: Writing a table to file  <a name="___sec32"></a></h2>
+<h2 id="___sec34">Example: Writing a table to file </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Problem:</b>
 <p>
@@ -1430,23 +1387,20 @@ We have a nested list (rows and columns):
 
 <p>
 
-<!-- code=text (!bc ccq) typeset with pygments style "perldoc" -->
-<blockquote>
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">data = \
-[[ 0.75,        0.29619813, -0.29619813, -0.75      ],
- [ 0.29619813,  0.11697778, -0.11697778, -0.29619813],
- [-0.29619813, -0.11697778,  0.11697778,  0.29619813],
- [-0.75,       -0.29619813,  0.29619813,  0.75      ]]
+[[ <span style="color: #B452CD">0.75</span>,        <span style="color: #B452CD">0.29619813</span>, -<span style="color: #B452CD">0.29619813</span>, -<span style="color: #B452CD">0.75</span>      ],
+ [ <span style="color: #B452CD">0.29619813</span>,  <span style="color: #B452CD">0.11697778</span>, -<span style="color: #B452CD">0.11697778</span>, -<span style="color: #B452CD">0.29619813</span>],
+ [-<span style="color: #B452CD">0.29619813</span>, -<span style="color: #B452CD">0.11697778</span>,  <span style="color: #B452CD">0.11697778</span>,  <span style="color: #B452CD">0.29619813</span>],
+ [-<span style="color: #B452CD">0.75</span>,       -<span style="color: #B452CD">0.29619813</span>,  <span style="color: #B452CD">0.29619813</span>,  <span style="color: #B452CD">0.75</span>      ]]
 </pre></div>
-</blockquote><p>
+<p>
 Write these data to file in tabular form
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Solution:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1460,11 +1414,9 @@ outfile.close()
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Resulting file:</b>
-<p>
 <p>
 
 <!-- code=text (!bc dat) typeset with pygments style "perldoc" -->
@@ -1475,17 +1427,65 @@ outfile.close()
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Our program stops with a strange error message if the command-line argument is missing  <a name="___sec33"></a></h2>
+<h2 id="___sec35">What is a file? </h2>
 
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<ul>
+
+<p><li> A file is a sequence of characters</li>
+
+<p><li> For simple text files, each character is one byte (=8 bits, a bit is 0 or 1), which gives \( 2^8=256 \) different characters</li>
+
+<p><li> (Text files in, e.g., Chinese and Japanese need several bytes for each character)</li>
+
+<p><li> Save the text "ABCD" to file in Gedit/Emacs and OpenOffice/Word and examine the file!</li>
+
+<p><li> File reading in Python is about either reading all characters (<code>read</code>) or
+    reading line by line (<code>readline</code>, <code>readlines</code>, <code>for line in fileobj</code>)</li>
+</ul>
+</div>
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec36">Back to a simple program that reads from the command line </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Code:</b>
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+C = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
+F = <span style="color: #B452CD">5.</span>/<span style="color: #B452CD">9</span>*C + <span style="color: #B452CD">32</span>
+<span style="color: #8B008B; font-weight: bold">print</span> F
+</pre></div>
+
+</div>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">Next topic:</b>
+<p>
+How to handle wrong input from the user?
+</div>
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec37">Our program stops with a strange error message if the command-line argument is missing </h2>
+
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1503,12 +1503,9 @@ IndexError: list index out of range
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Why?</b>
-<p>
-
 <ol>
 <p><li> The user forgot to provide a command-line argument</li>
 <p><li> <code>sys.argv</code> has then only one element, <code>sys.argv[0]</code>,
@@ -1519,17 +1516,14 @@ IndexError: list index out of range
    leads to <code>IndexError</code></li>
 </ol>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>We should handle errors in input!  <a name="___sec34"></a></h2>
+<h2 id="___sec38">We should handle errors in input! </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1556,27 +1550,22 @@ You failed to provide a command-line arg.!
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Exceptions as an alternative to if tests  <a name="___sec35"></a></h2>
+<h2 id="___sec39">Exceptions as an alternative to if tests </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> Rather than test <em>if something is wrong, recover from error, else do what we indended to do</em>, it is common in Python (and many other languages) to <em>try</em> to do what we indend to, and if it fails, we recover from the error</li>
-  <p><li> This principle makes use of a <code>try-except</code> block</li>
-</ul>
-<p>
 
+<p><li> Rather than test <em>if something is wrong, recover from error, else do what we indended to do</em>, it is common in Python (and many other languages) to <em>try</em> to do what we indend to, and if it fails, we recover from the error</li>
+
+<p><li> This principle makes use of a <code>try-except</code> block</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1588,17 +1577,14 @@ You failed to provide a command-line arg.!
 <p>
 If something goes wrong in the <code>try</code> block, Python raises an <em>exception</em> and the execution jumps immediately to the <code>except</code> block.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>The temperature conversion program with try-except  <a name="___sec36"></a></h2>
+<h2 id="___sec40">The temperature conversion program with try-except </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1631,17 +1617,14 @@ You failed to provide a command-line arg.!
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>It is good programming style to test for specific exceptions  <a name="___sec37"></a></h2>
+<h2 id="___sec41">It is good programming style to test for specific exceptions </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1665,7 +1648,7 @@ If any other exception arises, Python aborts the execution:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt;&gt; python c2f_cml_tmp.py 21C
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; python c2f_cml_tmp.py 21C
 Traceback (most recent call last):
   File &quot;tmp.py&quot;, line 3, in &lt;module&gt;
     C = float(sys.argv[1])
@@ -1673,20 +1656,16 @@ ValueError: invalid literal for float(): 21C
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Improvement: test for <code>IndexError</code> and <code>ValueError</code> exceptions  <a name="___sec38"></a></h2>
+<h2 id="___sec42">Improvement: test for <code>IndexError</code> and <code>ValueError</code> exceptions </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1717,48 +1696,41 @@ Celsius degrees must be a pure number, not &quot;21C&quot;
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>The programmer can raise exceptions  <a name="___sec39"></a></h2>
+<h2 id="___sec43">The programmer can raise exceptions </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
+<ul>
+
+<p><li> Instead of just letting Python raise exceptions, we can raise our own and tailor the message to the problem at hand</li>
+
+<p><li> We provide two examples on this:</li>
 
 <ul>
-  <p><li> Instead of just letting Python raise exceptions, we can raise our own and tailor the message to the problem at hand</li>
-  <p><li> We provide two examples on this:</li>
 
-<ul>
-    <p><li> catching an exception, but raising a new one with an improved (tailored) error message</li>
-    <p><li> raising an exception because of wrong input data</li>
+<p><li> catching an exception, but raising a new one with an improved (tailored) error message</li>
+
+<p><li> raising an exception because of wrong input data</li>
 </ul>
-<p>
-
-  <p><li> Baisc syntax: <code>raise ExceptionType(message)</code></li>
+<p><li> Baisc syntax: <code>raise ExceptionType(message)</code></li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Examples on re-raising exceptions with better messages  <a name="___sec40"></a></h2>
+<h2 id="___sec44">Examples on re-raising exceptions with better messages </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1781,20 +1753,16 @@ Celsius degrees must be a pure number, not &quot;21C&quot;
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Calling the previous function and running the program  <a name="___sec41"></a></h2>
+<h2 id="___sec45">Calling the previous function and running the program </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1825,21 +1793,18 @@ Terminal&gt; c2f_cml.py 21
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Making your own modules  <a name="___sec42"></a></h2>
+<h2 id="___sec46">Making your own modules </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
-We have frequently used modules:
+We have frequently used modules like <code>math</code> and <code>sys</code>:
 
 <p>
 
@@ -1854,24 +1819,25 @@ x = <span style="color: #658b00">eval</span>(sys.argv[<span style="color: #B452C
 Characteristics of modules:
 
 <ul>
-  <p><li> Collection of useful data and functions <br />
+
+<p><li> Collection of useful data and functions <br />
     (later also classes)</li>
-  <p><li> Functions in a module can be reused in many different programs</li>
-  <p><li> If you have some general functions that can be handy in more than one program, make a module with these functions</li>
-  <p><li> It's easy: just collect the functions you want in a file, and that's a module!</li>
+
+<p><li> Functions in a module can be reused in many different programs</li>
+
+<p><li> If you have some general functions that can be handy in more than one program, make a module with these functions</li>
+
+<p><li> It's easy: just collect the functions you want in a file, and that's a module!</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Case on making our own module  <a name="___sec43"></a></h2>
+<h2 id="___sec47">Case on making our own module </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -1884,9 +1850,10 @@ A &= A_0\left( 1 + {p\over 360\cdot 100}\right)^{n},
 \tag{1}\\
 A_0 &= A\left( 1 + {p\over 360\cdot 100}\right)^{-n},
 \tag{2}\\
-n &= \frac{\ln {A\over A_0}}{\ln \left( 1 + {p\over 360\cdot 100}\right)} ,\\
+n &= \frac{\ln {A\over A_0}}{\ln \left( 1 + {p\over 360\cdot 100}\right)} ,
+\tag{3}\\
 p &= 360\cdot 100 \left(\left({A\over A_0}\right)^{1/n} - 1\right)\tp
-\tag{3}
+\tag{4}
 \end{align}
 $$
 <p>&nbsp;<br>
@@ -1894,27 +1861,22 @@ $$
 \( A_0 \): initial amount, \( p \): percentage, \( n \): days, \( A \): final amount
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
 We want to make a module with these four functions.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>First we make Python functions for the formuluas  <a name="___sec44"></a></h2>
+<h2 id="___sec48">First we make Python functions for the formuluas </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1934,24 +1896,21 @@ We want to make a module with these four functions.
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Then we can make the module file  <a name="___sec45"></a></h2>
+<h2 id="___sec49">Then we can make the module file </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> Collect the 4 functions in a file <code>interest.py</code></li>
-  <p><li> Now <code>interest.py</code> is actually a module <code>interest</code> (!)</li>
+
+<p><li> Collect the 4 functions in a file <code>interest.py</code></li>
+
+<p><li> Now <code>interest.py</code> is actually a module <code>interest</code> (!)</li>
 </ul>
 <p>
 
@@ -1970,28 +1929,24 @@ years = n/<span style="color: #B452CD">365.0</span>
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Adding a test block in a module file  <a name="___sec46"></a></h2>
+<h2 id="___sec50">Adding a test block in a module file </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> Module files can have an if test at the end containing a <em>test block</em> for testing or demonstrating the module</li>
-  <p><li> The test block is not executed when the file is imported as a module in another program</li>
-  <p><li> The test block is executed <em>only</em> when the file is run as a program</li>
-</ul>
-<p>
 
+<p><li> Module files can have an if test at the end containing a <em>test block</em> for testing or demonstrating the module</li>
+
+<p><li> The test block is not executed when the file is imported as a module in another program</li>
+
+<p><li> The test block is executed <em>only</em> when the file is run as a program</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -2017,21 +1972,18 @@ In our case:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Test blocks are often collected in functions  <a name="___sec47"></a></h2>
+<h2 id="___sec51">Test blocks are often collected in functions </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
-Let's make a real <em>test function</em>:
+Let's make a real <em>test function</em> for what we had in the test block:
 
 <p>
 
@@ -2045,7 +1997,7 @@ Let's make a real <em>test function</em>:
     A0_computed = initial_amount(A, p, n)
     n_computed = days(A0, A, p)
     p_computed = annual_rate(A0, A, n)
-    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">float_eq</span>(a, b, tolerance=<span style="color: #B452CD">1E-14</span>):
+    <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">float_eq</span>(a, b, tolerance=<span style="color: #B452CD">1E-12</span>):
         <span style="color: #CD5555">&quot;&quot;&quot;Return True if a == b within the tolerance.&quot;&quot;&quot;</span>
         <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">abs</span>(a - b) &lt; tolerance
 
@@ -2060,25 +2012,23 @@ Let's make a real <em>test function</em>:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>How can Python find our new module?  <a name="___sec48"></a></h2>
+<h2 id="___sec52">How can Python find our new module? </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> If the module is in the same folder as the main program, everything is simple and ok</li>
-  <p><li> Home-made modules are normally collected in a common folder, say <code>/Users/hpl/lib/python/mymods</code></li>
-  <p><li> In that case Python must be notified that our module is in that folder</li>
+
+<p><li> If the module is in the same folder as the main program, everything is simple and ok</li>
+
+<p><li> Home-made modules are normally collected in a common folder, say <code>/Users/hpl/lib/python/mymods</code></li>
+
+<p><li> In that case Python must be notified that our module is in that folder</li>
 </ul>
 <p>
 
@@ -2086,8 +2036,8 @@ Technique 1: add folder to <code>PYTHONPATH</code> in <code>.bashrc</code>:
 
 <p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">export PYTHONPATH=<span style="color: #a61717; background-color: #e3d2d2">$</span>PYTHONPATH:/Users/hpl/lib/python/mymods
+<!-- code=bash (!bc bashcod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #658b00">export </span><span style="color: #00688B">PYTHONPATH</span>=<span style="color: #00688B">$PYTHONPATH</span>:/Users/hpl/lib/python/mymods
 </pre></div>
 <p>
 Technique 2: add folder to <code>sys.path</code> in the program:
@@ -2095,23 +2045,20 @@ Technique 2: add folder to <code>sys.path</code> in the program:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"> sys.path.insert(<span style="color: #B452CD">0</span>, <span style="color: #CD5555">&#39;/Users/hpl/lib/python/mymods&#39;</span>)
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">sys.path.insert(<span style="color: #B452CD">0</span>, <span style="color: #CD5555">&#39;/Users/hpl/lib/python/mymods&#39;</span>)
 </pre></div>
 <p>
 Technique 3: move the module file in a directory that Python already
 searches for libraries.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Summary of reading from the keyboard and command line  <a name="___sec49"></a></h2>
+<h2 id="___sec53">Summary of reading from the keyboard and command line </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -2141,17 +2088,14 @@ parameter2 = <span style="color: #658b00">eval</span>(sys.argv[<span style="colo
 <p>
 Recall: <code>sys.argv[0]</code> is the program name
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Summary of reading options-value pairs  <a name="___sec50"></a></h2>
+<h2 id="___sec54">Summary of reading options-value pairs </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -2181,17 +2125,14 @@ On the command line we can provide any or all of these options:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Summary of eval and exec  <a name="___sec51"></a></h2>
+<h2 id="___sec55">Summary of eval and exec </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -2220,17 +2161,14 @@ Executing strings with Python code, using <code>exec</code>:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Summary of exceptions  <a name="___sec52"></a></h2>
+<h2 id="___sec56">Summary of exceptions </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -2261,20 +2199,16 @@ Raising exceptions:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Summary of file reading and writing  <a name="___sec53"></a></h2>
+<h2 id="___sec57">Summary of file reading and writing </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -2297,17 +2231,14 @@ outfile.close()
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>A summarizing example: solving \( f(x)=0 \)  <a name="___sec54"></a></h2>
+<h2 id="___sec58">A summarizing example: solving \( f(x)=0 \) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -2342,154 +2273,139 @@ f(x) &= x^5 - 3x^3 -  10
 $$
 <p>&nbsp;<br>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>We shall learn about a method for solving \( f(x)=0 \)  <a name="___sec55"></a></h2>
+<h2 id="___sec59">We shall learn about a method for solving \( f(x)=0 \) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
 A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Outline of the next slides:</b>
-<p>
-
 <ul>
-  <p><li> Formulate a method for finding a root</li>
-  <p><li> Translate the method to a precise algorithm</li>
-  <p><li> Implement the algorithm in Python</li>
-  <p><li> Test the implementation</li>
+
+<p><li> Formulate a method for finding a root</li>
+
+<p><li> Translate the method to a precise algorithm</li>
+
+<p><li> Implement the algorithm in Python</li>
+
+<p><li> Test the implementation</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>The Bisection method  <a name="___sec56"></a></h2>
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b style="font-weight: bold"></b>
-<p>
-
-<ul>
-  <p><li> Start with an interval \( [a,b] \) in which \( f(x) \) changes sign</li>
-  <p><li> Then there must be (at least) one root in \( [a,b] \)</li>
-  <p><li> Halve the interval:</li>
-
-<ul>
-    <p><li> \( m=(a+b)/2 \); does \( f \) change sign in left half \( [a,m] \)?</li>
-    <p><li> Yes: continue with left interval \( [a,m] \) (set \( b=m \))</li>
-    <p><li> No: continue with right interval \( [m,b] \) (set \( a=m \))</li>
-</ul>
-<p>
-
-  <p><li> Repeat the procedure</li>
-</ul>
-</div>
-
+<h2 id="___sec60">The Bisection method </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
+<ul>
+
+<p><li> Start with an interval \( [a,b] \) in which \( f(x) \) changes sign</li>
+
+<p><li> Then there must be (at least) one root in \( [a,b] \)</li>
+
+<p><li> Halve the interval:</li>
 
 <ul>
-  <p><li> After halving the initial interval \( [p,q] \) $n$ times, we know that \( f(x) \) must have a root inside a (small) interval \( 2^{-n}(q-p) \)</li>
-  <p><li> The method is slow, but very safe</li>
-  <p><li> Other methods (like Newton's method) can be faster, but may also fail to locate a root - bisection does not fail</li>
+
+<p><li> \( m=(a+b)/2 \); does \( f \) change sign in left half \( [a,m] \)?</li>
+
+<p><li> Yes: continue with left interval \( [a,m] \) (set \( b=m \))</li>
+
+<p><li> No: continue with right interval \( [m,b] \) (set \( a=m \))</li>
+</ul>
+<p><li> Repeat the procedure</li>
 </ul>
 </div>
 
-
 <p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold"></b>
+<ul>
 
+<p><li> After halving the initial interval \( [p,q] \) $n$ times, we know that \( f(x) \) must have a root inside a (small) interval \( 2^{-n}(q-p) \)</li>
+
+<p><li> The method is slow, but very safe</li>
+
+<p><li> Other methods (like Newton's method) can be faster, but may also fail to locate a root - bisection does not fail</li>
+</ul>
+</div>
 </section>
 
 
 <section class="slide">
 
-<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;1  <a name="___sec57"></a></h2>
+<h2 id="___sec61">Solving \( \cos \pi x =0 \): iteration no.&nbsp;1 </h2>
 
+<p>
 <center><p><img src="fig-input/bisection_iter1.png" align="bottom" width=540></p></center>
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;2  <a name="___sec58"></a></h2>
+<h2 id="___sec62">Solving \( \cos \pi x =0 \): iteration no.&nbsp;2 </h2>
 
+<p>
 <center><p><img src="fig-input/bisection_iter2.png" align="bottom" width=540></p></center>
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;3  <a name="___sec59"></a></h2>
+<h2 id="___sec63">Solving \( \cos \pi x =0 \): iteration no.&nbsp;3 </h2>
 
+<p>
 <center><p><img src="fig-input/bisection_iter3.png" align="bottom" width=540></p></center>
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Solving \( \cos \pi x =0 \): iteration no.&nbsp;4  <a name="___sec60"></a></h2>
+<h2 id="___sec64">Solving \( \cos \pi x =0 \): iteration no.&nbsp;4 </h2>
 
+<p>
 <center><p><img src="fig-input/bisection_iter4.png" align="bottom" width=540></p></center>
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>From method description to a precise algorithm  <a name="___sec61"></a></h2>
+<h2 id="___sec65">From method description to a precise algorithm </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> We need to translate the mathematical description of the Bisection method to a Python program</li>
-  <p><li> An important intermediate step is to formulate a precise algorithm</li>
-  <p><li> Algorithm = detailed, code-like formulation of the method</li>
+
+<p><li> We need to translate the mathematical description of the Bisection method to a Python program</li>
+
+<p><li> An important intermediate step is to formulate a precise algorithm</li>
+
+<p><li> Algorithm = detailed, code-like formulation of the method</li>
 </ul>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">for</span> i = <span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>, ..., n:
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">0</span>, n+<span style="color: #B452CD">1</span>):
     m = (a + b)/<span style="color: #B452CD">2</span>
     <span style="color: #8B008B; font-weight: bold">if</span> f(a)*f(m) &lt;= <span style="color: #B452CD">0</span>:
         b = m  <span style="color: #228B22"># root is in left half</span>
@@ -2500,57 +2416,52 @@ A solution \( x \) of \( f(x)=0 \) is called a <em>root</em> of \( f(x) \)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>The algorithm can be made more efficient  <a name="___sec62"></a></h2>
+<h2 id="___sec66">The algorithm can be made more efficient </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> \( f(a) \) is recomputed in each if test</li>
-  <p><li> This is not necessary if \( a \) has not changed since last pass in the loop</li>
-  <p><li> On modern computers and simple formulas for \( f(x) \) these extra computations do not matter</li>
-  <p><li> However, in science and engineering one meets \( f \) functions that take hours or days to evaluate at a point, and saving some \( f(a) \) evaluations matters!</li>
-  <p><li> Rule of thumb: remove redundant computations <br />
+
+<p><li> \( f(a) \) is recomputed in each if test</li>
+
+<p><li> This is not necessary if \( a \) has not changed since last pass in the loop</li>
+
+<p><li> On modern computers and simple formulas for \( f(x) \) these extra computations do not matter</li>
+
+<p><li> However, in science and engineering one meets \( f \) functions that take hours or days to evaluate at a point, and saving some \( f(a) \) evaluations matters!</li>
+
+<p><li> Rule of thumb: remove redundant computations <br />
     (unless the code becomes much more complicated, and harder to verify)</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>New, more efficient version of the algorithm  <a name="___sec63"></a></h2>
+<h2 id="___sec67">New, more efficient version of the algorithm </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
 Idea: save \( f(x) \) evaluations in  variables
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
-<p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">f_a = f(a)
-<span style="color: #8B008B; font-weight: bold">for</span> i = <span style="color: #B452CD">0</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>, ..., n:
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">0</span>, n+<span style="color: #B452CD">1</span>):
     m = (a + b)/<span style="color: #B452CD">2</span>
     f_m = f(m)
     <span style="color: #8B008B; font-weight: bold">if</span> f_a*f_m &lt;= <span style="color: #B452CD">0</span>:
@@ -2563,44 +2474,40 @@ Idea: save \( f(x) \) evaluations in  variables
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>How to choose \( n \)? That is, when to stop the iteration  <a name="___sec64"></a></h2>
+<h2 id="___sec68">How to choose \( n \)? That is, when to stop the iteration </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> We want the error in the root to be \( \epsilon \) or smaller</li>
-  <p><li> After \( n \) iterations, the initial interval \( [a,b] \) is halved \( n \) times and the current interval has length \( 2^{-n}(b-a) \). This is sufficiently small if \( 2^{-n}(b-a) = \epsilon \quad\Rightarrow\quad n = - {\ln\epsilon -\ln (b-a)\over\ln 2} \)</li>
-  <p><li> A simpler alternative: just repeat halving until the length of the current interval is \( \leq\epsilon \)</li>
-  <p><li> This is easiest done with a while loop: <br />
-    <code>while b-a <= epsilon</code>:</li>
-  <p><li> We also add a test to check if \( f \) really changes sign in the initial inverval \( [a,b] \)</li>
+
+<p><li> We want the error in the root to be \( \epsilon \) or smaller</li>
+
+<p><li> After \( n \) iterations, the initial interval \( [a,b] \) is halved \( n \) times and the current interval has length \( 2^{-n}(b-a) \). This is sufficiently small if \( 2^{-n}(b-a) = \epsilon \quad\Rightarrow\quad n = - {\ln\epsilon -\ln (b-a)\over\ln 2} \)</li>
+
+<p><li> A simpler alternative: just repeat halving until the length of the current interval is \( \leq\epsilon \)</li>
+
+<p><li> This is easiest done with a while loop: <br />
+    <code>while b-a &lt;= epsilon</code>:</li>
+
+<p><li> We also add a test to check if \( f \) really changes sign in the initial inverval \( [a,b] \)</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Final version of the Bisection algorithm  <a name="___sec65"></a></h2>
+<h2 id="___sec69">Final version of the Bisection algorithm </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -2623,20 +2530,16 @@ i = <span style="color: #B452CD">0</span>
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Python implementation of the Bisection algorithm  <a name="___sec66"></a></h2>
+<h2 id="___sec70">Python implementation of the Bisection algorithm </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -2665,20 +2568,16 @@ x = m          <span style="color: #228B22"># this is the approximate root</span
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Implementation as a function (more reusable!)  <a name="___sec67"></a></h2>
+<h2 id="___sec71">Implementation as a function (more reusable!) </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -2690,40 +2589,37 @@ x = m          <span style="color: #228B22"># this is the approximate root</span
         <span style="color: #228B22"># &#39;No change of sign in [%g,%g]&#39; % (a, b))</span>
 
     i = <span style="color: #B452CD">0</span>   <span style="color: #228B22"># iteration counter</span>
-    <span style="color: #8B008B; font-weight: bold">while</span> b-a &lt; eps:
+    <span style="color: #8B008B; font-weight: bold">while</span> b-a &gt; eps:
         i += <span style="color: #B452CD">1</span>
         m = (a + b)/<span style="color: #B452CD">2.0</span>
         fm = f(m)
         <span style="color: #8B008B; font-weight: bold">if</span> fa*fm &lt;= <span style="color: #B452CD">0</span>:
-            b = m  <span style="color: #228B22"># root is in left half of [a,b]</span>
+            b = m   <span style="color: #228B22"># root is in left  half of [a,b]</span>
         <span style="color: #8B008B; font-weight: bold">else</span>:
-            a = m  <span style="color: #228B22"># root is in right half of [a,b]</span>
+            a = m   <span style="color: #228B22"># root is in right half of [a,b]</span>
             fa = fm
     <span style="color: #8B008B; font-weight: bold">return</span> m, i
+
+<span style="color: #8B008B; font-weight: bold">print</span> bisection(f=<span style="color: #8B008B; font-weight: bold">lambda</span> x: <span style="color: #B452CD">2</span>*x-<span style="color: #B452CD">3</span>, a=<span style="color: #B452CD">0</span>, b=<span style="color: #B452CD">10</span>, eps=<span style="color: #B452CD">1E-5</span>)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Make a module of this function  <a name="___sec68"></a></h2>
+<h2 id="___sec72">Make a module of this function </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-
 <ul>
-  <p><li> If we put the <code>bisection</code> function in a file <code>bisection.py</code>, we automatically have a module, and the <code>bisection</code> function can easily be imported in other programs to solve \( f(x)=0 \)</li>
-  <p><li> We should make a test function too</li>
-</ul>
-<p>
 
+<p><li> If we put the <code>bisection</code> function in a file <code>bisection.py</code>, we automatically have a module, and the <code>bisection</code> function can easily be imported in other programs to solve \( f(x)=0 \)</li>
+
+<p><li> We should make a test function too</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -2741,17 +2637,14 @@ x = m          <span style="color: #228B22"># this is the approximate root</span
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>To the point of this lecture: get input!  <a name="___sec69"></a></h2>
+<h2 id="___sec73">To the point of this lecture: get input! </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -2768,11 +2661,9 @@ Usage:
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">Reading input:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -2792,20 +2683,16 @@ x, <span style="color: #658b00">iter</span> = bisection(f, a, b, eps)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Improvements: error handling  <a name="___sec70"></a></h2>
+<h2 id="___sec74">Improvements: error handling </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -2824,17 +2711,14 @@ x, <span style="color: #658b00">iter</span> = bisection(f, a, b, eps)
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
-<h2>Applications of the Bisection method  <a name="___sec71"></a></h2>
+<h2 id="___sec75">Applications of the Bisection method </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
@@ -2850,9 +2734,6 @@ Terminal&gt; python bisection_plot.py &quot;x**5-tanh(x**5)&quot; -1 1
 The first equation is easy to treat, but the second leads to much
 less accurate results. Why??
 </div>
-
-
-
 </section>
 
 

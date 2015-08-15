@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -65,127 +65,129 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(u' Inheritance ', 1, None, '___sec0'),
-              (u' The chapter title *Object-oriented programming* (OO) may mean two different things ',
+ 'sections': [(u'Inheritance', 1, None, '___sec0'),
+              (u'The chapter title *Object-oriented programming* (OO) may mean two different things',
                2,
                None,
                '___sec1'),
-              (u' New concept: collect classes in families (hierarchies)  ',
+              (u'New concept: collect classes in families (hierarchies)',
                2,
                None,
                '___sec2'),
-              (u' Warning: OO is difficult and takes time to master ',
+              (u'Warning: OO is difficult and takes time to master',
                2,
                None,
                '___sec3'),
-              (u' A class for straight lines ', 2, None, '___sec4'),
-              (u' A class for parabolas ', 2, None, '___sec5'),
-              (u' Class Parabola as a subclass of Line; principles ',
+              (u'A class for straight lines', 2, None, '___sec4'),
+              (u'A class for parabolas', 2, None, '___sec5'),
+              (u'Class Parabola as a subclass of Line; principles',
                2,
                None,
                '___sec6'),
-              (u' Class Parabola as a subclass of Line; code ',
+              (u'Class Parabola as a subclass of Line; code',
                2,
                None,
                '___sec7'),
-              (u' Class Parabola as a subclass of Line; demo ',
+              (u'Class Parabola as a subclass of Line; demo',
                2,
                None,
                '___sec8'),
-              (u' Exercise 1: Point out the program flow ',
-               2,
-               None,
-               '___sec9'),
-              (u' We can check class type and class relations with `isinstance(obj, type)` and `issubclass(subclassname, superclassname)` ',
+              (u'Exercise 1: Point out the program flow', 2, None, '___sec9'),
+              (u'We can check class type and class relations with `isinstance(obj, type)` and `issubclass(subclassname, superclassname)`',
                2,
                None,
                '___sec10'),
-              (u' Recall the class for numerical differentiation from Ch. 7 ',
-               2,
-               None,
-               '___sec11'),
-              (u' There are numerous formulas numerical differentiation ',
+              (u'Line as a subclass of Parabola', 2, None, '___sec11'),
+              (u'Code when Line is a subclass of Parabola',
                2,
                None,
                '___sec12'),
-              (u' How can we make a module that offers all these formulas? ',
+              (u'Recall the class for numerical differentiation from Ch. 7',
                2,
                None,
                '___sec13'),
-              (u' What is the problem with this type of code? ',
+              (u'There are numerous formulas numerical differentiation',
                2,
                None,
                '___sec14'),
-              (u' Class hierarchy for numerical differentiation ',
+              (u'How can we make a module that offers all these formulas?',
                2,
                None,
                '___sec15'),
-              (u' Use of the differentiation classes ', 2, None, '___sec16'),
-              (u' Exercise 2: Point out the program flow ',
+              (u'What is the problem with this type of code?',
+               2,
+               None,
+               '___sec16'),
+              (u'Class hierarchy for numerical differentiation',
                2,
                None,
                '___sec17'),
-              (u' A flexible main program for numerical differentiation ',
-               2,
-               None,
-               '___sec18'),
-              (u' Investigating numerical approximation errors ',
+              (u'Use of the differentiation classes', 2, None, '___sec18'),
+              (u'Exercise 2: Point out the program flow',
                2,
                None,
                '___sec19'),
-              (u' Alternative implementations (in the book) ',
+              (u'A flexible main program for numerical differentiation',
                2,
                None,
                '___sec20'),
-              (u' Formulas for numerical integration ', 2, None, '___sec21'),
-              (u' More formulas ', 2, None, '___sec22'),
-              (u' Why should these formulas be implemented in a class hierarchy? ',
+              (u'Investigating numerical approximation errors',
                2,
                None,
-               '___sec23'),
-              (u' The superclass for integration ', 2, None, '___sec24'),
-              (u' A subclass: the Trapezoidal rule ', 2, None, '___sec25'),
-              (u" Another subclass: Simpson's rule ", 2, None, '___sec26'),
-              (u' About the program flow ', 2, None, '___sec27'),
-              (u' Exercise 3: Point out the program flow ',
+               '___sec21'),
+              (u'Alternative implementations (in the book)',
                2,
                None,
-               '___sec28'),
-              (u' Applications of the family of integration classes ',
+               '___sec22'),
+              (u'Formulas for numerical integration', 2, None, '___sec23'),
+              (u'More formulas', 2, None, '___sec24'),
+              (u'Why should these formulas be implemented in a class hierarchy?',
                2,
                None,
-               '___sec29'),
-              (u' Convergence rates for $m < 1$ (easy case) ',
+               '___sec25'),
+              (u'The superclass for integration', 2, None, '___sec26'),
+              (u'A subclass: the Trapezoidal rule', 2, None, '___sec27'),
+              (u"Another subclass: Simpson's rule", 2, None, '___sec28'),
+              (u'About the program flow', 2, None, '___sec29'),
+              (u'Exercise 3: Point out the program flow',
                2,
                None,
                '___sec30'),
-              (u' Convergence rates for $m>1$ (problematic case) ',
+              (u'Applications of the family of integration classes',
                2,
                None,
                '___sec31'),
-              (u' Summary of object-orientation principles ',
+              (u'Convergence rates for $m < 1$ (easy case)',
                2,
                None,
                '___sec32'),
-              (u' Recall the class hierarchy for differentiation ',
+              (u'Convergence rates for $m>1$ (problematic case)',
                2,
                None,
                '___sec33'),
-              (u' Recall the class hierarchy for integration (1) ',
+              (u'Summary of object-orientation principles',
                2,
                None,
                '___sec34'),
-              (u' Recall the class hierarchy for integration (2) ',
+              (u'Recall the class hierarchy for differentiation',
                2,
                None,
                '___sec35'),
-              (u' A summarizing example: Generalized reading of input data ',
+              (u'Recall the class hierarchy for integration (1)',
                2,
                None,
                '___sec36'),
-              (u' Graphical user interface ', 2, None, '___sec37'),
-              (u' First we write the application code ', 2, None, '___sec38'),
-              (u' About the implementation ', 2, None, '___sec39')]}
+              (u'Recall the class hierarchy for integration (2)',
+               2,
+               None,
+               '___sec37'),
+              (u'A summarizing example: Generalized reading of input data',
+               2,
+               None,
+               '___sec38'),
+              (u'Graphical user interface', 2, None, '___sec39'),
+              (u'First we write the application code', 2, None, '___sec40'),
+              (u'About the implementation', 2, None, '___sec41')]}
 end of tocinfo -->
 
 <body>
@@ -220,18 +222,19 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
+<br>
 <p>
-<center><h4>Nov 3, 2014</h4></center> <!-- date -->
+<center><h4>Aug 15, 2015</h4></center> <!-- date -->
+<br>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1>Inheritance  <a name="___sec0"></a></h1>
+<h1 id="___sec0">Inheritance </h1>
 
 <p>
 <!-- !bslidecell 00 0.5 -->
@@ -246,7 +249,7 @@ MathJax.Hub.Config({
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The chapter title <em>Object-oriented programming</em> (OO) may mean two different things  <a name="___sec1"></a></h2>
+<h2 id="___sec1">The chapter title <em>Object-oriented programming</em> (OO) may mean two different things </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -264,7 +267,7 @@ MathJax.Hub.Config({
 <!-- !split --><br><br><br><br><br><br><br><br>
 <!-- ===== New concept: collect classes in families (hierarchies) and let child classes inherit attributes and methods from parent classes ===== -->
 
-<h2>New concept: collect classes in families (hierarchies)   <a name="___sec2"></a></h2>
+<h2 id="___sec2">New concept: collect classes in families (hierarchies)  </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -291,7 +294,7 @@ OO is a Norwegian invention by Ole-Johan Dahl and Kristen Nygaard in the 1960s -
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Warning: OO is difficult and takes time to master  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Warning: OO is difficult and takes time to master </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -311,7 +314,7 @@ OO is a Norwegian invention by Ole-Johan Dahl and Kristen Nygaard in the 1960s -
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>A class for straight lines  <a name="___sec4"></a></h2>
+<h2 id="___sec4">A class for straight lines </h2>
 
 <p>
 <!-- !bpop -->
@@ -354,7 +357,7 @@ Make a class for evaluating lines \( y=c_0 + c_1x \).
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>A class for parabolas  <a name="___sec5"></a></h2>
+<h2 id="___sec5">A class for parabolas </h2>
 
 <p>
 <!-- !bpop -->
@@ -407,7 +410,7 @@ This is almost the same code as class <code>Line</code>, except for the things w
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Class Parabola as a subclass of Line; principles  <a name="___sec6"></a></h2>
+<h2 id="___sec6">Class Parabola as a subclass of Line; principles </h2>
 
 <p>
 <!-- !bpop -->
@@ -454,7 +457,7 @@ makes <code>Parabola</code> inherit all methods and attributes from <code>Line</
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Class Parabola as a subclass of Line; code  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Class Parabola as a subclass of Line; code </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -500,7 +503,7 @@ What is gained?
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Class Parabola as a subclass of Line; demo  <a name="___sec8"></a></h2>
+<h2 id="___sec8">Class Parabola as a subclass of Line; demo </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -535,7 +538,7 @@ Output:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 1: Point out the program flow  <a name="___sec9"></a></h2>
+<h2 id="___sec9">Exercise 1: Point out the program flow </h2>
 
 <p>
 
@@ -548,7 +551,7 @@ Output:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>We can check class type and class relations with <code>isinstance(obj, type)</code> and <code>issubclass(subclassname, superclassname)</code>  <a name="___sec10"></a></h2>
+<h2 id="___sec10">We can check class type and class relations with <code>isinstance(obj, type)</code> and <code>issubclass(subclassname, superclassname)</code> </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -587,10 +590,65 @@ Output:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Recall the class for numerical differentiation from Ch. 7  <a name="___sec11"></a></h2>
+<h2 id="___sec11">Line as a subclass of Parabola </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+
+<ul>
+ <li> Subclasses are often special cases of a superclass</li>
+ <li> A line \( c_0+c_1x \) is a special case of a parabola \( c_0+c_1x+c_2x^2 \)</li>
+ <li> Can <code>Line</code> be a subclass of <code>Parabola</code>?</li>
+ <li> No problem - this is up to the programmer's choice</li>
+ <li> Many will prefer this relation between a line and a parabola</li>
+</ul>
+</div>
+
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec12">Code when Line is a subclass of Parabola </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Parabola</span>:
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, c0, c1, c2):
+        <span style="color: #008000">self</span><span style="color: #666666">.</span>c0, <span style="color: #008000">self</span><span style="color: #666666">.</span>c1, <span style="color: #008000">self</span><span style="color: #666666">.</span>c2 <span style="color: #666666">=</span> c0, c1, c2
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__call__</span>(<span style="color: #008000">self</span>, x):
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>c2<span style="color: #666666">*</span>x<span style="color: #666666">**2</span> <span style="color: #666666">+</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>c1<span style="color: #666666">*</span>x <span style="color: #666666">+</span> <span style="color: #008000">self</span><span style="color: #666666">.</span>c0
+
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">table</span>(<span style="color: #008000">self</span>, L, R, n):
+        <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Return a table with n points for L &lt;= x &lt;= R.&quot;&quot;&quot;</span>
+        s <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;&#39;</span>
+        <span style="color: #008000; font-weight: bold">for</span> x <span style="color: #AA22FF; font-weight: bold">in</span> linspace(L, R, n):
+            y <span style="color: #666666">=</span> <span style="color: #008000">self</span>(x)
+            s <span style="color: #666666">+=</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%12g</span><span style="color: #BA2121"> </span><span style="color: #BB6688; font-weight: bold">%12g</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (x, y)
+        <span style="color: #008000; font-weight: bold">return</span> s
+
+<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Line</span>(Parabola):
+    <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">__init__</span>(<span style="color: #008000">self</span>, c0, c1):
+        Parabola<span style="color: #666666">.</span>__init__(<span style="color: #008000">self</span>, c0, c1, <span style="color: #666666">0</span>)
+</pre></div>
+<p>
+Note: <code>__call__</code> and <code>table</code> can be reused in class <code>Line</code>!
+</div>
+
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec13">Recall the class for numerical differentiation from Ch. 7 </h2>
 
 $$ f'(x) \approx {f(x+h)-f(x)\over h} $$
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -622,7 +680,7 @@ dfdx <span style="color: #666666">=</span> Derivative(f)
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>There are numerous formulas numerical differentiation  <a name="___sec12"></a></h2>
+<h2 id="___sec14">There are numerous formulas numerical differentiation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -649,7 +707,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>How can we make a module that offers all these formulas?  <a name="___sec13"></a></h2>
+<h2 id="___sec15">How can we make a module that offers all these formulas? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -687,7 +745,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>What is the problem with this type of code?  <a name="___sec14"></a></h2>
+<h2 id="___sec16">What is the problem with this type of code? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -714,7 +772,7 @@ All the constructors are identical so we duplicate a lot of code.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Class hierarchy for numerical differentiation  <a name="___sec15"></a></h2>
+<h2 id="___sec17">Class hierarchy for numerical differentiation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -768,7 +826,7 @@ All the constructors are identical so we duplicate a lot of code.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Use of the differentiation classes  <a name="___sec16"></a></h2>
+<h2 id="___sec18">Use of the differentiation classes </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -797,7 +855,7 @@ Interactive example: \( f(x)=\sin x \), compute \( f'(x) \) for \( x=\pi \)
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 2: Point out the program flow  <a name="___sec17"></a></h2>
+<h2 id="___sec19">Exercise 2: Point out the program flow </h2>
 
 <p>
 
@@ -810,7 +868,7 @@ Interactive example: \( f(x)=\sin x \), compute \( f'(x) \) for \( x=\pi \)
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>A flexible main program for numerical differentiation  <a name="___sec18"></a></h2>
+<h2 id="___sec20">A flexible main program for numerical differentiation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -853,7 +911,7 @@ x <span style="color: #666666">=</span> <span style="color: #008000">float</span
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Investigating numerical approximation errors  <a name="___sec19"></a></h2>
+<h2 id="___sec21">Investigating numerical approximation errors </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -890,7 +948,7 @@ Observations:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Alternative implementations (in the book)  <a name="___sec20"></a></h2>
+<h2 id="___sec22">Alternative implementations (in the book) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -919,7 +977,7 @@ These techniques are beyond scope in the course, but place OO into a bigger pers
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Formulas for numerical integration  <a name="___sec21"></a></h2>
+<h2 id="___sec23">Formulas for numerical integration </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -942,7 +1000,6 @@ The Trapezoidal rule has \( h=(b-a)/(n-1) \) and
 
 $$ x_i = a+ih, \quad w_0=w_{n-1}={h\over2},\ w_i=h\ (i\neq 0,n-1)$$
 
-
 <p>
 The Midpoint rule has \( h=(b-a)/n \) and
 
@@ -953,7 +1010,7 @@ $$ x_i = a + {h\over 2} + ih,\quad w_i=h$$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>More formulas  <a name="___sec22"></a></h2>
+<h2 id="___sec24">More formulas </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -969,7 +1026,6 @@ w_i &= {h\over3}\hbox{ for }i\hbox{ even},\quad w_i={2h\over3}\hbox{ for }i\hbox
 \end{align*}
 $$
 
-
 <p>
 Other rules have more complicated formulas for \( w_i \) and \( x_i \)
 </div>
@@ -978,7 +1034,7 @@ Other rules have more complicated formulas for \( w_i \) and \( x_i \)
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Why should these formulas be implemented in a class hierarchy?  <a name="___sec23"></a></h2>
+<h2 id="___sec25">Why should these formulas be implemented in a class hierarchy? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1002,7 +1058,7 @@ Other rules have more complicated formulas for \( w_i \) and \( x_i \)
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The superclass for integration  <a name="___sec24"></a></h2>
+<h2 id="___sec26">The superclass for integration </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1037,7 +1093,7 @@ Other rules have more complicated formulas for \( w_i \) and \( x_i \)
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>A subclass: the Trapezoidal rule  <a name="___sec25"></a></h2>
+<h2 id="___sec27">A subclass: the Trapezoidal rule </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1062,7 +1118,7 @@ Other rules have more complicated formulas for \( w_i \) and \( x_i \)
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Another subclass: Simpson's rule  <a name="___sec26"></a></h2>
+<h2 id="___sec28">Another subclass: Simpson's rule </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1100,7 +1156,7 @@ Other rules have more complicated formulas for \( w_i \) and \( x_i \)
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>About the program flow  <a name="___sec27"></a></h2>
+<h2 id="___sec29">About the program flow </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1133,7 +1189,7 @@ Important:
 <p>
 <!-- --- begin exercise --- -->
 
-<h2>Exercise 3: Point out the program flow  <a name="___sec28"></a></h2>
+<h2 id="___sec30">Exercise 3: Point out the program flow </h2>
 
 <p>
 
@@ -1146,7 +1202,7 @@ Important:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Applications of the family of integration classes  <a name="___sec29"></a></h2>
+<h2 id="___sec31">Applications of the family of integration classes </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1175,7 +1231,7 @@ $$ \int\limits_0^1 \left(1 + {1\over m}\right)t^{1\over m} dt= 1$$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Convergence rates for \( m < 1 \) (easy case)  <a name="___sec30"></a></h2>
+<h2 id="___sec32">Convergence rates for \( m < 1 \) (easy case) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1191,7 +1247,7 @@ Simpson and Gauss-Legendre reduce the error faster than Midpoint and Trapezoidal
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Convergence rates for \( m>1 \) (problematic case)  <a name="___sec31"></a></h2>
+<h2 id="___sec33">Convergence rates for \( m>1 \) (problematic case) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1207,7 +1263,7 @@ Simpson and Gauss-Legendre, which are theoretically &quot;smarter&quot; than Mid
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Summary of object-orientation principles  <a name="___sec32"></a></h2>
+<h2 id="___sec34">Summary of object-orientation principles </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1233,7 +1289,7 @@ Simpson and Gauss-Legendre, which are theoretically &quot;smarter&quot; than Mid
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Recall the class hierarchy for differentiation  <a name="___sec33"></a></h2>
+<h2 id="___sec35">Recall the class hierarchy for differentiation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-small">
@@ -1242,7 +1298,6 @@ Simpson and Gauss-Legendre, which are theoretically &quot;smarter&quot; than Mid
  Collection of difference formulas for \( f'(x) \). For example,
 
 $$ f'(x) \approx {f(x+h)-f(x-h)\over 2h}$$
-
 
 <p>
 Superclass <code>Diff</code> contains common code (constructor), subclasses implement various difference formulas.
@@ -1273,7 +1328,7 @@ Superclass <code>Diff</code> contains common code (constructor), subclasses impl
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Recall the class hierarchy for integration (1)  <a name="___sec34"></a></h2>
+<h2 id="___sec36">Recall the class hierarchy for integration (1) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1283,7 +1338,6 @@ General integration formula for numerical integration:
 
 $$ \int_a^b f(x)dx \approx \sum_{j=0}^{n-1} w_if(x_i)$$
 
-
 <p>
 Superclass <code>Integrator</code> contains common code (constructor, \( \sum_j w_if(x_i) \)), subclasses implement definition of \( w_i \) and \( x_i \).
 </div>
@@ -1292,7 +1346,7 @@ Superclass <code>Integrator</code> contains common code (constructor, \( \sum_j 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Recall the class hierarchy for integration (2)  <a name="___sec35"></a></h2>
+<h2 id="___sec37">Recall the class hierarchy for integration (2) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1327,7 +1381,7 @@ Superclass <code>Integrator</code> contains common code (constructor, \( \sum_j 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>A summarizing example: Generalized reading of input data  <a name="___sec36"></a></h2>
+<h2 id="___sec38">A summarizing example: Generalized reading of input data </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1374,7 +1428,7 @@ filename <span style="color: #666666">=</span> mydat<span style="color: #666666"
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Graphical user interface  <a name="___sec37"></a></h2>
+<h2 id="___sec39">Graphical user interface </h2>
 
 <p>
 <center><p><img src="fig-oo/ReadInputGUI.png" align="bottom" width=180></p></center>
@@ -1382,7 +1436,7 @@ filename <span style="color: #666666">=</span> mydat<span style="color: #666666"
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>First we write the application code  <a name="___sec38"></a></h2>
+<h2 id="___sec40">First we write the application code </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1417,7 +1471,7 @@ a, b, filename, formula, n <span style="color: #666666">=</span> inp<span style=
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>About the implementation  <a name="___sec39"></a></h2>
+<h2 id="___sec41">About the implementation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">

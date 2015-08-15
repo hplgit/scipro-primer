@@ -132,22 +132,20 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>&nbsp;<br>
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
+<br>
 <p>&nbsp;<br>
-<center><h4>Oct 30, 2014</h4></center> <!-- date -->
-<p>
-
+<center><h4>Aug 15, 2015</h4></center> <!-- date -->
+<br>
 </section>
 
 
 <section>
-
-<h1 style="text-align: center;">Use of random numbers in programs  <a name="___sec0"></a></h1>
+<h1 id="___sec0">Use of random numbers in programs </h1>
 
 <p>
 
@@ -161,57 +159,39 @@ MathJax.Hub.Config({
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Random numbers are used to simulate uncertain events  <a name="___sec1"></a></h2>
+<h2 id="___sec1">Random numbers are used to simulate uncertain events </h2>
 
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Deterministic problems.</b>
-<p>
-
 <ul>
-  <p><li class="fragment"> Some problems in science and technology are desrcribed by &quot;exact&quot; mathematics, leading to &quot;precise&quot; results</li>
-  <p><li class="fragment"> Example: throwing a ball up in the air (\( y(t)=v_0t - \frac{1}{2}gt^2 \))</li>
+
+<p><li class="fragment"> Some problems in science and technology are desrcribed by &quot;exact&quot; mathematics, leading to &quot;precise&quot; results</li>
+
+<p><li class="fragment"> Example: throwing a ball up in the air (\( y(t)=v_0t - \frac{1}{2}gt^2 \))</li>
 </ul>
 </div>
-
-
 
 <p>
 
 <div class="fragment alert alert-block alert-block alert-text-normal">
 <b>Stochastic problems.</b>
-<p>
-
 <ul>
  <p><li class="fragment"> Some problems appear physically uncertain</li>
  <p><li class="fragment"> Examples: rolling a die, molecular motion, games</li>
  <p><li class="fragment"> Use <em>random numbers</em> to mimic the uncertainty of the experiment.</li>
 </ul>
 </div>
-
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Drawing random numbers  <a name="___sec2"></a></h2>
+<h2 id="___sec2">Drawing random numbers </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -234,50 +214,39 @@ Python has a <code>random</code> module for drawing random numbers.
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-warning alert-text-small">
 <b>Notice.</b>
 <p>
 The sequence of random numbers is produced by a deterministic algorithm - the numbers just appear random.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Distribution of random numbers  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Distribution of random numbers </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> <code>random.random()</code> generates random numbers that are <em>uniformly distributed</em> in the interval \( [0,1) \)</li>
-  <p><li> <code>random.uniform(a, b)</code> generates random numbers uniformly distributed in \( [a,b) \)</li>
-  <p><li> &quot;Uniformly distributed&quot; means that if we generate a large set of numbers, no part of \( [a,b) \) gets more numbers than others</li>
+
+<p><li> <code>random.random()</code> generates random numbers that are <em>uniformly distributed</em> in the interval \( [0,1) \)</li>
+
+<p><li> <code>random.uniform(a, b)</code> generates random numbers uniformly distributed in \( [a,b) \)</li>
+
+<p><li> &quot;Uniformly distributed&quot; means that if we generate a large set of numbers, no part of \( [a,b) \) gets more numbers than others</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Distribution of random numbers visualized  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Distribution of random numbers visualized </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -290,30 +259,23 @@ plot(x, y, <span style="color: #BA2121">&#39;+&#39;</span>, axis<span style="col
 
 </div>
 
-
 <p>
 <center><p><img src="fig-random/uniform_numbers.png" align="bottom" width=480></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Vectorized drawing of random numbers  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Vectorized drawing of random numbers </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> <code>random.random()</code> generates one number at a time</li>
-  <p><li> <code>numpy</code> has a <code>random</code> module that efficiently generates a (large) number of random numbers at a time</li>
-</ul>
-<p>
 
+<p><li> <code>random.random()</code> generates one number at a time</li>
+
+<p><li> <code>numpy</code> has a <code>random</code> module that efficiently generates a (large) number of random numbers at a time</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -326,19 +288,17 @@ r <span style="color: #666666">=</span> random<span style="color: #666666">.</sp
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Vectorized drawing is important for speeding up programs!</li>
-  <p><li> Possible problem: two <code>random</code> modules, one Python "built-in" and one in <code>numpy</code> (<code>np</code>)</li>
-  <p><li> Convention: use <code>random</code> (Python) and <code>np.random</code></li>
-</ul>
-<p>
 
+<p><li> Vectorized drawing is important for speeding up programs!</li>
+
+<p><li> Possible problem: two <code>random</code> modules, one Python "built-in" and one in <code>numpy</code> (<code>np</code>)</li>
+
+<p><li> Convention: use <code>random</code> (Python) and <code>np.random</code></li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -348,28 +308,21 @@ np<span style="color: #666666">.</span>random<span style="color: #666666">.</spa
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Drawing integers  <a name="___sec6"></a></h2>
+<h2 id="___sec6">Drawing integers </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Quite often we want to draw an integer from \( [a,b] \) and not a real number</li>
-  <p><li> Python's <code>random</code> module and <code>numpy.random</code> have functions for drawing uniformly distributed integers:</li>
-</ul>
-<p>
 
+<p><li> Quite often we want to draw an integer from \( [a,b] \) and not a real number</li>
+
+<p><li> Python's <code>random</code> module and <code>numpy.random</code> have functions for drawing uniformly distributed integers:</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -382,28 +335,22 @@ r <span style="color: #666666">=</span> np<span style="color: #666666">.</span>r
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example: Rolling a die  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Example: Rolling a die </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Problem.</b>
-<p>
-
 <ul>
-  <p><li> Any no of eyes, 1-6, is equally probable when you roll a die</li>
-  <p><li> What is the chance of getting a 6?</li>
+
+<p><li> Any no of eyes, 1-6, is equally probable when you roll a die</li>
+
+<p><li> What is the chance of getting a 6?</li>
 </ul>
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -427,21 +374,15 @@ M <span style="color: #666666">=</span> <span style="color: #666666">0</span>  <
 <p>
 Probability: <code>M/N</code> (exact: \( 1/6 \))
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example: Rolling a die; vectorized version  <a name="___sec8"></a></h2>
+<h2 id="___sec8">Example: Rolling a die; vectorized version </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -456,37 +397,30 @@ six <span style="color: #666666">=</span> np<span style="color: #666666">.</span
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Impoartant!</b>
 <p>
 Use <code>sum</code> from <code>numpy</code> and not Python's built-in <code>sum</code> function! (The latter is slow, often making a vectorized version slower than the scalar version.)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Debugging programs with random numbers requires fixing the seed of the random sequence  <a name="___sec9"></a></h2>
+<h2 id="___sec9">Debugging programs with random numbers requires fixing the seed of the random sequence </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Debugging programs with random numbers is difficult because the numbers produced vary each time we run the program</li>
-  <p><li> For debugging it is important that a new run reproduces the sequence of random numbers in the last run</li>
-  <p><li> This is possible by fixing the <em>seed</em> of the <code>random</code> module: <br />
+
+<p><li> Debugging programs with random numbers is difficult because the numbers produced vary each time we run the program</li>
+
+<p><li> For debugging it is important that a new run reproduces the sequence of random numbers in the last run</li>
+
+<p><li> This is possible by fixing the <em>seed</em> of the <code>random</code> module: <br />
     <code>random.seed(121)</code>   (<code>int</code> argument)</li>
 </ul>
-<p>
-
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
@@ -504,16 +438,11 @@ Use <code>sum</code> from <code>numpy</code> and not Python's built-in <code>sum
 <p>
 By default, the seed is based on the current time
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Drawing random elements from a list  <a name="___sec10"></a></h2>
+<h2 id="___sec10">Drawing random elements from a list </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -551,21 +480,15 @@ We can also shuffle the list randomly, and then pick any element:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example: Drawing cards from a deck; make deck and draw  <a name="___sec11"></a></h2>
+<h2 id="___sec11">Example: Drawing cards from a deck; make deck and draw </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Make a deck of cards:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -588,11 +511,9 @@ deck <span style="color: #666666">=</span> make_deck()
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Draw a card at random:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -604,22 +525,15 @@ card <span style="color: #666666">=</span> deck<span style="color: #666666">.</s
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example: Drawing cards from a deck; draw a hand of cards  <a name="___sec12"></a></h2>
+<h2 id="___sec12">Example: Drawing cards from a deck; draw a hand of cards </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Draw a hand of <code>n</code> cards:</b>
-<p>
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -631,33 +545,23 @@ card <span style="color: #666666">=</span> deck<span style="color: #666666">.</s
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Note:</b>
-<p>
-
 <ul>
  <p><li> <code>deck</code> is returned since the function changes the list</li>
  <p><li> <code>deck</code> is changed in-place so the change affects the <code>deck</code> object in the calling code anyway, but returning changed arguments is a Python convention and good habit</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example: Drawing cards from a deck; deal  <a name="___sec13"></a></h2>
+<h2 id="___sec13">Example: Drawing cards from a deck; deal </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Deal hands for a set of players:</b>
-<p>
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -675,11 +579,9 @@ players <span style="color: #666666">=</span> deal(<span style="color: #666666">
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Resulting output:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -690,22 +592,15 @@ players <span style="color: #666666">=</span> deal(<span style="color: #666666">
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example: Drawing cards from a deck; analyze results (1)  <a name="___sec14"></a></h2>
+<h2 id="___sec14">Example: Drawing cards from a deck; analyze results (1) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Analyze the no of pairs or n-of-a-kind in a hand:</b>
-<p>
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -722,22 +617,15 @@ players <span style="color: #666666">=</span> deal(<span style="color: #666666">
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example: Drawing cards from a deck; analyze results (2)  <a name="___sec15"></a></h2>
+<h2 id="___sec15">Example: Drawing cards from a deck; analyze results (2) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Analyze the no of combinations of the same suit:</b>
-<p>
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -753,16 +641,11 @@ players <span style="color: #666666">=</span> deal(<span style="color: #666666">
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example: Drawing cards from a deck; analyze results (3)   <a name="___sec16"></a></h2>
+<h2 id="___sec16">Example: Drawing cards from a deck; analyze results (3)  </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -771,11 +654,9 @@ players <span style="color: #666666">=</span> deal(<span style="color: #666666">
 Analysis of how many cards we have of the same suit or the same rank, with some nicely formatted printout (see the book):
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -794,16 +675,11 @@ The hand H6, H9, C6, D5, S6
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class implementation of a deck; class Deck  <a name="___sec17"></a></h2>
+<h2 id="___sec17">Class implementation of a deck; class Deck </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -817,11 +693,9 @@ We can wrap the previous functions in a class:
 </ul>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Code:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -848,21 +722,15 @@ We can wrap the previous functions in a class:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class implementation of a deck; alternative  <a name="___sec18"></a></h2>
+<h2 id="___sec18">Class implementation of a deck; alternative </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -892,16 +760,11 @@ We can wrap the previous functions in a class:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class implementation of a deck; why?  <a name="___sec19"></a></h2>
+<h2 id="___sec19">Class implementation of a deck; why? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -909,7 +772,6 @@ We can wrap the previous functions in a class:
 <p>
 To print a <code>Deck</code> instance, <code>Card</code> and <code>Hand</code> must have <code>__repr__</code> methods that return a &quot;pretty print&quot; string (see the book), because <code>print</code> on list object applies <code>__repr__</code> to print each element.
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-small">
@@ -925,16 +787,11 @@ Yes! The function version has functions updating a global variable <code>deck</c
 <p>
 This is often considered bad programming. In the class version we avoid a global variable - the deck is stored and updated inside the class. Errors are less likely to sneak in in the class version.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Probabilities can be computed by Monte Carlo simulation  <a name="___sec20"></a></h2>
+<h2 id="___sec20">Probabilities can be computed by Monte Carlo simulation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -942,7 +799,6 @@ This is often considered bad programming. In the class version we avoid a global
 <p>
 Simulate \( N \) events and count how many times \( M \) the event \( A \) happens. The probability of the event \( A \) is then \( M/N \) (as \( N\rightarrow\infty \)).
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -969,21 +825,15 @@ p <span style="color: #666666">=</span> <span style="color: #008000">float</span
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>A vectorized version can speed up the simulations  <a name="___sec21"></a></h2>
+<h2 id="___sec21">A vectorized version can speed up the simulations </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1004,16 +854,11 @@ p <span style="color: #666666">=</span> <span style="color: #008000">float</span
 <p>
 Run 10+ times faster than scalar code
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The exact probability can be calculated in this (simple) example  <a name="___sec22"></a></h2>
+<h2 id="___sec22">The exact probability can be calculated in this (simple) example </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1041,22 +886,15 @@ M <span style="color: #666666">=</span> <span style="color: #008000">sum</span>(
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>How accurate and fast is Monte Carlo simulation?  <a name="___sec23"></a></h2>
+<h2 id="___sec23">How accurate and fast is Monte Carlo simulation? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Programs:</b>
-<p>
-
 <ul>
  <p><li> <code>black_gt_green.py</code>: scalar version</li>
  <p><li> <code>black_gt_green_vec.py</code>: vectorized version</li>
@@ -1064,11 +902,9 @@ M <span style="color: #666666">=</span> <span style="color: #008000">sum</span>(
 </ul>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
@@ -1092,16 +928,11 @@ real	0m0.816s
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Gamification of this example  <a name="___sec24"></a></h2>
+<h2 id="___sec24">Gamification of this example </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1112,11 +943,9 @@ throw the two dice. You win 2 euros if there are more eyes on the
 black than on the green die. Should you play this game?
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Code:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1139,21 +968,15 @@ net_profit_per_game <span style="color: #666666">=</span> net_profit_total<span 
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Should we play the game?  <a name="___sec25"></a></h2>
+<h2 id="___sec25">Should we play the game? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
@@ -1163,21 +986,15 @@ Net profit per game in the long run: -0.167804
 <p>
 No!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Vectorization of the game for speeding up the code  <a name="___sec26"></a></h2>
+<h2 id="___sec26">Vectorization of the game for speeding up the code </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1197,16 +1014,11 @@ money <span style="color: #666666">+=</span> <span style="color: #666666">2*</sp
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example: Drawing balls from a hat  <a name="___sec27"></a></h2>
+<h2 id="___sec27">Example: Drawing balls from a hat </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1241,21 +1053,15 @@ ball2 <span style="color: #666666">=</span> hat<span style="color: #666666">.</s
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>What is the probability of getting two black balls or more?  <a name="___sec28"></a></h2>
+<h2 id="___sec28">What is the probability of getting two black balls or more? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1285,21 +1091,15 @@ M <span style="color: #666666">=</span> <span style="color: #666666">0</span>  <
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Examples on computing the probabilities  <a name="___sec29"></a></h2>
+<h2 id="___sec29">Examples on computing the probabilities </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
@@ -1320,16 +1120,11 @@ Probability: 0.4033
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Guess a number game  <a name="___sec30"></a></h2>
+<h2 id="___sec30">Guess a number game </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1338,11 +1133,9 @@ Probability: 0.4033
 Let the computer pick a number at random. You guess at the number, and the computer tells if the number is too high or too low.
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Program:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1361,16 +1154,11 @@ guess <span style="color: #666666">=</span> <span style="color: #666666">0</span
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h1 style="text-align: center;">Monte Carlo integration  <a name="___sec31"></a></h1>
+<h1 id="___sec31">Monte Carlo integration </h1>
 
 <p>
 
@@ -1394,19 +1182,11 @@ $$
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>There is a strong link between an integral and the average of the integrand  <a name="___sec32"></a></h2>
+<h2 id="___sec32">There is a strong link between an integral and the average of the integrand </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1418,7 +1198,6 @@ Recall a famous theorem from calculus: Let \( f_m \) be the mean value of \( f(x
 $$ \int_a^b f(x)dx = f_m(b-a)$$
 <p>&nbsp;<br>
 
-
 <p>
 Idea: compute \( f_m \) by averaging \( N \) function values.
 To choose the \( N \) coordinates \( x_0,\ldots,x_{N-1} \) we use random numbers in \( [a,b] \). Then
@@ -1427,25 +1206,18 @@ To choose the \( N \) coordinates \( x_0,\ldots,x_{N-1} \) we use random numbers
 $$ f_m = N^{-1}\sum_{j=0}^{N-1} f(x_j) $$
 <p>&nbsp;<br>
 
-
 <p>
 This is called Monte Carlo integration.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Implementation of Monte Carlo integration; scalar version  <a name="___sec33"></a></h2>
+<h2 id="___sec33">Implementation of Monte Carlo integration; scalar version </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1459,21 +1231,15 @@ This is called Monte Carlo integration.
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Implementation of Monte Carlo integration; vectorized version  <a name="___sec34"></a></h2>
+<h2 id="___sec34">Implementation of Monte Carlo integration; vectorized version </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1486,23 +1252,17 @@ This is called Monte Carlo integration.
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-small">
 <b>Remark:</b>
 <p>
 Monte Carlo integration is slow for \( \int f(x)dx \) (slower than the Trapezoidal rule, e.g.), but very efficient for integrating functions of many variables \( \int f(x_1,x_2,\ldots,x_n)dx_1dx_2\cdots dx_n \)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Dart-inspired Monte Carlo integration  <a name="___sec35"></a></h2>
+<h2 id="___sec35">Dart-inspired Monte Carlo integration </h2>
 
 <p>
 <center><p><img src="fig-random/MC_dart.png" align="bottom" width=300></p></center>
@@ -1510,32 +1270,26 @@ Monte Carlo integration is slow for \( \int f(x)dx \) (slower than the Trapezoid
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
-
 <ul>
-  <p><li class="fragment"> Choose a box \( B=[x_L,x_H]\times[y_L,y_H] \) with some geometric object \( G \) inside, what is the area of \( G \)?</li>
-  <p><li class="fragment"> Method: draw \( N \) points at random inside \( B \), count how many, \( M \), that fall within \( G \), \( G \)'s area is then \( M/N\times\hbox{area}(B) \)</li>
-  <p><li class="fragment"> Special case: \( G \) is the geometry between \( y=f(x) \) and the \( x \) axis for \( x\in [a,b] \), i.e., the area of \( G \) is \( \int_a^bf(x)dx \), and our method gives \( \int_a^bf(x)dx \approx {M\over N}m(b-a) \) if \( B \) is the box \( [a,b]\times [0,m] \)</li>
+
+<p><li class="fragment"> Choose a box \( B=[x_L,x_H]\times[y_L,y_H] \) with some geometric object \( G \) inside, what is the area of \( G \)?</li>
+
+<p><li class="fragment"> Method: draw \( N \) points at random inside \( B \), count how many, \( M \), that fall within \( G \), \( G \)'s area is then \( M/N\times\hbox{area}(B) \)</li>
+
+<p><li class="fragment"> Special case: \( G \) is the geometry between \( y=f(x) \) and the \( x \) axis for \( x\in [a,b] \), i.e., the area of \( G \) is \( \int_a^bf(x)dx \), and our method gives \( \int_a^bf(x)dx \approx {M\over N}m(b-a) \) if \( B \) is the box \( [a,b]\times [0,m] \)</li>
 </ul>
 
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The code for the dart-inspired Monte Carlo integration  <a name="___sec36"></a></h2>
+<h2 id="___sec36">The code for the dart-inspired Monte Carlo integration </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Scalar code:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1552,11 +1306,9 @@ Monte Carlo integration is slow for \( \int f(x)dx \) (slower than the Trapezoid
 
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Vectorized code:</b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1571,28 +1323,19 @@ Monte Carlo integration is slow for \( \int f(x)dx \) (slower than the Trapezoid
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The development of the error in Monte Carlo integration  <a name="___sec37"></a></h2>
+<h2 id="___sec37">The development of the error in Monte Carlo integration </h2>
 
 <p>
 <center><p><img src="fig-random/MCint_1000000.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h1 style="text-align: center;">Random walk  <a name="___sec38"></a></h1>
+<h1 id="___sec38">Random walk </h1>
 
 <p>
 
@@ -1606,37 +1349,26 @@ Monte Carlo integration is slow for \( \int f(x)dx \) (slower than the Trapezoid
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Random walk in one space dimension  <a name="___sec39"></a></h2>
+<h2 id="___sec39">Random walk in one space dimension </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Basics of random walk in 1D:</b>
-<p>
-
 <ul>
-  <p><li> One particle moves to the left and right with equal probability</li>
-  <p><li> \( n \) particles start at \( x=0 \) at time \( t=0 \) - how do the particles get distributed over time?</li>
+
+<p><li> One particle moves to the left and right with equal probability</li>
+
+<p><li> \( n \) particles start at \( x=0 \) at time \( t=0 \) - how do the particles get distributed over time?</li>
 </ul>
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Applications:</b>
-<p>
-
 <ul>
  <p><li> molecular motion</li>
  <p><li> heat transport</li>
@@ -1648,21 +1380,15 @@ Monte Carlo integration is slow for \( \int f(x)dx \) (slower than the Trapezoid
  <p><li> pricing of financial instruments</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Program for 1D random walk  <a name="___sec40"></a></h2>
+<h2 id="___sec40">Program for 1D random walk </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1688,16 +1414,11 @@ xmax <span style="color: #666666">=</span> sqrt(ns); xmin <span style="color: #6
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Random walk as a difference equation  <a name="___sec41"></a></h2>
+<h2 id="___sec41">Random walk as a difference equation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1712,16 +1433,11 @@ $$ x_n = x_{n-1} + s$$
 
 where \( s=1 \) or \( s=-1 \), both with probability 1/2.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Computing statistics of the random walk  <a name="___sec42"></a></h2>
+<h2 id="___sec42">Computing statistics of the random walk </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1744,18 +1460,13 @@ plot(pos, freq, <span style="color: #BA2121">&#39;b-&#39;</span>)
 
 </div>
 
-
 <p>
 <center><p><img src="fig-random/randomwalk1D_hist.png" align="bottom" width=500></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Vectorized implementation of 1D random walk  <a name="___sec43"></a></h2>
+<h2 id="___sec43">Vectorized implementation of 1D random walk </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1785,16 +1496,11 @@ Evolution through time:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Now to more exciting stuff: 2D random walk  <a name="___sec44"></a></h2>
+<h2 id="___sec44">Now to more exciting stuff: 2D random walk </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1825,21 +1531,15 @@ Let each particle move north, south, west, or east - each with probability 1/4
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Vectorized implementation of 2D random walk  <a name="___sec45"></a></h2>
+<h2 id="___sec45">Vectorized implementation of 2D random walk </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1860,29 +1560,23 @@ Let each particle move north, south, west, or east - each with probability 1/4
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Visualization of 2D random walk  <a name="___sec46"></a></h2>
+<h2 id="___sec46">Visualization of 2D random walk </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> We plot every <code>plot_step</code> step</li>
-  <p><li> One plot on the screen + one hardcopy for movie file</li>
-  <p><li> Extent of axis: it can be shown that after \( n_s \) steps, the typical width of the cluster of particles (standard deviation) is of order \( \sqrt{n_s} \), so we can set min/max axis extent as, e.g.,</li>
-</ul>
-<p>
 
+<p><li> We plot every <code>plot_step</code> step</li>
+
+<p><li> One plot on the screen + one hardcopy for movie file</li>
+
+<p><li> Extent of axis: it can be shown that after \( n_s \) steps, the typical width of the cluster of particles (standard deviation) is of order \( \sqrt{n_s} \), so we can set min/max axis extent as, e.g.,</li>
+</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -1904,41 +1598,35 @@ Inside <code>for</code> loop over steps:
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Class implementation of 2D random walk  <a name="___sec47"></a></h2>
+<h2 id="___sec47">Class implementation of 2D random walk </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Can classes be used to implement a random walk?</li>
-  <p><li> Yes, it sounds natural with class <code>Particle</code>, holding the position of a particle as attributes and with a method <code>move</code> for moving the particle one step</li>
-  <p><li> Class <code>Particles</code> holds a list of <code>Particle</code> instances and has a method <code>move</code> for moving all particles one step and a method <code>moves</code> for moving all particles through all steps</li>
-  <p><li> Additional methods in class <code>Particles</code> can plot and compute statistics</li>
-  <p><li> Downside: with class <code>Particle</code> the code is scalar - a vectorized version <code>must</code> use arrays inside class <code>Particles</code> instead of a list of <code>Particle</code> instances</li>
-  <p><li> The implementation is an exercise</li>
+
+<p><li> Can classes be used to implement a random walk?</li>
+
+<p><li> Yes, it sounds natural with class <code>Particle</code>, holding the position of a particle as attributes and with a method <code>move</code> for moving the particle one step</li>
+
+<p><li> Class <code>Particles</code> holds a list of <code>Particle</code> instances and has a method <code>move</code> for moving all particles one step and a method <code>moves</code> for moving all particles through all steps</li>
+
+<p><li> Additional methods in class <code>Particles</code> can plot and compute statistics</li>
+
+<p><li> Downside: with class <code>Particle</code> the code is scalar - a vectorized version <code>must</code> use arrays inside class <code>Particles</code> instead of a list of <code>Particle</code> instances</li>
+
+<p><li> The implementation is an exercise</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Summary of drawing random numbers (scalar code)  <a name="___sec48"></a></h2>
+<h2 id="___sec48">Summary of drawing random numbers (scalar code) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1970,16 +1658,11 @@ Draw a uniformly distributed random integer in \( [a,b] \):
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Summary of drawing random numbers (vectorized code)  <a name="___sec49"></a></h2>
+<h2 id="___sec49">Summary of drawing random numbers (vectorized code) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2012,37 +1695,27 @@ i <span style="color: #666666">=</span> np<span style="color: #666666">.</span>r
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Summary of probability computations  <a name="___sec50"></a></h2>
+<h2 id="___sec50">Summary of probability computations </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
-
 <ul>
-  <p><li> Probability: perform \( N \) experiments, count \( M \) successes, then success has probability \( M/N \) (\( N \) must be large)</li>
-  <p><li> Monte Carlo simulation: let a program do \( N \) experiments and count \( M \) (simple method for probability problems)</li>
+
+<p><li> Probability: perform \( N \) experiments, count \( M \) successes, then success has probability \( M/N \) (\( N \) must be large)</li>
+
+<p><li> Monte Carlo simulation: let a program do \( N \) experiments and count \( M \) (simple method for probability problems)</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Example: investment with random interest rate  <a name="___sec51"></a></h2>
+<h2 id="___sec51">Example: investment with random interest rate </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2054,13 +1727,14 @@ Recall difference equation for the development of an investment \( x_0 \) with a
 $$ x_{n} = x_{n-1} + {p\over 100}x_{n-1},\quad \hbox{given }x_0$$
 <p>&nbsp;<br>
 
-
 <p>
 But:
 
 <ul>
-  <p><li> In reality, \( p \) is uncertain in the future</li>
-  <p><li> Let us model this uncertainty by letting \( p \) be random</li>
+
+<p><li> In reality, \( p \) is uncertain in the future</li>
+
+<p><li> Let us model this uncertainty by letting \( p \) be random</li>
 </ul>
 <p>
 
@@ -2072,16 +1746,11 @@ $$ x_{n} = x_{n-1} + {p\over 100\cdot 12}x_{n-1}$$
 
 where \( n \) counts months
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The model for changing the interest rate  <a name="___sec52"></a></h2>
+<h2 id="___sec52">The model for changing the interest rate </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2096,27 +1765,24 @@ $$ p_n = p_{n-1} + \gamma$$
 where \( \gamma \) is random
 
 <ul>
-  <p><li> With probability \( 1/M \), \( \gamma \neq 0 \) <br />
+
+<p><li> With probability \( 1/M \), \( \gamma \neq 0 \) <br />
     (i.e., the annual interest rate changes on average every \( M \) months)</li>
-  <p><li> If \( \gamma\neq 0 \), \( \gamma =\pm m \), each with probability \( 1/2 \)</li>
-  <p><li> It does not make sense to have \( p_n < 1 \) or \( p_n > 15 \)</li>
+
+<p><li> If \( \gamma\neq 0 \), \( \gamma =\pm m \), each with probability \( 1/2 \)</li>
+
+<p><li> It does not make sense to have \( p_n < 1 \) or \( p_n > 15 \)</li>
 </ul>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The complete mathematical model  <a name="___sec53"></a></h2>
+<h2 id="___sec53">The complete mathematical model </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>&nbsp;<br>
 $$
 \begin{align*}
@@ -2135,23 +1801,17 @@ $$
 <p>&nbsp;<br>
 </div>
 
-
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
 A particular realization \( x_n, p_n \), \( n=0,1,\ldots,N \), is called a <em>path</em> (through time) or a realization. We are interested in the statistics of many paths.
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Note: this is almost a random walk for the interest rate  <a name="___sec54"></a></h2>
+<h2 id="___sec54">Note: this is almost a random walk for the interest rate </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2159,21 +1819,15 @@ A particular realization \( x_n, p_n \), \( n=0,1,\ldots,N \), is called a <em>p
 <p>
 The development of \( p \) is like a random walk, but the "particle" moves at each time level with probability \( 1/M \) (not 1 - always - as in a normal random walk).
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Simulating the investment development; one path  <a name="___sec55"></a></h2>
+<h2 id="___sec55">Simulating the investment development; one path </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
-<p>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -2202,16 +1856,11 @@ The development of \( p \) is like a random walk, but the "particle" moves at ea
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Simulating the investment development; \( N \) paths  <a name="___sec56"></a></h2>
+<h2 id="___sec56">Simulating the investment development; \( N \) paths </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2238,16 +1887,11 @@ Compute \( N \) paths (investment developments \( x_n \)) and their mean path (m
 <p>
 Can also compute the standard deviation path (&quot;width&quot; of the \( N \) paths), see the book for details
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Input and graphics  <a name="___sec57"></a></h2>
+<h2 id="___sec57">Input and graphics </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -2269,65 +1913,49 @@ m <span style="color: #666666">=</span> <span style="color: #666666">0.5</span> 
 We may add some graphics in the program:
 
 <ul>
-    <p><li> plot some realizations of \( x_n \) and \( p_n \)</li>
-    <p><li> plot the mean \( x_n \) with plus/minus one standard deviation</li>
-    <p><li> plot the mean \( p_n \) with plus/minus one standard deviation</li>
+
+<p><li> plot some realizations of \( x_n \) and \( p_n \)</li>
+
+<p><li> plot the mean \( x_n \) with plus/minus one standard deviation</li>
+
+<p><li> plot the mean \( p_n \) with plus/minus one standard deviation</li>
 </ul>
 <p>
 
 See the book for graphics details (good example on updating several different plots simultaneously in a simulation)
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Some realizations of the investment  <a name="___sec58"></a></h2>
+<h2 id="___sec58">Some realizations of the investment </h2>
 
 <p>
 <center><p><img src="fig-random/growth_random_x.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>Some realizations of the interest rate  <a name="___sec59"></a></h2>
+<h2 id="___sec59">Some realizations of the interest rate </h2>
 
 <p>
 <center><p><img src="fig-random/growth_random_p.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The mean and uncertainty of the investment over time  <a name="___sec60"></a></h2>
+<h2 id="___sec60">The mean and uncertainty of the investment over time </h2>
 
 <p>
 <center><p><img src="fig-random/growth_random_xm.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
-<h2>The mean and uncertainty of the interest rate over time  <a name="___sec61"></a></h2>
+<h2 id="___sec61">The mean and uncertainty of the interest rate over time </h2>
 
 <p>
 <center><p><img src="fig-random/growth_random_pm.png" align="bottom" width=600></p></center>
-
-
 </section>
 
 

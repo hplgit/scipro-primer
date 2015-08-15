@@ -193,8 +193,10 @@ MathJax.Hub.Config({
 
 <center>[1] <b style="font-weight: bold">Simula Research Laboratory</b></center>
 <center>[2] <b style="font-weight: bold">University of Oslo, Dept. of Informatics</b></center>
+<br>
 <p>
-<center><b style="font-weight: bold">May 6, 2015</b></center> <!-- date -->
+<center><b style="font-weight: bold">Aug 15, 2015</b></center> <!-- date -->
+<br>
 </section>
 
 
@@ -487,12 +489,11 @@ The loop is now inside <code>np.sin</code> and implemented in very efficient C c
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
-from numpy import sin, exp, linspace
-
-<p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> sin, exp, linspace
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
     <span style="color: #8B008B; font-weight: bold">return</span> x**<span style="color: #B452CD">3</span> + sin(x)*exp(-<span style="color: #B452CD">3</span>*x)
 
 x = <span style="color: #B452CD">1.2</span>                     <span style="color: #228B22"># float object</span>
@@ -717,7 +718,8 @@ title(<span style="color: #CD5555">&#39;My First Easyviz Demo&#39;</span>)
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">import</span> *
 </pre></div>
-
+<p>
+Note: SciTools (by default) adds markers to the lines, Matplotlib does not
 </div>
 </section>
 
@@ -948,11 +950,13 @@ plot(x, y, title=formula)
 <table border="0">
 <tr>
 <td class="padding">
+<p>&nbsp;<br>
+$$ f(x; m, s) = {1\over\sqrt{2\pi}}{1\over s}\exp{\left[-{1\over2}\left({x-m\over s}\right)^2\right]} $$
+<p>&nbsp;<br>
+
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<p>
-   \[ f(x; m, s) = {1\over\sqrt{2\pi}}{1\over s}\exp{\left[-{1\over2}\left({x-m\over s}\right)^2\right]} \]
-
 <ul>
 
 <p><li> \( m \) is the location of the peak</li>
@@ -1055,7 +1059,7 @@ We use some program to combine these files to a video file:
 
 <ul>
  <p><li> <code>convert</code> for animted GIF format (if just a few plot files)</li>
- <p><li> <code>avconv</code> for MP4, WebM, Ogg, and Flash formats</li>
+ <p><li> <code>ffmpeg</code> (or <code>avconv</code>) for MP4, WebM, Ogg, and Flash formats</li>
 </ul>
 </div>
 </section>
@@ -1111,12 +1115,12 @@ or insert this HTML code in some file <code>tmp.html</code> loaded into a browse
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
 <p>
-Tool: <code>avconv</code> or <code>ffmpeg</code>
+Tool: <code>ffmpeg</code> or <code>avconv</code>
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; avconv -r 5 -i tmp_%04d.png -vcodec flv movie.flv
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; ffmpeg -r 5 -i tmp_%04d.png -vcodec flv movie.flv
 </pre></div>
 <p>
 where
@@ -1156,7 +1160,7 @@ video filenamet extensions:
 
 <section class="slide">
 
-<h2 id="___sec32">How to play movie files in general </h2>
+<h2 id="___sec32">How to play movie files in general (with vlc) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1189,7 +1193,7 @@ Other players (on Linux) are <code>mplayer</code>, <code>totem</code>, ...
 </pre></div>
 <p>
 makes a player of <code>tmp_*.png</code> files in a file <code>mymovie.html</code>
-(load into a web browser), 4 frames per second
+(load into a web browser)
 </div>
 </section>
 
@@ -1235,12 +1239,13 @@ Try these statements out!
 <p>
 The Heaviside function is frequently used in science and engineering:
 
-<p>
-\[ H(x) = \left\lbrace\begin{array}{ll}
-0, & x<0\\
+<p>&nbsp;<br>
+$$ H(x) = \left\lbrace\begin{array}{ll}
+0, & x < 0\\
 1, & x\geq 0
 \end{array}\right.
-\]
+$$
+<p>&nbsp;<br>
 
 <p>
 Python implementation:
@@ -1518,10 +1523,10 @@ plot(x2, f(x2), label=<span style="color: #CD5555">&#39;%d points&#39;</span> % 
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">a = x
-a[-<span style="color: #B452CD">1</span>] = q
+a[-<span style="color: #B452CD">1</span>] = <span style="color: #B452CD">1000</span>
 </pre></div>
 <p>
-Is <code>x[-1]</code> also changed to <code>q</code>?<br />
+Is <code>x[-1]</code> also changed to 1000?<br />
 Yes, because <code>a</code> refers to the same array as <code>x</code>.
 
 <p>
@@ -1538,10 +1543,10 @@ The same yields slices:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">a = x[r:]   <span style="color: #228B22"># a refers to a part of the x array</span>
-a[-<span style="color: #B452CD">1</span>] = q   <span style="color: #228B22"># changes x[-1]!</span>
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">a = x[r:]      <span style="color: #228B22"># a refers to a part of the x array</span>
+a[-<span style="color: #B452CD">1</span>] = <span style="color: #B452CD">1000</span>   <span style="color: #228B22"># changes x[-1]!</span>
 a = x[r:].copy()
-a[-<span style="color: #B452CD">1</span>] = q   <span style="color: #228B22"># does not change x[-1]</span>
+a[-<span style="color: #B452CD">1</span>] = <span style="color: #B452CD">1000</span>   <span style="color: #228B22"># does not change x[-1]</span>
 </pre></div>
 
 </div>
@@ -2108,6 +2113,7 @@ Curve plotting (unified syntax for Matplotlib and SciTools):
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">import</span> *
 <span style="color: #228B22">#from scitools.std import *</span>
 
+
 plot(x, y)         <span style="color: #228B22"># simplest command</span>
 
 plot(t1, y1, <span style="color: #CD5555">&#39;r&#39;</span>,  <span style="color: #228B22"># curve 1, red line</span>
@@ -2216,23 +2222,23 @@ plot(t1, y1, <span style="color: #CD5555">&#39;r&#39;</span>,  <span style="colo
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold"></b>
-<ul>
-
-<p><li> Goal: visualize the temperature in the ground as a function of</li>
-</ul>
 <p>
+Goal: visualize the temperature in the ground as a function of
+depth (\( z \)) and time (\( t \)), displayed as a movie in time:
 
- depth (\( z \)) and time (\( t \)), displayed as a movie in time:
- \[ T(z,t) = T_0 + Ae^{-az}\cos (\omega t - az),\quad a =\sqrt{\omega\over 2k} \]
+<p>&nbsp;<br>
+$$ T(z,t) = T_0 + Ae^{-az}\cos (\omega t - az),\quad a =\sqrt{\omega\over 2k} $$
+<p>&nbsp;<br>
 
-<ul>
+<p>
+First we make a <em>general</em> animation function for an \( f(x,t) \):
 
-<p><li> First we make a <em>general</em> animation function for an \( f(x,t) \):</li>
-</ul>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">animate</span>(tmax, dt, x, function, ymin, ymax, t0=<span style="color: #B452CD">0</span>,
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.std</span> <span style="color: #8B008B; font-weight: bold">import</span> plot  <span style="color: #228B22"># convenient for animations</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">animate</span>(tmax, dt, x, function, ymin, ymax, t0=<span style="color: #B452CD">0</span>,
             xlabel=<span style="color: #CD5555">&#39;x&#39;</span>, ylabel=<span style="color: #CD5555">&#39;y&#39;</span>, filename=<span style="color: #CD5555">&#39;tmp_&#39;</span>):
     t = t0
     counter = <span style="color: #B452CD">0</span>
@@ -2246,10 +2252,8 @@ plot(t1, y1, <span style="color: #CD5555">&#39;r&#39;</span>,  <span style="colo
         t += dt
         counter += <span style="color: #B452CD">1</span>
 </pre></div>
-<ul>
-
-<p><li> Then we call this function with our special \( T(z,t) \) function</li>
-</ul>
+<p>
+Then we call this function with our special \( T(z,t) \) function
 </div>
 </section>
 
@@ -2286,11 +2290,9 @@ n = <span style="color: #B452CD">501</span>      <span style="color: #228B22"># 
 
 z = linspace(<span style="color: #B452CD">0</span>, D, n)
 animate(tmax, dt, z, T, T0-A, T0+A, <span style="color: #B452CD">0</span>, <span style="color: #CD5555">&#39;z&#39;</span>, <span style="color: #CD5555">&#39;T&#39;</span>)
-<span style="color: #228B22"># make movie files:</span>
-movie(<span style="color: #CD5555">&#39;tmp_*.png&#39;</span>, encoder=<span style="color: #CD5555">&#39;convert&#39;</span>, fps=<span style="color: #B452CD">2</span>,
-      output_file=<span style="color: #CD5555">&#39;tmp_heatwave.gif&#39;</span>)
 </pre></div>
-
+<p>
+Must combine hardcopy files (like <code>tmp_0034.png</code>) to make video formats
 </div>
 </section>
 

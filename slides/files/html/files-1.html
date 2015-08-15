@@ -6,9 +6,9 @@ Automatically generated HTML file from DocOnce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Ch.6: Dictionaries and Strings">
+<meta name="description" content="Ch.6: Dictionaries and strings">
 
-<title>Ch.6: Dictionaries and Strings</title>
+<title>Ch.6: Dictionaries and strings</title>
 
 
 <style type="text/css">
@@ -25,7 +25,7 @@ h3 { font-size: 1.4em;  color: #8A0808; }
 h4 { color: #8A0808; }
 a { color: #8A0808; text-decoration:none; }
 tt { font-family: "Courier New", Courier; }
-
+/* pre style removed because it will interfer with pygments */
 p { text-indent: 0px; }
 hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 p.caption { width: 80%; font-style: normal; text-align: left; }
@@ -52,10 +52,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -65,152 +65,149 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(u' Goals ', 2, None, '___sec0'),
-              (u' Dictionaries ', 1, None, '___sec1'),
-              (u' A dictionary is a generalization of a list ',
+ 'sections': [(u'Goals', 2, None, '___sec0'),
+              (u'Dictionaries', 1, None, '___sec1'),
+              (u'A dictionary is a generalization of a list',
                2,
                None,
                '___sec2'),
-              (u' The list index is sometimes unnatural for locating an element of a collection of objects ',
+              (u'The list index is sometimes unnatural for locating an element of a collection of objects',
                2,
                None,
                '___sec3'),
-              (u' Dictionaries map strings to objects ', 2, None, '___sec4'),
-              (u' Initializing dictionaries ', 2, None, '___sec5'),
-              (u' Looping (iterating) over a dict means looping over the keys ',
+              (u'Dictionaries map strings to objects', 2, None, '___sec4'),
+              (u'Initializing dictionaries', 2, None, '___sec5'),
+              (u'Looping (iterating) over a dict means looping over the keys',
                2,
                None,
                '___sec6'),
-              (u' Can test for particular keys, delete elements, etc ',
+              (u'Can test for particular keys, delete elements, etc',
                2,
                None,
                '___sec7'),
-              (u' The keys and values can be reached as lists ',
+              (u'The keys and values can be reached as lists',
                2,
                None,
                '___sec8'),
-              (u' Caution: two variables can alter the same dictionary ',
+              (u'Caution: two variables can alter the same dictionary',
                2,
                None,
                '___sec9'),
-              (u' Any constant object can be used as key ',
+              (u'Any constant object can be used as key',
                2,
                None,
                '___sec10'),
-              (u' Example: Polynomials represented by dictionaries ',
+              (u'Example: Polynomials represented by dictionaries',
                2,
                None,
                '___sec11'),
-              (u' Polynomials can also be represented by lists ',
+              (u'Polynomials can also be represented by lists',
                2,
                None,
                '___sec12'),
-              (u' What is best for polynomials: lists or dictionaries? ',
+              (u'What is best for polynomials: lists or dictionaries?',
                2,
                None,
                '___sec13'),
-              (u' Quick recap of file reading ', 2, None, '___sec14'),
-              (u' Example: Read file data into a dictionary ',
+              (u'Quick recap of file reading', 2, None, '___sec14'),
+              (u'Example: Read file data into a dictionary',
                2,
                None,
                '___sec15'),
-              (u' A tabular file can be read into a nested dictionary ',
+              (u'A tabular file can be read into a nested dictionary',
                2,
                None,
                '___sec16'),
-              (u' We must first develop the plan (algorithm) for doing this ',
+              (u'We must first develop the plan (algorithm) for doing this',
                2,
                None,
                '___sec17'),
-              (u' Example: Download data from the web and visualize ',
+              (u'Example: Download data from the web and visualize',
                2,
                None,
                '___sec18'),
-              (u' We need to analyze the file format to find the algorithm for interpreting the content ',
+              (u'We need to analyze the file format to find the algorithm for interpreting the content',
                2,
                None,
                '___sec19'),
-              (u' We need algorithms before we can write code ',
+              (u'We need algorithms before we can write code',
                2,
                None,
                '___sec20'),
-              (u' No code is presented here... ', 2, None, '___sec21'),
-              (u' Plot of normalized stock prices in logarithmic scale ',
+              (u'No code is presented here...', 2, None, '___sec21'),
+              (u'Plot of normalized stock prices in logarithmic scale',
                2,
                None,
                '___sec22'),
-              (u' String manipulation ', 1, None, '___sec23'),
-              (u' String manipulation is key to interpret the content of files ',
+              (u'String manipulation', 1, None, '___sec23'),
+              (u'String manipulation is key to interpret the content of files',
                2,
                None,
                '___sec24'),
-              (u' Extracting substrings ', 2, None, '___sec25'),
-              (u' Checking if a substring is contained in a string ',
+              (u'Extracting substrings', 2, None, '___sec25'),
+              (u'Checking if a substring is contained in a string',
                2,
                None,
                '___sec26'),
-              (u' Substituting a substring by another string ',
+              (u'Substituting a substring by another string',
                2,
                None,
                '___sec27'),
-              (u' Splitting a string into a list of substrings ',
+              (u'Splitting a string into a list of substrings',
                2,
                None,
                '___sec28'),
-              (u' Splitting a string into lines ', 2, None, '___sec29'),
-              (u' Strings are constant - immutable - objects ',
+              (u'Splitting a string into lines', 2, None, '___sec29'),
+              (u'Strings are constant - immutable - objects',
                2,
                None,
                '___sec30'),
-              (u' Stripping off leading/trailing whitespace ',
+              (u'Stripping off leading/trailing whitespace',
                2,
                None,
                '___sec31'),
-              (u' Some convenient string functions ', 2, None, '___sec32'),
-              (u' Joining a list of substrings to a new string ',
+              (u'Some convenient string functions', 2, None, '___sec32'),
+              (u'Joining a list of substrings to a new string',
                2,
                None,
                '___sec33'),
-              (u' Example: Read pairs of numbers (x,y) from a file ',
+              (u'Example: Read pairs of numbers (x,y) from a file',
                2,
                None,
                '___sec34'),
-              (u' The code for reading pairs ', 2, None, '___sec35'),
-              (u' Output of a pretty print of the pairs list ',
+              (u'The code for reading pairs', 2, None, '___sec35'),
+              (u'Output of a pretty print of the pairs list',
                2,
                None,
                '___sec36'),
-              (u' Alternative solution: Python syntax in file format ',
+              (u'Alternative solution: Python syntax in file format',
                2,
                None,
                '___sec37'),
-              (u' Web pages are nothing but text files ',
-               2,
-               None,
-               '___sec38'),
-              (u' The web page generated by HTML code from the previous slide ',
+              (u'Web pages are nothing but text files', 2, None, '___sec38'),
+              (u'The web page generated by HTML code from the previous slide',
                2,
                None,
                '___sec39'),
-              (u' Programs can extract data from web pages ',
+              (u'Programs can extract data from web pages',
                2,
                None,
                '___sec40'),
-              (u' The structure of the Oxfort.txt weather data file ',
+              (u'The structure of the Oxfort.txt weather data file',
                2,
                None,
                '___sec41'),
-              (u' Reading the climate data ', 2, None, '___sec42'),
-              (u' Reading the climate data - program, part 2 ',
+              (u'Reading the climate data', 2, None, '___sec42'),
+              (u'Reading the climate data - program, part 2',
                2,
                None,
                '___sec43'),
-              (u' Reading the climate data - program, part 3 ',
+              (u'Reading the climate data - program, part 3',
                2,
                None,
                '___sec44'),
-              (u' Summary of dictionary functionality ', 2, None, '___sec45'),
-              (u' Summary of some string operations ', 2, None, '___sec46')]}
+              (u'Summary of dictionary functionality', 2, None, '___sec45'),
+              (u'Summary of some string operations', 2, None, '___sec46')]}
 end of tocinfo -->
 
 <body>
@@ -236,7 +233,7 @@ MathJax.Hub.Config({
 
 
 
-<center><h1>Ch.6: Dictionaries and Strings</h1></center>  <!-- document title -->
+<center><h1>Ch.6: Dictionaries and strings</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -245,18 +242,19 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
+<br>
 <p>
-<center><h4>Sep 30, 2014</h4></center> <!-- date -->
+<center><h4>Aug 15, 2015</h4></center> <!-- date -->
+<br>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Goals  <a name="___sec0"></a></h2>
+<h2 id="___sec0">Goals </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -283,7 +281,7 @@ The book has additional material on how to utilize data from the Internet.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1>Dictionaries  <a name="___sec1"></a></h1>
+<h1 id="___sec1">Dictionaries </h1>
 
 <p>
 
@@ -301,7 +299,7 @@ figfiles[<span style="color: #BA2121">&#39;fig3.png&#39;</span>] <span style="co
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>A dictionary is a generalization of a list  <a name="___sec2"></a></h2>
+<h2 id="___sec2">A dictionary is a generalization of a list </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -327,7 +325,7 @@ figfiles[<span style="color: #BA2121">&#39;fig3.png&#39;</span>] <span style="co
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The list index is sometimes unnatural for locating an element of a collection of objects  <a name="___sec3"></a></h2>
+<h2 id="___sec3">The list index is sometimes unnatural for locating an element of a collection of objects </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -358,7 +356,7 @@ But it would be more natural to write <code>temps[Oslo]</code>!
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Dictionaries map strings to objects  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Dictionaries map strings to objects </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -378,7 +376,7 @@ temps <span style="color: #666666">=</span> {<span style="color: #BA2121">&#39;O
 Important:
 
 <ul>
- <li> The string index, like `Oslo', is called <em>key</em>, while <code>temps['Oslo']</code>
+ <li> The string index, like <code>Oslo</code>, is called <em>key</em>, while <code>temps['Oslo']</code>
    is the associated <em>value</em></li>
  <li> A dictionary is an <em>unordered</em> collection of key-value pairs</li>
 </ul>
@@ -388,7 +386,7 @@ Important:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Initializing dictionaries  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Initializing dictionaries </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -426,7 +424,7 @@ Add a new element to a dict (dict = dictionary):
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Looping (iterating) over a dict means looping over the keys  <a name="___sec6"></a></h2>
+<h2 id="___sec6">Looping (iterating) over a dict means looping over the keys </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -471,7 +469,7 @@ particular sequence:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Can test for particular keys, delete elements, etc  <a name="___sec7"></a></h2>
+<h2 id="___sec7">Can test for particular keys, delete elements, etc </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -510,7 +508,7 @@ Delete an element of a dict:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The keys and values can be reached as lists  <a name="___sec8"></a></h2>
+<h2 id="___sec8">The keys and values can be reached as lists </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -548,7 +546,7 @@ London
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Caution: two variables can alter the same dictionary  <a name="___sec9"></a></h2>
+<h2 id="___sec9">Caution: two variables can alter the same dictionary </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -590,7 +588,7 @@ Recall the same for lists:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Any constant object can be used as key  <a name="___sec10"></a></h2>
+<h2 id="___sec10">Any constant object can be used as key </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -619,7 +617,7 @@ Recall the same for lists:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Example: Polynomials represented by dictionaries  <a name="___sec11"></a></h2>
+<h2 id="___sec11">Example: Polynomials represented by dictionaries </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -673,7 +671,7 @@ Short pro version:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Polynomials can also be represented by lists  <a name="___sec12"></a></h2>
+<h2 id="___sec12">Polynomials can also be represented by lists </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -715,7 +713,7 @@ Evaluate such a polynomial \( \sum_{i=0}^N c_ix^i \) for some \( x \):
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>What is best for polynomials: lists or dictionaries?  <a name="___sec13"></a></h2>
+<h2 id="___sec13">What is best for polynomials: lists or dictionaries? </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -746,7 +744,7 @@ Dictionaries can easily handle negative powers, e.g., \( {1\over2}x^{-3} + 2x^4 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Quick recap of file reading  <a name="___sec14"></a></h2>
+<h2 id="___sec14">Quick recap of file reading </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -771,7 +769,7 @@ infile<span style="color: #666666">.</span>close()                <span style="c
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Example: Read file data into a dictionary  <a name="___sec15"></a></h2>
+<h2 id="___sec15">Example: Read file data into a dictionary </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -813,7 +811,7 @@ temps <span style="color: #666666">=</span> {}                  <span style="col
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>A tabular file can be read into a nested dictionary  <a name="___sec16"></a></h2>
+<h2 id="___sec16">A tabular file can be read into a nested dictionary </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -839,7 +837,7 @@ Create a dict <code>data[p][i]</code> (dict of dict) to hold measurement no. <co
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>We must first develop the plan (algorithm) for doing this  <a name="___sec17"></a></h2>
+<h2 id="___sec17">We must first develop the plan (algorithm) for doing this </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -873,7 +871,7 @@ Good exercise: do this now!<br />
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Example: Download data from the web and visualize  <a name="___sec18"></a></h2>
+<h2 id="___sec18">Example: Download data from the web and visualize </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -905,7 +903,7 @@ Good exercise: do this now!<br />
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>We need to analyze the file format to find the algorithm for interpreting the content  <a name="___sec19"></a></h2>
+<h2 id="___sec19">We need to analyze the file format to find the algorithm for interpreting the content </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -938,7 +936,7 @@ File format:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>We need algorithms before we can write code  <a name="___sec20"></a></h2>
+<h2 id="___sec20">We need algorithms before we can write code </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -973,7 +971,7 @@ File format:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>No code is presented here...  <a name="___sec21"></a></h2>
+<h2 id="___sec21">No code is presented here... </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -987,7 +985,7 @@ example, you know and understand a lot!
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Plot of normalized stock prices in logarithmic scale  <a name="___sec22"></a></h2>
+<h2 id="___sec22">Plot of normalized stock prices in logarithmic scale </h2>
 
 <p>
 Much computer history in this plot:
@@ -998,7 +996,7 @@ Much computer history in this plot:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h1>String manipulation  <a name="___sec23"></a></h1>
+<h1 id="___sec23">String manipulation </h1>
 
 <p>
 <!-- !bslidecell 00 -->
@@ -1026,7 +1024,7 @@ Much computer history in this plot:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>String manipulation is key to interpret the content of files  <a name="___sec24"></a></h2>
+<h2 id="___sec24">String manipulation is key to interpret the content of files </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1066,7 +1064,7 @@ Strings behave much like lists/tuples - they are a sequence of characters:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Extracting substrings  <a name="___sec25"></a></h2>
+<h2 id="___sec25">Extracting substrings </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1108,7 +1106,7 @@ Find start of substring:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Checking if a substring is contained in a string  <a name="___sec26"></a></h2>
+<h2 id="___sec26">Checking if a substring is contained in a string </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1136,7 +1134,7 @@ C found
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Substituting a substring by another string  <a name="___sec27"></a></h2>
+<h2 id="___sec27">Substituting a substring by another string </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1172,7 +1170,7 @@ is replaced by <code>'Bonn'</code>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Splitting a string into a list of substrings  <a name="___sec28"></a></h2>
+<h2 id="___sec28">Splitting a string into a list of substrings </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1210,7 +1208,7 @@ Try to understand this one:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Splitting a string into lines  <a name="___sec29"></a></h2>
+<h2 id="___sec29">Splitting a string into lines </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1247,7 +1245,7 @@ Try to understand this one:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Strings are constant - immutable - objects  <a name="___sec30"></a></h2>
+<h2 id="___sec30">Strings are constant - immutable - objects </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1274,7 +1272,7 @@ You cannot change a string in-place (as you can with lists and arrays) - all cha
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Stripping off leading/trailing whitespace  <a name="___sec31"></a></h2>
+<h2 id="___sec31">Stripping off leading/trailing whitespace </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1298,7 +1296,7 @@ You cannot change a string in-place (as you can with lists and arrays) - all cha
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Some convenient string functions  <a name="___sec32"></a></h2>
+<h2 id="___sec32">Some convenient string functions </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1340,7 +1338,7 @@ You cannot change a string in-place (as you can with lists and arrays) - all cha
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Joining a list of substrings to a new string  <a name="___sec33"></a></h2>
+<h2 id="___sec33">Joining a list of substrings to a new string </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1383,7 +1381,7 @@ Split off the first two words on a line:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Example: Read pairs of numbers (x,y) from a file  <a name="___sec34"></a></h2>
+<h2 id="___sec34">Example: Read pairs of numbers (x,y) from a file </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1418,7 +1416,7 @@ Split off the first two words on a line:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The code for reading pairs  <a name="___sec35"></a></h2>
+<h2 id="___sec35">The code for reading pairs </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1446,7 +1444,7 @@ pairs <span style="color: #666666">=</span> []   <span style="color: #408080; fo
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Output of a pretty print of the pairs list  <a name="___sec36"></a></h2>
+<h2 id="___sec36">Output of a pretty print of the pairs list </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1472,7 +1470,7 @@ pairs <span style="color: #666666">=</span> []   <span style="color: #408080; fo
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Alternative solution: Python syntax in file format  <a name="___sec37"></a></h2>
+<h2 id="___sec37">Alternative solution: Python syntax in file format </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1513,7 +1511,7 @@ pairs <span style="color: #666666">=</span> <span style="color: #008000">eval</s
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Web pages are nothing but text files  <a name="___sec38"></a></h2>
+<h2 id="___sec38">Web pages are nothing but text files </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1549,7 +1547,7 @@ if desired.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The web page generated by HTML code from the previous slide  <a name="___sec39"></a></h2>
+<h2 id="___sec39">The web page generated by HTML code from the previous slide </h2>
 
 <p>
 <center><p><img src="fig-files/simple_webpage.png" align="bottom" width=600></p></center>
@@ -1557,7 +1555,7 @@ if desired.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Programs can extract data from web pages  <a name="___sec40"></a></h2>
+<h2 id="___sec40">Programs can extract data from web pages </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1587,7 +1585,7 @@ urllib<span style="color: #666666">.</span>urlretrieve(url, filename<span style=
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>The structure of the Oxfort.txt weather data file  <a name="___sec41"></a></h2>
+<h2 id="___sec41">The structure of the Oxfort.txt weather data file </h2>
 
 <p>
 
@@ -1615,7 +1613,7 @@ Sunshine data taken <span style="color: #008000; font-weight: bold">from</span> 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Reading the climate data  <a name="___sec42"></a></h2>
+<h2 id="___sec42">Reading the climate data </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1654,7 +1652,7 @@ data[<span style="color: #BA2121">&#39;location&#39;</span>] <span style="color:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Reading the climate data - program, part 2  <a name="___sec43"></a></h2>
+<h2 id="___sec43">Reading the climate data - program, part 2 </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1688,7 +1686,7 @@ data[<span style="color: #BA2121">&#39;location&#39;</span>] <span style="color:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Reading the climate data - program, part 3  <a name="___sec44"></a></h2>
+<h2 id="___sec44">Reading the climate data - program, part 3 </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1715,7 +1713,7 @@ data[<span style="color: #BA2121">&#39;location&#39;</span>] <span style="color:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Summary of dictionary functionality  <a name="___sec45"></a></h2>
+<h2 id="___sec45">Summary of dictionary functionality </h2>
 
 <p>
 <table border="1">
@@ -1743,7 +1741,7 @@ data[<span style="color: #BA2121">&#39;location&#39;</span>] <span style="color:
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
 
-<h2>Summary of some string operations  <a name="___sec46"></a></h2>
+<h2 id="___sec46">Summary of some string operations </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">

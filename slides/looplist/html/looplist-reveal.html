@@ -137,8 +137,10 @@ MathJax.Hub.Config({
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
+<br>
 <p>&nbsp;<br>
-<center><h4>May 6, 2015</h4></center> <!-- date -->
+<center><h4>Aug 15, 2015</h4></center> <!-- date -->
+<br>
 </section>
 
 
@@ -304,7 +306,7 @@ Examples: \( C=40 \), \( C\neq 40 \), \( C\geq 40 \), \( C>40 \), \( C < 40 \).
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">C</span> <span style="color: #d0d0d0">==</span> <span style="color: #3677a9">40</span>  <span style="color: #999999; font-style: italic"># note the double ==, C=40 is an assignment!</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">C</span> <span style="color: #d0d0d0">==</span> <span style="color: #3677a9">40</span>  <span style="color: #999999; font-style: italic"># note the double ==, C = 40 is an assignment!</span>
 <span style="color: #d0d0d0">C</span> <span style="color: #d0d0d0">!=</span> <span style="color: #3677a9">40</span>
 <span style="color: #d0d0d0">C</span> <span style="color: #d0d0d0">&gt;=</span> <span style="color: #3677a9">40</span>
 <span style="color: #d0d0d0">C</span> <span style="color: #d0d0d0">&gt;</span>  <span style="color: #3677a9">40</span>
@@ -585,7 +587,7 @@ format the two columns:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">    <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;%5d %5.1f&#39;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">(C,</span> <span style="color: #d0d0d0">F)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;%5d %5.1f&#39;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">(C,</span> <span style="color: #d0d0d0">F)</span>
 </pre></div>
 <p>
 Output:
@@ -641,7 +643,7 @@ can always be transformed to a corresponding while loop
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
-But not all while loops can be expressed as for loops!
+<em>But not all while loops can be expressed as for loops!</em>
 </div>
 </section>
 
@@ -955,9 +957,9 @@ Example with three lists:
 
 <span style="color: #d0d0d0">table1</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[Cdegrees,</span> <span style="color: #d0d0d0">Fdegrees]</span>  <span style="color: #999999; font-style: italic"># list of two lists</span>
 
-<span style="color: #d0d0d0">table1[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">]</span>     <span style="color: #999999; font-style: italic"># the Cdegrees list</span>
-<span style="color: #d0d0d0">table1[</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">]</span>     <span style="color: #999999; font-style: italic"># the Fdegrees list</span>
-<span style="color: #d0d0d0">table1[</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">][</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">]</span>  <span style="color: #999999; font-style: italic"># the 3rd element in Fdegrees</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">table1[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">]</span>     <span style="color: #999999; font-style: italic"># the Cdegrees list</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">table1[</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">]</span>     <span style="color: #999999; font-style: italic"># the Fdegrees list</span>
+<span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">table1[</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">][</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">]</span>  <span style="color: #999999; font-style: italic"># the 3rd element in Fdegrees</span>
 </pre></div>
 
 </div>
@@ -1352,22 +1354,16 @@ Tasks:
 
 <ul>
 
-<p><li> Compute the average number of sun hours for each month during</li>
+<p><li> Compute the average number of sun hours for each month during
+    the total data period (1929--2009),</li>
+
+<p><li> Which month has the best weather according to the means found in the
+    preceding task?</li>
+
+<p><li> For each decade, 1930-1939, 1949-1949, \( \ldots \), 2000-2009,
+    compute the average number of sun hours per day in January
+    and December</li>
 </ul>
-<p>
-
-the total data period (1929--2009)',
-r'Which month has the best weather according to the means found in the
-preceding task?
-
-<ul>
-
-<p><li> For each decade, 1930-1939, 1949-1949, \( \ldots \), 2000-2009,</li>
-</ul>
-<p>
-
-compute the average number of sun hours per day in January
-and December
 </div>
 </section>
 
@@ -1457,7 +1453,8 @@ and December
     <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;Decade %d-%d: %.1f&#39;</span> <span style="color: #d0d0d0">%</span> \
           <span style="color: #d0d0d0">(</span><span style="color: #3677a9">1930</span><span style="color: #d0d0d0">+i*</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1939</span><span style="color: #d0d0d0">+i*</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">decade_mean[i])</span>
 </pre></div>
-
+<p>
+Complete code: <code>src/looplist/sun_data.py</code>
 </div>
 </section>
 
@@ -1525,7 +1522,7 @@ Example:
 
 <p><li> find <em>math (module)</em>, click on the <a href="https://docs.python.org/2/library/math.html#module-math" target="_blank">link</a></li>
 </ul>
-<p><li> Alternative: run <code>pydoc math</code> in the terminal window (briefer)</li>
+<p><li> Alternative: run <code>pydoc math</code> in the terminal window (briefer description)</li>
 </ul>
 </div>
 </section>

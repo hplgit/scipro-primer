@@ -52,16 +52,20 @@ report it to "the author": "mailto:hpl@simula.no".
 There are several ways to access Python, either on your computer or
 in the cloud. "Appendix H.1": "http://hplgit.github.io/edu/accesspy/accesspy_primer4.html" in the book gives an overview of
 recommended technologies and how to use them to get the software you need
-for working with the book.
+for working with the book. Our primary recommendation is to install Anaconda - it suffices for the book. However, if you intend to do more advanced
+scientific computing in the future, we strongly recommend to use a virtual
+Ubuntu machine for all that work.
 
 __SciTools.__
 The package SciTools is freqently referred to and used in the book.
-You may want to install SciTools directly from its Mercurial version control
+You may want to install SciTools directly from its Git version control
 repository. This makes it easy to upgrade the package at any time.
-SciTools is hosted at "Googlecode": "https://github.com/hplgit/scitools/".
-Make sure you have the Mercurial (<tt>hg</tt>) version control system
-on your computer (if not, do `sudo pip install mercurial` on Linux or Mac,
-and `pip install mercurial` in a Windows Command Prompt or Power Shell window).
+SciTools is now hosted at "GitHub": "https://github.com/hplgit/scitools/"
+(note that the old repository at Googlecode only contains old versions - stay
+away from those!).
+Make sure you have the Git (<tt>hg</tt>) version control system
+on your computer (if not, googling for installation of Git brings you
+to simple procedures, depending on the platform you are on).
 Get the SciTools source code and install it by
 
 !bc sys
@@ -77,6 +81,14 @@ git pull origin master
 sudo python setup.py install
 !ec
 
+A simpler installation procedure applies `pip`:
+
+!bc sys
+pip install -e git+https://github.com/hplgit/scitools.git#egg=scitools --upgrade
+!ec
+Note that you have to rerun this command to install new versions of SciTools
+in the future.
+
 ===== Software installation on Ubuntu =====
 
 If you have an Ubuntu installation, Python is already there. The minimum
@@ -85,6 +97,8 @@ extra packages are installed by this command:
 !bc sys
 sudo apt-get install python-matplotlib python-scipy python-gnuplot gnuplot gnuplot-x11 python-scitools
 !ec
+The Gnuplot packages are optional (you can exclusively used Matplotlib instead).
+
 A comprehensive installation with lots of useful packages can be
 performed by a "Bash script": "https://raw.github.com/hplgit/vagrantbox/master/doc/src/vagrant/src-vagrant/install_rich.sh". Download this file (`install_rich.sh`) and run it by `bash install_rich.sh`.
 
