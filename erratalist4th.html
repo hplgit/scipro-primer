@@ -39,27 +39,28 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 3,
- 'sections': [(' Page 4 ', 3, None, '___sec0'),
-              (' Page 11 ', 3, None, '___sec1'),
-              (' Page 95 ', 3, None, '___sec2'),
-              (' Page 99 ', 3, None, '___sec3'),
-              (' Page 130 ', 3, None, '___sec4'),
-              (' Page 158 ', 3, None, '___sec5'),
-              (' Page 189 ', 3, None, '___sec6'),
-              (' Page 189 ', 3, None, '___sec7'),
-              (' Page 216 ', 3, None, '___sec8'),
-              (' Page 273 ', 3, None, '___sec9'),
-              (' Page 315 ', 3, None, '___sec10'),
-              (' Page 426 ', 3, None, '___sec11'),
-              (' Page 447 ', 3, None, '___sec12'),
-              (' Page 676 ', 3, None, '___sec13'),
-              (' Page 756 ', 3, None, '___sec14'),
-              (' Page 783 ', 3, None, '___sec15'),
-              (' Page 784 ', 3, None, '___sec16'),
-              (' Page 789 ', 3, None, '___sec17'),
-              (' Page 845-846 ', 3, None, '___sec18'),
-              (' Page 846 ', 3, None, '___sec19'),
-              (' Page 847 ', 3, None, '___sec20')]}
+ 'sections': [('Page 4', 3, None, '___sec0'),
+              ('Page 11', 3, None, '___sec1'),
+              ('Page 95', 3, None, '___sec2'),
+              ('Page 99', 3, None, '___sec3'),
+              ('Page 130', 3, None, '___sec4'),
+              ('Page 158', 3, None, '___sec5'),
+              ('Page 189', 3, None, '___sec6'),
+              ('Page 189', 3, None, '___sec7'),
+              ('Page 216', 3, None, '___sec8'),
+              ('Page 273', 3, None, '___sec9'),
+              ('Page 315', 3, None, '___sec10'),
+              ('Page 426', 3, None, '___sec11'),
+              ('Page 447', 3, None, '___sec12'),
+              ('Page 508', 3, None, '___sec13'),
+              ('Page 676', 3, None, '___sec14'),
+              ('Page 756', 3, None, '___sec15'),
+              ('Page 775', 3, None, '___sec16'),
+              ('Page 776', 3, None, '___sec17'),
+              ('Page 780', 3, None, '___sec18'),
+              ('Page 836', 3, None, '___sec19'),
+              ('Page 843', 3, None, '___sec20'),
+              ('Page 844', 3, None, '___sec21')]}
 end of tocinfo -->
 
 <body>
@@ -94,11 +95,13 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> 
 </center>
 
-
 <p>
 <!-- institution(s) -->
+
+<br>
 <p>
-<center><h4>Jan 21, 2015</h4></center> <!-- date -->
+<center><h4>Sep 20, 2015</h4></center> <!-- date -->
+<br>
 
 <h3 id="___sec0">Page 4 </h3>
 
@@ -157,7 +160,7 @@ in the <code>print</code> statement:
     <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
     p <span style="color: #666666">=</span> <span style="color: #008000">float</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
     years <span style="color: #666666">=</span> days(<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, p)<span style="color: #666666">/365.0</span>
-    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;With p=</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121"> it takes %.1 years to double&#39;</span> <span style="color: #666666">%</span> (p, years)
+    <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;With p=</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121"> it takes %.f1 years to double&#39;</span> <span style="color: #666666">%</span> (p, years)
 </pre></div>
 
 <h3 id="___sec8">Page 216 </h3>
@@ -181,7 +184,7 @@ End of first paragraph: <code>Sun</code> is to be replaced by <code>Apple</code>
 <h3 id="___sec11">Page 426 </h3>
 
 <p>
-The argument in the <code>rase ValueError</code> call, after <code>if c*d &lt;= 0</code>, needs
+The argument in the <code>raise ValueError</code> call, after <code>if c*d &lt;= 0</code>, needs
 a final <code>% other</code>.
 
 <h3 id="___sec12">Page 447 </h3>
@@ -189,7 +192,14 @@ a final <code>% other</code>.
 <p>
 The title of the chapter should be <em>Random numbers and simple games</em>.
 
-<h3 id="___sec13">Page 676 </h3>
+<h3 id="___sec13">Page 508 </h3>
+
+<p>
+Exercise 8.13: Since \( 4\leq n\leq 10 \) balls are drawn, one must investigate
+cases where \( n\in [4,10] \), say \( n=4,7.10 \) (and not \( n=1,5,10,20 \) which
+does not make sense).
+
+<h3 id="___sec14">Page 676 </h3>
 
 <p>
 The last line of the <code>integrate_ode.py</code> program should not contain
@@ -205,60 +215,46 @@ The last line of the <code>integrate_ode.py</code> program should not contain
 The four terminal output sessions below are then also wrong: instead of
 <code>u'(t)=t**3</code> it should be <code>u'(t)=t**exp(t**2)</code>.
 
-<h3 id="___sec14">Page 756 </h3>
+<h3 id="___sec15">Page 756 </h3>
 
 <p>
-Exercise 4.1: The exact solution is \( u(t)=0.2e^{0.1t} \).
+Exercise E.1: The exact solution is \( u(t)=0.2e^{0.1t} \).
 
 <p>
-== Page 776 ===
+== Page 768 ===
 
 <p>
 Exercise E.24: The first constant on the right-hand sides of equations
 (E.70) and (E.72) must be 3 and 4, not 2 and 3.
 
-<h3 id="___sec15">Page 783 </h3>
+<h3 id="___sec16">Page 775 </h3>
 
 <p>
 Below the equation with \( I(t+\Delta t) \), it must read
 \( \Delta t\rightarrow 0 \) (not \( \infty \)).
 
-<h3 id="___sec16">Page 784 </h3>
+<h3 id="___sec17">Page 776 </h3>
 
 <p>
 Exercise E.42: The last element of the returned list in the
 <code>ProblemSIR.__call__</code> method should not have a minus sign; it should
 be <code>self.nu(t)*I</code>.
 
-<h3 id="___sec17">Page 789 </h3>
+<h3 id="___sec18">Page 780 </h3>
 
 <p>
 Exercise E.46: A value for \( I(0) \) is not given. Set \( I(0)=0 \).
 
-<h3 id="___sec18">Page 845-846 </h3>
+<h3 id="___sec19">Page 836 </h3>
 
 <p>
-To succesfully execute the <code>c2f.py</code> program, <code>cmd</code> must be <code>python c2f.y 21</code>
-or <code>./c2f.py 21</code> (if <code>c2f.py</code> is an executable file) unless <code>.</code> is in
-the user's <code>PATH</code> variable.
-
-<h3 id="___sec19">Page 846 </h3>
-
-<p>
-2. Under <em>Split file or folder name</em>, the name <code>user</code> in the text
-should be replaced by <code>/home/hpl</code> according to the interactive session.
-
-<h3 id="___sec20">Page 847 </h3>
-
-<p>
-The text says &quot;The import statements
-can actually be dropped since functions from <code>numpy</code> and
-<code>matplotlib</code> are imported by default when running the notebook
-in the browser or by supplying the command-line argument <code>--pylab</code>
-when starting notebooks locally on your machine.&quot;. Now, the use
-of <code>--pylab</code> is discouraged. Also, the functions from <code>numpy</code> and
-<code>matplotlib</code> are not automatically imported - you have to do that
-explicitly.
+The text says &quot;The import statements can actually be dropped since
+functions from <code>numpy</code> and <code>matplotlib</code> are imported by default when
+running the notebook in the browser or by supplying the command-line
+argument <code>--pylab</code> when starting notebooks locally on your
+machine.&quot;. Now, the use of <code>--pylab</code> is discouraged. Also, the
+functions from <code>numpy</code> and <code>matplotlib</code> are not any longer
+automatically imported - you have to do that explicitly.
 
 <p>
 The recommended way of using IPython notebooks with <code>numpy</code> and
@@ -280,7 +276,19 @@ the <code>np</code> and <code>plt</code> interface, you can instead write
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">%</span>pylab
 </pre></div>
+
+<h3 id="___sec20">Page 843 </h3>
+
 <p>
+To succesfully execute the <code>c2f.py</code> program, <code>cmd</code> must be <code>python c2f.y 21</code>
+or <code>./c2f.py 21</code> (if <code>c2f.py</code> is an executable file) unless <code>.</code> is in
+the user's <code>PATH</code> variable.
+
+<h3 id="___sec21">Page 844 </h3>
+
+<p>
+Under <b>Split file or folder name</b>, the directory name <code>user</code> in the text
+should be replaced by <code>/home/hpl</code> according to the interactive session.
 
 <!-- ------------------- end of main content --------------- -->
 
