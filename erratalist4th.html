@@ -40,30 +40,32 @@ div { text-align: justify; text-justify: inter-word; }
 <!-- tocinfo
 {'highest level': 3,
  'sections': [('Page 4', 3, None, '___sec0'),
-              ('Page 11', 3, None, '___sec1'),
-              ('Page 95', 3, None, '___sec2'),
-              ('Page 99', 3, None, '___sec3'),
-              ('Page 130', 3, None, '___sec4'),
-              ('Page 158', 3, None, '___sec5'),
-              ('Page 189', 3, None, '___sec6'),
-              ('Page 189', 3, None, '___sec7'),
-              ('Page 191, Section 4.9.5', 3, None, '___sec8'),
-              ('Page 197', 3, None, '___sec9'),
-              ('Page 216', 3, None, '___sec10'),
-              ('Page 273', 3, None, '___sec11'),
-              ('Page 315', 3, None, '___sec12'),
-              ('Page 331', 3, None, '___sec13'),
-              ('Page 426', 3, None, '___sec14'),
-              ('Page 447', 3, None, '___sec15'),
-              ('Page 508', 3, None, '___sec16'),
-              ('Page 676', 3, None, '___sec17'),
-              ('Page 756', 3, None, '___sec18'),
-              ('Page 775', 3, None, '___sec19'),
-              ('Page 776', 3, None, '___sec20'),
-              ('Page 780', 3, None, '___sec21'),
-              ('Page 836', 3, None, '___sec22'),
-              ('Page 843', 3, None, '___sec23'),
-              ('Page 844', 3, None, '___sec24')]}
+              ('Page 8', 3, None, '___sec1'),
+              ('Page 11', 3, None, '___sec2'),
+              ('Page 81', 3, None, '___sec3'),
+              ('Page 95', 3, None, '___sec4'),
+              ('Page 99', 3, None, '___sec5'),
+              ('Page 130', 3, None, '___sec6'),
+              ('Page 158', 3, None, '___sec7'),
+              ('Page 189', 3, None, '___sec8'),
+              ('Page 189', 3, None, '___sec9'),
+              ('Page 191, Section 4.9.5', 3, None, '___sec10'),
+              ('Page 197', 3, None, '___sec11'),
+              ('Page 216', 3, None, '___sec12'),
+              ('Page 273', 3, None, '___sec13'),
+              ('Page 315', 3, None, '___sec14'),
+              ('Page 331', 3, None, '___sec15'),
+              ('Page 426', 3, None, '___sec16'),
+              ('Page 447', 3, None, '___sec17'),
+              ('Page 508', 3, None, '___sec18'),
+              ('Page 676', 3, None, '___sec19'),
+              ('Page 756', 3, None, '___sec20'),
+              ('Page 775', 3, None, '___sec21'),
+              ('Page 776', 3, None, '___sec22'),
+              ('Page 780', 3, None, '___sec23'),
+              ('Page 836', 3, None, '___sec24'),
+              ('Page 843', 3, None, '___sec25'),
+              ('Page 844', 3, None, '___sec26')]}
 end of tocinfo -->
 
 <body>
@@ -103,7 +105,7 @@ MathJax.Hub.Config({
 
 <br>
 <p>
-<center><h4>Oct 29, 2015</h4></center> <!-- date -->
+<center><h4>Nov 18, 2015</h4></center> <!-- date -->
 <br>
 
 <h3 id="___sec0">Page 4 </h3>
@@ -112,44 +114,87 @@ MathJax.Hub.Config({
 The one-line program to be written in a text editor must have
 <code>t**2</code> and not <code>t^2</code>.
 
-<h3 id="___sec1">Page 11 </h3>
+<h3 id="___sec1">Page 8 </h3>
+
+<p>
+... \( v_0 \) in mathematics becomes <code>v0</code> in the program. (Not <code>v_0</code>.)
+
+<h3 id="___sec2">Page 11 </h3>
 
 <p>
 <code>%0xd</code> is not an integer padded with <code>x</code> leading zeros, but an integer written
 with a minimum field width of <code>x</code>, where any leading spaces are replaced
 by zeros.
 
-<h3 id="___sec2">Page 95 </h3>
+<h3 id="___sec3">Page 81 </h3>
+
+<p>
+The printout does not correspond to the show code. The correct
+printout is
+
+<p>
+
+<!-- code=text (!bc ccq) typeset with pygments style "default" -->
+<blockquote>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Jan: 56.6
+Feb: 72.7
+Mar: 116.5
+Apr: 153.2
+May: 191.1
+Jun: 198.5
+Jul: 193.8
+Aug: 184.3
+Sep: 138.3
+Oct: 104.6
+Nov: 67.4
+Dec: 52.4
+</pre></div>
+</blockquote><p>
+The code can also be simplified
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">monthly_mean <span style="color: #666666">=</span> []
+n <span style="color: #666666">=</span> <span style="color: #008000">len</span>(data)   <span style="color: #408080; font-style: italic"># no of years</span>
+<span style="color: #008000; font-weight: bold">for</span> m <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">12</span>): <span style="color: #408080; font-style: italic"># counter for month indices</span>
+    s <span style="color: #666666">=</span> <span style="color: #666666">0</span>           <span style="color: #408080; font-style: italic"># sum</span>
+    <span style="color: #008000; font-weight: bold">for</span> y <span style="color: #AA22FF; font-weight: bold">in</span> data:  <span style="color: #408080; font-style: italic"># loop over &quot;rows&quot; (first index) in data</span>
+        s <span style="color: #666666">+=</span> y[m]   <span style="color: #408080; font-style: italic"># add value for month m</span>
+    monthly_mean<span style="color: #666666">.</span>append(s<span style="color: #666666">/</span>n)
+</pre></div>
+
+<h3 id="___sec4">Page 95 </h3>
 
 <p>
 In the program <code>c2f.py</code>, the <code>print</code> statement has a wrong formatting
 of the <code>F(C)</code> value: <code>%.51f</code> must read <code>%5.1f</code>, i.e., the same formatting
 as used for the <code>C</code> value.
 
-<h3 id="___sec3">Page 99 </h3>
+<h3 id="___sec5">Page 99 </h3>
 
 <p>
 Heading in Section 3.1.5 should be <em>Function argument or global variable?</em>
 (<em>or</em> instead of <em>of</em>).
 
-<h3 id="___sec4">Page 130 </h3>
+<h3 id="___sec6">Page 130 </h3>
 
 <p>
 In Exercise 3.6, Equation (3.10), the sum must be \( \sum_{i=0}^{n-1} \).
 
-<h3 id="___sec5">Page 158 </h3>
+<h3 id="___sec7">Page 158 </h3>
 
 <p>
 The terminal output for the integral \( \int_0^{\pi/2}\sin x\,dx \) should read
 <code>1</code>, not <code>0.583009</code>.
 
-<h3 id="___sec6">Page 189 </h3>
+<h3 id="___sec8">Page 189 </h3>
 
 <p>
 In the <code>mymod.py</code> module, an <code>import sys</code> is needed in the test block before
 <code>print add1(float(sys.argv[1]))</code>.
 
-<h3 id="___sec7">Page 189 </h3>
+<h3 id="___sec9">Page 189 </h3>
 
 <p>
 The last code showing the test block of the <code>interest</code> module needs two
@@ -166,14 +211,14 @@ in the <code>print</code> statement:
     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;With p=</span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121"> it takes %.f1 years to double&#39;</span> <span style="color: #666666">%</span> (p, years)
 </pre></div>
 
-<h3 id="___sec8">Page 191, Section 4.9.5 </h3>
+<h3 id="___sec10">Page 191, Section 4.9.5 </h3>
 
 <p>
 The computational example in this section involves the parameters
 <code>A0=2</code> and <code>A=1</code>, but it should be the other way around: <code>A0=1</code> and <code>A=2</code>
 (otherwise the interest rate becomes negative).
 
-<h3 id="___sec9">Page 197 </h3>
+<h3 id="___sec11">Page 197 </h3>
 
 <p>
 
@@ -189,25 +234,25 @@ should be
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">export PATH<span style="color: #666666">=</span>$HOME<span style="color: #666666">/</span>software<span style="color: #666666">/</span>lib<span style="color: #666666">/</span>pymodules:$PATH
 </pre></div>
 
-<h3 id="___sec10">Page 216 </h3>
+<h3 id="___sec12">Page 216 </h3>
 
 <p>
 In Exercise 4.17, the reference to the program <code>user_formula.py</code>
 should be <code>integrate.py</code>. The name of the resulting program is
 then better named <code>integrate2.py</code> than <code>user_formula2.py</code>.
 
-<h3 id="___sec11">Page 273 </h3>
+<h3 id="___sec13">Page 273 </h3>
 
 <p>
 In the first code block, <code>x3 = mat(x).transpose()</code> should be
 <code>x3 = mat(x1).transpose()</code>.
 
-<h3 id="___sec12">Page 315 </h3>
+<h3 id="___sec14">Page 315 </h3>
 
 <p>
 End of first paragraph: <code>Sun</code> is to be replaced by <code>Apple</code>.
 
-<h3 id="___sec13">Page 331 </h3>
+<h3 id="___sec15">Page 331 </h3>
 
 <p>
 Last code block,
@@ -226,25 +271,25 @@ must be
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">station <span style="color: #666666">=</span> line<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;&lt;/strong&gt;&#39;</span>)[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;&lt;strong&gt;&#39;</span>)[<span style="color: #666666">1</span>]
 </pre></div>
 
-<h3 id="___sec14">Page 426 </h3>
+<h3 id="___sec16">Page 426 </h3>
 
 <p>
 The argument in the <code>raise ValueError</code> call, after <code>if c*d &lt;= 0</code>, needs
 a final <code>% other</code>.
 
-<h3 id="___sec15">Page 447 </h3>
+<h3 id="___sec17">Page 447 </h3>
 
 <p>
 The title of the chapter should be <em>Random numbers and simple games</em>.
 
-<h3 id="___sec16">Page 508 </h3>
+<h3 id="___sec18">Page 508 </h3>
 
 <p>
 Exercise 8.13: Since \( 4\leq n\leq 10 \) balls are drawn, one must investigate
 cases where \( n\in [4,10] \), say \( n=4,7.10 \) (and not \( n=1,5,10,20 \) which
 does not make sense).
 
-<h3 id="___sec17">Page 676 </h3>
+<h3 id="___sec19">Page 676 </h3>
 
 <p>
 The last line of the <code>integrate_ode.py</code> program should not contain
@@ -260,7 +305,7 @@ The last line of the <code>integrate_ode.py</code> program should not contain
 The four terminal output sessions below are then also wrong: instead of
 <code>u'(t)=t**3</code> it should be <code>u'(t)=t**exp(t**2)</code>.
 
-<h3 id="___sec18">Page 756 </h3>
+<h3 id="___sec20">Page 756 </h3>
 
 <p>
 Exercise E.1: The exact solution is \( u(t)=0.2e^{0.1t} \).
@@ -272,25 +317,25 @@ Exercise E.1: The exact solution is \( u(t)=0.2e^{0.1t} \).
 Exercise E.24: The first constant on the right-hand sides of equations
 (E.70) and (E.72) must be 3 and 4, not 2 and 3.
 
-<h3 id="___sec19">Page 775 </h3>
+<h3 id="___sec21">Page 775 </h3>
 
 <p>
 Below the equation with \( I(t+\Delta t) \), it must read
 \( \Delta t\rightarrow 0 \) (not \( \infty \)).
 
-<h3 id="___sec20">Page 776 </h3>
+<h3 id="___sec22">Page 776 </h3>
 
 <p>
 Exercise E.42: The last element of the returned list in the
 <code>ProblemSIR.__call__</code> method should not have a minus sign; it should
 be <code>self.nu(t)*I</code>.
 
-<h3 id="___sec21">Page 780 </h3>
+<h3 id="___sec23">Page 780 </h3>
 
 <p>
 Exercise E.46: A value for \( I(0) \) is not given. Set \( I(0)=0 \).
 
-<h3 id="___sec22">Page 836 </h3>
+<h3 id="___sec24">Page 836 </h3>
 
 <p>
 The text says &quot;The import statements can actually be dropped since
@@ -322,14 +367,14 @@ the <code>np</code> and <code>plt</code> interface, you can instead write
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">%</span>pylab
 </pre></div>
 
-<h3 id="___sec23">Page 843 </h3>
+<h3 id="___sec25">Page 843 </h3>
 
 <p>
 To succesfully execute the <code>c2f.py</code> program, <code>cmd</code> must be <code>python c2f.y 21</code>
 or <code>./c2f.py 21</code> (if <code>c2f.py</code> is an executable file) unless <code>.</code> is in
 the user's <code>PATH</code> variable.
 
-<h3 id="___sec24">Page 844 </h3>
+<h3 id="___sec26">Page 844 </h3>
 
 <p>
 Under <b>Split file or folder name</b>, the directory name <code>user</code> in the text
