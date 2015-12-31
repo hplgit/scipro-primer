@@ -1,0 +1,1848 @@
+TITLE: Ch.4: User input and error handling
+AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & University of Oslo, Dept. of Informatics
+DATE: today
+
+!split
+===== Programs until now hardcode input data =====
+
+!bt
+\[ y = v_0t - 0.5gt^2 \]
+!et
+
+
+!bblock
+!bc pycod
+v0 = 5
+g = 9.81
+t = 0.6
+y = v0*t - 0.5*g*t**2
+print y
+!ec
+
+Note:
+
+  * Input data ($v_0$, $t$) are hardcoded (explicitly set)
+  * Changing input data requires *editing*
+  * This is considered bad programming <linebreak>
+    (because editing programs may easily introduce errors!)
+  * Rule: read input from user - avoid editing a correct program
+!eblock
+
+!split
+===== How do professional programs get their input? =====
+
+!bblock
+  * Consider a web browser: how do you specify a web address? How do you change the font?
+  * You don't need to go into the program and edit it...
+!eblock
+
+!split
+===== How can we specify input data in programs? =====
+
+!bblock
+  * Hardcode values
+  * Ask the user questions and read answers
+  * Read command-line arguments
+  * Read data from a file
+!eblock
+
+!split
+===== Getting input from questions and anwsers =====
+
+!bblock
+Sample program:
+
+!bc pycod
+C = 21; F = (9.0/5)*C + 32; print F
+!ec
+
+Idea: let the program ask the user a question "C=?", read the user's answer, assign that answer to the variable `C`.
+
+!bc pycod
+C = raw_input('C=? ')   # C becomes a string
+C = float(C)            # convert to float so we can compute
+F = (9./5)*C + 32
+print F
+!ec
+
+# #if FORMAT != 'ipynb'
+Running in a terminal window:
+
+!bc sys
+Terminal> python c2f_qa.py
+C=? 21
+69.8
+!ec
+# #endif
+!eblock
+
+!split
+===== Another example: print the n first even numbers =====
+
+!bblock
+!bc pycod
+n = int(raw_input('n=? '))
+
+for i in range(2, 2*n+1, 2):
+    print i
+
+# or:
+print range(2, 2*n+1, 2)
+
+# or:
+for i in range(1, n+1):
+    print 2*i
+!ec
+!eblock
+
+!split
+===== Command-line arguments are words written after the program name =====
+
+!bblock Examples on command-line arguments:
+!bc sys
+Terminal> python myprog.py arg1 arg2 arg3 ...
+Terminal> cp -r yourdir ../mydir
+Terminal> ls -l
+!ec
+
+Unix programs (`rm`, `ls`, `cp`, ...) make heavy use of command-line arguments, (see e.g. `man ls`). We shall do the same.
+!eblock
+
+
+!split
+===== How to use a command-line argument in our sample program =====
+
+!bblock
+!bc pypro
+C = 21; F = (9.0/5)*C + 32; print F
+!ec
+
+The user wants to specify `C` as a *command-line argument*
+after the name of the program when we run the program:
+
+!bc sys
+Terminal> python c2f_cml.py 21
+69.8
+!ec
+
+Command-line arguments are the ``words'' after the program name,
+and they are stored in the list `sys.argv`:
+
+# #if FORMAT == 'ipynb'
+!bc pyhid
+# Need to fill in sys.argv for use in the notebook
+import sys
+sys.argv[1] = '21'
+!ec
+
+Below is the ordinary program:
+# #endif
+
+!bc pypro
+import sys
+C = float(sys.argv[1])   # read 1st command-line argument
+F = 9.0*C/5 + 32
+print F
+!ec
+!eblock
+
+
+!split
+===== Command-line arguments are separated by blanks =====
+
+!bblock
+Here is another program `print_cml.py`:
+
+!bc pypro-t
+import sys; print sys.argv[1:]
+!ec
+
+Demonstrations:
+
+!bc sys
+Terminal> python print_cml.py 21 string with blanks 1.3
+['21', 'string', 'with', 'blanks', '1.3']
+
+Terminal> python print_cml.py 21 "string with blanks" 1.3
+['21', 'string with blanks', '1.3']
+!ec
+
+Note 1: use quotes, as in `"string with blanks"`, to override the rule
+that command-line arguments are separate by blanks.
+
+Note 2: all list elements are surrounded by quotes, demonstrating that command-line arguments are strings.
+!eblock
+
+
+!split
+===== The magic eval function turns a string into live code =====
+
+!bblock
+`eval(s)` evaluates a string object `s` as if the string had been
+written directly into the program
+
+!bc pyshell
+>>> s = '1+2'
+>>> r = eval(s)
+>>> r
+3
+>>> type(r)
+<type 'int'>
+
+>>> r = eval('[1, 6, 7.5] + [1, 2]')
+>>> r
+[1, 6, 7.5, 1, 2]
+>>> type(r)
+<type 'list'>
+!ec
+!eblock
+
+
+!split
+===== Note: be careful with eval and string values =====
+
+!bblock
+We want `r = 'math programming'`. Writing just
+
+!bc pycod
+r = eval('math programming')
+!ec
+is the same as writing
+
+!bc pycod
+r = math programming
+!ec
+which is an invalid expression and illegal syntax.
+
+Remedy: must put the string inside quotes:
+
+!bc pycod
+s = "'math programming'"
+# #if FORMAT == 'ipynb'
+r = eval(s)
+r
+# #else
+r = eval(s)                # r becomes 'math programming'
+# #endif
+!ec
+!eblock
+
+!split
+===== With eval, a little program (`add_input.py`) can do much... =====
+
+!bblock Program:
+!bc pycod
+i1 = eval(raw_input('Give input: '))
+i2 = eval(raw_input('Give input: '))
+r = i1 + i2
+print '%s + %s becomes %s\nwith value %s' % \
+      (type(i1), type(i2), type(r), r)
+!ec
+!eblock
+
+!bblock
+We can add integer and float:
+
+!bc sys
+Terminal> python add_input.py
+operand 1: 1
+operand 2: 3.0
+<type 'int'> + <type 'float'> becomes <type 'float'>
+with value 4
+!ec
+
+or two lists:
+
+!bc sys
+Terminal> python add_input.py
+operand 1: [1,2]
+operand 2: [-1,0,1]
+<type 'list'> + <type 'list'> becomes <type 'list'>
+with value [1, 2, -1, 0, 1]
+!ec
+!eblock
+
+!split
+===== This great flexibility also quickly breaks programs... =====
+
+!bblock
+!bc sys
+Terminal> python add_input.py
+operand 1: (1,2)
+operand 2: [3,4]
+Traceback (most recent call last):
+  File "add_input.py", line 3, in <module>
+    r = i1 + i2
+TypeError: can only concatenate tuple (not "list") to tuple
+
+Terminal> python add_input.py
+operand 1: one
+Traceback (most recent call last):
+  File "add_input.py", line 1, in <module>
+    i1 = eval(raw_input('operand 1: '))
+  File "<string>", line 1, in <module>
+NameError: name 'one' is not defined
+
+Terminal> python add_input.py
+operand 1: 4
+operand 2: 'Hello, World!'
+Traceback (most recent call last):
+  File "add_input.py", line 3, in <module>
+    r = i1 + i2
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+!ec
+!eblock
+
+
+!split
+===== A similar magic function: exec =====
+
+!bblock
+  * `eval(s)` evaluates an *expression* `s`
+  * `eval('r = 1+1')` is illegal because this is a statement, not only an expression
+  * ...but we can use `exec` to turn one or more complete statements into live code:
+
+!bc pycod
+statement = 'r = 1+1'   # store statement in a string
+exec(statement)
+print r                 # prints 2
+!ec
+
+For longer code we can use multi-line strings:
+
+!bc pycod
+somecode = '''
+def f(t):
+    term1 = exp(-a*t)*sin(w1*x)
+    term2 = 2*sin(w2*x)
+    return term1 + term2
+'''
+exec(somecode)  # execute the string as Python code
+!ec
+!eblock
+
+## Note: the following example is no longer in the book. There
+## we now have simpler examples...but still this one is good.
+
+!split
+===== exec can be used for building a function at run-time =====
+
+!bblock
+Embed user's formula in a Python function:
+
+!bc pycod
+formula = raw_input('Write a formula involving x: ')
+code = """
+def f(x):
+    return %s
+""" % formula
+from math import *  # make sure we have sin, cos, log, etc
+exec(code)          # turn string formula into live function
+
+# Ask the user for x values and evaluate f(x)
+x = 0
+while x is not None:
+    x = eval(raw_input('Give x (None to quit): '))
+    if x is not None:
+        y = f(x)
+        print 'f(%g)=%g' % (x, y)
+!ec
+
+While the program is running, the user types a formula, which becomes a function, the user gives `x` values until the answer is `None`, and the program evaluates the function `f(x)`. Note: the programmer knows nothing about the user's choice of `f(x)` when she writes the program (!).
+!eblock
+
+# #if FORMAT == "html"
+!split
+===== We can run the program in the Python Online Tutor =====
+
+!bc pyoptpro
+formula = raw_input('Write a formula involving x: ')
+code = """
+def f(x):
+    return %s
+""" % formula
+from math import *  # make sure we have sin, cos, log, etc
+exec(code)          # turn string formula into live function
+
+# Ask the user for x values and evaluate f(x)
+x = 0
+while x is not None:
+    x = eval(raw_input('Give x (None to quit): '))
+    if x is not None:
+        y = f(x)
+        print 'f(%g)=%g' % (x, y)
+!ec
+# #endif
+
+!split
+===== StringFunction: turn string formulas into Python functions =====
+
+!bblock
+It is common for programs to read formulas and turn them into functions so we have made a special tool for this purpose:
+
+!bc pyshell
+>>> from scitools.std import StringFunction
+>>> formula = 'exp(x)*sin(x)'
+>>> f = StringFunction(formula)
+>>> f(0)
+0.0
+>>> from math import pi
+>>> f(pi)
+2.8338239229952166e-15
+>>> print str(f)
+exp(x)*sin(x)
+!ec
+
+The function can also have parameters: $g(t) = Ae^{-at}\sin (\omega x)$
+
+!bc pycod
+g = StringFunction('A*exp(-a*t)*sin(omega*x)',
+    independent_variable='t', A=1, a=0.1, omega=pi, x=5)
+print g(1.2)
+g.set_parameters(A=2, x=10)
+print g(1.2)
+!ec
+!eblock
+
+
+!split
+===== Example: program for numerical differentiation =====
+
+!bpop
+!bblock Usage:
+!bc sys
+Terminal> python diff.py 'exp(x)*sin(x)' 3.4
+Numerical derivative: -36.6262969164
+!ec
+Differentiate $e^x\sin x$ at $x=3.4$ numerically.
+!eblock
+!epop
+
+!bpop
+!bblock Implementation:
+!bt
+\[ f'(x)\approx \frac{f(x+h)-f(x-h)}{2h}\quad (h\mbox{ small}) \]
+!et
+
+# Must use pypro-t here since the notebook cannot handle sys.argv[1]
+
+!bc pypro-t
+import sys
+from scitools.std import StringFunction
+f = StringFunction(sys.argv[1], independent_variable='x')
+x = float(sys.argv[2])
+
+def numerical_derivative(f, x, h=1E-5):
+    return (f(x+h) - f(x-h))/(2*h)
+
+print 'Numerical derivative:', numerical_derivative(f, x)
+!ec
+!eblock
+!epop
+
+!split
+===== We can extend the program to also include symbolic differentiation =====
+
+!bblock
+!bc sys
+Terminal> python diff.py 'exp(x)*sin(x)' 3.4
+Numerical derivative: -36.6262969164
+Exact derivative: -36.6262969154476 (error=9.390E-10)
+Formula for the derivative: exp(x)*sin(x) + exp(x)*cos(x)
+!ec
+
+Program extension:
+
+!bc pycod-t
+import sympy as sym
+x_value = x   # store the value of x; x will be used as symbol
+x = sym.symbols('x')  # need x as symbol
+formula = sym.sympify(str(f))  # turn f into sympy expression
+
+# Differentiate formula wrt symbol x
+dfdx = sym.diff(formula, x)
+# Substitute symbol x by x_value
+dfdx_value = dfdx.subs(x, x_value)
+
+print 'Exact derivative:', dfdx_value, '(error=%.3E)' % \
+      (dfdx_value - numerical_derivative(f, x_value))
+print 'Formula for the derivative:', dfdx
+!ec
+!eblock
+
+!split
+===== Example on reading 4 parameters from the command line =====
+
+!bt
+\[ s(t)=s_0 + v_0t + {1\over2}at^2\]
+!et
+
+Input data: $s_0$ (initial location), $v_0$ (initial velocity), $a$ (constant acceleration) and $t$ (time)
+
+Output data: $s$ (current location)
+
+!bblock
+Specify $s_0=1$ m, $v_0=1$ m/s, $a=0.5$ $\hbox{m/s}^2$, and
+$t=3$ s on the command line:
+
+!bc sys
+Terminal> python location_cml.py 1 1 0.5 3
+6.25
+!ec
+
+Program:
+
+!bc pycod-t
+import sys
+s0 = float(sys.argv[1])
+v0 = float(sys.argv[2])
+a  = float(sys.argv[3])
+t  = float(sys.argv[4])
+s  = s0 + v0*t + 0.5*a*t*t
+print s
+!ec
+!eblock
+
+
+!split
+===== Command-line arguments with options =====
+
+!bblock
+Many programs, especially on Unix systems, take a set of command-line arguments of the form `--option value`
+
+!bc sys
+
+Terminal> python location.py --v0 1 --t 3 --s0 1 --a 0.5
+Terminal> python location.py --t 3
+!ec
+The latter run relies on default values for `v0`, `s0`, and `a`:
+we provide only the values we want to change.
+
+Such option-value pairs make it easier to understand what the input
+is (cf. keyword arguments).
+!eblock
+
+
+
+!split
+===== Programming option-value pairs with the argparse module =====
+
+!bblock
+!bc pycod-t
+import argparse
+parser = argparse.ArgumentParser()
+
+# Define command-line arguments
+parser.add_argument('--v0', '--initial_velocity', type=float,
+                    default=0.0, help='initial velocity')
+
+parser.add_argument('--s0', '--initial_position', type=float,
+                    default=0.0, help='initial position')
+
+parser.add_argument('--a', '--acceleration', type=float,
+                    default=1.0, help='acceleration')
+
+parser.add_argument('--t', '--time', type=float,
+                    default=1.0, help='time')
+
+# Read the command line and interpret the arguments
+args = parser.parse_args()
+
+# Extract values
+s = args.s0 + args.v0*t + 0.5*args.a*args.t**2
+# or
+s0 = args.s0; v0 = args.v0; a = args.a; t = args.t
+s = s0 + v0*t + 0.5*a*t**2
+!ec
+!eblock
+
+!split
+===== The program has long and short command-line arguments =====
+
+!bblock
+Can use short or long options:
+
+!bc sys
+Terminal> python location.py --v0 1.2 --t 0.2
+Terminal> python location.py --initial_velocity 1.2 --time 0.2
+!ec
+!eblock
+
+
+!split
+===== Graphical user interfaces =====
+
+!bblock
+  * Most programs today fetch input data from *graphical user interfaces* (GUI), consisting of windows and graphical elements on the screen: buttons, menus, text fields, etc.
+  * Why don't we learn to make such type of programs?
+    * GUI demands much extra complicated programming
+    * Experienced users often prefer command-line input
+    * Programs with command-line or file input can easily be combined with each other, this is difficult with GUI-based programs
+  * Assertion: command-line input will probably fill all your needs in university courses
+  * But let's have a look at GUI programming!
+!eblock
+
+!split
+===== A graphical Celsius-Fahrenheit conversion program =====
+
+FIGURE: [fig-input/c2f_gui, width=360 frac=0.4]
+
+!bblock
+  * The Celsius degrees can be filled in as a number in a field
+  * Clicking the "is" button computes the corresponding Fahrenheit temperature
+!eblock
+
+!split
+===== The GUI code =====
+
+FIGURE: [fig-input/c2f_gui, width=360 frac=0.4]
+
+!bblock
+!bc pycod
+from Tkinter import *
+root = Tk()
+C_entry = Entry(root, width=4)
+C_entry.pack(side='left')
+Cunit_label = Label(root, text='Celsius')
+Cunit_label.pack(side='left')
+
+def compute():
+    C = float(C_entry.get())
+    F = (9./5)*C + 32
+    F_label.configure(text='%g' % F)
+
+compute = Button(root, text=' is ', command=compute)
+compute.pack(side='left', padx=4)
+
+F_label = Label(root, width=4)
+F_label.pack(side='left')
+Funit_label = Label(root, text='Fahrenheit')
+Funit_label.pack(side='left')
+
+root.mainloop()
+!ec
+!eblock
+
+!split
+===== Reading data from files =====
+
+!bblock
+Scientific data are often available in files. We want to read the data
+into objects in a program to compute with the data.
+!eblock
+
+!bblock Example on a data file
+!bc
+21.8
+18.1
+19
+23
+26
+17.8
+!ec
+One number on each line. How can we read these numbers?
+!eblock
+
+# #if FORMAT == 'ipynb'
+# Have to make a tmp.txt file with the right content
+!bc pyhid
+f = open('data.txt', 'w')
+f.write("""21.8
+18.1
+19
+23
+26
+17.8
+""")
+f.close()
+!ec
+# #endif
+
+!split
+===== Reading a file line by line =====
+
+!bblock
+Basic file reading:
+
+!bc pycod-t
+infile = open('data.txt', 'r')    # open file
+for line in infile:
+    # do something with line
+infile.close()                    # close file
+!ec
+
+Compute the mean values of the numbers in the file:
+
+!bc pypro
+infile = open('data.txt', 'r')    # open file
+mean = 0
+for line in infile:
+    number = float(line)          # line is string
+    mean = mean + number
+# #if FORMAT == 'ipynb'
+    print 'number=%g' % g
+# #endif
+mean = mean/len(lines)
+print mean
+!ec
+!eblock
+
+!split
+===== Alternative ways to read a file =====
+
+!bblock
+Read all lines at once into a list of strings (lines):
+
+!bc pycod-t
+lines = infile.readlines()
+for line in lines:
+    # process line
+infile.close()
+!ec
+
+The modern `with` statement:
+
+!bc pycod-t
+with open('data.txt', 'r') as infile:
+    for line in infile:
+        # process line
+!ec
+
+The old-fashioned `while` construction:
+
+!bc pycod-t
+while True:
+    line = infile.readline()
+    if not line:
+        break
+    # process line
+infile.close()
+!ec
+
+Reading the whole file into a string:
+
+!bc pycod-t
+text = infile.read()
+# process the string text
+!ec
+!eblock
+
+!split
+===== Demo of file reading =====
+
+!bblock File:
+Line 1.
+Line 2.
+Line 3.
+Line 4.
+!eblock
+
+# #if FORMAT == 'ipynb'
+# Have to make a data.txt file with the right content
+!bc pyhid
+f = open('tmp.txt', 'w')
+f.write("""Line 1.
+Line 2.
+Line 3.
+Line 4.
+""")
+f.close()
+!ec
+# #endif
+
+!bblock Session:
+!bc pyshell
+>>> infile = open('tmp.txt', 'r')
+>>> lines = infile.readlines()  # read all lines
+>>> lines
+['Line 1.\n', 'Line 2.\n', 'Line 3.\n', 'Line 4.\n']
+>>> infile.readline()  # no more to read
+''
+>>> infile = open('tmp.txt', 'r')
+>>> infile.readline()    # read one line
+'Line 1.\n'
+>>> infile.readline()    # read next line
+'Line 2.\n'
+>>> for line in infile:  # read the next lines to the end
+...     print line
+...
+Line 3.
+Line 4.
+!ec
+!eblock
+
+!split
+===== More demo of file reading and string splitting =====
+
+!bblock
+!bc pyshell
+>>> infile = open('tmp.txt', 'r')
+>>> filestr = infile.read()
+>>> filestr
+'Line 1.\nLine 2.\nLine 3.\nLine 4.\n'
+
+>>> filestr.split()  # split out all words
+['Line', '1.', 'Line', '2.', 'Line', '3.', 'Line', '4.']
+
+>>> line = 'Line 3.\n'
+>>> line.split()
+['Line', '3.']
+>>> line.split('e')
+['Lin', ' 3.\n']
+!ec
+!eblock
+
+!split
+===== Most data files contain text mixed with numbers =====
+
+!bblock File with data about rainfall:
+!bc
+Average rainfall (in mm) in Rome: 1188 months between 1782 and 1970
+Jan  81.2
+Feb  63.2
+Mar  70.3
+Apr  55.7
+May  53.0
+Jun  36.4
+Jul  17.5
+Aug  27.5
+Sep  60.9
+Oct  117.7
+Nov  111.0
+Dec  97.9
+Year 792.9
+!ec
+How do we read such a file?
+!eblock
+
+# #if FORMAT == 'ipynb'
+# Have to make a rainfall.txt file with the right content
+!bc pyhid
+f = open('rainfall.txt', 'w')
+f.write("""Average rainfall (in mm) in Rome: 1188 months between 1782 and 1970
+Jan  81.2
+Feb  63.2
+Mar  70.3
+Apr  55.7
+May  53.0
+Jun  36.4
+Jul  17.5
+Aug  27.5
+Sep  60.9
+Oct  117.7
+Nov  111.0
+Dec  97.9
+Year 792.9
+""")
+f.close()
+!ec
+# #endif
+
+!split
+===== Reading a mixture of text and numbers =====
+
+!bblock
+The key idea to process each line is to split the line into
+words:
+
+!bc pycod-t
+months = []
+values = []
+for line in infile:
+    words = line.split()  # split into words
+    if words[0] != 'Year':
+        months.append(words[0])
+        values.append(float(words[1]))
+!ec
+
+Can split with respect to any string `s`: `line.split(s)`
+
+!bc pyshell
+>>> line = 'Oct  117.7'
+>>> words = line.split()
+>>> words
+['Oct', '117.7,']
+>>> type(words[1])   # string, not a number!
+<type 'str'>
+!ec
+!eblock
+
+!split
+===== Complete program for reading rainfall data =====
+
+!bblock
+!bc pypro
+def extract_data(filename):
+    infile = open(filename, 'r')
+    infile.readline() # skip the first line
+    months = []
+    rainfall = []
+    for line in infile:
+        words = line.split()
+        # words[0]: month, words[1]: rainfall
+        months.append(words[0])
+        rainfall.append(float(words[1]))
+    infile.close()
+    months = months[:-1]      # Drop the "Year" entry
+    annual_avg = rainfall[-1] # Store the annual average
+    rainfall = rainfall[:-1]  # Redefine to contain monthly data
+    return months, rainfall, annual_avg
+
+months, values, avg = extract_data('rainfall.dat')
+print 'The average rainfall for the months:'
+for month, value in zip(months, values):
+    print month, value
+print 'The average rainfall for the year:', avg
+!ec
+!eblock
+
+
+!split
+===== Writing data to file =====
+
+!bblock
+Basic pattern:
+
+!bc pycod-t
+outfile = open(filename, 'w')  # 'w' for writing
+
+for data in somelist:
+    outfile.write(sometext + '\n')
+
+outfile.close()
+!ec
+
+Can *append* text to a file with `open(filename, 'a')`.
+!eblock
+
+!split
+===== Example: Writing a table to file =====
+
+!bblock Problem:
+We have a nested list (rows and columns):
+
+!bc pycod
+data = \
+[[ 0.75,        0.29619813, -0.29619813, -0.75      ],
+ [ 0.29619813,  0.11697778, -0.11697778, -0.29619813],
+ [-0.29619813, -0.11697778,  0.11697778,  0.29619813],
+ [-0.75,       -0.29619813,  0.29619813,  0.75      ]]
+!ec
+Write these data to file in tabular form
+!eblock
+
+!bblock Solution:
+!bc pycod
+outfile = open('tmp_table.dat', 'w')
+for row in data:
+    for column in row:
+        outfile.write('%14.8f' % column)
+    outfile.write('\n')
+outfile.close()
+!ec
+!eblock
+
+!bblock Resulting file:
+!bc dat
+    0.75000000    0.29619813   -0.29619813   -0.75000000
+    0.29619813    0.11697778   -0.11697778   -0.29619813
+   -0.29619813   -0.11697778    0.11697778    0.29619813
+   -0.75000000   -0.29619813    0.29619813    0.75000000
+!ec
+!eblock
+
+!split
+===== What is a file? =====
+
+!bblock
+  * A file is a sequence of characters
+  * For simple text files, each character is one byte (=8 bits, a bit is 0 or 1), which gives $2^8=256$ different characters
+  * (Text files in, e.g., Chinese and Japanese need several bytes for each character)
+  * Save the text "ABCD" to file in Gedit/Emacs and OpenOffice/Word and examine the file!
+  * File reading in Python is about either reading all characters (`read`) or
+    reading line by line (`readline`, `readlines`, `for line in fileobj`)
+!eblock
+
+
+!split
+===== Back to a simple program that reads from the command line =====
+
+!bblock Code:
+!bc pypro-t
+import sys
+C = float(sys.argv[1])
+F = 5./9*C + 32
+print F
+!ec
+!eblock
+
+!bblock Next topic:
+How to handle wrong input from the user?
+!eblock
+
+!split
+===== Our program stops with a strange error message if the command-line argument is missing =====
+
+!bblock
+A user can easily use our program in a wrong way, e.g.,
+
+!bc sys
+Terminal> python c2f_cml.py
+Traceback (most recent call last):
+  File "c2f_cml.py", line 2, in ?
+    C = float(sys.argv[1])
+IndexError: list index out of range
+!ec
+!eblock
+
+!bblock Why?
+ o The user forgot to provide a command-line argument
+ o `sys.argv` has then only one element, `sys.argv[0]`,
+   which is the program name (`c2f_cml.py`)
+ o Index 1, in `sys.argv[1]`, points to a non-existing element
+   in the `sys.argv` list
+ o Any index corresponding to a non-existing element in a list
+   leads to `IndexError`
+!eblock
+
+!split
+===== We should handle errors in input! =====
+
+!bblock
+How can *we* take control, explain what was wrong with the input,
+and stop the program without strange Python error messages?
+
+!bc pycod-t
+# Program c2f_cml_if.py
+
+import sys
+if len(sys.argv) < 2:
+    print 'You failed to provide a command-line arg.!'
+    sys.exit(1)  # abort
+F = 9.0*C/5 + 32
+print '%gC is %.1fF' % (C, F)
+!ec
+
+!bc sys
+Terminal> python c2f_cml_if.py
+You failed to provide a command-line arg.!
+!ec
+!eblock
+
+!split
+===== Exceptions as an alternative to if tests =====
+
+!bblock
+  * Rather than test *if something is wrong, recover from error, else do what we indended to do*, it is common in Python (and many other languages) to *try* to do what we indend to, and if it fails, we recover from the error
+  * This principle makes use of a `try-except` block
+
+!bc pycod-t
+try:
+    <statements we intend to do>
+except:
+    <statements for handling errors>
+!ec
+
+If something goes wrong in the `try` block, Python raises an *exception* and the execution jumps immediately to the `except` block.
+!eblock
+
+!split
+===== The temperature conversion program with try-except =====
+
+!bblock
+Try to read `C` from the command-line, if it fails, tell the user,
+and abort execution:
+
+!bc pycod-t
+import sys
+try:
+    C = float(sys.argv[1])
+except:
+    print 'You failed to provide a command-line arg.!'
+    sys.exit(1)  # abort
+F = 9.0*C/5 + 32
+print '%gC is %.1fF' % (C, F)
+!ec
+
+Execution:
+
+!bc sys
+Terminal> python c2f_cml_except1.py
+You failed to provide a command-line arg.!
+
+Terminal> python c2f_cml_except1.py 21C
+You failed to provide a command-line arg.!
+!ec
+!eblock
+
+!split
+===== It is good programming style to test for specific exceptions =====
+
+!bblock
+It is good programming style to test for specific exceptions:
+
+!bc pycod-t
+try:
+    C = float(sys.argv[1])
+except IndexError:
+    print 'You failed to provide a command-line arg.!'
+!ec
+
+If we have an index out of bounds in `sys.argv`,
+an `IndexError` exception is raised, and we jump to the `except` block.
+
+If any other exception arises, Python aborts the execution:
+
+!bc sys
+Terminal> python c2f_cml_tmp.py 21C
+Traceback (most recent call last):
+  File "tmp.py", line 3, in <module>
+    C = float(sys.argv[1])
+ValueError: invalid literal for float(): 21C
+!ec
+!eblock
+
+!split
+===== Improvement: test for `IndexError` and `ValueError` exceptions =====
+
+!bblock
+!bc pycod-t
+import sys
+try:
+    C = float(sys.argv[1])
+except IndexError:
+    print 'No command-line argument for C!'
+    sys.exit(1)  # abort execution
+except ValueError:
+    print 'C must be a pure number, not "%s"' % sys.argv[1]
+    sys.exit(1)
+
+F = 9.0*C/5 + 32
+print '%gC is %.1fF' % (C, F)
+!ec
+
+Executions:
+
+!bc sys
+Terminal> python c2f_cml_v3.py
+No command-line argument for C!
+
+Terminal> python c2f_cml_v3.py 21C
+Celsius degrees must be a pure number, not "21C"
+!ec
+!eblock
+
+!split
+===== The programmer can raise exceptions =====
+
+!bblock
+  * Instead of just letting Python raise exceptions, we can raise our own and tailor the message to the problem at hand
+  * We provide two examples on this:
+    * catching an exception, but raising a new one with an improved (tailored) error message
+    * raising an exception because of wrong input data
+  * Baisc syntax: `raise ExceptionType(message)`
+!eblock
+
+!split
+===== Examples on re-raising exceptions with better messages =====
+
+!bblock
+!bc pycod-t
+def read_C():
+    try:
+        C = float(sys.argv[1])
+    except IndexError:
+        # re-raise, but with specific explanation:
+        raise IndexError(
+          'Celsius degrees must be supplied on the command line')
+    except ValueError:
+        # re-raise, but with specific explanation:
+        raise ValueError(
+         'Degrees must be number, not "%s"' % sys.argv[1])
+
+    # C is read correctly as a number, but can have wrong value:
+    if C < -273.15:
+        raise ValueError('C=%g is a non-physical value!' % C)
+    return C
+!ec
+!eblock
+
+!split
+===== Calling the previous function and running the program =====
+
+!bblock
+!bc pycod-t
+try:
+    C = read_C()
+except (IndexError, ValueError) as e:
+    # print exception message and stop the program
+    print e
+    sys.exit(1)
+!ec
+
+Executions:
+
+!bc sys
+Terminal> c2f_cml.py
+Celsius degrees must be supplied on the command line
+
+Terminal> c2f_cml.py 21C
+Celsius degrees must be a pure number, not "21C"
+
+Terminal> c2f_cml.py -500
+C=-500 is a non-physical value!
+
+Terminal> c2f_cml.py 21
+21C is 69.8F
+!ec
+!eblock
+
+
+!split
+===== Making your own modules =====
+
+!bblock
+We have frequently used modules like `math` and `sys`:
+
+!bc pycod
+from math import log
+r = log(6)   # call log function in math module
+
+import sys
+x = eval(sys.argv[1])  # access list argv in sys module
+!ec
+
+Characteristics of modules:
+
+  * Collection of useful data and functions <linebreak>
+    (later also classes)
+  * Functions in a module can be reused in many different programs
+  * If you have some general functions that can be handy in more than one program, make a module with these functions
+  * It's easy: just collect the functions you want in a file, and that's a module!
+!eblock
+
+!split
+===== Case on making our own module =====
+
+!bblock
+Here are formulas for computing with interest rates:
+
+!bt
+\begin{align}
+A &= A_0\left( 1 + {p\over 360\cdot 100}\right)^{n},
+label{input:mod:eq1}\\
+A_0 &= A\left( 1 + {p\over 360\cdot 100}\right)^{-n},
+label{input:mod:eq2}\\
+n &= \frac{\ln {A\over A_0}}{\ln \left( 1 + {p\over 360\cdot 100}\right)} ,
+label{input:mod:eq3}\\
+p &= 360\cdot 100 \left(\left({A\over A_0}\right)^{1/n} - 1\right)\tp
+label{input:mod:eq4}
+\end{align}
+!et
+$A_0$: initial amount, $p$: percentage, $n$: days, $A$: final amount
+!eblock
+
+!bblock
+We want to make a module with these four functions.
+!eblock
+
+!split
+===== First we make Python functions for the formuluas =====
+
+!bblock
+!bc pycod
+from math import log as ln
+
+def present_amount(A0, p, n):
+    return A0*(1 + p/(360.0*100))**n
+
+def initial_amount(A, p, n):
+    return A*(1 + p/(360.0*100))**(-n)
+
+def days(A0, A, p):
+    return ln(A/A0)/ln(1 + p/(360.0*100))
+
+def annual_rate(A0, A, n):
+    return 360*100*((A/A0)**(1.0/n) - 1)
+!ec
+!eblock
+
+!split
+===== Then we can make the module file =====
+
+!bblock
+  * Collect the 4 functions in a file `interest.py`
+  * Now `interest.py` is actually a module `interest` (!)
+
+# #if FORMAT == 'ipynb'
+Write the module code to file:
+
+!bc pycod
+with open('interst.py', 'w') as outfile:
+    outfile.write("""
+from math import log as ln
+
+def present_amount(A0, p, n):
+    return A0*(1 + p/(360.0*100))**n
+
+def initial_amount(A, p, n):
+    return A*(1 + p/(360.0*100))**(-n)
+
+def days(A0, A, p):
+    return ln(A/A0)/ln(1 + p/(360.0*100))
+
+def annual_rate(A0, A, n):
+    return 360*100*((A/A0)**(1.0/n) - 1)
+""")
+!ec
+# #endif
+
+Example on use:
+
+!bc pycod
+# How long time does it take to double an amount of money?
+
+from interest import days
+A0 = 1; A = 2; p = 5
+n = days(A0, 2, p)
+years = n/365.0
+print 'Money has doubled after %.1f years' % years
+!ec
+!eblock
+
+!split
+===== Adding a test block in a module file =====
+
+!bblock
+  * Module files can have an if test at the end containing a *test block* for testing or demonstrating the module
+  * The test block is not executed when the file is imported as a module in another program
+  * The test block is executed *only* when the file is run as a program
+
+!bc pycod-t
+if __name__ == '__main__': # this test defineds the test block
+    <block of statements>
+!ec
+
+In our case:
+
+!bc pycod
+if __name__ == '__main__':
+    A = 2.2133983053266699
+    A0 = 2.0
+    p = 5
+    n = 730
+    print 'A=%g (%g) A0=%g (%.1f) n=%d (%d) p=%g (%.1f)' % \
+          (present_amount(A0, p, n), A,
+           initial_amount(A, p, n), A0,
+           days(A0, A, p), n,
+           annual_rate(A0, A, n), p)
+!ec
+!eblock
+
+!split
+===== Test blocks are often collected in functions =====
+
+!bblock
+Let's make a real *test function* for what we had in the test block:
+
+!bc pycod
+def test_all_functions():
+    # Define compatible values
+    A = 2.2133983053266699; A0 = 2.0; p = 5; n = 730
+    # Given three of these, compute the remaining one
+    # and compare with the correct value (in parenthesis)
+    A_computed = present_amount(A0, p, n)
+    A0_computed = initial_amount(A, p, n)
+    n_computed = days(A0, A, p)
+    p_computed = annual_rate(A0, A, n)
+    def float_eq(a, b, tolerance=1E-12):
+        """Return True if a == b within the tolerance."""
+        return abs(a - b) < tolerance
+
+    success = float_eq(A_computed,  A)  and \
+              float_eq(A0_computed, A0) and \
+              float_eq(p_computed,  p)  and \
+              float_eq(n_computed,  n)
+    assert success  # could add message here if desired
+
+if __name__ == '__main__':
+    test_all_functions()
+!ec
+!eblock
+
+!split
+===== How can Python find our new module? =====
+
+!bblock
+  * If the module is in the same folder as the main program, everything is simple and ok
+  * Home-made modules are normally collected in a common folder, say `/Users/hpl/lib/python/mymods`
+  * In that case Python must be notified that our module is in that folder
+
+Technique 1: add folder to `PYTHONPATH` in `.bashrc`:
+
+!bc bashcod-t
+export PYTHONPATH=$PYTHONPATH:/Users/hpl/lib/python/mymods
+!ec
+
+Technique 2: add folder to `sys.path` in the program:
+
+!bc pycod-t
+sys.path.insert(0, '/Users/hpl/lib/python/mymods')
+!ec
+
+Technique 3: move the module file in a directory that Python already
+searches for libraries.
+!eblock
+
+
+!split
+===== Summary of reading from the keyboard and command line =====
+
+!bblock
+Question and answer input:
+
+!bc pycod-t
+var = raw_input('Give value: ')   # var is string!
+
+# if var needs to be a number:
+var = float(var)
+# or in general:
+var = eval(var)
+!ec
+
+Command-line input:
+
+!bc pycod-t
+import sys
+parameter1 = eval(sys.argv[1])
+parameter3 = sys.argv[3]          # string is ok
+parameter2 = eval(sys.argv[2])
+!ec
+
+Recall: `sys.argv[0]` is the program name
+!eblock
+
+!split
+===== Summary of reading options-value pairs =====
+
+!bblock
+`--option value` pairs with the aid of `argparse`:
+
+!bc pycod-t
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--p1', '--parameter_1', type=float,
+                    default=0.0, help='1st parameter')
+parser.add_argument('--p2', type=float,
+                    default=0.0, help='2nd parameter')
+
+args = parser.parse_args()
+p1 = args.p1
+p2 = args.p2
+!ec
+On the command line we can provide any or all of these options:
+
+!bc sys
+Terminal> program prog.py --parameter_1 2.1 --p2 -9
+!ec
+!eblock
+
+!split
+===== Summary of eval and exec =====
+
+!bblock
+Evaluating string expressions with `eval`:
+
+!bc pyshell
+>>> x = 20
+>>> r = eval('x + 1.1')
+>>> r
+21.1
+>>> type(r)
+<type 'float'>
+!ec
+
+Executing strings with Python code, using `exec`:
+
+!bc pycod-t
+
+exec("""
+def f(x):
+    return %s
+""" % sys.argv[1])
+!ec
+!eblock
+
+!split
+===== Summary of exceptions =====
+
+!bblock
+Handling exceptions:
+
+!bc pycod-t
+try:
+    <statements>
+except ExceptionType1:
+    <provide a remedy for ExceptionType1 errors>
+except ExceptionType2, ExceptionType3, ExceptionType4:
+    <provide a remedy for three other types of errors>
+except:
+    <provide a remedy for any other errors>
+...
+!ec
+
+Raising exceptions:
+
+!bc pycod-t
+if z < 0:
+    raise ValueError(
+        'z=%s is negative - cannot do log(z)' % z)
+!ec
+!eblock
+
+!split
+===== Summary of file reading and writing =====
+
+!bblock
+!bc pycod-t
+infile  = open(filename, 'r')   # read
+outfile = open(filename, 'w')   # write
+outfile = open(filename, 'a')   # append
+
+# Reading
+line    = infile.readline()   # read the next line
+filestr = infile.read()       # read rest of file into string
+lines   = infile.readlines()  # read rest of file into list
+for line in infile:           # read rest of file line by line
+
+# Writing
+outfile.write(s)   # add \n if you need it
+
+# Closing
+infile.close()
+outfile.close()
+!ec
+!eblock
+
+!split
+===== A summarizing example: solving $f(x)=0$ =====
+
+!bblock
+Nonlinear algebraic equations like
+
+!bt
+\begin{align*}
+x &= 1 + \sin x\\
+\tan x + \cos x &= \sin 8x\\
+x^5 - 3x^3 &= 10
+\end{align*}
+!et
+are usually impossible to solve by pen and paper, but can be
+solved by numerical methods. To this end, rewrite any equation as
+
+!bt
+\[ f(x) = 0 \]
+!et
+For the above we have (put everything on the left-hand side)
+
+!bt
+\begin{align*}
+f(x) &= x - 1 - \sin x\\
+f(x) &= \tan x + \cos x - \sin 8x\\\
+f(x) &= x^5 - 3x^3 -  10
+\end{align*}
+!et
+!eblock
+
+!split
+===== We shall learn about a method for solving $f(x)=0$ =====
+
+!bblock
+A solution $x$ of $f(x)=0$ is called a *root* of $f(x)$
+!eblock
+
+!bblock Outline of the next slides:
+  * Formulate a method for finding a root
+  * Translate the method to a precise algorithm
+  * Implement the algorithm in Python
+  * Test the implementation
+!eblock
+
+!split
+===== The Bisection method =====
+
+!bblock
+  * Start with an interval $[a,b]$ in which $f(x)$ changes sign
+  * Then there must be (at least) one root in $[a,b]$
+  * Halve the interval:
+    * $m=(a+b)/2$; does $f$ change sign in left half $[a,m]$?
+    * Yes: continue with left interval $[a,m]$ (set $b=m$)
+    * No: continue with right interval $[m,b]$ (set $a=m$)
+  * Repeat the procedure
+!eblock
+
+!bblock
+  * After halving the initial interval $[p,q]$ $n$ times, we know that $f(x)$ must have a root inside a (small) interval $2^{-n}(q-p)$
+  * The method is slow, but very safe
+  * Other methods (like Newton's method) can be faster, but may also fail to locate a root - bisection does not fail
+!eblock
+
+!split
+===== Solving $\cos \pi x =0$: iteration no.~1 =====
+
+FIGURE: [fig-input/bisection_iter1, width=540 frac=0.9]
+
+!split
+===== Solving $\cos \pi x =0$: iteration no.~2 =====
+
+FIGURE: [fig-input/bisection_iter2, width=540 frac=0.9]
+
+!split
+===== Solving $\cos \pi x =0$: iteration no.~3 =====
+
+FIGURE: [fig-input/bisection_iter3, width=540 frac=0.9]
+
+!split
+===== Solving $\cos \pi x =0$: iteration no.~4 =====
+
+FIGURE: [fig-input/bisection_iter4, width=540 frac=0.9]
+
+!split
+===== From method description to a precise algorithm =====
+
+!bblock
+  * We need to translate the mathematical description of the Bisection method to a Python program
+  * An important intermediate step is to formulate a precise algorithm
+  * Algorithm = detailed, code-like formulation of the method
+!eblock
+
+
+!bblock
+!bc pycod-t
+for i in range(0, n+1):
+    m = (a + b)/2
+    if f(a)*f(m) <= 0:
+        b = m  # root is in left half
+    else:
+        a = m  # root is in right half
+
+# f(x) has a root in [a,b]
+!ec
+!eblock
+
+!split
+===== The algorithm can be made more efficient =====
+
+!bblock
+  * $f(a)$ is recomputed in each if test
+  * This is not necessary if $a$ has not changed since last pass in the loop
+  * On modern computers and simple formulas for $f(x)$ these extra computations do not matter
+  * However, in science and engineering one meets $f$ functions that take hours or days to evaluate at a point, and saving some $f(a)$ evaluations matters!
+  * Rule of thumb: remove redundant computations <linebreak>
+    (unless the code becomes much more complicated, and harder to verify)
+!eblock
+
+!split
+===== New, more efficient version of the algorithm =====
+
+!bblock
+Idea: save $f(x)$ evaluations in  variables
+!eblock
+
+!bblock
+!bc pycod-t
+f_a = f(a)
+for i in range(0, n+1):
+    m = (a + b)/2
+    f_m = f(m)
+    if f_a*f_m <= 0:
+        b = m   # root is in left half
+    else:
+        a = m   # root is in right half
+        f_a = f_m
+
+# f(x) has a root in [a,b]
+!ec
+!eblock
+
+!split
+===== How to choose $n$? That is, when to stop the iteration =====
+
+!bblock
+  * We want the error in the root to be $\epsilon$ or smaller
+  * After $n$ iterations, the initial interval $[a,b]$ is halved $n$ times and the current interval has length $2^{-n}(b-a)$. This is sufficiently small if $2^{-n}(b-a) = \epsilon \quad\Rightarrow\quad n = - {\ln\epsilon -\ln (b-a)\over\ln 2}$
+  * A simpler alternative: just repeat halving until the length of the current interval is $\leq\epsilon$
+  * This is easiest done with a while loop: <linebreak>
+    `while b-a <= epsilon`:
+  * We also add a test to check if $f$ really changes sign in the initial inverval $[a,b]$
+!eblock
+
+!split
+===== Final version of the Bisection algorithm =====
+
+!bblock
+!bc pycod-t
+f_a=f(a)
+if f_a*f(b) > 0:
+    # error: f does not change sign in [a,b]
+
+i = 0
+while b-a > epsilon:
+    i = i + 1
+    m = (a + b)/2
+    f_m = f(m)
+    if f_a*f_m <= 0:
+        b = m  # root is in left half
+    else:
+        a = m  # root is in right half
+        f_a = f_m
+
+# if x is the real root, |x-m| < epsilon
+!ec
+!eblock
+
+!split
+===== Python implementation of the Bisection algorithm =====
+
+!bblock
+!bc pycod
+def f(x):
+    return 2*x - 3   # one root x=1.5
+
+eps = 1E-5
+a, b = 0, 10
+
+fa = f(a)
+if fa*f(b) > 0:
+    print 'f(x) does not change sign in [%g,%g].' % (a, b)
+    sys.exit(1)
+
+i = 0   # iteration counter
+while b-a > eps:
+    i += 1
+    m = (a + b)/2.0
+    fm = f(m)
+    if fa*fm <= 0:
+        b = m  # root is in left half of [a,b]
+    else:
+        a = m  # root is in right half of [a,b]
+        fa = fm
+x = m          # this is the approximate root
+!ec
+!eblock
+
+!split
+===== Implementation as a function (more reusable!) =====
+
+!bblock
+!bc pycod
+def bisection(f, a, b, eps):
+    fa = f(a)
+    if fa*f(b) > 0:
+        return None, 0
+        # Alternative: raise ValueError(
+        # 'No change of sign in [%g,%g]' % (a, b))
+
+    i = 0   # iteration counter
+    while b-a > eps:
+        i += 1
+        m = (a + b)/2.0
+        fm = f(m)
+        if fa*fm <= 0:
+            b = m   # root is in left  half of [a,b]
+        else:
+            a = m   # root is in right half of [a,b]
+            fa = fm
+    return m, i
+
+print bisection(f=lambda x: 2*x-3, a=0, b=10, eps=1E-5)
+!ec
+!eblock
+
+!split
+===== Make a module of this function =====
+
+!bblock
+  * If we put the `bisection` function in a file `bisection.py`, we automatically have a module, and the `bisection` function can easily be imported in other programs to solve $f(x)=0$
+  * We should make a test function too
+
+!bc pycod
+def test_bisection():
+    def f(x):
+        return 2*x - 3   # only one root x=1.5
+
+    eps = 1E-5
+    x, iter = bisection(f, a=0, b=10, eps=eps)
+    success = abs(x - 1.5) < eps  # test within eps tolerance
+    assert success, 'found x=%g != 1.5' % x
+
+if __name__ == '__main__':
+    test_bisection()
+!ec
+!eblock
+
+!split
+===== To the point of this lecture: get input! =====
+
+!bblock
+We want to provide an $f(x)$ formula at the command line along with $a$ and $b$ (3 command-line args)
+
+Usage:
+
+!bc sys
+Terminal> python bisection.py 'sin(pi*x**3)-x**2' -1 3.5
+!ec
+!eblock
+
+!bblock Reading input:
+!bc pycod-t
+def get_input():
+    """Get f, a, b, eps from the command line."""
+    from scitools.std import StringFunction
+    f = StringFunction(sys.argv[1])
+    a = float(sys.argv[2])
+    b = float(sys.argv[3])
+    eps = float(sys.argv[4])
+    return f, a, b, eps
+
+# Usage:
+f, a, b, eps = get_input()
+x, iter = bisection(f, a, b, eps)
+print 'Found root x=%g in %d iterations' % (x, iter)
+!ec
+!eblock
+
+!split
+===== Improvements: error handling =====
+
+!bblock
+!bc pycod-t
+def get_input():
+    """Get f, a, b, eps from the command line."""
+    from scitools.std import StringFunction
+    try:
+        f = StringFunction(sys.argv[1])
+        a = float(sys.argv[2])
+        b = float(sys.argv[3])
+        eps = float(sys.argv[4])
+    except IndexError:
+        print 'Usage %s: f a b eps' % sys.argv[0]
+        sys.exit(1)
+    return f, a, b, eps
+!ec
+!eblock
+
+!split
+===== Applications of the Bisection method =====
+
+!bblock
+Two examples: $\tanh x = x$ and $\tanh x^5 = x^5$:
+
+!bc sys
+Terminal> python bisection_plot.py "x-tanh(x)" -1 1
+Terminal> python bisection_plot.py "x**5-tanh(x**5)" -1 1
+!ec
+
+The first equation is easy to treat, but the second leads to much
+less accurate results. Why??
+!eblock

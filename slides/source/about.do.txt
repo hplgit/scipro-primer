@@ -1,0 +1,142 @@
+TITLE: Kort om kursene INF1100 og MAT-INF1100L
+AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & University of Oslo, Dept. of Informatics
+DATE: today
+
+
+!split
+===== INF1100 er en første introduksjon til å programmere datamaskiner =====
+
+!bblock
+  * Programmering er *svært* viktig i industri og forskning!
+  * Programmering vil bli brukt i veldig mange senere emner - derfor er INF1100/MAT-INF1100L svært sentrale kurs
+  * Hvorfor?<linebreak>
+    Programmeringen gjør matematikken mye mer anvendbar
+  * Tre perspektiver på matematikk i høst:
+    * tradisjonell kalkulus (MAT1100/MAT1001)
+    * numerisk (datamaskinvennlig) matematikk (MAT-INF1100)
+    * programmering av numerisk matematikk (INF1100)
+!eblock
+
+!split
+===== MAT-INF1100L = INF1100 uke 1-6 + MAT-INF1100 =====
+
+!bblock
+ * Fullstendig sammenfallende undervisning og obliger med INF1100:
+   * forelesninger: uke 34-39
+   * gruppeøvelser (obliger): uke 35-40
+ * Samme midtveiseksamen som INF1100
+ * Fullstendig sammenfallende undervisning med MAT-INF1100 etter det
+!eblock
+
+!split
+===== All informasjon og alle beskjeder ligger på nettsidene =====
+
+ * INF1100:
+   URL: "http://www.uio.no/studier/emner/matnat/ifi/INF1100/h14"
+ * MAT-INF1100L:
+   URL: "http://www.uio.no/studier/emner/matnat/math/MAT-INF1100L-h14"
+ * Se spesielt "INF1100 undervisningsplan": "https://www.uio.no/studier/emner/matnat/ifi/INF1100/h14/ressurser/undervisningsplan.html" for info om hva som skjer hver uke
+
+## Vis websidene
+## Ta de viktigste opp i faner i tilfellet nettet ikke funker...
+
+!split
+===== Undervisningen består av øvelser og forelesninger =====
+
+!bblock
+!bpop
+  * Plenumsundervisning tirsdager og torsdager 14.15-16.00 i Sophus Lies auditorium
+  * 1. time: oppgaver fra forrige forelesningstime løses i plenum
+  * 2. time: forelesning av nytt stoff
+  * 2 t oppgaveløsning på terminalstue i mindre grupper der du kan få individuell veiledning
+  * Delta på *alle* undervisningstimene!
+!epop
+!eblock
+
+!split
+===== Undervisningsmateriell =====
+
+!bslidecell 00 0.65
+!bblock
+  * Lærebok skrevet spesielt for INF1100
+  * Oppgavene foreligger som "PDF fil": "
+  * 2. time: forelesning av nytt stoff
+  * 2 t oppgaveløsning på terminalstue i mindre grupper der du kan få individuell veiledning
+  * Delta på *alle* undervisningstimene!
+!eblock
+!eslidecell
+
+!bslidecell 01 0.35
+FIGURE: [http://hplgit.github.io/scipro-primer/figs/Primer4th_pic.jpg, width=350 frac=0.6]
+!eslidecell
+
+!split
+===== Det kreves innlevering av 3-5 obligatoriske oppgaver hver uke =====
+
+!bblock
+  * ``Løp 1'': Mange små obligatoriske oppgaver
+    * 3-5 obligatoriske oppgaver hver uke<linebreak>
+      (vurderes til bestått eller ikke bestått)
+    * De fleste oppgavene teller 1 poeng
+    * Krav INF1100: 15 (av 23) p før uke 41, + 20 (av 37) p før 1.~des.
+    * Krav MAT-INF1100L: 18 (av 23) p fra oppgavene i uke 35-39, men det blir gitt
+      ekstraoppgaver etter midtveiseksamen
+  * ``Løp 2'': Færre, men større obligatoriske oppgaver
+    * Passer for dere med god programmeringserfaring
+  * Eksamen:
+    * Midtveiseksamen i uke 41 - teller 25% av karakteren
+    * Avsluttende eksamen - teller 75% av karakteren
+!eblock
+
+!split
+===== Hvordan du må jobbe =====
+
+!bpop
+!bblock
+  * Foran hver forelesning må du ha lest ukens kapittel i læreboken
+  * Foran hver oppgaveløsning i plenum må du selv ha forsøkt å løse oppgavene (les kapittelet først!)
+  * Etterarbeid oppgavene når du har sett løsning i plenum
+  * Nå er du klar for ukens obliger: Du kan gjøre dem på terminalstue
+    under veiledning
+!eblock
+
+!bwarning Merk:
+  * Spesielt forelesningene går frem mye fortere enn klasseromsundervisningen i videregående skole
+  * Undervisningen forutsetter at du er forberedt og at du kan forrige ukes temaer
+!ewarning
+!epop
+
+!split
+===== Du må lære programmering ved å programmere mye =====
+
+!bblock
+  * Du kan ikke lese deg til programmering
+  * De fleste synes programmering er krevende i begynnelsen - så blir det utrolig gøy!
+  * Oppskrift på suksess: vær godt forberedt til undervisningen - det gir deg mest fritid og mest læring
+  * Forventet arbeid er 13 timer med INF1100 hver uke <linebreak>
+    (6 t undervisning, 7 t selvstudium)
+!eblock
+
+!split
+===== Hvor mye matematikk må jeg kunne på forhånd? =====
+
+!bblock
+  * Nesten alle eksemplene i INF1100 handler om bruk av matematikk
+  * Vi bygger (i prinsippet) på R2 fra vgs
+  * Men matematikken i INF1100 er stort sett *numerisk* matematikk (MAT-INF1100)
+  * Vi håper at INF1100 skal belyse matematikk fra en ny vinkel og hjelpe deg til å forstå matematikk bedre samtidig som du lærer å programmere
+!eblock
+
+!split
+===== Alt undervisningsmateriale er på engelsk =====
+
+!bblock
+  * Muntlig undervisning foregår på norsk
+  * Alt skriftlig materiale er på engelsk
+  * Hvorfor?
+  * Det mangler gode norske ord for mange ord/uttrykk i programmering
+  * Du finner mye informasjon om programmering på nettet og i bøker - nesten all denne informasjonen er på engelsk og da må du kunne de engelske uttrykkene
+  * Mesteparten av undervisningsmateriellet på UiO er på engelsk
+  * I jobbsammenheng kan du regne med at alt skriftlig foregår på engelsk
+  * Boken og undervisningsmaterialet brukes ved mange utenlandske universiteter
+!eblock

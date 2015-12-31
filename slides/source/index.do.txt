@@ -1,0 +1,62 @@
+TITLE: Slides for A Primer on Scientific Programming with Python
+AUTHOR: Hans Petter Langtangen Email:hpl@simula.no
+
+The slides come in a variety of formats [^source].
+
+<%def name="slide_types(name)">
+
+ * HTML:
+   * "reveal.js beige slide style": "${name}/html/${name}-reveal-beige.html"
+   * "reveal.js darkgray slide style": "${name}/html/${name}-reveal.html"
+   * "solarized color style": "${name}/html/${name}-solarized.html"
+   * "plain style": "${name}/html/${name}-1.html"
+ * "LaTeX Beamer PDF slides": "${name}/pdf/${name}-beamer.pdf"
+ * "LaTeX Beamer PDF slides for printing (2x3 handouts)": "${name}/pdf/${name}-beamer-handouts2x3.pdf"
+ * "IPython notebook": "${name}/ipynb/${name}.ipynb"  + "associated programs": "${name}/ipynb/${name}-src.tar.gz", "notebook viewer": "http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/${name}/ipynb/${name}.ipynb"
+</%def>
+
+##   * "deck.js beige slide style": "${name}/html/${name}-deck.html"
+
+<%
+import glob
+published = ['formulas','looplist', 'funcif', 'input', 'plot', 'diffeq', 'files', 'class', 'ode2', 'random', 'oo']
+
+chapters = {
+ 'about': 'About the course',
+ 'formulas': 'Programming with formulas',
+ 'looplist': 'Loops and lists',
+ 'funcif': 'Functions and branching',
+ 'input': 'User input and error handling',
+ 'plot': 'Array computing and curve plotting',
+ 'files': 'Dictionaries and strings',
+ 'class': 'Introduction to classes',
+ 'random': 'Random numbers and simple games',
+ 'oo': 'Object-oriented programming',
+ 'diffeq': 'Sequences and difference equations',
+ 'discalc': 'Introduction to discrete calculus',
+ 'ode1': 'Introduction to differential equations',
+ 'boxspring': 'A complete differential equation project',
+ 'ode2': 'Programming of differential equations',
+ 'debug': 'Debugging',
+ 'cython': 'Migrating Python to compiled code',
+ 'tech': 'Technical topics',
+}
+%>
+
+% for name in published:
+===== ${chapters[name]} =====
+
+${slide_types(name)}
+
+% endfor
+
+===== Kort om kurset =====
+
+"HTML": "about/html/about-reveal-beige.html", "PDF handouts": "about/pdf/about-beamer-handouts2x3.pdf"
+
+--------
+
+[^source]: The slides are written in the
+"DocOnce": "http://hplgit.github.io/doconce/doc/web/index.html"
+markup language, as the
+book, and can easily be translated to a range of formats and styles.

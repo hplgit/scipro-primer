@@ -1,0 +1,1152 @@
+TITLE: Ch.2: Loops and lists
+AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & University of Oslo, Dept. of Informatics
+DATE: today
+
+
+!split
+===== Make a table of Celsius and Fahrenheit degrees =====
+
+!bc
+-20  -4.0
+-15   5.0
+-10  14.0
+ -5  23.0
+  0  32.0
+  5  41.0
+ 10  50.0
+ 15  59.0
+ 20  68.0
+ 25  77.0
+ 30  86.0
+ 35  95.0
+ 40 104.0
+!ec
+
+!bblock
+How can a program write out such a table?
+!eblock
+
+!split
+===== Making a table: the simple naive solution =====
+
+!bblock
+We know how to make one line in the table:
+
+!bc pycod
+C = -20
+F = 9.0/5*C + 32
+print C, F
+!ec
+
+We can just repeat these statements:
+
+!bc pycod
+C = -20;  F = 9.0/5*C + 32;  print C, F
+C = -15;  F = 9.0/5*C + 32;  print C, F
+# #if FORMAT == 'ipynb'
+# ...
+# #else
+...
+# #endif
+C =  35;  F = 9.0/5*C + 32;  print C, F
+C =  40;  F = 9.0/5*C + 32;  print C, F
+!ec
+
+  * Very boring to write, easy to introduce a misprint
+  * When programming becomes boring, there is usually a construct that automates the writing!
+  * The computer is extremely good at performing repetitive tasks
+  * For this purpose we use *loops*
+!eblock
+
+!split
+===== The while loop makes it possible to repeat almost similar tasks =====
+
+!bblock
+A while loop executes repeatedly a set of statements as long as
+a boolean condition is true
+
+!bc pycod-t
+while condition:
+    <statement 1>
+    <statement 2>
+    ...
+<first statement after loop>
+!ec
+
+  * All statements in the loop must be indented!
+  * The loop ends when an unindented statement is encountered
+!eblock
+
+!split
+===== The while loop for making a table =====
+
+!bblock
+!bc pypro
+print '------------------' # table heading
+C = -20                    # start value for C
+dC = 5                     # increment of C in loop
+while C <= 40:             # loop heading with condition
+    F = (9.0/5)*C + 32     # 1st statement inside loop
+    print C, F             # 2nd statement inside loop
+    C = C + dC             # last statement inside loop
+print '------------------' # end of table line
+!ec
+!eblock
+
+!split
+===== The program flow in a while loop =====
+
+!bc pyoptpro
+C = -20
+dC = 5
+while C <= 40:
+    F = (9.0/5)*C + 32
+    print C, F
+    C = C + dC
+!ec
+
+Let us simulate the while loop by hand:
+
+  * First `C` is -20, $-20 \leq 40$ is true, therefore we execute the loop statements
+  * Compute `F`, print, and update `C` to -15
+  * We jump up to the `while` line, evaluate $C\leq 40$, which is true, hence a new round in the loop
+  * We continue this way until `C` is updated to 45
+  * Now the loop condition $45\leq 40$ is false, and the program jumps to the first line after the loop - the loop is over
+
+
+!split
+===== Boolean expressions are true or false =====
+
+!bblock
+An expression with value true or false is called a boolean expression.
+Examples: $C=40$, $C\neq 40$, $C\geq 40$, $C>40$, $C<40$.
+
+!bc pypro-t
+C == 40  # note the double ==, C = 40 is an assignment!
+C != 40
+C >= 40
+C >  40
+C <  40
+!ec
+
+We can test boolean expressions in a Python shell:
+
+!bc pyshell
+>>> C = 41
+>>> C != 40
+True
+>>> C < 40
+False
+>>> C == 41
+True
+!ec
+!eblock
+
+!split
+===== Combining boolean expressions =====
+
+!bblock
+Several conditions can be combined with and/or:
+
+!bc pycod-t
+while condition1 and condition2:
+    ...
+
+while condition1 or condition2:
+    ...
+!ec
+
+Rule 1: `C1 and C2` is `True` if both `C1` and `C2` are `True`
+
+Rule 2: `C1 or C2` is `True` if one of `C1` or `C2` is `True`
+
+!bc pyshell
+>>> x = 0;  y = 1.2
+>>> x >= 0 and y < 1
+False
+>>> x >= 0 or y < 1
+True
+>>> x > 0 or y > 1
+True
+>>> x > 0 or not y > 1
+False
+>>> -1 < x <= 0   #  -1 < x and x <= 0
+True
+>>> not (x > 0 or y > 0)
+False
+!ec
+!eblock
+
+!split
+===== Lists are objects for storing a sequence of things (objects) =====
+
+!bblock
+So far, one variable has referred to one number (or string),
+but sometimes we naturally have a collection of numbers, say degrees $-20, -15, -10, -5, 0, \ldots, 40$
+
+Simple solution: one variable for each value
+
+!bc pycod
+C1 = -20
+C2 = -15
+C3 = -10
+# #if FORMAT == 'ipynb'
+# ...
+# #else
+...
+# #endif
+C13 = 40
+!ec
+Stupid and boring solution if we have many values!
+
+Better: a set of values can be collected in a list
+
+!bc pycod
+C = [-20, -15, -10, -5, 0, 5, 10, 15, 20, 25, 30, 35, 40]
+!ec
+Now there is one variable, `C`, holding all the values
+!eblock
+
+!split
+===== List operations: initialization and indexing =====
+
+!bblock
+Initialize with square brackets and comma between the Python objects:
+
+!bc pycod
+L1 = [-91, 'a string', 7.2, 0]
+!ec
+
+Elements are accessed via an index: `L1[3]` (index=3).
+
+List indices start at `0`: `0`, `1`, `2`, ... `len(L1)-1`.
+
+!bc pyshell
+>>> mylist = [4, 6, -3.5]
+>>> print mylist[0]
+4
+>>> print mylist[1]
+6
+>>> print mylist[2]
+-3.5
+>>> len(mylist)  # length of list
+3
+!ec
+!eblock
+
+!split
+===== List operations: append, extend, insert, delete =====
+
+!bblock
+!bc pyshell
+>>> C = [-10, -5, 0, 5, 10, 15, 20, 25, 30]
+>>> C.append(35)   # add new element 35 at the end
+>>> C
+[-10, -5, 0, 5, 10, 15, 20, 25, 30, 35]
+>>> C = C + [40, 45]     # extend C at the end
+>>> C
+[-10, -5, 0, 5, 10, 15, 20, 25, 30, 35, 40, 45]
+>>> C.insert(0, -15)     # insert -15 as index 0
+>>> C
+[-15, -10, -5, 0, 5, 10, 15, 20, 25, 30, 35, 40, 45]
+>>> del C[2]             # delete 3rd element
+>>> C
+[-15, -10, 0, 5, 10, 15, 20, 25, 30, 35, 40, 45]
+>>> del C[2]             # delete what is now 3rd element
+>>> C
+[-15, -10, 5, 10, 15, 20, 25, 30, 35, 40, 45]
+>>> len(C)               # length of list
+11
+!ec
+!eblock
+
+!split
+===== List operations: search for elements, negative indices =====
+
+!bblock
+!bc pyshell
+>>> C.index(10)   # index of the first element with value 10
+3
+>>> 10 in C       # is 10 an element in C?
+True
+>>> C[-1]         # the last list element
+45
+>>> C[-2]         # the next last list element
+40
+>>> somelist = ['book.tex', 'book.log', 'book.pdf']
+>>> texfile, logfile, pdf = somelist  # assign directly to variables
+>>> texfile
+'book.tex'
+>>> logfile
+'book.log'
+>>> pdf
+'book.pdf'
+!ec
+!eblock
+
+!split
+===== Loop over elements in a list with a for loop =====
+
+!bblock
+Use a *for* loop to loop over a list and process each element:
+
+!bc pyoptpro
+degrees = [0, 10, 20, 40, 100]
+for C in degrees:
+    print 'Celsius degrees:', C
+    F = 9/5.*C + 32
+    print 'Fahrenheit:', F
+print 'The degrees list has', len(degrees), 'elements'
+!ec
+
+As with *while* loops, the statements in the loop must be indented!
+!eblock
+
+!split
+===== Simulate a for loop by hand =====
+
+!bc pypro
+degrees = [0, 10, 20, 40, 100]
+for C in degrees:
+    print C
+print 'The degrees list has', len(degrees), 'elements'
+!ec
+
+Simulation by hand:
+
+  * First pass: `C` is 0
+  * Second pass: `C` is 10 ...and so on...
+  * Third pass: `C` is 20 ...and so on...
+  * Fifth pass: `C` is 100, now the loop is over and the program flow jumps to the first statement with the same indentation as the `for C in degrees` line
+
+
+!split
+===== Making a table with a for loop =====
+
+!bblock Table of Celsius and Fahreheit degrees:
+!bc pycod
+Cdegrees = [-20, -15, -10, -5, 0, 5, 10, 15,
+             20, 25, 30, 35, 40]
+for C in Cdegrees:
+    F = (9.0/5)*C + 32
+    print C, F
+!ec
+Note: `print C, F` gives ugly output. Use printf syntax to nicely
+format the two columns:
+
+!bc pycod
+print '%5d %5.1f' % (C, F)
+!ec
+
+Output:
+
+!bc
+-20  -4.0
+-15   5.0
+-10  14.0
+ -5  23.0
+  0  32.0
+  ......
+ 35  95.0
+ 40 104.0
+!ec
+!eblock
+
+!split
+===== A for loop can always be translated to a while loop =====
+
+!bblock
+The for loop
+
+!bc pycod-t
+for element in somelist:
+    # process element
+!ec
+can always be transformed to a corresponding while loop
+
+!bc pycod-t
+index = 0
+while index < len(somelist):
+    element = somelist[index]
+    # process element
+    index += 1
+!ec
+!eblock
+
+!bblock
+*But not all while loops can be expressed as for loops!*
+!eblock
+
+!split
+===== While loop version of the for loop for making a table =====
+
+!bblock
+!bc pycod
+Cdegrees = [-20, -15, -10, -5, 0, 5, 10,
+            15, 20, 25, 30, 35, 40]
+index = 0
+while index < len(Cdegrees):
+    C = Cdegrees[index]
+    F = (9.0/5)*C + 32
+    print '%5d %5.1f' % (C, F)
+    index += 1
+!ec
+!eblock
+
+
+!split
+===== Implement a mathematical sum via a loop =====
+
+!bt
+\[ S = \sum_{i=1}^N i^2 \]
+!et
+
+!bblock
+!bc pycod
+N = 14
+
+S = 0
+for i in range(1, N+1):
+    S += i**2
+# #if FORMAT == 'ipynb'
+print S
+# #endif
+!ec
+
+Or (less common):
+
+!bc pycod
+S = 0
+i = 1
+while i <= N:
+    S += i**2
+    i += 1
+# #if FORMAT == 'ipynb'
+print S
+# #endif
+!ec
+!eblock
+
+!bblock
+Mathematical sums appear often so remember the implementation!
+!eblock
+
+
+!split
+===== Storing the table columns as lists =====
+
+!bblock
+Let us put all the Fahrenheit values in a list as well:
+
+!bc pyoptpro
+Cdegrees = [-20, -15, -10, -5, 0, 5, 10,
+            15, 20, 25, 30, 35, 40]
+Fdegrees = []            # start with empty list
+for C in Cdegrees:
+    F = (9.0/5)*C + 32
+    Fdegrees.append(F)   # add new element to Fdegrees
+print Fdegrees
+!ec
+
+# #if FORMAT != 'ipynb'
+`print Fdegrees` results in
+
+!bc pycod
+[-4.0, 5.0, 14.0, 23.0, 32.0, 41.0, 50.0, 59.0,
+ 68.0, 77.0, 86.0, 95.0, 104.0]
+!ec
+# #endif
+!eblock
+
+!split
+===== For loop with list indices =====
+
+!bblock
+For loops usually loop over list values (elements):
+
+!bc pycod-t
+for element in somelist:
+    # process variable element
+!ec
+
+We can alternatively loop over list indices:
+
+!bc pycod-t
+for i in range(0, len(somelist), 1):
+    element = somelist[i]
+    # process element or somelist[i] directly
+!ec
+
+`range(start, stop, inc)` generates a list of integers `start`, `start+inc`, `start+2*inc`, and so on up to, *but not including*, `stop`.
+`range(stop)` is short for `range(0, stop, 1)`.
+
+!bc pyshell
+>>> range(3)         # = range(0, 3, 1)
+[0, 1, 2]
+>>> range(2, 8, 3)
+[2, 5]
+!ec
+!eblock
+
+!split
+===== How can we change the elements in a list? =====
+
+!bblock Say we want to add 2 to all numbers in a list:
+!bc pyshell
+>>> v = [-1, 1, 10]
+>>> for e in v:
+...     e = e + 2
+...
+>>> v
+[-1, 1, 10]   # unaltered!!
+!ec
+!eblock
+
+!bc pyoptpro
+v = [-1, 1, 10]
+for e in v:
+    e = e + 2
+!ec
+
+!split
+===== Changing a list element requires assignment to an indexed element =====
+
+
+!bblock
+What is the problem?
+
+Inside the loop, `e` is an ordinary (`int`) variable, first time `e` becomes 1, next time `e` becomes 3, and then 12 - but the list `v` is unaltered
+
+Solution: must *index a list element* to change its value:
+
+!bc pyshell
+>>> v[1] = 4    # assign 4 to 2nd element (index 1) in v
+>>> v
+[-1, 4, 10]
+>>>
+>>> for i in range(len(v)):
+...     v[i] = v[i] + 2
+...
+>>> v
+[1, 6, 12]
+!ec
+!eblock
+
+!split
+===== List comprehensions: compact creation of lists =====
+
+!bblock Example: compute two lists in a for loop
+!bc pycod
+n = 16
+Cdegrees = [];  Fdegrees = []  # empty lists
+
+for i in range(n):
+    Cdegrees.append(-5 + i*0.5)
+    Fdegrees.append((9.0/5)*Cdegrees[i] + 32)
+# #if FORMAT == 'ipynb'
+print Cdegrees
+print Fdegress
+# #endif
+!ec
+
+Python has a compact construct, called *list comprehension*, for generating lists from a for loop:
+
+!bc pycod
+Cdegrees = [-5 + i*0.5 for i in range(n)]
+Fdegrees = [(9.0/5)*C + 32 for C in Cdegrees]
+# #if FORMAT == 'ipynb'
+print Cdegrees
+print Fdegress
+# #endif
+!ec
+
+General form of a list comprehension:
+
+!bc pycod-t
+somelist = [expression for element in somelist]
+!ec
+where `expression` involves `element`
+!eblock
+
+# #if FORMAT != 'ipynb'
+!split
+===== Interactive demonstration of list comprehensions =====
+
+!bc pyoptpro
+n = 4
+Cdegrees = [-5 + i*2 for i in range(n)]
+Fdegrees = [(9.0/5)*C + 32 for C in Cdegrees]
+!ec
+# #endif
+
+!split
+===== Traversing multiple lists simultaneously with zip =====
+
+!bblock Can we one loop running over two lists?
+
+Solution 1: loop over indices
+
+!bc pycod
+for i in range(len(Cdegrees)):
+    print Cdegrees[i], Fdegrees[i]
+!ec
+
+Solution 2: use the `zip` construct (more ``Pythonic''):
+
+!bc pycod
+for C, F in zip(Cdegrees, Fdegrees):
+    print C, F
+!ec
+
+Example with three lists:
+
+!bc pyshell
+>>> l1 = [3, 6, 1];  l2 = [1.5, 1, 0];  l3 = [9.1, 3, 2]
+>>> for e1, e2, e3 in zip(l1, l2, l3):
+...     print e1, e2, e3
+...
+3 1.5 9.1
+6 1 3
+1 0 2
+!ec
+!eblock
+
+!split
+===== Nested lists: list of lists =====
+
+!bblock
+  * A list can contain *any* object, also another list
+  * Instead of storing a table as two separate lists (one for each column), we can stick the two lists together in a new list:
+
+!bc pycod
+Cdegrees = range(-20, 41, 5)
+Fdegrees = [(9.0/5)*C + 32 for C in Cdegrees]
+
+table1 = [Cdegrees, Fdegrees]  # list of two lists
+
+print table1[0]     # the Cdegrees list
+print table1[1]     # the Fdegrees list
+print table1[1][2]  # the 3rd element in Fdegrees
+!ec
+!eblock
+
+!split
+===== Table of columns vs table of rows =====
+
+!bblock
+  * The previous `table = [Cdegrees,Fdegrees]` is a table of (two) columns
+  * Let us make a table of rows instead, each row is a `[C,F]` pair:
+
+!bc pycod
+table2 = []
+for C, F in zip(Cdegrees, Fdegrees):
+    row = [C, F]
+    table2.append(row)
+
+# more compact with list comprehension:
+table2 = [[C, F] for C, F in zip(Cdegrees, Fdegrees)]
+# #if FORMAT == 'ipynb'
+table2
+# #endif
+!ec
+
+# #if FORMAT != 'ipynb'
+`print table2`
+
+!bc pycod
+[[-20, -4.0], [-15, 5.0], ......., [40, 104.0]]
+!ec
+# #endif
+
+Iteration over a nested list:
+
+!bc pycod-t
+for C, F in table2:
+    # work with C and F from a row in table2
+
+# or
+for row in table2:
+    C, F = row
+    ...
+!ec
+!eblock
+
+!split
+===== Illustration of table of columns =====
+
+FIGURE: [fig-looplist/table1, width=340 frac=0.4]
+
+!split
+===== Illustration of table of rows =====
+
+FIGURE: [fig-looplist/table2, width=400 frac=0.5]
+
+
+!split
+===== Extracting sublists (or slices) =====
+
+!bblock
+We can easily grab parts of a list:
+
+!bc pyshell
+>>> A = [2, 3.5, 8, 10]
+>>> A[2:]   # from index 2 to end of list
+[8, 10]
+
+>>> A[1:3]  # from index 1 up to, but not incl., index 3
+[3.5, 8]
+
+>>> A[:3]   # from start up to, but not incl., index 3
+[2, 3.5, 8]
+
+>>> A[1:-1] # from index 1 to next last element
+[3.5, 8]
+
+>>> A[:]    # the whole list
+[2, 3.5, 8, 10]
+!ec
+
+Note: sublists (slices) are *copies* of the original list!
+!eblock
+
+!split
+===== What does this code snippet do? =====
+
+!bblock
+!bc pycod
+for C, F in table2[Cdegrees.index(10):Cdegrees.index(35)]:
+    print '%5.0f %5.1f' % (C, F)
+!ec
+!eblock
+
+!bpop
+!bblock
+  * This is a for loop over a sublist of `table2`
+  * Sublist indices: `Cdegrees.index(10)`, `Cdegrees.index(35)`, i.e., the indices corresponding to elements 10 and 35
+
+# #if FORMAT != 'ipynb'
+Output:
+
+!bc pycod
+10  50.0
+15  59.0
+20  68.0
+25  77.0
+30  86.0
+!ec
+# #endif
+!eblock
+!epop
+
+
+!split
+===== Iteration over general nested lists =====
+
+!bblock
+List with many indices: `somelist[i1][i2][i3]...`
+!eblock
+
+!bblock Loops over list indices:
+!bc pycod-t
+for i1 in range(len(somelist)):
+    for i2 in range(len(somelist[i1])):
+        for i3 in range(len(somelist[i1][i2])):
+            for i4 in range(len(somelist[i1][i2][i3])):
+                value = somelist[i1][i2][i3][i4]
+                # work with value
+!ec
+!eblock
+
+!bblock Loops over sublists:
+!bc pycod-t
+for sublist1 in somelist:
+    for sublist2 in sublist1:
+        for sublist3 in sublist2:
+            for sublist4 in sublist3:
+                value = sublist4
+                # work with value
+!ec
+!eblock
+
+
+!split
+===== Iteration over a specific nested list =====
+
+!bc pyoptpro
+L = [[9, 7], [-1, 5, 6]]
+for row in L:
+    for column in row:
+        print column
+!ec
+
+Simulate this program by hand!
+
+!bquestion
+How can we index element with value 5?
+!equestion
+
+!split
+===== Tuples are constant lists =====
+
+!bblock
+Tuples are constant lists that cannot be changed:
+
+!bc pyshell
+>>> t = (2, 4, 6, 'temp.pdf')    # define a tuple
+>>> t =  2, 4, 6, 'temp.pdf'     # can skip parenthesis
+>>> t[1] = -1
+...
+TypeError: object does not support item assignment
+
+>>> t.append(0)
+...
+AttributeError: 'tuple' object has no attribute 'append'
+
+>>> del t[1]
+...
+TypeError: object doesn't support item deletion
+!ec
+
+Tuples can do much of what lists can do:
+
+!bc pyshell
+>>> t = t + (-1.0, -2.0)           # add two tuples
+>>> t
+(2, 4, 6, 'temp.pdf', -1.0, -2.0)
+>>> t[1]                           # indexing
+4
+>>> t[2:]                          # subtuple/slice
+(6, 'temp.pdf', -1.0, -2.0)
+>>> 6 in t                         # membership
+True
+!ec
+!eblock
+
+
+!split
+===== Why tuples when lists have more functionality? =====
+
+!bblock
+  * Tuples are constant and thus protected against accidental changes
+  * Tuples are faster than lists
+  * Tuples are widely used in Python software<linebreak>
+    (so you need to know about them!)
+  * Tuples (but not lists) can be used as keys is dictionaries<linebreak>
+    (more about dictionaries later)
+!eblock
+
+!split
+===== Key topics from this chapter =====
+
+FIGURE: [fig-looplist/opt_exec, width=800 frac=0.8]
+
+ * While loops
+ * Boolean expressions
+ * For loops
+ * Lists
+ * Nested lists
+ * Tuples
+
+!split
+===== Summary of loops, lists and tuples =====
+
+!bblock
+While loops and for loops:
+
+!bc pycod-t
+while condition:
+    <block of statements>
+
+for element in somelist:
+    <block of statements>
+!ec
+
+Lists and tuples:
+
+!bc pycod
+mylist  = ['a string', 2.5, 6, 'another string']
+mytuple = ('a string', 2.5, 6, 'another string')
+mylist[1]  = -10
+mylist.append('a third string')
+mytuple[1] = -10  # illegal: cannot change a tuple
+!ec
+!eblock
+
+
+!split
+===== List functionality =====
+
+# #if FORMAT in ("latex", "pdflatex")
+{\footnotesize
+# #endif
+
+|------------c---------------------------------------c--------------------------|
+| Construction                | Meaning                                         |
+|------------l---------------------------------------l--------------------------|
+| `a = [] `                   | initialize an empty list                        |
+| `a = [1, 4.4, 'run.py'] `   | initialize a list                               |
+| `a.append(elem)`            | add `elem` object to the end                    |
+| `a + [1,3]`                 | add two lists                                   |
+| `a.insert(i, e)`            | insert element `e` before index `i`             |
+| `a[3]`                      | index a list element                            |
+| `a[-1]`                     | get last list element                           |
+| `a[1:3]`                    | slice: copy data to sublist (here: index 1, 2)  |
+| `del a[3]`                  | delete an element (index `3`)                   |
+| `a.remove(e)`               | remove an element with value `e`                |
+| `a.index('run.py')`         | find index corresponding to an element's value  |
+| `'run.py' in a`             | test if a value is contained in the list        |
+| `a.count(v)`                | count how many elements that have the value `v` |
+| `len(a)`                    | number of elements in list `a`                  |
+| `min(a)`                    | the smallest element in `a`                     |
+| `max(a)`                    | the largest element in `a`                      |
+| `sum(a)`                    | add all elements in `a`                         |
+| `sorted(a)`                 | return sorted version of list `a`               |
+| `reversed(a)`               | return reversed sorted version of list `a`      |
+| `b[3][0][2]`                | nested list indexing                            |
+| `isinstance(a, list)`       | is `True` if `a` is a list                      |
+| `type(a) is list`           | is `True` if `a` is a list                      |
+|-------------------------------------------------------------------------------|
+
+# #if FORMAT in ("latex", "pdflatex")
+}
+# #endif
+
+
+!split
+===== A summarizing example; problem =====
+
+!bblock
+`src/misc/Oxford_sun_hours.txt`: data of the no of sun hours in Oxford, UK, for every month since Jan, 1929:
+
+!bc pycod-t
+[
+[43.8, 60.5, 190.2, ...],
+[49.9, 54.3, 109.7, ...],
+[63.7, 72.0, 142.3, ...],
+...
+]
+!ec
+
+Tasks:
+
+  * Compute the average number of sun hours for each month during
+    the total data period (1929--2009),
+  * Which month has the best weather according to the means found in the
+    preceding task?
+  * For each decade, 1930-1939, 1949-1949, $\ldots$, 2000-2009,
+    compute the average number of sun hours per day in January
+    and December
+!eblock
+
+!split
+===== A summarizing example; program (task 1) =====
+
+!bblock
+
+
+!bc pycod
+# #if FORMAT == 'ipynb'
+data = [
+[43.8, 60.5, 190.2, 144.7, 240.9, 210.3, 219.7, 176.3, 199.1, 109.2, 78.7, 67.0],
+[49.9, 54.3, 109.7, 102.0, 134.5, 211.2, 174.1, 207.5, 108.2, 113.5, 68.7, 23.3],
+[63.7, 72.0, 142.3, 93.5, 150.1, 158.7, 127.9, 135.5, 92.3, 102.5, 62.4, 38.5],
+[51.0, 57.9, 133.4, 110.9, 112.4, 199.3, 124.0, 178.3, 102.1, 100.7, 55.7, 58.0],
+[69.5, 94.3, 187.6, 152.5, 170.2, 226.9, 237.6, 242.7, 177.3, 101.3, 53.9, 59.0],
+[65.9, 96.6, 122.5, 124.9, 216.3, 192.7, 269.3, 184.9, 149.1, 81.5, 48.7, 31.3],
+[48.1, 62.0, 121.5, 127.3, 188.5, 196.3, 274.3, 199.9, 144.7, 102.6, 65.4, 48.9],
+[43.4, 89.2, 71.4, 133.2, 179.5, 166.2, 119.2, 184.7, 79.3, 103.1, 48.9, 62.3],
+[50.9, 66.6, 99.7, 103.1, 185.0, 181.3, 140.1, 202.3, 143.0, 79.1, 65.9, 41.2],
+[41.2, 66.9, 172.3, 180.9, 144.9, 190.6, 133.5, 151.3, 110.9, 118.1, 70.0, 52.4],
+[46.4, 104.9, 86.2, 171.7, 184.9, 227.9, 139.7, 153.7, 147.0, 94.3, 41.1, 46.0],
+[83.1, 22.8, 128.3, 118.1, 215.4, 273.4, 165.1, 199.5, 179.5, 95.5, 76.8, 46.5],
+[41.7, 67.9, 118.7, 106.9, 141.9, 210.3, 227.5, 163.7, 123.7, 120.2, 47.1, 46.9],
+[45.1, 53.9, 69.4, 202.5, 209.4, 234.0, 150.1, 132.7, 124.5, 84.6, 57.8, 51.0],
+[54.7, 79.3, 132.9, 166.6, 244.1, 192.9, 196.7, 178.3, 142.5, 84.9, 72.3, 49.5],
+[41.2, 62.4, 142.7, 147.0, 235.6, 170.3, 97.5, 185.2, 143.8, 102.0, 49.3, 64.1],
+[51.5, 65.7, 152.6, 209.1, 156.1, 182.4, 159.0, 144.8, 64.9, 111.7, 31.0, 46.6],
+[49.9, 78.7, 107.2, 203.3, 162.9, 149.8, 197.6, 134.8, 98.5, 79.3, 42.9, 74.7],
+[59.5, 26.3, 70.9, 150.5, 147.3, 185.9, 144.5, 274.9, 159.9, 107.3, 75.4, 37.9],
+[45.7, 92.9, 160.2, 205.2, 237.1, 124.2, 174.7, 133.7, 146.4, 93.7, 68.6, 65.4],
+[51.0, 115.1, 112.5, 182.5, 233.3, 242.1, 262.5, 210.3, 151.1, 125.0, 76.2, 65.4],
+[40.6, 67.5, 138.8, 163.7, 174.1, 244.5, 174.0, 171.1, 112.7, 96.6, 56.9, 55.3],
+[48.9, 58.6, 92.6, 200.4, 152.1, 251.9, 216.7, 174.7, 110.8, 105.6, 75.1, 69.8],
+[94.1, 96.7, 105.0, 178.2, 207.0, 217.6, 194.0, 180.5, 140.3, 105.0, 72.1, 77.7],
+[42.5, 75.9, 140.7, 183.3, 223.0, 139.7, 203.4, 237.4, 151.7, 84.1, 54.4, 28.4],
+[75.7, 79.7, 107.9, 202.4, 145.9, 157.1, 157.1, 123.5, 168.8, 94.5, 60.1, 54.5],
+[40.1, 86.3, 161.4, 173.7, 217.5, 155.3, 268.3, 188.0, 153.1, 119.7, 71.5, 47.3],
+[50.3, 78.9, 149.7, 158.7, 246.6, 145.0, 168.0, 161.4, 94.3, 116.5, 77.9, 18.2],
+[50.8, 83.1, 110.2, 168.0, 205.6, 297.1, 157.9, 170.5, 102.6, 92.9, 76.4, 62.3],
+[54.6, 55.4, 110.7, 145.2, 196.0, 145.7, 188.1, 119.6, 118.0, 93.7, 51.8, 29.5],
+[85.8, 65.5, 102.0, 153.8, 228.0, 226.3, 272.7, 245.6, 213.9, 144.2, 70.6, 45.0],
+[37.8, 82.3, 78.0, 164.9, 182.3, 274.9, 129.7, 147.1, 122.8, 60.9, 73.4, 54.5],
+[43.6, 65.1, 173.2, 86.9, 225.2, 231.2, 196.5, 185.7, 135.8, 118.2, 63.4, 76.5],
+[70.0, 70.6, 126.3, 143.3, 177.5, 280.3, 137.3, 154.5, 142.3, 108.8, 32.7, 72.6],
+[58.9, 66.4, 85.8, 119.1, 193.4, 199.4, 188.2, 142.6, 129.7, 78.8, 60.4, 49.8],
+[37.2, 57.3, 65.9, 128.5, 190.8, 156.1, 214.7, 217.7, 210.4, 134.5, 55.0, 51.1],
+[83.7, 31.1, 137.7, 141.6, 179.6, 188.7, 122.8, 181.2, 122.9, 109.9, 77.4, 71.9],
+[42.5, 41.5, 121.5, 81.5, 234.9, 199.0, 149.7, 188.6, 168.0, 90.4, 61.0, 41.7],
+[64.2, 88.2, 174.6, 130.8, 184.2, 232.0, 234.4, 167.1, 116.5, 95.1, 69.2, 70.6],
+[50.0, 54.0, 148.5, 184.5, 155.0, 206.6, 136.2, 124.0, 114.9, 66.5, 47.9, 35.9],
+[40.0, 78.1, 70.5, 221.3, 161.9, 276.9, 243.8, 157.5, 97.4, 112.0, 84.6, 35.6],
+[34.5, 115.9, 120.8, 132.7, 224.8, 270.9, 192.4, 185.6, 157.3, 106.2, 64.7, 43.8],
+[42.1, 69.5, 106.0, 122.9, 228.9, 143.5, 259.3, 134.2, 166.5, 135.2, 102.0, 29.8],
+[41.8, 27.3, 144.0, 117.6, 141.9, 150.4, 168.7, 160.9, 129.1, 91.6, 80.6, 47.6],
+[38.8, 74.1, 150.7, 167.7, 168.0, 249.5, 171.1, 192.0, 153.9, 95.1, 89.1, 62.9],
+[56.3, 58.3, 101.7, 142.1, 191.4, 206.2, 187.8, 198.7, 146.5, 105.4, 52.9, 58.8],
+[44.7, 57.8, 72.7, 131.4, 159.1, 301.0, 242.4, 218.6, 147.0, 120.7, 85.1, 34.4],
+[70.3, 42.6, 107.8, 148.7, 172.0, 261.4, 254.2, 257.4, 118.2, 43.6, 54.1, 58.6],
+[35.4, 74.4, 87.2, 157.9, 217.5, 123.2, 193.6, 123.4, 101.8, 107.3, 102.4, 45.2],
+[53.6, 58.9, 128.1, 113.6, 202.8, 171.7, 146.4, 157.4, 159.3, 87.5, 77.3, 34.3],
+[72.0, 67.3, 92.9, 126.4, 190.9, 166.6, 192.2, 167.4, 171.0, 117.0, 70.0, 59.7],
+[84.0, 58.8, 86.7, 165.4, 228.7, 186.7, 168.9, 169.0, 136.4, 111.8, 61.4, 64.4],
+[50.9, 75.3, 57.8, 110.4, 98.3, 122.8, 129.0, 199.8, 157.3, 101.9, 43.7, 57.5],
+[55.0, 33.8, 144.7, 164.4, 187.2, 148.4, 151.4, 159.8, 141.0, 66.3, 68.5, 60.4],
+[54.9, 74.0, 89.5, 150.5, 126.8, 180.3, 257.5, 214.5, 92.4, 119.7, 44.3, 62.9],
+[86.1, 66.0, 48.8, 236.8, 143.4, 244.3, 249.4, 199.8, 99.6, 88.6, 53.8, 57.6],
+[51.1, 78.0, 112.4, 138.3, 178.3, 165.0, 216.0, 164.9, 143.3, 100.8, 86.1, 44.2],
+[76.4, 71.2, 127.3, 139.6, 205.6, 222.7, 201.2, 147.0, 171.6, 119.7, 77.9, 64.8],
+[68.8, 67.8, 111.6, 158.7, 168.7, 129.3, 179.4, 158.2, 132.3, 109.5, 43.9, 42.9],
+[47.7, 103.7, 85.2, 132.0, 178.1, 142.3, 138.8, 178.8, 136.9, 120.0, 91.4, 46.7],
+[68.2, 107.0, 100.9, 133.9, 300.8, 244.4, 280.4, 269.5, 141.6, 90.8, 104.1, 26.5],
+[58.3, 95.7, 144.1, 234.4, 285.0, 121.1, 268.5, 236.6, 164.7, 124.4, 83.7, 58.8],
+[66.9, 60.0, 87.2, 156.6, 142.9, 150.0, 217.3, 241.4, 165.4, 79.4, 57.4, 58.4],
+[46.8, 67.3, 73.3, 139.2, 262.7, 212.2, 164.0, 173.6, 120.2, 101.3, 61.5, 47.2],
+[38.0, 54.7, 135.0, 111.9, 196.7, 231.4, 190.0, 238.3, 107.7, 120.0, 76.3, 55.0],
+[87.0, 77.6, 127.6, 177.7, 162.1, 254.9, 248.3, 191.8, 113.1, 137.5, 46.7, 68.2],
+[61.8, 74.9, 198.7, 190.1, 233.5, 194.4, 247.6, 285.1, 135.3, 139.9, 78.1, 40.9],
+[29.3, 103.4, 76.4, 148.3, 185.7, 290.7, 256.6, 211.6, 125.3, 130.8, 101.0, 55.5],
+[51.4, 64.2, 150.2, 189.9, 261.4, 137.1, 231.7, 172.0, 169.7, 153.8, 47.1, 55.7],
+[64.0, 113.0, 77.5, 105.8, 199.8, 114.0, 157.0, 225.0, 133.8, 94.5, 66.3, 38.1],
+[51.1, 81.3, 97.4, 147.6, 153.6, 202.1, 235.4, 159.2, 155.2, 144.8, 81.1, 60.9],
+[82.1, 104.9, 112.6, 143.4, 189.8, 164.6, 161.2, 209.4, 126.1, 83.9, 69.2, 51.9],
+[83.3, 85.0, 74.1, 148.2, 198.3, 226.8, 206.1, 184.1, 123.0, 100.9, 86.9, 79.2],
+[44.4, 80.5, 101.1, 210.0, 177.5, 163.3, 178.8, 166.2, 167.1, 104.8, 52.3, 41.3],
+[87.7, 94.4, 154.8, 169.8, 191.2, 213.6, 192.0, 228.4, 175.3, 134.8, 78.9, 53.6],
+[62.7, 79.1, 101.5, 150.3, 195.5, 223.6, 169.5, 194.1, 174.4, 102.4, 52.4, 58.3],
+[65.4, 66.3, 79.3, 136.3, 226.4, 177.6, 192.0, 235.7, 155.4, 92.0, 88.0, 55.7],
+[54.9, 73.1, 95.5, 152.5, 165.7, 246.2, 303.7, 167.2, 156.5, 109.0, 101.2, 42.7],
+[79.8, 67.6, 165.4, 210.7, 165.5, 149.0, 195.1, 209.2, 142.6, 102.5, 86.9, 57.2],
+[62.4, 124.1, 115.2, 161.2, 173.2, 223.8, 198.5, 141.8, 113.5, 132.2, 67.0, 73.5],
+[69.3, 64.5, 161.4, 168.4, 226.1, 203.3, 212.3, 190.6, 163.7, 109.7, 73.5, 61.5],
+]
+# #else
+data = [
+[43.8, 60.5, 190.2, ...],
+[49.9, 54.3, 109.7, ...],
+[63.7, 72.0, 142.3, ...],
+...
+]
+# #endif
+monthly_mean = [0]*12
+for month in range(1, 13):
+    m = month - 1   # corresponding list index (starts at 0)
+    s = 0           # sum
+    n = 2009 - 1929 + 1  # no of years
+    for year in range(1929, 2010):
+        y = year - 1929  # corresponding list index (starts at 0)
+        s += data[y][m]
+    monthly_mean[m] = s/n
+month_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+               'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+# nice printout:
+for name, value in zip(month_names, monthly_mean):
+    print '%s: %.1f' % (name, value)
+!ec
+!eblock
+
+!split
+===== A summarizing example; program (task 2) =====
+
+!bblock
+!bc pycod
+max_value = max(monthly_mean)
+month = month_names[monthly_mean.index(max_value)]
+print '%s has best weather with %.1f sun hours on average' % \
+      (month, max_value)
+
+max_value = -1E+20
+for i in range(len(monthly_mean)):
+    value = monthly_mean[i]
+    if value > max_value:
+        max_value = value
+        max_i = i  # store index too
+print '%s has best weather with %.1f sun hours on average' % \
+      (month_names[max_i], max_value)
+!ec
+!eblock
+
+!split
+===== A summarizing example; program (task 3) =====
+
+!bblock
+!bc pycod
+decade_mean = []
+for decade_start in range(1930, 2010, 10):
+    Jan_index = 0; Dec_index = 11  # indices
+    s = 0
+    for year in range(decade_start, decade_start+10):
+        y = year - 1929  # list index
+        print data[y-1][Dec_index] + data[y][Jan_index]
+        s += data[y-1][Dec_index] + data[y][Jan_index]
+    decade_mean.append(s/(20.*30))
+for i in range(len(decade_mean)):
+    print 'Decade %d-%d: %.1f' % \
+          (1930+i*10, 1939+i*10, decade_mean[i])
+!ec
+Complete code: `src/looplist/sun_data.py`
+!eblock
+
+
+!split
+===== Using a debugger to trace the execution =====
+
+!bblock
+A *debugger* is a program that can be used to inspect and understand programs.
+Example:
+
+!bc ipy-t
+In [1]: run -d some_program.py
+ipdb> continue  # or just c (go to first statement)
+1---> 1 g = 9.81;  v0 = 5
+      2 dt = 0.05
+      3
+ipdb> step  # or just s (execute next statement)
+ipdb> print g
+Out[1]: 9.8100000000000005
+ipdb> list  # or just l (list parts of the program)
+1     1 g = 9.81;  v0 = 5
+----> 2 dt = 0.05
+      3
+      4 def y(t):
+      5     return v0*t - 0.5*g*t**2
+      6
+ipdb> break 15   # stop program at line 15
+ipdb> c          # continue to next break point
+!ec
+!eblock
+
+!split
+===== How to find Python info =====
+
+!bblock
+  * The book contains only fragments of the Python language <linebreak>
+    (intended for real beginners!)
+  * These slides are even briefer, so you will need to look up more Python information
+  * Primary reference: The official Python documentation at "`docs.python.org`": "http://docs.python.org/index.html"
+  * Very useful: The Python Library Reference, especially the "index": "https://docs.python.org/2/genindex.html"
+  * Example: what can I find in the `math` module?
+    * Go to the "Python Library Reference": "https://docs.python.org/2/reference/index.html", click "index": "https://docs.python.org/2/genindex.html"
+    * Go to "M": "https://docs.python.org/2/genindex-M.html"
+    * find *math (module)*, click on the "link": "https://docs.python.org/2/library/math.html#module-math"
+  * Alternative: run `pydoc math` in the terminal window (briefer description)
+!eblock
+
+!split
+===== Warning about reading programming documentation =====
+
+!bwarning
+For a newbie it is difficult to read manuals (intended for experts!) - you will need a lot of training; just browse, don't read everything, try to dig out the key info.
+
+It's much like googling in general: only a fraction of the information
+is relevant for you.
+!ewarning
