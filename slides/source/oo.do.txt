@@ -1,0 +1,1286 @@
+TITLE: Ch.9: Object-oriented programming
+AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & University of Oslo, Dept. of Informatics
+DATE: today
+
+!split
+======= Inheritance =======
+
+!bslidecell 00 0.5
+FIGURE: [fig-oo/associations/class_inheritance1, width=500 frac=1]
+!eslidecell
+
+!bslidecell 01 0.5
+FIGURE: [fig-oo/associations/class_inheritance3, width=500 frac=1]
+!eslidecell
+
+
+!split
+===== The chapter title *Object-oriented programming* (OO) may mean two different things =====
+
+!bblock
+ o Programming with classes (better: object-*based* programming)
+ o color{red}{Programming with class hierarchies} (class families)
+!eblock
+
+!split
+#===== New concept: collect classes in families (hierarchies) and let child classes inherit attributes and methods from parent classes =====
+
+===== New concept: collect classes in families (hierarchies)  =====
+
+!bblock What is a class hierarchy?
+  * A family of closely related classes
+  * A key concept is *inheritance*: child classes can inherit attributes and methods from parent class(es) - this saves much typing and code duplication
+
+As usual, we shall learn through examples!
+!eblock
+
+!bblock
+OO is a Norwegian invention by Ole-Johan Dahl and Kristen Nygaard in the 1960s - one of the most important inventions in computer science, because OO is used in all big computer systems today!
+!eblock
+
+!split
+===== Warning: OO is difficult and takes time to master =====
+
+!bblock
+  * Let ideas mature with time
+  * Study many examples
+  * OO is less important in Python than in C++, Java and C#, so the benefits of OO are less obvious in Python
+  * Our examples here on OO employ numerical methods for $\int_a^b f(x)dx$, $f'(x)$, $u'=f(u,t)$ - make sure you understand the simplest of these numerical methods before you study the combination of OO and numerics
+  * Our goal: write general, reusable modules with lots of methods for numerical computing of $\int_a^b f(x)dx$, $f'(x)$, $u'=f(u,t)$
+!eblock
+
+!split
+===== A class for straight lines =====
+
+!bpop
+!bblock Problem:
+Make a class for evaluating lines $y=c_0 + c_1x$.
+!eblock
+!epop
+
+!bpop
+!bblock Code:
+!bc pycod
+class Line:
+    def __init__(self, c0, c1):
+        self.c0, self.c1 = c0, c1
+
+    def __call__(self, x):
+        return self.c0 + self.c1*x
+
+    def table(self, L, R, n):
+        """Return a table with n points for L <= x <= R."""
+        s = ''
+        for x in linspace(L, R, n):
+            y = self(x)
+            s += '%12g %12g\n' % (x, y)
+        return s
+!ec
+!eblock
+!epop
+
+!split
+===== A class for parabolas =====
+
+!bpop
+!bblock Problem:
+Make a class for evaluating parabolas $y=c_0 + c_1x + c_2x^2$.
+!eblock
+!epop
+
+!bpop
+!bblock Code:
+!bc pycod
+class Parabola:
+    def __init__(self, c0, c1, c2):
+        self.c0, self.c1, self.c2 = c0, c1, c2
+
+    def __call__(self, x):
+        return self.c2*x**2 + self.c1*x + self.c0
+
+    def table(self, L, R, n):
+        """Return a table with n points for L <= x <= R."""
+        s = ''
+        for x in linspace(L, R, n):
+            y = self(x)
+            s += '%12g %12g\n' % (x, y)
+        return s
+!ec
+!eblock
+!epop
+
+!bpop
+!bblock Observation:
+This is almost the same code as class `Line`, except for the things with `c2`
+!eblock
+!epop
+
+!split
+===== Class Parabola as a subclass of Line; principles =====
+
+!bpop
+!bblock
+  * `Parabola` code = `Line` code + a little extra with the $c_2$ term
+  * Can we utilize class `Line` code in class `Parabola`?
+  * This is what inheritance is about!
+
+Writing
+
+!bc pycod
+class Parabola(Line):
+    pass
+!ec
+
+makes `Parabola` inherit all methods and attributes from `Line`, so `Parabola` has attributes `c0` and `c1` and three methods
+!eblock
+!epop
+
+!bpop
+!bblock
+  * `Line` is a *superclass*, `Parabola` is a *subclass* <linebreak>
+    (parent class, base class; child class, derived class)
+  * Class `Parabola` must add code to `Line`'s constructor (an extra `c2` attribute), `__call__` (an extra term), but `table` can be used unaltered
+  * The principle is to reuse as much code in `Line` as possible and avoid duplicating code
+!eblock
+!epop
+
+!split
+===== Class Parabola as a subclass of Line; code =====
+
+!bblock
+A subclass method can call a superclass method in this way:
+
+!bc pycod
+superclass_name.method(self, arg1, arg2, ...)
+!ec
+
+Class `Parabola` as a subclass of `Line`:
+
+!bc pycod
+class Parabola(Line):
+    def __init__(self, c0, c1, c2):
+        Line.__init__(self, c0, c1)  # Line stores c0, c1
+        self.c2 = c2
+
+    def __call__(self, x):
+        return Line.__call__(self, x) + self.c2*x**2
+!ec
+
+What is gained?
+
+!bpop
+  * Class `Parabola` just adds code to the already existing code in class `Line` - no duplication of storing `c0` and `c1`, and computing $c_0+c_1x$
+  * Class `Parabola` also has a `table` method - it is inherited
+  * `__init__` and `__call__` are *overridden* or *redefined* in the subclass
+!epop
+!eblock
+
+!split
+===== Class Parabola as a subclass of Line; demo =====
+
+!bblock
+!bc pycod
+p = Parabola(1, -2, 2)
+p1 = p(2.5)
+print p1
+print p.table(0, 1, 3)
+!ec
+
+Output:
+
+!bc dat
+8.5
+           0            1
+         0.5          0.5
+           1            1
+!ec
+!eblock
+
+!split
+===== Exercise: Point out the program flow =====
+
+!bc pyoptpro
+class Line:
+    def __init__(self, c0, c1):
+        self.c0, self.c1 = c0, c1
+
+    def __call__(self, x):
+        return self.c0 + self.c1*x
+
+    def table(self, L, R, n):
+        """Return a table with n points for L <= x <= R."""
+        s = ''
+        for x in linspace(L, R, n):
+            y = self(x)
+            s += '%12g %12g\n' % (x, y)
+        return s
+
+class Parabola(Line):
+    def __init__(self, c0, c1, c2):
+        Line.__init__(self, c0, c1)  # Line stores c0, c1
+        self.c2 = c2
+
+    def __call__(self, x):
+        return Line.__call__(self, x) + self.c2*x**2
+
+p = Parabola(1, -2, 2)
+print p(2.5)
+!ec
+
+!split
+===== We can check class type and class relations with `isinstance(obj, type)` and `issubclass(subclassname, superclassname)` =====
+
+!bblock
+!bc pyshell
+>>> from Line_Parabola import Line, Parabola
+>>> l = Line(-1, 1)
+>>> isinstance(l, Line)
+True
+>>> isinstance(l, Parabola)
+False
+
+>>> p = Parabola(-1, 0, 10)
+>>> isinstance(p, Parabola)
+True
+>>> isinstance(p, Line)
+True
+
+>>> issubclass(Parabola, Line)
+True
+>>> issubclass(Line, Parabola)
+False
+
+>>> p.__class__ == Parabola
+True
+>>> p.__class__.__name__   # string version of the class name
+'Parabola'
+!ec
+!eblock
+
+!split
+===== Line as a subclass of Parabola =====
+
+!bblock
+ * Subclasses are often special cases of a superclass
+ * A line $c_0+c_1x$ is a special case of a parabola $c_0+c_1x+c_2x^2$
+ * Can `Line` be a subclass of `Parabola`?
+ * No problem - this is up to the programmer's choice
+ * Many will prefer this relation between a line and a parabola
+!eblock
+
+!split
+===== Code when Line is a subclass of Parabola =====
+
+!bblock
+!bc pycod
+class Parabola:
+    def __init__(self, c0, c1, c2):
+        self.c0, self.c1, self.c2 = c0, c1, c2
+
+    def __call__(self, x):
+        return self.c2*x**2 + self.c1*x + self.c0
+
+    def table(self, L, R, n):
+        """Return a table with n points for L <= x <= R."""
+        s = ''
+        for x in linspace(L, R, n):
+            y = self(x)
+            s += '%12g %12g\n' % (x, y)
+        return s
+
+class Line(Parabola):
+    def __init__(self, c0, c1):
+        Parabola.__init__(self, c0, c1, 0)
+!ec
+Note: `__call__` and `table` can be reused in class `Line`!
+!eblock
+
+
+
+# #ifdef OLDSTUFF
+!split
+===== Next example: class for functions (part 1) =====
+
+!bblock
+  * Suppose we want to implement mathematical functions $f(x;p_1,\ldots,p_n)$ with parameters as classes. These classes should also support computation of $df/dx$ and $d^2f/dx^2$
+  * Example on such a class:
+
+!bc pycod
+class SomeFunc:
+    def __init__(self, parameter1, parameter2, ...)
+        # store parameters
+    def __call__(self, x):
+        # evaluate function
+    def df(self, x):
+        # evaluate the first derivative
+    def ddf(self, x):
+        # evaluate the second derivative
+!ec
+
+  * If we do not bother to derive the analytical derivatives, we can use numerical differentation formulas in `df` and `ddf`
+!eblock
+
+!split
+===== Next example: class for functions (part 2) =====
+
+!bblock
+  * Observation: with numerical differentiation, all such classes contain the same `df` and `ddf` methods
+  * Such duplication of code is considered a bad thing
+  * Better: collect `df` and `ddf` in a superclass and let subclasses automatically inherit these methods
+!eblock
+
+!split
+===== Super- and subclass for functions =====
+
+!bblock
+!bc pycod
+class FuncWithDerivatives:
+    def __init__(self, h=1.0E-5):
+        self.h = h  # spacing for numerical derivatives
+
+    def __call__(self, x):
+        raise NotImplementedError(
+          '___call__ missing in class %s' %
+          self.__class__.__name__)
+
+    def df(self, x):
+        # compute 1st derivative by a finite difference:
+        h = float(self.h)  # short form
+        return (self(x+h) - self(x-h))/(2*h)
+
+    def ddf(self, x):
+        # compute 2nd derivative by a finite difference:
+        h = float(self.h)  # short form
+        return (self(x+h) - 2*self(x) + self(x-h))/h**2
+!ec
+!eblock
+
+!bblock
+The superclass is not useful in itself - a subclass is needed to implement a specific mathematical function
+!eblock
+
+!split
+===== How to implement a specific function as a subclass =====
+
+!bblock
+  * Inherit from superclass `FuncWithDerivatives`
+  * Store parameters in constructor
+  * Implement function formula in `__call__`
+  * Rely on inherited `df` and `ddf` for numerical derivatives, or reimplement `df` and `ddf` with exact expressions
+!eblock
+
+!split
+===== A subclass for a function; no direct use of superclass =====
+
+!bblock
+  * Say we want to implement $f(x)=\cos (ax)+x^3$
+  * We do this in a subclass:
+
+!bc pycod
+class MyFunc(FuncWithDerivatives):
+    def __init__(self, a):
+        self.a = a
+
+    def __call__(self, x):
+        return cos(self.a*x) + x**3
+
+    def df(self, x):
+        a = self.a
+        return -a*sin(a*x) + 3*x**2
+
+    def ddf(self, x):
+        a = self.a
+        return -a*a*cos(a*x) + 6*x
+!ec
+
+  * This subclass inherits from the superclass, but does not make use of anything from the superclass - no practical use of the superclass in this example
+!eblock
+
+!split
+===== A subclass for a function; use of superclass =====
+
+!bblock
+  * Say we want to implement $f(x)=\ln |p\tanh(qx\cos rx)|$
+  * We are lazy and want to avoid hand derivation of long expressions for $f'(x)$ and $f''(x)$ - use finite differences instead
+  * Implementation as a subclass:
+
+!bc pycod
+ class MyComplicatedFunc(FuncWithDerivatives):
+    def __init__(self, p, q, r, h=1.0E-9):
+        FuncWithDerivatives.__init__(self, h)
+        self.p, self.q, self.r = p, q, r
+
+    def __call__(self, x):
+        p, q, r = self.p, self.q, self.r
+        return log(abs(p*tanh(q*x*cos(r*x))))
+!ec
+
+  * This time we inherit `df` and `ddf`
+  * Note also that we must pass `h` on to the superclass constructor
+  * It is always a good habit to call the superclass constructor
+!eblock
+
+!split
+===== Interactive example =====
+
+!bblock
+$f(x)=\ln |p\tanh(qx\cos rx)|$ <linebreak> compute $f(x)$, $f'(x)$, $f''(x)$ for $x=\pi/2$
+!eblock
+
+!bblock
+
+
+!bc pyshell
+>>> from math import *
+>>> f = MyComplicatedFunc(1, 1, 1)
+>>> x = pi/2
+>>> f(x)
+-36.880306514638988
+>>> f.df(x)
+-60.593693618216086
+>>> f.ddf(x)
+3.3217246931444789e+19
+!ec
+!eblock
+# #endif
+
+!split
+===== Recall the class for numerical differentiation from Ch. 7 =====
+
+!bt
+\[ f'(x) \approx {f(x+h)-f(x)\over h} \]
+!et
+
+!bblock
+!bc pycod
+class Derivative:
+    def __init__(self, f, h=1E-5):
+        self.f = f
+        self.h = float(h)
+
+    def __call__(self, x):
+        f, h = self.f, self.h      # make short forms
+        return (f(x+h) - f(x))/h
+
+def f(x):
+    return exp(-x)*cos(tanh(x))
+
+from math import exp, cos, tanh
+dfdx = Derivative(f)
+print dfdx(2.0)
+!ec
+!eblock
+
+!split
+===== There are numerous formulas numerical differentiation =====
+
+!bblock
+!bt
+\begin{align*}
+f'(x) &= \frac{f(x+h)-f(x)}{h} + {\cal O}(h)\\
+f'(x) &= \frac{f(x)-f(x-h)}{h} + {\cal O}(h)\\
+f'(x) &= \frac{f(x+h)-f(x-h)}{2h} + {\cal O}(h^2)\\
+f'(x) &=  \frac{4}{3}\frac{f(x+h)-f(x-h)}{2h}
+  -\frac{1}{3}\frac{f(x+2h) - f(x-2h)}{4h} + {\cal O}(h^4)\\
+f'(x) &=  \frac{3}{2}\frac{f(x+h)-f(x-h)}{2h}
+  -\frac{3}{5}\frac{f(x+2h) - f(x-2h)}{4h} + \nonumber\\
+&  \frac{1}{10}\frac{f(x+3h) - f(x-3h)}{6h} + {\cal O}(h^6)\\
+f'(x) &=  \frac{1}{h}\left(
+-\frac{1}{6}f(x+2h) + f(x+h) - \frac{1}{2}f(x) - \frac{1}{3}f(x-h)\right)
+  + {\cal O}(h^3)
+\end{align*}
+!et
+!eblock
+
+!split
+===== How can we make a module that offers all these formulas? =====
+
+!bblock It's easy:
+!bc pycod
+class Forward1:
+    def __init__(self, f, h=1E-5):
+        self.f = f
+        self.h = float(h)
+
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x+h) - f(x))/h
+
+class Backward1:
+    def __init__(self, f, h=1E-5):
+        self.f = f
+        self.h = float(h)
+
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x) - f(x-h))/h
+
+class Central2:
+    # same constructor
+    # put relevant formula in __call__
+!ec
+!eblock
+
+!split
+===== What is the problem with this type of code? =====
+
+!bblock
+All the constructors are identical so we duplicate a lot of code.
+!eblock
+
+!bblock
+ * A general OO idea: place code common to many classes in a superclass and inherit that code
+ * Here: inhert constructor from superclass,<linebreak>
+   let subclasses for different differentiation formulas implement
+   their version of `__call__`
+!eblock
+
+!split
+===== Class hierarchy for numerical differentiation =====
+
+!bblock Superclass:
+!bc pycod
+class Diff:
+    def __init__(self, f, h=1E-5):
+        self.f = f
+        self.h = float(h)
+!ec
+!eblock
+
+!bblock Subclass for simple 1st-order forward formula:
+!bc pycod
+class Forward1(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x+h) - f(x))/h
+!ec
+!eblock
+
+!bblock Subclass for 4-th order central formula:
+!bc pycod
+class Central4(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (4./3)*(f(x+h)   - f(x-h))  /(2*h) - \
+               (1./3)*(f(x+2*h) - f(x-2*h))/(4*h)
+!ec
+!eblock
+
+!split
+===== Use of the differentiation classes =====
+
+!bblock
+Interactive example: $f(x)=\sin x$, compute $f'(x)$ for $x=\pi$
+
+!bc pyshell
+>>> from Diff import *
+>>> from math import sin
+>>> mycos = Central4(sin)
+>>> # compute sin'(pi):
+>>> mycos(pi)
+-1.000000082740371
+!ec
+
+`Central4(sin)` calls inherited constructor in superclass, while `mycos(pi)` calls `__call__` in the subclass `Central4`
+!eblock
+
+!split
+===== Exercise: Point out the program flow =====
+
+!bc pyoptpro
+class Diff:
+    def __init__(self, f, h=1E-5):
+        self.f = f
+        self.h = float(h)
+
+class Forward1(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x+h) - f(x))/h
+
+dfdx = Diff(lambda x: x**2)
+print dfdx(0.5)
+!ec
+
+!split
+===== A flexible main program for numerical differentiation =====
+
+!bblock
+Suppose we want to differentiate function expressions from the command line:
+
+!bc sys
+Terminal> python df.py 'exp(sin(x))' Central 2 3.1
+-1.04155573055
+
+Terminal> python df.py 'f(x)' difftype difforder x
+f'(x)
+!ec
+
+With `eval` and the `Diff` class hierarchy this main program can be realized in a few lines (many lines in C# and Java!):
+
+!bc pycod
+import sys
+from Diff import *
+from math import *
+from scitools.StringFunction import StringFunction
+
+f = StringFunction(sys.argv[1])
+difftype = sys.argv[2]
+difforder = sys.argv[3]
+classname = difftype + difforder
+df = eval(classname + '(f)')
+x = float(sys.argv[4])
+print df(x)
+!ec
+!eblock
+
+!split
+===== Investigating numerical approximation errors =====
+
+!bblock
+  * We can empirically investigate the accuracy of our family of 6 numerical differentiation formulas
+  * Sample function: $f(x)=\exp{(-10x)}$
+  * See the book for a little program that computes the errors:
+
+!bc pycod
+.   h        Forward1        Central2        Central4
+6.25E-02 -2.56418286E+00  6.63876231E-01 -5.32825724E-02
+3.12E-02 -1.41170013E+00  1.63556996E-01 -3.21608292E-03
+1.56E-02 -7.42100948E-01  4.07398036E-02 -1.99260429E-04
+7.81E-03 -3.80648092E-01  1.01756309E-02 -1.24266603E-05
+3.91E-03 -1.92794011E-01  2.54332554E-03 -7.76243120E-07
+1.95E-03 -9.70235594E-02  6.35795004E-04 -4.85085874E-08
+!ec
+
+Observations:
+
+  * Halving $h$ from row to row reduces the errors by a factor of 2, 4 and 16, i.e, the errors go like $h$, $h^2$, and $h^4$
+  * `Central4` has really superior accuracy compared with `Forward1`
+!eblock
+
+!split
+===== Alternative implementations (in the book) =====
+
+!bblock
+  * *Pure Python functions* <linebreak>
+    downside: more arguments to transfer, cannot apply formulas twice to get 2nd-order derivatives etc.
+  * *Functional programming*<linebreak>
+    gives the same flexibility as the OO solution
+  * *One class and one common math formula* <linebreak>
+    applies math notation instead of programming techniques to generalize code
+!eblock
+
+!bblock
+These techniques are beyond scope in the course, but place OO into a bigger perspective. Might better clarify what OO is - for some.
+!eblock
+
+!split
+===== Formulas for numerical integration =====
+
+!bblock
+There are numerous formulas for numerical integration and
+all of them can be put into a common notation:
+
+!bt
+\[ \int_a^b f(x)dx \approx \sum_{i=0}^{n-1} w_i f(x_i)\]
+!et
+$w_i$: weights, $x_i$: points (specific to a certain formula)
+!eblock
+
+!bblock
+The Trapezoidal rule has $h=(b-a)/(n-1)$ and
+
+!bt
+\[ x_i = a+ih, \quad w_0=w_{n-1}={h\over2},\ w_i=h\ (i\neq 0,n-1)\]
+!et
+
+The Midpoint rule has $h=(b-a)/n$ and
+
+!bt
+\[ x_i = a + {h\over 2} + ih,\quad w_i=h\]
+!et
+!eblock
+
+!split
+===== More formulas =====
+
+!bblock
+Simpson's rule has
+
+!bt
+\begin{align*}
+x_i &= a+ih,\quad h={b-a\over n-1}\\
+w_0 &=w_{n-1}={h\over6}\\
+w_i &= {h\over3}\hbox{ for }i\hbox{ even},\quad w_i={2h\over3}\hbox{ for }i\hbox{ odd}
+\end{align*}
+!et
+
+Other rules have more complicated formulas for $w_i$ and $x_i$
+!eblock
+
+!split
+===== Why should these formulas be implemented in a class hierarchy? =====
+
+!bblock
+!bpop
+  * A numerical integration formula can be implemented as a class: $a$, $b$ and $n$ are attributes and an `integrate` method evaluates the formula
+  * All such classes are quite similar: the evaluation of $\sum_jw_jf(x_j)$ is the same, only the definition of the points and weights differ among the classes
+  * Recall: code duplication is a bad thing!
+  * The general OO idea: place code common to many classes in a superclass and inherit that code
+  * Here we put $\sum_jw_jf(x_j)$ in a superclass (method `integrate`)
+  * Subclasses extend the superclass with code specific to a math formula, i.e., $w_i$ and $x_i$ in a class method `construct_rule`
+!epop
+!eblock
+
+!split
+===== The superclass for integration =====
+
+!bblock
+!bc pycod
+class Integrator:
+    def __init__(self, a, b, n):
+        self.a, self.b, self.n = a, b, n
+        self.points, self.weights = self.construct_method()
+
+    def construct_method(self):
+        raise NotImplementedError('no rule in class %s' % \
+                                  self.__class__.__name__)
+
+    def integrate(self, f):
+        s = 0
+        for i in range(len(self.weights)):
+            s += self.weights[i]*f(self.points[i])
+        return s
+
+    def vectorized_integrate(self, f):
+        # f must be vectorized for this to work
+        return dot(self.weights, f(self.points))
+!ec
+!eblock
+
+!split
+===== A subclass: the Trapezoidal rule =====
+
+!bblock
+!bc pycod
+class Trapezoidal(Integrator):
+    def construct_method(self):
+        h = (self.b - self.a)/float(self.n - 1)
+        x = linspace(self.a, self.b, self.n)
+        w = zeros(len(x))
+        w[1:-1] += h
+        w[0] = h/2;  w[-1] = h/2
+        return x, w
+!ec
+!eblock
+
+!split
+===== Another subclass: Simpson's rule =====
+
+!bblock
+  * Simpson's rule is more tricky to implement because of different formulas for odd and even points
+  * Don't bother with the details of $w_i$ and $x_i$ in Simpson's rule now - focus on the class design!
+!eblock
+
+!bblock
+!bc pycod
+class Simpson(Integrator):
+
+    def construct_method(self):
+        if self.n % 2 != 1:
+            print 'n=%d must be odd, 1 is added' % self.n
+            self.n += 1
+
+        <code for computing x and w>
+        return x, w
+!ec
+!eblock
+
+!split
+===== About the program flow =====
+
+!bblock
+Let us integrate $\int_0^2 x^2dx$ using 101 points:
+
+!bc pycod
+def f(x):
+    return x*x
+
+method = Simpson(0, 2, 101)
+print method.integrate(f)
+!ec
+
+Important:
+
+  * `method = Simpson(...)`: this invokes the superclass constructor, which calls `construct_method` in class `Simpson`
+  * `method.integrate(f)` invokes the inherited `integrate` method, defined in class `Integrator`
+!eblock
+
+!split
+===== Exercise: Point out the program flow =====
+
+!bc pyoptpro
+ class Integrator:
+    def __init__(self, a, b, n):
+        self.a, self.b, self.n = a, b, n
+        self.points, self.weights = self.construct_method()
+
+    def construct_method(self):
+        raise NotImplementedError('no rule in class %s' % \
+                                  self.__class__.__name__)
+
+    def integrate(self, f):
+        s = 0
+        for i in range(len(self.weights)):
+            s += self.weights[i]*f(self.points[i])
+        return s
+
+class Trapezoidal(Integrator):
+    def construct_method(self):
+        h = (self.b - self.a)/float(self.n - 1)
+        x = linspace(self.a, self.b, self.n)
+        w = zeros(len(x))
+        w[1:-1] += h
+        w[0] = h/2;  w[-1] = h/2
+        return x, w
+
+def f(x):
+    return x*x
+
+method = Trapezoidal(0, 2, 101)
+print method.integrate(f)
+!ec
+
+
+!split
+===== Applications of the family of integration classes =====
+
+!bblock
+We can empirically test out the accuracy of different integration methods `Midpoint`, `Trapezoidal`, `Simpson`, `GaussLegendre2`, ... applied to, e.g.,
+
+!bt
+\[ \int\limits_0^1 \left(1 + {1\over m}\right)t^{1\over m} dt= 1\]
+!et
+!eblock
+
+!bblock
+  * This integral is ``difficult'' numerically for $m>1$.
+  * Key problem: the error in numerical integration formulas is of the form $Cn^{-r}$, mathematical theory can predict $r$ (the ``order''), but we can estimate $r$ empirically too
+  * See the book for computational details
+  * Here we focus on the conclusions
+!eblock
+
+!split
+===== Convergence rates for $m < 1$ (easy case) =====
+
+!bblock
+Simpson and Gauss-Legendre reduce the error faster than Midpoint and Trapezoidal (plot has ln(error) versus $\ln n$)
+!eblock
+
+FIGURE: [fig-oo/power_int_m1, width=480 frac=0.8]
+
+!split
+===== Convergence rates for $m>1$ (problematic case) =====
+
+
+!bblock
+Simpson and Gauss-Legendre, which are theoretically ``smarter'' than Midpoint and Trapezoidal do not show superior behavior!
+!eblock
+
+FIGURE: [fig-oo/power_int_m2, width=480 frac=0.8]
+
+# #ifdef OOSHAPES
+
+!split
+===== A class hierarchy for geometric shapes =====
+
+!bblock Goal:
+Make a drawing program where simple figures can be drawn by simple Python commands.
+!eblock
+
+!bblock Example:
+!bc pycod
+l1 = Line(start=(0,0), stop=(1,1))  # define line
+l1.draw()        # make plot data
+display()        # display the plot data
+
+r1 = Rectangle(lower_left_corner=(0,1), width=3, height=5)
+r1.draw()
+
+Circle(center=(5,7), radius=1).draw()
+Wheel(center=(6,2), radius=2, inner_radius=0.5, nlines=7).draw()
+display()
+savefig('tmp')   # create PNG file tmp.png
+!ec
+!eblock
+
+!split
+===== The resulting figure... =====
+
+FIGURE: [fig-oo/shapes1, width=360 frac=0.6]
+
+!split
+===== How can we realize this drawing tool? =====
+
+!bblock
+  * We need objects for geometric shapes: Line, Rectangle, Circle, Arc, Wheel, Arrow, Spring, Man, Car, etc.
+  * Objects are naturally related in a family
+  * Superclass Shape provides functionality (code) common for all geometric shapes, and subclasses add code for a specific shape
+  * Line is a subclass of Shape
+  * Arc is a subclass of Shape
+  * Circle is a subclass of Arc (special Arc of 360 degrees)
+  * Wheel has two Circles and several Lines
+!eblock
+
+!split
+===== Is-a versus has-a relationships =====
+
+!bblock
+  * In OO one distinguishes between is-a and has-a relationships
+  * An Arc *is a* Shape
+  * A Circle *is an* Arc
+  * $\Rightarrow$ *is-a* means *subclass of*
+  * A Wheel *has* two Circle objects many Line objects
+  * $\Rightarrow$ *has-a* means *attribute*
+  * Note: a shape is (in general) built of other shapes, so a shape *is*  another shape and *has* other shapes
+!eblock
+
+!split
+===== Overview of the class hierarchy =====
+
+!bblock
+  * Superclass Shape has a drawing tool (we omit the details)
+  * The drawing tool can draw a curve, set the linetype, thickness, color, etc., make hardcopies, display all curves defined so far on the screen, etc. (We use Gnuplot)
+  * Class Curve represents some set of connected $x$ and $y$ points
+  * Basic shapes just define their curve
+  * More complicated shapes are built of other shapes <linebreak> (and curves)
+  * Class Shape contains
+    * the common parts of all constructors
+    * a draw method for drawing all shapes/curves of a class
+    * other common methods for geometric transforms (later)
+  * Subclasses (Line, Circle, ...) define their shapes/curves in a method `subshapes`, which returns a list of Shape subclass objects - the superclass Shape can perform common operations on this list
+!eblock
+
+!split
+===== Let us show some code to be specific: the superclass =====
+
+!bblock
+!bc pycod
+class Shape:
+    def __init__(self):
+        self.shapes = self.subshapes()
+        if isinstance(self.shapes, Shape):
+            self.shapes = [self.shapes]  # turn to list
+
+    def subshapes(self):
+        """Define self.shapes as list of Shape instances."""
+        raise NotImplementedError(self.__class__.__name__)
+
+    def draw(self):
+        for shape in self.shapes:
+            shape.draw()
+!ec
+!eblock
+
+!split
+===== The subclass Line =====
+
+!bblock
+!bc pycod
+class Line(Shape):
+    def __init__(self, start, stop):
+        self.start, self.stop = start, stop
+        Shape.__init__(self)
+
+    def subshapes(self):
+        x = [self.start[0], self.stop[0]]
+        y = [self.start[1], self.stop[1]]
+        return Curve(x,y)
+!ec
+!eblock
+
+!bblock
+The subclass stores geometric info about its shape in the constructor and defines, in the `subshape` method, enough coordinates to draw the shape
+!eblock
+
+!split
+===== A Rectangle has slightly more code =====
+
+!bblock
+Specification: lower left corner point + width + height
+!eblock
+
+!bblock
+!bc pycod
+class Rectangle(Shape):
+    def __init__(self, lower_left_corner, width, height):
+        self.lower_left_corner = lower_left_corner  # 2-tuple
+        self.width, self.height = width, height
+        Shape.__init__(self)
+
+    def subshapes(self):
+        ll = self.lower_left_corner  # short form
+        x = [ll[0], ll[0]+self.width,
+             ll[0]+self.width, ll[0], ll[0]]
+        y = [ll[1], ll[1], ll[1]+self.height,
+             ll[1]+self.height, ll[1]]
+        return Curve(x,y)
+!ec
+!eblock
+
+!split
+===== And here is an Arc =====
+
+!bblock
+!bc pycod
+class Arc(Shape):
+    def __init__(self, center, radius,
+                 start_degrees, opening_degrees, resolution=180):
+        self.center = center
+        self.radius = radius
+        self.start_degrees = start_degrees*pi/180
+        self.opening_degrees = opening_degrees*pi/180
+        self.resolution = resolution
+        Shape.__init__(self)
+
+    def subshapes(self):
+        t = linspace(self.start_degrees,
+                     self.start_degrees + self.opening_degrees,
+                     self.resolution+1)
+        x0 = self.center[0];  y0 = self.center[1]
+        R = self.radius
+        x = x0 + R*cos(t)
+        y = y0 + R*sin(t)
+        return Curve(x,y)
+!ec
+!eblock
+
+!split
+===== A Circle is a special kind of an Arc =====
+
+!bblock
+!bc pycod
+class Circle(Arc):
+    def __init__(self, center, radius, resolution=180):
+        Arc.__init__(self, center, radius, 0, 360, resolution)
+!ec
+!eblock
+
+!split
+===== A Wheel is more complicated... =====
+
+!bblock
+!bc pycod
+class Wheel(Shape):
+    def __init__(self, center, radius, inner_radius, nlines=10):
+        self.center = center
+        self.radius = radius
+        self.inner_radius = inner_radius
+        self.nlines = nlines
+        Shape.__init__(self)
+
+    def subshapes(self):
+        outer = Circle(self.center, self.radius)
+        inner = Circle(self.center, self.inner_radius)
+        lines = []
+        t = linspace(0, 2*pi, self.nlines)
+        Ri = self.inner_radius;  Ro = self.radius
+        x0 = self.center[0];  y0 = self.center[1]
+        xinner = x0 + Ri*cos(t)
+        yinner = y0 + Ri*sin(t)
+        xouter = x0 + Ro*cos(t)
+        youter = y0 + Ro*sin(t)
+        lines = [Line((xi,yi),(xo,yo)) for xi, yi, xo, yo in
+                 zip(xinner, yinner, xouter, youter)]
+        return [outer, inner] + lines
+!ec
+!eblock
+
+!split
+===== And now to the real strength of OO! =====
+
+!bblock
+  * We now have a lot of different geometric shapes we can draw
+  * But can we make a wheel roll?
+  * Yes, if the wheel can be rotated and translated
+  * The great thing is that we can implement general formulas for translation and rotation of a set of points in class Curve, and class Shape can translate and rotate any subclass figure just as it can draw any subclass figure
+  * All subclasses automatically inherit general functionality for translating and rotating themselves!
+  * See the book for details
+  * This is a good example on the power of mathematics and OO!
+!eblock
+
+!split
+===== Let the Wheel roll... =====
+
+!bblock
+!bc pycod
+center = (6,2)
+radius = 2
+angle = 2
+total_rotation_angle = 200
+w1 = Wheel(center=center, radius=radius,
+           inner_radius=0.5, nlines=7)
+for i in range(int(total_rotation_angle/angle)):
+    w1.draw()
+    display()
+
+    L = radius*angle*pi/180  # translation = arc length
+    w1.rotate(angle, center[0], center[1])
+    w1.translate(-L, 0)
+    center = (center[0] - L, center[1])
+
+    erase()
+!ec
+!eblock
+# #endif
+
+!split
+===== Summary of object-orientation principles =====
+
+!bblock
+  * A subclass inherits everything from the superclass
+  * When to use a subclass/superclass?
+    * if code common to several classes can be placed in a superclass
+    * if the problem has a natural child-parent concept
+  * The program flow jumps between super- and sub-classes
+  * It takes time to master *when* and *how* to use OO
+  * Study examples!
+!eblock
+
+!split
+===== Recall the class hierarchy for differentiation =====
+
+!bblock (small) Mathematical principles:
+ Collection of difference formulas for $f'(x)$. For example,
+
+!bt
+ \[ f'(x) \approx {f(x+h)-f(x-h)\over 2h}\]
+!et
+
+Superclass `Diff` contains common code (constructor), subclasses implement various difference formulas.
+!eblock
+
+!bblock Implementation example (superclass and one subclass)
+!bc pycod
+class Diff:
+    def __init__(self, f, h=1E-5):
+        self.f = f
+        self.h = float(h)
+
+class Central2(Diff):
+    def __call__(self, x):
+        f, h = self.f, self.h
+        return (f(x+h) - f(x-h))/(2*h)
+!ec
+!eblock
+
+!split
+===== Recall the class hierarchy for integration (1) =====
+
+!bblock Mathematical principles:
+General integration formula for numerical integration:
+
+!bt
+ \[ \int_a^b f(x)dx \approx \sum_{j=0}^{n-1} w_if(x_i)\]
+!et
+
+Superclass `Integrator` contains common code (constructor, $\sum_j w_if(x_i)$), subclasses implement definition of $w_i$ and $x_i$.
+!eblock
+
+!split
+===== Recall the class hierarchy for integration (2) =====
+
+!bblock Implementation example (superclass and one subclass):
+!bc pycod
+ class Integrator:
+    def __init__(self, a, b, n):
+        self.a, self.b, self.n = a, b, n
+        self.points, self.weights = self.construct_method()
+
+    def integrate(self, f):
+        s = 0
+        for i in range(len(self.weights)):
+            s += self.weights[i]*f(self.points[i])
+        return s
+
+ class Trapezoidal(Integrator):
+    def construct_method(self):
+        x = linspace(self.a, self.b, self.n)
+        h = (self.b - self.a)/float(self.n - 1)
+        w = zeros(len(x)) + h
+        w[0] /= 2;  w[-1] /= 2  # adjust end weights
+        return x, w
+!ec
+!eblock
+
+
+!split
+===== A summarizing example: Generalized reading of input data =====
+
+!bblock Write a table of $x\in [a,b]$ and $f(x)$ to file:
+!bc pycod
+outfile = open(filename, 'w')
+from numpy import linspace
+for x in linspace(a, b, n):
+    outfile.write('%12g  %12g\n' % (x, f(x)))
+outfile.close()
+!ec
+!eblock
+
+!bblock We want flexible input:
+Read `a`, `b`, `n`, `filename` and a formula for `f` from...
+
+  * the command line
+  * interactive commands like `a=0`, `b=2`, `filename=mydat.dat`
+  * questions and answers in the terminal window
+  * a graphical user interface
+  * a file of the form
+
+!bc pycod
+a = 0
+b = 2
+filename = mydat.dat
+!ec
+!eblock
+
+!split
+===== Graphical user interface =====
+
+FIGURE: [fig-oo/ReadInputGUI, width=180 frac=0.3]
+
+!split
+===== First we write the application code =====
+
+!bblock Desired usage:
+!bc pycod
+from ReadInput import *
+
+# define all input parameters as name-value pairs in a dict:
+p = dict(formula='x+1', a=0, b=1, n=2, filename='tmp.dat')
+
+# read from some input medium:
+inp = ReadCommandLine(p)
+# or
+inp = PromptUser(p)     # questions in the terminal window
+# or
+inp = ReadInputFile(p)  # read file or interactive commands
+# or
+inp = GUI(p)            # read from a GUI
+
+# load input data into separate variables (alphabetic order)
+a, b, filename, formula, n = inp.get_all()
+
+# go!
+!ec
+!eblock
+
+!split
+===== About the implementation =====
+
+!bblock
+  * A superclass `ReadInput` stores the dict and provides methods for getting input into program variables (`get`, `get_all`)
+  * Subclasses read from different input sources
+  * `ReadCommandLine`, `PromptUser`, `ReadInputFile`, `GUI`
+  * See the book or `ReadInput.py` for implementation details
+  * For now the ideas and principles are more important than code details!
+!eblock
