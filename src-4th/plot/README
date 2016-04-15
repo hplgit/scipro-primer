@@ -1,0 +1,19 @@
+plot_Gaussian.py: three Gaussian functions
+movie1.py:  primary animation example
+movie1_mpl.py: version of movie1.py in native Matplotlib syntax
+plot_ascii.py: demo of the ASCII plotter (for inclusion in verbatim text)
+hat.py: various vectorization techniques for a hat function
+heatwave*.py: plotting the heat waves in the summarizing example of ch 5
+difficulties.py: illustrate a few challenging functions to plot
+
+mpl_pylab_examples.py: matplotlib pylab examples
+mpl_pyplot_examples.py: matplotlib pyplot examples
+easyviz_examples.py: easyviz examples corresponding to the mpl_*.py files
+
+See the examples directory of the SciTools source code distribution
+for a lot of different examples of tuning plots via Easyviz.
+(code.google.com/p/scitools)
+
+
+
+
