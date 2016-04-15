@@ -1,6 +1,148 @@
 TITLE: Resources for A Primer on Scientific Programming with Python
 AUTHOR: Hans Petter Langtangen Email:hpl@simula.no
 
+
+
+======= The 5th edition =======
+
+<a href="http://www.springer.com/gp/book/9783662498866"><img border="0" width="130" src="figs/Primer5th_pic.jpg"></a>
+
+__Changes from the fourth to the fifth edition.__
+Substantial changes were introduced in the fourth edition, and the
+fifth edition is primarily a consolidation of those changes. Many
+typos have been corrected and many explanations and exercises have
+been improved. The emphasis on unit tests and test functions,
+especially in exercises, is stronger than in the previous edition.
+Symbolic computation with the aid of SymPy is used to a larger extent
+and integrated with numerical computing throughout the book.  All
+classes are now new-style (instead of old-style/classic as in previous
+editions).  Examples on Matplotlib do not use the `pylab` module
+anymore, but `pyplot` and MATLAB-like syntax is still favored to ease
+the transition between Python and MATLAB.  The concept of closures is
+more explicit than in earlier editions (see the new Section 7.1.7)
+since this is a handy and popular construction much used in the
+scientific Python community.  We also discuss the difference between
+Python 2 and 3 and demonstrate how to use the `future` module to write
+code that runs under both versions.
+The most substantial new material in the fifth edition appears toward
+the end of Chapter 5 and regards high-performance computing, linear
+algebra, and visualization of scalar and vector fields.
+The numbering of sections and in particular exercises differs from
+previous editions.
+
+===== All programs from the book =====
+
+On Unix/Linux or Mac, download
+the tarfile "`book-examples-5th.tar.gz`": "book-examples-5th.tar.gz"
+for the 5th edition and pack it out by
+
+!bc sys
+tar xvzf book-examples-5th.tar.gz
+!ec
+On Windows, download "`book-examples-5th.zip`": "book-examples-5th.zip"
+for the 4th edition and pack it out by
+
+!bc sys
+unzip book-examples-5th.zip
+!ec
+or double click on the file icon.
+
+The result is a folder (directory)
+tree `src` with subfolders containing
+the program examples for different chapters in the book
+(`formulas`, `looplist`, etc., as explained in the introduction to
+each chapter).
+
+An important change from the 4th edition is that the directory `files`
+in the 4th edition is named `dictstring` in the 5th edition.
+
+You can also directly access the latest version of the example
+files at "GitHub": "https://github.com/hplgit/scipro-primer", see
+the "src": "https://github.com/hplgit/scipro-primer/tree/master/src"
+directory (to download a file, click the *Raw* button on the right first
+to get the pure text file in the browser and then right-click to download).
+To copy the whole repository to your computer, run
+
+!bc sys
+git clone https://github.com/hplgit/scipro-primer.git
+!ec
+
+===== Erratalist =====
+
+# #ifdef ERRATA
+Here is a "PDF file": "erratalist5th.pdf" or an "HTML file":
+"erratalist4th.html" with an errata list for the
+5th edition of the book. If you find any typo or error, please
+report it to "the author": "mailto:hpl@simula.no".
+# #else
+No erratalist yet.
+# #endif
+
+
+======= More resources and information for the latest edition =======
+
+===== Software installation =====
+
+There are several ways to access Python, either on your computer or
+in the cloud. "Appendix H.1": "http://hplgit.github.io/edu/accesspy/accesspy_primer4.html" in the book gives an overview of
+recommended technologies and how to use them to get the software you need
+for working with the book. Our primary recommendation is to install Anaconda - it suffices for the book. However, if you intend to do more advanced
+scientific computing in the future, we strongly recommend to use a virtual
+Ubuntu machine for all that work.
+
+__SciTools.__
+The package SciTools is freqently referred to and used in the book.
+You may want to install SciTools directly from its Git version control
+repository. This makes it easy to upgrade the package at any time.
+SciTools is hosted at "GitHub": "https://github.com/hplgit/scitools/"
+(note that the old repository at Googlecode only contains old versions - stay
+away from those!).
+Make sure you have the Git version control system
+on your computer (if not, googling for installation of Git brings you
+to simple procedures, depending on the platform you are on).
+Get the SciTools source code and install it by
+
+!bc sys
+git clone https://github.com/hplgit/scitools.git
+cd scitools
+sudo python setup.py install
+!ec
+Whenever you want to upgrade the package, just go to the `scitools`
+folder and run the commands
+
+!bc sys
+git pull origin master
+sudo python setup.py install
+!ec
+
+A simpler installation procedure applies `pip`:
+
+!bc sys
+pip install -e git+https://github.com/hplgit/scitools.git#egg=scitools --upgrade
+!ec
+Note that you have to rerun this command to install new versions of SciTools
+in the future.
+
+===== Software installation on Ubuntu =====
+
+If you have an Ubuntu installation, Python is already there. The minimum
+extra packages are installed by this command:
+
+!bc sys
+sudo apt-get install python-matplotlib python-scipy python-gnuplot gnuplot gnuplot-x11 python-scitools
+!ec
+The Gnuplot packages are optional (you can exclusively used Matplotlib instead).
+
+A comprehensive installation with lots of useful packages can be
+performed by a "Bash script": "https://raw.github.com/hplgit/vagrantbox/master/doc/src/vagrant/src-vagrant/install_rich.sh". Download this file (`install_rich.sh`) and run it by `bash install_rich.sh`.
+
+===== Slides =====
+
+There is a "slide collection": "slides/index.html"
+from lectures based on the latest edition of the book.
+
+------------
+
 ======= The 4th edition =======
 
 <a href="http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642549586/ref=sr_1_2?s=books&ie=UTF8&qid=1407225588&sr=1-2&keywords=langtangen"><img border="0" width="130" src="figs/Primer4th_pic.jpg"></a>
@@ -47,65 +189,10 @@ Here is a "PDF file": "erratalist4th.pdf" or an "HTML file":
 4th edition of the book. If you find any typo or error, please
 report it to "the author": "mailto:hpl@simula.no".
 
-===== Software installation =====
-
-There are several ways to access Python, either on your computer or
-in the cloud. "Appendix H.1": "http://hplgit.github.io/edu/accesspy/accesspy_primer4.html" in the book gives an overview of
-recommended technologies and how to use them to get the software you need
-for working with the book. Our primary recommendation is to install Anaconda - it suffices for the book. However, if you intend to do more advanced
-scientific computing in the future, we strongly recommend to use a virtual
-Ubuntu machine for all that work.
-
-__SciTools.__
-The package SciTools is freqently referred to and used in the book.
-You may want to install SciTools directly from its Git version control
-repository. This makes it easy to upgrade the package at any time.
-SciTools is now hosted at "GitHub": "https://github.com/hplgit/scitools/"
-(note that the old repository at Googlecode only contains old versions - stay
-away from those!).
-Make sure you have the Git (<tt>hg</tt>) version control system
-on your computer (if not, googling for installation of Git brings you
-to simple procedures, depending on the platform you are on).
-Get the SciTools source code and install it by
-
-!bc sys
-git clone https://github.com/hplgit/scitools.git
-cd scitools
-sudo python setup.py install
-!ec
-Whenever you want to upgrade the package, just go to the `scitools`
-folder and run the commands
-
-!bc sys
-git pull origin master
-sudo python setup.py install
-!ec
-
-A simpler installation procedure applies `pip`:
-
-!bc sys
-pip install -e git+https://github.com/hplgit/scitools.git#egg=scitools --upgrade
-!ec
-Note that you have to rerun this command to install new versions of SciTools
-in the future.
-
-===== Software installation on Ubuntu =====
-
-If you have an Ubuntu installation, Python is already there. The minimum
-extra packages are installed by this command:
-
-!bc sys
-sudo apt-get install python-matplotlib python-scipy python-gnuplot gnuplot gnuplot-x11 python-scitools
-!ec
-The Gnuplot packages are optional (you can exclusively used Matplotlib instead).
-
-A comprehensive installation with lots of useful packages can be
-performed by a "Bash script": "https://raw.github.com/hplgit/vagrantbox/master/doc/src/vagrant/src-vagrant/install_rich.sh". Download this file (`install_rich.sh`) and run it by `bash install_rich.sh`.
-
 ===== Slides =====
 
 There is a "slide collection": "slides/index.html"
-from lectures based on the book.
+from lectures based on the latest edition of the book.
 
 ------------
 
@@ -194,7 +281,7 @@ There is a "PDF file": "erratalist3rd.pdf" with an errata list for the
 ===== Slides =====
 
 There is a "slide collection": "http://www.ifi.uio.no/~inf1100/slides"
-from lectures based on the 3rd edition of the book.
+from lectures based on the *latest edition* edition of the book.
 
 ======= The 1st and 2nd edition =======
 

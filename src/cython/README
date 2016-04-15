@@ -1,0 +1,6 @@
+Run make.sh to build compiled versions (Cython, C function, stand-alone C).
+Run experiments with timings:
+
+  python compare.py N
+
+where N is the no of Monte Carlo simulations
