@@ -173,7 +173,7 @@ each chapter).
 
 You can also directly access the latest version of the example
 files at "GitHub": "https://github.com/hplgit/scipro-primer", see
-the "src": "https://github.com/hplgit/scipro-primer/tree/master/src"
+the "src-4th": "https://github.com/hplgit/scipro-primer/tree/master/src-4th"
 directory (to download a file, click the *Raw* button on the right first
 to get the pure text file in the browser and then right-click to download).
 To copy the whole repository to your computer, run
