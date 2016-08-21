@@ -277,7 +277,7 @@ MathJax.Hub.Config({
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <br>
 <p>
-<center><h4>Aug 15, 2015</h4></center> <!-- date -->
+<center><h4>Aug 21, 2016</h4></center> <!-- date -->
 <br>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
@@ -297,7 +297,7 @@ $$
 
 <p>
 <!-- !bslidecell 01 -->
-<center><p><img src="fig-ode2/logistic_func_mpl.png" align="bottom" width=400></p></center>
+<br /><br /><center><p><img src="fig-ode2/logistic_func_mpl.png" align="bottom" width=400></p></center><br /><br />
 <!-- !eslidecell -->
 
 <p>
@@ -476,7 +476,7 @@ for \( u(t_{k+1}) \)
 <h2 id="___sec6">The Forward Euler (or Euler's) method; idea </h2>
 
 <p>
-<center><p><img src="fig-ode2/FE_comic_1.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-ode2/FE_comic_1.png" align="bottom" width=600></p></center><br /><br />
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
@@ -484,7 +484,7 @@ for \( u(t_{k+1}) \)
 <h2 id="___sec7">The Forward Euler (or Euler's) method; idea </h2>
 
 <p>
-<center><p><img src="fig-ode2/FE_comic_2.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-ode2/FE_comic_2.png" align="bottom" width=600></p></center><br /><br />
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
@@ -524,7 +524,7 @@ This is an ordinary difference equation we can solve!
 <h2 id="___sec9">Illustration of the forward finite difference </h2>
 
 <p>
-<center><p><img src="fig-ode2/fd_forward.png" align="bottom" width=500></p></center>
+<br /><br /><center><p><img src="fig-ode2/fd_forward.png" align="bottom" width=500></p></center><br /><br />
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
@@ -728,7 +728,7 @@ Given \( \Delta t \) (<code>dt</code>) and \( n \)
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
 
 dt = <span style="color: #658b00">float</span>(sys.argv[<span style="color: #B452CD">1</span>])
@@ -762,7 +762,7 @@ u[<span style="color: #B452CD">0</span>] = U0
 <br />
 
 <p>
-<center><p><img src="fig-ode2/FE_n_10_20.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-ode2/FE_n_10_20.png" align="bottom" width=600></p></center><br /><br />
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
@@ -802,7 +802,7 @@ Given \( \Delta t \) (<code>dt</code>) and \( n \)
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">ForwardEuler</span>(f, U0, T, n):
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">ForwardEuler</span>(f, U0, T, n):
     <span style="color: #CD5555">&quot;&quot;&quot;Solve u&#39;=f(u,t), u(0)=U0, with n steps until t=T.&quot;&quot;&quot;</span>
     <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
     t = np.zeros(n+<span style="color: #B452CD">1</span>)
@@ -852,7 +852,7 @@ Exact solution: \( u(t)=e^t \).
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(u, t):
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(u, t):
     <span style="color: #8B008B; font-weight: bold">return</span> u
 
 U0 = <span style="color: #B452CD">1</span>
@@ -871,7 +871,7 @@ u, t = ForwardEuler(f, U0, T, n)
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.std</span> <span style="color: #8B008B; font-weight: bold">import</span> plot, exp
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scitools.std</span> <span style="color: #8B008B; font-weight: bold">import</span> plot, exp
 u_exact = exp(t)
 plot(t, u, <span style="color: #CD5555">&#39;r-&#39;</span>, t, u_exact, <span style="color: #CD5555">&#39;b-&#39;</span>,
      xlabel=<span style="color: #CD5555">&#39;t&#39;</span>, ylabel=<span style="color: #CD5555">&#39;u&#39;</span>, legend=(<span style="color: #CD5555">&#39;numerical&#39;</span>, <span style="color: #CD5555">&#39;exact&#39;</span>),
@@ -924,7 +924,7 @@ The Forward Euler method may give very inaccurate solutions if
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">method = ForwardEuler(f, dt)
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span>method = ForwardEuler(f, dt)
 method.set_initial_condition(U0, t0)
 u, t = method.solve(T)
 plot(t, u)
@@ -967,7 +967,7 @@ plot(t, u)
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 <span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ForwardEuler_v1</span>:
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f, dt):
@@ -992,7 +992,7 @@ plot(t, u)
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ForwardEuler_v1</span>:
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ForwardEuler_v1</span>:
     ...
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">solve</span>(<span style="color: #658b00">self</span>, T):
         <span style="color: #CD5555">&quot;&quot;&quot;Compute solution for 0 &lt;= t &lt;= T.&quot;&quot;&quot;</span>
@@ -1033,7 +1033,7 @@ plot(t, u)
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #228B22"># Idea: drop dt in the constructor.</span>
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #228B22"># Idea: drop dt in the constructor.</span>
 <span style="color: #228B22"># Let the user provide all time points (in solve).</span>
 
 <span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ForwardEuler</span>:
@@ -1066,7 +1066,7 @@ plot(t, u)
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ForwardEuler</span>:
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ForwardEuler</span>:
     ...
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">solve</span>(<span style="color: #658b00">self</span>, time_points):
         <span style="color: #CD5555">&quot;&quot;&quot;Compute u for t values in time_points list.&quot;&quot;&quot;</span>
@@ -1128,7 +1128,7 @@ This \( u \) should be reproduced to machine precision for any \( \Delta t \).
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_ForwardEuler_against_linear_solution</span>():
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_ForwardEuler_against_linear_solution</span>():
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(u, t):
         <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">0.2</span> + (u - h(t))**<span style="color: #B452CD">4</span>
 
@@ -1170,7 +1170,7 @@ $$ u^{\prime}(t)=\alpha u(t)\left(  1-\frac{u(t)}{R}\right),\quad u(0)=U_0,\quad
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Logistic</span>:
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Logistic</span>:
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, alpha, R, U0):
         <span style="color: #658b00">self</span>.alpha, <span style="color: #658b00">self</span>.R, <span style="color: #658b00">self</span>.U0 = alpha, <span style="color: #658b00">float</span>(R), U0
 
@@ -1188,7 +1188,7 @@ $$ u^{\prime}(t)=\alpha u(t)\left(  1-\frac{u(t)}{R}\right),\quad u(0)=U_0,\quad
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">problem = Logistic(<span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">0.1</span>)
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span>problem = Logistic(<span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">0.1</span>)
 time_points = np.linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">40</span>, <span style="color: #B452CD">401</span>)
 method = ForwardEuler(problem)
 method.set_initial_condition(problem.U0)
@@ -1204,7 +1204,7 @@ u, t = method.solve(time_points)
 <h2 id="___sec30">Figure of the solution </h2>
 
 <p>
-<center><p><img src="fig-ode2/logistic_func_mpl.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-ode2/logistic_func_mpl.png" align="bottom" width=600></p></center><br /><br />
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
@@ -1289,7 +1289,7 @@ Use object-oriented programming!
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ODESolver</span>:
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ODESolver</span>:
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f):
         <span style="color: #658b00">self</span>.f = f
 
@@ -1331,7 +1331,7 @@ Use object-oriented programming!
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ForwardEuler</span>(ODESolver):
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ForwardEuler</span>(ODESolver):
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">advance</span>(<span style="color: #658b00">self</span>):
         u, f, k, t = <span style="color: #658b00">self</span>.u, <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.k, <span style="color: #658b00">self</span>.t
 
@@ -1350,7 +1350,7 @@ Use object-oriented programming!
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">ODESolver</span> <span style="color: #8B008B; font-weight: bold">import</span> ForwardEuler
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">ODESolver</span> <span style="color: #8B008B; font-weight: bold">import</span> ForwardEuler
 <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test1</span>(u, t):
     <span style="color: #8B008B; font-weight: bold">return</span> u
 
@@ -1375,7 +1375,7 @@ plot(t, u)
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">RungeKutta4</span>(ODESolver):
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">RungeKutta4</span>(ODESolver):
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">advance</span>(<span style="color: #658b00">self</span>):
         u, f, k, t = <span style="color: #658b00">self</span>.u, <span style="color: #658b00">self</span>.f, <span style="color: #658b00">self</span>.k, <span style="color: #658b00">self</span>.t
 
@@ -1399,7 +1399,7 @@ plot(t, u)
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">ODESolver</span> <span style="color: #8B008B; font-weight: bold">import</span> RungeKutta4
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">ODESolver</span> <span style="color: #8B008B; font-weight: bold">import</span> RungeKutta4
 <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test1</span>(u, t):
     <span style="color: #8B008B; font-weight: bold">return</span> u
 
@@ -1433,7 +1433,7 @@ plot(t, u)
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">terminate</span>(u, t, step_no):
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">terminate</span>(u, t, step_no):
     eps = <span style="color: #B452CD">1.0E-6</span>                     <span style="color: #228B22"># small number</span>
     <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #658b00">abs</span>(u[step_no,<span style="color: #B452CD">0</span>]) &lt; eps   <span style="color: #228B22"># close enough to zero?</span>
 </pre></div>
@@ -1461,7 +1461,7 @@ $$
 
 <p>
 <!-- !bslidecell 01 0.7 -->
-<center><p><img src="fig-ode2/cos_sin.png" align="bottom" width=500></p></center>
+<br /><br /><center><p><img src="fig-ode2/cos_sin.png" align="bottom" width=500></p></center><br /><br />
 <!-- !eslidecell -->
 
 <p>
@@ -1677,7 +1677,7 @@ In Python code:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">unew = u[k] + dt*f(u[k], t)
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span>unew = u[k] + dt*f(u[k], t)
 </pre></div>
 <p>
 where
@@ -1716,7 +1716,7 @@ where
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ODESolver</span>:
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ODESolver</span>:
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, f):
         <span style="color: #228B22"># Wrap user&#39;s f in a new function that always</span>
         <span style="color: #228B22"># converts list/tuple to array (or let array be array)</span>
@@ -1747,7 +1747,7 @@ where
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ODESolver</span>:
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">ODESolver</span>:
     ...
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">solve</span>(<span style="color: #658b00">self</span>, time_points, terminate=<span style="color: #658b00">None</span>):
         <span style="color: #8B008B; font-weight: bold">if</span> terminate <span style="color: #8B008B">is</span> <span style="color: #658b00">None</span>:
@@ -1806,7 +1806,7 @@ $$
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">myf</span>(u, t):
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">myf</span>(u, t):
     <span style="color: #228B22"># u is array with two components u[0] and u[1]:</span>
     <span style="color: #8B008B; font-weight: bold">return</span> [u[<span style="color: #B452CD">1</span>],
             -beta*u[<span style="color: #B452CD">1</span>]/m - k*u[<span style="color: #B452CD">0</span>]/m]
@@ -1827,7 +1827,7 @@ $$
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">MyF</span>:
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">MyF</span>:
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, m, k, beta):
         <span style="color: #658b00">self</span>.m, <span style="color: #658b00">self</span>.k, <span style="color: #658b00">self</span>.beta = m, k, beta
 
@@ -1846,7 +1846,7 @@ $$
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">ODESolver</span> <span style="color: #8B008B; font-weight: bold">import</span> ForwardEuler
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">ODESolver</span> <span style="color: #8B008B; font-weight: bold">import</span> ForwardEuler
 <span style="color: #228B22"># initial condition:</span>
 U0 = [<span style="color: #B452CD">1.0</span>, <span style="color: #B452CD">0</span>]
 f = MyF(<span style="color: #B452CD">1.0</span>, <span style="color: #B452CD">1.0</span>, <span style="color: #B452CD">0.0</span>)   <span style="color: #228B22"># u&#39;&#39; + u = 0 =&gt; u(t)=cos(t)</span>
@@ -1912,7 +1912,7 @@ Air resistance is neglected but can easily be added!
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(u, t):
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(u, t):
     x, vx, y, vy = u
     g = <span style="color: #B452CD">9.81</span>
     <span style="color: #8B008B; font-weight: bold">return</span> [vx, <span style="color: #B452CD">0</span>, vy, -g]
@@ -1928,7 +1928,7 @@ Air resistance is neglected but can easily be added!
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">ODESolver</span> <span style="color: #8B008B; font-weight: bold">import</span> ForwardEuler
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">ODESolver</span> <span style="color: #8B008B; font-weight: bold">import</span> ForwardEuler
 <span style="color: #228B22"># t=0: prescribe x, y, vx, vy</span>
 x = y = <span style="color: #B452CD">0</span>                     <span style="color: #228B22"># start at the origin</span>
 v0 = <span style="color: #B452CD">5</span>;  theta = <span style="color: #B452CD">80</span>*pi/<span style="color: #B452CD">180</span>    <span style="color: #228B22"># velocity magnitude and angle</span>
@@ -1964,7 +1964,7 @@ Comparison of exact and Forward Euler solutions
 
 
 <p>
-<center><p><img src="fig-ode2/oo_ode_apps_ball.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-ode2/oo_ode_apps_ball.png" align="bottom" width=600></p></center><br /><br />
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br>
@@ -2007,7 +2007,7 @@ which can vary with changes in the environment over time
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Problem</span>:
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Problem</span>:
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, alpha, R, U0, T):
         <span style="color: #658b00">self</span>.alpha, <span style="color: #658b00">self</span>.R, <span style="color: #658b00">self</span>.U0, <span style="color: #658b00">self</span>.T = alpha, R, U0, T
 
@@ -2038,7 +2038,7 @@ problem = Problem(alpha=<span style="color: #B452CD">0.1</span>, R=<span style="
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Solver</span>:
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">class</span> <span style="color: #008b45; font-weight: bold">Solver</span>:
     <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">__init__</span>(<span style="color: #658b00">self</span>, problem, dt,
                  method=ODESolver.ForwardEuler):
         <span style="color: #658b00">self</span>.problem, <span style="color: #658b00">self</span>.dt = problem, dt
@@ -2072,7 +2072,7 @@ solver.plot()
 <h2 id="___sec55">Logistic growth model; results </h2>
 
 <p>
-<center><p><img src="fig-ode2/oo_ode_apps_logistic_varying_R.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-ode2/oo_ode_apps_logistic_varying_R.png" align="bottom" width=600></p></center><br /><br />
 
 <!-- ------------------- end of main content --------------- -->
 

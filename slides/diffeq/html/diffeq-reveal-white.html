@@ -18,6 +18,7 @@
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
 <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
@@ -35,14 +36,21 @@
 <link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/league.css" id="theme">
 -->
 
 <!-- For syntax highlighting -->
 <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<!-- Printing and PDF exports -->
 <script>
-document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
 </script>
 
 <style type="text/css">
@@ -57,7 +65,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:5px solid #bababa;
              -webkit-border-radius: 14px; -moz-border-radius: 14px;
-             border-radius:14px
+             border-radius:14px;
              background-position: 10px 10px;
              background-repeat: no-repeat;
              background-size: 38px;
@@ -139,7 +147,7 @@ MathJax.Hub.Config({
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <br>
 <p>&nbsp;<br>
-<center><h4>Aug 15, 2015</h4></center> <!-- date -->
+<center><h4>Aug 21, 2016</h4></center> <!-- date -->
 <br>
 </section>
 
@@ -297,7 +305,7 @@ Solve math equations by repeating a simple procedure (relation) many times (bori
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scitools.std</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scitools.std</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 x0 <span style="color: #666666">=</span> <span style="color: #666666">100</span>                      <span style="color: #408080; font-style: italic"># initial amount</span>
 p <span style="color: #666666">=</span> <span style="color: #666666">5</span>                         <span style="color: #408080; font-style: italic"># interest rate</span>
 N <span style="color: #666666">=</span> <span style="color: #666666">4</span>                         <span style="color: #408080; font-style: italic"># number of years</span>
@@ -335,7 +343,7 @@ Thus, we could only store the two last values in memory:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">x_old <span style="color: #666666">=</span> x0
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>x_old <span style="color: #666666">=</span> x0
 <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> index_set[<span style="color: #666666">1</span>:]:
     x_new <span style="color: #666666">=</span> x_old <span style="color: #666666">+</span> (p<span style="color: #666666">/100.</span>)<span style="color: #666666">*</span>x_old
     x_old <span style="color: #666666">=</span> x_new  <span style="color: #408080; font-style: italic"># x_new becomes x_old at next step</span>
@@ -374,7 +382,7 @@ How can we find the number of days between two dates?
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">datetime</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">datetime</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> date1 <span style="color: #666666">=</span> datetime<span style="color: #666666">.</span>date(<span style="color: #666666">2007</span>, <span style="color: #666666">8</span>, <span style="color: #666666">3</span>)  <span style="color: #408080; font-style: italic"># Aug 3, 2007</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> date2 <span style="color: #666666">=</span> datetime<span style="color: #666666">.</span>date(<span style="color: #666666">2008</span>, <span style="color: #666666">8</span>, <span style="color: #666666">4</span>)  <span style="color: #408080; font-style: italic"># Aug 4, 2008</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> diff <span style="color: #666666">=</span> date2 <span style="color: #666666">-</span> date1
@@ -395,7 +403,7 @@ How can we find the number of days between two dates?
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scitools.std</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scitools.std</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
 x0 <span style="color: #666666">=</span> <span style="color: #666666">100</span>                           <span style="color: #408080; font-style: italic"># initial amount</span>
 p <span style="color: #666666">=</span> <span style="color: #666666">5</span>                              <span style="color: #408080; font-style: italic"># annual interest rate</span>
 r <span style="color: #666666">=</span> p<span style="color: #666666">/360.0</span>                        <span style="color: #408080; font-style: italic"># daily interest rate</span>
@@ -439,7 +447,7 @@ Modified program:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">p <span style="color: #666666">=</span> zeros(<span style="color: #008000">len</span>(index_set))
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>p <span style="color: #666666">=</span> zeros(<span style="color: #008000">len</span>(index_set))
 <span style="color: #408080; font-style: italic"># fill p[n] for n in index_set (might be non-trivial...)</span>
 
 r <span style="color: #666666">=</span> p<span style="color: #666666">/360.0</span>                      <span style="color: #408080; font-style: italic"># daily interest rate</span>
@@ -592,7 +600,7 @@ Fibonacci derived the sequence by modeling rat populations, but the sequence of 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> zeros
 x <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>, <span style="color: #008000">int</span>)
 x[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">1</span>
@@ -618,7 +626,7 @@ Run the program with \( N=50 \):
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">2</span> <span style="color: #666666">2</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">2</span> <span style="color: #666666">2</span>
 <span style="color: #666666">3</span> <span style="color: #666666">3</span>
 <span style="color: #666666">4</span> <span style="color: #666666">5</span>
 <span style="color: #666666">5</span> <span style="color: #666666">8</span>
@@ -669,7 +677,7 @@ The program now avoids arrays and makes use of three <code>int</code> objects (w
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
 N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
 xnm1 <span style="color: #666666">=</span> <span style="color: #666666">1</span>                           <span style="color: #408080; font-style: italic"># &quot;x_n minus 1&quot;</span>
 xnm2 <span style="color: #666666">=</span> <span style="color: #666666">1</span>                           <span style="color: #408080; font-style: italic"># &quot;x_n minus 2&quot;</span>
@@ -687,7 +695,7 @@ Run with \( N=200 \):
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">x_2 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>x_2 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
 x_3 <span style="color: #666666">=</span> <span style="color: #666666">3</span>
 <span style="color: #666666">...</span>
 x_198 <span style="color: #666666">=</span> <span style="color: #666666">173402521172797813159685037284371942044301</span>
@@ -776,7 +784,7 @@ In a program it is easy to introduce logistic instead of exponential growth, jus
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">x[n] <span style="color: #666666">=</span> x[n<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> p<span style="color: #666666">/100.0</span>)<span style="color: #666666">*</span>x[n<span style="color: #666666">-1</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>x[n] <span style="color: #666666">=</span> x[n<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> p<span style="color: #666666">/100.0</span>)<span style="color: #666666">*</span>x[n<span style="color: #666666">-1</span>]
 </pre></div>
 <p>
 by
@@ -784,13 +792,13 @@ by
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">x[n] <span style="color: #666666">=</span> x[n<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> (rho<span style="color: #666666">/100.0</span>)<span style="color: #666666">*</span>x[n<span style="color: #666666">-1</span>]<span style="color: #666666">*</span>(<span style="color: #666666">1</span> <span style="color: #666666">-</span> x[n<span style="color: #666666">-1</span>]<span style="color: #666666">/</span><span style="color: #008000">float</span>(M))
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>x[n] <span style="color: #666666">=</span> x[n<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> (rho<span style="color: #666666">/100.0</span>)<span style="color: #666666">*</span>x[n<span style="color: #666666">-1</span>]<span style="color: #666666">*</span>(<span style="color: #666666">1</span> <span style="color: #666666">-</span> x[n<span style="color: #666666">-1</span>]<span style="color: #666666">/</span><span style="color: #008000">float</span>(M))
 </pre></div>
 
 </div>
 
 <p>
-<center><p><img src="fig-diffeq/logistic_growth1.png" align="bottom" width=400></p></center>
+<br /><br /><center><p><img src="fig-diffeq/logistic_growth1.png" align="bottom" width=400></p></center><br /><br />
 </section>
 
 
@@ -1039,7 +1047,7 @@ See the book for more details
 <h2 id="___sec30">Newton's method for finding zeros; illustration </h2>
 
 <p>
-<center><p><img src="fig-diffeq/comic_root.png" align="bottom" width=800></p></center>
+<br /><br /><center><p><img src="fig-diffeq/comic_root.png" align="bottom" width=800></p></center><br /><br />
 </section>
 
 
@@ -1088,7 +1096,7 @@ Note:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Newton</span>(f, x, dfdx, epsilon<span style="color: #666666">=1.0E-7</span>, max_n<span style="color: #666666">=100</span>):
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Newton</span>(f, x, dfdx, epsilon<span style="color: #666666">=1.0E-7</span>, max_n<span style="color: #666666">=100</span>):
     n <span style="color: #666666">=</span> <span style="color: #666666">0</span>
     <span style="color: #008000; font-weight: bold">while</span> <span style="color: #008000">abs</span>(f(x)) <span style="color: #666666">&gt;</span> epsilon <span style="color: #AA22FF; font-weight: bold">and</span> n <span style="color: #666666">&lt;=</span> max_n:
         x <span style="color: #666666">=</span> x <span style="color: #666666">-</span> f(x)<span style="color: #666666">/</span>dfdx(x)
@@ -1122,7 +1130,7 @@ Only one \( f(x) \) call in each iteration, optional storage of \( (x,f(x)) \) v
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Newton</span>(f, x, dfdx, epsilon<span style="color: #666666">=1.0E-7</span>, max_n<span style="color: #666666">=100</span>,
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">Newton</span>(f, x, dfdx, epsilon<span style="color: #666666">=1.0E-7</span>, max_n<span style="color: #666666">=100</span>,
            store<span style="color: #666666">=</span><span style="color: #008000">False</span>):
     f_value <span style="color: #666666">=</span> f(x)
     n <span style="color: #666666">=</span> <span style="color: #666666">0</span>
@@ -1149,7 +1157,6 @@ Only one \( f(x) \) call in each iteration, optional storage of \( (x,f(x)) \) v
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 $$ e^{-0.1x^2}\sin ({\pi\over 2}x) =0\]
-
 Solutions: $x=0, \pm 2, \pm 4, \pm 6, \ldots$
 $$
 </div>
@@ -1160,7 +1167,7 @@ $$
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, cos, exp, pi
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> sin, cos, exp, pi
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(x):
@@ -1196,7 +1203,7 @@ x, info <span style="color: #666666">=</span> Newton(g, x0, dg, store<span style
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">zero: <span style="color: #666666">1.999999999768449</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>zero: <span style="color: #666666">1.999999999768449</span>
 Iteration  <span style="color: #666666">0</span>: f(<span style="color: #666666">1.7</span>)<span style="color: #666666">=0.340044</span>
 Iteration  <span style="color: #666666">1</span>: f(<span style="color: #666666">1.99215</span>)<span style="color: #666666">=0.00828786</span>
 Iteration  <span style="color: #666666">2</span>: f(<span style="color: #666666">1.99998</span>)<span style="color: #666666">=2.53347e-05</span>
@@ -1208,7 +1215,7 @@ Start value \( x_0=3 \) (closest root \( x=2 \) or \( x=4 \)):
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">zero: <span style="color: #666666">42.49723316011362</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>zero: <span style="color: #666666">42.49723316011362</span>
 Iteration  <span style="color: #666666">0</span>: f(<span style="color: #666666">3</span>)<span style="color: #666666">=-0.40657</span>
 Iteration  <span style="color: #666666">1</span>: f(<span style="color: #666666">4.66667</span>)<span style="color: #666666">=0.0981146</span>
 Iteration  <span style="color: #666666">2</span>: f(<span style="color: #666666">42.4972</span>)<span style="color: #666666">=-2.59037e-79</span>
@@ -1231,7 +1238,7 @@ Try the demo program <code>src/diffeq/Newton_movie.py</code> with \( x_0=3 \),
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python Newton_movie.py &quot;exp(-0.1*x**2)*sin(pi/2*x)&quot; \
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>Terminal&gt; python Newton_movie.py &quot;exp(-0.1*x**2)*sin(pi/2*x)&quot; \
           numeric 3 -2 50
 </pre></div>
 
@@ -1250,7 +1257,7 @@ Newton's method may work fine or give wrong results! You need to understand the 
 <h2 id="___sec37">First step: we're moving to the right (\( x=4 \)?) </h2>
 
 <p>
-<center><p><img src="fig-diffeq/Newton_demo_divergence_0000.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-diffeq/Newton_demo_divergence_0000.png" align="bottom" width=600></p></center><br /><br />
 </section>
 
 
@@ -1258,7 +1265,7 @@ Newton's method may work fine or give wrong results! You need to understand the 
 <h2 id="___sec38">Second step: oops, too much to the right... </h2>
 
 <p>
-<center><p><img src="fig-diffeq/Newton_demo_divergence_0001.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-diffeq/Newton_demo_divergence_0001.png" align="bottom" width=600></p></center><br /><br />
 </section>
 
 
@@ -1266,7 +1273,7 @@ Newton's method may work fine or give wrong results! You need to understand the 
 <h2 id="___sec39">Third step: disaster since we're &quot;done&quot; (\( f(x)\approx 0 \)) </h2>
 
 <p>
-<center><p><img src="fig-diffeq/Newton_demo_divergence_0002.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-diffeq/Newton_demo_divergence_0002.png" align="bottom" width=600></p></center><br /><br />
 </section>
 
 
@@ -1321,7 +1328,7 @@ Code (we use descriptive names: <code>frequency</code> \( f \), <code>length</co
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span>
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">note</span>(frequency, length, amplitude<span style="color: #666666">=1</span>,
          sample_rate<span style="color: #666666">=44100</span>):
     time_points <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, length,
@@ -1350,7 +1357,7 @@ Code (we use descriptive names: <code>frequency</code> \( f \), <code>length</co
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">data <span style="color: #666666">=</span> note(<span style="color: #666666">440</span>, <span style="color: #666666">2</span>)
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>data <span style="color: #666666">=</span> note(<span style="color: #666666">440</span>, <span style="color: #666666">2</span>)
 data <span style="color: #666666">=</span> data<span style="color: #666666">.</span>astype(numpy<span style="color: #666666">.</span>int16)
 max_amplitude <span style="color: #666666">=</span> <span style="color: #666666">2**15</span> <span style="color: #666666">-</span> <span style="color: #666666">1</span>
 data <span style="color: #666666">=</span> max_amplitude<span style="color: #666666">*</span>data
@@ -1380,7 +1387,7 @@ scitools<span style="color: #666666">.</span>sound<span style="color: #666666">.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #408080; font-style: italic"># echo: e[n] = beta*s[n] + (1-beta)*s[n-b]</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># echo: e[n] = beta*s[n] + (1-beta)*s[n-b]</span>
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">add_echo</span>(data, beta<span style="color: #666666">=0.8</span>, delay<span style="color: #666666">=0.002</span>,
              sample_rate<span style="color: #666666">=44100</span>):
@@ -1396,7 +1403,7 @@ Load data, add echo and play:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">data <span style="color: #666666">=</span> scitools<span style="color: #666666">.</span>sound<span style="color: #666666">.</span>read(filename)
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>data <span style="color: #666666">=</span> scitools<span style="color: #666666">.</span>sound<span style="color: #666666">.</span>read(filename)
 data <span style="color: #666666">=</span> data<span style="color: #666666">.</span>astype(<span style="color: #008000">float</span>)
 data <span style="color: #666666">=</span> add_echo(data, beta<span style="color: #666666">=0.6</span>)
 data <span style="color: #666666">=</span> data<span style="color: #666666">.</span>astype(int16)
@@ -1422,7 +1429,7 @@ scitools<span style="color: #666666">.</span>sound<span style="color: #666666">.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #408080; font-style: italic"># put data1, data2, ... after each other in a new array:</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># put data1, data2, ... after each other in a new array:</span>
 data <span style="color: #666666">=</span> numpy<span style="color: #666666">.</span>concatenate((data1, data2, data3, <span style="color: #666666">...</span>))
 </pre></div>
 <p>
@@ -1431,7 +1438,7 @@ The start of "Nothing Else Matters" (Metallica):
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">E1 <span style="color: #666666">=</span> note(<span style="color: #666666">164.81</span>, <span style="color: #666666">.5</span>)
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>E1 <span style="color: #666666">=</span> note(<span style="color: #666666">164.81</span>, <span style="color: #666666">.5</span>)
 G <span style="color: #666666">=</span> note(<span style="color: #666666">392</span>, <span style="color: #666666">.5</span>)
 B <span style="color: #666666">=</span> note(<span style="color: #666666">493.88</span>, <span style="color: #666666">.5</span>)
 E2 <span style="color: #666666">=</span> note(<span style="color: #666666">659.26</span>, <span style="color: #666666">.5</span>)
@@ -1465,7 +1472,7 @@ Solution of difference equations by simulation:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">index_set <span style="color: #666666">=</span> <span style="color: #666666">&lt;</span>array of n<span style="color: #666666">-</span>values: <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">...</span>, N<span style="color: #666666">&gt;</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>index_set <span style="color: #666666">=</span> <span style="color: #666666">&lt;</span>array of n<span style="color: #666666">-</span>values: <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">...</span>, N<span style="color: #666666">&gt;</span>
 x <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)
 x[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> x0
 <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> index_set[<span style="color: #666666">1</span>:]:
@@ -1477,7 +1484,7 @@ Can have (simple) systems of difference equations:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> index_set[<span style="color: #666666">1</span>:]:
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> index_set[<span style="color: #666666">1</span>:]:
     x[n] <span style="color: #666666">=</span> <span style="color: #666666">&lt;</span>formula involving x[n<span style="color: #666666">-1</span>]<span style="color: #666666">&gt;</span>
     y[n] <span style="color: #666666">=</span> <span style="color: #666666">&lt;</span>formula involving y[n<span style="color: #666666">-1</span>] <span style="color: #AA22FF; font-weight: bold">and</span> x[n]<span style="color: #666666">&gt;</span>
 </pre></div>
@@ -1549,7 +1556,7 @@ Try it out in these examples:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python soundseq.py oscillations 40
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>Terminal&gt; python soundseq.py oscillations 40
 Terminal&gt; python soundseq.py logistic 100
 </pre></div>
 <p>
@@ -1563,7 +1570,7 @@ Try to change the frequency range from 200 to 400.
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:

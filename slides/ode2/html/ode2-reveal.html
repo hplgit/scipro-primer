@@ -18,6 +18,7 @@
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
 <link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
@@ -35,14 +36,21 @@
 <link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/league.css" id="theme">
 -->
 
 <!-- For syntax highlighting -->
 <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<!-- Printing and PDF exports -->
 <script>
-document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
 </script>
 
 <style type="text/css">
@@ -57,7 +65,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:5px solid #bababa;
              -webkit-border-radius: 14px; -moz-border-radius: 14px;
-             border-radius:14px
+             border-radius:14px;
              background-position: 10px 10px;
              background-repeat: no-repeat;
              background-size: 38px;
@@ -139,7 +147,7 @@ MathJax.Hub.Config({
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <br>
 <p>&nbsp;<br>
-<center><h4>Aug 15, 2015</h4></center> <!-- date -->
+<center><h4>Aug 21, 2016</h4></center> <!-- date -->
 <br>
 </section>
 
@@ -163,7 +171,7 @@ $$
 
 </td>
 <td class="padding">
-<center><p><img src="fig-ode2/logistic_func_mpl.png" align="bottom" width=400></p></center>
+<br /><br /><center><p><img src="fig-ode2/logistic_func_mpl.png" align="bottom" width=400></p></center><br /><br />
 </td>
 </tr>
 </table>
@@ -338,7 +346,7 @@ for \( u(t_{k+1}) \)
 <h2 id="___sec6">The Forward Euler (or Euler's) method; idea </h2>
 
 <p>
-<center><p><img src="fig-ode2/FE_comic_1.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-ode2/FE_comic_1.png" align="bottom" width=600></p></center><br /><br />
 </section>
 
 
@@ -346,7 +354,7 @@ for \( u(t_{k+1}) \)
 <h2 id="___sec7">The Forward Euler (or Euler's) method; idea </h2>
 
 <p>
-<center><p><img src="fig-ode2/FE_comic_2.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-ode2/FE_comic_2.png" align="bottom" width=600></p></center><br /><br />
 </section>
 
 
@@ -388,7 +396,7 @@ This is an ordinary difference equation we can solve!
 <h2 id="___sec9">Illustration of the forward finite difference </h2>
 
 <p>
-<center><p><img src="fig-ode2/fd_forward.png" align="bottom" width=500></p></center>
+<br /><br /><center><p><img src="fig-ode2/fd_forward.png" align="bottom" width=500></p></center><br /><br />
 </section>
 
 
@@ -594,7 +602,7 @@ Given \( \Delta t \) (<code>dt</code>) and \( n \)
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">as</span> <span style="color: #447fcf; text-decoration: underline">np</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">as</span> <span style="color: #447fcf; text-decoration: underline">np</span>
 <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">sys</span>
 
 <span style="color: #d0d0d0">dt</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">float</span><span style="color: #d0d0d0">(sys.argv[</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">])</span>
@@ -627,7 +635,7 @@ Given \( \Delta t \) (<code>dt</code>) and \( n \)
 <br />
 
 <p>
-<center><p><img src="fig-ode2/FE_n_10_20.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-ode2/FE_n_10_20.png" align="bottom" width=600></p></center><br /><br />
 </section>
 
 
@@ -667,7 +675,7 @@ Given \( \Delta t \) (<code>dt</code>) and \( n \)
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">ForwardEuler</span><span style="color: #d0d0d0">(f,</span> <span style="color: #d0d0d0">U0,</span> <span style="color: #d0d0d0">T,</span> <span style="color: #d0d0d0">n):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">ForwardEuler</span><span style="color: #d0d0d0">(f,</span> <span style="color: #d0d0d0">U0,</span> <span style="color: #d0d0d0">T,</span> <span style="color: #d0d0d0">n):</span>
     <span style="color: #ed9d13">&quot;&quot;&quot;Solve u&#39;=f(u,t), u(0)=U0, with n steps until t=T.&quot;&quot;&quot;</span>
     <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">as</span> <span style="color: #447fcf; text-decoration: underline">np</span>
     <span style="color: #d0d0d0">t</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">np.zeros(n+</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">)</span>
@@ -713,7 +721,7 @@ Exact solution: \( u(t)=e^t \).
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(u,</span> <span style="color: #d0d0d0">t):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(u,</span> <span style="color: #d0d0d0">t):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">u</span>
 
 <span style="color: #d0d0d0">U0</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1</span>
@@ -730,7 +738,7 @@ Exact solution: \( u(t)=e^t \).
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">plot,</span> <span style="color: #d0d0d0">exp</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">plot,</span> <span style="color: #d0d0d0">exp</span>
 <span style="color: #d0d0d0">u_exact</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">exp(t)</span>
 <span style="color: #d0d0d0">plot(t,</span> <span style="color: #d0d0d0">u,</span> <span style="color: #ed9d13">&#39;r-&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">t,</span> <span style="color: #d0d0d0">u_exact,</span> <span style="color: #ed9d13">&#39;b-&#39;</span><span style="color: #d0d0d0">,</span>
      <span style="color: #d0d0d0">xlabel=</span><span style="color: #ed9d13">&#39;t&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">ylabel=</span><span style="color: #ed9d13">&#39;u&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">legend=(</span><span style="color: #ed9d13">&#39;numerical&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;exact&#39;</span><span style="color: #d0d0d0">),</span>
@@ -777,7 +785,7 @@ The Forward Euler method may give very inaccurate solutions if
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">method</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">ForwardEuler(f,</span> <span style="color: #d0d0d0">dt)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">method</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">ForwardEuler(f,</span> <span style="color: #d0d0d0">dt)</span>
 <span style="color: #d0d0d0">method.set_initial_condition(U0,</span> <span style="color: #d0d0d0">t0)</span>
 <span style="color: #d0d0d0">u,</span> <span style="color: #d0d0d0">t</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">method.solve(T)</span>
 <span style="color: #d0d0d0">plot(t,</span> <span style="color: #d0d0d0">u)</span>
@@ -821,7 +829,7 @@ The Forward Euler method may give very inaccurate solutions if
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">as</span> <span style="color: #447fcf; text-decoration: underline">np</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">as</span> <span style="color: #447fcf; text-decoration: underline">np</span>
 
 <span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ForwardEuler_v1</span><span style="color: #d0d0d0">:</span>
     <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">__init__</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">f,</span> <span style="color: #d0d0d0">dt):</span>
@@ -844,7 +852,7 @@ The Forward Euler method may give very inaccurate solutions if
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ForwardEuler_v1</span><span style="color: #d0d0d0">:</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ForwardEuler_v1</span><span style="color: #d0d0d0">:</span>
     <span style="color: #d0d0d0">...</span>
     <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">solve</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">T):</span>
         <span style="color: #ed9d13">&quot;&quot;&quot;Compute solution for 0 &lt;= t &lt;= T.&quot;&quot;&quot;</span>
@@ -883,7 +891,7 @@ The Forward Euler method may give very inaccurate solutions if
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #999999; font-style: italic"># Idea: drop dt in the constructor.</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #999999; font-style: italic"># Idea: drop dt in the constructor.</span>
 <span style="color: #999999; font-style: italic"># Let the user provide all time points (in solve).</span>
 
 <span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ForwardEuler</span><span style="color: #d0d0d0">:</span>
@@ -914,7 +922,7 @@ The Forward Euler method may give very inaccurate solutions if
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ForwardEuler</span><span style="color: #d0d0d0">:</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ForwardEuler</span><span style="color: #d0d0d0">:</span>
     <span style="color: #d0d0d0">...</span>
     <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">solve</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">time_points):</span>
         <span style="color: #ed9d13">&quot;&quot;&quot;Compute u for t values in time_points list.&quot;&quot;&quot;</span>
@@ -975,7 +983,7 @@ This \( u \) should be reproduced to machine precision for any \( \Delta t \).
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">test_ForwardEuler_against_linear_solution</span><span style="color: #d0d0d0">():</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">test_ForwardEuler_against_linear_solution</span><span style="color: #d0d0d0">():</span>
     <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(u,</span> <span style="color: #d0d0d0">t):</span>
         <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #3677a9">0.2</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">(u</span> <span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">h(t))**</span><span style="color: #3677a9">4</span>
 
@@ -1015,7 +1023,7 @@ $$ u^{\prime}(t)=\alpha u(t)\left(  1-\frac{u(t)}{R}\right),\quad u(0)=U_0,\quad
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">Logistic</span><span style="color: #d0d0d0">:</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">Logistic</span><span style="color: #d0d0d0">:</span>
     <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">__init__</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">alpha,</span> <span style="color: #d0d0d0">R,</span> <span style="color: #d0d0d0">U0):</span>
         <span style="color: #24909d">self</span><span style="color: #d0d0d0">.alpha,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.R,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.U0</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">alpha,</span> <span style="color: #24909d">float</span><span style="color: #d0d0d0">(R),</span> <span style="color: #d0d0d0">U0</span>
 
@@ -1031,7 +1039,7 @@ $$ u^{\prime}(t)=\alpha u(t)\left(  1-\frac{u(t)}{R}\right),\quad u(0)=U_0,\quad
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">problem</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">Logistic(</span><span style="color: #3677a9">0.2</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">0.1</span><span style="color: #d0d0d0">)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">problem</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">Logistic(</span><span style="color: #3677a9">0.2</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">0.1</span><span style="color: #d0d0d0">)</span>
 <span style="color: #d0d0d0">time_points</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">np.linspace(</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">40</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">401</span><span style="color: #d0d0d0">)</span>
 <span style="color: #d0d0d0">method</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">ForwardEuler(problem)</span>
 <span style="color: #d0d0d0">method.set_initial_condition(problem.U0)</span>
@@ -1046,7 +1054,7 @@ $$ u^{\prime}(t)=\alpha u(t)\left(  1-\frac{u(t)}{R}\right),\quad u(0)=U_0,\quad
 <h2 id="___sec30">Figure of the solution </h2>
 
 <p>
-<center><p><img src="fig-ode2/logistic_func_mpl.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-ode2/logistic_func_mpl.png" align="bottom" width=600></p></center><br /><br />
 </section>
 
 
@@ -1130,7 +1138,7 @@ Use object-oriented programming!
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ODESolver</span><span style="color: #d0d0d0">:</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ODESolver</span><span style="color: #d0d0d0">:</span>
     <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">__init__</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">f):</span>
         <span style="color: #24909d">self</span><span style="color: #d0d0d0">.f</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">f</span>
 
@@ -1170,7 +1178,7 @@ Use object-oriented programming!
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ForwardEuler</span><span style="color: #d0d0d0">(ODESolver):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ForwardEuler</span><span style="color: #d0d0d0">(ODESolver):</span>
     <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">advance</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">):</span>
         <span style="color: #d0d0d0">u,</span> <span style="color: #d0d0d0">f,</span> <span style="color: #d0d0d0">k,</span> <span style="color: #d0d0d0">t</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.u,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.f,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.k,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.t</span>
 
@@ -1187,7 +1195,7 @@ Use object-oriented programming!
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">ODESolver</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">ForwardEuler</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">ODESolver</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">ForwardEuler</span>
 <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">test1</span><span style="color: #d0d0d0">(u,</span> <span style="color: #d0d0d0">t):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">u</span>
 
@@ -1210,7 +1218,7 @@ Use object-oriented programming!
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">RungeKutta4</span><span style="color: #d0d0d0">(ODESolver):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">RungeKutta4</span><span style="color: #d0d0d0">(ODESolver):</span>
     <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">advance</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">):</span>
         <span style="color: #d0d0d0">u,</span> <span style="color: #d0d0d0">f,</span> <span style="color: #d0d0d0">k,</span> <span style="color: #d0d0d0">t</span> <span style="color: #d0d0d0">=</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.u,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.f,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.k,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.t</span>
 
@@ -1232,7 +1240,7 @@ Use object-oriented programming!
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">ODESolver</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">RungeKutta4</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">ODESolver</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">RungeKutta4</span>
 <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">test1</span><span style="color: #d0d0d0">(u,</span> <span style="color: #d0d0d0">t):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">u</span>
 
@@ -1262,7 +1270,7 @@ Use object-oriented programming!
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">terminate</span><span style="color: #d0d0d0">(u,</span> <span style="color: #d0d0d0">t,</span> <span style="color: #d0d0d0">step_no):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">terminate</span><span style="color: #d0d0d0">(u,</span> <span style="color: #d0d0d0">t,</span> <span style="color: #d0d0d0">step_no):</span>
     <span style="color: #d0d0d0">eps</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1.0E-6</span>                     <span style="color: #999999; font-style: italic"># small number</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #24909d">abs</span><span style="color: #d0d0d0">(u[step_no,</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">])</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #d0d0d0">eps</span>   <span style="color: #999999; font-style: italic"># close enough to zero?</span>
 </pre></div>
@@ -1292,7 +1300,7 @@ $$
 
 </td>
 <td class="padding">
-<center><p><img src="fig-ode2/cos_sin.png" align="bottom" width=500></p></center>
+<br /><br /><center><p><img src="fig-ode2/cos_sin.png" align="bottom" width=500></p></center><br /><br />
 </td>
 </tr>
 </table>
@@ -1534,7 +1542,7 @@ In Python code:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">unew</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">u[k]</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">dt*f(u[k],</span> <span style="color: #d0d0d0">t)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">unew</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">u[k]</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">dt*f(u[k],</span> <span style="color: #d0d0d0">t)</span>
 </pre></div>
 <p>
 where
@@ -1570,7 +1578,7 @@ where
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ODESolver</span><span style="color: #d0d0d0">:</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ODESolver</span><span style="color: #d0d0d0">:</span>
     <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">__init__</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">f):</span>
         <span style="color: #999999; font-style: italic"># Wrap user&#39;s f in a new function that always</span>
         <span style="color: #999999; font-style: italic"># converts list/tuple to array (or let array be array)</span>
@@ -1599,7 +1607,7 @@ where
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ODESolver</span><span style="color: #d0d0d0">:</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">ODESolver</span><span style="color: #d0d0d0">:</span>
     <span style="color: #d0d0d0">...</span>
     <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">solve</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">time_points,</span> <span style="color: #d0d0d0">terminate=</span><span style="color: #24909d">None</span><span style="color: #d0d0d0">):</span>
         <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">terminate</span> <span style="color: #6ab825; font-weight: bold">is</span> <span style="color: #24909d">None</span><span style="color: #d0d0d0">:</span>
@@ -1657,7 +1665,7 @@ $$
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">myf</span><span style="color: #d0d0d0">(u,</span> <span style="color: #d0d0d0">t):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">myf</span><span style="color: #d0d0d0">(u,</span> <span style="color: #d0d0d0">t):</span>
     <span style="color: #999999; font-style: italic"># u is array with two components u[0] and u[1]:</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">[u[</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">],</span>
             <span style="color: #d0d0d0">-beta*u[</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">]/m</span> <span style="color: #d0d0d0">-</span> <span style="color: #d0d0d0">k*u[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">]/m]</span>
@@ -1676,7 +1684,7 @@ $$
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">MyF</span><span style="color: #d0d0d0">:</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">MyF</span><span style="color: #d0d0d0">:</span>
     <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">__init__</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">m,</span> <span style="color: #d0d0d0">k,</span> <span style="color: #d0d0d0">beta):</span>
         <span style="color: #24909d">self</span><span style="color: #d0d0d0">.m,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.k,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.beta</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">m,</span> <span style="color: #d0d0d0">k,</span> <span style="color: #d0d0d0">beta</span>
 
@@ -1693,7 +1701,7 @@ $$
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">ODESolver</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">ForwardEuler</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">ODESolver</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">ForwardEuler</span>
 <span style="color: #999999; font-style: italic"># initial condition:</span>
 <span style="color: #d0d0d0">U0</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[</span><span style="color: #3677a9">1.0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">]</span>
 <span style="color: #d0d0d0">f</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">MyF(</span><span style="color: #3677a9">1.0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1.0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">0.0</span><span style="color: #d0d0d0">)</span>   <span style="color: #999999; font-style: italic"># u&#39;&#39; + u = 0 =&gt; u(t)=cos(t)</span>
@@ -1761,7 +1769,7 @@ Air resistance is neglected but can easily be added!
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(u,</span> <span style="color: #d0d0d0">t):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(u,</span> <span style="color: #d0d0d0">t):</span>
     <span style="color: #d0d0d0">x,</span> <span style="color: #d0d0d0">vx,</span> <span style="color: #d0d0d0">y,</span> <span style="color: #d0d0d0">vy</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">u</span>
     <span style="color: #d0d0d0">g</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">9.81</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">[vx,</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">vy,</span> <span style="color: #d0d0d0">-g]</span>
@@ -1775,7 +1783,7 @@ Air resistance is neglected but can easily be added!
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">ODESolver</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">ForwardEuler</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">ODESolver</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">ForwardEuler</span>
 <span style="color: #999999; font-style: italic"># t=0: prescribe x, y, vx, vy</span>
 <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0</span>                     <span style="color: #999999; font-style: italic"># start at the origin</span>
 <span style="color: #d0d0d0">v0</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">5</span><span style="color: #d0d0d0">;</span>  <span style="color: #d0d0d0">theta</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">80</span><span style="color: #d0d0d0">*pi/</span><span style="color: #3677a9">180</span>    <span style="color: #999999; font-style: italic"># velocity magnitude and angle</span>
@@ -1809,7 +1817,7 @@ Comparison of exact and Forward Euler solutions
 </div>
 
 <p>
-<center><p><img src="fig-ode2/oo_ode_apps_ball.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-ode2/oo_ode_apps_ball.png" align="bottom" width=600></p></center><br /><br />
 </section>
 
 
@@ -1851,7 +1859,7 @@ which can vary with changes in the environment over time
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">Problem</span><span style="color: #d0d0d0">:</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">Problem</span><span style="color: #d0d0d0">:</span>
     <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">__init__</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">alpha,</span> <span style="color: #d0d0d0">R,</span> <span style="color: #d0d0d0">U0,</span> <span style="color: #d0d0d0">T):</span>
         <span style="color: #24909d">self</span><span style="color: #d0d0d0">.alpha,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.R,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.U0,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.T</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">alpha,</span> <span style="color: #d0d0d0">R,</span> <span style="color: #d0d0d0">U0,</span> <span style="color: #d0d0d0">T</span>
 
@@ -1880,7 +1888,7 @@ which can vary with changes in the environment over time
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">Solver</span><span style="color: #d0d0d0">:</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">class</span> <span style="color: #447fcf; text-decoration: underline">Solver</span><span style="color: #d0d0d0">:</span>
     <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">__init__</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">self</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">problem,</span> <span style="color: #d0d0d0">dt,</span>
                  <span style="color: #d0d0d0">method=ODESolver.ForwardEuler):</span>
         <span style="color: #24909d">self</span><span style="color: #d0d0d0">.problem,</span> <span style="color: #24909d">self</span><span style="color: #d0d0d0">.dt</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">problem,</span> <span style="color: #d0d0d0">dt</span>
@@ -1913,7 +1921,7 @@ which can vary with changes in the environment over time
 <h2 id="___sec55">Logistic growth model; results </h2>
 
 <p>
-<center><p><img src="fig-ode2/oo_ode_apps_logistic_varying_R.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-ode2/oo_ode_apps_logistic_varying_R.png" align="bottom" width=600></p></center><br /><br />
 </section>
 
 
@@ -1922,7 +1930,7 @@ which can vary with changes in the environment over time
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:

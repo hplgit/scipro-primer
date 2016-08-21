@@ -18,6 +18,7 @@
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
 <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
@@ -35,14 +36,21 @@
 <link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/league.css" id="theme">
 -->
 
 <!-- For syntax highlighting -->
 <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<!-- Printing and PDF exports -->
 <script>
-document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
 </script>
 
 <style type="text/css">
@@ -57,7 +65,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:5px solid #bababa;
              -webkit-border-radius: 14px; -moz-border-radius: 14px;
-             border-radius:14px
+             border-radius:14px;
              background-position: 10px 10px;
              background-repeat: no-repeat;
              background-size: 38px;
@@ -139,7 +147,7 @@ MathJax.Hub.Config({
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <br>
 <p>&nbsp;<br>
-<center><h4>Aug 15, 2015</h4></center> <!-- date -->
+<center><h4>Aug 21, 2016</h4></center> <!-- date -->
 <br>
 </section>
 
@@ -150,7 +158,7 @@ MathJax.Hub.Config({
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">-20  -4.0
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>-20  -4.0
 -15   5.0
 -10  14.0
  -5  23.0
@@ -185,7 +193,7 @@ We know how to make one line in the table:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">C <span style="color: #666666">=</span> <span style="color: #666666">-20</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>C <span style="color: #666666">=</span> <span style="color: #666666">-20</span>
 F <span style="color: #666666">=</span> <span style="color: #666666">9.0/5*</span>C <span style="color: #666666">+</span> <span style="color: #666666">32</span>
 <span style="color: #008000; font-weight: bold">print</span> C, F
 </pre></div>
@@ -195,7 +203,7 @@ We can just repeat these statements:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">C <span style="color: #666666">=</span> <span style="color: #666666">-20</span>;  F <span style="color: #666666">=</span> <span style="color: #666666">9.0/5*</span>C <span style="color: #666666">+</span> <span style="color: #666666">32</span>;  <span style="color: #008000; font-weight: bold">print</span> C, F
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>C <span style="color: #666666">=</span> <span style="color: #666666">-20</span>;  F <span style="color: #666666">=</span> <span style="color: #666666">9.0/5*</span>C <span style="color: #666666">+</span> <span style="color: #666666">32</span>;  <span style="color: #008000; font-weight: bold">print</span> C, F
 C <span style="color: #666666">=</span> <span style="color: #666666">-15</span>;  F <span style="color: #666666">=</span> <span style="color: #666666">9.0/5*</span>C <span style="color: #666666">+</span> <span style="color: #666666">32</span>;  <span style="color: #008000; font-weight: bold">print</span> C, F
 <span style="color: #666666">...</span>
 C <span style="color: #666666">=</span>  <span style="color: #666666">35</span>;  F <span style="color: #666666">=</span> <span style="color: #666666">9.0/5*</span>C <span style="color: #666666">+</span> <span style="color: #666666">32</span>;  <span style="color: #008000; font-weight: bold">print</span> C, F
@@ -228,7 +236,7 @@ a boolean condition is true
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">while</span> condition:
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">while</span> condition:
     <span style="color: #666666">&lt;</span>statement <span style="color: #666666">1&gt;</span>
     <span style="color: #666666">&lt;</span>statement <span style="color: #666666">2&gt;</span>
     <span style="color: #666666">...</span>
@@ -253,7 +261,7 @@ a boolean condition is true
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;------------------&#39;</span> <span style="color: #408080; font-style: italic"># table heading</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;------------------&#39;</span> <span style="color: #408080; font-style: italic"># table heading</span>
 C <span style="color: #666666">=</span> <span style="color: #666666">-20</span>                    <span style="color: #408080; font-style: italic"># start value for C</span>
 dC <span style="color: #666666">=</span> <span style="color: #666666">5</span>                     <span style="color: #408080; font-style: italic"># increment of C in loop</span>
 <span style="color: #008000; font-weight: bold">while</span> C <span style="color: #666666">&lt;=</span> <span style="color: #666666">40</span>:             <span style="color: #408080; font-style: italic"># loop heading with condition</span>
@@ -306,7 +314,7 @@ Examples: \( C=40 \), \( C\neq 40 \), \( C\geq 40 \), \( C>40 \), \( C < 40 \).
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">C <span style="color: #666666">==</span> <span style="color: #666666">40</span>  <span style="color: #408080; font-style: italic"># note the double ==, C = 40 is an assignment!</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>C <span style="color: #666666">==</span> <span style="color: #666666">40</span>  <span style="color: #408080; font-style: italic"># note the double ==, C = 40 is an assignment!</span>
 C <span style="color: #666666">!=</span> <span style="color: #666666">40</span>
 C <span style="color: #666666">&gt;=</span> <span style="color: #666666">40</span>
 C <span style="color: #666666">&gt;</span>  <span style="color: #666666">40</span>
@@ -318,7 +326,7 @@ We can test boolean expressions in a Python shell:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> C <span style="color: #666666">=</span> <span style="color: #666666">41</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> C <span style="color: #666666">=</span> <span style="color: #666666">41</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> C <span style="color: #666666">!=</span> <span style="color: #666666">40</span>
 <span style="color: #008000">True</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> C <span style="color: #666666">&lt;</span> <span style="color: #666666">40</span>
@@ -343,7 +351,7 @@ Several conditions can be combined with and/or:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">while</span> condition1 <span style="color: #AA22FF; font-weight: bold">and</span> condition2:
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">while</span> condition1 <span style="color: #AA22FF; font-weight: bold">and</span> condition2:
     <span style="color: #666666">...</span>
 
 <span style="color: #008000; font-weight: bold">while</span> condition1 <span style="color: #AA22FF; font-weight: bold">or</span> condition2:
@@ -358,7 +366,7 @@ Rule 2: <code>C1 or C2</code> is <code>True</code> if one of <code>C1</code> or 
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> <span style="color: #666666">0</span>;  y <span style="color: #666666">=</span> <span style="color: #666666">1.2</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> <span style="color: #666666">0</span>;  y <span style="color: #666666">=</span> <span style="color: #666666">1.2</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">&gt;=</span> <span style="color: #666666">0</span> <span style="color: #AA22FF; font-weight: bold">and</span> y <span style="color: #666666">&lt;</span> <span style="color: #666666">1</span>
 <span style="color: #008000">False</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">&gt;=</span> <span style="color: #666666">0</span> <span style="color: #AA22FF; font-weight: bold">or</span> y <span style="color: #666666">&lt;</span> <span style="color: #666666">1</span>
@@ -393,7 +401,7 @@ Simple solution: one variable for each value
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">C1 <span style="color: #666666">=</span> <span style="color: #666666">-20</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>C1 <span style="color: #666666">=</span> <span style="color: #666666">-20</span>
 C2 <span style="color: #666666">=</span> <span style="color: #666666">-15</span>
 C3 <span style="color: #666666">=</span> <span style="color: #666666">-10</span>
 <span style="color: #666666">...</span>
@@ -408,7 +416,7 @@ Better: a set of values can be collected in a list
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">C <span style="color: #666666">=</span> [<span style="color: #666666">-20</span>, <span style="color: #666666">-15</span>, <span style="color: #666666">-10</span>, <span style="color: #666666">-5</span>, <span style="color: #666666">0</span>, <span style="color: #666666">5</span>, <span style="color: #666666">10</span>, <span style="color: #666666">15</span>, <span style="color: #666666">20</span>, <span style="color: #666666">25</span>, <span style="color: #666666">30</span>, <span style="color: #666666">35</span>, <span style="color: #666666">40</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>C <span style="color: #666666">=</span> [<span style="color: #666666">-20</span>, <span style="color: #666666">-15</span>, <span style="color: #666666">-10</span>, <span style="color: #666666">-5</span>, <span style="color: #666666">0</span>, <span style="color: #666666">5</span>, <span style="color: #666666">10</span>, <span style="color: #666666">15</span>, <span style="color: #666666">20</span>, <span style="color: #666666">25</span>, <span style="color: #666666">30</span>, <span style="color: #666666">35</span>, <span style="color: #666666">40</span>]
 </pre></div>
 <p>
 Now there is one variable, <code>C</code>, holding all the values
@@ -428,7 +436,7 @@ Initialize with square brackets and comma between the Python objects:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">L1 <span style="color: #666666">=</span> [<span style="color: #666666">-91</span>, <span style="color: #BA2121">&#39;a string&#39;</span>, <span style="color: #666666">7.2</span>, <span style="color: #666666">0</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>L1 <span style="color: #666666">=</span> [<span style="color: #666666">-91</span>, <span style="color: #BA2121">&#39;a string&#39;</span>, <span style="color: #666666">7.2</span>, <span style="color: #666666">0</span>]
 </pre></div>
 <p>
 Elements are accessed via an index: <code>L1[3]</code> (index=3).
@@ -439,7 +447,7 @@ List indices start at <code>0</code>: <code>0</code>, <code>1</code>, <code>2</c
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> mylist <span style="color: #666666">=</span> [<span style="color: #666666">4</span>, <span style="color: #666666">6</span>, <span style="color: #666666">-3.5</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> mylist <span style="color: #666666">=</span> [<span style="color: #666666">4</span>, <span style="color: #666666">6</span>, <span style="color: #666666">-3.5</span>]
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> mylist[<span style="color: #666666">0</span>]
 <span style="color: #666666">4</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> mylist[<span style="color: #666666">1</span>]
@@ -463,7 +471,7 @@ List indices start at <code>0</code>: <code>0</code>, <code>1</code>, <code>2</c
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> C <span style="color: #666666">=</span> [<span style="color: #666666">-10</span>, <span style="color: #666666">-5</span>, <span style="color: #666666">0</span>, <span style="color: #666666">5</span>, <span style="color: #666666">10</span>, <span style="color: #666666">15</span>, <span style="color: #666666">20</span>, <span style="color: #666666">25</span>, <span style="color: #666666">30</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> C <span style="color: #666666">=</span> [<span style="color: #666666">-10</span>, <span style="color: #666666">-5</span>, <span style="color: #666666">0</span>, <span style="color: #666666">5</span>, <span style="color: #666666">10</span>, <span style="color: #666666">15</span>, <span style="color: #666666">20</span>, <span style="color: #666666">25</span>, <span style="color: #666666">30</span>]
 <span style="color: #666666">&gt;&gt;&gt;</span> C<span style="color: #666666">.</span>append(<span style="color: #666666">35</span>)   <span style="color: #408080; font-style: italic"># add new element 35 at the end</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> C
 [<span style="color: #666666">-10</span>, <span style="color: #666666">-5</span>, <span style="color: #666666">0</span>, <span style="color: #666666">5</span>, <span style="color: #666666">10</span>, <span style="color: #666666">15</span>, <span style="color: #666666">20</span>, <span style="color: #666666">25</span>, <span style="color: #666666">30</span>, <span style="color: #666666">35</span>]
@@ -496,7 +504,7 @@ List indices start at <code>0</code>: <code>0</code>, <code>1</code>, <code>2</c
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> C<span style="color: #666666">.</span>index(<span style="color: #666666">10</span>)   <span style="color: #408080; font-style: italic"># index of the first element with value 10</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> C<span style="color: #666666">.</span>index(<span style="color: #666666">10</span>)   <span style="color: #408080; font-style: italic"># index of the first element with value 10</span>
 <span style="color: #666666">3</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #666666">10</span> <span style="color: #AA22FF; font-weight: bold">in</span> C       <span style="color: #408080; font-style: italic"># is 10 an element in C?</span>
 <span style="color: #008000">True</span>
@@ -544,7 +552,7 @@ As with <em>while</em> loops, the statements in the loop must be indented!
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">degrees <span style="color: #666666">=</span> [<span style="color: #666666">0</span>, <span style="color: #666666">10</span>, <span style="color: #666666">20</span>, <span style="color: #666666">40</span>, <span style="color: #666666">100</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>degrees <span style="color: #666666">=</span> [<span style="color: #666666">0</span>, <span style="color: #666666">10</span>, <span style="color: #666666">20</span>, <span style="color: #666666">40</span>, <span style="color: #666666">100</span>]
 <span style="color: #008000; font-weight: bold">for</span> C <span style="color: #AA22FF; font-weight: bold">in</span> degrees:
     <span style="color: #008000; font-weight: bold">print</span> C
 <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;The degrees list has&#39;</span>, <span style="color: #008000">len</span>(degrees), <span style="color: #BA2121">&#39;elements&#39;</span>
@@ -574,7 +582,7 @@ Simulation by hand:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">Cdegrees <span style="color: #666666">=</span> [<span style="color: #666666">-20</span>, <span style="color: #666666">-15</span>, <span style="color: #666666">-10</span>, <span style="color: #666666">-5</span>, <span style="color: #666666">0</span>, <span style="color: #666666">5</span>, <span style="color: #666666">10</span>, <span style="color: #666666">15</span>,
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>Cdegrees <span style="color: #666666">=</span> [<span style="color: #666666">-20</span>, <span style="color: #666666">-15</span>, <span style="color: #666666">-10</span>, <span style="color: #666666">-5</span>, <span style="color: #666666">0</span>, <span style="color: #666666">5</span>, <span style="color: #666666">10</span>, <span style="color: #666666">15</span>,
              <span style="color: #666666">20</span>, <span style="color: #666666">25</span>, <span style="color: #666666">30</span>, <span style="color: #666666">35</span>, <span style="color: #666666">40</span>]
 <span style="color: #008000; font-weight: bold">for</span> C <span style="color: #AA22FF; font-weight: bold">in</span> Cdegrees:
     F <span style="color: #666666">=</span> (<span style="color: #666666">9.0/5</span>)<span style="color: #666666">*</span>C <span style="color: #666666">+</span> <span style="color: #666666">32</span>
@@ -587,7 +595,7 @@ format the two columns:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%5d</span><span style="color: #BA2121"> </span><span style="color: #BB6688; font-weight: bold">%5.1f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (C, F)
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%5d</span><span style="color: #BA2121"> </span><span style="color: #BB6688; font-weight: bold">%5.1f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (C, F)
 </pre></div>
 <p>
 Output:
@@ -595,7 +603,7 @@ Output:
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">-20  -4.0
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>-20  -4.0
 -15   5.0
 -10  14.0
  -5  23.0
@@ -621,7 +629,7 @@ The for loop
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> element <span style="color: #AA22FF; font-weight: bold">in</span> somelist:
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> element <span style="color: #AA22FF; font-weight: bold">in</span> somelist:
     <span style="color: #408080; font-style: italic"># process element</span>
 </pre></div>
 <p>
@@ -630,7 +638,7 @@ can always be transformed to a corresponding while loop
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">index <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>index <span style="color: #666666">=</span> <span style="color: #666666">0</span>
 <span style="color: #008000; font-weight: bold">while</span> index <span style="color: #666666">&lt;</span> <span style="color: #008000">len</span>(somelist):
     element <span style="color: #666666">=</span> somelist[index]
     <span style="color: #408080; font-style: italic"># process element</span>
@@ -657,7 +665,7 @@ can always be transformed to a corresponding while loop
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">Cdegrees <span style="color: #666666">=</span> [<span style="color: #666666">-20</span>, <span style="color: #666666">-15</span>, <span style="color: #666666">-10</span>, <span style="color: #666666">-5</span>, <span style="color: #666666">0</span>, <span style="color: #666666">5</span>, <span style="color: #666666">10</span>,
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>Cdegrees <span style="color: #666666">=</span> [<span style="color: #666666">-20</span>, <span style="color: #666666">-15</span>, <span style="color: #666666">-10</span>, <span style="color: #666666">-5</span>, <span style="color: #666666">0</span>, <span style="color: #666666">5</span>, <span style="color: #666666">10</span>,
             <span style="color: #666666">15</span>, <span style="color: #666666">20</span>, <span style="color: #666666">25</span>, <span style="color: #666666">30</span>, <span style="color: #666666">35</span>, <span style="color: #666666">40</span>]
 index <span style="color: #666666">=</span> <span style="color: #666666">0</span>
 <span style="color: #008000; font-weight: bold">while</span> index <span style="color: #666666">&lt;</span> <span style="color: #008000">len</span>(Cdegrees):
@@ -684,7 +692,7 @@ $$ S = \sum_{i=1}^N i^2 $$
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">N <span style="color: #666666">=</span> <span style="color: #666666">14</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>N <span style="color: #666666">=</span> <span style="color: #666666">14</span>
 
 S <span style="color: #666666">=</span> <span style="color: #666666">0</span>
 <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, N<span style="color: #666666">+1</span>):
@@ -696,7 +704,7 @@ Or (less common):
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">S <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>S <span style="color: #666666">=</span> <span style="color: #666666">0</span>
 i <span style="color: #666666">=</span> <span style="color: #666666">1</span>
 <span style="color: #008000; font-weight: bold">while</span> i <span style="color: #666666">&lt;=</span> N:
     S <span style="color: #666666">+=</span> i<span style="color: #666666">**2</span>
@@ -734,7 +742,7 @@ Let us put all the Fahrenheit values in a list as well:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">[<span style="color: #666666">-4.0</span>, <span style="color: #666666">5.0</span>, <span style="color: #666666">14.0</span>, <span style="color: #666666">23.0</span>, <span style="color: #666666">32.0</span>, <span style="color: #666666">41.0</span>, <span style="color: #666666">50.0</span>, <span style="color: #666666">59.0</span>,
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>[<span style="color: #666666">-4.0</span>, <span style="color: #666666">5.0</span>, <span style="color: #666666">14.0</span>, <span style="color: #666666">23.0</span>, <span style="color: #666666">32.0</span>, <span style="color: #666666">41.0</span>, <span style="color: #666666">50.0</span>, <span style="color: #666666">59.0</span>,
  <span style="color: #666666">68.0</span>, <span style="color: #666666">77.0</span>, <span style="color: #666666">86.0</span>, <span style="color: #666666">95.0</span>, <span style="color: #666666">104.0</span>]
 </pre></div>
 
@@ -754,7 +762,7 @@ For loops usually loop over list values (elements):
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> element <span style="color: #AA22FF; font-weight: bold">in</span> somelist:
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> element <span style="color: #AA22FF; font-weight: bold">in</span> somelist:
     <span style="color: #408080; font-style: italic"># process variable element</span>
 </pre></div>
 <p>
@@ -763,7 +771,7 @@ We can alternatively loop over list indices:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, <span style="color: #008000">len</span>(somelist), <span style="color: #666666">1</span>):
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, <span style="color: #008000">len</span>(somelist), <span style="color: #666666">1</span>):
     element <span style="color: #666666">=</span> somelist[i]
     <span style="color: #408080; font-style: italic"># process element or somelist[i] directly</span>
 </pre></div>
@@ -774,7 +782,7 @@ We can alternatively loop over list indices:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000">range</span>(<span style="color: #666666">3</span>)         <span style="color: #408080; font-style: italic"># = range(0, 3, 1)</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000">range</span>(<span style="color: #666666">3</span>)         <span style="color: #408080; font-style: italic"># = range(0, 3, 1)</span>
 [<span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">2</span>]
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000">range</span>(<span style="color: #666666">2</span>, <span style="color: #666666">8</span>, <span style="color: #666666">3</span>)
 [<span style="color: #666666">2</span>, <span style="color: #666666">5</span>]
@@ -793,7 +801,7 @@ We can alternatively loop over list indices:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> v <span style="color: #666666">=</span> [<span style="color: #666666">-1</span>, <span style="color: #666666">1</span>, <span style="color: #666666">10</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> v <span style="color: #666666">=</span> [<span style="color: #666666">-1</span>, <span style="color: #666666">1</span>, <span style="color: #666666">10</span>]
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">for</span> e <span style="color: #AA22FF; font-weight: bold">in</span> v:
 <span style="color: #666666">...</span>     e <span style="color: #666666">=</span> e <span style="color: #666666">+</span> <span style="color: #666666">2</span>
 <span style="color: #666666">...</span>
@@ -829,7 +837,7 @@ Solution: must <em>index a list element</em> to change its value:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> v[<span style="color: #666666">1</span>] <span style="color: #666666">=</span> <span style="color: #666666">4</span>    <span style="color: #408080; font-style: italic"># assign 4 to 2nd element (index 1) in v</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> v[<span style="color: #666666">1</span>] <span style="color: #666666">=</span> <span style="color: #666666">4</span>    <span style="color: #408080; font-style: italic"># assign 4 to 2nd element (index 1) in v</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> v
 [<span style="color: #666666">-1</span>, <span style="color: #666666">4</span>, <span style="color: #666666">10</span>]
 <span style="color: #666666">&gt;&gt;&gt;</span>
@@ -853,7 +861,7 @@ Solution: must <em>index a list element</em> to change its value:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">n <span style="color: #666666">=</span> <span style="color: #666666">16</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>n <span style="color: #666666">=</span> <span style="color: #666666">16</span>
 Cdegrees <span style="color: #666666">=</span> [];  Fdegrees <span style="color: #666666">=</span> []  <span style="color: #408080; font-style: italic"># empty lists</span>
 
 <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n):
@@ -866,7 +874,7 @@ Python has a compact construct, called <em>list comprehension</em>, for generati
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">Cdegrees <span style="color: #666666">=</span> [<span style="color: #666666">-5</span> <span style="color: #666666">+</span> i<span style="color: #666666">*0.5</span> <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n)]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>Cdegrees <span style="color: #666666">=</span> [<span style="color: #666666">-5</span> <span style="color: #666666">+</span> i<span style="color: #666666">*0.5</span> <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n)]
 Fdegrees <span style="color: #666666">=</span> [(<span style="color: #666666">9.0/5</span>)<span style="color: #666666">*</span>C <span style="color: #666666">+</span> <span style="color: #666666">32</span> <span style="color: #008000; font-weight: bold">for</span> C <span style="color: #AA22FF; font-weight: bold">in</span> Cdegrees]
 </pre></div>
 <p>
@@ -875,7 +883,7 @@ General form of a list comprehension:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">somelist <span style="color: #666666">=</span> [expression <span style="color: #008000; font-weight: bold">for</span> element <span style="color: #AA22FF; font-weight: bold">in</span> somelist]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>somelist <span style="color: #666666">=</span> [expression <span style="color: #008000; font-weight: bold">for</span> element <span style="color: #AA22FF; font-weight: bold">in</span> somelist]
 </pre></div>
 <p>
 where <code>expression</code> involves <code>element</code>
@@ -906,7 +914,7 @@ Solution 1: loop over indices
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(Cdegrees)):
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(Cdegrees)):
     <span style="color: #008000; font-weight: bold">print</span> Cdegrees[i], Fdegrees[i]
 </pre></div>
 <p>
@@ -915,7 +923,7 @@ Solution 2: use the <code>zip</code> construct (more &quot;Pythonic&quot;):
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> C, F <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(Cdegrees, Fdegrees):
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> C, F <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(Cdegrees, Fdegrees):
     <span style="color: #008000; font-weight: bold">print</span> C, F
 </pre></div>
 <p>
@@ -924,7 +932,7 @@ Example with three lists:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> l1 <span style="color: #666666">=</span> [<span style="color: #666666">3</span>, <span style="color: #666666">6</span>, <span style="color: #666666">1</span>];  l2 <span style="color: #666666">=</span> [<span style="color: #666666">1.5</span>, <span style="color: #666666">1</span>, <span style="color: #666666">0</span>];  l3 <span style="color: #666666">=</span> [<span style="color: #666666">9.1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">2</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> l1 <span style="color: #666666">=</span> [<span style="color: #666666">3</span>, <span style="color: #666666">6</span>, <span style="color: #666666">1</span>];  l2 <span style="color: #666666">=</span> [<span style="color: #666666">1.5</span>, <span style="color: #666666">1</span>, <span style="color: #666666">0</span>];  l3 <span style="color: #666666">=</span> [<span style="color: #666666">9.1</span>, <span style="color: #666666">3</span>, <span style="color: #666666">2</span>]
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">for</span> e1, e2, e3 <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(l1, l2, l3):
 <span style="color: #666666">...</span>     <span style="color: #008000; font-weight: bold">print</span> e1, e2, e3
 <span style="color: #666666">...</span>
@@ -952,7 +960,7 @@ Example with three lists:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">Cdegrees <span style="color: #666666">=</span> <span style="color: #008000">range</span>(<span style="color: #666666">-20</span>, <span style="color: #666666">41</span>, <span style="color: #666666">5</span>)
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>Cdegrees <span style="color: #666666">=</span> <span style="color: #008000">range</span>(<span style="color: #666666">-20</span>, <span style="color: #666666">41</span>, <span style="color: #666666">5</span>)
 Fdegrees <span style="color: #666666">=</span> [(<span style="color: #666666">9.0/5</span>)<span style="color: #666666">*</span>C <span style="color: #666666">+</span> <span style="color: #666666">32</span> <span style="color: #008000; font-weight: bold">for</span> C <span style="color: #AA22FF; font-weight: bold">in</span> Cdegrees]
 
 table1 <span style="color: #666666">=</span> [Cdegrees, Fdegrees]  <span style="color: #408080; font-style: italic"># list of two lists</span>
@@ -981,7 +989,7 @@ table1 <span style="color: #666666">=</span> [Cdegrees, Fdegrees]  <span style="
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">table2 <span style="color: #666666">=</span> []
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>table2 <span style="color: #666666">=</span> []
 <span style="color: #008000; font-weight: bold">for</span> C, F <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(Cdegrees, Fdegrees):
     row <span style="color: #666666">=</span> [C, F]
     table2<span style="color: #666666">.</span>append(row)
@@ -995,7 +1003,7 @@ table2 <span style="color: #666666">=</span> [[C, F] <span style="color: #008000
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">[[<span style="color: #666666">-20</span>, <span style="color: #666666">-4.0</span>], [<span style="color: #666666">-15</span>, <span style="color: #666666">5.0</span>], <span style="color: #666666">.......</span>, [<span style="color: #666666">40</span>, <span style="color: #666666">104.0</span>]]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>[[<span style="color: #666666">-20</span>, <span style="color: #666666">-4.0</span>], [<span style="color: #666666">-15</span>, <span style="color: #666666">5.0</span>], <span style="color: #666666">.......</span>, [<span style="color: #666666">40</span>, <span style="color: #666666">104.0</span>]]
 </pre></div>
 <p>
 Iteration over a nested list:
@@ -1003,7 +1011,7 @@ Iteration over a nested list:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> C, F <span style="color: #AA22FF; font-weight: bold">in</span> table2:
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> C, F <span style="color: #AA22FF; font-weight: bold">in</span> table2:
     <span style="color: #408080; font-style: italic"># work with C and F from a row in table2</span>
 
 <span style="color: #408080; font-style: italic"># or</span>
@@ -1020,7 +1028,7 @@ Iteration over a nested list:
 <h2 id="___sec26">Illustration of table of columns </h2>
 
 <p>
-<center><p><img src="fig-looplist/table1.png" align="bottom" width=340></p></center>
+<br /><br /><center><p><img src="fig-looplist/table1.png" align="bottom" width=340></p></center><br /><br />
 </section>
 
 
@@ -1028,7 +1036,7 @@ Iteration over a nested list:
 <h2 id="___sec27">Illustration of table of rows </h2>
 
 <p>
-<center><p><img src="fig-looplist/table2.png" align="bottom" width=400></p></center>
+<br /><br /><center><p><img src="fig-looplist/table2.png" align="bottom" width=400></p></center><br /><br />
 </section>
 
 
@@ -1044,7 +1052,7 @@ We can easily grab parts of a list:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> A <span style="color: #666666">=</span> [<span style="color: #666666">2</span>, <span style="color: #666666">3.5</span>, <span style="color: #666666">8</span>, <span style="color: #666666">10</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> A <span style="color: #666666">=</span> [<span style="color: #666666">2</span>, <span style="color: #666666">3.5</span>, <span style="color: #666666">8</span>, <span style="color: #666666">10</span>]
 <span style="color: #666666">&gt;&gt;&gt;</span> A[<span style="color: #666666">2</span>:]   <span style="color: #408080; font-style: italic"># from index 2 to end of list</span>
 [<span style="color: #666666">8</span>, <span style="color: #666666">10</span>]
 
@@ -1075,7 +1083,7 @@ Note: sublists (slices) are <em>copies</em> of the original list!
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> C, F <span style="color: #AA22FF; font-weight: bold">in</span> table2[Cdegrees<span style="color: #666666">.</span>index(<span style="color: #666666">10</span>):Cdegrees<span style="color: #666666">.</span>index(<span style="color: #666666">35</span>)]:
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> C, F <span style="color: #AA22FF; font-weight: bold">in</span> table2[Cdegrees<span style="color: #666666">.</span>index(<span style="color: #666666">10</span>):Cdegrees<span style="color: #666666">.</span>index(<span style="color: #666666">35</span>)]:
     <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%5.0f</span><span style="color: #BA2121"> </span><span style="color: #BB6688; font-weight: bold">%5.1f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (C, F)
 </pre></div>
 
@@ -1098,7 +1106,7 @@ Output:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="fragment" class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">10</span>  <span style="color: #666666">50.0</span>
+<div class="fragment" class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">10</span>  <span style="color: #666666">50.0</span>
 <span style="color: #666666">15</span>  <span style="color: #666666">59.0</span>
 <span style="color: #666666">20</span>  <span style="color: #666666">68.0</span>
 <span style="color: #666666">25</span>  <span style="color: #666666">77.0</span>
@@ -1125,7 +1133,7 @@ List with many indices: <code>somelist[i1][i2][i3]...</code>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> i1 <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(somelist)):
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> i1 <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(somelist)):
     <span style="color: #008000; font-weight: bold">for</span> i2 <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(somelist[i1])):
         <span style="color: #008000; font-weight: bold">for</span> i3 <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(somelist[i1][i2])):
             <span style="color: #008000; font-weight: bold">for</span> i4 <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(somelist[i1][i2][i3])):
@@ -1141,7 +1149,7 @@ List with many indices: <code>somelist[i1][i2][i3]...</code>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">for</span> sublist1 <span style="color: #AA22FF; font-weight: bold">in</span> somelist:
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> sublist1 <span style="color: #AA22FF; font-weight: bold">in</span> somelist:
     <span style="color: #008000; font-weight: bold">for</span> sublist2 <span style="color: #AA22FF; font-weight: bold">in</span> sublist1:
         <span style="color: #008000; font-weight: bold">for</span> sublist3 <span style="color: #AA22FF; font-weight: bold">in</span> sublist2:
             <span style="color: #008000; font-weight: bold">for</span> sublist4 <span style="color: #AA22FF; font-weight: bold">in</span> sublist3:
@@ -1185,7 +1193,7 @@ Tuples are constant lists that cannot be changed:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> t <span style="color: #666666">=</span> (<span style="color: #666666">2</span>, <span style="color: #666666">4</span>, <span style="color: #666666">6</span>, <span style="color: #BA2121">&#39;temp.pdf&#39;</span>)    <span style="color: #408080; font-style: italic"># define a tuple</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> t <span style="color: #666666">=</span> (<span style="color: #666666">2</span>, <span style="color: #666666">4</span>, <span style="color: #666666">6</span>, <span style="color: #BA2121">&#39;temp.pdf&#39;</span>)    <span style="color: #408080; font-style: italic"># define a tuple</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> t <span style="color: #666666">=</span>  <span style="color: #666666">2</span>, <span style="color: #666666">4</span>, <span style="color: #666666">6</span>, <span style="color: #BA2121">&#39;temp.pdf&#39;</span>     <span style="color: #408080; font-style: italic"># can skip parenthesis</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> t[<span style="color: #666666">1</span>] <span style="color: #666666">=</span> <span style="color: #666666">-1</span>
 <span style="color: #666666">...</span>
@@ -1205,7 +1213,7 @@ Tuples can do much of what lists can do:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> t <span style="color: #666666">=</span> t <span style="color: #666666">+</span> (<span style="color: #666666">-1.0</span>, <span style="color: #666666">-2.0</span>)           <span style="color: #408080; font-style: italic"># add two tuples</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> t <span style="color: #666666">=</span> t <span style="color: #666666">+</span> (<span style="color: #666666">-1.0</span>, <span style="color: #666666">-2.0</span>)           <span style="color: #408080; font-style: italic"># add two tuples</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> t
 (<span style="color: #666666">2</span>, <span style="color: #666666">4</span>, <span style="color: #666666">6</span>, <span style="color: #BA2121">&#39;temp.pdf&#39;</span>, <span style="color: #666666">-1.0</span>, <span style="color: #666666">-2.0</span>)
 <span style="color: #666666">&gt;&gt;&gt;</span> t[<span style="color: #666666">1</span>]                           <span style="color: #408080; font-style: italic"># indexing</span>
@@ -1246,7 +1254,7 @@ Tuples can do much of what lists can do:
 <h2 id="___sec34">Key topics from this chapter </h2>
 
 <p>
-<center><p><img src="fig-looplist/opt_exec.png" align="bottom" width=800></p></center>
+<br /><br /><center><p><img src="fig-looplist/opt_exec.png" align="bottom" width=800></p></center><br /><br />
 
 <ul>
  <p><li> While loops</li>
@@ -1271,7 +1279,7 @@ While loops and for loops:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #008000; font-weight: bold">while</span> condition:
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">while</span> condition:
     <span style="color: #666666">&lt;</span>block of statements<span style="color: #666666">&gt;</span>
 
 <span style="color: #008000; font-weight: bold">for</span> element <span style="color: #AA22FF; font-weight: bold">in</span> somelist:
@@ -1283,7 +1291,7 @@ Lists and tuples:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">mylist  <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;a string&#39;</span>, <span style="color: #666666">2.5</span>, <span style="color: #666666">6</span>, <span style="color: #BA2121">&#39;another string&#39;</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>mylist  <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;a string&#39;</span>, <span style="color: #666666">2.5</span>, <span style="color: #666666">6</span>, <span style="color: #BA2121">&#39;another string&#39;</span>]
 mytuple <span style="color: #666666">=</span> (<span style="color: #BA2121">&#39;a string&#39;</span>, <span style="color: #666666">2.5</span>, <span style="color: #666666">6</span>, <span style="color: #BA2121">&#39;another string&#39;</span>)
 mylist[<span style="color: #666666">1</span>]  <span style="color: #666666">=</span> <span style="color: #666666">-10</span>
 mylist<span style="color: #666666">.</span>append(<span style="color: #BA2121">&#39;a third string&#39;</span>)
@@ -1342,7 +1350,7 @@ mytuple[<span style="color: #666666">1</span>] <span style="color: #666666">=</s
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">[
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>[
 [<span style="color: #666666">43.8</span>, <span style="color: #666666">60.5</span>, <span style="color: #666666">190.2</span>, <span style="color: #666666">...</span>],
 [<span style="color: #666666">49.9</span>, <span style="color: #666666">54.3</span>, <span style="color: #666666">109.7</span>, <span style="color: #666666">...</span>],
 [<span style="color: #666666">63.7</span>, <span style="color: #666666">72.0</span>, <span style="color: #666666">142.3</span>, <span style="color: #666666">...</span>],
@@ -1355,7 +1363,7 @@ Tasks:
 <ul>
 
 <p><li> Compute the average number of sun hours for each month during
-    the total data period (1929--2009),</li>
+    the total data period (1929&ndash;2009),</li>
 
 <p><li> Which month has the best weather according to the means found in the
     preceding task?</li>
@@ -1377,7 +1385,7 @@ Tasks:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">data <span style="color: #666666">=</span> [
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>data <span style="color: #666666">=</span> [
 [<span style="color: #666666">43.8</span>, <span style="color: #666666">60.5</span>, <span style="color: #666666">190.2</span>, <span style="color: #666666">...</span>],
 [<span style="color: #666666">49.9</span>, <span style="color: #666666">54.3</span>, <span style="color: #666666">109.7</span>, <span style="color: #666666">...</span>],
 [<span style="color: #666666">63.7</span>, <span style="color: #666666">72.0</span>, <span style="color: #666666">142.3</span>, <span style="color: #666666">...</span>],
@@ -1412,7 +1420,7 @@ month_names <span style="color: #666666">=</span> [<span style="color: #BA2121">
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">max_value <span style="color: #666666">=</span> <span style="color: #008000">max</span>(monthly_mean)
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>max_value <span style="color: #666666">=</span> <span style="color: #008000">max</span>(monthly_mean)
 month <span style="color: #666666">=</span> month_names[monthly_mean<span style="color: #666666">.</span>index(max_value)]
 <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"> has best weather with </span><span style="color: #BB6688; font-weight: bold">%.1f</span><span style="color: #BA2121"> sun hours on average&#39;</span> <span style="color: #666666">%</span> \
       (month, max_value)
@@ -1440,7 +1448,7 @@ max_value <span style="color: #666666">=</span> <span style="color: #666666">-1E
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">decade_mean <span style="color: #666666">=</span> []
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span>decade_mean <span style="color: #666666">=</span> []
 <span style="color: #008000; font-weight: bold">for</span> decade_start <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1930</span>, <span style="color: #666666">2010</span>, <span style="color: #666666">10</span>):
     Jan_index <span style="color: #666666">=</span> <span style="color: #666666">0</span>; Dec_index <span style="color: #666666">=</span> <span style="color: #666666">11</span>  <span style="color: #408080; font-style: italic"># indices</span>
     s <span style="color: #666666">=</span> <span style="color: #666666">0</span>
@@ -1472,7 +1480,7 @@ Example:
 <p>
 
 <!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span>run <span style="color: #666666">-</span>d some_program<span style="color: #666666">.</span>py
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">In [1]: </span>run <span style="color: #666666">-</span>d some_program<span style="color: #666666">.</span>py
 <span style="color: #888888">ipdb&gt; continue  # or just c (go to first statement)</span>
 <span style="color: #888888">1---&gt; 1 g = 9.81;  v0 = 5</span>
 <span style="color: #888888">      2 dt = 0.05</span>
@@ -1549,7 +1557,7 @@ is relevant for you.
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:

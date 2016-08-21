@@ -18,6 +18,7 @@
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
 <link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
@@ -35,14 +36,21 @@
 <link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/league.css" id="theme">
 -->
 
 <!-- For syntax highlighting -->
 <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<!-- Printing and PDF exports -->
 <script>
-document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
 </script>
 
 <style type="text/css">
@@ -57,7 +65,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:5px solid #bababa;
              -webkit-border-radius: 14px; -moz-border-radius: 14px;
-             border-radius:14px
+             border-radius:14px;
              background-position: 10px 10px;
              background-repeat: no-repeat;
              background-size: 38px;
@@ -139,7 +147,7 @@ MathJax.Hub.Config({
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <br>
 <p>&nbsp;<br>
-<center><h4>Aug 15, 2015</h4></center> <!-- date -->
+<center><h4>Aug 21, 2016</h4></center> <!-- date -->
 <br>
 </section>
 
@@ -148,7 +156,7 @@ MathJax.Hub.Config({
 <h2 id="___sec0">Goal: learn to visualize functions </h2>
 
 <p>
-<center><p><img src="fig-plot/comic_plot.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-plot/comic_plot.png" align="bottom" width=600></p></center><br /><br />
 
 <p>
 <!-- FIGURE: [fig-plot/plot2a_pylab.png, width=600 frac=0.9] -->
@@ -262,7 +270,7 @@ $$
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
 <span style="color: #d0d0d0">...</span>     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">x**</span><span style="color: #3677a9">3</span>
 <span style="color: #d0d0d0">...</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">n</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">5</span>                 <span style="color: #999999; font-style: italic"># no of points</span>
@@ -281,7 +289,7 @@ $$
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">as</span> <span style="color: #447fcf; text-decoration: underline">np</span>        <span style="color: #999999; font-style: italic"># module for arrays</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">as</span> <span style="color: #447fcf; text-decoration: underline">np</span>        <span style="color: #999999; font-style: italic"># module for arrays</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">np.array(xlist)</span>      <span style="color: #999999; font-style: italic"># turn list xlist into array</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">np.array(ylist)</span>
 </pre></div>
@@ -299,7 +307,7 @@ $$
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">n</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">5</span>                     <span style="color: #999999; font-style: italic"># number of points</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">n</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">5</span>                     <span style="color: #999999; font-style: italic"># number of points</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">np.linspace(</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">n)</span> <span style="color: #999999; font-style: italic"># n points in [0, 1]</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">np.zeros(n)</span>          <span style="color: #999999; font-style: italic"># n zeros (float data type)</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">i</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #24909d">xrange</span><span style="color: #d0d0d0">(n):</span>
@@ -354,7 +362,7 @@ Compute the sine of an array:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">math</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">sin</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">math</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">sin</span>
 
 <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">i</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #24909d">xrange</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">len</span><span style="color: #d0d0d0">(x)):</span>
     <span style="color: #d0d0d0">y[i]</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">sin(x[i])</span>
@@ -365,7 +373,7 @@ However, if <code>x</code> is array, <code>y</code> can be computed by
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">np.sin(x)</span>                  <span style="color: #999999; font-style: italic"># x: array, y: array</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">np.sin(x)</span>                  <span style="color: #999999; font-style: italic"># x: array, y: array</span>
 </pre></div>
 <p>
 The loop is now inside <code>np.sin</code> and implemented in very efficient C code.
@@ -393,7 +401,7 @@ The loop is now inside <code>np.sin</code> and implemented in very efficient C c
 <p>
 
 <!-- code=ipy (!bc ipy) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #aaaaaa">In [1]: </span><span style="color: #d0d0d0">n</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">100000</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #aaaaaa">In [1]: </span><span style="color: #d0d0d0">n</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">100000</span>
 
 <span style="color: #aaaaaa">In [2]: </span><span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">as</span> <span style="color: #447fcf; text-decoration: underline">np</span>
 
@@ -425,7 +433,7 @@ The loop is now inside <code>np.sin</code> and implemented in very efficient C c
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">sin,</span> <span style="color: #d0d0d0">exp,</span> <span style="color: #d0d0d0">linspace</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">sin,</span> <span style="color: #d0d0d0">exp,</span> <span style="color: #d0d0d0">linspace</span>
 
 <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">x**</span><span style="color: #3677a9">3</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">sin(x)*exp(-</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">*x)</span>
@@ -445,7 +453,7 @@ The loop is now inside <code>np.sin</code> and implemented in very efficient C c
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">math</span><span style="color: #d0d0d0">,</span> <span style="color: #447fcf; text-decoration: underline">numpy</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">math</span><span style="color: #d0d0d0">,</span> <span style="color: #447fcf; text-decoration: underline">numpy</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">numpy.linspace(</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">11</span><span style="color: #d0d0d0">)</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">math.sin(x[</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">])</span>
 <span style="color: #3677a9">0.2955202066613396</span>
@@ -470,9 +478,9 @@ The loop is now inside <code>np.sin</code> and implemented in very efficient C c
 <b></b>
 <ul>
  <p><li> Consider <code>y = f(x)</code>, where <code>f</code> returns <code>x**3 + sin(x)*exp(-3*x)</code></li>
- <p><li> <code>f(x)</code> leads to the following set of vectorized sub-computations:</li>
+ <p><li> <code>f(x)</code> leads to the following set of vectorized sub-computations:
 
-<ol>
+<ol type="a"></li>
 
 <p><li> <code>r1 = x**3</code> <br />
      <code>for i in range(len(x)): r1[i] = x[i]**3</code> <br />
@@ -510,7 +518,7 @@ $$ f(x) = x^2e^{-\frac{1}{2}x}\sin(x-\frac{1}{3}\pi),\quad x\in [0, 4\pi]$$
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
 
 <span style="color: #d0d0d0">n</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">100</span>
 <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">*pi,</span> <span style="color: #d0d0d0">n+</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">)</span>
@@ -563,7 +571,7 @@ $$ f(x) = x^2e^{-\frac{1}{2}x}\sin(x-\frac{1}{3}\pi),\quad x\in [0, 4\pi]$$
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>  <span style="color: #999999; font-style: italic"># import numpy and plotting</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>  <span style="color: #999999; font-style: italic"># import numpy and plotting</span>
 
 <span style="color: #999999; font-style: italic"># Make points along the curve</span>
 <span style="color: #d0d0d0">t</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">3</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">51</span><span style="color: #d0d0d0">)</span>      <span style="color: #999999; font-style: italic"># 50 intervals in [0, 3]</span>
@@ -577,7 +585,7 @@ $$ f(x) = x^2e^{-\frac{1}{2}x}\sin(x-\frac{1}{3}\pi),\quad x\in [0, 4\pi]$$
 </div>
 
 <p>
-<center><p><img src="fig-plot/plot1a_pylab.png" align="bottom" width=300></p></center>
+<br /><br /><center><p><img src="fig-plot/plot1a_pylab.png" align="bottom" width=300></p></center><br /><br />
 </section>
 
 
@@ -585,7 +593,7 @@ $$ f(x) = x^2e^{-\frac{1}{2}x}\sin(x-\frac{1}{3}\pi),\quad x\in [0, 4\pi]$$
 <h2 id="___sec14">A plot should have labels on axis and a title </h2>
 
 <p>
-<center><p><img src="fig-plot/plot1c_pylab.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-plot/plot1c_pylab.png" align="bottom" width=600></p></center><br /><br />
 </section>
 
 
@@ -598,7 +606,7 @@ $$ f(x) = x^2e^{-\frac{1}{2}x}\sin(x-\frac{1}{3}\pi),\quad x\in [0, 4\pi]$$
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>  <span style="color: #999999; font-style: italic"># import numpy and plotting</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>  <span style="color: #999999; font-style: italic"># import numpy and plotting</span>
 
 <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(t):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">t**</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">*exp(-t**</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">)</span>
@@ -638,7 +646,7 @@ $$ f(x) = x^2e^{-\frac{1}{2}x}\sin(x-\frac{1}{3}\pi),\quad x\in [0, 4\pi]$$
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
 
 <span style="color: #999999; font-style: italic"># is basically equivalent to</span>
 
@@ -663,7 +671,7 @@ Use keyword arguments instead of separate function calls:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">plot(t,</span> <span style="color: #d0d0d0">y,</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">plot(t,</span> <span style="color: #d0d0d0">y,</span>
      <span style="color: #d0d0d0">xlabel=</span><span style="color: #ed9d13">&#39;t&#39;</span><span style="color: #d0d0d0">,</span>
      <span style="color: #d0d0d0">ylabel=</span><span style="color: #ed9d13">&#39;y&#39;</span><span style="color: #d0d0d0">,</span>
      <span style="color: #d0d0d0">legend=</span><span style="color: #ed9d13">&#39;t^2*exp(-t^2)&#39;</span><span style="color: #d0d0d0">,</span>
@@ -677,7 +685,7 @@ Use keyword arguments instead of separate function calls:
 </div>
 
 <p>
-<center><p><img src="fig-plot/plot1c_pylab.png" align="bottom" width=300></p></center>
+<br /><br /><center><p><img src="fig-plot/plot1c_pylab.png" align="bottom" width=300></p></center><br /><br />
 </section>
 
 
@@ -690,7 +698,7 @@ Use keyword arguments instead of separate function calls:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>   <span style="color: #999999; font-style: italic"># curve plotting + array computing</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>   <span style="color: #999999; font-style: italic"># curve plotting + array computing</span>
 
 <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f1</span><span style="color: #d0d0d0">(t):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">t**</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">*exp(-t**</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">)</span>
@@ -726,7 +734,7 @@ Use keyword arguments instead of separate function calls:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">plot(t,</span> <span style="color: #d0d0d0">y1,</span> <span style="color: #d0d0d0">t,</span> <span style="color: #d0d0d0">y2,</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">plot(t,</span> <span style="color: #d0d0d0">y1,</span> <span style="color: #d0d0d0">t,</span> <span style="color: #d0d0d0">y2,</span>
      <span style="color: #d0d0d0">xlabel=</span><span style="color: #ed9d13">&#39;t&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">ylabel=</span><span style="color: #ed9d13">&#39;y&#39;</span><span style="color: #d0d0d0">,</span>
      <span style="color: #d0d0d0">legend=(</span><span style="color: #ed9d13">&#39;t^2*exp(-t^2)&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #ed9d13">&#39;t^4*exp(-t^2)&#39;</span><span style="color: #d0d0d0">),</span>
      <span style="color: #d0d0d0">title=</span><span style="color: #ed9d13">&#39;Plotting two curves in the same plot&#39;</span><span style="color: #d0d0d0">,</span>
@@ -752,7 +760,7 @@ Use keyword arguments instead of separate function calls:
 <h2 id="___sec20">The resulting plot with two curves </h2>
 
 <p>
-<center><p><img src="fig-plot/plot2a_pylab.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-plot/plot2a_pylab.png" align="bottom" width=600></p></center><br /><br />
 </section>
 
 
@@ -768,7 +776,7 @@ When plotting multiple curves in the same plot, the different lines (normally) l
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">plot(t,</span> <span style="color: #d0d0d0">y1,</span> <span style="color: #ed9d13">&#39;r-&#39;</span><span style="color: #d0d0d0">)</span>   <span style="color: #999999; font-style: italic"># red (r) line (-)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">plot(t,</span> <span style="color: #d0d0d0">y1,</span> <span style="color: #ed9d13">&#39;r-&#39;</span><span style="color: #d0d0d0">)</span>   <span style="color: #999999; font-style: italic"># red (r) line (-)</span>
 <span style="color: #d0d0d0">hold(</span><span style="color: #ed9d13">&#39;on&#39;</span><span style="color: #d0d0d0">)</span>
 <span style="color: #d0d0d0">plot(t,</span> <span style="color: #d0d0d0">y2,</span> <span style="color: #ed9d13">&#39;bo&#39;</span><span style="color: #d0d0d0">)</span>   <span style="color: #999999; font-style: italic"># blue (b) circles (o)</span>
 
@@ -781,7 +789,7 @@ Documentation of colors and line styles: see the book, <a href="http://hplgit.gi
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">Unix&gt; pydoc scitools.easyviz
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span>Unix&gt; pydoc scitools.easyviz
 </pre></div>
 
 </div>
@@ -797,7 +805,7 @@ Documentation of colors and line styles: see the book, <a href="http://hplgit.gi
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">t</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">3</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">51</span><span style="color: #d0d0d0">)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">t</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">3</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">51</span><span style="color: #d0d0d0">)</span>
 <span style="color: #d0d0d0">plot(t,</span> <span style="color: #d0d0d0">t**</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">*exp(-t**</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">),</span> <span style="color: #d0d0d0">t,</span> <span style="color: #d0d0d0">t**</span><span style="color: #3677a9">4</span><span style="color: #d0d0d0">*exp(-t**</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">))</span>
 </pre></div>
 
@@ -814,7 +822,7 @@ Documentation of colors and line styles: see the book, <a href="http://hplgit.gi
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">Terminal&gt; python plotf.py expression xmin xmax
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span>Terminal&gt; python plotf.py expression xmin xmax
 Terminal&gt; python plotf.py &quot;exp(-0.2*x)*sin(2*pi*x)&quot; 0 4*pi
 </pre></div>
 <p>
@@ -833,7 +841,7 @@ Should plot \( e^{-0.2x}\sin (2\pi x) \), \( x\in [0,4\pi] \).
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
 <span style="color: #999999; font-style: italic"># or alternatively</span>
 <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
 <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
@@ -855,7 +863,7 @@ Should plot \( e^{-0.2x}\sin (2\pi x) \), \( x\in [0,4\pi] \).
 <h2 id="___sec25">Let's make a movie/animation </h2>
 
 <p>
-<center><p><img src="fig-plot/plot4_thick.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-plot/plot4_thick.png" align="bottom" width=600></p></center><br /><br />
 </section>
 
 
@@ -886,7 +894,7 @@ $$ f(x; m, s) = {1\over\sqrt{2\pi}}{1\over s}\exp{\left[-{1\over2}\left({x-m\ove
 
 </td>
 <td class="padding">
-<center><p><img src="fig-plot/plot4_thick.png" align="bottom" width=300></p></center>
+<br /><br /><center><p><img src="fig-plot/plot4_thick.png" align="bottom" width=300></p></center><br /><br />
 </td>
 </tr>
 </table>
@@ -923,7 +931,7 @@ $$ f(x; m, s) = {1\over\sqrt{2\pi}}{1\over s}\exp{\left[-{1\over2}\left({x-m\ove
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
 <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">time</span>
 
 <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x,</span> <span style="color: #d0d0d0">m,</span> <span style="color: #d0d0d0">s):</span>
@@ -966,7 +974,7 @@ We now have a lot of files:
 <p>
 
 <!-- code=text typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">tmp_0000.png  tmp_0001.png  tmp_0002.png ...
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span>tmp_0000.png  tmp_0001.png  tmp_0002.png ...
 </pre></div>
 <p>
 We use some program to combine these files to a video file:
@@ -994,7 +1002,7 @@ Unix command:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">Terminal&gt; convert -delay 50 tmp_*.png movie.gif
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span>Terminal&gt; convert -delay 50 tmp_*.png movie.gif
 </pre></div>
 <p>
 Delay: 50/100 s, i.e., 0.5 s between each frame.
@@ -1005,7 +1013,7 @@ Play animated GIF file with <code>animate</code> from ImageMagick:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">Terminal&gt; animate movie.gif
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span>Terminal&gt; animate movie.gif
 </pre></div>
 <p>
 or insert this HTML code in some file <code>tmp.html</code> loaded into a browser:
@@ -1013,7 +1021,7 @@ or insert this HTML code in some file <code>tmp.html</code> loaded into a browse
 <p>
 
 <!-- code=html (!bc htmlcod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">&lt;img</span> <span style="color: #bbbbbb">src=</span><span style="color: #ed9d13">&quot;movie.gif&quot;</span><span style="color: #6ab825; font-weight: bold">&gt;</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&lt;</span><span style="color: #6ab825; font-weight: bold">img</span> <span style="color: #bbbbbb">src</span><span style="color: #d0d0d0">=</span><span style="color: #ed9d13">&quot;movie.gif&quot;</span><span style="color: #d0d0d0">&gt;</span>
 </pre></div>
 
 </div>
@@ -1032,7 +1040,7 @@ Tool: <code>ffmpeg</code> or <code>avconv</code>
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">Terminal&gt; ffmpeg -r 5 -i tmp_%04d.png -vcodec flv movie.flv
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span>Terminal&gt; ffmpeg -r 5 -i tmp_%04d.png -vcodec flv movie.flv
 </pre></div>
 <p>
 where
@@ -1079,7 +1087,7 @@ video filenamet extensions:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">Terminal&gt; vlc movie.flv
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span>Terminal&gt; vlc movie.flv
 Terminal&gt; vlc movie.ogg
 Terminal&gt; vlc movie.webm
 Terminal&gt; vlc movie.mp4
@@ -1099,7 +1107,7 @@ Other players (on Linux) are <code>mplayer</code>, <code>totem</code>, ...
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">Terminal&gt; scitools movie output_file=mymovie.html fps=4 tmp_*.png
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span>Terminal&gt; scitools movie output_file=mymovie.html fps=4 tmp_*.png
 </pre></div>
 <p>
 makes a player of <code>tmp_*.png</code> files in a file <code>mymovie.html</code>
@@ -1126,7 +1134,7 @@ makes a player of <code>tmp_*.png</code> files in a file <code>mymovie.html</cod
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.aplotter</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">plot</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.aplotter</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">plot</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">linspace,</span> <span style="color: #d0d0d0">exp,</span> <span style="color: #d0d0d0">cos,</span> <span style="color: #d0d0d0">pi</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(-</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">81</span><span style="color: #d0d0d0">)</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">exp(-</span><span style="color: #3677a9">0.5</span><span style="color: #d0d0d0">*x**</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">)*cos(pi*x)</span>
@@ -1161,14 +1169,14 @@ Python implementation:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">H</span><span style="color: #d0d0d0">(x):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">H</span><span style="color: #d0d0d0">(x):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">(</span><span style="color: #3677a9">0</span> <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #3677a9">0</span> <span style="color: #6ab825; font-weight: bold">else</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">)</span>
 </pre></div>
 
 </div>
 
 <p>
-<center><p><img src="fig-plot/Heaviside3.png" align="bottom" width=300></p></center>
+<br /><br /><center><p><img src="fig-plot/Heaviside3.png" align="bottom" width=300></p></center><br /><br />
 </section>
 
 
@@ -1181,7 +1189,7 @@ Python implementation:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(-</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">5</span><span style="color: #d0d0d0">)</span>  <span style="color: #999999; font-style: italic"># few points (simple curve)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(-</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">5</span><span style="color: #d0d0d0">)</span>  <span style="color: #999999; font-style: italic"># few points (simple curve)</span>
 <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">H(x)</span>
 <span style="color: #d0d0d0">plot(x,</span> <span style="color: #d0d0d0">y)</span>
 </pre></div>
@@ -1194,7 +1202,7 @@ Let us debug in an interactive shell:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(-</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">5</span><span style="color: #d0d0d0">)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(-</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">5</span><span style="color: #d0d0d0">)</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">x</span>
 <span style="color: #d0d0d0">array([-</span><span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #d0d0d0">-</span><span style="color: #3677a9">5.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">0.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">5.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">])</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">b</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #3677a9">0</span>
@@ -1219,7 +1227,7 @@ Let us debug in an interactive shell:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">H_loop</span><span style="color: #d0d0d0">(x):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">H_loop</span><span style="color: #d0d0d0">(x):</span>
     <span style="color: #d0d0d0">r</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">zeros(</span><span style="color: #24909d">len</span><span style="color: #d0d0d0">(x))</span>  <span style="color: #999999; font-style: italic"># or r = x.copy()</span>
     <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">i</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #24909d">xrange</span><span style="color: #d0d0d0">(</span><span style="color: #24909d">len</span><span style="color: #d0d0d0">(x)):</span>
         <span style="color: #d0d0d0">r[i]</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">H(x[i])</span>
@@ -1244,7 +1252,7 @@ Downside: much to write, slow code if <code>n</code> is large
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">vectorize</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">vectorize</span>
 
 <span style="color: #999999; font-style: italic"># Automatic vectorization of function H</span>
 <span style="color: #d0d0d0">Hv</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">vectorize(H)</span>
@@ -1266,7 +1274,7 @@ Downside: The resulting function is as slow as Remedy 1
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">Hv</span><span style="color: #d0d0d0">(x):</span>
+<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">Hv</span><span style="color: #d0d0d0">(x):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">where(x</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">0.0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1.0</span><span style="color: #d0d0d0">)</span>
 </pre></div>
 
@@ -1279,7 +1287,7 @@ Downside: The resulting function is as slow as Remedy 1
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
+<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
     <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">condition:</span>
         <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">&lt;expression1&gt;</span>
     <span style="color: #6ab825; font-weight: bold">else</span><span style="color: #d0d0d0">:</span>
@@ -1310,7 +1318,7 @@ With a vectorized <code>Hv(x)</code> function we can plot in the standard way
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(-</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">5</span><span style="color: #d0d0d0">)</span>   <span style="color: #999999; font-style: italic"># linspace(-10, 10, 50)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(-</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">5</span><span style="color: #d0d0d0">)</span>   <span style="color: #999999; font-style: italic"># linspace(-10, 10, 50)</span>
 <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">Hv(x)</span>
 <span style="color: #d0d0d0">plot(x,</span> <span style="color: #d0d0d0">y,</span> <span style="color: #d0d0d0">axis=[x[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">],</span> <span style="color: #d0d0d0">x[-</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">],</span> <span style="color: #d0d0d0">-</span><span style="color: #3677a9">0.1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1.1</span><span style="color: #d0d0d0">])</span>
 </pre></div>
@@ -1318,7 +1326,7 @@ With a vectorized <code>Hv(x)</code> function we can plot in the standard way
 </div>
 
 <p>
-<center><p><img src="fig-plot/Heaviside2.png" align="bottom" width=300></p></center>
+<br /><br /><center><p><img src="fig-plot/Heaviside2.png" align="bottom" width=300></p></center><br /><br />
 </section>
 
 
@@ -1338,7 +1346,7 @@ With a vectorized <code>Hv(x)</code> function we can plot in the standard way
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">plot([-</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">],</span> <span style="color: #d0d0d0">[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">],</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">plot([-</span><span style="color: #3677a9">10</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">],</span> <span style="color: #d0d0d0">[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">],</span>
      <span style="color: #d0d0d0">axis=[x[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">],</span> <span style="color: #d0d0d0">x[-</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">],</span> <span style="color: #d0d0d0">-</span><span style="color: #3677a9">0.1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1.1</span><span style="color: #d0d0d0">])</span>
 </pre></div>
 <p>
@@ -1351,7 +1359,7 @@ Draws straight lines between \( (-10,0) \), \( (0,0) \), \( (0,1) \), \( (10, 1)
 <h2 id="___sec42">The final plot of the discontinuous Heaviside function </h2>
 
 <p>
-<center><p><img src="fig-plot/Heaviside.png" align="bottom" width=600></p></center>
+<br /><br /><center><p><img src="fig-plot/Heaviside.png" align="bottom" width=600></p></center><br /><br />
 </section>
 
 
@@ -1380,7 +1388,7 @@ How can we plot such a curve?
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">sin(</span><span style="color: #3677a9">1.0</span><span style="color: #d0d0d0">/x)</span>
 
 <span style="color: #d0d0d0">x1</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(-</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">10</span><span style="color: #d0d0d0">)</span>    <span style="color: #999999; font-style: italic"># use 10 points</span>
@@ -1397,7 +1405,7 @@ How can we plot such a curve?
 <h2 id="___sec45">Plot based on 10 points </h2>
 
 <p>
-<center><p><img src="fig-plot/sin1overx1.png" align="bottom" width=480></p></center>
+<br /><br /><center><p><img src="fig-plot/sin1overx1.png" align="bottom" width=480></p></center><br /><br />
 </section>
 
 
@@ -1405,7 +1413,7 @@ How can we plot such a curve?
 <h2 id="___sec46">Plot based on 1000 points </h2>
 
 <p>
-<center><p><img src="fig-plot/sin1overx2.png" align="bottom" width=480></p></center>
+<br /><br /><center><p><img src="fig-plot/sin1overx2.png" align="bottom" width=480></p></center><br /><br />
 </section>
 
 
@@ -1418,7 +1426,7 @@ How can we plot such a curve?
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x</span>
 <span style="color: #d0d0d0">a[-</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">]</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1000</span>
 </pre></div>
 <p>
@@ -1431,7 +1439,7 @@ Avoid changing <code>x</code> by letting <code>a</code> be a copy of <code>x</co
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x.copy()</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x.copy()</span>
 </pre></div>
 <p>
 The same yields slices:
@@ -1439,7 +1447,7 @@ The same yields slices:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x[r:]</span>      <span style="color: #999999; font-style: italic"># a refers to a part of the x array</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x[r:]</span>      <span style="color: #999999; font-style: italic"># a refers to a part of the x array</span>
 <span style="color: #d0d0d0">a[-</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">]</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1000</span>   <span style="color: #999999; font-style: italic"># changes x[-1]!</span>
 <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x[r:].copy()</span>
 <span style="color: #d0d0d0">a[-</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">]</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1000</span>   <span style="color: #999999; font-style: italic"># does not change x[-1]</span>
@@ -1461,7 +1469,7 @@ The two following statements are mathematically equivalent:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">b</span>    <span style="color: #999999; font-style: italic"># a and b are arrays</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">b</span>    <span style="color: #999999; font-style: italic"># a and b are arrays</span>
 <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">+=</span> <span style="color: #d0d0d0">b</span>
 </pre></div>
 <p>
@@ -1469,9 +1477,9 @@ However,
 
 <ul>
 
-<p><li> <code>a = a + b</code> is computed as (extra array needed)</li>
+<p><li> <code>a = a + b</code> is computed as (extra array needed)
 
-<ol>
+<ol type="a"></li>
 
 <p><li> <code>r1 = a + b</code></li>
 
@@ -1497,7 +1505,7 @@ Consider
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">(</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">*x**</span><span style="color: #3677a9">4</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">*x</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">)/(x</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">(</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">*x**</span><span style="color: #3677a9">4</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">*x</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">)/(x</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">)</span>
 </pre></div>
 <p>
 Here are the actual computations in the computer:
@@ -1505,7 +1513,7 @@ Here are the actual computations in the computer:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">r1</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x**</span><span style="color: #3677a9">4</span><span style="color: #d0d0d0">;</span>  <span style="color: #d0d0d0">r2</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">3</span><span style="color: #d0d0d0">*r1;</span>  <span style="color: #d0d0d0">r3</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">*x;</span>  <span style="color: #d0d0d0">r4</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">r1</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">r3</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">r1</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x**</span><span style="color: #3677a9">4</span><span style="color: #d0d0d0">;</span>  <span style="color: #d0d0d0">r2</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">3</span><span style="color: #d0d0d0">*r1;</span>  <span style="color: #d0d0d0">r3</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">*x;</span>  <span style="color: #d0d0d0">r4</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">r1</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">r3</span>
 <span style="color: #d0d0d0">r5</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">r4</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">;</span>  <span style="color: #d0d0d0">r6</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">;</span> <span style="color: #d0d0d0">r7</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">r5/r6;</span> <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">r7</span>
 </pre></div>
 <p>
@@ -1515,7 +1523,7 @@ though at the cost of much less readable code:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x.copy()</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x.copy()</span>
 <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">**=</span> <span style="color: #3677a9">4</span>
 <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">*=</span> <span style="color: #3677a9">3</span>
 <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">+=</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">*x</span>
@@ -1539,7 +1547,7 @@ Let's use IPython to measure the computational time:
 <p>
 
 <!-- code=ipy (!bc ipy) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #aaaaaa">In [1]: </span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">expression</span><span style="color: #d0d0d0">(x):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #aaaaaa">In [1]: </span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">expression</span><span style="color: #d0d0d0">(x):</span>
 <span style="color: #aaaaaa">   ...: </span>    <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">(</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">*x**</span><span style="color: #3677a9">4</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">*x</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">4</span><span style="color: #d0d0d0">)/(x</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">)</span>
 <span style="color: #aaaaaa">   ...:</span>
 
@@ -1582,7 +1590,7 @@ Make a new array with same size as another array:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">numpy</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
 
 <span style="color: #999999; font-style: italic"># x is numpy array</span>
 <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">x.copy()</span>
@@ -1599,7 +1607,7 @@ Make sure a list or array is an array:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">asarray(a)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">asarray(a)</span>
 <span style="color: #d0d0d0">b</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">asarray(somearray,</span> <span style="color: #d0d0d0">dtype=</span><span style="color: #24909d">float</span><span style="color: #d0d0d0">)</span>  <span style="color: #999999; font-style: italic"># specify data type</span>
 </pre></div>
 <p>
@@ -1608,7 +1616,7 @@ Test if an object is an array:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #24909d">type</span><span style="color: #d0d0d0">(a)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #24909d">type</span><span style="color: #d0d0d0">(a)</span>
 <span style="color: #d0d0d0">&lt;</span><span style="color: #24909d">type</span> <span style="color: #ed9d13">&#39;numpy.ndarray&#39;</span><span style="color: #d0d0d0">&gt;</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #24909d">isinstance</span><span style="color: #d0d0d0">(a,</span> <span style="color: #d0d0d0">ndarray)</span>
 <span style="color: #24909d">True</span>
@@ -1627,7 +1635,7 @@ Test if an object is an array:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #3677a9">2</span>
 </pre></div>
 <p>
@@ -1636,7 +1644,7 @@ Vectorized version must return array of 2's:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">fv</span><span style="color: #d0d0d0">(x):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">fv</span><span style="color: #d0d0d0">(x):</span>
     <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #d0d0d0">zeros(x.shape,</span> <span style="color: #d0d0d0">x.dtype)</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">2</span>
 </pre></div>
 <p>
@@ -1645,7 +1653,7 @@ New version valid both for scalar and array <code>x</code>:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">f</span><span style="color: #d0d0d0">(x):</span>
     <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #24909d">isinstance</span><span style="color: #d0d0d0">(x,</span> <span style="color: #d0d0d0">(</span><span style="color: #24909d">float</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">int</span><span style="color: #d0d0d0">)):</span>
         <span style="color: #6ab825; font-weight: bold">return</span> <span style="color: #3677a9">2</span>
     <span style="color: #6ab825; font-weight: bold">elif</span> <span style="color: #24909d">isinstance</span><span style="color: #d0d0d0">(x,</span> <span style="color: #d0d0d0">ndarray):</span>
@@ -1675,7 +1683,7 @@ Any integer list or array can be used to indicate a set of indices:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">8</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">8</span><span style="color: #d0d0d0">)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">linspace(</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">8</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">8</span><span style="color: #d0d0d0">)</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">a</span>
 <span style="color: #d0d0d0">array([</span> <span style="color: #3677a9">1.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">2.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">3.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">4.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">5.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">6.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">7.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">8.</span><span style="color: #d0d0d0">])</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">a[[</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">6</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">7</span><span style="color: #d0d0d0">]]</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">10</span>
@@ -1699,7 +1707,7 @@ Any integer list or array can be used to indicate a set of indices:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #3677a9">0</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">a</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #3677a9">0</span>
 <span style="color: #d0d0d0">[</span><span style="color: #24909d">False</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">False</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">True</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">False</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">False</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">True</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">False</span><span style="color: #d0d0d0">,</span> <span style="color: #24909d">False</span><span style="color: #d0d0d0">]</span>
 
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">a[a</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">]</span>           <span style="color: #999999; font-style: italic"># pick out all negative elements</span>
@@ -1761,7 +1769,7 @@ Making and filling a two-dimensional NumPy array goes like this:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">A</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">zeros((</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">4</span><span style="color: #d0d0d0">))</span>   <span style="color: #999999; font-style: italic"># 3x4 table of numbers</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">A</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">zeros((</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">4</span><span style="color: #d0d0d0">))</span>   <span style="color: #999999; font-style: italic"># 3x4 table of numbers</span>
 <span style="color: #d0d0d0">A[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">]</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">-</span><span style="color: #3677a9">1</span>
 <span style="color: #d0d0d0">A[</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">]</span> <span style="color: #d0d0d0">=</span>  <span style="color: #3677a9">1</span>
 <span style="color: #d0d0d0">A[</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">]</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">10</span>
@@ -1789,7 +1797,7 @@ Let us make a table of numbers in a nested list:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">Cdegrees</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[-</span><span style="color: #3677a9">30</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">i*</span><span style="color: #3677a9">10</span> <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">i</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #24909d">range</span><span style="color: #d0d0d0">(</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">)]</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">Cdegrees</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[-</span><span style="color: #3677a9">30</span> <span style="color: #d0d0d0">+</span> <span style="color: #d0d0d0">i*</span><span style="color: #3677a9">10</span> <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">i</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #24909d">range</span><span style="color: #d0d0d0">(</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">)]</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">Fdegrees</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[</span><span style="color: #3677a9">9.</span><span style="color: #d0d0d0">/</span><span style="color: #3677a9">5</span><span style="color: #d0d0d0">*C</span> <span style="color: #d0d0d0">+</span> <span style="color: #3677a9">32</span> <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">C</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #d0d0d0">Cdegrees]</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">table</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[[C,</span> <span style="color: #d0d0d0">F]</span> <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">C,</span> <span style="color: #d0d0d0">F</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #24909d">zip</span><span style="color: #d0d0d0">(Cdegrees,</span> <span style="color: #d0d0d0">Fdegrees)]</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">table</span>
@@ -1801,7 +1809,7 @@ Turn into NumPy array:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">table2</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">array(table)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">table2</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">array(table)</span>
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #d0d0d0">table2</span>
 <span style="color: #d0d0d0">[[-</span><span style="color: #3677a9">30.</span> <span style="color: #d0d0d0">-</span><span style="color: #3677a9">22.</span><span style="color: #d0d0d0">]</span>
  <span style="color: #d0d0d0">[-</span><span style="color: #3677a9">20.</span>  <span style="color: #d0d0d0">-</span><span style="color: #3677a9">4.</span><span style="color: #d0d0d0">]</span>
@@ -1821,7 +1829,7 @@ Turn into NumPy array:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">table2.shape</span>   <span style="color: #999999; font-style: italic"># see the number of elements in each dir.</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">table2.shape</span>   <span style="color: #999999; font-style: italic"># see the number of elements in each dir.</span>
 <span style="color: #d0d0d0">(</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">2</span><span style="color: #d0d0d0">)</span>             <span style="color: #999999; font-style: italic"># 3 rows, 2 columns</span>
 </pre></div>
 <p>
@@ -1830,7 +1838,7 @@ A for loop over all array elements:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">i</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #24909d">range</span><span style="color: #d0d0d0">(table2.shape[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">]):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">i</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #24909d">range</span><span style="color: #d0d0d0">(table2.shape[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">]):</span>
 <span style="color: #d0d0d0">...</span>     <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">j</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #24909d">range</span><span style="color: #d0d0d0">(table2.shape[</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">]):</span>
 <span style="color: #d0d0d0">...</span>         <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;table2[%d,%d] = %g&#39;</span> <span style="color: #d0d0d0">%</span> <span style="color: #d0d0d0">(i,</span> <span style="color: #d0d0d0">j,</span> <span style="color: #d0d0d0">table2[i,j])</span>
 <span style="color: #d0d0d0">...</span>
@@ -1845,7 +1853,7 @@ Alternative single loop over all elements:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">index_tuple,</span> <span style="color: #d0d0d0">value</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #d0d0d0">np.ndenumerate(table2):</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">index_tuple,</span> <span style="color: #d0d0d0">value</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #d0d0d0">np.ndenumerate(table2):</span>
 <span style="color: #d0d0d0">...</span>     <span style="color: #6ab825; font-weight: bold">print</span> <span style="color: #ed9d13">&#39;index %s has value %g&#39;</span> <span style="color: #d0d0d0">%</span> \
 <span style="color: #d0d0d0">...</span>           <span style="color: #d0d0d0">(index_tuple,</span> <span style="color: #d0d0d0">table2[index_tuple])</span>
 <span style="color: #d0d0d0">...</span>
@@ -1873,7 +1881,7 @@ Rule: can use slices <code>start:stop:inc</code> for each index
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">table2[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">:table2.shape[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">],</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">]</span>  <span style="color: #999999; font-style: italic"># 2nd column (index 1)</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">table2[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">:table2.shape[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">],</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">]</span>  <span style="color: #999999; font-style: italic"># 2nd column (index 1)</span>
 <span style="color: #d0d0d0">array([-</span><span style="color: #3677a9">22.</span><span style="color: #d0d0d0">,</span>  <span style="color: #d0d0d0">-</span><span style="color: #3677a9">4.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">14.</span><span style="color: #d0d0d0">])</span>
 
 <span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">table2[</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">:,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">]</span>             <span style="color: #999999; font-style: italic"># same</span>
@@ -1911,7 +1919,7 @@ Given
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "native" -->
-<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">t</span>
+<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">&gt;&gt;&gt;</span> <span style="color: #d0d0d0">t</span>
 <span style="color: #d0d0d0">array([[</span>  <span style="color: #3677a9">1.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">2.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">3.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">4.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">5.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">6.</span><span style="color: #d0d0d0">],</span>
        <span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">7.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">8.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">],</span>
        <span style="color: #d0d0d0">[</span> <span style="color: #3677a9">13.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">14.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">15.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">16.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">17.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">18.</span><span style="color: #d0d0d0">],</span>
@@ -1932,7 +1940,7 @@ Slice <code>1:-1:2</code> for first index results in
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">7.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">8.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">]</span>
+<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">7.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">8.</span><span style="color: #d0d0d0">,</span>   <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">]</span>
 <span style="color: #d0d0d0">[</span> <span style="color: #3677a9">19.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">20.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">21.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">22.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">23.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">24.</span><span style="color: #d0d0d0">]</span>
 </pre></div>
 <p>
@@ -1941,7 +1949,7 @@ Slice <code>2:</code> for the second index then gives
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">]</span>
+<div class="fragment" class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">[</span>  <span style="color: #3677a9">9.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">10.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">11.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">12.</span><span style="color: #d0d0d0">]</span>
 <span style="color: #d0d0d0">[</span> <span style="color: #3677a9">21.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">22.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">23.</span><span style="color: #d0d0d0">,</span>  <span style="color: #3677a9">24.</span><span style="color: #d0d0d0">]</span>
 </pre></div>
 
@@ -1971,7 +1979,7 @@ Slice <code>2:</code> for the second index then gives
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #d0d0d0">scalar_result</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">expression1</span> <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">condition</span> <span style="color: #6ab825; font-weight: bold">else</span> <span style="color: #d0d0d0">expression2</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #d0d0d0">scalar_result</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">expression1</span> <span style="color: #6ab825; font-weight: bold">if</span> <span style="color: #d0d0d0">condition</span> <span style="color: #6ab825; font-weight: bold">else</span> <span style="color: #d0d0d0">expression2</span>
 <span style="color: #d0d0d0">vector_result</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">where(condition,</span> <span style="color: #d0d0d0">expression1,</span> <span style="color: #d0d0d0">expression2)</span>
 </pre></div>
 
@@ -1991,7 +1999,7 @@ Curve plotting (unified syntax for Matplotlib and SciTools):
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
 <span style="color: #999999; font-style: italic">#from scitools.std import *</span>
 
 
@@ -2023,7 +2031,7 @@ Single SciTools <code>plot</code> command with keyword arguments:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">*</span>
 
 <span style="color: #d0d0d0">plot(t1,</span> <span style="color: #d0d0d0">y1,</span> <span style="color: #ed9d13">&#39;r&#39;</span><span style="color: #d0d0d0">,</span>  <span style="color: #999999; font-style: italic"># curve 1, red line</span>
      <span style="color: #d0d0d0">t2,</span> <span style="color: #d0d0d0">y2,</span> <span style="color: #ed9d13">&#39;b&#39;</span><span style="color: #d0d0d0">,</span>  <span style="color: #999999; font-style: italic"># curve 2, blue line</span>
@@ -2051,7 +2059,7 @@ Single SciTools <code>plot</code> command with keyword arguments:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%">Terminal&gt; avconv -r 5 -i tmp_%04d.png -vcodec flv movie.flv
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span>Terminal&gt; avconv -r 5 -i tmp_%04d.png -vcodec flv movie.flv
 </pre></div>
 
 </div>
@@ -2113,7 +2121,7 @@ First we make a <em>general</em> animation function for an \( f(x,t) \):
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">plot</span>  <span style="color: #999999; font-style: italic"># convenient for animations</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #6ab825; font-weight: bold">from</span> <span style="color: #447fcf; text-decoration: underline">scitools.std</span> <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #d0d0d0">plot</span>  <span style="color: #999999; font-style: italic"># convenient for animations</span>
 
 <span style="color: #6ab825; font-weight: bold">def</span> <span style="color: #447fcf">animate</span><span style="color: #d0d0d0">(tmax,</span> <span style="color: #d0d0d0">dt,</span> <span style="color: #d0d0d0">x,</span> <span style="color: #d0d0d0">function,</span> <span style="color: #d0d0d0">ymin,</span> <span style="color: #d0d0d0">ymax,</span> <span style="color: #d0d0d0">t0=</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span>
             <span style="color: #d0d0d0">xlabel=</span><span style="color: #ed9d13">&#39;x&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">ylabel=</span><span style="color: #ed9d13">&#39;y&#39;</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">filename=</span><span style="color: #ed9d13">&#39;tmp_&#39;</span><span style="color: #d0d0d0">):</span>
@@ -2144,7 +2152,7 @@ Then we call this function with our special \( T(z,t) \) function
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span style="color: #999999; font-style: italic"># remove old plot files:</span>
+<div class="highlight" style="background: #202020"><pre style="font-size: 110%; font-size: 80%; line-height: 125%"><span></span><span style="color: #999999; font-style: italic"># remove old plot files:</span>
 <span style="color: #6ab825; font-weight: bold">import</span> <span style="color: #447fcf; text-decoration: underline">glob</span><span style="color: #d0d0d0">,</span> <span style="color: #447fcf; text-decoration: underline">os</span>
 <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">filename</span> <span style="color: #6ab825; font-weight: bold">in</span> <span style="color: #d0d0d0">glob.glob(</span><span style="color: #ed9d13">&#39;tmp_*.png&#39;</span><span style="color: #d0d0d0">):</span> <span style="color: #d0d0d0">os.remove(filename)</span>
 
@@ -2178,7 +2186,7 @@ Must combine hardcopy files (like <code>tmp_0034.png</code>) to make video forma
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
