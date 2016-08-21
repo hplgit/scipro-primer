@@ -337,8 +337,6 @@ for k in range(n):
 ===== The solution if we plot $u$ against $t$ =====
 
 $\Delta t = 0.4$ and $\Delta t=0.2$:
-<linebreak>
-<linebreak>
 
 FIGURE: [fig-ode2/FE_n_10_20, width=600 frac=1]
 

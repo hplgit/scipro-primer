@@ -18,6 +18,7 @@
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
@@ -35,14 +36,21 @@
 <link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/league.css" id="theme">
 -->
 
 <!-- For syntax highlighting -->
 <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<!-- Printing and PDF exports -->
 <script>
-document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
 </script>
 
 <style type="text/css">
@@ -57,7 +65,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:5px solid #bababa;
              -webkit-border-radius: 14px; -moz-border-radius: 14px;
-             border-radius:14px
+             border-radius:14px;
              background-position: 10px 10px;
              background-repeat: no-repeat;
              background-size: 38px;
@@ -145,7 +153,7 @@ $$
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <br>
 <p>&nbsp;<br>
-<center><h4>Aug 15, 2015</h4></center> <!-- date -->
+<center><h4>Aug 21, 2016</h4></center> <!-- date -->
 <br>
 </section>
 
@@ -181,7 +189,67 @@ $$
 
 
 <section>
-<h2 id="___sec2">Evaluating a mathematical formula </h2>
+<h2 id="___sec2">The learning strategy is about doing exercises </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<ul>
+
+<p><li> Study and try to understand examples</li>
+
+<p><li> Program a lot!</li>
+
+<p><li> This course has many compulsory exercises</li>
+
+<p><li> The course curriculum is defined through exercises</li>
+</ul>
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec3">Chapter 1 is about evaluating formulas </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Why?</b>
+<ul>
+
+<p><li> Everybody understands the problem</li>
+
+<p><li> Many fundamental concepts are introduced</li>
+
+<ul>
+
+<p><li> variables</li>
+
+<p><li> arithmetic expressions</li>
+
+<p><li> objects</li>
+
+<p><li> printing text and numbers</li>
+</ul>
+<p>
+</ul>
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec4">Formulas and arithmetics are fundamental... </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+A physicist, a biologist and a mathematician were at a cafe when across the street two people entered a house. Moments later three people came out. The physicist said, &quot;Hmm, that must be a measurement error.&quot; The biologist wondered, &quot;It must be reproduction!&quot; And the mathematician said, &quot;If someone goes into the house, it will be empty again.&quot;
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec5">Evaluating a mathematical formula </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -208,7 +276,7 @@ Task: given \( v_0 \), \( g \) and \( t \), compute \( y \).
 
 
 <section>
-<h2 id="___sec3">Use a calculator? A program is much more powerful! </h2>
+<h2 id="___sec6">Use a calculator? A program is much more powerful! </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -240,7 +308,7 @@ The complete Python program:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #B452CD">5</span>*<span style="color: #B452CD">0.6</span> - <span style="color: #B452CD">0.5</span>*<span style="color: #B452CD">9.81</span>*<span style="color: #B452CD">0.6</span>**<span style="color: #B452CD">2</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #B452CD">5</span>*<span style="color: #B452CD">0.6</span> - <span style="color: #B452CD">0.5</span>*<span style="color: #B452CD">9.81</span>*<span style="color: #B452CD">0.6</span>**<span style="color: #B452CD">2</span>
 </pre></div>
 
 </div>
@@ -248,7 +316,7 @@ The complete Python program:
 
 
 <section>
-<h2 id="___sec4">How to write and run the program </h2>
+<h2 id="___sec7">How to write and run the program </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -267,7 +335,7 @@ Write the program in a text editor, here the line
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #B452CD">5</span>*<span style="color: #B452CD">0.6</span> - <span style="color: #B452CD">0.5</span>*<span style="color: #B452CD">9.81</span>*<span style="color: #B452CD">0.6</span>**<span style="color: #B452CD">2</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #B452CD">5</span>*<span style="color: #B452CD">0.6</span> - <span style="color: #B452CD">0.5</span>*<span style="color: #B452CD">9.81</span>*<span style="color: #B452CD">0.6</span>**<span style="color: #B452CD">2</span>
 </pre></div>
 <p>
 <b>Step 2.</b>
@@ -285,7 +353,7 @@ Run the program:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python ball1.py
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>Terminal&gt; python ball1.py
 </pre></div>
 <p>
 The program prints out <code>1.2342</code> in the terminal window.
@@ -294,7 +362,7 @@ The program prints out <code>1.2342</code> in the terminal window.
 
 
 <section>
-<h2 id="___sec5">In this course we probably use computers differently from what you are used to </h2>
+<h2 id="___sec8">In this course we probably use computers differently from what you are used to </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -314,7 +382,7 @@ The program prints out <code>1.2342</code> in the terminal window.
 
 
 <section>
-<h2 id="___sec6">A short program can calculate any integral </h2>
+<h2 id="___sec9">A short program can calculate any integral </h2>
 
 <p>
 You cannot calculate this integral by hand:
@@ -329,7 +397,7 @@ A little program can compute this and &quot;all&quot; other integrals:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
 
 <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">integrate</span>(f, a, b, n=<span style="color: #B452CD">100</span>):
     <span style="color: #CD5555">&quot;&quot;&quot;</span>
@@ -355,7 +423,7 @@ I = integrate(my_function, minus_infinity, <span style="color: #B452CD">1</span>
 
 
 <section>
-<h2 id="___sec7">Computers are very picky about grammar rules and typos </h2>
+<h2 id="___sec10">Computers are very picky about grammar rules and typos </h2>
 
 <p>
 
@@ -367,7 +435,7 @@ Look at
 <p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
-<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">print 5*0.6 - 0.5*9.81*0.6**2
+<div class="fragment" class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>print 5*0.6 - 0.5*9.81*0.6**2
 write 5*0,6 - 0,5*9,81*0,6^2
 </pre></div>
 <p>
@@ -375,7 +443,7 @@ Would you consider these two lines to be equal?
 
 <ul>
 
-<p><li class="fragment"> Humans will say <em>yes</em>, computers <em>no</em></li>
+<p><li class="fragment"> Humans may say <em>yes</em>, computers always <em>no</em></li>
 
 <p><li class="fragment"> The second line has no meaning as a Python program</li>
 
@@ -391,7 +459,7 @@ Would you consider these two lines to be equal?
 
 
 <section>
-<h2 id="___sec8">Programming opens up a new life </h2>
+<h2 id="___sec11">Programming opens up a new life </h2>
 
 <p>
 <blockquote>
@@ -404,7 +472,7 @@ Would you consider these two lines to be equal?
 
 
 <section>
-<h2 id="___sec9">Store numbers in variables to make a program more readable </h2>
+<h2 id="___sec12">Store numbers in variables to make a program more readable </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -423,7 +491,7 @@ easier to read and understand:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">v0 = <span style="color: #B452CD">5</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>v0 = <span style="color: #B452CD">5</span>
 g = <span style="color: #B452CD">9.81</span>
 t = <span style="color: #B452CD">0.6</span>
 y = v0*t - <span style="color: #B452CD">0.5</span>*g*t**<span style="color: #B452CD">2</span>
@@ -436,7 +504,7 @@ This program spans several lines of text and use variables, otherwise the progra
 
 
 <section>
-<h2 id="___sec10">There is great flexibility in choosing variable names </h2>
+<h2 id="___sec13">There is great flexibility in choosing variable names </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -452,7 +520,7 @@ This program spans several lines of text and use variables, otherwise the progra
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">initial_velocity = <span style="color: #B452CD">5</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>initial_velocity = <span style="color: #B452CD">5</span>
 accel_of_gravity = <span style="color: #B452CD">9.81</span>
 TIME = <span style="color: #B452CD">0.6</span>
 VerticalPositionOfBall = initial_velocity*TIME - \ 
@@ -473,7 +541,7 @@ Good variable names make a program easier to understand!
 
 
 <section>
-<h2 id="___sec11">Some words are reserved in Python </h2>
+<h2 id="___sec14">Some words are reserved in Python </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -515,7 +583,7 @@ Certain words have a special meaning in Python and cannot be used as variable na
 
 
 <section>
-<h2 id="___sec12">Comments are useful to explain how you think in programs </h2>
+<h2 id="___sec15">Comments are useful to explain how you think in programs </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -523,7 +591,7 @@ Certain words have a special meaning in Python and cannot be used as variable na
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #228B22"># program for computing the height of a ball</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #228B22"># program for computing the height of a ball</span>
 <span style="color: #228B22"># in vertical motion</span>
 v0 = <span style="color: #B452CD">5</span>    <span style="color: #228B22"># initial velocity</span>
 g = <span style="color: #B452CD">9.81</span>  <span style="color: #228B22"># acceleration of gravity</span>
@@ -550,7 +618,7 @@ y = v0*t - <span style="color: #B452CD">0.5</span>*g*t**<span style="color: #B45
 
 
 <section>
-<h2 id="___sec13">Comments are not always ignored.... </h2>
+<h2 id="___sec16">Comments are not always ignored.... </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -561,7 +629,7 @@ Normal rule: Python programs, including comments, can only contain characters fr
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">hilsen = <span style="color: #CD5555">&#39;Kjære Åsmund!&#39;</span>  <span style="color: #228B22"># er æ og Å lov i en streng?</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>hilsen = <span style="color: #CD5555">&#39;Kjære Åsmund!&#39;</span>  <span style="color: #228B22"># er æ og Å lov i en streng?</span>
 <span style="color: #8B008B; font-weight: bold">print</span> hilsen
 </pre></div>
 <p>
@@ -570,7 +638,7 @@ leads to an error:
 <p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">SyntaxError: Non-ASCII character ...
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>SyntaxError: Non-ASCII character ...
 </pre></div>
 <p>
 Remedy: put this special comment line as the first line in your program
@@ -578,7 +646,7 @@ Remedy: put this special comment line as the first line in your program
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #228B22"># -*- coding: utf-8 -*-</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #228B22"># -*- coding: utf-8 -*-</span>
 </pre></div>
 <p>
 Or stick to English everywhere in a program
@@ -587,7 +655,7 @@ Or stick to English everywhere in a program
 
 
 <section>
-<h2 id="___sec14">The printf syntax gives great flexibility in formatting text with numbers </h2>
+<h2 id="___sec17">The printf syntax gives great flexibility in formatting text with numbers </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -598,7 +666,7 @@ Output from calculations often contain text and numbers, e.g.,
 <p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">At t=0.6 s, y is 1.23 m.
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>At t=0.6 s, y is 1.23 m.
 </pre></div>
 <p>
 We want to control the formatting of numbers: no of decimals, style: <code>0.6</code> vs <code>6E-01</code> or <code>6.0e-01</code>. So-called <em>printf formatting</em> is useful for this purpose:
@@ -606,7 +674,7 @@ We want to control the formatting of numbers: no of decimals, style: <code>0.6</
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">t = <span style="color: #B452CD">0.6</span>;  y = <span style="color: #B452CD">1.2342</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>t = <span style="color: #B452CD">0.6</span>;  y = <span style="color: #B452CD">1.2342</span>
 <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;At t=%g s, y is %.2f m.&#39;</span> % (t, y)
 </pre></div>
 <p>
@@ -616,7 +684,7 @@ The printf format has &quot;slots&quot; where the variables listed at the end ar
 
 
 <section>
-<h2 id="___sec15">Examples on different printf formats </h2>
+<h2 id="___sec18">Examples on different printf formats </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -624,7 +692,7 @@ The printf format has &quot;slots&quot; where the variables listed at the end ar
 <p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">%g         most compact formatting of a real number
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>%g         most compact formatting of a real number
 %f         decimal notation (-34.674)
 %10.3f     decimal notation, 3 decimals, field width 10
 %.3f       decimal notation, 3 decimals, minimum width
@@ -643,7 +711,7 @@ The printf format has &quot;slots&quot; where the variables listed at the end ar
 
 
 <section>
-<h2 id="___sec16">Using printf formatting in our program </h2>
+<h2 id="___sec19">Using printf formatting in our program </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -654,7 +722,7 @@ Triple-quoted strings (<code>&quot;&quot;&quot;</code>) can be used for multi-li
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">v0 = <span style="color: #B452CD">5</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>v0 = <span style="color: #B452CD">5</span>
 g = <span style="color: #B452CD">9.81</span>
 t = <span style="color: #B452CD">0.6</span>
 y = v0*t - <span style="color: #B452CD">0.5</span>*g*t**<span style="color: #B452CD">2</span>
@@ -671,7 +739,7 @@ Running the program:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python ball_print2.py
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>Terminal&gt; python ball_print2.py
 
 At t=0.600000 s, a ball with
 initial velocity v0=5.000E+00 m/s
@@ -683,7 +751,7 @@ is located at the height 1.23 m.
 
 
 <section>
-<h2 id="___sec17">Some frequently used computer science terms </h2>
+<h2 id="___sec20">Some frequently used computer science terms </h2>
 
 <p>
 
@@ -720,7 +788,7 @@ Computer science meaning of terms is often different from the human language mea
 
 
 <section>
-<h2 id="___sec18">A program consists of statements </h2>
+<h2 id="___sec21">A program consists of statements </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -728,7 +796,7 @@ Computer science meaning of terms is often different from the human language mea
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">a = <span style="color: #B452CD">1</span>      <span style="color: #228B22"># 1st statement (assignment statement)</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>a = <span style="color: #B452CD">1</span>      <span style="color: #228B22"># 1st statement (assignment statement)</span>
 b = <span style="color: #B452CD">2</span>      <span style="color: #228B22"># 2nd statement (assignment statement)</span>
 c = a + b  <span style="color: #228B22"># 3rd statement (assignment statement)</span>
 <span style="color: #8B008B; font-weight: bold">print</span> c    <span style="color: #228B22"># 4th statement (print statement)</span>
@@ -741,7 +809,7 @@ in between the statements:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">a = <span style="color: #B452CD">1</span>;  b = <span style="color: #B452CD">2</span>;  c = a + b;  <span style="color: #8B008B; font-weight: bold">print</span> c
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>a = <span style="color: #B452CD">1</span>;  b = <span style="color: #B452CD">2</span>;  c = a + b;  <span style="color: #8B008B; font-weight: bold">print</span> c
 </pre></div>
 
 </div>
@@ -749,7 +817,7 @@ in between the statements:
 
 
 <section>
-<h2 id="___sec19">Assignment statements evaluate right-hand side and assign the result to the variable on the left-hand side </h2>
+<h2 id="___sec22">Assignment statements evaluate right-hand side and assign the result to the variable on the left-hand side </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -757,7 +825,7 @@ in between the statements:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">myvar = <span style="color: #B452CD">10</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>myvar = <span style="color: #B452CD">10</span>
 myvar = <span style="color: #B452CD">3</span>*myvar   <span style="color: #228B22"># = 30</span>
 </pre></div>
 
@@ -766,7 +834,7 @@ myvar = <span style="color: #B452CD">3</span>*myvar   <span style="color: #228B2
 
 
 <section>
-<h2 id="___sec20">Syntax is the exact specification of instructions to the computer </h2>
+<h2 id="___sec23">Syntax is the exact specification of instructions to the computer </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -781,13 +849,13 @@ Programs must have correct syntax, i.e., correct use of the computer language gr
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">myvar = <span style="color: #B452CD">5.2</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>myvar = <span style="color: #B452CD">5.2</span>
 prinnt Myvar
 </pre></div>
 <p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">    prinnt Myvar
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>    prinnt Myvar
                ^
 SyntaxError: invalid syntax
 </pre></div>
@@ -809,7 +877,7 @@ Only the first encountered error is reported and the program is stopped (correct
 
 
 <section>
-<h2 id="___sec21">Blanks (whitespace) can be used to nicely format the program text </h2>
+<h2 id="___sec24">Blanks (whitespace) can be used to nicely format the program text </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -821,7 +889,7 @@ These statements are equivalent (blanks do not matter):
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">v0=<span style="color: #B452CD">3</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>v0=<span style="color: #B452CD">3</span>
 v0  =  <span style="color: #B452CD">3</span>
 v0=   <span style="color: #B452CD">3</span>
 v0 = <span style="color: #B452CD">3</span>
@@ -832,7 +900,7 @@ Here blanks do matter:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">counter = <span style="color: #B452CD">1</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>counter = <span style="color: #B452CD">1</span>
 <span style="color: #8B008B; font-weight: bold">while</span> counter &lt;= <span style="color: #B452CD">4</span>:
     counter = counter + <span style="color: #B452CD">1</span>   <span style="color: #228B22"># correct (4 leading blanks)</span>
 
@@ -846,7 +914,7 @@ counter = counter + <span style="color: #B452CD">1</span>       <span style="col
 
 
 <section>
-<h2 id="___sec22">A program takes some known <em>input</em> data and computes some <em>output</em> data </h2>
+<h2 id="___sec25">A program takes some known <em>input</em> data and computes some <em>output</em> data </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -854,7 +922,7 @@ counter = counter + <span style="color: #B452CD">1</span>       <span style="col
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">v0 = <span style="color: #B452CD">3</span>;  g = <span style="color: #B452CD">9.81</span>;  t = <span style="color: #B452CD">0.6</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>v0 = <span style="color: #B452CD">3</span>;  g = <span style="color: #B452CD">9.81</span>;  t = <span style="color: #B452CD">0.6</span>
 position = v0*t - <span style="color: #B452CD">0.5</span>*g*t*t
 velocity = v0 - g*t
 <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;position:&#39;</span>, position, <span style="color: #CD5555">&#39;velocity:&#39;</span>, velocity
@@ -870,7 +938,7 @@ velocity = v0 - g*t
 
 
 <section>
-<h2 id="___sec23">An operating system (OS) is a set of programs managing hardware and software resources on a computer </h2>
+<h2 id="___sec26">An operating system (OS) is a set of programs managing hardware and software resources on a computer </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -900,7 +968,7 @@ velocity = v0 - g*t
 
 
 <section>
-<h2 id="___sec24">Evaluating a formula for temperature conversion </h2>
+<h2 id="___sec27">Evaluating a formula for temperature conversion </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -919,7 +987,7 @@ Program:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">C = <span style="color: #B452CD">21</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>C = <span style="color: #B452CD">21</span>
 F = (<span style="color: #B452CD">9</span>/<span style="color: #B452CD">5</span>)*C + <span style="color: #B452CD">32</span>
 <span style="color: #8B008B; font-weight: bold">print</span> F
 </pre></div>
@@ -929,7 +997,7 @@ Execution:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python c2f_v1.py
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>Terminal&gt; python c2f_v1.py
 53
 </pre></div>
 
@@ -938,7 +1006,7 @@ Execution:
 
 
 <section>
-<h2 id="___sec25">We must always check that a new program calculates the right answer </h2>
+<h2 id="___sec28">We must always check that a new program calculates the right answer </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -950,7 +1018,7 @@ Execution:
 
 
 <section>
-<h2 id="___sec26">The error is caused by (unintended) integer division </h2>
+<h2 id="___sec29">The error is caused by (unintended) integer division </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -980,7 +1048,7 @@ Corrected program (with correct output 69.8):
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">C = <span style="color: #B452CD">21</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>C = <span style="color: #B452CD">21</span>
 F = (<span style="color: #B452CD">9.0</span>/<span style="color: #B452CD">5</span>)*C + <span style="color: #B452CD">32</span>
 <span style="color: #8B008B; font-weight: bold">print</span> F
 </pre></div>
@@ -990,7 +1058,7 @@ F = (<span style="color: #B452CD">9.0</span>/<span style="color: #B452CD">5</spa
 
 
 <section>
-<h2 id="___sec27">Everything in Python is an object </h2>
+<h2 id="___sec30">Everything in Python is an object </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1001,7 +1069,7 @@ Variables refer to objects:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">a = <span style="color: #B452CD">5</span>       <span style="color: #228B22"># a refers to an integer (int) object</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>a = <span style="color: #B452CD">5</span>       <span style="color: #228B22"># a refers to an integer (int) object</span>
 b = <span style="color: #B452CD">9</span>       <span style="color: #228B22"># b refers to an integer (int) object</span>
 c = <span style="color: #B452CD">9.0</span>     <span style="color: #228B22"># c refers to a real number (float) object</span>
 d = b/a     <span style="color: #228B22"># d refers to an int/int =&gt; int object</span>
@@ -1014,7 +1082,7 @@ We can convert between object types:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">a = <span style="color: #B452CD">3</span>              <span style="color: #228B22"># a is int</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>a = <span style="color: #B452CD">3</span>              <span style="color: #228B22"># a is int</span>
 b = <span style="color: #658b00">float</span>(a)       <span style="color: #228B22"># b is float 3.0</span>
 c = <span style="color: #B452CD">3.9</span>            <span style="color: #228B22"># c is float</span>
 d = <span style="color: #658b00">int</span>(c)         <span style="color: #228B22"># d is int 3</span>
@@ -1030,7 +1098,7 @@ f = <span style="color: #658b00">float</span>(e)       <span style="color: #228B
 
 
 <section>
-<h2 id="___sec28">Arithmetic expressions are evaluated as you have learned in mathematics </h2>
+<h2 id="___sec31">Arithmetic expressions are evaluated as you have learned in mathematics </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1059,7 +1127,7 @@ f = <span style="color: #658b00">float</span>(e)       <span style="color: #228B
 
 
 <section>
-<h2 id="___sec29">Standard mathematical functions are found in the <code>math</code> module </h2>
+<h2 id="___sec32">Standard mathematical functions are found in the <code>math</code> module </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1079,7 +1147,7 @@ Compute \( \sqrt{2} \) using the <code>sqrt</code> function in the <code>math</c
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">math</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">math</span>
 r = math.sqrt(<span style="color: #B452CD">2</span>)
 <span style="color: #228B22"># or</span>
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> sqrt
@@ -1094,7 +1162,7 @@ r = sqrt(<span style="color: #B452CD">2</span>)
 
 
 <section>
-<h2 id="___sec30">Another example on computing with functions from <code>math</code> </h2>
+<h2 id="___sec33">Another example on computing with functions from <code>math</code> </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1111,7 +1179,7 @@ for \( x=1.2 \).
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> sin, cos, log
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> sin, cos, log
 x = <span style="color: #B452CD">1.2</span>
 Q = sin(x)*cos(x) + <span style="color: #B452CD">4</span>*log(x)   <span style="color: #228B22"># log is ln (base e)</span>
 <span style="color: #8B008B; font-weight: bold">print</span> Q
@@ -1122,7 +1190,7 @@ Q = sin(x)*cos(x) + <span style="color: #B452CD">4</span>*log(x)   <span style="
 
 
 <section>
-<h2 id="___sec31">Computers have inexact arithmetics because of round-off errors </h2>
+<h2 id="___sec34">Computers have inexact arithmetics because of rounding errors </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1133,7 +1201,7 @@ Let us compute \( 1/49\cdot 49 \) and \( 1/51\cdot 51 \):
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">v1 = <span style="color: #B452CD">1</span>/<span style="color: #B452CD">49.0</span>*<span style="color: #B452CD">49</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>v1 = <span style="color: #B452CD">1</span>/<span style="color: #B452CD">49.0</span>*<span style="color: #B452CD">49</span>
 v2 = <span style="color: #B452CD">1</span>/<span style="color: #B452CD">51.0</span>*<span style="color: #B452CD">51</span>
 <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%.16f %.16f&#39;</span> % (v1, v2)
 </pre></div>
@@ -1143,11 +1211,11 @@ Output with 16 decimals becomes
 <p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"> 0.9999999999999999 1.0000000000000000
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span> 0.9999999999999999 1.0000000000000000
 </pre></div>
 <ul>
 
-<p><li> Most real numbers are represented inexactly on a computer (16 digits)</li>
+<p><li> Most real numbers are represented inexactly on a computer (17 digits)</li>
 
 <p><li> Neither 1/49 nor 1/51 is represented exactly, the error is typically \( 10^{-16} \)</li>
 
@@ -1160,7 +1228,53 @@ Output with 16 decimals becomes
 
 
 <section>
-<h2 id="___sec32">Another example involving math functions </h2>
+<h2 id="___sec35">Test that a calculation is correct </h2>
+
+<p>
+What is printed?
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>a = <span style="color: #B452CD">1</span>; b = <span style="color: #B452CD">2</span>;
+computed = a + b
+expected = <span style="color: #B452CD">3</span>
+correct = computed == expected
+<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Correct:&#39;</span>, correct
+</pre></div>
+<p>
+Change to <code>a = 0.1</code> and <code>b = 0.2</code> (<code>expected = 0.3</code>). What is now printed?
+Why? How can the comparison be performed?
+</section>
+
+
+<section>
+<h2 id="___sec36">Answer to exercise on previous slide: use equality test with tolerance! </h2>
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>&gt;&gt;&gt; a = <span style="color: #B452CD">0.1</span>; b = <span style="color: #B452CD">0.2</span>; expected = <span style="color: #B452CD">0.3</span>
+&gt;&gt;&gt; a + b == expected
+<span style="color: #658b00">False</span>
+
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;%.17f\n%.17f\n%.17f\n%.17f&#39;</span> % (<span style="color: #B452CD">0.1</span>, <span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">0.1</span> + <span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">0.3</span>)
+<span style="color: #B452CD">0.10000000000000001</span>
+<span style="color: #B452CD">0.20000000000000001</span>
+<span style="color: #B452CD">0.30000000000000004</span>
+<span style="color: #B452CD">0.29999999999999999</span>
+
+&gt;&gt;&gt; a = <span style="color: #B452CD">0.1</span>; b = <span style="color: #B452CD">0.2</span>; expected = <span style="color: #B452CD">0.3</span>
+&gt;&gt;&gt; computed = a + b
+&gt;&gt;&gt; diff = <span style="color: #658b00">abs</span>(expected - computed)
+&gt;&gt;&gt; tol = <span style="color: #B452CD">1E-15</span>
+&gt;&gt;&gt; diff &lt; tol
+</pre></div>
+</section>
+
+
+<section>
+<h2 id="___sec37">Another example involving math functions </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1183,7 +1297,7 @@ We can evaluate this function in three ways:
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> sinh, exp, e, pi
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> sinh, exp, e, pi
 x = <span style="color: #B452CD">2</span>*pi
 r1 = sinh(x)
 r2 = <span style="color: #B452CD">0.5</span>*(exp(x) - exp(-x))
@@ -1199,7 +1313,7 @@ Output: <code>r1</code> is \( 267.744894041016\underline{4369} \), <code>r2</cod
 
 
 <section>
-<h2 id="___sec33">Python can be used interactively as a calculator and to test statements </h2>
+<h2 id="___sec38">Python can be used interactively as a calculator and to test statements </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1218,7 +1332,7 @@ Output: <code>r1</code> is \( 267.744894041016\underline{4369} \), <code>r2</cod
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; python
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>Terminal&gt; python
 Python <span style="color: #B452CD">2.7</span>.<span style="color: #B452CD">6</span> (r25:<span style="color: #B452CD">409</span>, Feb <span style="color: #B452CD">27</span> <span style="color: #B452CD">2014</span>, <span style="color: #B452CD">19</span>:<span style="color: #B452CD">35</span>:<span style="color: #B452CD">40</span>)
 ...
 &gt;&gt;&gt; C = <span style="color: #B452CD">41</span>
@@ -1235,7 +1349,7 @@ Previous commands can be recalled and edited
 
 
 <section>
-<h2 id="___sec34">Python has full support for complex numbers </h2>
+<h2 id="___sec39">Python has full support for complex numbers </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1247,7 +1361,7 @@ Previous commands can be recalled and edited
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; a = -<span style="color: #B452CD">2</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>&gt;&gt;&gt; a = -<span style="color: #B452CD">2</span>
 &gt;&gt;&gt; b = <span style="color: #B452CD">0.5</span>
 &gt;&gt;&gt; s = <span style="color: #658b00">complex</span>(a, b)  <span style="color: #228B22"># make complex from variables</span>
 &gt;&gt;&gt; s
@@ -1268,7 +1382,7 @@ See the book for additional info
 
 
 <section>
-<h2 id="___sec35">Python can also do symbolic computing </h2>
+<h2 id="___sec40">Python can also do symbolic computing </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1282,7 +1396,7 @@ See the book for additional info
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sympy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sympy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
 &gt;&gt;&gt; t, v0, g = symbols(<span style="color: #CD5555">&#39;t v0 g&#39;</span>)
 &gt;&gt;&gt; y = v0*t - Rational(<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>)*g*t**<span style="color: #B452CD">2</span>
 &gt;&gt;&gt; dydt = diff(y, t)                     <span style="color: #228B22"># 1st derivative</span>
@@ -1298,12 +1412,12 @@ acceleration: -g
 
 
 <section>
-<h2 id="___sec36">SymPy can do a lot of traditional mathematics </h2>
+<h2 id="___sec41">SymPy can do a lot of traditional mathematics </h2>
 
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">&gt;&gt;&gt; y = v0*t - Rational(<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>)*g*t**<span style="color: #B452CD">2</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>&gt;&gt;&gt; y = v0*t - Rational(<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>)*g*t**<span style="color: #B452CD">2</span>
 &gt;&gt;&gt; roots = solve(y, t)    <span style="color: #228B22"># solve y=0 wrt t</span>
 &gt;&gt;&gt; roots
 [<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>*v0/g]
@@ -1319,7 +1433,7 @@ sin(x)*cos(y) + sin(y)*cos(x)
 
 
 <section>
-<h2 id="___sec37">Summary of Chapter 1 (part 1) </h2>
+<h2 id="___sec42">Summary of Chapter 1 (part 1) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1344,7 +1458,7 @@ sin(x)*cos(y) + sin(y)*cos(x)
 
 
 <section>
-<h2 id="___sec38">Summary of Chapter 1 (part 2) </h2>
+<h2 id="___sec43">Summary of Chapter 1 (part 2) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1355,7 +1469,7 @@ Mathematical functions like \( \sin x \) and \( \ln x \) must be imported from t
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> sin, log
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> sin, log
 x = <span style="color: #B452CD">5</span>
 r = sin(<span style="color: #B452CD">3</span>*log(<span style="color: #B452CD">10</span>*x))
 </pre></div>
@@ -1369,7 +1483,7 @@ Important terms: object, variable, algorithm, statement, assignment, implementat
 
 
 <section>
-<h2 id="___sec39">Programming is challenging </h2>
+<h2 id="___sec44">Programming is challenging </h2>
 
 <p>
 <blockquote>
@@ -1393,7 +1507,7 @@ Important terms: object, variable, algorithm, statement, assignment, implementat
 
 
 <section>
-<h2 id="___sec40">Summarizing example: throwing a ball (problem) </h2>
+<h2 id="___sec45">Summarizing example: throwing a ball (problem) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1425,7 +1539,7 @@ $$ y = x\tan\theta - \frac{1}{2v_0}\frac{gx^2}{\cos^2\theta} + y_0 $$
 
 
 <section>
-<h2 id="___sec41">Summarizing example: throwing a ball (solution) </h2>
+<h2 id="___sec46">Summarizing example: throwing a ball (solution) </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1436,7 +1550,7 @@ Program:
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">g = <span style="color: #B452CD">9.81</span>    <span style="color: #228B22"># m/s**2</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>g = <span style="color: #B452CD">9.81</span>    <span style="color: #228B22"># m/s**2</span>
 v0 = <span style="color: #B452CD">15</span>     <span style="color: #228B22"># km/h</span>
 theta = <span style="color: #B452CD">60</span>  <span style="color: #228B22"># degrees</span>
 x = <span style="color: #B452CD">0.5</span>     <span style="color: #228B22"># m</span>
@@ -1466,7 +1580,7 @@ y = x*tan(theta) - <span style="color: #B452CD">1</span>/(<span style="color: #B
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
