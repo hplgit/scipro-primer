@@ -87,7 +87,7 @@ system doconce slides_beamer $name --beamer_slide_theme=red_shadow --handout
 system pdflatex -shell-escape $name
 pdflatex -shell-escape $name
 pdflatex -shell-escape $name
-pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile ${name}-beamer-handouts2x3.pdf ${name}.pdf
+pdfnup --nup 1x2 --frame true --no-landscape --delta "1cm 1cm" --scale 0.9 --outfile ${name}-beamer-handouts2x1.pdf ${name}.pdf
 rm -f ${name}.pdf
 
 # Ordinary plain LaTeX documents (kind of study guide)

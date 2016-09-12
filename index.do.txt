@@ -69,14 +69,11 @@ git clone https://github.com/hplgit/scipro-primer.git
 
 ===== Erratalist =====
 
-# #ifdef ERRATA
 Here is a "PDF file": "erratalist5th.pdf" or an "HTML file":
 "erratalist4th.html" with an errata list for the
 5th edition of the book. If you find any typo or error, please
 report it to "the author": "mailto:hpl@simula.no".
-# #else
-No erratalist yet.
-# #endif
+
 
 
 ======= More resources and information for the latest edition =======
