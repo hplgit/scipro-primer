@@ -1,0 +1,6 @@
+running mako on index.do.txt to make tmp_mako__index.do.txt
+translating doconce text in tmp_mako__index.do.txt to html
+*** warning: found link tag "...": "..." in footnote, which was removed
+    from tooltip (since it does not work with bootstrap tooltips)
+The slides are written in the "DocOnce": "http://hplgit.github.io/doconce/doc/web/index.html" markup language, as the book, and can easily be translated to a range of formats and styles.
+output in index.html

@@ -1,0 +1,420 @@
+%%
+%% Automatically generated file from DocOnce source
+%% (https://github.com/hplgit/doconce/)
+%%
+%%
+
+
+%-------------------- begin preamble ----------------------
+
+\documentclass[%
+oneside,                 % oneside: electronic viewing, twoside: printing
+final,                   % draft: marks overfull hboxes, figures with paths
+10pt]{article}
+
+\listfiles               %  print all files needed to compile this document
+
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts,amssymb}
+\usepackage[table]{xcolor}
+\usepackage{bm,ltablex,microtype}
+
+\usepackage[pdftex]{graphicx}
+
+\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+    }
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % levels in table of contents
+
+% Tricks for having figures close to where they are defined:
+% 1. define less restrictive rules for where to put figures
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
+% 2. ensure all figures are flushed before next section
+\usepackage[section]{placeins}
+% 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
+%\usepackage{float}\restylefloat{figure}
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+% --- begin definitions of admonition environments ---
+
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\raggedbottom
+\makeindex
+\usepackage[totoc]{idxlayout}   % for index in the toc
+\usepackage[nottoc]{tocbibind}  % for references/bibliography in the toc
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+% matching end for #ifdef PREAMBLE
+
+\newcommand{\exercisesection}[1]{\subsection*{#1}}
+
+\input{newcommands}
+
+% ------------------- main content ----------------------
+
+
+
+% ----------------- title -------------------------
+
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE\bf
+\begin{spacing}{1.25}
+Kort om kursene INF1100 og MAT-INF1100L
+\end{spacing}
+}
+\end{center}
+
+% ----------------- author(s) -------------------------
+
+\begin{center}
+{\bf Hans Petter Langtangen${}^{1, 2}$} \\ [0mm]
+\end{center}
+
+\begin{center}
+% List of all institutions:
+\centerline{{\small ${}^1$Simula Research Laboratory}}
+\centerline{{\small ${}^2$University of Oslo, Dept.~of Informatics}}
+\end{center}
+    
+% ----------------- end author(s) -------------------------
+
+% --- begin date ---
+\begin{center}
+Aug 8, 2017
+\end{center}
+% --- end date ---
+
+\vspace{1cm}
+
+
+% !split
+\subsection{INF1100 er en første introduksjon til å programmere datamaskiner}
+
+
+% --- begin paragraph admon ---
+\paragraph{}
+\begin{itemize}
+  \item Programmering er \emph{svært} viktig i industri og forskning!
+
+  \item Programmering vil bli brukt i veldig mange senere emner - derfor er INF1100/MAT-INF1100L svært sentrale kurs
+
+  \item Hvorfor?\\
+    Programmeringen gjør matematikken mye mer anvendbar
+
+  \item Tre perspektiver på matematikk i høst:
+\begin{itemize}
+
+    \item tradisjonell kalkulus (MAT1100/MAT1001)
+
+    \item numerisk (datamaskinvennlig) matematikk (MAT-INF1100)
+
+    \item programmering av numerisk matematikk (INF1100)
+\end{itemize}
+
+\noindent
+\end{itemize}
+
+\noindent
+% --- end paragraph admon ---
+
+
+
+% !split
+\subsection{MAT-INF1100L = INF1100 uke 1-6 + MAT-INF1100}
+
+
+% --- begin paragraph admon ---
+\paragraph{}
+\begin{itemize}
+ \item Fullstendig sammenfallende undervisning og obliger med INF1100:
+\begin{itemize}
+
+   \item forelesninger: uke 34-39
+
+   \item gruppeøvelser (obliger): uke 35-40
+
+\end{itemize}
+
+\noindent
+ \item Samme midtveiseksamen som INF1100
+
+ \item Fullstendig sammenfallende undervisning med MAT-INF1100 etter det
+\end{itemize}
+
+\noindent
+% --- end paragraph admon ---
+
+
+
+% !split
+\subsection{All informasjon og alle beskjeder ligger på nettsidene}
+
+\begin{itemize}
+ \item INF1100:
+   \href{{http://www.uio.no/studier/emner/matnat/ifi/INF1100/h14}}{\nolinkurl{http://www.uio.no/studier/emner/matnat/ifi/INF1100/h14}}
+
+ \item MAT-INF1100L:
+   \href{{http://www.uio.no/studier/emner/matnat/math/MAT-INF1100L-h14}}{\nolinkurl{http://www.uio.no/studier/emner/matnat/math/MAT-INF1100L-h14}}
+
+ \item Se spesielt \href{{https://www.uio.no/studier/emner/matnat/ifi/INF1100/h14/ressurser/undervisningsplan.html}}{INF1100 undervisningsplan} for info om hva som skjer hver uke
+\end{itemize}
+
+\noindent
+% !split
+\subsection{Undervisningen består av øvelser og forelesninger}
+
+
+% --- begin paragraph admon ---
+\paragraph{}
+% !bpop
+\begin{itemize}
+  \item Plenumsundervisning tirsdager og torsdager 14.15-16.00 i Sophus Lies auditorium
+
+  \item 1. time: oppgaver fra forrige forelesningstime løses i plenum
+
+  \item 2. time: forelesning av nytt stoff
+
+  \item 2 t oppgaveløsning på terminalstue i mindre grupper der du kan få individuell veiledning
+
+  \item Delta på \emph{alle} undervisningstimene!
+\end{itemize}
+
+\noindent
+% !epop
+% --- end paragraph admon ---
+
+
+
+% !split
+\subsection{Undervisningsmateriell}
+
+% !bslidecell 00 0.65
+
+% --- begin paragraph admon ---
+\paragraph{}
+\begin{itemize}
+  \item Lærebok skrevet spesielt for INF1100
+
+  \item Oppgavene foreligger som "PDF fil": "
+
+  \item 2. time: forelesning av nytt stoff
+
+  \item 2 t oppgaveløsning på terminalstue i mindre grupper der du kan få individuell veiledning
+
+  \item Delta på \emph{alle} undervisningstimene!
+\end{itemize}
+
+\noindent
+% --- end paragraph admon ---
+
+
+% !eslidecell
+
+% !bslidecell 01 0.35
+% FIGURE: [http://hplgit.github.io/scipro-primer/figs/Primer4th_pic.jpg, width=350 frac=0.6]
+% !eslidecell
+
+% !split
+\subsection{Det kreves innlevering av 3-5 obligatoriske oppgaver hver uke}
+
+
+% --- begin paragraph admon ---
+\paragraph{}
+\begin{itemize}
+  \item ``Løp 1'': Mange små obligatoriske oppgaver
+\begin{itemize}
+
+    \item 3-5 obligatoriske oppgaver hver uke\\
+      (vurderes til bestått eller ikke bestått)
+
+    \item De fleste oppgavene teller 1 poeng
+
+    \item Krav INF1100: 15 (av 23) p før uke 41, + 20 (av 37) p før 1.~des.
+
+    \item Krav MAT-INF1100L: 18 (av 23) p fra oppgavene i uke 35-39, men det blir gitt
+      ekstraoppgaver etter midtveiseksamen
+
+\end{itemize}
+
+\noindent
+  \item ``Løp 2'': Færre, men større obligatoriske oppgaver
+\begin{itemize}
+
+    \item Passer for dere med god programmeringserfaring
+
+\end{itemize}
+
+\noindent
+  \item Eksamen:
+\begin{itemize}
+
+    \item Midtveiseksamen i uke 41 - teller 25\% av karakteren
+
+    \item Avsluttende eksamen - teller 75\% av karakteren
+\end{itemize}
+
+\noindent
+\end{itemize}
+
+\noindent
+% --- end paragraph admon ---
+
+
+
+% !split
+\subsection{Hvordan du må jobbe}
+
+% !bpop
+
+% --- begin paragraph admon ---
+\paragraph{}
+\begin{itemize}
+  \item Foran hver forelesning må du ha lest ukens kapittel i læreboken
+
+  \item Foran hver oppgaveløsning i plenum må du selv ha forsøkt å løse oppgavene (les kapittelet først!)
+
+  \item Etterarbeid oppgavene når du har sett løsning i plenum
+
+  \item Nå er du klar for ukens obliger: Du kan gjøre dem på terminalstue
+    under veiledning
+\end{itemize}
+
+\noindent
+% --- end paragraph admon ---
+
+
+
+
+% --- begin paragraph admon ---
+\paragraph{Merk:}
+\begin{itemize}
+  \item Spesielt forelesningene går frem mye fortere enn klasseromsundervisningen i videregående skole
+
+  \item Undervisningen forutsetter at du er forberedt og at du kan forrige ukes temaer
+\end{itemize}
+
+\noindent
+% --- end paragraph admon ---
+
+
+% !epop
+
+% !split
+\subsection{Du må lære programmering ved å programmere mye}
+
+
+% --- begin paragraph admon ---
+\paragraph{}
+\begin{itemize}
+  \item Du kan ikke lese deg til programmering
+
+  \item De fleste synes programmering er krevende i begynnelsen - så blir det utrolig gøy!
+
+  \item Oppskrift på suksess: vær godt forberedt til undervisningen - det gir deg mest fritid og mest læring
+
+  \item Forventet arbeid er 13 timer med INF1100 hver uke \\
+    (6 t undervisning, 7 t selvstudium)
+\end{itemize}
+
+\noindent
+% --- end paragraph admon ---
+
+
+
+% !split
+\subsection{Hvor mye matematikk må jeg kunne på forhånd?}
+
+
+% --- begin paragraph admon ---
+\paragraph{}
+\begin{itemize}
+  \item Nesten alle eksemplene i INF1100 handler om bruk av matematikk
+
+  \item Vi bygger (i prinsippet) på R2 fra vgs
+
+  \item Men matematikken i INF1100 er stort sett \emph{numerisk} matematikk (MAT-INF1100)
+
+  \item Vi håper at INF1100 skal belyse matematikk fra en ny vinkel og hjelpe deg til å forstå matematikk bedre samtidig som du lærer å programmere
+\end{itemize}
+
+\noindent
+% --- end paragraph admon ---
+
+
+
+% !split
+\subsection{Alt undervisningsmateriale er på engelsk}
+
+
+% --- begin paragraph admon ---
+\paragraph{}
+\begin{itemize}
+  \item Muntlig undervisning foregår på norsk
+
+  \item Alt skriftlig materiale er på engelsk
+
+  \item Hvorfor?
+
+  \item Det mangler gode norske ord for mange ord/uttrykk i programmering
+
+  \item Du finner mye informasjon om programmering på nettet og i bøker - nesten all denne informasjonen er på engelsk og da må du kunne de engelske uttrykkene
+
+  \item Mesteparten av undervisningsmateriellet på UiO er på engelsk
+
+  \item I jobbsammenheng kan du regne med at alt skriftlig foregår på engelsk
+
+  \item Boken og undervisningsmaterialet brukes ved mange utenlandske universiteter
+\end{itemize}
+
+\noindent
+% --- end paragraph admon ---
+
+
+
+% ------------------- end of main content ---------------
+
+\end{document}
+

@@ -1,0 +1,403 @@
+
+% LaTeX Beamer file automatically generated from DocOnce
+% https://github.com/hplgit/doconce
+
+%-------------------- begin beamer-specific preamble ----------------------
+
+\documentclass{beamer}
+
+\usetheme{red_shadow}
+\usecolortheme{default}
+
+% turn off the almost invisible, yet disturbing, navigation symbols:
+\setbeamertemplate{navigation symbols}{}
+
+% Examples on customization:
+%\usecolortheme[named=RawSienna]{structure}
+%\usetheme[height=7mm]{Rochester}
+%\setbeamerfont{frametitle}{family=\rmfamily,shape=\itshape}
+%\setbeamertemplate{items}[ball]
+%\setbeamertemplate{blocks}[rounded][shadow=true]
+%\useoutertheme{infolines}
+%
+%\usefonttheme{}
+%\useinntertheme{}
+%
+%\setbeameroption{show notes}
+%\setbeameroption{show notes on second screen=right}
+
+% fine for B/W printing:
+%\usecolortheme{seahorse}
+
+\usepackage{pgf}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{relsize}
+
+\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+
+\usepackage{fancyvrb}
+%\usepackage{minted} % requires pygments and latex -shell-escape filename
+%\usepackage{anslistings}
+%\usepackage{listingsutf8}
+
+\usepackage{amsmath,amssymb,bm}
+%\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{colortbl}
+\usepackage[english]{babel}
+\usepackage{tikz}
+\usepackage{framed}
+% Use some nice templates
+\beamertemplatetransparentcovereddynamic
+
+% --- begin table of contents based on sections ---
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each section:
+% (Only section headings can enter the table of contents in Beamer
+% slides generated from DocOnce source, while subsections are used
+% for the title in ordinary slides.)
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>[plain]
+  \frametitle{}
+  %\frametitle{Outline}
+  \tableofcontents[currentsection]
+  \end{frame}
+}
+% --- end table of contents based on sections ---
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+%\beamerdefaultoverlayspecification{<+->}
+
+\newcommand{\shortinlinecomment}[3]{\note{\textbf{#1}: #2}}
+\newcommand{\longinlinecomment}[3]{\shortinlinecomment{#1}{#2}{#3}}
+
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3
+    }
+\setlength{\parskip}{7pt}  % {1em}
+
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+\newenvironment{doconce:movie}{}{}
+\newcounter{doconce:movie:counter}
+
+\newcommand{\subex}[1]{\noindent\textbf{#1}}  % for subexercises: a), b), etc
+
+%-------------------- end beamer-specific preamble ----------------------
+
+% Add user's preamble
+
+
+
+
+% insert custom LaTeX commands...
+
+\raggedbottom
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+% matching end for #ifdef PREAMBLE
+
+\newcommand{\exercisesection}[1]{\subsection*{#1}}
+
+\input{newcommands}
+
+
+% ------------------- main content ----------------------
+
+
+
+% ----------------- title -------------------------
+
+\title{Kort om kursene INF1100 og MAT-INF1100L}
+
+% ----------------- author(s) -------------------------
+
+\author{Hans Petter Langtangen\inst{1,2}}
+\institute{Simula Research Laboratory\inst{1}
+\and
+University of Oslo, Dept.~of Informatics\inst{2}}
+% ----------------- end author(s) -------------------------
+
+\date{Aug 8, 2017
+% <optional titlepage figure>
+% <optional copyright>
+}
+
+\begin{frame}[plain,fragile]
+\titlepage
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{INF1100 er en første introduksjon til å programmere datamaskiner}
+
+\begin{block}{}
+\begin{itemize}
+  \item Programmering er \emph{svært} viktig i industri og forskning!
+
+  \item Programmering vil bli brukt i veldig mange senere emner - derfor er INF1100/MAT-INF1100L svært sentrale kurs
+
+  \item Hvorfor?\\
+    Programmeringen gjør matematikken mye mer anvendbar
+
+  \item Tre perspektiver på matematikk i høst:
+\begin{itemize}
+
+    \item tradisjonell kalkulus (MAT1100/MAT1001)
+
+    \item numerisk (datamaskinvennlig) matematikk (MAT-INF1100)
+
+    \item programmering av numerisk matematikk (INF1100)
+\end{itemize}
+
+\noindent
+\end{itemize}
+
+\noindent
+\end{block}
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{MAT-INF1100L = INF1100 uke 1-6 + MAT-INF1100}
+
+\begin{block}{}
+\begin{itemize}
+ \item Fullstendig sammenfallende undervisning og obliger med INF1100:
+\begin{itemize}
+
+   \item forelesninger: uke 34-39
+
+   \item gruppeøvelser (obliger): uke 35-40
+
+\end{itemize}
+
+\noindent
+ \item Samme midtveiseksamen som INF1100
+
+ \item Fullstendig sammenfallende undervisning med MAT-INF1100 etter det
+\end{itemize}
+
+\noindent
+\end{block}
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{All informasjon og alle beskjeder ligger på nettsidene}
+
+\begin{itemize}
+ \item INF1100:
+   \href{{http://www.uio.no/studier/emner/matnat/ifi/INF1100/h14}}{\nolinkurl{http://www.uio.no/studier/emner/matnat/ifi/INF1100/h14}}
+
+ \item MAT-INF1100L:
+   \href{{http://www.uio.no/studier/emner/matnat/math/MAT-INF1100L-h14}}{\nolinkurl{http://www.uio.no/studier/emner/matnat/math/MAT-INF1100L-h14}}
+
+ \item Se spesielt \href{{https://www.uio.no/studier/emner/matnat/ifi/INF1100/h14/ressurser/undervisningsplan.html}}{INF1100 undervisningsplan} for info om hva som skjer hver uke
+\end{itemize}
+
+\noindent
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{Undervisningen består av øvelser og forelesninger}
+
+\begin{block}{}
+\begin{itemize}
+\pause
+  \item Plenumsundervisning tirsdager og torsdager 14.15-16.00 i Sophus Lies auditorium
+
+\pause
+  \item 1. time: oppgaver fra forrige forelesningstime løses i plenum
+
+\pause
+  \item 2. time: forelesning av nytt stoff
+
+\pause
+  \item 2 t oppgaveløsning på terminalstue i mindre grupper der du kan få individuell veiledning
+
+\pause
+  \item Delta på \emph{alle} undervisningstimene!
+\end{itemize}
+
+\noindent
+\end{block}
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{Undervisningsmateriell}
+
+\begin{columns}
+\column{0.65\textwidth}
+\begin{block}{}
+\begin{itemize}
+  \item Lærebok skrevet spesielt for INF1100
+
+  \item Oppgavene foreligger som "PDF fil": "
+
+  \item 2. time: forelesning av nytt stoff
+
+  \item 2 t oppgaveløsning på terminalstue i mindre grupper der du kan få individuell veiledning
+
+  \item Delta på \emph{alle} undervisningstimene!
+\end{itemize}
+
+\noindent
+\end{block}
+
+\column{0.35\textwidth}
+% FIGURE: [http://hplgit.github.io/scipro-primer/figs/Primer4th_pic.jpg, width=350 frac=0.6]
+
+\end{columns}
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{Det kreves innlevering av 3-5 obligatoriske oppgaver hver uke}
+
+\begin{block}{}
+\begin{itemize}
+  \item ``Løp 1'': Mange små obligatoriske oppgaver
+\begin{itemize}
+
+    \item 3-5 obligatoriske oppgaver hver uke\\
+      (vurderes til bestått eller ikke bestått)
+
+    \item De fleste oppgavene teller 1 poeng
+
+    \item Krav INF1100: 15 (av 23) p før uke 41, + 20 (av 37) p før 1.~des.
+
+    \item Krav MAT-INF1100L: 18 (av 23) p fra oppgavene i uke 35-39, men det blir gitt
+      ekstraoppgaver etter midtveiseksamen
+
+\end{itemize}
+
+\noindent
+  \item ``Løp 2'': Færre, men større obligatoriske oppgaver
+\begin{itemize}
+
+    \item Passer for dere med god programmeringserfaring
+
+\end{itemize}
+
+\noindent
+  \item Eksamen:
+\begin{itemize}
+
+    \item Midtveiseksamen i uke 41 - teller 25\% av karakteren
+
+    \item Avsluttende eksamen - teller 75\% av karakteren
+\end{itemize}
+
+\noindent
+\end{itemize}
+
+\noindent
+\end{block}
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{Hvordan du må jobbe}
+
+\pause
+\begin{block}{}
+\begin{itemize}
+  \item Foran hver forelesning må du ha lest ukens kapittel i læreboken
+
+  \item Foran hver oppgaveløsning i plenum må du selv ha forsøkt å løse oppgavene (les kapittelet først!)
+
+  \item Etterarbeid oppgavene når du har sett løsning i plenum
+
+  \item Nå er du klar for ukens obliger: Du kan gjøre dem på terminalstue
+    under veiledning
+\end{itemize}
+
+\noindent
+\end{block}
+
+\begin{block}{Merk: }
+\begin{itemize}
+  \item Spesielt forelesningene går frem mye fortere enn klasseromsundervisningen i videregående skole
+
+  \item Undervisningen forutsetter at du er forberedt og at du kan forrige ukes temaer
+\end{itemize}
+
+\noindent
+\end{block}
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{Du må lære programmering ved å programmere mye}
+
+\begin{block}{}
+\begin{itemize}
+  \item Du kan ikke lese deg til programmering
+
+  \item De fleste synes programmering er krevende i begynnelsen - så blir det utrolig gøy!
+
+  \item Oppskrift på suksess: vær godt forberedt til undervisningen - det gir deg mest fritid og mest læring
+
+  \item Forventet arbeid er 13 timer med INF1100 hver uke \\
+    (6 t undervisning, 7 t selvstudium)
+\end{itemize}
+
+\noindent
+\end{block}
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{Hvor mye matematikk må jeg kunne på forhånd?}
+
+\begin{block}{}
+\begin{itemize}
+  \item Nesten alle eksemplene i INF1100 handler om bruk av matematikk
+
+  \item Vi bygger (i prinsippet) på R2 fra vgs
+
+  \item Men matematikken i INF1100 er stort sett \emph{numerisk} matematikk (MAT-INF1100)
+
+  \item Vi håper at INF1100 skal belyse matematikk fra en ny vinkel og hjelpe deg til å forstå matematikk bedre samtidig som du lærer å programmere
+\end{itemize}
+
+\noindent
+\end{block}
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{Alt undervisningsmateriale er på engelsk}
+
+\begin{block}{}
+\begin{itemize}
+  \item Muntlig undervisning foregår på norsk
+
+  \item Alt skriftlig materiale er på engelsk
+
+  \item Hvorfor?
+
+  \item Det mangler gode norske ord for mange ord/uttrykk i programmering
+
+  \item Du finner mye informasjon om programmering på nettet og i bøker - nesten all denne informasjonen er på engelsk og da må du kunne de engelske uttrykkene
+
+  \item Mesteparten av undervisningsmateriellet på UiO er på engelsk
+
+  \item I jobbsammenheng kan du regne med at alt skriftlig foregår på engelsk
+
+  \item Boken og undervisningsmaterialet brukes ved mange utenlandske universiteter
+\end{itemize}
+
+\noindent
+\end{block}
+\end{frame}
+
+\end{document}

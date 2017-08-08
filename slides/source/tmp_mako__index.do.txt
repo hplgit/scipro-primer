@@ -1,0 +1,175 @@
+TITLE: Slides for A Primer on Scientific Programming with Python
+AUTHOR: Hans Petter Langtangen Email:hpl@simula.no
+
+The slides come in a variety of formats [^source].
+
+
+
+
+
+
+===== Programming with formulas =====
+
+
+
+ * HTML:
+   * "reveal.js beige slide style": "formulas/html/formulas-reveal-beige.html"
+   * "reveal.js darkgray slide style": "formulas/html/formulas-reveal.html"
+   * "solarized color style": "formulas/html/formulas-solarized.html"
+   * "plain style": "formulas/html/formulas-1.html"
+ * "LaTeX Beamer PDF slides": "formulas/pdf/formulas-beamer.pdf"
+ * "LaTeX Beamer PDF slides for printing (2x3 handouts)": "formulas/pdf/formulas-beamer-handouts2x3.pdf"
+ * "IPython notebook": "formulas/ipynb/formulas.ipynb"  + "associated programs": "formulas/ipynb/formulas-src.tar.gz", "notebook viewer": "http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/formulas/ipynb/formulas.ipynb"
+
+
+===== Loops and lists =====
+
+
+
+ * HTML:
+   * "reveal.js beige slide style": "looplist/html/looplist-reveal-beige.html"
+   * "reveal.js darkgray slide style": "looplist/html/looplist-reveal.html"
+   * "solarized color style": "looplist/html/looplist-solarized.html"
+   * "plain style": "looplist/html/looplist-1.html"
+ * "LaTeX Beamer PDF slides": "looplist/pdf/looplist-beamer.pdf"
+ * "LaTeX Beamer PDF slides for printing (2x3 handouts)": "looplist/pdf/looplist-beamer-handouts2x3.pdf"
+ * "IPython notebook": "looplist/ipynb/looplist.ipynb"  + "associated programs": "looplist/ipynb/looplist-src.tar.gz", "notebook viewer": "http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/looplist/ipynb/looplist.ipynb"
+
+
+===== Functions and branching =====
+
+
+
+ * HTML:
+   * "reveal.js beige slide style": "funcif/html/funcif-reveal-beige.html"
+   * "reveal.js darkgray slide style": "funcif/html/funcif-reveal.html"
+   * "solarized color style": "funcif/html/funcif-solarized.html"
+   * "plain style": "funcif/html/funcif-1.html"
+ * "LaTeX Beamer PDF slides": "funcif/pdf/funcif-beamer.pdf"
+ * "LaTeX Beamer PDF slides for printing (2x3 handouts)": "funcif/pdf/funcif-beamer-handouts2x3.pdf"
+ * "IPython notebook": "funcif/ipynb/funcif.ipynb"  + "associated programs": "funcif/ipynb/funcif-src.tar.gz", "notebook viewer": "http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/funcif/ipynb/funcif.ipynb"
+
+
+===== User input and error handling =====
+
+
+
+ * HTML:
+   * "reveal.js beige slide style": "input/html/input-reveal-beige.html"
+   * "reveal.js darkgray slide style": "input/html/input-reveal.html"
+   * "solarized color style": "input/html/input-solarized.html"
+   * "plain style": "input/html/input-1.html"
+ * "LaTeX Beamer PDF slides": "input/pdf/input-beamer.pdf"
+ * "LaTeX Beamer PDF slides for printing (2x3 handouts)": "input/pdf/input-beamer-handouts2x3.pdf"
+ * "IPython notebook": "input/ipynb/input.ipynb"  + "associated programs": "input/ipynb/input-src.tar.gz", "notebook viewer": "http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/input/ipynb/input.ipynb"
+
+
+===== Array computing and curve plotting =====
+
+
+
+ * HTML:
+   * "reveal.js beige slide style": "plot/html/plot-reveal-beige.html"
+   * "reveal.js darkgray slide style": "plot/html/plot-reveal.html"
+   * "solarized color style": "plot/html/plot-solarized.html"
+   * "plain style": "plot/html/plot-1.html"
+ * "LaTeX Beamer PDF slides": "plot/pdf/plot-beamer.pdf"
+ * "LaTeX Beamer PDF slides for printing (2x3 handouts)": "plot/pdf/plot-beamer-handouts2x3.pdf"
+ * "IPython notebook": "plot/ipynb/plot.ipynb"  + "associated programs": "plot/ipynb/plot-src.tar.gz", "notebook viewer": "http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/plot/ipynb/plot.ipynb"
+
+
+===== Sequences and difference equations =====
+
+
+
+ * HTML:
+   * "reveal.js beige slide style": "diffeq/html/diffeq-reveal-beige.html"
+   * "reveal.js darkgray slide style": "diffeq/html/diffeq-reveal.html"
+   * "solarized color style": "diffeq/html/diffeq-solarized.html"
+   * "plain style": "diffeq/html/diffeq-1.html"
+ * "LaTeX Beamer PDF slides": "diffeq/pdf/diffeq-beamer.pdf"
+ * "LaTeX Beamer PDF slides for printing (2x3 handouts)": "diffeq/pdf/diffeq-beamer-handouts2x3.pdf"
+ * "IPython notebook": "diffeq/ipynb/diffeq.ipynb"  + "associated programs": "diffeq/ipynb/diffeq-src.tar.gz", "notebook viewer": "http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/diffeq/ipynb/diffeq.ipynb"
+
+
+===== Dictionaries and strings =====
+
+
+
+ * HTML:
+   * "reveal.js beige slide style": "files/html/files-reveal-beige.html"
+   * "reveal.js darkgray slide style": "files/html/files-reveal.html"
+   * "solarized color style": "files/html/files-solarized.html"
+   * "plain style": "files/html/files-1.html"
+ * "LaTeX Beamer PDF slides": "files/pdf/files-beamer.pdf"
+ * "LaTeX Beamer PDF slides for printing (2x3 handouts)": "files/pdf/files-beamer-handouts2x3.pdf"
+ * "IPython notebook": "files/ipynb/files.ipynb"  + "associated programs": "files/ipynb/files-src.tar.gz", "notebook viewer": "http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/files/ipynb/files.ipynb"
+
+
+===== Introduction to classes =====
+
+
+
+ * HTML:
+   * "reveal.js beige slide style": "class/html/class-reveal-beige.html"
+   * "reveal.js darkgray slide style": "class/html/class-reveal.html"
+   * "solarized color style": "class/html/class-solarized.html"
+   * "plain style": "class/html/class-1.html"
+ * "LaTeX Beamer PDF slides": "class/pdf/class-beamer.pdf"
+ * "LaTeX Beamer PDF slides for printing (2x3 handouts)": "class/pdf/class-beamer-handouts2x3.pdf"
+ * "IPython notebook": "class/ipynb/class.ipynb"  + "associated programs": "class/ipynb/class-src.tar.gz", "notebook viewer": "http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/class/ipynb/class.ipynb"
+
+
+===== Programming of differential equations =====
+
+
+
+ * HTML:
+   * "reveal.js beige slide style": "ode2/html/ode2-reveal-beige.html"
+   * "reveal.js darkgray slide style": "ode2/html/ode2-reveal.html"
+   * "solarized color style": "ode2/html/ode2-solarized.html"
+   * "plain style": "ode2/html/ode2-1.html"
+ * "LaTeX Beamer PDF slides": "ode2/pdf/ode2-beamer.pdf"
+ * "LaTeX Beamer PDF slides for printing (2x3 handouts)": "ode2/pdf/ode2-beamer-handouts2x3.pdf"
+ * "IPython notebook": "ode2/ipynb/ode2.ipynb"  + "associated programs": "ode2/ipynb/ode2-src.tar.gz", "notebook viewer": "http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/ode2/ipynb/ode2.ipynb"
+
+
+===== Random numbers and simple games =====
+
+
+
+ * HTML:
+   * "reveal.js beige slide style": "random/html/random-reveal-beige.html"
+   * "reveal.js darkgray slide style": "random/html/random-reveal.html"
+   * "solarized color style": "random/html/random-solarized.html"
+   * "plain style": "random/html/random-1.html"
+ * "LaTeX Beamer PDF slides": "random/pdf/random-beamer.pdf"
+ * "LaTeX Beamer PDF slides for printing (2x3 handouts)": "random/pdf/random-beamer-handouts2x3.pdf"
+ * "IPython notebook": "random/ipynb/random.ipynb"  + "associated programs": "random/ipynb/random-src.tar.gz", "notebook viewer": "http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/random/ipynb/random.ipynb"
+
+
+===== Object-oriented programming =====
+
+
+
+ * HTML:
+   * "reveal.js beige slide style": "oo/html/oo-reveal-beige.html"
+   * "reveal.js darkgray slide style": "oo/html/oo-reveal.html"
+   * "solarized color style": "oo/html/oo-solarized.html"
+   * "plain style": "oo/html/oo-1.html"
+ * "LaTeX Beamer PDF slides": "oo/pdf/oo-beamer.pdf"
+ * "LaTeX Beamer PDF slides for printing (2x3 handouts)": "oo/pdf/oo-beamer-handouts2x3.pdf"
+ * "IPython notebook": "oo/ipynb/oo.ipynb"  + "associated programs": "oo/ipynb/oo-src.tar.gz", "notebook viewer": "http://nbviewer.ipython.org/url/hplgit.github.io/scipro-primer/slides/oo/ipynb/oo.ipynb"
+
+
+
+===== Kort om kurset =====
+
+"HTML": "about/html/about-reveal-beige.html", "PDF handouts": "about/pdf/about-beamer-handouts2x3.pdf"
+
+--------
+
+[^source]: The slides are written in the
+"DocOnce": "http://hplgit.github.io/doconce/doc/web/index.html"
+markup language, as the
+book, and can easily be translated to a range of formats and styles.

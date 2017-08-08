@@ -118,7 +118,7 @@ mv -f ipynb-tmp-src.tar.gz ipynb-${name}-src.tar.gz
 
 # Publish in separate github repo
 # (scipro-primer must be a directory parallel to primer4)
-dest=../../../../scipro-primer/slides
+dest=../../../scipro-primer/slides
 if [ ! -d $dest ]; then
 # stop if scipro-primer is not present!
 echo 'no copying to $dest because it does not exist!'
